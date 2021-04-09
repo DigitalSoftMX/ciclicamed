@@ -2,6 +2,7 @@
 
 namespace App\Models\Patient;
 
+use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,5 +32,10 @@ class Patient extends Model
     public function invoicedata()
     {
         return $this->hasMany(InvoiceData::class);
+    }
+
+    public function medicalconsults()
+    {
+        return $this->hasMany(MedicalConsult::class);
     }
 }

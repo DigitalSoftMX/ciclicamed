@@ -3,7 +3,11 @@
 namespace App\Models\Employee;
 
 use App\Models\Branch\Branch;
+use App\Models\Medical\Attachment\MedicalAttachment;
+use App\Models\Medical\Consult\MedicalConsult;
+use App\Models\Medical\History\MedicalHistory;
 use App\Models\Medical\MedicalSpecialty;
+use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,19 +35,29 @@ class Employee extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function employeestatus()
+    public function status()
     {
         return $this->belongsTo(EmployeeStatus::class);
     }
 
-    public function medicalspecialties()
+    public function specialties()
     {
         return $this->belongsToMany(MedicalSpecialty::class, 'employee_licenses', 'employee_id', 'medicalspecialty_id')->withPivot('degree_title', 'licence_number');
     }
 
-    public function branches()
+    public function schedules()
     {
         return $this->belongsToMany(Branch::class, 'employee_schedules', 'employee_id', 'branch_id')->withPivot('start_day', 'start_time', 'finish_day', 'finish_time');
+    }
+
+    public function daysoff()
+    {
+        return $this->belongsToMany(Branch::class, 'employee_days_off', 'employee_id', 'branch_id')->withPivot('day_off', 'start_time', 'finish_time');
+    }
+
+    public function medicalconsults()
+    {
+        return $this->hasMany(MedicalConsult::class, 'created_by');
     }
 
 }

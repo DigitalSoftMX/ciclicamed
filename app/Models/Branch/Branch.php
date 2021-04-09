@@ -17,8 +17,14 @@ class Branch extends Model
         'opening_hours'
     ];
 
-    public function employees()
+    public function employeesschedules()
     {
         return $this->belongsToMany(Employee::class, 'employee_schedules', 'branch_id', 'employee_id')->withPivot('start_day', 'start_time', 'finish_day', 'finish_time');
     }
+
+    public function employeesdaysoff()
+    {
+        return $this->belongsToMany(Employee::class, 'employee_days_off', 'branch_id', 'employee_id')->withPivot('day_off', 'start_time', 'finish_time');
+    }
+
 }
