@@ -17,7 +17,6 @@ class CreateMedicalConsultStatusesTable extends Migration
             $table->unsignedTinyInteger('id', true);
             $table->string('name', 150);
             $table->string('color', 6);
-            $table->timestamps();
         });
     }
 

@@ -16,18 +16,18 @@ class MedicalAttachmentForm extends Model
         'medicalspecialty_id'
     ];
 
-    public function medicalspecialty()
+    public function specialties()
     {
         return $this->belongsTo(MedicalSpecialty::class);
     }
 
-    public function medicalconsultattachments()
+    public function attachments()
     {
         return $this->belongsToMany(MedicalConsult::class, 'medical_attachments', 'medicalattachmentform_id', 'medicalconsult_id')
                     ->withPivot('data', 'updated_by', 'update_note');
     }
 
-    public function medicalconsultfollowupsattachtments()
+    public function followups()
     {
         return $this->belongsToMany(MedicalConsult::class, 'medical_attachment_follow_ups', 'medicalattachmentform_id', 'medicalconsult_id')
                     ->withPivot('data', 'updated_by', 'update_note');

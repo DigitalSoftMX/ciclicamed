@@ -18,24 +18,25 @@ class CreateMedicalConsultsTable extends Migration
             $table->unsignedMediumInteger('patient_id', false);
             $table->unsignedMediumInteger('created_by', false);
             $table->unsignedTinyInteger('medicalconsulttype_id', false);
-            $table->unsignedTinyInteger('medicalconsultstatus_id', false);
+            $table->unsignedMediumInteger('updated_by', false);
+            $table->string('update_note', 255)->nullable();
             $table->boolean('is_confirmed')->default(0);
             $table->string('consult_reason', 500);
             $table->date('consult_date');
             $table->time('consult_start_time');
             $table->time('consult_finish_time');
             $table->unsignedSmallInteger('branch_id', false);
-            $table->unsignedMediumInteger('updated_by', false);
-            $table->string('update_note', 255)->nullable();
+            $table->unsignedTinyInteger('medicalconsultstatus_id', false);
             $table->timestamps();
 
             //Relaciones
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->foreign('created_by')->references('id')->on('employees');
             $table->foreign('medicalconsulttype_id')->references('id')->on('medical_consult_types');
-            $table->foreign('medicalconsultstatus_id')->references('id')->on('medical_consult_statuses');
-            $table->foreign('branch_id')->references('id')->on('branches');
             $table->foreign('updated_by')->references('id')->on('employees');
+            $table->foreign('branch_id')->references('id')->on('branches');
+            $table->foreign('medicalconsultstatus_id')->references('id')->on('medical_consult_statuses');
+            
         });
     }
 

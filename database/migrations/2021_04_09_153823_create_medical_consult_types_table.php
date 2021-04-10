@@ -16,7 +16,6 @@ class CreateMedicalConsultTypesTable extends Migration
         Schema::create('medical_consult_types', function (Blueprint $table) {
             $table->unsignedTinyInteger('id', true);
             $table->string('name', 150);
-            $table->timestamps();
         });
     }
 

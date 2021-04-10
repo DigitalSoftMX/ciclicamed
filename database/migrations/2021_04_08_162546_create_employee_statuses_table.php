@@ -17,7 +17,6 @@ class CreateEmployeeStatusesTable extends Migration
             $table->unsignedTinyInteger('id', true);
             $table->string('name', 50);
             $table->string('color', 6);
-            $table->timestamps();
         });
     }
 

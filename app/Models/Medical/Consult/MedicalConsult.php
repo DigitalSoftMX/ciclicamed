@@ -6,6 +6,7 @@ use App\Models\Employee\Employee;
 use App\Models\Medical\Attachment\MedicalAttachment;
 use App\Models\Medical\Attachment\MedicalAttachmentFollowUp;
 use App\Models\Medical\Attachment\MedicalAttachmentForm;
+use App\Models\Medical\Clinical\ClinicalStudy;
 use App\Models\Medical\History\MedicalHistory;
 use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\Medical\Prescription\Medicament;
@@ -73,5 +74,15 @@ class MedicalConsult extends Model
     {
         return $this->belongsToMany(Medicament::class, 'medical_prescriptions', 'medicalconsult_id', 'medicament_id')
                     ->withPivot('dose', 'rate', 'duration', 'update_note');
+    }
+
+    public function studiescreated()
+    {
+        return $this->hasMany(ClinicalStudy::class, 'created_in');
+    }
+
+    public function studyscheduled()
+    {
+        return $this->hasOne(ClinicalStudy::class, 'scheduled_in');
     }
 }

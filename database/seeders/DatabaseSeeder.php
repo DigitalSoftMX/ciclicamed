@@ -12,6 +12,8 @@ use App\Models\Employee\EmployeeStatus;
 use App\Models\Medical\Attachment\MedicalAttachment;
 use App\Models\Medical\Attachment\MedicalAttachmentFollowUp;
 use App\Models\Medical\Attachment\MedicalAttachmentForm;
+use App\Models\Medical\Clinical\ClinicalStudy;
+use App\Models\Medical\Clinical\ClinicalStudyStatus;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\Consult\MedicalConsultStatus;
 use App\Models\Medical\Consult\MedicalConsultType;
@@ -36,8 +38,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        // Role::factory(5)->create();
+
+        //Tablas puente
+
+        
         UserStatus::factory(5)->create();
         User::factory(5)->create();
         Preregistration::factory(5)->create();
@@ -59,5 +63,7 @@ class DatabaseSeeder extends Seeder
         MedicalHistory::factory(30)->create();
         Medicament::factory(50)->create();
         MedicalPrescription::factory(50)->create();
+        ClinicalStudyStatus::factory(5)->create();
+        ClinicalStudy::factory(25)->create();
     }
 }

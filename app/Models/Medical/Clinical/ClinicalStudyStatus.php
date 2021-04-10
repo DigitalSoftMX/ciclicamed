@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Models\Employee;
+namespace App\Models\Medical\Clinical;
 
-use App\Models\Medical\MedicalSpecialty;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EmployeeStatus extends Model
+class ClinicalStudyStatus extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
-    
+
     protected $fillable = [
         'name',
         'color'
     ];
-    
-    public function employee()
-    {
-        return $this->hasOne(Employee::class);
-    }
 
+    public function studies()
+    {
+        return $this->hasMany(ClinicalStudy::class, 'clinicalstudystatus_id');
+    }
 }

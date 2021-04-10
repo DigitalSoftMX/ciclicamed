@@ -22,7 +22,7 @@ class CreateEmployeesTable extends Migration
             $table->string('address', 255)->nullable();
             $table->string('phone', 10)->nullable();
             $table->string('celular', 10)->nullable();
-            $table->string('email', 100);
+            $table->string('email', 100)->nullable();
             $table->string('photo', 100)->nullable();
             $table->unsignedTinyInteger('employeestatus_id', false);
             $table->unsignedInteger('user_id', false);
