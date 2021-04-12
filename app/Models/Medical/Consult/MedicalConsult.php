@@ -10,7 +10,14 @@ use App\Models\Medical\Clinical\ClinicalStudy;
 use App\Models\Medical\History\MedicalHistory;
 use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\Medical\Prescription\Medicament;
+use App\Models\Medical\Study\MedicalStudy;
+use App\Models\Medical\Study\MedicalStudySample;
+use App\Models\Medical\Test\MedicalTest;
+use App\Models\Medical\Test\MedicalTestResult;
+use App\Models\Medical\Test\MedicalTestSample;
 use App\Models\Patient\Patient;
+use App\Models\Product\Product;
+use App\Models\Product\ProductPayment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -76,13 +83,38 @@ class MedicalConsult extends Model
                     ->withPivot('dose', 'rate', 'duration', 'update_note');
     }
 
-    public function studiescreated()
+    public function testscreated()
     {
-        return $this->hasMany(ClinicalStudy::class, 'created_in');
+        return $this->hasMany(MedicalTest::class, 'created_in');
     }
 
-    public function studyscheduled()
+    public function testscheduled()
     {
-        return $this->hasOne(ClinicalStudy::class, 'scheduled_in');
+        return $this->hasOne(MedicalTest::class, 'scheduled_in');
+    }
+
+    public function testsamplescreated()
+    {
+        return $this->hasManyThrough(MedicalTestSample::class, MedicalTest::class, 'created_in', 'medicaltest_id');
+    }
+
+    public function testsamplesscheduled()
+    {
+        return $this->hasManyThrough(MedicalTestSample::class, MedicalTest::class, 'scheduled_in', 'medicaltest_id');
+    }
+
+    public function testresultsscreated()
+    {
+        return $this->hasManyThrough(MedicalTestResult::class, MedicalTest::class, 'created_in', 'medicaltest_id');
+    }
+
+    public function testresultsscheduled()
+    {
+        return $this->hasManyThrough(MedicalTestResult::class, MedicalTest::class, 'scheduled_in', 'medicaltest_id');
+    }
+
+    public function productpayments()
+    {
+        return $this->belongsToMany(Product::class, 'product_payments', 'medicalconsult_id', 'product_id')->withPivot('payment_id');
     }
 }

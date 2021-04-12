@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Medical\Clinical;
+namespace App\Models\Product;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClinicalStudyStatus extends Model
+class ProductCategory extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,10 @@ class ClinicalStudyStatus extends Model
 
     protected $fillable = [
         'name',
-        'color'
     ];
 
-    public function studies()
+    public function products()
     {
-        return $this->hasMany(ClinicalStudy::class, 'clinicalstudystatus_id');
+        return $this->hasMany(Product::class);
     }
 }

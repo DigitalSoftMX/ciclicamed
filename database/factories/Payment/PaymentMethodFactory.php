@@ -1,18 +1,18 @@
 <?php
 
-namespace Database\Factories\Medical\Clinical;
+namespace Database\Factories\Payment;
 
-use App\Models\Medical\Clinical\ClinicalStudyStatus;
+use App\Models\Payment\PaymentMethod;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ClinicalStudyStatusFactory extends Factory
+class PaymentMethodFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = ClinicalStudyStatus::class;
+    protected $model = PaymentMethod::class;
 
     /**
      * Define the model's default state.
@@ -23,7 +23,6 @@ class ClinicalStudyStatusFactory extends Factory
     {
         return [
             'name' => $this->faker->text('50'),
-            'color' => substr($this->faker->hexColor, 1)
         ];
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClinicalStudyStatusesTable extends Migration
+class CreateProductStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateClinicalStudyStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('clinical_study_statuses', function (Blueprint $table) {
+        Schema::create('product_statuses', function (Blueprint $table) {
             $table->unsignedTinyInteger('id', true);
-            $table->string('name', 150);
+            $table->string('name', 50);
             $table->string('color', 6);
         });
     }
@@ -27,6 +27,6 @@ class CreateClinicalStudyStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clinical_study_statuses');
+        Schema::dropIfExists('product_statuses');
     }
 }
