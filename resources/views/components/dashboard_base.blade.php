@@ -16,7 +16,7 @@
                                             <div class="text-center">
                                                 <button class="btn btn-primary btn-default btn-squared radius-xs fs-15 fw-400">Primary
                                                 </button>
-                                                <span class="fs-14 fw-600 color-dark">#5F63F2</span>
+                                                <span class="fs-14 fw-600 color-dark">#60269E</span>
                                             </div>
                                             <div class="text-center">
                                                 <button class="btn btn-secondary btn-default btn-squared radius-xs fs-15 fw-400">Secondary
@@ -126,7 +126,7 @@
                                     <div class="card-body pt-0 px-30 pb-30">
                                         <div class="d-flex flex-wrap m-n10 ">
                                             <div class="gradient-color-name gradient1 py-35 px-20 color-white rounded-xl m-10 ">
-                                                <span class="mr-sm-40 mr-0 fs-15">#5F63F2</span>
+                                                <span class="mr-sm-40 mr-0 fs-15">#60269E</span>
                                                 <span class="ml-40 fs-15">#FF69A5</span>
                                             </div>
                                             <div class="gradient-color-name gradient2 py-35 px-20 color-white rounded-xl m-10 ">
@@ -135,7 +135,7 @@
                                             </div>
                                             <div class="gradient-color-name gradient3 py-35 px-20 color-white rounded-xl m-10 ">
                                                 <span class="mr-sm-40 mr-0 fs-15">#2CB7FF</span>
-                                                <span class="ml-40 fs-15">#5F63F2</span>
+                                                <span class="ml-40 fs-15">#60269E</span>
                                             </div>
                                             <div class="gradient-color-name gradient4 py-35 px-20 color-white rounded-xl m-10 ">
                                                 <span class="mr-sm-40 mr-0 fs-15">#009646</span>

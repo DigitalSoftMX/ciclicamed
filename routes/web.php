@@ -24,6 +24,7 @@ use App\Http\Controllers\ToDoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WidgetController;
 use App\Http\Controllers\WizardController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

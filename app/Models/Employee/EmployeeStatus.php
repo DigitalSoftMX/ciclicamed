@@ -17,9 +17,9 @@ class EmployeeStatus extends Model
         'color'
     ];
     
-    public function employee()
+    public function employees()
     {
-        return $this->hasOne(Employee::class);
+        return $this->hasMany(Employee::class);
     }
 
 }

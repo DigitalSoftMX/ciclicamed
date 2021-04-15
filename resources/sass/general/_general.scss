@@ -476,14 +476,14 @@ ul {
     width: 50px;
     height: 50px;
     border-radius: 10px 0 0 10px;
-    background-color: #5f63f2;
+    background-color: #60269E;
     position: fixed;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
     transition: all 0.3s ease;
     z-index: 999;
-    box-shadow: 0 10px 15px rgba(#5f63f2, 0.2);
+    box-shadow: 0 10px 15px rgba(#60269E, 0.2);
 
     &.show {
         right: 200px;
@@ -598,7 +598,7 @@ ul {
 
         &:hover {
             span {
-                color: #5f63f2;
+                color: #60269E;
             }
         }
 

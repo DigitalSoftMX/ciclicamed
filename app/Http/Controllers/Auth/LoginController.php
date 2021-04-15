@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -45,7 +46,7 @@ class LoginController extends Controller
     public function loginForm (){
 
         $pageTitle = 'Login';
-        $pageDescription = 'Login Page';
+        $pageDescription = 'Página de login';
 
         return view('auth.login', compact('pageTitle', 'pageDescription'));
     }

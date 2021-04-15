@@ -16,3 +16,5 @@
 <link rel="stylesheet" href="{{ asset('vendor_assets/css/trumbowyg.min.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor_assets/css/wickedpicker.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/'.(Session::get('layout')=='rtl' ? 'style-rtl.css' : 'style.css')) }}">
+<link rel="stylesheet" href="{{ asset('css/login/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/register/register.css') }}">

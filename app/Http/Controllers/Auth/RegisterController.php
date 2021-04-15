@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Patient\Preregistration;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -64,11 +65,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
+        $user = User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'userstatus_id' => 1
         ]);
+
+        Preregistration::create([
+            'business_name' => 'Lorem ipsum',
+            'has_children' => 0,
+            'children_total' => '2',
+            'user_id' => $user->id
+        ]);
+
+        return $user;
     }
 }

@@ -317,7 +317,7 @@
                                        <div class="color-picker">
                                           <div class="form-group mb-0">
                                              <div class="input-container icon-right position-relative w-100 color-light ">
-                                                <input type="color" class="form-control ih-medium ip-light radius-xs b-light px-15 color-light" id="favcolor" value="#5F63F2">
+                                                <input type="color" class="form-control ih-medium ip-light radius-xs b-light px-15 color-light" id="favcolor" value="#60269E">
                                              </div>
                                           </div>
                                        </div>

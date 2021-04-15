@@ -37,7 +37,7 @@ class Employee extends Model
 
     public function status()
     {
-        return $this->belongsTo(EmployeeStatus::class);
+        return $this->belongsTo(EmployeeStatus::class, 'employeestatus_id');
     }
 
     public function specialties()

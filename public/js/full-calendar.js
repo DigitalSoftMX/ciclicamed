@@ -33,7 +33,7 @@
       },
     ],
     className: "primary",
-    textColor: "#5F63F2",
+    textColor: "#60269E",
   };
 
   let productLaunch = {

@@ -382,7 +382,7 @@
                     elementType: 'geometry',
                     stylers: [
                       {
-                        color: '#5F63F2',
+                        color: '#60269E',
                       },
                       {
                         gamma: '1',
@@ -397,7 +397,7 @@
                     elementType: 'geometry',
                     stylers: [
                       {
-                        color: '#5F63F290',
+                        color: '#60269E90',
                       },
                     ],
                 },
