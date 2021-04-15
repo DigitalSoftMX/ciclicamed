@@ -38,6 +38,7 @@ use App\Models\Product\ProductPayment;
 use App\Models\Product\ProductStatus;
 use App\Models\User\Role;
 use App\Models\User\User;
+use App\Models\User\UserCategory;
 use App\Models\User\UserStatus;
 use Illuminate\Database\Seeder;
 
@@ -55,6 +56,7 @@ class DatabaseSeeder extends Seeder
 
         
         UserStatus::factory(5)->create();
+        UserCategory::factory(2)->create();
         User::factory(5)->create();
         Preregistration::factory(5)->create();
         Patient::factory(5)->create();

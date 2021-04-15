@@ -1,3 +1,5 @@
 *
 !public/
+!medical/
+!user/
 !.gitignore

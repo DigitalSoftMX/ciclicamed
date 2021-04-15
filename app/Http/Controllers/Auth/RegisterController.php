@@ -65,19 +65,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+        return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'userstatus_id' => 1
         ]);
-
-        Preregistration::create([
-            'business_name' => 'Lorem ipsum',
-            'has_children' => 0,
-            'children_total' => '2',
-            'user_id' => $user->id
-        ]);
-
-        return $user;
     }
 }

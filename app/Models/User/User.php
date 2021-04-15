@@ -17,7 +17,8 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'password',
-        'userstatus_id'
+        'userstatus_id',
+        'usercategory_id'
     ];
 
     protected $hidden = [
@@ -30,19 +31,24 @@ class User extends Authenticatable
 
     protected $guard_name = 'web';
 
-    public function userstatus()
+    public function status()
     {
-        return $this->belongsTo(UserStatus::class);
+        return $this->belongsTo(UserStatus::class, 'userstatus_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(UserCategory::class, 'usercategory_id');
     }
 
     public function preregistration()
     {
-        return $this->hasOne(Preregistration::class);
+        return $this->hasOne(Preregistration::class, 'user_id');
     }
     
     public function employee()
     {
-        return $this->hasOne(Employee::class);
+        return $this->hasOne(Employee::class, 'user_id');
     }
 
     public function patient()

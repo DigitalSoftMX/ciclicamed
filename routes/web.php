@@ -21,12 +21,13 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SocialAppController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ToDoController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\WidgetController;
 use App\Http\Controllers\WizardController;
+use App\Models\User\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Intervention\Image\ImageManagerStatic as Image;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,15 @@ use Illuminate\Support\Facades\Route;
 
 //Routes
 Route::get('/', [LoginController::class, 'loginForm']);
+Route::get('/usuarios', [UserController::class, 'getInfo'])->name('user.profile');
+Route::get('/images/users/{id}', function ($id) {
+    $storage = storage_path('app/user/patient/photo/'.$id.'');
+    return Image::make($storage)->response();
+});
+
+
+
+
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'dashboards'], function () {
         Route::get('/social-media', [DashboardController::class, 'index'])->name('dashboards.index');

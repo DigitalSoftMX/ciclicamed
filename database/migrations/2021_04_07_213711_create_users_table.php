@@ -22,11 +22,13 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->unsignedTinyInteger('userstatus_id', false);
+            $table->unsignedTinyInteger('usercategory_id', false);
             $table->rememberToken();
             $table->timestamps();
 
             //Relaciones
             $table->foreign('userstatus_id')->references('id')->on('user_statuses');
+            $table->foreign('usercategory_id')->references('id')->on('user_categories');
         });
     }
 
