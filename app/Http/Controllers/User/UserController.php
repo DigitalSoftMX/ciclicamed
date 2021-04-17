@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserUpdatePasswordRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Models\User\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -82,7 +84,9 @@ class UserController extends Controller
         $request->validated();
         $user = User::findOrFail($id);
         $user->update($request->all());
-        return $request;
+        $user['password'] = Hash::make($request['password']);
+        $user->save();
+        return $user;
     }
 
     /**
@@ -94,5 +98,14 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updatePassword(UserUpdatePasswordRequest $request, $id)
+    {
+        $request->validated();
+        $user = User::findOrFail($id);
+        $user['password'] = Hash::make($request['password']);
+        $user->save();
+        return $user;
     }
 }

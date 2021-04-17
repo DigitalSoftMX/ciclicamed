@@ -44,7 +44,7 @@ Route::get('/', [LoginController::class, 'loginForm'])->name('login.login');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('usuarios', UserController::class);
-
+    Route::put('/usuarios/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
     Route::get('/images/users/{id}', function ($id) {
         $storage = storage_path('app/user/patient/photo/'.$id.'');
         return file_exists($storage) ? Image::make($storage)->response() : response()->view('errors.404',[], 404);

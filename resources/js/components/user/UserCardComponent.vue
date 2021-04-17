@@ -3,7 +3,6 @@
         <div class="account-profile border-bottom text-center">
 
             <div class="ap-img w-100 d-flex justify-content-center">
-                <!-- Profile picture image-->
                 <img class="ap-img__main rounded-circle mb-3 wh-120 d-flex bg-opacity-primary" :src="getImage()"
                     alt="profile" onerror="this.onerror=null;this.src='/svg/person.svg';">
             </div>
@@ -49,48 +48,33 @@
         </div>
     </div>
 
-    <!-- Modal de error -->
-    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-info" role="document">
-            <div class="modal-content modal-bg-danger modal-colored">
-                <div class="modal-header ">
-                    <h6 class="modal-title">Error al actualizar la contraseña</h6>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <img src="/svg/close.svg" alt="Alert logo" style="filter: invert(1);">
-                    </button>
-                </div>
-                <div class="modal-body mb-3">
-                    <div class="modal-info-body d-flex">
-                        <div class="modal-info-icon danger">
-                            <img src="/svg/close.svg" alt="Alert logo" style="filter: invert(1);">
-                        </div>
-                        <div v-for="error in errors" :key="error">
-                            <div class="modal-info-text text-white" v-for="errorInfo in error" :key="errorInfo">
-                                {{ errorInfo }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--Modal de error-->
+    <error-alert-component :errors="errors" :title="'Error al actualizar la contraseña'"></error-alert-component>
+    <!--Modal de exito-->
+    <success-alert-component :message="successMessage" :title="'Contraseña actualizada correctamente'">
+    </success-alert-component>
 </template>
 
 <script>
     import axios from "axios";
     import $ from 'jquery';
+    import ErrorAlertComponent from '../alert/ErrorAlertComponent.vue';
+    import SuccessAlertComponent from '../alert/SuccessAlertComponent.vue';
     require('../../../../public/vendor_assets/js/bootstrap/bootstrap.min');
-    const Swal = require('sweetalert2');
 
     export default {
+        components: {
+            ErrorAlertComponent,
+            SuccessAlertComponent
+        },
         props: ['user', 'category', 'photo'],
         data: function () {
             return {
                 _password: null,
                 _confirmPassword: null,
                 error: false,
-                errors: []
+                errors: [],
+                successMessage: null
             }
         },
         methods: {
@@ -98,20 +82,21 @@
                 return this.$props.photo;
             },
             changePassword() {
-
-
-                axios.put('/usuarios/1', {
-                        email: 'exampleexample.com'
+                if (this._password === this._confirmPassword) {
+                    axios.put(`/usuarios/${this.$props.user.id}/password`, {
+                        password: this._password
                     })
                     .then(response => {
+                        this.successMessage = 'La contraseña se ha actualizado correctamente';
+                        $('#successModal').modal('show');
                         this._password = null;
-                        console.log(response)
+                        this._confirmPassword = null;
                     })
                     .catch(error => {
                         this.errors = error.response.data.errors;
                         $('#errorModal').modal('show')
-                        console.log(error.response.data.errors)
                     })
+                }
             },
             checkPassword() {
                 this.error = this._password == this._confirmPassword ? true : false;
