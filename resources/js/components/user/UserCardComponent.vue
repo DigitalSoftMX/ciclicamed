@@ -48,35 +48,29 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-    </button>
-
-
 
     <!-- Modal de error -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-sm modal-info" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
+            <div class="modal-content modal-bg-danger modal-colored">
+                <div class="modal-header ">
+                    <h6 class="modal-title">Error al actualizar la contraseña</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <img src="/svg/close.svg" alt="Alert logo" style="filter: invert(1);">
+                    </button>
+                </div>
+                <div class="modal-body mb-3">
                     <div class="modal-info-body d-flex">
                         <div class="modal-info-icon danger">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-x-circle">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="15" y1="9" x2="9" y2="15"></line>
-                                <line x1="9" y1="9" x2="15" y2="15"></line>
-                            </svg>
+                            <img src="/svg/close.svg" alt="Alert logo" style="filter: invert(1);">
                         </div>
-                        <div class="modal-info-text">
-                            <p>Some contents...</p>
+                        <div v-for="error in errors" :key="error">
+                            <div class="modal-info-text text-white" v-for="errorInfo in error" :key="errorInfo">
+                                {{ errorInfo }}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Ok</button>
                 </div>
             </div>
         </div>
@@ -85,6 +79,8 @@
 
 <script>
     import axios from "axios";
+    import $ from 'jquery';
+    require('../../../../public/vendor_assets/js/bootstrap/bootstrap.min');
     const Swal = require('sweetalert2');
 
     export default {
@@ -93,7 +89,8 @@
             return {
                 _password: null,
                 _confirmPassword: null,
-                error: false
+                error: false,
+                errors: []
             }
         },
         methods: {
@@ -111,23 +108,8 @@
                         console.log(response)
                     })
                     .catch(error => {
-                        Swal.fire({
-                            title: 'No se pudo actualizar la contraseña',
-                            html: `
-                                <div class="list-box text-left">
-                                    <ul>
-                                        ${Object.values(error.response.data.errors).map(data => `
-                                            <li class="atbd-menu__link active">
-                                                <img src="/svg/alert.svg" alt="Cellphone Logo" class="mr-2">
-                                                ${data}
-                                            </li>
-                                        `)}
-                                    </ul>
-                                </div>
-                            `,
-                            icon: 'error',
-                            confirmButtonText: 'Aceptar'
-                        })
+                        this.errors = error.response.data.errors;
+                        $('#errorModal').modal('show')
                         console.log(error.response.data.errors)
                     })
             },
