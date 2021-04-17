@@ -33,7 +33,7 @@
         left: 0;
         height: 100%;
         width: 1px;
-        background-color: #e3e6ef;
+        background-color: #F5F5F5;
       }
     }
   }
@@ -499,7 +499,7 @@
       left: 0;
       height: 100%;
       width: 1px;
-      background-color: #e3e6ef;
+      background-color: #F5F5F5;
     }
   }
 }
@@ -622,7 +622,7 @@
     transition: $transition-base;
 
     &:hover {
-      background: #f4f5f7;
+      background: #F5F5F5;
     }
 
     .dropdown svg {

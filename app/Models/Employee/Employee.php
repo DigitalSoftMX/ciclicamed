@@ -23,7 +23,7 @@ class Employee extends Model
         'birthday',
         'address',
         'phone',
-        'celular',
+        'cellphone',
         'email',
         'photo',
         'employeestatus_id',

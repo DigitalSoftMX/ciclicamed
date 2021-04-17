@@ -4,11 +4,14 @@ import UserCardComponent from  './components/user/UserCardComponent';
 import UserCardBioComponent from  './components/user/UserCardBioComponent';
 import UserProfileComponent from  './components/user/UserProfileComponent';
 
-createApp({
+
+const app = createApp({
     components: {
 		LoginComponent,
 		UserCardComponent,
 		UserCardBioComponent,
 		UserProfileComponent
 	}
-}).mount('#app');
+});
+
+app.mount('#app');

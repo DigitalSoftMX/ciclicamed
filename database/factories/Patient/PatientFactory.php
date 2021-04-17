@@ -28,7 +28,7 @@ class PatientFactory extends Factory
             'birthday' => $this->faker->dateTimeThisCentury->format('Y-m-d'),
             'address' => $this->faker->address,
             'phone' => $this->faker->regexify('[0-9]{10}'),
-            'celular' => $this->faker->regexify('[0-9]{10}'),
+            'cellphone' => $this->faker->regexify('[0-9]{10}'),
             'email' => $this->faker->unique()->safeEmail(),
             'photo' => $this->faker->regexify('[A-Za-z0-9]{25}'),
             'preregistration_id' => $this->faker->unique(true)->numberBetween(1, 5)

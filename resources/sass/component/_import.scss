@@ -29,7 +29,7 @@
     }
     .order-search__form{
         background-color: transparent;
-        border: 1px solid #E3E6EF;
+        border: 1px solid #F5F5F5;
         padding: 12px 13px;
         width:250px ;
         @include xxl{
@@ -54,11 +54,11 @@
     }
     .fileM-Modal-overlay .modal-body {
         input{
-            border:1px solid #E3E6EF;
+            border:1px solid #F5F5F5;
         }
         .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple{
             height:36px;
-            border:1px solid #E3E6EF;
+            border:1px solid #F5F5F5;
         }
         .select2-container .select2-selection--single .select2-selection__rendered, .select2-container--default .select2-selection--single .select2-selection__placeholder{
             color:#9299B8;

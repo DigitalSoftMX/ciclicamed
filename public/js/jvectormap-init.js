@@ -15,7 +15,7 @@ $('#sb_location-month-tab').on("shown.bs.tab",function(){
     normalizeFunction: "polynomial",
     hoverOpacity: 0.8,
     regionStyle: {
-      initial: { fill: "#E3E6EF" },
+      initial: { fill: "#F5F5F5" },
       hover: {
         fill: "#60269E",
         "fill-opacity": 1,
@@ -53,7 +53,7 @@ $('#sb_location-week-tab').on("shown.bs.tab",function(){
     normalizeFunction: "polynomial",
     hoverOpacity: 0.8,
     regionStyle: {
-      initial: { fill: "#E3E6EF" },
+      initial: { fill: "#F5F5F5" },
       hover: {
         fill: "#60269E",
         "fill-opacity": 1,
@@ -91,7 +91,7 @@ $('#sb_location-year-tab').on("shown.bs.tab",function(){
     normalizeFunction: "polynomial",
     hoverOpacity: 0.8,
     regionStyle: {
-      initial: { fill: "#E3E6EF" },
+      initial: { fill: "#F5F5F5" },
       hover: {
         fill: "#60269E",
         "fill-opacity": 1,
@@ -130,7 +130,7 @@ if(s_regionMapT){
     normalizeFunction: "polynomial",
     hoverOpacity: 0.8,
     regionStyle: {
-      initial: { fill: "#E3E6EF" },
+      initial: { fill: "#F5F5F5" },
       hover: {
         fill: "#60269E",
         "fill-opacity": 1,
@@ -167,7 +167,7 @@ $('#se_region-week-tab').on("shown.bs.tab",function(){
     normalizeFunction: "polynomial",
     hoverOpacity: 0.8,
     regionStyle: {
-      initial: { fill: "#E3E6EF" },
+      initial: { fill: "#F5F5F5" },
       hover: {
         fill: "#60269E",
         "fill-opacity": 1,
@@ -204,7 +204,7 @@ $('#se_region-month-tab').on("shown.bs.tab",function(){
     normalizeFunction: "polynomial",
     hoverOpacity: 0.8,
     regionStyle: {
-      initial: { fill: "#E3E6EF" },
+      initial: { fill: "#F5F5F5" },
       hover: {
         fill: "#60269E",
         "fill-opacity": 1,
@@ -241,7 +241,7 @@ $('#se_region-year-tab').on("shown.bs.tab",function(){
     normalizeFunction: "polynomial",
     hoverOpacity: 0.8,
     regionStyle: {
-      initial: { fill: "#E3E6EF" },
+      initial: { fill: "#F5F5F5" },
       hover: {
         fill: "#60269E",
         "fill-opacity": 1,
@@ -279,7 +279,7 @@ if (regionMap) {
     normalizeFunction: "polynomial",
     hoverOpacity: 0.8,
     regionStyle: {
-      initial: { fill: "#E3E6EF" },
+      initial: { fill: "#F5F5F5" },
       hover: {
         fill: "#60269E",
         "fill-opacity": 1,
@@ -315,7 +315,7 @@ if (worldMap) {
     backgroundColor: "transparent",
     normalizeFunction: "polynomial",
     hoverOpacity: 0.8,
-    regionStyle: { initial: { fill: "#E3E6EF" } },
+    regionStyle: { initial: { fill: "#F5F5F5" } },
     markerStyle: {
       initial: {
         fill: "#60269E15",

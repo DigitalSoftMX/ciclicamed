@@ -21,10 +21,10 @@ class CreatePatientsTable extends Migration
             $table->date('birthday');
             $table->string('address', 255)->nullable();
             $table->string('phone', 10)->nullable();
-            $table->string('celular', 10)->nullable();
+            $table->string('cellphone', 10)->nullable();
             $table->string('email', 100);
             $table->string('photo', 100)->nullable();
-            $table->unsignedMediumInteger('preregistration_id', false);
+            $table->unsignedMediumInteger('preregistration_id', false);//->unique();
             $table->timestamps();
 
             //Relaciones

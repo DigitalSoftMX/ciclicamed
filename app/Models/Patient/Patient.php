@@ -19,7 +19,7 @@ class Patient extends Model
         'birthday',
         'address',
         'phone',
-        'celular',
+        'cellphone',
         'email',
         'photo',
         'preregistration_id'

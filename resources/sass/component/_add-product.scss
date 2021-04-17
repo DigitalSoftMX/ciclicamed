@@ -32,7 +32,7 @@
 
             .form-control {
                 height: 48px;
-                border: 1px solid #E3E6EF;
+                border: 1px solid #F5F5F5;
                 border-radius: 4px;
                 resize: none;
 
@@ -58,7 +58,7 @@
 
             .input-group-text {
                 background-color: #F8F9FB;
-                border: 1px solid #E3E6EF;
+                border: 1px solid #F5F5F5;
                 @include ofs(15px, lh(15px, 20px), 400);
                 @extend .color-gray;
                 svg{
@@ -265,7 +265,7 @@
     .pt_QuantityButton {
         position: relative;
         cursor: pointer;
-        border-left: 1px solid #e3e6ef;
+        border-left: 1px solid #F5F5F5;
         width: 25px;
         text-align: center;
         height: 24px;
@@ -285,7 +285,7 @@
             position: absolute;
             height: 52%;
             top: 0;
-            border-bottom: 1px solid #e3e6ef;
+            border-bottom: 1px solid #F5F5F5;
         }
 
         &.pt_QuantityDown {

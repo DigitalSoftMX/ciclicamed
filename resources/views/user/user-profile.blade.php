@@ -1,6 +1,5 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app') -->
 @section('content')
-
 <div id="app" class="contents">
 
     <div class="container-fluid">
@@ -29,7 +28,7 @@
                         <div class="card mb-25">
                             <user-card-bio-component :user="{{ json_encode($user) }}"
                                 :category="{{ json_encode($category) }}"
-                                :photo="{{ json_encode(URL::to('/images/users/'.$user->photo.'')) }}">
+                                >
                                 </user-card--bio-component>
                         </div>
                     </div>

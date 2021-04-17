@@ -52,12 +52,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        //Tablas puente
-
-        
         UserStatus::factory(5)->create();
         UserCategory::factory(2)->create();
-        User::factory(5)->create();
+        User::factory(10)->create();
         Preregistration::factory(5)->create();
         Patient::factory(5)->create();
         InvoiceData::factory(5)->create();

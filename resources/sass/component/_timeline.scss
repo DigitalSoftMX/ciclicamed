@@ -42,7 +42,7 @@
             height: 100%;
             width: 3px;
             z-index: -1;
-            background-color: #E3E6EF;
+            background-color: #F5F5F5;
         }
 
         @include e("buble") {
@@ -117,7 +117,7 @@
             position: absolute;
             content: " ";
             width: 3px;
-            background-color: #E3E6EF;
+            background-color: #F5F5F5;
             left: 50%;
             margin-left: -1.5px;
 
@@ -287,8 +287,8 @@
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: #E3E6EF;
-            border: 3px solid #E3E6EF;
+            background-color: #F5F5F5;
+            border: 3px solid #F5F5F5;
             border-radius: 4px;
         }
 

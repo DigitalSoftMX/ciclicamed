@@ -1181,7 +1181,7 @@ function chartjsLineChartFourExtra(selector, bcolor = "#FA8B0C", height = "95", 
             stacked: false,
             gridLines: {
               display: true,
-              color: "#E3E6EF",
+              color: "#F5F5F5",
               drawBorder: false,
               tickMarkLength: 0,
               borderDash: [4, 4],

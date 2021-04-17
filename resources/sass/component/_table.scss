@@ -3,7 +3,7 @@
 .order-search {
   @include e(form) {
     padding: 15px 20px;
-    background: #f4f5f7;
+    background: #F5F5F5;
     height: 40px;
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@
 }
 
 .project-tap.order-project-tap {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 
   &:not(:first-child):after {
     background-color: #f1f2f6;
@@ -310,13 +310,13 @@ table.table-rounded {
   }
   .table {
     td {
-      border-bottom: 1px solid #e3e6ef;
+      border-bottom: 1px solid #F5F5F5;
       padding: 18px 20px;
     }
 
     thead {
       th {
-        border-bottom: 1px solid #e3e6ef;
+        border-bottom: 1px solid #F5F5F5;
         border-top: none;
       }
 
@@ -330,12 +330,12 @@ table.table-rounded {
     transition: $transition-base;
 
     &:hover {
-      background-color: #fafafa;
+      background-color: #F5F5F5;
     }
   }
 
   .userDatatable-header th {
-    background-color: #fafafa;
+    background-color: #F5F5F5;
     padding: 15px 20px 15px 20px;
   }
 
@@ -361,7 +361,7 @@ table.table-rounded {
   }
 
   .userDatatable-header {
-    background: #fafafa;
+    background: #F5F5F5;
   }
 
   .userDatatable-title {

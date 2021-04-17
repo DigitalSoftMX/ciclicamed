@@ -2084,7 +2084,7 @@ table.table-rounded tr td, table.table-basic tr td, .orderDatatable-title, .paym
 }
 
 .border-color {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 
 .bg-normal, .columnCard-wrapper, .card.columnCard-wrapper .card-header,
@@ -2104,7 +2104,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 
 .bg-lighter, .mailbox-list__single .mail-content__bottom .mail-attatchment, .mailbox-top__search .form-control-lg, .kanban-modal__list .checkbox-group:hover, .kanban-modal__list button, .kanban-modal__research button, .kanban-modal__form textarea, .kanban-board__add-card button, .list__add-card, .kanban-list, .kanban-board__body, .wizard10 .payment-method-card .card-body .form-control, .wizard10 .select2-container--default .select2-selection--single,
 .wizard10 .select2-container--default .select2-selection--multiple, .wizard10 .edit-profile__body .form-group .form-control, .chat-wrapper form input:focus, .chat-wrapper form input, .chat-wrapper form, .atbd-select.disabled .form-control, .atbd-tab .nav-tabs:after, .atbd-upload__file li:hover, .atbd-date-ranger.date-picker-disabled .divider, .atbd-date-ranger.date-picker-disabled, .card .card-header .card-tab .btn.btn-white:hover, .atbd-button-group.btn-group-solid, .badge-dot.dot-light, .dropdown.dropdown-disable, .contents, .cbg-light {
-  background: #f4f5f7;
+  background: #F5F5F5;
 }
 
 .bg-deep, .atbd-tag.tag-light {
@@ -2596,7 +2596,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-primary .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-primary .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #60269E;
@@ -2607,7 +2607,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-secondary .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-secondary .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #B11CAB;
@@ -2618,7 +2618,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-terciary .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-terciary .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #00A0DF;
@@ -2629,7 +2629,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-success .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-success .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #20c997;
@@ -2640,7 +2640,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-info .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-info .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #2c99ff;
@@ -2651,7 +2651,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-warning .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-warning .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #fa8b0c;
@@ -2662,7 +2662,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-danger .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-danger .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #ff4d4f;
@@ -2673,7 +2673,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-light .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-light .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #9299b8;
@@ -2684,7 +2684,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-dark .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-dark .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #272b41;
@@ -2695,7 +2695,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-text .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-text .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #666d92;
@@ -2706,7 +2706,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-extra-light .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-extra-light .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #adb4d2;
@@ -2717,7 +2717,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-gray .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-gray .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #5a5f7d;
@@ -2728,7 +2728,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-third .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-third .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #60269E;
@@ -2739,7 +2739,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-outline-white .custom-control-label:before {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .checkbox-outline-white .custom-control-input:checked ~ .custom-control-label::before {
   border: 1px solid #ffffff;
@@ -2813,7 +2813,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .vertical-tabs::-webkit-scrollbar-thumb {
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
   border-radius: 5px;
 }
 
@@ -2827,7 +2827,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .table-top-regions::-webkit-scrollbar-thumb {
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
   border-radius: 5px;
 }
 
@@ -2841,7 +2841,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .search-body::-webkit-scrollbar-thumb {
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
   border-radius: 5px;
 }
 
@@ -2855,7 +2855,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .chat-box::-webkit-scrollbar-thumb {
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
   border-radius: 5px;
 }
 
@@ -2908,7 +2908,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .b-light, .new-member-modal button.b-light, .new-member-modal button.btn-outline-lighten, .btn-outline-lighten {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 
 .b-deep {
@@ -3309,7 +3309,7 @@ html {
 
 body {
   position: relative;
-  background: #f4f5f7;
+  background: #F5F5F5;
   min-height: 100vh;
   font-size: 16px;
   overflow-x: hidden;
@@ -4351,7 +4351,7 @@ ul {
 .navbar-right__menu .dropdown-wrapper__title {
   margin: 10px;
   border-radius: 6px;
-  background: #f4f5f7;
+  background: #F5F5F5;
   padding: 15px;
   font-size: 14px;
   text-align: center;
@@ -4545,7 +4545,7 @@ ul {
   }
 }
 .navbar-right__menu .nav-author__info {
-  background: #f4f5f7;
+  background: #F5F5F5;
   border-radius: 8px;
   margin: 10px;
   display: flex;
@@ -5558,7 +5558,7 @@ ul {
   border-right: 0;
 }
 .dynamic-badge-block .atbd-button-group .btn-dec {
-  border-left: 1px solid #e3e6ef;
+  border-left: 1px solid #F5F5F5;
 }
 .dynamic-badge-block .custom-switch {
   margin: 8px 0 0 16px;
@@ -5645,7 +5645,7 @@ ul {
 }
 
 .btn.btn-light {
-  background: #f4f5f7;
+  background: #F5F5F5;
   border-color: transparent;
 }
 .btn.btn-light:hover {
@@ -5665,7 +5665,7 @@ ul {
   border-color: transparent;
 }
 .btn.btn-light.btn-transparent-light {
-  background: rgba(244, 245, 247, 0.15);
+  background: rgba(245, 245, 245, 0.15);
 }
 
 .btn-light:not(:disabled):not(.disabled):active,
@@ -5757,7 +5757,7 @@ ul {
   border-color: #60269E !important;
 }
 .atbd-button-group .btn.btn-outline-light:hover {
-  background-color: #f4f5f7 !important;
+  background-color: #F5F5F5 !important;
 }
 .atbd-button-group.btn-group-solid .btn-light {
   color: #adb4d2 !important;
@@ -5843,7 +5843,7 @@ ul {
   width: 1px;
   height: 100%;
   padding: 1px 0;
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
   content: "";
 }
 .atbd-nav-controller .btn-group > .btn.active,
@@ -6156,13 +6156,13 @@ ul {
 }
 .custom-switch .custom-control-input:focus:not(:checked) ~ .custom-control-label:before {
   border-color: transparent;
-  background-color: #E3E6EF;
+  background-color: #F5F5F5;
 }
 .custom-switch .custom-control-input .custom-control-input:checked ~ .custom-control-label::before {
   border-color: #60269E;
 }
 .custom-switch .custom-control-label:before {
-  background-color: #E3E6EF;
+  background-color: #F5F5F5;
   border: transparent;
   box-shadow: none;
 }
@@ -8485,7 +8485,7 @@ table.table-basic tr td.card .card-body,
 }
 .user-skils-parent__item a {
   padding: 5px 10px;
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
   font-size: 11px;
   line-height: 1.2727272727;
   font-weight: 500;
@@ -8652,7 +8652,7 @@ table.table-basic tr td.card .card-body,
 }
 .ap-product .table thead tr th {
   border-top: none;
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
@@ -8663,7 +8663,7 @@ table.table-basic tr td.card .card-body,
   width: 60%;
 }
 .ap-product .table tbody tr {
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
 }
 .ap-product .table tbody tr td {
   border: none;
@@ -8734,7 +8734,7 @@ table.table-basic tr td.card .card-body,
   line-height: 16px;
   padding: 7px 15px;
   height: 30px;
-  background-color: #f4f5f7;
+  background-color: #F5F5F5;
   font-size: 12px;
   font-weight: 500;
 }
@@ -8782,7 +8782,7 @@ table.table-basic tr td.card .card-body,
   }
 }
 .ap-post-content-comment__write {
-  background-color: #f4f5f7;
+  background-color: #F5F5F5;
   height: 50px;
   border-radius: 25px;
   padding: 0 22px;
@@ -9261,7 +9261,7 @@ table.table-basic tr td.card .card-body,
   font-weight: 500;
 }
 .edit-profile__body .form-group .form-control {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -9318,7 +9318,7 @@ table.table-basic tr td.card .card-body,
 .select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {
   background-color: #fff;
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
   border-radius: 4px;
   height: 48px;
   display: flex;
@@ -9458,10 +9458,10 @@ table.table-basic tr td.card .card-body,
 }
 .notification-content__body .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
   border-color: transparent;
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
 }
 .notification-content__body .custom-control-label::before {
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
   border: transparent;
   box-shadow: none;
 }
@@ -10245,7 +10245,7 @@ table.table-basic tr td.card .card-body,
   left: 0;
   height: 100%;
   width: 1px;
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
 }
 .user-member__form {
   padding: 15px 25px;
@@ -10557,7 +10557,7 @@ table.table-basic tr td.card .card-body,
 }
 
 .projects-tab-content .projectDatatable tbody tr {
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
 }
 
 .user-info-tab .ap-tab-main .nav-item .nav-link {
@@ -10642,7 +10642,7 @@ table.table-basic tr td.card .card-body,
   left: 0;
   height: 100%;
   width: 1px;
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
 }
 
 @media only screen and (max-width: 767px) {
@@ -10739,7 +10739,7 @@ table.table-basic tr td.card .card-body,
   transition: all 0.3s ease;
 }
 .profile-card-3 .card-dropdown:hover {
-  background: #f4f5f7;
+  background: #F5F5F5;
 }
 .profile-card-3 .card-dropdown .dropdown svg {
   width: 24px;
@@ -10772,7 +10772,7 @@ table.table-basic tr td.card .card-body,
   border-bottom: none;
 }
 .projectDatatable.project-table .table td {
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
 }
 .projectDatatable.project-table .table td:first-child {
   padding-left: 0;
@@ -10972,7 +10972,7 @@ table.table-basic tr td.card .card-body,
   height: 100%;
   width: 3px;
   z-index: -1;
-  background-color: #E3E6EF;
+  background-color: #F5F5F5;
 }
 .timeline-box .timeline-single__buble {
   display: inline-table;
@@ -11021,7 +11021,7 @@ table.table-basic tr td.card .card-body,
   position: absolute;
   content: " ";
   width: 3px;
-  background-color: #E3E6EF;
+  background-color: #F5F5F5;
   left: 50%;
   margin-left: -1.5px;
 }
@@ -11174,8 +11174,8 @@ table.table-basic tr td.card .card-body,
   background-color: #F5F5F5;
 }
 .timeline-box--3.scroll-timeline::-webkit-scrollbar-thumb {
-  background-color: #E3E6EF;
-  border: 3px solid #E3E6EF;
+  background-color: #F5F5F5;
+  border: 3px solid #F5F5F5;
   border-radius: 4px;
 }
 .timeline-box--3.basic-timeline .timeline {
@@ -13110,7 +13110,7 @@ input[type=checkbox]:checked + label.strikethrough {
   height: 34px;
   padding: 0;
   margin: 0;
-  background: #f4f5f7;
+  background: #F5F5F5;
   border-radius: 50%;
   text-shadow: none;
   opacity: 1;
@@ -13543,7 +13543,7 @@ input[type=checkbox]:checked + label.strikethrough {
   text-align: center;
 }
 .chat-body .social-connector:before, .chat-body .social-connector:after {
-  background-color: #e3e6ef;
+  background-color: #F5F5F5;
   content: "";
   display: inline-block;
   height: 1px;
@@ -13564,7 +13564,7 @@ input[type=checkbox]:checked + label.strikethrough {
 }
 
 .chat-type-text__write {
-  background-color: #F4F5F7;
+  background-color: #F5F5F5;
   height: 70px;
   border-radius: 35px;
   padding: 0 25px;
@@ -14334,7 +14334,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
   background-color: transparent;
 }
 .e-info-modal .e-info-action .btn-icon:hover {
-  background-color: rgba(244, 245, 247, 0.15);
+  background-color: rgba(245, 245, 245, 0.15);
 }
 .e-info-modal .e-info-action .btn-icon:hover svg {
   opacity: 1;
@@ -15144,7 +15144,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
   -moz-appearance: textfield;
 }
 .quantity .bttn {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
   border-radius: 10px;
   text-decoration: none;
   font-size: 20px;
@@ -15610,7 +15610,7 @@ td.order-summery .total > div {
   margin-top: 0;
   padding-left: 50px;
   border: none;
-  border-left: 1px solid #E3E6EF;
+  border-left: 1px solid #F5F5F5;
   padding-right: 27px;
   border-radius: 0;
   padding-bottom: 100px;
@@ -15812,7 +15812,7 @@ td.order-summery .total > div {
   margin-top: 0;
   padding-left: 50px;
   border: none;
-  border-left: 1px solid #E3E6EF;
+  border-left: 1px solid #F5F5F5;
   padding-right: 27px;
   border-radius: 0;
   padding-bottom: 100px;
@@ -16174,7 +16174,7 @@ td.order-summery .total > div {
   padding-bottom: 30px;
 }
 .crc-table tfoot {
-  border-top: 1px solid #e3e6ef;
+  border-top: 1px solid #F5F5F5;
 }
 .crc-table tfoot .total {
   margin-top: 25px;
@@ -16375,10 +16375,10 @@ td.order-summery .total > div {
   }
 }
 .payment-invoice-table tbody tr td {
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
 }
 .payment-invoice-table tbody tr th {
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
 }
 .payment-invoice-table tbody tr th:first-child {
   padding-left: 50px;
@@ -16407,7 +16407,7 @@ td.order-summery .total > div {
 
 .order-search__form {
   padding: 15px 20px;
-  background: #f4f5f7;
+  background: #F5F5F5;
   height: 40px;
   display: flex;
   align-items: center;
@@ -16445,7 +16445,7 @@ td.order-summery .total > div {
 }
 
 .project-tap.order-project-tap {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
 }
 .project-tap.order-project-tap:not(:first-child):after {
   background-color: #f1f2f6;
@@ -16626,11 +16626,11 @@ table.table-rounded tbody tr td:last-child {
   margin-right: 20px;
 }
 .table4 .table td {
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
   padding: 18px 20px;
 }
 .table4 .table thead th {
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
   border-top: none;
 }
 .table4 .table thead tr:first-child th:first-child {
@@ -16640,10 +16640,10 @@ table.table-rounded tbody tr td:last-child {
   transition: all 0.3s ease;
 }
 .table4 tbody tr:hover {
-  background-color: #fafafa;
+  background-color: #F5F5F5;
 }
 .table4 .userDatatable-header th {
-  background-color: #fafafa;
+  background-color: #F5F5F5;
   padding: 15px 20px 15px 20px;
 }
 .table4 .userDatatable-title {
@@ -16663,7 +16663,7 @@ table.table-rounded tbody tr td:last-child {
   background-color: #f2f2f2;
 }
 .table5 .userDatatable-header {
-  background: #fafafa;
+  background: #F5F5F5;
 }
 .table5 .userDatatable-title {
   display: flex;
@@ -16709,7 +16709,7 @@ table.table-rounded tbody tr td:last-child {
   align-items: center;
   box-shadow: 0px 5px 20px #9299b808;
   border-radius: 6px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   width: 280px;
 }
 .adv-search-area form svg {
@@ -16833,7 +16833,7 @@ table.table-rounded tbody tr td:last-child {
 #filter-form-container .form-control {
   border-radius: 6px;
   height: 40px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   color: #5A5F7D;
   text-transform: capitalize;
   width: 200px;
@@ -16845,7 +16845,7 @@ table.table-rounded tbody tr td:last-child {
   }
 }
 #filter-form-container input {
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
 }
 
 .footable.adv-table .pagination > li {
@@ -16937,7 +16937,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .add-product .card-body .card-header {
   background-color: white;
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
   padding: 27px 40px;
 }
 .add-product__body {
@@ -16955,7 +16955,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .add-product__body .form-group .form-control {
   height: 48px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   border-radius: 4px;
   resize: none;
 }
@@ -16992,7 +16992,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .add-product__body .form-group .input-group-text {
   background-color: #F8F9FB;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   font-size: 15px;
   line-height: 1.3333333333;
   font-weight: 400;
@@ -17149,7 +17149,7 @@ table.table-rounded tbody tr td:last-child {
 .quantity-appearance .pt_QuantityButton {
   position: relative;
   cursor: pointer;
-  border-left: 1px solid #e3e6ef;
+  border-left: 1px solid #F5F5F5;
   width: 25px;
   text-align: center;
   height: 24px;
@@ -17171,7 +17171,7 @@ table.table-rounded tbody tr td:last-child {
   position: absolute;
   height: 52%;
   top: 0;
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 1px solid #F5F5F5;
 }
 .quantity-appearance .pt_QuantityButton.pt_QuantityDown {
   position: absolute;
@@ -18148,7 +18148,7 @@ table.table-rounded tbody tr td:last-child {
   max-width: 100%;
   height: 48px;
   border-radius: 4px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
 }
 @media only screen and (max-width: 575px) {
   .coming-soon .form-inline .form-control {
@@ -18191,7 +18191,7 @@ table.table-rounded tbody tr td:last-child {
   margin-top: 30px;
 }
 .changelog__according .card {
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   border-radius: 6px;
 }
 .changelog__according .card:not(:last-child) {
@@ -18210,7 +18210,7 @@ table.table-rounded tbody tr td:last-child {
   }
 }
 .changelog__according .card .card-body {
-  border-top: 1px solid #E3E6EF;
+  border-top: 1px solid #F5F5F5;
 }
 .changelog__accordingCollapsed {
   height: 66px;
@@ -19019,7 +19019,7 @@ table.table-rounded tbody tr td:last-child {
   }
 }
 .fileM-top-search form {
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   border-radius: 6px;
   padding: 0 20px;
 }
@@ -19050,7 +19050,7 @@ table.table-rounded tbody tr td:last-child {
   text-align: center;
 }
 .fileM-card .card {
-  background-color: #F4F5F7;
+  background-color: #F5F5F5;
 }
 .fileM-card .fileM-excerpt {
   font-size: 14px;
@@ -19236,7 +19236,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .exportDatatable .order-search__form {
   background-color: transparent;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   padding: 12px 13px;
   width: 250px;
 }
@@ -19260,11 +19260,11 @@ table.table-rounded tbody tr td:last-child {
   max-width: 390px;
 }
 .exportDatatable .fileM-Modal-overlay .modal-body input {
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
 }
 .exportDatatable .fileM-Modal-overlay .modal-body .select2-container--default .select2-selection--single, .exportDatatable .fileM-Modal-overlay .modal-body .select2-container--default .select2-selection--multiple {
   height: 36px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
 }
 .exportDatatable .fileM-Modal-overlay .modal-body .select2-container .select2-selection--single .select2-selection__rendered, .exportDatatable .fileM-Modal-overlay .modal-body .select2-container--default .select2-selection--single .select2-selection__placeholder {
   color: #9299B8;
@@ -19295,7 +19295,7 @@ table.table-rounded tbody tr td:last-child {
   }
 }
 .knowledgebase__nav {
-  border-bottom: 1px solid #E3E6EF;
+  border-bottom: 1px solid #F5F5F5;
 }
 .knowledgebase__nav li .nav-link {
   padding: 0;
@@ -19412,7 +19412,7 @@ table.table-rounded tbody tr td:last-child {
   border-bottom: 1px solid #60269E;
 }
 .knowledgebase__hr {
-  background: #E3E6EF;
+  background: #F5F5F5;
   width: 100%;
   height: 1px;
   margin: 70px 0;
@@ -19548,7 +19548,7 @@ table.table-rounded tbody tr td:last-child {
 .knowledgebase-help {
   border-radius: 5px;
   margin: 25px 0;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   box-shadow: 0 5px 10px rgba(146, 153, 184, 0.1);
 }
 .knowledgebase-help .card-body {
@@ -19689,7 +19689,7 @@ table.table-rounded tbody tr td:last-child {
 
 .related-article {
   margin-top: 50px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   border-radius: 5px;
   box-shadow: none;
 }
@@ -19723,7 +19723,7 @@ table.table-rounded tbody tr td:last-child {
 
 .comment-respond {
   padding: 30px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   border-radius: 5px;
   margin-top: 30px;
 }
@@ -19762,7 +19762,7 @@ table.table-rounded tbody tr td:last-child {
 .cr-form-control {
   border-radius: 4px;
   height: 50px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
 }
 
 .kb h1 {
@@ -19866,7 +19866,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .kb__select {
   border: none;
-  border-right: 1px solid #E3E6EF;
+  border-right: 1px solid #F5F5F5;
   outline: 0;
   z-index: 9;
   padding: 0 0.75rem;
@@ -19892,7 +19892,7 @@ table.table-rounded tbody tr td:last-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   border: none;
-  border-right: 1px solid #e3e6ef;
+  border-right: 1px solid #F5F5F5;
 }
 .kb__select-wrapper .select2-container .select2-selection--single .select2-selection__rendered,
 .kb__select-wrapper .select2-container--default .select2-selection--single .select2-selection__placeholder {
@@ -20168,7 +20168,7 @@ table.table-rounded tbody tr td:last-child {
   box-shadow: none;
   border: none;
   margin: 10px 20px 10px 20px;
-  background: #E3E6EF;
+  background: #F5F5F5;
   text-decoration: none;
 }
 .add-card-btn:hover {
@@ -20525,7 +20525,7 @@ table.table-rounded tbody tr td:last-child {
   padding: 19px 30px;
 }
 .task-modal .modal-body form input {
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   height: 36px;
 }
 .task-modal .modal-body form input::-moz-placeholder {
@@ -20548,7 +20548,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .task-modal .modal-body form textarea {
   height: 123px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   resize: none;
 }
 .task-modal .modal-body form textarea::-moz-placeholder {
@@ -20590,7 +20590,7 @@ table.table-rounded tbody tr td:last-child {
   padding: 0 22px;
 }
 .task-modal .modal-footer button:first-child {
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   background: transparent;
   color: #9299B8;
   font-size: 14px;
@@ -20745,7 +20745,7 @@ table.table-rounded tbody tr td:last-child {
 
 .form-element-textarea textarea {
   height: 80px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   border-radius: 4px;
   resize: none;
 }
@@ -20754,7 +20754,7 @@ table.table-rounded tbody tr td:last-child {
   min-height: 48px;
 }
 .form-element .atbd-select.disabled .form-control {
-  border: 1px solid #e3e6ef;
+  border: 1px solid #F5F5F5;
   background: #EFF0F3;
   color: #9299B8;
 }
@@ -20765,7 +20765,7 @@ table.table-rounded tbody tr td:last-child {
   line-height: 33px;
   font-size: 14px;
   color: #9299B8;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -20795,7 +20795,7 @@ table.table-rounded tbody tr td:last-child {
 
 .alert2,
 .option2 {
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   box-shadow: none;
   padding: 16px 15px;
 }
@@ -20814,7 +20814,7 @@ table.table-rounded tbody tr td:last-child {
 .alert2 .select2-search--dropdown .select2-search__field,
 .option2 .select2-search--dropdown .select2-search__field {
   height: 48px;
-  border: 1px solid #E3E6EF;
+  border: 1px solid #F5F5F5;
   border-radius: 4px;
   box-shadow: 0 3px 6px rgba(146, 153, 184, 0.15);
 }

@@ -22,7 +22,7 @@ class UserCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->randomElement(['paciente', 'empleado'])
+            'name' => $this->faker->unique(true)->randomElement(['paciente', 'empleado'])
         ];
     }
 }

@@ -21,10 +21,11 @@ class PreregistrationFactory extends Factory
      */
     public function definition()
     {
+        $hasChildren = $this->faker->numberBetween(0, 1);
         return [
             'business_name' => $this->faker->text(50),
-            'has_children' => $this->faker->numberBetween(0, 1),
-            'children_total' => $this->faker->regexify('[0-9]{2}'),
+            'has_children' => $hasChildren,
+            'children_total' => $hasChildren === 0 ? null : $this->faker->regexify('[1-9]{1}'),
             'user_id' => $this->faker->unique()->numberBetween(1, 5)
         ];
     }

@@ -24,9 +24,9 @@ class MedicalAttachmentFactory extends Factory
         $jsonFiles = json_encode([
             'type' => 'files',
             'files' => [
-                '1' => $this->faker->unique(true)->numberBetween(1, 5).'.pdf',
-                '2' => $this->faker->unique(true)->numberBetween(1, 5).'.pdf',
-                '3' => $this->faker->unique(true)->numberBetween(1, 5).'.pdf',
+                '1' => $this->faker->numberBetween(1, 5).'.pdf',
+                '2' => $this->faker->numberBetween(1, 5).'.pdf',
+                '3' => $this->faker->numberBetween(1, 5).'.pdf',
             ]
         ]);
 

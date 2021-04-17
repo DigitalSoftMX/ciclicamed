@@ -28,11 +28,10 @@
                         <!-- Start: error page -->
                         <div class="min-vh-100 content-center">
                             <div class="error-page text-center">
-                                <img src="{{ asset('img/svg/404.svg') }}" alt="404" class="svg">
-                                <div class="error-page__title">404</div>
-                                <h5 class="fw-500">Sorry! the page you are looking for doesn't exist.</h5>
+                                <img src="{{ asset('/svg/404.svg') }}" alt="404" class="svg w-50">
+                                <h5 class="fw-500 display-3 mt-5">Lo sentimos, la página que intenta ver no existe.</h5>
                                 <div class="content-center mt-30">
-                                    <a href="{{ route('dashboards.index') }}" class="btn btn-primary btn-default btn-squared px-30">Return Home</a>
+                                    <a href="{{ route('login.login') }}" class="btn btn-primary btn-default btn-squared px-50 py-10">Regresar</a>
                                 </div>
                             </div>
                         </div>

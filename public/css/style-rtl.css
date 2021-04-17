@@ -2835,7 +2835,7 @@ table.table-rounded tbody tr td,
 }
 
 .border-color {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .bg-normal,
@@ -2882,7 +2882,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 .kanban-modal__list .checkbox-group:hover,
 .mailbox-top__search .form-control-lg,
 .mailbox-list__single .mail-content__bottom .mail-attatchment {
-	background: #f4f5f7;
+	background: #F5F5F5;
 }
 
 .bg-deep,
@@ -3388,7 +3388,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-primary .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-primary .custom-control-input:checked ~ .custom-control-label::before {
@@ -3401,7 +3401,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-secondary .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-secondary .custom-control-input:checked ~ .custom-control-label::before {
@@ -3414,7 +3414,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-success .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-success .custom-control-input:checked ~ .custom-control-label::before {
@@ -3427,7 +3427,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-info .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-info .custom-control-input:checked ~ .custom-control-label::before {
@@ -3440,7 +3440,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-warning .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-warning .custom-control-input:checked ~ .custom-control-label::before {
@@ -3453,7 +3453,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-danger .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-danger .custom-control-input:checked ~ .custom-control-label::before {
@@ -3466,7 +3466,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-light .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-light .custom-control-input:checked ~ .custom-control-label::before {
@@ -3479,7 +3479,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-dark .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-dark .custom-control-input:checked ~ .custom-control-label::before {
@@ -3492,7 +3492,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-text .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-text .custom-control-input:checked ~ .custom-control-label::before {
@@ -3505,7 +3505,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-extra-light .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-extra-light .custom-control-input:checked ~ .custom-control-label::before {
@@ -3518,7 +3518,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-gray .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-gray .custom-control-input:checked ~ .custom-control-label::before {
@@ -3531,7 +3531,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-third .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-third .custom-control-input:checked ~ .custom-control-label::before {
@@ -3544,7 +3544,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .checkbox-outline-white .custom-control-label:before {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .checkbox-outline-white .custom-control-input:checked ~ .custom-control-label::before {
@@ -3620,7 +3620,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .vertical-tabs::-webkit-scrollbar-thumb {
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
@@ -3635,7 +3635,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .table-top-regions::-webkit-scrollbar-thumb {
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
@@ -3650,7 +3650,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .search-body::-webkit-scrollbar-thumb {
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
@@ -3665,7 +3665,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 }
 
 .chat-box::-webkit-scrollbar-thumb {
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
@@ -3819,7 +3819,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller,
 .b-light,
 .btn-outline-lighten,
 .new-member-modal button.b-light {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .b-deep {
@@ -4165,7 +4165,7 @@ html {
 
 body {
 	position: relative;
-	background: #f4f5f7;
+	background: #9E9E9E;
 	min-height: 100vh;
 	font-size: 16px;
 	overflow-x: hidden;
@@ -5222,7 +5222,7 @@ ul {
 	margin: 10px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
-	background: #f4f5f7;
+	background: #9E9E9E;
 	padding: 15px;
 	font-size: 14px;
 	text-align: center;
@@ -5457,7 +5457,7 @@ ul {
 }
 
 .navbar-right__menu .nav-author__info {
-	background: #f4f5f7;
+	background: #9E9E9E;
 	-webkit-border-radius: 8px;
 	border-radius: 8px;
 	margin: 10px;
@@ -6735,7 +6735,7 @@ ul {
 }
 
 .dynamic-badge-block .atbd-button-group .btn-dec {
-	border-right: 1px solid #e3e6ef;
+	border-right: 1px solid #F5F5F5;
 }
 
 .dynamic-badge-block .custom-switch {
@@ -6848,7 +6848,7 @@ ul {
 }
 
 .btn.btn-light {
-	background: #f4f5f7;
+	background: #9E9E9E;
 	border-color: transparent;
 }
 
@@ -7004,7 +7004,7 @@ ul {
 }
 
 .atbd-button-group .btn.btn-outline-light:hover {
-	background-color: #f4f5f7 !important;
+	background-color: #9E9E9E !important;
 }
 
 .atbd-button-group.btn-group-solid .btn-light {
@@ -7117,7 +7117,7 @@ ul {
 	width: 1px;
 	height: 100%;
 	padding: 1px 0;
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 	content: "";
 }
 
@@ -7497,7 +7497,7 @@ ul {
 
 .custom-switch .custom-control-input:focus:not(:checked) ~ .custom-control-label:before {
 	border-color: transparent;
-	background-color: #E3E6EF;
+	background-color: #F5F5F5;
 }
 
 .custom-switch .custom-control-input .custom-control-input:checked ~ .custom-control-label::before {
@@ -7505,7 +7505,7 @@ ul {
 }
 
 .custom-switch .custom-control-label:before {
-	background-color: #E3E6EF;
+	background-color: #F5F5F5;
 	border: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -10101,7 +10101,7 @@ table.table-rounded tbody tr td.card .card-body,
 
 .user-skils-parent__item a {
 	padding: 5px 10px;
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 	font-size: 11px;
 	line-height: 1.27273;
 	font-weight: 500;
@@ -10235,7 +10235,7 @@ table.table-rounded tbody tr td.card .card-body,
 
 .ap-product .table thead tr th {
 	border-top: none;
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: 500;
@@ -10248,7 +10248,7 @@ table.table-rounded tbody tr td.card .card-body,
 }
 
 .ap-product .table tbody tr {
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 }
 
 .ap-product .table tbody tr td {
@@ -10330,7 +10330,7 @@ table.table-rounded tbody tr td.card .card-body,
 	line-height: 16px;
 	padding: 7px 15px;
 	height: 30px;
-	background-color: #f4f5f7;
+	background-color: #9E9E9E;
 	font-size: 12px;
 	font-weight: 500;
 }
@@ -10378,7 +10378,7 @@ table.table-rounded tbody tr td.card .card-body,
 }
 
 .ap-post-content-comment__write {
-	background-color: #f4f5f7;
+	background-color: #9E9E9E;
 	height: 50px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -10937,7 +10937,7 @@ table.table-rounded tbody tr td.card .card-body,
 }
 
 .edit-profile__body .form-group .form-control {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #BDBDBD;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	display: -webkit-box;
@@ -11021,7 +11021,7 @@ table.table-rounded tbody tr td.card .card-body,
 .select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {
 	background-color: #fff;
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	height: 48px;
@@ -11187,11 +11187,11 @@ table.table-rounded tbody tr td.card .card-body,
 
 .notification-content__body .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
 	border-color: transparent;
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 }
 
 .notification-content__body .custom-control-label::before {
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 	border: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -12012,7 +12012,7 @@ table.table-rounded tbody tr td.card .card-body,
 	right: 0;
 	height: 100%;
 	width: 1px;
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 }
 
 .user-member__form {
@@ -12359,7 +12359,7 @@ table.table-rounded tbody tr td.card .card-body,
 }
 
 .projects-tab-content .projectDatatable tbody tr {
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 }
 
 .user-info-tab .ap-tab-main .nav-item .nav-link {
@@ -12464,7 +12464,7 @@ table.table-rounded tbody tr td.card .card-body,
 	right: 0;
 	height: 100%;
 	width: 1px;
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 }
 
 .project-search--height .user-member__form,
@@ -12582,7 +12582,7 @@ table.table-rounded tbody tr td.card .card-body,
 }
 
 .profile-card-3 .card-dropdown:hover {
-	background: #f4f5f7;
+	background: #9E9E9E;
 }
 
 .profile-card-3 .card-dropdown .dropdown svg {
@@ -12624,7 +12624,7 @@ table.table-rounded tbody tr td.card .card-body,
 }
 
 .projectDatatable.project-table .table td {
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 }
 
 .projectDatatable.project-table .table td:first-child {
@@ -12863,7 +12863,7 @@ input.is-invalid ~ label::after {
 	height: 100%;
 	width: 3px;
 	z-index: -1;
-	background-color: #E3E6EF;
+	background-color: #F5F5F5;
 }
 
 .timeline-box .timeline-single__buble {
@@ -12915,7 +12915,7 @@ input.is-invalid ~ label::after {
 	position: absolute;
 	content: " ";
 	width: 3px;
-	background-color: #E3E6EF;
+	background-color: #F5F5F5;
 	right: 50%;
 	margin-right: -1.5px;
 }
@@ -13044,8 +13044,8 @@ input.is-invalid ~ label::after {
 }
 
 .timeline-box--3.scroll-timeline::-webkit-scrollbar-thumb {
-	background-color: #E3E6EF;
-	border: 3px solid #E3E6EF;
+	background-color: #F5F5F5;
+	border: 3px solid #F5F5F5;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 }
@@ -15324,7 +15324,7 @@ input[type="checkbox"]:checked + label.strikethrough {
 	height: 34px;
 	padding: 0;
 	margin: 0;
-	background: #f4f5f7;
+	background: #9E9E9E;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	text-shadow: none;
@@ -15779,7 +15779,7 @@ input[type="checkbox"]:checked + label.strikethrough {
 
 .chat-body .social-connector:before,
 .chat-body .social-connector:after {
-	background-color: #e3e6ef;
+	background-color: #F5F5F5;
 	content: "";
 	display: inline-block;
 	height: 1px;
@@ -15803,7 +15803,7 @@ input[type="checkbox"]:checked + label.strikethrough {
 }
 
 .chat-type-text__write {
-	background-color: #F4F5F7;
+	background-color: #9E9E9E;
 	height: 70px;
 	-webkit-border-radius: 35px;
 	border-radius: 35px;
@@ -17230,7 +17230,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
 }
 
 .quantity .bttn {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	text-decoration: none;
@@ -17683,7 +17683,7 @@ td.order-summery .total > div {
 	margin-top: 0;
 	padding-right: 50px;
 	border: none;
-	border-right: 1px solid #E3E6EF;
+	border-right: 1px solid #F5F5F5;
 	padding-left: 27px;
 	-webkit-border-radius: 0;
 	border-radius: 0;
@@ -17910,7 +17910,7 @@ td.order-summery .total > div {
 	margin-top: 0;
 	padding-right: 50px;
 	border: none;
-	border-right: 1px solid #E3E6EF;
+	border-right: 1px solid #F5F5F5;
 	padding-left: 27px;
 	-webkit-border-radius: 0;
 	border-radius: 0;
@@ -18318,7 +18318,7 @@ td.order-summery .total > div {
 }
 
 .crc-table tfoot {
-	border-top: 1px solid #e3e6ef;
+	border-top: 1px solid #F5F5F5;
 }
 
 .crc-table tfoot .total {
@@ -18534,11 +18534,11 @@ td.order-summery .total > div {
 }
 
 .payment-invoice-table tbody tr td {
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 }
 
 .payment-invoice-table tbody tr th {
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 }
 
 .payment-invoice-table tbody tr th:first-child {
@@ -18558,7 +18558,7 @@ td.order-summery .total > div {
 
 .order-search__form {
 	padding: 15px 20px;
-	background: #f4f5f7;
+	background: #9E9E9E;
 	height: 40px;
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -18608,7 +18608,7 @@ td.order-summery .total > div {
 }
 
 .project-tap.order-project-tap {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 }
 
 .project-tap.order-project-tap:not(:first-child):after {
@@ -18807,12 +18807,12 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .table4 .table td {
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 	padding: 18px 20px;
 }
 
 .table4 .table thead th {
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 	border-top: none;
 }
 
@@ -18828,11 +18828,11 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .table4 tbody tr:hover {
-	background-color: #fafafa;
+	background-color: #F5F5F5;
 }
 
 .table4 .userDatatable-header th {
-	background-color: #fafafa;
+	background-color: #F5F5F5;
 	padding: 15px 20px 15px 20px;
 }
 
@@ -18858,7 +18858,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .table5 .userDatatable-header {
-	background: #fafafa;
+	background: #F5F5F5;
 }
 
 .table5 .userDatatable-title {
@@ -18924,7 +18924,7 @@ table.table-rounded tbody tr td:last-child {
 
 .add-product .card-body .card-header {
 	background-color: white;
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 	padding: 27px 40px;
 }
 
@@ -18946,7 +18946,7 @@ table.table-rounded tbody tr td:last-child {
 
 .add-product__body .form-group .form-control {
 	height: 48px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	resize: none;
@@ -18999,7 +18999,7 @@ table.table-rounded tbody tr td:last-child {
 
 .add-product__body .form-group .input-group-text {
 	background-color: #F8F9FB;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	font-size: 15px;
 	line-height: 1.33333;
 	font-weight: 400;
@@ -19207,7 +19207,7 @@ table.table-rounded tbody tr td:last-child {
 .quantity-appearance .pt_QuantityButton {
 	position: relative;
 	cursor: pointer;
-	border-right: 1px solid #e3e6ef;
+	border-right: 1px solid #F5F5F5;
 	width: 25px;
 	text-align: center;
 	height: 24px;
@@ -19240,7 +19240,7 @@ table.table-rounded tbody tr td:last-child {
 	position: absolute;
 	height: 52%;
 	top: 0;
-	border-bottom: 1px solid #e3e6ef;
+	border-bottom: 1px solid #F5F5F5;
 }
 
 .quantity-appearance .pt_QuantityButton.pt_QuantityDown {
@@ -20365,7 +20365,7 @@ table.table-rounded tbody tr td:last-child {
 	height: 48px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 }
 
 .coming-social ul li a {
@@ -20397,7 +20397,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .changelog__according .card {
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
 }
@@ -20420,7 +20420,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .changelog__according .card .card-body {
-	border-top: 1px solid #E3E6EF;
+	border-top: 1px solid #F5F5F5;
 }
 
 .changelog__accordingCollapsed {
@@ -21337,7 +21337,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .fileM-top-search form {
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
 	padding: 0 20px;
@@ -21385,7 +21385,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .fileM-card .card {
-	background-color: #F4F5F7;
+	background-color: #9E9E9E;
 }
 
 .fileM-card .fileM-excerpt {
@@ -21622,7 +21622,7 @@ table.table-rounded tbody tr td:last-child {
 
 .exportDatatable .order-search__form {
 	background-color: transparent;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	padding: 12px 13px;
 	width: 250px;
 }
@@ -21648,13 +21648,13 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .exportDatatable .fileM-Modal-overlay .modal-body input {
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 }
 
 .exportDatatable .fileM-Modal-overlay .modal-body .select2-container--default .select2-selection--single,
 .exportDatatable .fileM-Modal-overlay .modal-body .select2-container--default .select2-selection--multiple {
 	height: 36px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 }
 
 .exportDatatable .fileM-Modal-overlay .modal-body .select2-container .select2-selection--single .select2-selection__rendered,
@@ -21684,7 +21684,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .knowledgebase__nav {
-	border-bottom: 1px solid #E3E6EF;
+	border-bottom: 1px solid #F5F5F5;
 }
 
 .knowledgebase__nav li .nav-link {
@@ -21841,7 +21841,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .knowledgebase__hr {
-	background: #E3E6EF;
+	background: #F5F5F5;
 	width: 100%;
 	height: 1px;
 	margin: 70px 0;
@@ -22005,7 +22005,7 @@ table.table-rounded tbody tr td:last-child {
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	margin: 25px 0;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-box-shadow: 0 5px 10px rgba(146, 153, 184, 0.1);
 	box-shadow: 0 5px 10px rgba(146, 153, 184, 0.1);
 }
@@ -22135,7 +22135,7 @@ table.table-rounded tbody tr td:last-child {
 
 .related-article {
 	margin-top: 50px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	-webkit-box-shadow: none;
@@ -22171,7 +22171,7 @@ table.table-rounded tbody tr td:last-child {
 
 .comment-respond {
 	padding: 30px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	margin-top: 30px;
@@ -22212,7 +22212,7 @@ table.table-rounded tbody tr td:last-child {
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	height: 50px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 }
 
 .kb h1 {
@@ -22302,7 +22302,7 @@ table.table-rounded tbody tr td:last-child {
 
 .kb__select {
 	border: none;
-	border-left: 1px solid #E3E6EF;
+	border-left: 1px solid #F5F5F5;
 	outline: 0;
 	z-index: 9;
 	padding: 0 .75rem;
@@ -22339,7 +22339,7 @@ table.table-rounded tbody tr td:last-child {
 	-webkit-border-bottom-right-radius: 4px;
 	border-bottom-right-radius: 4px;
 	border: none;
-	border-left: 1px solid #e3e6ef;
+	border-left: 1px solid #F5F5F5;
 }
 
 .kb__select-wrapper .select2-container .select2-selection--single .select2-selection__rendered,
@@ -22674,7 +22674,7 @@ table.table-rounded tbody tr td:last-child {
 	box-shadow: none;
 	border: none;
 	margin: 10px 20px 10px 20px;
-	background: #E3E6EF;
+	background: #F5F5F5;
 	text-decoration: none;
 }
 
@@ -23116,7 +23116,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .task-modal .modal-body form input {
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	height: 36px;
 }
 
@@ -23150,7 +23150,7 @@ table.table-rounded tbody tr td:last-child {
 
 .task-modal .modal-body form textarea {
 	height: 123px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	resize: none;
 }
 
@@ -23209,7 +23209,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .task-modal .modal-footer button:first-child {
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	background: transparent;
 	color: #9299B8;
 	font-size: 14px;
@@ -23404,7 +23404,7 @@ table.table-rounded tbody tr td:last-child {
 
 .form-element-textarea textarea {
 	height: 80px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	resize: none;
@@ -23415,7 +23415,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .form-element .atbd-select.disabled .form-control {
-	border: 1px solid #e3e6ef;
+	border: 1px solid #F5F5F5;
 	background: #EFF0F3;
 	color: #9299B8;
 }
@@ -23427,7 +23427,7 @@ table.table-rounded tbody tr td:last-child {
 	line-height: 33px;
 	font-size: 14px;
 	color: #9299B8;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	display: -webkit-box;
@@ -23470,7 +23470,7 @@ table.table-rounded tbody tr td:last-child {
 
 .alert2,
 .option2 {
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	padding: 16px 15px;
@@ -23493,7 +23493,7 @@ table.table-rounded tbody tr td:last-child {
 .alert2 .select2-search--dropdown .select2-search__field,
 .option2 .select2-search--dropdown .select2-search__field {
 	height: 48px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	-webkit-box-shadow: 0 3px 6px rgba(146, 153, 184, 0.15);
@@ -23643,7 +23643,7 @@ table.table-rounded tbody tr td:last-child {
 	box-shadow: 0px 5px 20px #9299b808;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	width: 280px;
 }
 
@@ -23786,14 +23786,14 @@ table.table-rounded tbody tr td:last-child {
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
 	height: 40px;
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 	color: #5A5F7D;
 	text-transform: capitalize;
 	width: 200px;
 }
 
 #filter-form-container input {
-	border: 1px solid #E3E6EF;
+	border: 1px solid #F5F5F5;
 }
 
 .footable.adv-table .pagination > li {
