@@ -1,6 +1,6 @@
 <template>
     <div class="row justify-content-center">
-        <div class="col-sm-8 col-10">
+        <div class="col-sm-6 col-10">
             <div class="mt-40 mb-50">
                 <div class="account-profile d-flex align-items-center mb-4 ">
                     <div class="ap-img pro_img_wrapper">
@@ -25,71 +25,95 @@
                         <h6 class="fs-15 ml-20 fw-500 text-capitalize">Cambiar fotografía</h6>
                     </div>
                 </div>
-                <div class="edit-profile__body">
+                
+                <div class=" Vertical-form">
+
                     <div class="form-group mb-25">
                         <label for="firstName">Nombre(s)</label>
-                        <div class="position-relative d-flex">
-                            <div class="input-group-prepend r-3 rounded px-2 ">
-                                <img src="/svg/person.svg" alt="Calendar logo">
-                            </div>
-                            <input type="text" class="form-control" id="firstName" placeholder="Nombre(s)" max="100"
-                                :value="user.first_name">
+                        <div class="with-icon">
+                            <span class="mr-5">
+                                <img src="/svg/person.svg" alt="Person logo">
+                            </span>
+                            <input type="text" class="form-control" id="firstName" placeholder="Nombre(s)"
+                                maxlength="100" v-model="user.first_name"
+                                @keyup="checkProfileData(); updateCharacter('first_name')">
+                        </div>
+                        <div class="float-right">
+                            {{ `${getCharacters('first_name')}/100` }}
                         </div>
                     </div>
 
                     <div class="form-group mb-25">
                         <label for="lastName">Apellidos</label>
-                        <div class="position-relative d-flex">
-                            <div class="input-group-prepend r-3 rounded px-2 ">
-                                <img src="/svg/person.svg" alt="Calendar logo">
-                            </div>
-                            <input type="text" class="form-control" id="lastName" placeholder="Apellidos" max="100"
-                                :value="user.last_name">
+                        <div class="with-icon">
+                            <span class="mr-5">
+                                <img src="/svg/person.svg" alt="Person logo">
+                            </span>
+                            <input type="text" class="form-control" id="lastName" placeholder="Apellidos"
+                                maxlength="100" v-model="user.last_name"
+                                @keyup="checkProfileData(); updateCharacter('last_name')">
+                        </div>
+                        <div class="float-right">
+                            {{ `${getCharacters('last_name')}/100` }}
                         </div>
                     </div>
 
                     <div class="form-group mb-25">
-                        <label for="name2">Correo electrónico</label>
-                        <div class="position-relative d-flex">
-                            <div class="input-group-prepend r-3 rounded px-2 ">
-                                <img src="/svg/email.svg" alt="Calendar logo">
-                            </div>
+                        <label for="email">Correo electrónico</label>
+                        <div class="with-icon">
+                            <span class="mr-5">
+                                <img src="/svg/email.svg" alt="Email logo">
+                            </span>
                             <input type="email" class="form-control" id="name3" placeholder="ejemplo@correo.com"
-                                max="100" :value="user.email">
+                                maxlength="100" v-model="user.email"
+                                @keyup="checkProfileData(); updateCharacter('email')">
+                        </div>
+                        <div class="float-right">
+                            {{ `${getCharacters('email')}/100` }}
                         </div>
                     </div>
 
                     <div class="form-group mb-25">
                         <label for="phoneNumber5">Teléfono de Casa</label>
-
-                        <div class="position-relative d-flex">
-                            <div class="input-group-prepend r-3 rounded px-2 ">
-                                <img src="/svg/phone.svg" alt="Calendar logo">
-                            </div>
-                            <input type="tel" class="form-control" id="phone" placeholder="1234567890" max="10"
-                                :value="user.phone">
+                        <div class="with-icon">
+                            <span class="mr-5">
+                                <img src="/svg/phone.svg" alt="Phone logo">
+                            </span>
+                            <input type="tel" class="form-control" id="phone" placeholder="1234567890" maxlength="10"
+                                v-model="user.phone" @keyup="checkProfileData(); updateCharacter('phone')">
+                        </div>
+                        <div class="float-right">
+                            {{ `${getCharacters('phone')}/10` }}
                         </div>
                     </div>
 
                     <div class="form-group mb-25">
                         <label for="phoneNumber5">Celular</label>
-                        <div class="position-relative d-flex">
-                            <div class="input-group-prepend r-3 rounded px-2 ">
-                                <img src="/svg/cellphone.svg" alt="Calendar logo">
-                            </div>
-                            <input type="tel" class="form-control" id="cellphone" placeholder="1234567890" max="10"
-                                :value="user.cellphone">
+                        <div class="with-icon">
+                            <span class="mr-5">
+                                <img src="/svg/cellphone.svg" alt="Cellphone logo">
+                            </span>
+                            <input type="tel" class="form-control" id="cellphone" placeholder="1234567890"
+                                maxlength="10" v-model="user.cellphone"
+                                @keyup="checkProfileData(); updateCharacter('cellphone')">
+                        </div>
+                        <div class="float-right">
+                            {{ `${getCharacters('cellphone')}/10` }}
                         </div>
                     </div>
 
                     <div class="form-group mb-25">
                         <label for="name2">Dirección</label>
-                        <div class="position-relative d-flex">
-                            <div class="input-group-prepend r-3 rounded px-2 ">
-                                <img src="/svg/address.svg" alt="Calendar logo">
-                            </div>
+                        <div class="with-icon">
+                            <span class="mr-5">
+                                <img src="/svg/address.svg" alt="Address logo">
+                            </span>
                             <textarea type="email" class="form-control" id="address" placeholder="Dirección"
-                                :value="user.address"></textarea>
+                                v-model="user.address" @keyup="checkProfileData(); updateCharacter('address')"
+                                maxlength="255"></textarea>
+                        </div>
+                        <div class="float-right">
+                            {{ `${getCharacters('address')}/255` }}
                         </div>
                     </div>
 
@@ -100,16 +124,16 @@
                                 <img src="/svg/gender.svg" alt="Calendar logo">
                             </div>
                             <div class="d-flex px-4">
-                                <div class="radio-theme-default custom-radio">
-                                    <input class="radio" type="radio" name="radio-horizontal" value="0" id="genderMan"
-                                        data-com.bitwarden.browser.user-edited="yes" :checked="getGender()">
+                                <div class="radio-theme-default custom-radio ">
+                                    <input class="radio" type="radio" name="gender" value="0" id="radio-vl1"
+                                        v-model="user.gender" @change="checkProfileData('gender')">
                                     <label for="radio-vl1">
                                         <span class="radio-text">Hombre</span>
                                     </label>
                                 </div>
-                                <div class="radio-theme-default custom-radio ml-2">
-                                    <input class="radio" type="radio" name="radio-horizontal" value="1" id="genderWoman"
-                                        data-com.bitwarden.browser.user-edited="yes" :checked="!getGender()">
+                                <div class="radio-theme-default custom-radio ">
+                                    <input class="radio" type="radio" name="gender" value="1" id="radio-vl2"
+                                        v-model="user.gender" @change="checkProfileData('gender')">
                                     <label for="radio-vl2">
                                         <span class="radio-text">Mujer</span>
                                     </label>
@@ -118,20 +142,21 @@
                         </div>
                     </div>
 
-                    <div class="form-group mb-0 form-group-calender">
+                    <div class="form-group mb-25">
                         <label>Fecha de nacimiento</label>
-                        <div class="position-relative d-flex">
-                            <div class="input-group-prepend r-3 rounded px-2 ">
-                                <img src="/svg/calendar.svg" alt="Calendar logo">
-                            </div>
+                        <div class="with-icon">
+                            <span class="mr-5">
+                                <img src="/svg/calendar.svg" alt="Birthday logo">
+                            </span>
                             <input type="text" class="form-control form-control-lg " id="birthday"
-                                placeholder="dd/mm/aaaa" :value="getBirthday()">
+                                placeholder="dd/mm/aaaa" :value="getBirthday()" @click="checkProfileData('birthday')"
+                                maxlength="10" readonly>
                         </div>
                     </div>
 
                     <div class="button-group d-flex pt-25 justify-content-end">
                         <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
-                            v-on:click="editUser()">
+                            v-on:click="updateProfile()" :disabled="isButtonDisabled">
                             Actualizar datos
                         </button>
                     </div>
@@ -139,20 +164,39 @@
             </div>
         </div>
     </div>
+
+    <!--Modal de error-->
+    <error-alert-component :id="'profileError'" :errors="errors" :title="'Error al actualizar los datos del perfil'">
+    </error-alert-component>
+    <!--Modal de exito-->
+    <success-alert-component :id="'profileSuccess'" :message="successMessage" :title="'Datos del perfil actualizados'">
+    </success-alert-component>
 </template>
 
 <script>
     import $ from 'jquery';
+    import axios from "axios";
     import moment from 'moment';
+    import ErrorAlertComponent from '../alert/ErrorAlertComponent.vue';
+    import SuccessAlertComponent from '../alert/SuccessAlertComponent.vue';
     require('../../../../public/vendor_assets/js/daterangepicker');
     require('../../../../public/vendor_assets/js/jquery/jquery-ui');
     require('../../../../public/vendor_assets/js/jquery/jquery-datepicker-es')
 
     export default {
+        components: {
+            ErrorAlertComponent,
+            SuccessAlertComponent
+        },
         props: ['user', 'category', 'photo'],
         data: function () {
             return {
-                formUser: null
+                userForm: Object.assign({}, this.user),
+                successMessage: null,
+                errors: [],
+                isButtonDisabled: true,
+                birthday: null,
+                formCharacters: {}
             }
         },
         mounted() {
@@ -160,21 +204,55 @@
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: "dd/mm/yy",
-                yearRange: `1930:${new Date().getFullYear().toString()}`
+                yearRange: `1930:${new Date().getFullYear().toString()}`,
+                onSelect() {
+                    $("#birthday").trigger("click");
+                }
             });
-            this.formUser = this.$props.user;
-            console.log(this.formUser)
         },
         methods: {
             getImage() {
                 return this.$props.photo;
             },
-            getGender() {
-                return this.$props.user.gender === 0 ? true : false;
-            },
             getBirthday() {
                 moment.locale('es');
                 return moment(this.$props.user.birthday).calendar();
+            },
+            updateProfile() {
+                this.$props.user.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
+                axios.post(`/pacientes/${this.$props.user.id}`, {
+                        data: {
+                            ...this.$props.user
+                        },
+                        _method: 'patch'
+                    })
+                    .then(response => {
+                        this.successMessage = 'Los datos del perfil se han actualizado correctamente';
+                        $('#profileSuccess').modal('show');
+                    })
+                    .catch(error => {
+                        this.errors = error.response.data.errors;
+                        $('#profileError').modal('show');
+                    })
+            },
+            checkProfileData(data = null) {
+
+                switch (data) {
+                    case 'birthday':
+                        this.$props.user.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
+                        break;
+                    case 'gender':
+                        this.$props.user.gender = Number(this.$props.user.gender);
+                        break;
+                }
+                const isDataEqual = JSON.stringify(this.$props.user) === JSON.stringify(this.userForm);
+                this.isButtonDisabled = isDataEqual;
+            },
+            updateCharacter(key) {
+                this.formCharacters[key] = this.$props.user[key].length;
+            },
+            getCharacters(key) {
+                return this.formCharacters[key] === undefined ? this.$props.user[key].length : this.formCharacters[key];
             }
         }
     }

@@ -17,6 +17,7 @@ use App\Http\Controllers\IconController;
 use App\Http\Controllers\ImportExportController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SocialAppController;
 use App\Http\Controllers\SocialController;
@@ -44,7 +45,8 @@ Route::get('/', [LoginController::class, 'loginForm'])->name('login.login');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('usuarios', UserController::class);
-    Route::put('/usuarios/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
+    Route::resource('pacientes', PatientController::class);
+    Route::patch('/usuarios/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
     Route::get('/images/users/{id}', function ($id) {
         $storage = storage_path('app/user/patient/photo/'.$id.'');
         return file_exists($storage) ? Image::make($storage)->response() : response()->view('errors.404',[], 404);

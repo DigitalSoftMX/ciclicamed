@@ -20,12 +20,12 @@
                 <label>Cambiar contraseña</label>
             </div>
 
-            <div v-bind:class="{'was-validated': this.error}">
+            <div v-bind:class="{'was-validated': this.passwordIsValid}">
                 <div class="form-group mb-15 align-items-start">
                     <label for="password">Nueva contraseña</label>
                     <div class="position-relative">
                         <input id="password" type="password" class="form-control password-text" required name="password"
-                            placeholder="Contraseña" v-model="_password">
+                            placeholder="Contraseña" v-model="_password" @keyup="checkPassword()">
                     </div>
                 </div>
 
@@ -40,6 +40,7 @@
 
                 <div class="button-group d-flex justify-content-end">
                     <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
+                        :disabled="isButtonDisabled"
                         v-on:click="changePassword()">
                         Cambiar contraseña
                     </button>
@@ -49,10 +50,9 @@
     </div>
 
     <!--Modal de error-->
-    <error-alert-component :errors="errors" :title="'Error al actualizar la contraseña'"></error-alert-component>
+    <error-alert-component :id="'passwordWrong'" :errors="errors" :title="'Error al actualizar la contraseña'"></error-alert-component>
     <!--Modal de exito-->
-    <success-alert-component :message="successMessage" :title="'Contraseña actualizada correctamente'">
-    </success-alert-component>
+    <success-alert-component :id="'passwordSuccess'" :message="successMessage" :title="'Contraseña actualizada correctamente'"></success-alert-component>
 </template>
 
 <script>
@@ -72,7 +72,8 @@
             return {
                 _password: null,
                 _confirmPassword: null,
-                error: false,
+                isButtonDisabled: true,
+                passwordIsValid: false,
                 errors: [],
                 successMessage: null
             }
@@ -82,26 +83,32 @@
                 return this.$props.photo;
             },
             changePassword() {
-                if (this._password === this._confirmPassword) {
-                    axios.put(`/usuarios/${this.$props.user.id}/password`, {
-                        password: this._password
-                    })
-                    .then(response => {
-                        this.successMessage = 'La contraseña se ha actualizado correctamente';
-                        $('#successModal').modal('show');
-                        this._password = null;
-                        this._confirmPassword = null;
-                    })
-                    .catch(error => {
-                        this.errors = error.response.data.errors;
-                        $('#errorModal').modal('show')
-                    })
-                }
+                axios.post(`/usuarios/${this.getUserID()}/password`, {
+                    password: this._password,
+                    _method: 'patch'
+                })
+                .then(response => {
+                    this.successMessage = 'La contraseña se ha actualizado correctamente';
+                    $('#passwordSuccess').modal('show');
+                })
+                .catch(error => {
+                    this.errors = error.response.data.errors;
+                    $('#passwordWrong').modal('show');
+                })
+                this._password = null;
+                this._confirmPassword = null;
+                this.isButtonDisabled = true;
             },
+            //Extra functions
             checkPassword() {
-                this.error = this._password == this._confirmPassword ? true : false;
-            }
+                const isValid = this._password == this._confirmPassword && this._password !== '' ? true : false;
+                this.passwordIsValid = isValid;
+                this.isButtonDisabled = !isValid;
+            },
+            getUserID()
+            {
+                return this.$props.user.laravel_through_key ? this.$props.user.laravel_through_key : this.$props.user.user_id;
+            },
         }
     }
-
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModal"
+    <div class="modal fade" :id="id" tabindex="-1" role="dialog" aria-labelledby="successModal"
         aria-hidden="true">
         <div class="modal-dialog modal-sm modal-info" role="document">
             <div class="modal-content modal-bg-success modal-colored">
@@ -27,7 +27,7 @@
 <script>
 
     export default {
-        props: ['title', 'message'],
+        props: ['id', 'title', 'message'],
     }
 
 </script>
