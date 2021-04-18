@@ -5,6 +5,7 @@ import UserCardBioComponent from  './components/user/UserCardBioComponent';
 import UserProfileComponent from  './components/user/UserProfileComponent';
 import ErrorAlertComponent from './components/alert/ErrorAlertComponent';
 import SuccessAlertComponent from './components/alert/SuccessAlertComponent';
+import UserProfilePage from './pages/user/UserProfilePage';
 
 const app = createApp({
     components: {
@@ -13,7 +14,8 @@ const app = createApp({
 		UserCardBioComponent,
 		UserProfileComponent,
 		ErrorAlertComponent,
-		SuccessAlertComponent
+		SuccessAlertComponent,
+		UserProfilePage
 	}
 });
 

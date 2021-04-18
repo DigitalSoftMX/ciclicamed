@@ -3,7 +3,7 @@
         <div class="account-profile border-bottom text-center">
 
             <div class="ap-img w-100 d-flex justify-content-center">
-                <img class="ap-img__main rounded-circle mb-3 wh-120 d-flex bg-opacity-primary" :src="getImage()"
+                <img class="ap-img__main rounded-circle mb-3 wh-120 d-flex bg-opacity-primary" :src="`/images/users/${user.photo}`"
                     alt="profile" onerror="this.onerror=null;this.src='/svg/person.svg';">
             </div>
 
@@ -67,7 +67,7 @@
             ErrorAlertComponent,
             SuccessAlertComponent
         },
-        props: ['user', 'category', 'photo'],
+        props: ['user', 'category'],
         data: function () {
             return {
                 _password: null,
@@ -79,9 +79,6 @@
             }
         },
         methods: {
-            getImage() {
-                return this.$props.photo;
-            },
             changePassword() {
                 axios.post(`/usuarios/${this.getUserID()}/password`, {
                     password: this._password,

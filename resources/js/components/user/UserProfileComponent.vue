@@ -2,12 +2,12 @@
     <div class="row justify-content-center">
         <div class="col-sm-6 col-10">
             <div class="mt-40 mb-50">
+
                 <div class="account-profile d-flex align-items-center mb-4 ">
                     <div class="ap-img pro_img_wrapper">
                         <input id="file-upload" type="file" name="fileUpload" class="d-none">
-                        <!-- Profile picture image-->
                         <label for="file-upload">
-                            <img class="ap-img__main rounded-circle wh-120 d-flex bg-opacity-primary" :src="getImage()"
+                            <img class="ap-img__main rounded-circle wh-120 d-flex bg-opacity-primary" :src="`/images/users/${userForm.photo}`"
                                 alt="profile" onerror="this.onerror=null;this.src='/svg/person.svg';">
                             <span class="cross" id="remove_pro_pic">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -35,7 +35,7 @@
                                 <img src="/svg/person.svg" alt="Person logo">
                             </span>
                             <input type="text" class="form-control" id="firstName" placeholder="Nombre(s)"
-                                maxlength="100" v-model="user.first_name"
+                                maxlength="100" v-model="userForm.first_name"
                                 @keyup="checkProfileData(); updateCharacter('first_name')">
                         </div>
                         <div class="float-right">
@@ -50,7 +50,7 @@
                                 <img src="/svg/person.svg" alt="Person logo">
                             </span>
                             <input type="text" class="form-control" id="lastName" placeholder="Apellidos"
-                                maxlength="100" v-model="user.last_name"
+                                maxlength="100" v-model="userForm.last_name"
                                 @keyup="checkProfileData(); updateCharacter('last_name')">
                         </div>
                         <div class="float-right">
@@ -65,7 +65,7 @@
                                 <img src="/svg/email.svg" alt="Email logo">
                             </span>
                             <input type="email" class="form-control" id="name3" placeholder="ejemplo@correo.com"
-                                maxlength="100" v-model="user.email"
+                                maxlength="100" v-model="userForm.email"
                                 @keyup="checkProfileData(); updateCharacter('email')">
                         </div>
                         <div class="float-right">
@@ -80,7 +80,7 @@
                                 <img src="/svg/phone.svg" alt="Phone logo">
                             </span>
                             <input type="tel" class="form-control" id="phone" placeholder="1234567890" maxlength="10"
-                                v-model="user.phone" @keyup="checkProfileData(); updateCharacter('phone')">
+                                v-model="userForm.phone" @keyup="checkProfileData(); updateCharacter('phone')">
                         </div>
                         <div class="float-right">
                             {{ `${getCharacters('phone')}/10` }}
@@ -94,7 +94,7 @@
                                 <img src="/svg/cellphone.svg" alt="Cellphone logo">
                             </span>
                             <input type="tel" class="form-control" id="cellphone" placeholder="1234567890"
-                                maxlength="10" v-model="user.cellphone"
+                                maxlength="10" v-model="userForm.cellphone"
                                 @keyup="checkProfileData(); updateCharacter('cellphone')">
                         </div>
                         <div class="float-right">
@@ -109,7 +109,7 @@
                                 <img src="/svg/address.svg" alt="Address logo">
                             </span>
                             <textarea type="email" class="form-control" id="address" placeholder="Dirección"
-                                v-model="user.address" @keyup="checkProfileData(); updateCharacter('address')"
+                                v-model="userForm.address" @keyup="checkProfileData(); updateCharacter('address')"
                                 maxlength="255"></textarea>
                         </div>
                         <div class="float-right">
@@ -126,14 +126,14 @@
                             <div class="d-flex px-4">
                                 <div class="radio-theme-default custom-radio ">
                                     <input class="radio" type="radio" name="gender" value="0" id="radio-vl1"
-                                        v-model="user.gender" @change="checkProfileData('gender')">
+                                        v-model="userForm.gender" @change="checkProfileData('gender')">
                                     <label for="radio-vl1">
                                         <span class="radio-text">Hombre</span>
                                     </label>
                                 </div>
                                 <div class="radio-theme-default custom-radio ">
                                     <input class="radio" type="radio" name="gender" value="1" id="radio-vl2"
-                                        v-model="user.gender" @change="checkProfileData('gender')">
+                                        v-model="userForm.gender" @change="checkProfileData('gender')">
                                     <label for="radio-vl2">
                                         <span class="radio-text">Mujer</span>
                                     </label>
@@ -188,10 +188,12 @@
             ErrorAlertComponent,
             SuccessAlertComponent
         },
-        props: ['user', 'category', 'photo'],
+        props: ['user'],
+        emits: ['updateUser'],
         data: function () {
             return {
-                userForm: Object.assign({}, this.user),
+                userForm: Object.assign({}, this.$props.user),
+                userFormPhot: Object.assign({}, this.$props.photo),
                 successMessage: null,
                 errors: [],
                 isButtonDisabled: true,
@@ -211,48 +213,47 @@
             });
         },
         methods: {
-            getImage() {
-                return this.$props.photo;
-            },
             getBirthday() {
                 moment.locale('es');
-                return moment(this.$props.user.birthday).calendar();
+                return moment(this.userForm.birthday).calendar();
             },
             updateProfile() {
-                this.$props.user.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
-                axios.post(`/pacientes/${this.$props.user.id}`, {
+                this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
+                axios.post(`/pacientes/${this.userForm.id}`, {
                         data: {
-                            ...this.$props.user
+                            ...this.userForm
                         },
                         _method: 'patch'
                     })
                     .then(response => {
                         this.successMessage = 'Los datos del perfil se han actualizado correctamente';
                         $('#profileSuccess').modal('show');
+                        this.$emit('updateUser', this.userForm);
                     })
                     .catch(error => {
                         this.errors = error.response.data.errors;
                         $('#profileError').modal('show');
+                        this.userForm = Object.assign({}, this.$props.user);
                     })
+                    this.isButtonDisabled = true;
             },
             checkProfileData(data = null) {
-
                 switch (data) {
                     case 'birthday':
-                        this.$props.user.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
+                        this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
                         break;
                     case 'gender':
-                        this.$props.user.gender = Number(this.$props.user.gender);
+                        this.userForm.gender = Number(this.userForm.gender);
                         break;
                 }
                 const isDataEqual = JSON.stringify(this.$props.user) === JSON.stringify(this.userForm);
                 this.isButtonDisabled = isDataEqual;
             },
             updateCharacter(key) {
-                this.formCharacters[key] = this.$props.user[key].length;
+                this.formCharacters[key] = this.userForm[key].length;
             },
             getCharacters(key) {
-                return this.formCharacters[key] === undefined ? this.$props.user[key].length : this.formCharacters[key];
+                return this.formCharacters[key] === undefined ? this.userForm[key].length : this.formCharacters[key];
             }
         }
     }

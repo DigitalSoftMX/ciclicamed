@@ -71,10 +71,10 @@ class PatientController extends Controller
      */
     public function update(PatientUpdateRequest $request, $id)
     {
-        // $request->validated();
-        // $patient = Patient::findOrFail($id);
-        // $patient->update($request->input('data'));
-        return $request->validated();;
+        $request->validated();
+        $patient = Patient::findOrFail($id);
+        $patient->update($request->input('data'));
+        return $patient;
     }
 
     /**

@@ -42,3 +42,4 @@
 <script src="{{ asset('js/footable.js') }}"></script>
 <script src="{{ asset('js/leaflet-init.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
