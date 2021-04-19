@@ -89,13 +89,23 @@ class PatientController extends Controller
         //
     }
 
-    public function health($id)
+    public function showMedicalPrescriptions($id)
     {
-        $patient = User::findOrFail($id)->patient;
-        return view('patient.health', [
-            'prescriptions' => $patient->prescriptions
-                                       ->load('medicament:id,name', 'medicalconsult:id,consult_schedule_start')
-                                       ->groupBy('medicalconsult_id')
+        $patient = User::findOrFail($id)->patient->prescriptions
+                                                 ->load('medicament:id,name', 'medicalconsult:id,consult_schedule_start')
+                                                 ->groupBy('medicalconsult_id');
+
+        return view('patient.medical-prescription', [
+            'prescriptions' => $patient
+        ]);
+    }
+
+    public function showMedicalTests($id)
+    {
+        $patient = User::findOrFail($id)->patient->medicaltestsscheduled
+                                                 ->load('status');
+        return view('patient.medical-test', [
+            'medicaltest' => $patient
         ]);
     }
 }

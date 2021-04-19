@@ -50,7 +50,7 @@
             UserCardBioComponent,
             UserProfileComponent
         },
-        props: ['user', 'category', 'photo'],
+        props: ['user', 'category'],
         data: function () {
             return {
                 userData: Object.assign({}, this.$props.user),

@@ -18,7 +18,7 @@ class MedicalTest extends Model
 
     public function status()
     {
-        return $this->belongsTo(MedicalStudyStatus::class, 'medicalteststatus_id');
+        return $this->belongsTo(MedicalTestStatus::class, 'medicalteststatus_id');
     }
 
     public function consultcreated()
@@ -41,7 +41,7 @@ class MedicalTest extends Model
         return $this->hasMany(MedicalTestResult::class, 'medicaltest_id');
     }
 
-    public function medicalorder()
+    public function medicalorders()
     {
         return $this->hasMany(MedicalTestOrder::class, 'medicaltest_id');
     }

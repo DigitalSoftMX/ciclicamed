@@ -50,7 +50,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['prefix' => 'usuarios'], function() {
         Route::get('/{id}/perfil', [UserController::class, 'show'])->name('usuarios.show');
-        Route::get('/{id}/salud', [PatientController::class, 'health'])->name('usuarios.health');
+        Route::get('/{id}/recetas', [PatientController::class, 'showMedicalPrescriptions'])->name('usuarios.medicalPrescription');
+        Route::get('/{id}/estudios', [PatientController::class, 'showMedicalTests'])->name('usuarios.medicalTest');
         
         Route::patch('/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
     });

@@ -4,6 +4,7 @@ namespace App\Models\Patient;
 
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\Prescription\MedicalPrescription;
+use App\Models\Medical\Test\MedicalTest;
 use App\Models\Payment\Payment;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -49,5 +50,15 @@ class Patient extends Model
     public function payments()
     {
         return $this->hasMany(Payment::class, 'patient_id');
+    }
+
+    public function medicaltestscreated()
+    {
+        return $this->hasManyThrough(MedicalTest::class, MedicalConsult::class, 'patient_id', 'created_in');
+    }
+
+    public function medicaltestsscheduled()
+    {
+        return $this->hasManyThrough(MedicalTest::class, MedicalConsult::class, 'patient_id', 'scheduled_in');
     }
 }
