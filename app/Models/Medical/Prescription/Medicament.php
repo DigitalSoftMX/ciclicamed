@@ -21,4 +21,9 @@ class Medicament extends Model
         return $this->belongsToMany(MedicalConsult::class, 'medical_prescriptions', 'medicament_id', 'medicalconsult_id')
                     ->withPivot('dose', 'rate', 'duration', 'update_note');
     }
+
+    public function prescription()
+    {
+        return $this->hasMany(MedicalPrescription::class, 'medicament_id');
+    }
 }

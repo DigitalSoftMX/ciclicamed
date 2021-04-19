@@ -22,9 +22,10 @@ class CreateMedicalConsultsTable extends Migration
             $table->string('update_note', 255)->nullable();
             $table->boolean('is_confirmed')->default(0);
             $table->string('consult_reason', 500);
-            $table->date('consult_date');
-            $table->time('consult_start_time');
-            $table->time('consult_finish_time');
+            $table->dateTime('consult_schedule_start');
+            $table->dateTime('consult_schedule_finish');
+            $table->dateTime('consult_start_at');
+            $table->dateTime('consult_finish_at');
             $table->unsignedSmallInteger('branch_id', false);
             $table->unsignedTinyInteger('medicalconsultstatus_id', false);
             $table->timestamps();

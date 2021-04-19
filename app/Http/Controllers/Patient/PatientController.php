@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Patient;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Patient\PatientUpdateRequest;
 use App\Models\Patient\Patient;
+use App\Models\User\User;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -86,5 +87,15 @@ class PatientController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function health($id)
+    {
+        $patient = User::findOrFail($id)->patient;
+        return view('patient.health', [
+            'prescriptions' => $patient->prescriptions
+                                       ->load('medicament:id,name', 'medicalconsult:id,consult_schedule_start')
+                                       ->groupBy('medicalconsult_id')
+        ]);
     }
 }

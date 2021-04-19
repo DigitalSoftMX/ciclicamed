@@ -32,9 +32,10 @@ class MedicalConsult extends Model
         'medicalconsultstatus_id',
         'is_confirmed',
         'consult_reason',
-        'consult_date',
-        'consult_start_time',
-        'consult_finish_time',
+        'consult_schedule_start',
+        'consult_schedule_finish',
+        'consult_start_at',
+        'consult_finish_at',
         'branch_id',
         'updated_by',
         'update_note'
@@ -75,6 +76,11 @@ class MedicalConsult extends Model
     public function histories()
     {
         return $this->hasMany(MedicalHistory::class, 'medicalconsult_id');
+    }
+
+    public function prescriptions()
+    {
+        return $this->hasMany(MedicalPrescription::class, 'medicalconsult_id');
     }
 
     public function medicaments()

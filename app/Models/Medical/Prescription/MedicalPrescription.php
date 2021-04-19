@@ -26,7 +26,7 @@ class MedicalPrescription extends Model
         return $this->belongsTo(MedicalConsult::class, 'medicalconsult_id');
     }
 
-    public function medicaments()
+    public function medicament()
     {
         return $this->belongsTo(Medicament::class);
     }

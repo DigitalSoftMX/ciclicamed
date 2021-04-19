@@ -3,6 +3,7 @@
 namespace App\Models\Patient;
 
 use App\Models\Medical\Consult\MedicalConsult;
+use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\Payment\Payment;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -38,6 +39,11 @@ class Patient extends Model
     public function medicalconsults()
     {
         return $this->hasMany(MedicalConsult::class);
+    }
+
+    public function prescriptions()
+    {
+        return $this->hasManyThrough(MedicalPrescription::class, MedicalConsult::class, 'patient_id', 'medicalconsult_id');
     }
 
     public function payments()
