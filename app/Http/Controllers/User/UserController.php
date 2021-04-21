@@ -51,8 +51,7 @@ class UserController extends Controller
     public function show($id)
     {
         $userCategory = User::findOrFail($id)->category;
-        $user = $userCategory->name === 'paciente' ? User::findOrFail($id)->patient : User::findOrFail($id)->employee;
-        // dd($user);
+        $user = $userCategory->name === 'Paciente' ? User::findOrFail($id)->patient : User::findOrFail($id)->employee;
         return view('user.user-profile', [
             'user' => $user,
             'category' => $userCategory

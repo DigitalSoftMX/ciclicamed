@@ -21,8 +21,11 @@ class UserCategoryFactory extends Factory
      */
     public function definition()
     {
+        $categories = ['Paciente', 'Empleado'];
+        static $row = -1;
+        $row++;
         return [
-            'name' => $this->faker->unique(true)->randomElement(['paciente', 'empleado'])
+            'name' => $categories[$row]
         ];
     }
 }

@@ -16,7 +16,7 @@ class CreateMedicalTestSampleStatusesTable extends Migration
         Schema::create('medical_test_sample_statuses', function (Blueprint $table) {
             $table->unsignedTinyInteger('id', true);
             $table->string('name', 50);
-            $table->string('color', 6);
+            $table->string('color', 7);
         });
     }
 

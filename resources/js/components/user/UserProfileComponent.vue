@@ -193,7 +193,6 @@
         data: function () {
             return {
                 userForm: Object.assign({}, this.$props.user),
-                userFormPhot: Object.assign({}, this.$props.photo),
                 successMessage: null,
                 errors: [],
                 isButtonDisabled: true,

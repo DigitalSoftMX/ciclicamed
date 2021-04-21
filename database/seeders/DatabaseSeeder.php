@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
         EmployeeSchedule::factory(20)->create();
         EmployeeDayOff::factory(20)->create();
         MedicalConsultType::factory(5)->create();
-        MedicalConsultStatus::factory(5)->create();
+        MedicalConsultStatus::factory(6)->create();
         MedicalConsult::factory(50)->create();
         MedicalAttachmentForm::factory(15)->create();
         MedicalAttachment::factory(30)->create();

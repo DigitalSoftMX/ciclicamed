@@ -21,9 +21,13 @@ class MedicalTestStatusFactory extends Factory
      */
     public function definition()
     {
+        $statuses = ['Estudio creado', 'Muestras recogidas', 'Analizando muestras', 'Resultados creados', 'Estudio cancelado'];
+        $hexColors = ['#5E35B1', '#1E88E5', '#546E7A', '#43A047', '#212121'];
+        static $row = -1;
+        $row++;
         return [
-            'name' => $this->faker->text('50'),
-            'color' => substr($this->faker->hexColor, 1)
+            'name' => $statuses[$row],
+            'color' => $hexColors[$row]
         ];
     }
 }

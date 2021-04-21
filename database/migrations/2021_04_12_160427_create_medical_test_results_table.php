@@ -19,7 +19,7 @@ class CreateMedicalTestResultsTable extends Migration
             $table->json('results');
             $table->string('result_note', 500);
             $table->unsignedMediumInteger('updated_by', false)->nullable();
-            $table->string('update_note', 255);
+            $table->string('update_note', 255)->nullable();
             $table->unsignedTinyInteger('medicalteststatus_id', false);
             $table->timestamps();
 

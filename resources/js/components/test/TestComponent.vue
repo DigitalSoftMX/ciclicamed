@@ -14,7 +14,7 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input class="form-control border-0 box-shadow-none" type="search" id="search"
+                    <input class="form-control border-0 box-shadow-none" type="search" id="searchTest"
                         placeholder="Buscar por fecha" aria-label="Search">
                 </div>
             </div>
@@ -26,18 +26,21 @@
             <h5 class="fw-500 mt-5 display-4">No se encontraron estudios médicos</h5>
         </div>
 
-
         <div class="col-lg-4" v-for="test in testsData" :key="test.id" v-else>
-
-            <div class="card shadow-none border-0 mb-25" :style="{'background-color': `#${test.status.color}`}">
+            <div class="card shadow-none border-0 mb-25" :style="{'background-color': `${test.status.color}`}">
                 <div class="card-body banner-feature--15">
                     <div class="pb-md-0 text-center">
-                        <h3 class="m-0 text-white">{{ getDateFormatted(test.created_at) }}</h3>
-                        <p class="text-white display-5">Estado: {{ test.status.name }}</p>
+                        <h3 class="m-0 text-white" v-if="test.medicalorders.length > 0">{{test.medicalorders[test.medicalorders.length - 1].product.name}}</h3>
+                        <h4 class="text-white text-center">Fecha de estudio:</h4>
+                        <h4 class="text-white text-center">{{ getDateFormatted(test.created_at) }}</h4>
+                        <p class="text-white display-5">{{ test.status.name }}</p>
                     </div>
                     <div class="content-center mt-25" v-if="testHasResults(test.status.name)">
                         <button class="btn btn-primary btn-sm btn-squared btn-transparent-primary rounded-pill bg-white"
-                            v-on:click="showMedicaments(prescription)">Ver resultados</button>
+                            v-on:click="showMedicaments(prescription)" v-if="test.status.name=='Resultados creados'">Ver resultados</button>
+
+                        <button class="btn btn-primary btn-sm btn-squared btn-transparent-primary rounded-pill bg-white"
+                            v-on:click="showMedicaments(prescription)" v-if="test.status.name=='Estudio creado'">Ver orden de estudios</button>
                     </div>
                 </div>
             </div>
@@ -66,7 +69,7 @@
         },
         mounted() {
             const that = this;
-            $("#search").daterangepicker({
+            $("#searchTest").daterangepicker({
                 showDropdowns: true,
                 minYear: 1930,
                 maxYear: moment().endOf("year").year(),
@@ -87,7 +90,7 @@
                     "customRangeLabel": "Seleccionar otra fecha",
                 }
             });
-            $('#search').on('apply.daterangepicker', function (ev, picker) {
+            $('#searchTest').on('apply.daterangepicker', function (ev, picker) {
                 that.getTestByDate(picker.startDate, picker.endDate)
             });
         },
@@ -107,7 +110,7 @@
             },
             testHasResults(status)
             {
-                return status === 'Resultados creados';
+                return status === 'Resultados creados' || 'Estudio creado';
             }
         }
     }

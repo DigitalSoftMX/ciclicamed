@@ -23,7 +23,7 @@ class ProductStatusFactory extends Factory
     {
         return [
             'name' => $this->faker->text('50'),
-            'color' => substr($this->faker->hexColor, 1)
+            'color' => $this->faker->hexColor
         ];
     }
 }

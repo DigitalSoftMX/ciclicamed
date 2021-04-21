@@ -17,6 +17,7 @@ class CreateMedicalTestOrdersTable extends Migration
             $table->unsignedInteger('medicaltest_id', false);
             $table->unsignedMediumInteger('product_id', false);
             $table->unsignedMediumInteger('updated_by', false)->nullable();
+            $table->string('update_note', 255)->nullable();
             $table->timestamps();
 
             //Relaciones

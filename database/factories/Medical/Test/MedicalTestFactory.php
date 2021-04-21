@@ -24,7 +24,7 @@ class MedicalTestFactory extends Factory
         return [
             'created_in' => $this->faker->numberBetween(1, 5),
             'scheduled_in' => $this->faker->unique()->numberBetween(1, 50),
-            'finished_at' => $this->faker->dateTime(),
+            'finished_at' => $this->faker->dateTimeThisYear(),
             'medicalteststatus_id' => $this->faker->numberBetween(1, 5),
         ];
     }

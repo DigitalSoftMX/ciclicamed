@@ -16,7 +16,7 @@ class CreateUserStatusesTable extends Migration
         Schema::create('user_statuses', function (Blueprint $table) {
             $table->unsignedTinyInteger('id', true);
             $table->string('name', 50);
-            $table->string('color', 6);
+            $table->string('color', 7);
         });
     }
 

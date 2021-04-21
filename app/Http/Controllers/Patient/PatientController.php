@@ -102,10 +102,14 @@ class PatientController extends Controller
 
     public function showMedicalTests($id)
     {
-        $patient = User::findOrFail($id)->patient->medicaltestsscheduled
-                                                 ->load('status');
+        $tests = User::findOrFail($id)->patient->medicaltestsscheduled->load('status');
+
+        foreach($tests as $test)
+        {
+            $test->medicalorders->load('product:id,name');
+        }
         return view('patient.medical-test', [
-            'medicaltest' => $patient
+            'medicaltest' => $tests
         ]);
     }
 }

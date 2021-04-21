@@ -45,4 +45,5 @@ class MedicalTest extends Model
     {
         return $this->hasMany(MedicalTestOrder::class, 'medicaltest_id');
     }
+
 }

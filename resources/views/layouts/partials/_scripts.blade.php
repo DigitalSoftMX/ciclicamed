@@ -11,7 +11,7 @@
 <script src="{{ asset('vendor_assets/js/dynamicCheckbox.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/feather.min.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/footable.min.js') }}"></script>
-<script src="{{ asset('vendor_assets/js/fullcalendar@5.2.0.js') }}"></script>
+<!-- <script src="{{ asset('vendor_assets/js/fullcalendar@5.2.0.js') }}"></script> -->
 <script src="{{ asset('vendor_assets/js/google-chart.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/jquery-jvectormap-2.0.5.min.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/jquery-jvectormap-world-mill-en.js') }}"></script>

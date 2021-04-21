@@ -21,7 +21,7 @@ class CreateMedicalTestSamplesTable extends Migration
             $table->unsignedMediumInteger('sent_by', false)->nullable();
             $table->dateTime('sent_at');
             $table->unsignedMediumInteger('updated_by', false)->nullable();
-            $table->string('update_note', 255);
+            $table->string('update_note', 255)->nullable();
             $table->unsignedTinyInteger('medicalteststatus_id', false);
             $table->timestamps();
 

@@ -17,6 +17,9 @@ import UserTestPage from './pages/user/UserTestPage';
 	import UserCardComponent from  './components/user/UserCardComponent';
 	import UserCardBioComponent from  './components/user/UserCardBioComponent';
 	import UserProfileComponent from  './components/user/UserProfileComponent';
+	//Schedule
+	import ScheduleComponent from './components/schedule/ScheduleComponent';
+	import NewScheduleComponent from './components/schedule/ScheduleComponent';
 	
 const app = createApp({
     components: {
@@ -30,7 +33,9 @@ const app = createApp({
 		UserPrescriptionPage,
 		PrescriptionComponent,
 		PrescriptionModalComponent,
-		UserTestPage
+		UserTestPage,
+		ScheduleComponent,
+		NewScheduleComponent
 	}
 });
 

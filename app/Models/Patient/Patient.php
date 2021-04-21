@@ -29,17 +29,17 @@ class Patient extends Model
 
     public function preregistration()
     {
-        return $this->belongsTo(Preregistration::class);
+        return $this->belongsTo(Preregistration::class, 'preregistration_id');
     }
 
-    public function invoicedata()
+    public function invoiceData()
     {
-        return $this->hasMany(InvoiceData::class);
+        return $this->hasMany(InvoiceData::class, 'patient_id');
     }
 
-    public function medicalconsults()
+    public function medicalConsults()
     {
-        return $this->hasMany(MedicalConsult::class);
+        return $this->hasMany(MedicalConsult::class, 'patient_id');
     }
 
     public function prescriptions()
@@ -52,12 +52,12 @@ class Patient extends Model
         return $this->hasMany(Payment::class, 'patient_id');
     }
 
-    public function medicaltestscreated()
+    public function medicalTestsCreated()
     {
         return $this->hasManyThrough(MedicalTest::class, MedicalConsult::class, 'patient_id', 'created_in');
     }
 
-    public function medicaltestsscheduled()
+    public function medicalTestsScheduled()
     {
         return $this->hasManyThrough(MedicalTest::class, MedicalConsult::class, 'patient_id', 'scheduled_in');
     }
