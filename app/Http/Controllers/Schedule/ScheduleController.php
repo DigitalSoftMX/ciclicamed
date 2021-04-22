@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Schedule;
 
+use App\Events\ScheduleEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Patient\Patient;
@@ -16,14 +17,10 @@ class ScheduleController extends Controller
     {
         $id = Auth::user()->id;
         $patient = MedicalConsult::where('patient_id', '=', $id)
-                                ->whereYear('consult_schedule_start', '=', Carbon::now()->format('Y'))
-                                ->whereMonth('consult_schedule_start', '=', Carbon::now()->format('m'))
-                                ->get()
-                                ->load('doctor:id,first_name,last_name', 'status');
-
-        return view('test', [
-            'schedules' => $patient
-        ]);
+                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'created_by', 'medicalconsulttype_id', 'medicalconsultstatus_id', 'patient_id'])
+                                ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+        //broadcast(new ScheduleEvent($patient));
+        return response()->json($patient);
     }
 
     public function showEmployeeSchedule($id)

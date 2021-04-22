@@ -23,7 +23,7 @@ class MedicalConsultFactory extends Factory
     public function definition()
     {
 
-        $scheduled = Carbon::createFromTimeStamp($this->faker->dateTimeThisYear()->getTimestamp());
+        $scheduled = Carbon::createFromTimestamp($this->faker->dateTimeThisYear()->getTimeStamp());
         return [
             'patient_id' => $this->faker->numberBetween(1, 5),
             'created_by' => $this->faker->numberBetween(1, 5),
@@ -32,9 +32,9 @@ class MedicalConsultFactory extends Factory
             'is_confirmed' => $this->faker->numberBetween(0, 1),
             'consult_reason' => $this->faker->text(200),
             'consult_schedule_start' => $scheduled,
-            'consult_schedule_finish' => $scheduled->addMinutes($this->faker->numberBetween(0, 15)),
+            'consult_schedule_finish' => Carbon::createFromFormat('Y-m-d H:i:s', $scheduled)->addMinutes($this->faker->numberBetween(15, 60)),
             'consult_start_at' => $scheduled,
-            'consult_finish_at' => $scheduled->addMinutes($this->faker->numberBetween(15, 80)),
+            'consult_finish_at' => Carbon::createFromFormat('Y-m-d H:i:s', $scheduled)->addMinutes($this->faker->numberBetween(0, 15)),
             'branch_id' => $this->faker->numberBetween(1, 5),
             'updated_by' => $this->faker->numberBetween(1, 5),
             'update_note' => $this->faker->text(100),

@@ -3,7 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Config;
+//user Config;
+use Illuminate\Support\Facades\Config;
 
 class ThemeLayout
 {

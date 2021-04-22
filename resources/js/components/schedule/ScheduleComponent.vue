@@ -1,30 +1,39 @@
 <template>
-    <div class="card">
-        <div class="card-body no-top">
+    <div class="content-fluid">
+        <div class="card no-top mb-25">
             <div id='full-calendar'></div>
         </div>
-        <new-schedule-modal></new-schedule-modal>
+        <schedule-action-component></schedule-action-component>
+        <lateral-scheduler-event ref="openLateralSchedule"></lateral-scheduler-event>
     </div>
 </template>
 
 <script>
+    import axios from 'axios';
+    import moment from 'moment';
     import {
-        Calendar,
+        Calendar
     } from '@fullcalendar/core'
     import $ from 'jquery';
     import dayGridPlugin from '@fullcalendar/daygrid';
     import timeGridPlugin from '@fullcalendar/timegrid';
     import listPlugin from '@fullcalendar/list';
     import interactionPlugin from '@fullcalendar/interaction';
-    import NewScheduleModal from './NewScheduleModal.vue';
+    import NewScheduleComponent from './NewScheduleComponent';
+    import ScheduleActionComponent from './ScheduleActionComponent.vue';
+    import LateralSchedulerEvent from './LateralSchedulerEvent.vue';
 
     export default {
         components: {
-            NewScheduleModal
+            ScheduleActionComponent,
+            LateralSchedulerEvent
         },
-        props: ['schedules'],
         data: function () {
-            return {}
+
+            return {
+                url: `/agenda/paciente/1`,
+                schedules: [],
+            }
         },
         mounted() {
             const that = this;
@@ -32,7 +41,10 @@
             const calendar = new Calendar(el, {
                 plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
                 initialView: 'dayGridMonth',
-                editable: true,
+                displayEventTime: true,
+                editable: false,
+                displayEventEnd: true,
+                progressiveEventRendering: true,
                 headerToolbar: {
                     left: 'dayGridMonth,timeGridWeek,timeGridDay,listDay',
                     right: "prev,next",
@@ -46,69 +58,69 @@
                     day: 'Día',
                     list: 'Lista'
                 },
-                dateClick: function (data) {
-                    $('#schedule-modal').modal('show');
+                eventTimeFormat: {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    meridiem: 'short'
                 },
-                events: Object.values(this.$props.schedules).map(schedule => {
-
-                    return {
+                dateClick: function (data) {
+                    that.$refs.openLateralSchedule.openLateralSchedule()
+                },
+                eventClick: function (data) {
+                    $('#schedule-action').modal('show');
+                },
+            });
+            calendar.setOption('locale', 'es');
+            calendar.render();
+            new ResizeObserver(() => calendar.updateSize()).observe(app);
+            that.getSchedules(calendar);
+        },
+        methods: {
+            getSchedules(calendar) {
+                axios.get(this.url)
+                    .then(response => {
+                        this.schedules = Object.assign({}, response.data);
+                        this.renderSchedules(calendar);
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            },
+            renderSchedules(calendar) {
+                Object.values(this.schedules).map(schedule => {
+                    calendar.addEvent({
                         id: schedule.id,
                         title: `${schedule.doctor.first_name} ${schedule.doctor.last_name}`,
                         start: new Date(schedule.consult_schedule_start),
                         end: new Date(schedule.consult_schedule_finish),
                         textColor: '#000000',
-                        className: that.getEventColor(schedule.status.color)
-                    }
-                })
-            });
-            calendar.setOption('locale', 'es');
-            calendar.render();
-        },
-        methods: {
-            getEventColor(color) {
-                switch (color) {
-                    case '#5E35B1':
-                        return 'color1';
-                    case '#43A047':
-                        return 'color2';
-                    case '#F4511E':
-                        return 'color3';
-                    case '#1E88E5':
-                        return 'color4';
-                    case '#546E7A':
-                        return 'color5';
-                    case '#212121':
-                        return 'color6';
-                }
-            }
+                        borderColor: schedule.status.color,
+                        backgroundColor: schedule.status.color,
+                        display: 'block',
+                    })
+                });
+            },
         }
     }
 
 </script>
 
 <style>
-    .color1 {
-        background-color: #5E35B1 !important;
+    .fc-event-title:hover {
+        cursor: pointer;
     }
 
-    .color2 {
-        background-color: #43A047 !important;
+    .fc-list-event-dot {
+        width: 2px !important;
+        height: 2px !important;
     }
 
-    .color3 {
-        background-color: #F4511E !important;
+    .fc-event-title {
+        color: #fff !important;
     }
 
-    .color4 {
-        background-color: #1E88E5 !important;
-    }
-
-    .color5 {
-        background-color: #546E7A !important;
-    }
-
-    .color5 {
-        background-color: ##212121 !important;
+    .fc-event-time {
+        color: #fff !important;
     }
 
     .fc-header-toolbar {

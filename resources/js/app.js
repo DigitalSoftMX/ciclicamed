@@ -20,6 +20,8 @@ import UserTestPage from './pages/user/UserTestPage';
 	//Schedule
 	import ScheduleComponent from './components/schedule/ScheduleComponent';
 	import NewScheduleComponent from './components/schedule/ScheduleComponent';
+	import ScheduleActionComponent from './components/schedule/ScheduleActionComponent';
+	import LateralSchedulerEvent from './components/schedule/LateralSchedulerEvent';
 	
 const app = createApp({
     components: {
@@ -35,7 +37,9 @@ const app = createApp({
 		PrescriptionModalComponent,
 		UserTestPage,
 		ScheduleComponent,
-		NewScheduleComponent
+		NewScheduleComponent,
+		ScheduleActionComponent,
+		LateralSchedulerEvent
 	}
 });
 

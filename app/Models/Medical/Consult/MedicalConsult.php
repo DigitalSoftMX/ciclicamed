@@ -2,6 +2,7 @@
 
 namespace App\Models\Medical\Consult;
 
+use App\Models\Branch\Branch;
 use App\Models\Employee\Employee;
 use App\Models\Medical\Attachment\MedicalAttachment;
 use App\Models\Medical\Attachment\MedicalAttachmentFollowUp;
@@ -61,6 +62,11 @@ class MedicalConsult extends Model
         return $this->belongsTo(MedicalConsultStatus::class, 'medicalconsultstatus_id');
     }
 
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class, 'branch_id');
+    }
+
     public function attachments()
     {
         return $this->belongsToMany(MedicalAttachmentForm::class, 'medical_attachments', 'medicalconsult_id', 'medicalattachmentform_id')
@@ -89,37 +95,37 @@ class MedicalConsult extends Model
                     ->withPivot('dose', 'rate', 'duration', 'update_note');
     }
 
-    public function testscreated()
+    public function testsCreated()
     {
         return $this->hasMany(MedicalTest::class, 'created_in');
     }
 
-    public function testscheduled()
+    public function testScheduled()
     {
         return $this->hasMany(MedicalTest::class, 'scheduled_in');
     }
 
-    public function testsamplescreated()
+    public function testSamplesCreated()
     {
         return $this->hasManyThrough(MedicalTestSample::class, MedicalTest::class, 'created_in', 'medicaltest_id');
     }
 
-    public function testsamplesscheduled()
+    public function testSamplesScheduled()
     {
         return $this->hasManyThrough(MedicalTestSample::class, MedicalTest::class, 'scheduled_in', 'medicaltest_id');
     }
 
-    public function testresultsscreated()
+    public function testrResultsCreated()
     {
         return $this->hasManyThrough(MedicalTestResult::class, MedicalTest::class, 'created_in', 'medicaltest_id');
     }
 
-    public function testresultsscheduled()
+    public function testResultsScheduled()
     {
         return $this->hasManyThrough(MedicalTestResult::class, MedicalTest::class, 'scheduled_in', 'medicaltest_id');
     }
 
-    public function productpayments()
+    public function productPayments()
     {
         return $this->belongsToMany(Product::class, 'product_payments', 'medicalconsult_id', 'product_id')->withPivot('payment_id');
     }

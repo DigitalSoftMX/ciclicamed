@@ -8,7 +8,8 @@
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
       {{-- Title Section --}}
-      <title>@yield('title', $pageTitle ?? 'Cíclica: Ginecología de vanguardia')
+      <title>{{ config('app.name') }} | @yield('title', $pageTitle ?? 'Bootstrap 4 Laravel Web
+         Application')
       </title>
       {{-- Meta Data --}}
       <meta name="description"

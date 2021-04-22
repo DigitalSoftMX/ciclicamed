@@ -3,6 +3,7 @@
 namespace App\Models\Branch;
 
 use App\Models\Employee\Employee;
+use App\Models\Medical\Consult\MedicalConsult;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,11 @@ class Branch extends Model
     public function employeesdaysoff()
     {
         return $this->belongsToMany(Employee::class, 'employee_days_off', 'branch_id', 'employee_id')->withPivot('day_off', 'start_time', 'finish_time');
+    }
+
+    public function medicalConsult()
+    {
+        return $this->hasMany(MedicalConsult::class, 'branch_id');
     }
 
 }

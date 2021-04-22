@@ -1248,7 +1248,7 @@ A VERTICAL event
     position: absolute; /* absolute WITHIN the harness */
     top: 0;
     bottom: 1px; /* stay away from bottom slot line */
-    left: 0;
+    /* left: 0; */
     right: 0;
   }
 .fc {
