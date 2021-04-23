@@ -26,13 +26,21 @@ class Employee extends Model
         'cellphone',
         'email',
         'photo',
+        'employeecategory_id',
         'employeestatus_id',
-        'user_id'
+        'user_id',
     ];
+
+    protected $hidden= ['pivot'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(EmployeeCategory::class, 'employeecategory_id');
     }
 
     public function status()
@@ -58,6 +66,11 @@ class Employee extends Model
     public function medicalconsults()
     {
         return $this->hasMany(MedicalConsult::class, 'created_by');
+    }
+
+    public function test()
+    {
+        return $this->hasMany(EmployeeSchedule::class, 'employee_id');
     }
 
 }

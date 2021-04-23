@@ -3,6 +3,7 @@
 namespace App\Models\Branch;
 
 use App\Models\Employee\Employee;
+use App\Models\Employee\EmployeeCategory;
 use App\Models\Medical\Consult\MedicalConsult;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Branch extends Model
 {
     use HasFactory;
+    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
     protected $fillable = [
         'name',
@@ -18,7 +20,7 @@ class Branch extends Model
         'opening_hours'
     ];
 
-    public function employeesschedules()
+    public function employeesSchedules()
     {
         return $this->belongsToMany(Employee::class, 'employee_schedules', 'branch_id', 'employee_id')->withPivot('start_day', 'start_time', 'finish_day', 'finish_time');
     }
@@ -31,6 +33,11 @@ class Branch extends Model
     public function medicalConsult()
     {
         return $this->hasMany(MedicalConsult::class, 'branch_id');
+    }
+
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class, 'employee_schedules', 'branch_id', 'employee_id');
     }
 
 }

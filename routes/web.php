@@ -2,6 +2,7 @@
 
 use App\Events\Schedule\ScheduleEvent;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\User\UserController;
@@ -34,6 +35,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::patch('/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
     });
 
+    Route::group(['prefix' => 'sucursales'], function() {
+        Route::get('/doctores', [EmployeeController::class, 'getDoctors'])->name('sucursal.doctores');
+    });
+
     Route::group(['prefix' => 'agenda'], function() {
         Route::get('/paciente/{id}', [ScheduleController::class, 'showPatientSchedule'])->name('agenda.paciente');
     });
@@ -43,7 +48,7 @@ Route::group(['middleware' => 'auth'], function() {
         return view('test');
     } );
 
-    
+
     Route::get('/images/users/{id}', function ($id) {
         $storage = storage_path('app/user/patient/photo/'.$id.'');
         return file_exists($storage) ? Image::make($storage)->response() : response()->view('errors.404',[], 404);

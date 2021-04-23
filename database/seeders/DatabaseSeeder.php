@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Branch\Branch;
 use App\Models\Employee\Employee;
+use App\Models\Employee\EmployeeCategory;
 use App\Models\Employee\EmployeeDayOff;
 use App\Models\Employee\EmployeeLicense;
 use App\Models\Employee\EmployeeSchedule;
@@ -54,12 +55,13 @@ class DatabaseSeeder extends Seeder
 
         UserStatus::factory(5)->create();
         UserCategory::factory(2)->create();
-        User::factory(10)->create();
+        User::factory(20)->create();
         Preregistration::factory(5)->create();
         Patient::factory(5)->create();
         InvoiceData::factory(5)->create();
+        EmployeeCategory::factory(6)->create();
         EmployeeStatus::factory(5)->create();
-        Employee::factory(5)->create();
+        Employee::factory(15)->create();
         MedicalSpecialty::factory(5)->create();
         EmployeeLicense::factory(20)->create();
         Branch::factory(15)->create();

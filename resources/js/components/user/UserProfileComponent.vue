@@ -108,7 +108,7 @@
                             <span class="mr-5">
                                 <img src="/svg/address.svg" alt="Address logo">
                             </span>
-                            <textarea type="email" class="form-control" id="address" placeholder="Dirección"
+                            <textarea type="text" class="form-control" id="address" placeholder="Dirección"
                                 v-model="userForm.address" @keyup="checkProfileData(); updateCharacter('address')"
                                 maxlength="255"></textarea>
                         </div>
@@ -174,14 +174,14 @@
 </template>
 
 <script>
+    require('jquery-ui');
     import $ from 'jquery';
     import axios from "axios";
     import moment from 'moment';
     import ErrorAlertComponent from '../alert/ErrorAlertComponent.vue';
     import SuccessAlertComponent from '../alert/SuccessAlertComponent.vue';
-    require('../../../../public/vendor_assets/js/daterangepicker');
-    require('../../../../public/vendor_assets/js/jquery/jquery-ui');
-    require('../../../../public/vendor_assets/js/jquery/jquery-datepicker-es')
+    import datepickerFactory from 'jquery-datepicker';
+    datepickerFactory($);
 
     export default {
         components: {
@@ -201,15 +201,6 @@
             }
         },
         mounted() {
-            $("#birthday").datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: "dd/mm/yy",
-                yearRange: `1930:${new Date().getFullYear().toString()}`,
-                onSelect() {
-                    $("#birthday").trigger("click");
-                }
-            });
         },
         methods: {
             getBirthday() {

@@ -53,9 +53,10 @@
 <script>
     import $ from 'jquery';
     import moment from 'moment';
-    require('../../../../public/vendor_assets/js/daterangepicker');
-    require('../../../../public/vendor_assets/js/jquery/jquery-ui');
-    require('../../../../public/vendor_assets/js/jquery/jquery-datepicker-es')
+    require('daterangepicker'); 
+    // require('../../../../public/vendor_assets/js/daterangepicker');
+    // require('../../../../public/vendor_assets/js/jquery/jquery-ui');
+    // require('../../../../public/vendor_assets/js/jquery/jquery-datepicker-es')
     export default {
         components: {
         },

@@ -4,7 +4,7 @@
             <div id='full-calendar'></div>
         </div>
         <schedule-action-component></schedule-action-component>
-        <lateral-scheduler-event ref="openLateralSchedule"></lateral-scheduler-event>
+        <lateral-schedule-component ref="openLateralSchedule"></lateral-schedule-component>
     </div>
 </template>
 
@@ -21,12 +21,12 @@
     import interactionPlugin from '@fullcalendar/interaction';
     import NewScheduleComponent from './NewScheduleComponent';
     import ScheduleActionComponent from './ScheduleActionComponent.vue';
-    import LateralSchedulerEvent from './LateralSchedulerEvent.vue';
+    import LateralScheduleComponent from './LateralScheduleComponent/LateralScheduleComponent.vue';
 
     export default {
         components: {
             ScheduleActionComponent,
-            LateralSchedulerEvent
+            LateralScheduleComponent
         },
         data: function () {
 
@@ -36,7 +36,7 @@
             }
         },
         mounted() {
-            const that = this;
+            const self = this;
             const el = document.getElementById('full-calendar');
             const calendar = new Calendar(el, {
                 plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
@@ -64,7 +64,7 @@
                     meridiem: 'short'
                 },
                 dateClick: function (data) {
-                    that.$refs.openLateralSchedule.openLateralSchedule()
+                    self.$refs.openLateralSchedule.openLateralSchedule()
                 },
                 eventClick: function (data) {
                     $('#schedule-action').modal('show');
@@ -73,7 +73,7 @@
             calendar.setOption('locale', 'es');
             calendar.render();
             new ResizeObserver(() => calendar.updateSize()).observe(app);
-            that.getSchedules(calendar);
+            self.getSchedules(calendar);
         },
         methods: {
             getSchedules(calendar) {

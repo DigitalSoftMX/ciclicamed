@@ -21,7 +21,7 @@ import UserTestPage from './pages/user/UserTestPage';
 	import ScheduleComponent from './components/schedule/ScheduleComponent';
 	import NewScheduleComponent from './components/schedule/ScheduleComponent';
 	import ScheduleActionComponent from './components/schedule/ScheduleActionComponent';
-	import LateralSchedulerEvent from './components/schedule/LateralSchedulerEvent';
+	import LateralScheduleComponent from './components/schedule/LateralScheduleComponent/LateralScheduleComponent';
 	
 const app = createApp({
     components: {
@@ -39,7 +39,7 @@ const app = createApp({
 		ScheduleComponent,
 		NewScheduleComponent,
 		ScheduleActionComponent,
-		LateralSchedulerEvent
+		LateralScheduleComponent
 	}
 });
 

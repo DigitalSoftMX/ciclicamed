@@ -21,6 +21,7 @@ class PatientFactory extends Factory
      */
     public function definition()
     {
+        static $user = 1;
         return [
             'first_name' => $this->faker->unique()->firstName(),
             'last_name' => $this->faker->unique()->lastName(),
@@ -31,7 +32,7 @@ class PatientFactory extends Factory
             'cellphone' => $this->faker->regexify('[0-9]{10}'),
             'email' => $this->faker->unique()->safeEmail(),
             'photo' => $this->faker->regexify('[A-Za-z0-9]{25}'),
-            'preregistration_id' => $this->faker->unique(true)->numberBetween(1, 5)
+            'preregistration_id' => $user++
         ];
     }
 }

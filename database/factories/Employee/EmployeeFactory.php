@@ -21,6 +21,7 @@ class EmployeeFactory extends Factory
      */
     public function definition()
     {
+        static $employeeUser = 5;
         return [
             'first_name' => $this->faker->unique()->firstName(),
             'last_name' => $this->faker->unique()->lastName(),
@@ -31,8 +32,9 @@ class EmployeeFactory extends Factory
             'cellphone' => $this->faker->regexify('[0-9]{10}'),
             'email' => $this->faker->unique()->safeEmail(),
             'photo' => $this->faker->regexify('[A-Za-z0-9]{25}'),
+            'employeecategory_id' => $this->faker->numberBetween(1, 6),
             'employeestatus_id' => $this->faker->numberBetween(1, 5),
-            'user_id' => $this->faker->unique()->numberBetween(6, 10)
+            'user_id' => $employeeUser++
         ];
     }
 }

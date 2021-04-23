@@ -19,13 +19,13 @@ class EmployeeSchedule extends Model
         'branch_id'
     ];
 
-    public function employees()
+    public function employee()
     {
-        return $this->belongsToMany(Employee::class, 'employee_licenses', 'medicalspecialty_id', 'employee_id')->withPivot('degree_title', 'licence_number');
+        return $this->belongsTo(Employee::class, 'employee_id');
     }
 
-    public function branches()
+    public function branch()
     {
-        return $this->belongsToMany(Branch::class, 'employee_schedules', 'employee_id', 'branch_id')->withPivot('start_day', 'start_time', 'finish_day', 'finish_time');
+        return $this->belongsTo(Branch::class, 'branch_id');
     }
 }

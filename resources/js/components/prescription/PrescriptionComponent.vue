@@ -53,9 +53,7 @@
     import $ from 'jquery';
     import moment from 'moment';
     import PrescriptionModalComponent from './PrescriptionModalComponent.vue';
-    require('../../../../public/vendor_assets/js/daterangepicker');
-    require('../../../../public/vendor_assets/js/jquery/jquery-ui');
-    require('../../../../public/vendor_assets/js/jquery/jquery-datepicker-es')
+    require('daterangepicker'); 
     export default {
         components: {
             PrescriptionModalComponent
