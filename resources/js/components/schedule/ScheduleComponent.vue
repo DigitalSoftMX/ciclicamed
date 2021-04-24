@@ -76,6 +76,7 @@
             self.getSchedules(calendar);
         },
         methods: {
+
             getSchedules(calendar) {
                 axios.get(this.url)
                     .then(response => {
@@ -86,14 +87,15 @@
                         console.log(error)
                     })
             },
+
             renderSchedules(calendar) {
                 if (Object.values(this.schedules).length > 0) {
                     Object.values(this.schedules).map(schedule => {
+                        const name = schedule.doctor !== null ? `${schedule.doctor.first_name ?? ''} ${schedule.doctor.last_name ?? ''}` : '';
                         calendar.addEvent({
                             id: schedule.id,
                             title: 'aaaaa',
-                            //title: `${schedule.doctor.first_name ?? ''} ${schedule.doctor.last_name ?? ''}`, ----Areglar titulo por tipo de vista (PAciente o empleado) y por tipo
-                            //de consulta (Primera cita, subsecuente, estudio o checkup)
+                            title: this.getScheduleTitle(schedule.type.name, name),
                             start: schedule.consult_schedule_start,
                             end: schedule.consult_schedule_finish,
                             textColor: '#000000',
@@ -104,12 +106,61 @@
                     });
                 }
             },
+
+            getNameSchedule(schedule){
+
+                if (schedule.doctor !== (null || undefined))
+                {
+                    return `${schedule.doctor.first_name ?? ''} ${schedule.doctor.last_name ?? ''}`
+                }
+                else if(scheudle.patient !== (null || undefined))
+                {
+                    return `${schedule.patient.first_name ?? ''} ${schedule.patient.last_name ?? ''}`
+                }
+                else
+                {
+                    return '';
+                }
+                
+            },
+
+            getScheduleTitle(category, name)
+            {
+                switch(category)
+                {
+                    case 'Primera cita':
+                        return `Primera cita con ${name}`;
+                    case 'Cita médica':
+                        return `Cita médica con ${name}`;
+                    case 'Toma de muestras':
+                        return `Toma de muestras con ${name}`;
+                    case 'Estudio de laboratorio':
+                        return `Estudio de laboratorio con ${name}`;
+                    case 'Checkup':
+                        return `CheckUp con ${name}`;
+                    default:
+                        return 'Cita'
+                }
+            }
         }
     }
 
 </script>
 
 <style>
+
+    .fc-timegrid-event
+    {
+        min-width: auto !important;
+    }
+
+    .fc-media-screen .fc-timegrid-event
+    {
+        left: 0 !important;
+        transform: translateX(0) !important;
+        margin-left: 0 !important;
+        border-radius: 4px !important;
+    }
 
     .fc-daygrid-event:hover
     {
