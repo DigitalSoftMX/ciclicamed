@@ -14,9 +14,9 @@
 
                     <!-- Paciente -->
                     <div class="form-group">
-                        <label for="reminder">Pacientes</label>
+                        <label for="patients">Pacientes</label>
                         <select name="patients" id="patients" class="form-control select2-hidden-accessible"
-                            tabindex="-1" aria-hidden="true">
+                            tabindex="-1" aria-hidden="true" :disabled="isPatientDisabled">
                             <option v-for="patient in patientsList" :key="patient.id" :value="patient.id">
                                 {{ `${patient.first_name} ${patient.last_name}` }}
                             </option>
@@ -25,8 +25,8 @@
 
                     <!-- Tipo de cita -->
                     <div class="form-group">
-                        <label for="reminder">Tipo de cita</label>
-                        <select name="scheduleCategories" id="scheduleCategories" class="form-control select2-hidden-accessible"
+                        <label for="scheduleCategories">Tipo de cita</label>
+                        <select name="scheduleCategories" id="scheduleCategories" class="form-control select2-hidden-accessible" :disabled="isScheduleCategoryDisabled"
                             tabindex="-1" aria-hidden="true">
                             <option v-for="scheduleCategory in scheduleCategoriesList" :key="scheduleCategory.id" :value="scheduleCategory.id">
                                 {{scheduleCategory.name}}
@@ -36,8 +36,8 @@
 
                     <!-- Sucursal -->
                     <div class="form-group mb-25">
-                        <label for="name2">Sucursal</label>
-                        <select name="branches" id="branches" class="form-control select2-hidden-accessible"
+                        <label for="branches">Sucursal</label>
+                        <select name="branches" id="branches" class="form-control select2-hidden-accessible" :disabled="isBranchDisabled"
                             tabindex="-1" aria-hidden="true">
                             <option v-for="branch in branchesList" :key="branch.id" :value="branch.id">
                                 {{branch.name}}
@@ -47,8 +47,8 @@
 
                     <!-- Doctor -->
                     <div class="form-group mb-25">
-                        <label for="name2">Doctor</label>
-                        <select name="select-search" id="doctors" class="form-control select2-hidden-accessible" :disabled="isDoctorListDisabled"
+                        <label for="doctors">Doctor</label>
+                        <select name="doctors" id="doctors" class="form-control select2-hidden-accessible" :disabled="isDoctorDisabled"
                             tabindex="-1" aria-hidden="true">
                             <optgroup :label="`Especialidad: ${specialty.name}`" v-for="specialty in doctorsList" :key="specialty.id">
                                 <option v-for="doctor in specialty.employees" :key="doctor.id" :value="doctor.id">{{ `${doctor.first_name} ${doctor.last_name}` }}</option>

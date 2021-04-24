@@ -31,7 +31,7 @@
         data: function () {
 
             return {
-                url: `/agenda/paciente/1`,
+                url: `/consultas/pacientes/1`,
                 schedules: [],
             }
         },
@@ -87,13 +87,15 @@
                     })
             },
             renderSchedules(calendar) {
-                if (this.schedules.length > 0) {
+                if (Object.values(this.schedules).length > 0) {
                     Object.values(this.schedules).map(schedule => {
                         calendar.addEvent({
                             id: schedule.id,
-                            title: `${schedule.doctor.first_name} ${schedule.doctor.last_name}`,
-                            start: new Date(schedule.consult_schedule_start),
-                            end: new Date(schedule.consult_schedule_finish),
+                            title: 'aaaaa',
+                            //title: `${schedule.doctor.first_name ?? ''} ${schedule.doctor.last_name ?? ''}`, ----Areglar titulo por tipo de vista (PAciente o empleado) y por tipo
+                            //de consulta (Primera cita, subsecuente, estudio o checkup)
+                            start: schedule.consult_schedule_start,
+                            end: schedule.consult_schedule_finish,
                             textColor: '#000000',
                             borderColor: schedule.status.color,
                             backgroundColor: schedule.status.color,
@@ -108,6 +110,12 @@
 </script>
 
 <style>
+
+    .fc-daygrid-event:hover
+    {
+        cursor: pointer;
+    }
+
     .fc-event-title:hover {
         cursor: pointer;
     }

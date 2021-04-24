@@ -38,13 +38,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::patch('/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
     });
 
-    Route::group(['prefix' => 'agenda'], function() {
-        Route::get('/paciente/{id}', [ScheduleController::class, 'showPatientSchedule'])->name('agenda.paciente');
-    });
-
     Route::group(['prefix' => 'consultas'], function() {
         Route::post('/', [MedicalConsultController::class, 'store'])->name('consulta.nueva');
         Route::get('/categorias', [MedicalConsultController::class, 'getConsultTypes'])->name('consulta.categorias');
+        Route::get('/pacientes/{id}', [MedicalConsultController::class, 'getConsultsByPatient'])->name('consulta.paciente');
     });
 
 

@@ -8,16 +8,19 @@ export default {
 
     components: {},
     // emits: ['ScheduleData'],
-    props: ['schedule', 'patient'],
+    props: ['schedule', 'patientID'],
     data: function () {
         return {
             patientsList: [],
             scheduleCategoriesList: [],
             branchesList: [],
             doctorsList: [],
-            isDoctorListDisabled: true,
+            isPatientDisabled: true,
+            isScheduleCategoryDisabled: true,
+            isBranchDisabled: true,
+            isDoctorDisabled: true,
             formData: {
-                patient: Object.assign({}, this.$props.patient) ?? null,
+                patient: this.$props.patient,
                 scheduleCategory: null,
                 branch: null,
                 doctor: null,
@@ -28,7 +31,6 @@ export default {
     },
     mounted() {
         self = this;
-
         const overlay = document.querySelector('.overlay-dark');
 
         overlay.addEventListener('click', () => self.closeLateralSchedule());
@@ -63,10 +65,14 @@ export default {
             timeSeparator: ':',
         });
 
-
-        this.getPatientsList();
+        if(this.patientID === undefined)
+        {
+            this.getPatientsList();
+            this.isPatientDisabled = false;
+        }
         this.getBranchList();
         this.getSchedulesCategories();
+        this.getPatientSelected(this);
         this.getScheduleCategorySelected(this);
         this.getBranchSelected(this);
         this.getDoctorSelected(this);
@@ -139,7 +145,6 @@ export default {
 
 
         getDoctorsList() {
-            console.log()
             axios.get(`/sucursales/${this.formData.branch}/especialidades/doctores`)
                 .then(response => {
                     this.doctorsList = response.data.filter(list => list.employees.length > 0);
@@ -150,30 +155,8 @@ export default {
                 })
         },
 
-
-        getScheduleCategorySelected(self)
-        {
-            $('#scheduleCategories').on('select2:select', function () {
-                self.formData.scheduleCategory = $('#scheduleCategories').find(':selected').val();
-                switch(self.scheduleCategoriesList[self.formData.scheduleCategory ].name)
-                {
-                    case 'Primera cita':
-                        console.log('data')
-                        self.isDoctorListDisabled = false;
-                        break;
-                    case 'Cita médica':
-                        console.log('data')
-                        self.isDoctorListDisabled = false;
-                        break;
-                    case 'Checkup':
-                        break;
-                    default:
-                        self.isDoctorListDisabled = true;
-                }
-            });
-        },
-
         createNewSchedule() {
+            console.log(this.formData)
             axios.post('/consultas', {
                     data: {...this.formData}
                 })
@@ -186,13 +169,43 @@ export default {
         },
 
 
+        getPatientSelected(self)
+        {
+            $('#patients').on('select2:select', function () {
+                self.formData.patient = $('#patients').select2('data')[0][`id`];
+                self.isScheduleCategoryDisabled = false;
+            });
+        },
+
+        
+        getScheduleCategorySelected(self)
+        {
+            $('#scheduleCategories').on('select2:select', function () {
+                self.formData.scheduleCategory = $('#scheduleCategories').select2('data')[0][`id`];
+                self.isBranchDisabled = false;
+            });
+        },
+
+
         getBranchSelected(self)
         {
             $('#branches').on('select2:select', function () {
-                self.formData.branch = $('#branches').find(':selected').val();
-                if(!self.isDoctorListDisabled)
+                self.formData.branch = $('#branches').select2('data')[0][`id`];
+
+                switch(self.scheduleCategoriesList[self.formData.scheduleCategory ].name)
                 {
-                    self.getDoctorsList();
+                    case 'Primera cita':
+                        self.getDoctorsList();
+                        self.isDoctorDisabled = false;
+                        break;
+                    case 'Cita médica':
+                        self.getDoctorsList();
+                        self.isDoctorDisabled = false;
+                        break;
+                    case 'Checkup':
+                        break;
+                    default:
+                        self.isDoctorDisabled = true;
                 }
             });
         },
@@ -201,7 +214,7 @@ export default {
         getDoctorSelected(self)
         {
             $('#doctors').on('select2:select', function () {
-                self.formData.doctor = $('#doctors').find(':selected').val();
+                self.formData.doctor = $('#doctors').select2('data')[0][`id`];
             });
         },
 
