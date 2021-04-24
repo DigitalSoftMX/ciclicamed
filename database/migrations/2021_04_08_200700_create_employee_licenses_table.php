@@ -16,7 +16,7 @@ class CreateEmployeeLicensesTable extends Migration
         Schema::create('employee_licenses', function (Blueprint $table) {
             $table->unsignedMediumInteger('employee_id', false);
             $table->string('degree_title', 100);
-            $table->string('licence_number', 8);
+            $table->string('license_number', 8);
             $table->unsignedSmallInteger('medicalspecialty_id');
             $table->timestamps();
 

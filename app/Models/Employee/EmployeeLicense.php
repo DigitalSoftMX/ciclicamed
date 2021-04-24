@@ -13,7 +13,7 @@ class EmployeeLicense extends Model
     protected $fillable = [
         'employee_id',
         'degree_title',
-        'licence_number',
+        'license_number',
         'medicalspecialty_id'
     ];
 

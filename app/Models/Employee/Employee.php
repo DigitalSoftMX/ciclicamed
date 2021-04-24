@@ -65,12 +65,7 @@ class Employee extends Model
 
     public function medicalconsults()
     {
-        return $this->hasMany(MedicalConsult::class, 'created_by');
-    }
-
-    public function test()
-    {
-        return $this->hasMany(EmployeeSchedule::class, 'employee_id');
+        return $this->hasMany(MedicalConsult::class, 'doctor_id');
     }
 
 }

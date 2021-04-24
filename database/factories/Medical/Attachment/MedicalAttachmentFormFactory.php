@@ -23,7 +23,7 @@ class MedicalAttachmentFormFactory extends Factory
     {
         return [
             'name' => $this->faker->text(150),
-            'medicalspecialty_id' => $this->faker->numberBetween(1, 5)
+            'medicalspecialty_id' => $this->faker->numberBetween(1, 10)
         ];
     }
 }

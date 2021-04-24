@@ -180,8 +180,8 @@
     import moment from 'moment';
     import ErrorAlertComponent from '../alert/ErrorAlertComponent.vue';
     import SuccessAlertComponent from '../alert/SuccessAlertComponent.vue';
-    import datepickerFactory from 'jquery-datepicker';
-    datepickerFactory($);
+    // import datepickerFactory from 'jquery-datepicker';
+    // datepickerFactory($);
 
     export default {
         components: {
@@ -201,6 +201,14 @@
             }
         },
         mounted() {
+            $("#birthday").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                container: "#container",
+                dateFormat: "dd/mm/yy",
+                yearRange: `1930:${new Date().getFullYear().toString()}`,
+                onSelect() {}
+            });
         },
         methods: {
             getBirthday() {

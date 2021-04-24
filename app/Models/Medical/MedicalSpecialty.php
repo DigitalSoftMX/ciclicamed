@@ -20,7 +20,7 @@ class MedicalSpecialty extends Model
 
     public function employees()
     {
-        return $this->belongsToMany(Employee::class, 'employee_licenses', 'medicalspecialty_id', 'employee_id')->withPivot('degree_title', 'licence_number');
+        return $this->belongsToMany(Employee::class, 'employee_licenses', 'medicalspecialty_id', 'employee_id')->withPivot('degree_title', 'license_number');
     }
 
     public function medicalattachmentform()

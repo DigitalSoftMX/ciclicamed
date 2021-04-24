@@ -23,14 +23,17 @@ class PatientFactory extends Factory
     {
         static $user = 1;
         return [
-            'first_name' => $this->faker->unique()->firstName(),
-            'last_name' => $this->faker->unique()->lastName(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            // 'first_name' => $this->faker->unique()->firstName(),
+            // 'last_name' => $this->faker->unique()->lastName(),
             'gender' => $this->faker->numberBetween(0, 1),
             'birthday' => $this->faker->dateTimeThisCentury->format('Y-m-d'),
             'address' => $this->faker->address,
             'phone' => $this->faker->regexify('[0-9]{10}'),
             'cellphone' => $this->faker->regexify('[0-9]{10}'),
-            'email' => $this->faker->unique()->safeEmail(),
+            'email' => $this->faker->safeEmail(),
+            //'email' => $this->faker->unique()->safeEmail(),
             'photo' => $this->faker->regexify('[A-Za-z0-9]{25}'),
             'preregistration_id' => $user++
         ];

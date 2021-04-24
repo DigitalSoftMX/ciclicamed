@@ -28,10 +28,10 @@ class MedicalConsult extends Model
 
     protected $fillable = [
         'patient_id',
+        'doctor_id',
         'created_by',
         'medicalconsulttype_id',
         'medicalconsultstatus_id',
-        'is_confirmed',
         'consult_reason',
         'consult_schedule_start',
         'consult_schedule_finish',
@@ -49,7 +49,7 @@ class MedicalConsult extends Model
 
     public function doctor()
     {
-        return $this->belongsTo(Employee::class, 'created_by');
+        return $this->belongsTo(Employee::class, 'doctor_id');
     }
 
     public function type()

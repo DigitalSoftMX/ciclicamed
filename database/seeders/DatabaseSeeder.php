@@ -55,14 +55,14 @@ class DatabaseSeeder extends Seeder
 
         UserStatus::factory(5)->create();
         UserCategory::factory(2)->create();
-        User::factory(20)->create();
-        Preregistration::factory(5)->create();
-        Patient::factory(5)->create();
+        User::factory(2020)->create();
+        Preregistration::factory(1999)->create();
+        Patient::factory(1999)->create();
         InvoiceData::factory(5)->create();
         EmployeeCategory::factory(6)->create();
         EmployeeStatus::factory(5)->create();
         Employee::factory(15)->create();
-        MedicalSpecialty::factory(5)->create();
+        MedicalSpecialty::factory(10)->create();
         EmployeeLicense::factory(20)->create();
         Branch::factory(15)->create();
         EmployeeSchedule::factory(20)->create();

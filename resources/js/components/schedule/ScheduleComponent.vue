@@ -87,18 +87,20 @@
                     })
             },
             renderSchedules(calendar) {
-                Object.values(this.schedules).map(schedule => {
-                    calendar.addEvent({
-                        id: schedule.id,
-                        title: `${schedule.doctor.first_name} ${schedule.doctor.last_name}`,
-                        start: new Date(schedule.consult_schedule_start),
-                        end: new Date(schedule.consult_schedule_finish),
-                        textColor: '#000000',
-                        borderColor: schedule.status.color,
-                        backgroundColor: schedule.status.color,
-                        display: 'block',
-                    })
-                });
+                if (this.schedules.length > 0) {
+                    Object.values(this.schedules).map(schedule => {
+                        calendar.addEvent({
+                            id: schedule.id,
+                            title: `${schedule.doctor.first_name} ${schedule.doctor.last_name}`,
+                            start: new Date(schedule.consult_schedule_start),
+                            end: new Date(schedule.consult_schedule_finish),
+                            textColor: '#000000',
+                            borderColor: schedule.status.color,
+                            backgroundColor: schedule.status.color,
+                            display: 'block',
+                        })
+                    });
+                }
             },
         }
     }

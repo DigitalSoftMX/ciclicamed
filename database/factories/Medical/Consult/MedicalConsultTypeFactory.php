@@ -21,8 +21,12 @@ class MedicalConsultTypeFactory extends Factory
      */
     public function definition()
     {
+
+        $types = ['Primera cita', 'Cita médica', 'Toma de muestras', 'Estudio de laboratorio', 'Checkup'];
+        static $row = -1;
+        $row++;
         return [
-            'name' => $this->faker->text(100)
+            'name' => $types[$row],
         ];
     }
 }
