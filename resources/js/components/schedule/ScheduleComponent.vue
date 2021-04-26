@@ -3,7 +3,7 @@
         <div class="card no-top mb-25">
             <div id='full-calendar'></div>
         </div>
-        <schedule-action-component></schedule-action-component>
+        <schedule-action-component :schedule="scheduleSelected"></schedule-action-component>
         <lateral-schedule-component ref="openLateralSchedule"></lateral-schedule-component>
     </div>
 </template>
@@ -20,7 +20,7 @@
     import listPlugin from '@fullcalendar/list';
     import interactionPlugin from '@fullcalendar/interaction';
     import NewScheduleComponent from './NewScheduleComponent';
-    import ScheduleActionComponent from './ScheduleActionComponent.vue';
+    import ScheduleActionComponent from './ScheduleActionComponent/ScheduleActionComponent.vue';
     import LateralScheduleComponent from './LateralScheduleComponent/LateralScheduleComponent.vue';
 
     export default {
@@ -33,6 +33,7 @@
             return {
                 url: `/consultas/pacientes/1`,
                 schedules: [],
+                scheduleSelected: {}
             }
         },
         mounted() {
@@ -67,6 +68,7 @@
                     self.$refs.openLateralSchedule.openLateralSchedule()
                 },
                 eventClick: function (data) {
+                    self.scheduleSelected = Object.values(self.schedules).filter(schedule => schedule[`id`] === Number(data.event.id))[0];
                     $('#schedule-action').modal('show');
                 },
             });

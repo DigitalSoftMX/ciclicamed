@@ -1,3 +1,4 @@
+
 import { createApp } from 'vue';
 import LoginComponent from  './components/login/LoginComponent';
 
@@ -20,8 +21,6 @@ import UserTestPage from './pages/user/UserTestPage';
 	//Schedule
 	import ScheduleComponent from './components/schedule/ScheduleComponent';
 	import NewScheduleComponent from './components/schedule/ScheduleComponent';
-	import ScheduleActionComponent from './components/schedule/ScheduleActionComponent';
-	import LateralScheduleComponent from './components/schedule/LateralScheduleComponent/LateralScheduleComponent';
 	
 const app = createApp({
     components: {
@@ -38,8 +37,6 @@ const app = createApp({
 		UserTestPage,
 		ScheduleComponent,
 		NewScheduleComponent,
-		ScheduleActionComponent,
-		LateralScheduleComponent
 	}
 });
 
