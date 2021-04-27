@@ -20,7 +20,7 @@ class BranchController extends Controller
     public function getDoctorsAllSpecialties($id)
     {
         DB::statement("SET SQL_MODE=''");
-        $specialties = MedicalSpecialty::with(['employees' => function($query) use ($id){
+        $specialties = MedicalSpecialty::with(['doctors' => function($query) use ($id){
             $query->whereHas('schedules', function($query) use($id) {
                 $query->where('branch_id', $id)->groupBy('branch_id', 'employee_id');
             })->groupBy('employee_id', 'medicalspecialty_id')->orderBy('employees.last_name', 'ASC');

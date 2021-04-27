@@ -15,6 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/style.scss', 'public/css')
     .sourceMaps()
     .vue()
+    .browserSync('http://127.0.0.1:8000/')
     .webpackConfig({
         module: {
           rules: [
@@ -27,6 +28,6 @@ mix.js('resources/js/app.js', 'public/js')
           ]
         },
         resolve: {
-          extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
+          extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx", ".interface.ts", ".data"]
         }
     });

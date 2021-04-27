@@ -5,7 +5,12 @@
       "module": "es2015",
       "moduleResolution": "node",
       "experimentalDecorators": true,
-      "allowSyntheticDefaultImports": true
+      "allowSyntheticDefaultImports": true,
+      "paths": {
+        "@/*": [
+         "./*"
+        ]
+       }
   },
   "include": ["resources/js/**/*", "resources/js/components/**/**/*"],
   "exclude": [

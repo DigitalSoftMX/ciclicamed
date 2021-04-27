@@ -19,8 +19,7 @@ import UserTestPage from './pages/user/UserTestPage';
 	import UserCardBioComponent from  './components/user/UserCardBioComponent';
 	import UserProfileComponent from  './components/user/UserProfileComponent';
 	//Schedule
-	import ScheduleComponent from './components/schedule/ScheduleComponent';
-	import NewScheduleComponent from './components/schedule/ScheduleComponent';
+	import ScheduleComponent from './components/schedule/ScheduleComponent/ScheduleComponent.vue';
 	
 const app = createApp({
     components: {
@@ -36,7 +35,6 @@ const app = createApp({
 		PrescriptionModalComponent,
 		UserTestPage,
 		ScheduleComponent,
-		NewScheduleComponent,
 	}
 });
 

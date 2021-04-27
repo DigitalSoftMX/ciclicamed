@@ -1,0 +1,20 @@
+.lateral-schedule-background {
+    background-color: #faf4ff !important;
+}
+.ui-datepicker {
+    z-index: 9999 !important;
+}
+.lateralCardColor
+{
+    border-left-color: #60269E !important;
+    border-left-width: 5px !important;
+}
+.wickedpicker
+{
+    z-index: 9999 !important;
+}
+
+.atbd-drawer
+{
+    overflow: auto !important;
+}

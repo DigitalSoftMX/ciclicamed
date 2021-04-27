@@ -1,11 +1,11 @@
 <template>
-    <div class="drawer-basic-wrap" id="container">
+    <div class="drawer-basic-wrap" :id="`drawer${id}`">
 
         <div class="atbd-drawer drawer-basic d-none lateral-schedule-background">
 
             <!-- Drawer header-->
             <div class="atbd-drawer__header">
-                <h6 class="drawer-title">Basic Drawer</h6>
+                <h6 class="drawer-title">{{ getLateralScheduleTitle() }}</h6>
             </div>
 
             <!-- Drawer body -->
@@ -13,9 +13,9 @@
                 <div class="drawer-content">
 
                     <!-- Paciente -->
-                    <div class="form-group">
+                    <div class="form-group" v-show="schedule.id < 1">
                         <label for="patients">Pacientes</label>
-                        <select name="patients" id="patients" class="form-control select2-hidden-accessible"
+                        <select name="patients" :id="`patients${id}`" class="form-control select2-hidden-accessible"
                             tabindex="-1" aria-hidden="true" :disabled="isPatientDisabled">
                             <option v-for="patient in patientsList" :key="patient.id" :value="patient.id">
                                 {{ `${patient.first_name} ${patient.last_name}` }}
@@ -26,10 +26,10 @@
                     <!-- Tipo de cita -->
                     <div class="form-group">
                         <label for="scheduleCategories">Tipo de cita</label>
-                        <select name="scheduleCategories" id="scheduleCategories" class="form-control select2-hidden-accessible" :disabled="isScheduleCategoryDisabled"
+                        <select name="scheduleCategories" :id="`scheduleCategories${id}`" class="form-control select2-hidden-accessible" :disabled="isScheduleCategoryDisabled"
                             tabindex="-1" aria-hidden="true">
-                            <option v-for="scheduleCategory in scheduleCategoriesList" :key="scheduleCategory.id" :value="scheduleCategory.id">
-                                {{scheduleCategory.name}}
+                            <option v-for="scheduleType in scheduleTypeList" :key="scheduleType.id" :value="scheduleType.id">
+                                {{scheduleType.name}}
                             </option>
                         </select>
                     </div>
@@ -37,7 +37,7 @@
                     <!-- Sucursal -->
                     <div class="form-group mb-25">
                         <label for="branches">Sucursal</label>
-                        <select name="branches" id="branches" class="form-control select2-hidden-accessible" :disabled="isBranchDisabled"
+                        <select name="branches" :id="`branches${id}`" class="form-control select2-hidden-accessible" :disabled="isBranchDisabled"
                             tabindex="-1" aria-hidden="true">
                             <option v-for="branch in branchesList" :key="branch.id" :value="branch.id">
                                 {{branch.name}}
@@ -48,10 +48,10 @@
                     <!-- Doctor -->
                     <div class="form-group mb-25">
                         <label for="doctors">Doctor</label>
-                        <select name="doctors" id="doctors" class="form-control select2-hidden-accessible" :disabled="isDoctorDisabled"
+                        <select name="doctors" :id="`doctors${id}`" class="form-control select2-hidden-accessible" :disabled="isDoctorDisabled"
                             tabindex="-1" aria-hidden="true">
                             <optgroup :label="`Especialidad: ${specialty.name}`" v-for="specialty in doctorsList" :key="specialty.id">
-                                <option v-for="doctor in specialty.employees" :key="doctor.id" :value="doctor.id">{{ `${doctor.first_name} ${doctor.last_name}` }}</option>
+                                <option v-for="doctor in specialty.doctors" :key="doctor.id" :value="doctor.id">{{ `${doctor.first_name} ${doctor.last_name}` }}</option>
                             </optgroup>
                         </select>
                     </div>
@@ -63,7 +63,7 @@
                             <span class="mr-5">
                                 <img src="/svg/text.svg" alt="Text logo">
                             </span>
-                            <textarea type="text" class="form-control" id="address" placeholder="Motivo de cita" v-model="formData.scheduleNote"
+                            <textarea type="text" class="form-control" id="address" placeholder="Motivo de cita" v-model="formData.consult_reason"
                                 maxlength="255"></textarea>
                         </div>
                         <div class="float-right">
@@ -78,7 +78,7 @@
                             <span class="mr-5">
                                 <img src="/svg/clock.svg" alt="Clock logo">
                             </span>
-                            <input type="text" class="form-control form-control-lg bg-white" id="scheduleDate" @click="getScheduleDateTime()"
+                            <input type="text" class="form-control form-control-lg bg-white" :id="`scheduleDate${id}`"
                                    placeholder="dd/mm/aaaa"
                                    maxlength="10" readonly>
                         </div>
@@ -91,7 +91,7 @@
                             <span class="mr-5">
                                 <img src="/svg/calendar.svg" alt="Calendar logo">
                             </span>
-                            <input type="text" class="form-control form-control-lg bg-white" id="scheduleTime"
+                            <input type="text" class="form-control form-control-lg bg-white" :id="`scheduleTime${id}`"
                                 placeholder="dd/mm/aaaa"
                                 maxlength="10" readonly>
                         </div>
@@ -123,7 +123,7 @@
                     </div>
 
                     <!-- Tarjeta de cita -->
-                    <div class="card rounded-0 lateralCardColor" v-if="schedule">
+                    <div class="card rounded-0 lateralCardColor" v-if="schedule.id > 0">
                         <div class="card-body py-2 px-3">
                             <h6 class="text-primary mb-1">Lorem ipsum dolom asitum</h6>
                             <p class="m-0 text-primary">12:00 - 2:00</p>
@@ -137,23 +137,6 @@
     <div class="overlay-dark"></div>
 </template>
 
-<script src="./LateralScheduleComponent.js"></script>
+<script lang="ts" src="./LateralScheduleComponent.ts"></script>
 
-<style>
-    .lateral-schedule-background {
-        background-color: #faf4ff !important;
-    }
-    .ui-datepicker {
-        z-index: 9999 !important;
-    }
-    .lateralCardColor
-    {
-        border-left-color: #60269E !important;
-        border-left-width: 5px !important;
-    }
-    .wickedpicker
-    {
-        z-index: 9999 !important;
-    }
-
-</style>
+<style src="./LateralScheduleComponent.css"></style>

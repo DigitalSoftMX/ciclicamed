@@ -2,36 +2,41 @@ import {
     defineComponent
 } from '@vue/runtime-core';
 import moment from 'moment';
-import { PropType } from 'vue';
+import { DefineComponent, PropType } from 'vue';
 moment.locale('es');
 import { Schedule } from '../../../interfaces/Schedule/Schedule.interface';
-import { DefaultScheduleActionComponentData } from './ScheduleActionComponent.data';
+import { ScheduleData } from '../../../defaultData/Schedule/Schedule.data';
 
 export default defineComponent({
-    components: {},
+    components: {
+        'LateralScheduleComponent': require('../LateralScheduleComponent/LateralScheduleComponent.vue').default
+    },
     props: {
         schedule: {
             type: Object as PropType<Schedule>,
-            default: () => DefaultScheduleActionComponentData
+            default: () => ScheduleData
         }
     },
-    data: function (props) {
+    data() {
         return {
-            schedule: props.schedule?.branch
         };
     },
     mounted() {
-        console.log(this.$props.schedule)
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+          })
     },
     methods: {
-        formatScheduleTime(datetime: Date): string {
-            return moment(datetime).format('hh:mm A');
+        formatScheduleTime(datetime: string): string {
+            return moment(datetime, 'YYYY-MM-DD HH:mm A').format('hh:mm A');
         },
-        formatScheduleDate(datetime: Date): string {
-            return moment(datetime).format('D [de] MMMM [del] YYYY');
+        formatScheduleDate(datetime: string): string {
+            return moment(datetime, 'YYYY-MM-DD HH:mm A').format('D [de] MMMM [del] YYYY');
         },
-        getScheduleBranch(): string {
-            return this.schedule.branch.name ?? 'data';
+        openLateralSchedule()
+        {
+            const child = this.$refs.openLateralSchedule as DefineComponent;
+            child.openLateralSchedule()
         }
     },
 })

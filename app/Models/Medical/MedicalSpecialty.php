@@ -18,7 +18,7 @@ class MedicalSpecialty extends Model
         'name'
     ];
 
-    public function employees()
+    public function doctors()
     {
         return $this->belongsToMany(Employee::class, 'employee_licenses', 'medicalspecialty_id', 'employee_id')->withPivot('degree_title', 'license_number');
     }
