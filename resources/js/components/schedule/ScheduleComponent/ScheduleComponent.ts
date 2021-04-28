@@ -10,7 +10,6 @@ import listPlugin from '@fullcalendar/list';
 import {
     defineComponent
 } from '@vue/runtime-core';
-import mitt from 'mitt';
 import { DefineComponent, PropType, ref } from 'vue';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ScheduleData } from '../../../defaultData/Schedule/Schedule.data';
@@ -23,37 +22,37 @@ export default defineComponent({
         'LateralScheduleComponent': require('../LateralScheduleComponent/LateralScheduleComponent.vue').default
     },
     props: {},
-    emits: ['openLateralSchedule'],
     data() {
         return {
             url: `/consultas/pacientes/1`,
             schedules: [] as Schedule[],
             scheduleSelected: ScheduleData,
+            calendar: Calendar as any
         }
     },
     methods: {
-        getSchedules(calendar: Calendar): void {
+        getSchedules(): void {
             axios.get<Schedule[]>(this.url)
                 .then(response => {
                     this.schedules = response.data;
-                    this.renderSchedules(calendar);
+                    this.renderSchedules();
                 })
                 .catch(error => {
                     console.log(error)
                 })
         },
 
-        renderSchedules(calendar:Calendar): void {
+        renderSchedules(): void {
             this.schedules.map(schedule => {
                 const name = this.getNameSchedule(schedule);
-                calendar.addEvent({
+                this.calendar.addEvent({
                     id: schedule.id.toString(),
                     title: this.getScheduleTitle(schedule.type.name, name),
                     start: schedule.consult_schedule_start,
                     end: schedule.consult_schedule_finish,
                     textColor: '#000000',
-                    borderColor: schedule.status.color,
-                    backgroundColor: schedule.status.color,
+                    borderColor: schedule.status?.color,
+                    backgroundColor: schedule.status?.color,
                     display: 'block',
                 })
             });
@@ -79,13 +78,23 @@ export default defineComponent({
                 default:
                     return 'Cita'
             }
+        },
+
+        removeScheduleCanceled(data: Schedule)
+        {
+            this.schedules =  this.schedules.map(schedule => schedule.id === data.id ? {...schedule, ...data} : schedule);
+            console.log( data.consult_schedule_start,  data.consult_schedule_finish)
+            const scheduleEvent = this.calendar.getEventById( data.id );
+            scheduleEvent.setDates( data.consult_schedule_start,  data.consult_schedule_finish );
+            scheduleEvent.setProp( 'borderColor', data.status?.color );
+            scheduleEvent.setProp( 'backgroundColor', data.status?.color );
         }
     },
     mounted() {
         const self = this;
         const el:HTMLElement = document.getElementById('full-calendar') ?? document.createElement('div', ) as HTMLDivElement;
-        new ResizeObserver(() => calendar.updateSize()).observe(el);
-        const calendar: Calendar = new Calendar(el, {
+        new ResizeObserver(() => this.calendar.updateSize()).observe(el);
+        this.calendar = new Calendar(el, {
             plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
             initialView: 'dayGridMonth',
             displayEventTime: true,
@@ -119,8 +128,8 @@ export default defineComponent({
                 $('#schedule-action').modal('show');
             },
         });
-        calendar.setOption('locale', 'es');
-        calendar.render();
-        this.getSchedules(calendar);
+        this.calendar.setOption('locale', 'es');
+        this.calendar.render();
+        this.getSchedules();
     },
 })

@@ -73,7 +73,6 @@ export default defineComponent({
             
             $(`#scheduleCategories${this.id}`).val(this.formData.medicalconsulttype_id.toString()).trigger('change');
             $(`#branches${this.id}`).val(this.formData.branch_id.toString()).trigger('change');
-            console.log(this.schedule)
             if (this.schedule.id > 0)
             {
                 this.isScheduleCategoryDisabled = false;
@@ -84,6 +83,10 @@ export default defineComponent({
                 this.getDoctorsList();
                 $(`#doctors${this.id}`).val(this.formData.doctor_id.toString()).trigger('change');
                 this.isDoctorDisabled = false;
+            }
+            if(this.scheduleTypeList[this.schedule.medicalconsulttype_id].name !== 'Primera cita' && this.scheduleTypeList[this.schedule.medicalconsulttype_id].name !== 'Cita médica')
+            {
+                this.isDoctorDisabled = true;
             }
 
         }
@@ -245,6 +248,10 @@ export default defineComponent({
                 self.formData.doctor_id = $(`#doctors${self.id}`).select2('data')[0][`id`];
             });
         },
+
+        formatScheduleTime(datetime: string): string {
+            return moment(datetime, 'YYYY-MM-DD HH:mm A').format('hh:mm A');
+        },
     },
     mounted() {
         const self = this;
@@ -263,7 +270,8 @@ export default defineComponent({
             onSelect() {
                 const time = wickedPicker.wickedpicker('time');
                 const date = moment($(`#scheduleDate${self.id}`).datepicker('getDate')).format('YYYY-MM-DD');
-                self.formData.consult_schedule_start = moment.utc(date + ' ' + time, 'YYYY-MM-DD HH:mm A').format('l LT');
+                // self.formData.consult_schedule_start = moment(date + ' ' + time, 'YYYY-MM-DD HH:mm A').format('l LT');
+                self.formData.consult_schedule_start = moment(date + ' ' + time).unix();
             }
         })
 

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Medical\Consult;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Medical\Consult\MedicalConsultRequest;
 use App\Models\Medical\Consult\MedicalConsult;
+use App\Models\Medical\Consult\MedicalConsultStatus;
 use App\Models\Medical\Consult\MedicalConsultType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class MedicalConsultController extends Controller
 {
@@ -14,7 +17,6 @@ class MedicalConsultController extends Controller
     {
         $consultExist = false;
         // $consulType = MedicalConsultType::find($request->input('data.scheduleCategory'));
-        $start = Carbon::createFromTimeString($request->input('data.scheduleDatetime'));
 
 
         // switch($consulType->id)
@@ -37,13 +39,13 @@ class MedicalConsultController extends Controller
 
         
         $consult = MedicalConsult::create([
-            'patient_id' => $request->input('data.patient'),
-            'doctor_id' => $request->input('data.doctor'),
-            'medicalconsulttype_id' => $request->input('data.scheduleCategory'),
-            'consult_reason' => $request->input('data.scheduleNote'),
-            'consult_schedule_start' => Carbon::createFromTimeString($request->input('data.scheduleDatetime')),
-            'consult_schedule_finish' => Carbon::createFromTimeString($request->input('data.scheduleDatetime')),
-            'branch_id' => $request->input('data.branch'),
+            'patient_id' => $request->input('data.patient_id'),
+            'doctor_id' => $request->input('data.doctor_id'),
+            'medicalconsulttype_id' => $request->input('data.medicalconsulttype_id'),
+            'consult_reason' => $request->input('data.consult_reason'),
+            'consult_schedule_start' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
+            'consult_schedule_finish' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
+            'branch_id' => $request->input('data.branch_id'),
             'medicalconsultstatus_id' => 1,
         ]);
         return $consult;
@@ -52,6 +54,7 @@ class MedicalConsultController extends Controller
         // Revisar si existe una cita ya creada con anterioridad que coincida con la hora ocupada
         // Agregar el tiempo de finalizacion de la cita automaticamente de acuerdo a tipo de cita
         // Agregar verificaciones de request
+        // Revisar el envio de tiempo y conversion de Carbon
     }
 
     public function getConsultTypes()
@@ -67,6 +70,43 @@ class MedicalConsultController extends Controller
                                 ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
         //broadcast(new ScheduleEvent($patient));
         return response()->json($patient);
+    }
+
+    public function cancelConsult(Request $request, $id)
+    {
+        $consultType = MedicalConsultStatus::where('name', 'Cancelado')->firstOrFail()->id;
+        $consult = MedicalConsult::findOrFail($id);
+        $today = Carbon::now()->startOfDay();
+        $consultDate = Carbon::parse($consult->consult_schedule_start)->startOfDay();
+        $dayDifference = $today->diffInDays($consultDate, false);
+        if ($dayDifference < 0)
+        {
+            return response()->json([
+                'errors' => [
+                    'date' => [
+                        "Solo se pueden cancelar citas del día de hoy o posteriores"
+                    ]
+                ]
+            ], 422);
+        }
+        if(in_array($consult->status->name, ['En consulta', 'Finalizado', 'Cancelado']))
+        {
+            return response()->json([
+                'errors' => [
+                    'consult' => [
+                        "No se puede cancelar esta cita por que está {$consult->status->name}"
+                    ]
+                ]
+            ], 422);
+        }
+
+        $consult->update([
+            'medicalconsultstatus_id' => $consultType,
+            'consult_schedule_start' => Carbon::parse($consult->consult_schedule_start)->setTime(21,0,0),
+            'consult_schedule_finish' => Carbon::parse($consult->consult_schedule_start)->setTime(21,0,0)
+        ]);
+        $consult->status;
+        return response()->json($consult);
     }
 }
 

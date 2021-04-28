@@ -25,7 +25,10 @@
 
 <script>
     export default {
-        props: ['id', 'title', 'errors']
+        props: ['id', 'title', 'errors'],
+        mounted:  function() {
+            console.log(this.$props.errors)
+        }
     }
 
 </script>

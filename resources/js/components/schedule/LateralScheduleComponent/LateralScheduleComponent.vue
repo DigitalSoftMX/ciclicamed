@@ -125,8 +125,8 @@
                     <!-- Tarjeta de cita -->
                     <div class="card rounded-0 lateralCardColor" v-if="schedule.id > 0">
                         <div class="card-body py-2 px-3">
-                            <h6 class="text-primary mb-1">Lorem ipsum dolom asitum</h6>
-                            <p class="m-0 text-primary">12:00 - 2:00</p>
+                            <h6 class="text-primary mb-1">{{ `${patientsList[schedule.patient_id].first_name} ${patientsList[schedule.patient_id].last_name}` }}</h6>
+                            <p class="m-0 text-primary">{{ `${formatScheduleTime(this.schedule.consult_schedule_start)} - ${formatScheduleTime(this.schedule.consult_schedule_finish)}` }}</p>
                         </div>
                     </div>
 

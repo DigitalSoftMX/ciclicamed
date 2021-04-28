@@ -12,10 +12,10 @@
                             <img src="/svg/edit.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
                                 data-placement="bottom" title="Modificar cita">
                         </button>
-                        <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3"
+                        <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3" @click="deleteSchedule()" v-if="isCancelOptionEnabled"
                             data-dismiss="modal" aria-label="Close">
                             <img src="/svg/delete.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
-                                data-placement="bottom" title="Eliminar cita">
+                                data-placement="bottom" title="Cancelar cita">
                         </button>
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3"
                             data-dismiss="modal" aria-label="Close">
@@ -62,6 +62,10 @@
     </div>
 
     <lateral-schedule-component ref="openLateralSchedule" :schedule="schedule"></lateral-schedule-component>
+    <success-alert-component :id="'actionConsultSuccess'" :message="'Se ha cancelado la cita correctamente'" :title="'Datos del perfil actualizados'">
+    </success-alert-component>
+    <error-alert-component :id="'actionConsultError'" :errors="errors" :title="'Error al cancelar la cita'">
+    </error-alert-component>
 </template>
 
 <script lang="ts" src="./ScheduleActionComponent.ts"></script>

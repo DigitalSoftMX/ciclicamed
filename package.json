@@ -42,7 +42,6 @@
         "jquery-datepicker": "^1.12.3",
         "jquery-ui": "^1.12.1",
         "jquery-ui-bundle": "^1.12.1-migrate",
-        "mitt": "^2.1.0",
         "moment": "^2.29.1",
         "select2": "^4.1.0-rc.0",
         "sweetalert2": "^10.16.3",

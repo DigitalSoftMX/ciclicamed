@@ -4,13 +4,19 @@ import {
 import moment from 'moment';
 import { DefineComponent, PropType } from 'vue';
 moment.locale('es');
+import axios from 'axios';
 import { Schedule } from '../../../interfaces/Schedule/Schedule.interface';
 import { ScheduleData } from '../../../defaultData/Schedule/Schedule.data';
+import { AlertError } from '../../../interfaces/Alert/Error/AlertError.interface';
+require('bootstrap');
 
 export default defineComponent({
     components: {
-        'LateralScheduleComponent': require('../LateralScheduleComponent/LateralScheduleComponent.vue').default
+        'LateralScheduleComponent': require('../LateralScheduleComponent/LateralScheduleComponent.vue').default,
+        'SuccessAlertComponent': require('../../alert/SuccessAlertComponent.vue').default,
+        'ErrorAlertComponent': require('../../alert/ErrorAlertComponent.vue').default
     },
+    emits: ['scheduleCanceled'],
     props: {
         schedule: {
             type: Object as PropType<Schedule>,
@@ -19,12 +25,20 @@ export default defineComponent({
     },
     data() {
         return {
+            errors: {} as AlertError,
+            isCancelOptionEnabled: false as boolean
         };
     },
     mounted() {
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
           })
+    },
+    watch: {
+        schedule()
+        {
+            this.showCancelOption();
+        }
     },
     methods: {
         formatScheduleTime(datetime: string): string {
@@ -37,6 +51,23 @@ export default defineComponent({
         {
             const child = this.$refs.openLateralSchedule as DefineComponent;
             child.openLateralSchedule()
+        },
+        deleteSchedule()
+        {
+            axios.delete<Schedule>(`/consultas/${this.schedule.id}`,)
+            .then(response => {
+                this.$emit('scheduleCanceled', response.data);
+                $('#actionConsultSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                $('#actionConsultError').modal('show');
+            })
+        },
+        showCancelOption()
+        {
+            const estados: string[] = ['Agendado', 'Confirmado', 'Ausente'];
+            this.isCancelOptionEnabled = moment(this.schedule.consult_schedule_start).diff(moment()) > 0 && estados.includes(this.schedule.status.name);
         }
     },
 })

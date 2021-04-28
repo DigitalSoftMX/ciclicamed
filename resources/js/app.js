@@ -1,4 +1,3 @@
-
 import { createApp } from 'vue';
 import LoginComponent from  './components/login/LoginComponent';
 
