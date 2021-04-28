@@ -26,7 +26,8 @@ export default defineComponent({
     data() {
         return {
             errors: {} as AlertError,
-            isCancelOptionEnabled: false as boolean
+            isCancelOptionEnabled: false as boolean,
+            isEditOptionEnabled: false as boolean
         };
     },
     mounted() {
@@ -37,7 +38,9 @@ export default defineComponent({
     watch: {
         schedule()
         {
+            console.log(this.schedule)
             this.showCancelOption();
+            this.showEditOption();
         }
     },
     methods: {
@@ -67,7 +70,12 @@ export default defineComponent({
         showCancelOption()
         {
             const estados: string[] = ['Agendado', 'Confirmado', 'Ausente'];
-            this.isCancelOptionEnabled = moment(this.schedule.consult_schedule_start).diff(moment()) > 0 && estados.includes(this.schedule.status.name);
+            this.isCancelOptionEnabled = moment(this.schedule.consult_schedule_start).diff(moment()) > 0 && estados.includes(this.schedule.status!.name);
+        },
+        showEditOption()
+        {
+            const estados: string[] = ['Agendado', 'Confirmado', 'Ausente', 'Cancelado'];
+            this.isEditOptionEnabled = moment(this.schedule.consult_schedule_start).diff(moment()) > 0 && estados.includes(this.schedule.status!.name);
         }
     },
 })

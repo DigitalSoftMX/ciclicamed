@@ -19,5 +19,5 @@ export interface Schedule
     patient?: Patient;
     status: ScheduleStatus;
     type: ScheduleType;
-    branch: Branch
+    branch: Branch;
 }

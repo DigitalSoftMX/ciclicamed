@@ -7,7 +7,7 @@
                         <h6 class="modal-title e-info-title">Agendar cita</h6>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0" @click="openLateralSchedule"
+                        <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0" @click="openLateralSchedule" v-if="isEditOptionEnabled"
                             data-dismiss="modal" aria-label="Close">
                             <img src="/svg/edit.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
                                 data-placement="bottom" title="Modificar cita">
@@ -46,7 +46,7 @@
                             <img src="/svg/branch.svg" alt="Branch logo">
                             <span class="list-line">
                                 <span class="list-label">Sucursal :</span>
-                                <span class="list-meta"> {{ schedule.branch.name }}</span>
+                                <span class="list-meta"> {{ schedule.branch?.name }}</span>
                             </span>
                         </li>
                         <li>

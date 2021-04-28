@@ -38,14 +38,17 @@ import {
 
 export default defineComponent({
     name: 'LateralScheduleComponent',
-    props: {
+    props:
+    {
         schedule: {
             type: Object as PropType <Schedule> ,
             default: () => ScheduleData
         },
+        selectDate: null
     },
     emits: ['newSchedule', 'updateSchedule'],
-    data() {
+    data()
+    {
         return {
             isPatientDisabled: true,
             isScheduleCategoryDisabled: true,
@@ -56,12 +59,24 @@ export default defineComponent({
             doctorsList: [] as BranchSpecialtyDoctors[],
             scheduleTypeList: [] as ScheduleType[],
             formData: {} as ScheduleForm,
-            id: Math.floor(Math.random() * 50) + 1
+            id: Math.floor(Math.random() * 5) + 1,
+            wickedPicker: {} as any,
+            isButtonActivated: false as boolean,
+            consultReasonCharLength: 0 as number
         };
     },
-    watch: {
-        schedule()
+    watch:
+    {
+        selectDate(): void
         {
+            $(`#scheduleDate${this.id}`).datepicker("setDate", this.selectDate );
+            this.formData.consult_schedule_start;
+            this.formatScheduleDateTime();
+        },
+
+        schedule(): void
+        {
+            
             this.formData = {
                 patient_id: this.schedule.patient_id,
                 branch_id: this.schedule.branch_id,
@@ -70,6 +85,7 @@ export default defineComponent({
                 doctor_id: this.schedule.doctor_id,
                 medicalconsulttype_id: this.schedule.medicalconsulttype_id
             }
+
             this.getBranchList();
             if(this.formData.patient_id < 1)
             {
@@ -80,6 +96,7 @@ export default defineComponent({
                 $(`#scheduleCategories${this.id}`).val('0').trigger('change');
                 $(`#branches${this.id}`).val('0').trigger('change');
                 $(`#doctors${this.id}`).val('0').trigger('change');
+                this.wickedPicker.wickedpicker('setTime', 0, '08:00');
             }
             else
             {
@@ -100,13 +117,17 @@ export default defineComponent({
                 {
                     this.isDoctorDisabled = true;
                 }
+                $(`#scheduleDate${this.id}`).datepicker("setDate", new Date(this.schedule.consult_schedule_start) );
+                const time = moment(this.formData.consult_schedule_start, 'YYYY-MM-DD HH:mm A').format('HH:mm')
+                this.wickedPicker.wickedpicker('setTime', 0, time);
             }
 
         }
     },
     methods: {
 
-        openLateralSchedule() {
+        openLateralSchedule(): void
+        {
             const drawerBasic = document.getElementById(`drawer${this.id}`) ?? document.createElement('div') as HTMLDivElement;
             const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
             drawerBasic.classList.remove('account');
@@ -117,7 +138,8 @@ export default defineComponent({
         },
 
 
-        closeLateralSchedule() {
+        closeLateralSchedule(): void
+        {
             const drawerBasic = document.getElementById(`drawer${this.id}`) ?? document.createElement('div') as HTMLDivElement;
             const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
             drawerBasic.classList.remove('show');
@@ -125,18 +147,20 @@ export default defineComponent({
         },
 
 
-        clickScheduleDate() {
+        clickScheduleDate(): void
+        {
             const menuLateral = this.$refs.scheduleDate as DefineComponent;;
             $(`#scheduleDate${this.id}`).datepicker('show');
             menuLateral.click()
         },
 
-        getLateralScheduleTitle()
+        getLateralScheduleTitle(): string
         {
             return this.schedule.id < 1 ? 'Crear cita médica' : 'Modificar cita médica'
         },
 
-        getPatientsList() {
+        getPatientsList(): void
+        {
             axios.get < Patient[] > (`/pacientes`)
                 .then(response => {
                     this.patientsList = [{
@@ -150,7 +174,8 @@ export default defineComponent({
                 })
         },
 
-        getSchedulesCategories() {
+        getSchedulesCategories(): void
+        {
             axios.get(`/consultas/categorias`)
                 .then(response => {
                     this.scheduleTypeList = [{
@@ -164,7 +189,8 @@ export default defineComponent({
         },
 
 
-        getBranchList() {
+        getBranchList(): void
+        {
             axios.get < Branch[] > (`/sucursales`)
                 .then(response => {
                     this.branchesList = [{
@@ -178,7 +204,8 @@ export default defineComponent({
         },
 
 
-        getDoctorsList() {
+        getDoctorsList(): void
+        {
             axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${this.formData.branch_id}/especialidades/doctores`)
                 .then(response => {
                     this.doctorsList = response.data.filter((list: BranchSpecialtyDoctors) => list.doctors.length > 0);
@@ -197,23 +224,24 @@ export default defineComponent({
                 })
         },
 
-        createNewSchedule() {
+        createNewSchedule(): void
+        {
             axios.post('/consultas', {
-                    data: {
-                        ...this.formData
-                    }
-                })
-                .then(response => {
-                    console.log(response);
-                    this.$emit('newSchedule', response.data);
-                    this.closeLateralSchedule()
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+                data: {
+                    ...this.formData
+                }
+            })
+            .then(response => {
+                console.log(response);
+                this.$emit('newSchedule', response.data);
+                this.closeLateralSchedule()
+            })
+            .catch(error => {
+                console.log(error)
+            })
         },
 
-        updateSchedule()
+        updateSchedule(): void
         {
             axios.patch<Schedule>(`/consultas/${this.schedule.id}`, {
                 data: {
@@ -231,7 +259,7 @@ export default defineComponent({
         },
 
 
-        getPatientSelected(self: any) {
+        getPatientSelected(self: any): void {
             $(`#patients${self.id}`).on('select2:select', function () {
                 self.formData.patient_id = $(`#patients${self.id}`).select2('data')[0][`id`];
                 self.isScheduleCategoryDisabled = false;
@@ -239,7 +267,7 @@ export default defineComponent({
         },
 
 
-        getScheduleCategorySelected(self: any) {
+        getScheduleCategorySelected(self: any): void {
             $(`#scheduleCategories${self.id}`).on('select2:select', function () {
                 self.formData.medicalconsulttype_id = $(`#scheduleCategories${self.id}`).select2('data')[0][`id`];
                 const scheduleTypeSelected = self.scheduleTypeList[self.formData.medicalconsulttype_id].name;
@@ -261,7 +289,7 @@ export default defineComponent({
         },
 
 
-        getBranchSelected(self: any) {
+        getBranchSelected(self: any):void {
             $(`#branches${self.id}`).on('select2:select', function () {
                 self.formData.branch_id = $(`#branches${self.id}`).select2('data')[0][`id`];
                 const scheduleTypeSelected = self.scheduleTypeList[self.formData.medicalconsulttype_id].name;
@@ -276,19 +304,39 @@ export default defineComponent({
         },
 
 
-        getDoctorSelected(self: any) {
+        getDoctorSelected(self: any): void {
             $(`#doctors${self.id}`).on('select2:select', function () {
                 self.formData.doctor_id = $(`#doctors${self.id}`).select2('data')[0][`id`];
             });
         },
 
+
         formatScheduleTime(datetime: string): string {
             return moment(datetime, 'YYYY-MM-DD HH:mm A').format('hh:mm A');
         },
+
+        formatScheduleDateTime(): void
+        {
+            const time = this.wickedPicker.wickedpicker('time');
+            const date = moment($(`#scheduleDate${this.id}`).datepicker('getDate')).format('YYYY-MM-DD');
+            this.formData.consult_schedule_start = moment(date + ' ' + time, 'YYYY-MM-DD HH:mm A').format('l LT');
+            //this.formData.consult_schedule_start = moment(date + ' ' + time).unix();
+        },
+
+        updateConsultReasonCharLength(): void
+        {
+            this.consultReasonCharLength = this.formData.consult_reason.length;
+        },
+
+        getConsultReasonCharLength(): number
+        {
+            return this.consultReasonCharLength;
+        },
+
     },
     mounted() {
         const self = this;
-        const wickedPicker: any = $(`#scheduleTime${this.id}`);
+        this.wickedPicker = $(`#scheduleTime${this.id}`);
         const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
         overlay.addEventListener('click', () => self.closeLateralSchedule())
         $(`#patients${this.id}`).select2()
@@ -301,24 +349,19 @@ export default defineComponent({
             dateFormat: "dd/mm/yy",
             yearRange: `1930:${new Date().getFullYear().toString()}`,
             onSelect() {
-                const time = wickedPicker.wickedpicker('time');
-                const date = moment($(`#scheduleDate${self.id}`).datepicker('getDate')).format('YYYY-MM-DD');
-                // self.formData.consult_schedule_start = moment(date + ' ' + time, 'YYYY-MM-DD HH:mm A').format('l LT');
-                self.formData.consult_schedule_start = moment(date + ' ' + time).unix();
+                self.formatScheduleDateTime();
             }
         })
 
-        wickedPicker.wickedpicker({
+        this.wickedPicker.wickedpicker({
             title: 'Hora de cita',
-            now: "12:00",
+            now: "08:00",
             minutesInterval: 30,
             timeSeparator: ':',
         })
 
-        if (this.schedule.patient_id < 1) {
-            this.getPatientsList();
-            this.isPatientDisabled = false;
-        }
+        this.getPatientsList();
+        this.isPatientDisabled = false;
         this.getBranchList();
         this.getSchedulesCategories();
         this.getPatientSelected(this);

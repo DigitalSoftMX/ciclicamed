@@ -13,8 +13,11 @@
 {
     z-index: 9999 !important;
 }
-
 .atbd-drawer
 {
     overflow: auto !important;
+}
+.border-title-bottom
+{
+    border-bottom-color: #60269E !important;
 }

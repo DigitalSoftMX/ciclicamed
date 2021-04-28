@@ -1,5 +1,4 @@
 import axios from 'axios';
-import moment from 'moment';
 import {
     Calendar
 } from '@fullcalendar/core'
@@ -28,7 +27,8 @@ export default defineComponent({
             schedules: [] as Schedule[],
             scheduleSelected: ScheduleData,
             calendar: Calendar as any,
-            lateralMenu: null as any
+            lateralMenu: null as any,
+            scheduleSelectDate: {} as Date
         }
     },
     methods: {
@@ -78,7 +78,7 @@ export default defineComponent({
             const scheduleEvent = this.calendar.getEventById( data.id );
             
             scheduleEvent.setDates( data.consult_schedule_start,  data.consult_schedule_finish );
-            scheduleEvent.setProp( 'title', this.getScheduleTitle(data.type.name, name) );
+            scheduleEvent.setProp( 'title', this.getScheduleTitle(data.type!.name, name) );
             scheduleEvent.setProp( 'borderColor', data.status?.color );
             scheduleEvent.setProp( 'borderColor', data.status?.color );
             scheduleEvent.setProp( 'backgroundColor', data.status?.color );
@@ -96,8 +96,8 @@ export default defineComponent({
         {
             const name = this.getNameSchedule(schedule);
             this.calendar.addEvent({
-                id: schedule.id.toString(),
-                title: this.getScheduleTitle(schedule.type.name, name),
+                id: schedule.id!.toString(),
+                title: this.getScheduleTitle(schedule.type!.name, name),
                 start: schedule.consult_schedule_start,
                 end: schedule.consult_schedule_finish,
                 textColor: '#000000',
@@ -138,6 +138,7 @@ export default defineComponent({
                 meridiem: 'short'
             },
             dateClick: function (data) {
+                self.scheduleSelectDate = data.date;
                 self.scheduleSelected = ScheduleData;
                 self.lateralMenu.openLateralSchedule();
             },

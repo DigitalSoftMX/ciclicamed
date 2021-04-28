@@ -7,8 +7,8 @@ import { ScheduleTypeData } from "./ScheduleType.data";
 
 export const ScheduleData:Schedule = {
     id: -1,
-    consult_schedule_start: moment('01-01-1970', 'MM-DD-YYYY').format('l LT'),
-    consult_schedule_finish: moment('01-01-1970', 'MM-DD-YYYY').format('l LT'),
+    consult_schedule_start: '',
+    consult_schedule_finish: '',
     branch_id: -1,
     doctor_id: -1,
     consult_reason: '',
