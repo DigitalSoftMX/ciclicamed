@@ -48,6 +48,7 @@ class MedicalConsultController extends Controller
             'branch_id' => $request->input('data.branch_id'),
             'medicalconsultstatus_id' => 1,
         ]);
+        $consult->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
         return $consult;
 
         //Todo
@@ -55,6 +56,22 @@ class MedicalConsultController extends Controller
         // Agregar el tiempo de finalizacion de la cita automaticamente de acuerdo a tipo de cita
         // Agregar verificaciones de request
         // Revisar el envio de tiempo y conversion de Carbon
+    }
+
+    public function updateSchedule(Request $request, $id)
+    {
+        $consult = MedicalConsult::findOrFail($id);
+        $consult->update([
+            'patient_id' => $request->input('data.patient_id'),
+            'doctor_id' => $request->input('data.doctor_id'),
+            'medicalconsulttype_id' => $request->input('data.medicalconsulttype_id'),
+            'consult_reason' => $request->input('data.consult_reason'),
+            'consult_schedule_start' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
+            'consult_schedule_finish' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
+            'branch_id' => $request->input('data.branch_id'),
+            'medicalconsultstatus_id' => 1,
+        ]);
+        return response()->json($consult);
     }
 
     public function getConsultTypes()
@@ -109,28 +126,3 @@ class MedicalConsultController extends Controller
         return response()->json($consult);
     }
 }
-
-
-// $table->unsignedInteger('id', true);
-//             $table->unsignedMediumInteger('patient_id', false);
-//             $table->unsignedMediumInteger('created_by', false)->nullable();
-//             $table->unsignedTinyInteger('medicalconsulttype_id', false);
-//             $table->unsignedMediumInteger('updated_by', false)->nullable();
-//             $table->string('update_note', 255)->nullable();
-//             $table->string('consult_reason', 500);
-//             $table->dateTime('consult_schedule_start');
-//             $table->dateTime('consult_schedule_finish');
-//             $table->dateTime('consult_start_at')->nullable();
-//             $table->dateTime('consult_finish_at')->nullable();
-//             $table->unsignedSmallInteger('branch_id', false);
-//             $table->unsignedTinyInteger('medicalconsultstatus_id', false);
-
-// $consult = new MedicalConsult;
-//         $consult->patient_id = $request->input('data.patient_id');
-//         $consult->medicalconsulttype_id = $request->input('data.medicalconsulttype_id');
-//         $consult->consult_reason = $request->input('data.consult_reason');
-//         // 'consult_schedule_start' => Carbon::now(),
-//         // 'consult_schedule_finish' => Carbon::now(),
-//         $consult->branch_id = $request->input('data.branch_id');
-//         $consult->medicalconsultstatus_id = 1;
-//         $consult->save();

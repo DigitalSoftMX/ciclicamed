@@ -44,6 +44,7 @@ export default defineComponent({
             default: () => ScheduleData
         },
     },
+    emits: ['newSchedule', 'updateSchedule'],
     data() {
         return {
             isPatientDisabled: true,
@@ -70,23 +71,35 @@ export default defineComponent({
                 medicalconsulttype_id: this.schedule.medicalconsulttype_id
             }
             this.getBranchList();
-            
-            $(`#scheduleCategories${this.id}`).val(this.formData.medicalconsulttype_id.toString()).trigger('change');
-            $(`#branches${this.id}`).val(this.formData.branch_id.toString()).trigger('change');
-            if (this.schedule.id > 0)
+            if(this.formData.patient_id < 1)
             {
-                this.isScheduleCategoryDisabled = false;
-                this.isBranchDisabled = false;
-            }
-            if (this.schedule.doctor_id > 0)
-            {
-                this.getDoctorsList();
-                $(`#doctors${this.id}`).val(this.formData.doctor_id.toString()).trigger('change');
-                this.isDoctorDisabled = false;
-            }
-            if(this.scheduleTypeList[this.schedule.medicalconsulttype_id].name !== 'Primera cita' && this.scheduleTypeList[this.schedule.medicalconsulttype_id].name !== 'Cita médica')
-            {
+                this.isScheduleCategoryDisabled = true;
+                this.isBranchDisabled = true;
                 this.isDoctorDisabled = true;
+                $(`#patients${this.id}`).val('0').trigger('change');
+                $(`#scheduleCategories${this.id}`).val('0').trigger('change');
+                $(`#branches${this.id}`).val('0').trigger('change');
+                $(`#doctors${this.id}`).val('0').trigger('change');
+            }
+            else
+            {
+                $(`#scheduleCategories${this.id}`).val(this.formData.medicalconsulttype_id.toString()).trigger('change');
+                $(`#branches${this.id}`).val(this.formData.branch_id.toString()).trigger('change');
+                if (this.schedule.id > 0)
+                {
+                    this.isScheduleCategoryDisabled = false;
+                    this.isBranchDisabled = false;
+                }
+                if (this.schedule.doctor_id > 0)
+                {
+                    this.getDoctorsList();
+                    $(`#doctors${this.id}`).val(this.formData.doctor_id.toString()).trigger('change');
+                    this.isDoctorDisabled = false;
+                }
+                if(this.scheduleTypeList[this.schedule.medicalconsulttype_id].name !== 'Cita médica')
+                {
+                    this.isDoctorDisabled = true;
+                }
             }
 
         }
@@ -191,11 +204,30 @@ export default defineComponent({
                     }
                 })
                 .then(response => {
-                    console.log(response)
+                    console.log(response);
+                    this.$emit('newSchedule', response.data);
+                    this.closeLateralSchedule()
                 })
                 .catch(error => {
                     console.log(error)
                 })
+        },
+
+        updateSchedule()
+        {
+            axios.patch<Schedule>(`/consultas/${this.schedule.id}`, {
+                data: {
+                    ...this.formData
+                }
+            })
+            .then(response => {
+                console.log(response);
+                this.$emit('updateSchedule', response.data);
+                this.closeLateralSchedule()
+            })
+            .catch(error => {
+                console.log(error)
+            })
         },
 
 
@@ -215,12 +247,12 @@ export default defineComponent({
                 {
                     $(`#branches${self.id}`).val('0').trigger('change');
                 }
-                if (scheduleTypeSelected !== 'Primera cita' &&  scheduleTypeSelected !== 'Cita médica' && !self.isBranchDisabled)
+                if (scheduleTypeSelected !== 'Cita médica' && !self.isBranchDisabled)
                 {
                     self.isDoctorDisabled = true;
                     $(`#doctors${self.id}`).val('0').trigger('change');
                 }
-                if ((scheduleTypeSelected === 'Primera cita' ||  scheduleTypeSelected === 'Cita médica') && !self.isBranchDisabled)
+                if (scheduleTypeSelected === 'Cita médica' && !self.isBranchDisabled)
                 {
                     self.isDoctorDisabled = false;
                 }
@@ -233,7 +265,8 @@ export default defineComponent({
             $(`#branches${self.id}`).on('select2:select', function () {
                 self.formData.branch_id = $(`#branches${self.id}`).select2('data')[0][`id`];
                 const scheduleTypeSelected = self.scheduleTypeList[self.formData.medicalconsulttype_id].name;
-                if (scheduleTypeSelected === 'Primera cita' ||  scheduleTypeSelected === 'Cita médica')
+                self.formData.doctor_id = null;
+                if (scheduleTypeSelected === 'Cita médica')
                 {
                     self.getDoctorsList();
                     self.isDoctorDisabled = false;

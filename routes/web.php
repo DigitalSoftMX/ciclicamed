@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/categorias', [MedicalConsultController::class, 'getConsultTypes'])->name('consulta.categorias');
         Route::get('/pacientes/{id}', [MedicalConsultController::class, 'getConsultsByPatient'])->name('consulta.paciente');
         Route::delete('/{id}', [MedicalConsultController::class, 'cancelConsult'])->name('consulta.eliminar');
+        Route::patch('/{id}', [MedicalConsultController::class, 'updateSchedule'])->name('consulta.actualizar');
     });
 
 

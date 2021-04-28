@@ -16,12 +16,12 @@ export default defineComponent({
         'SuccessAlertComponent': require('../../alert/SuccessAlertComponent.vue').default,
         'ErrorAlertComponent': require('../../alert/ErrorAlertComponent.vue').default
     },
-    emits: ['scheduleCanceled'],
+    emits: ['scheduleCanceled', ''],
     props: {
         schedule: {
             type: Object as PropType<Schedule>,
             default: () => ScheduleData
-        }
+        },
     },
     data() {
         return {
@@ -49,7 +49,7 @@ export default defineComponent({
         },
         openLateralSchedule()
         {
-            const child = this.$refs.openLateralSchedule as DefineComponent;
+            const child = this.$parent?.$refs.openLateralSchedule as DefineComponent;
             child.openLateralSchedule()
         },
         deleteSchedule()

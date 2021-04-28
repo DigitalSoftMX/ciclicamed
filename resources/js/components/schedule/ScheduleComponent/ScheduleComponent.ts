@@ -27,7 +27,8 @@ export default defineComponent({
             url: `/consultas/pacientes/1`,
             schedules: [] as Schedule[],
             scheduleSelected: ScheduleData,
-            calendar: Calendar as any
+            calendar: Calendar as any,
+            lateralMenu: null as any
         }
     },
     methods: {
@@ -44,17 +45,7 @@ export default defineComponent({
 
         renderSchedules(): void {
             this.schedules.map(schedule => {
-                const name = this.getNameSchedule(schedule);
-                this.calendar.addEvent({
-                    id: schedule.id.toString(),
-                    title: this.getScheduleTitle(schedule.type.name, name),
-                    start: schedule.consult_schedule_start,
-                    end: schedule.consult_schedule_finish,
-                    textColor: '#000000',
-                    borderColor: schedule.status?.color,
-                    backgroundColor: schedule.status?.color,
-                    display: 'block',
-                })
+                this.addSchedule(schedule);
             });
         },
 
@@ -80,18 +71,45 @@ export default defineComponent({
             }
         },
 
-        removeScheduleCanceled(data: Schedule)
+        updateSchedule(data: Schedule)
         {
+            const name = this.getNameSchedule(data);
             this.schedules =  this.schedules.map(schedule => schedule.id === data.id ? {...schedule, ...data} : schedule);
-            console.log( data.consult_schedule_start,  data.consult_schedule_finish)
             const scheduleEvent = this.calendar.getEventById( data.id );
+            
             scheduleEvent.setDates( data.consult_schedule_start,  data.consult_schedule_finish );
+            scheduleEvent.setProp( 'title', this.getScheduleTitle(data.type.name, name) );
+            scheduleEvent.setProp( 'borderColor', data.status?.color );
             scheduleEvent.setProp( 'borderColor', data.status?.color );
             scheduleEvent.setProp( 'backgroundColor', data.status?.color );
+            this.scheduleSelected = ScheduleData;
+        },
+
+        createNewSchedule(data: Schedule)
+        {
+            this.addSchedule(data);
+            this.scheduleSelected = ScheduleData;
+            console.log(this.scheduleSelected)
+        },
+
+        addSchedule(schedule: Schedule)
+        {
+            const name = this.getNameSchedule(schedule);
+            this.calendar.addEvent({
+                id: schedule.id.toString(),
+                title: this.getScheduleTitle(schedule.type.name, name),
+                start: schedule.consult_schedule_start,
+                end: schedule.consult_schedule_finish,
+                textColor: '#000000',
+                borderColor: schedule.status?.color,
+                backgroundColor: schedule.status?.color,
+                display: 'block',
+            })
         }
     },
     mounted() {
         const self = this;
+        this.lateralMenu = this.$refs.openLateralSchedule as DefineComponent;
         const el:HTMLElement = document.getElementById('full-calendar') ?? document.createElement('div', ) as HTMLDivElement;
         new ResizeObserver(() => this.calendar.updateSize()).observe(el);
         this.calendar = new Calendar(el, {
@@ -120,8 +138,8 @@ export default defineComponent({
                 meridiem: 'short'
             },
             dateClick: function (data) {
-                const child = self.$refs.openLateralSchedule as DefineComponent;
-                child.openLateralSchedule()
+                self.scheduleSelected = ScheduleData;
+                self.lateralMenu.openLateralSchedule();
             },
             eventClick: function (data) {
                 self.scheduleSelected = Object.values(self.schedules).filter(schedule => schedule[`id`] === Number(data.event.id))[0];

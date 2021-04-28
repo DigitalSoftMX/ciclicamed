@@ -61,7 +61,6 @@
         </div>
     </div>
 
-    <lateral-schedule-component ref="openLateralSchedule" :schedule="schedule"></lateral-schedule-component>
     <success-alert-component :id="'actionConsultSuccess'" :message="'Se ha cancelado la cita correctamente'" :title="'Datos del perfil actualizados'">
     </success-alert-component>
     <error-alert-component :id="'actionConsultError'" :errors="errors" :title="'Error al cancelar la cita'">

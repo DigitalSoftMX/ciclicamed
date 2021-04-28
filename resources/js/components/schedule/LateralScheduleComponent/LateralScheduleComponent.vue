@@ -116,9 +116,13 @@
                             v-on:click="closeLateralSchedule()" >
                             Cancelar
                         </button>
-                        <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2" @click="createNewSchedule()"
+                        <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2" v-if="schedule.id < 1" @click="createNewSchedule()"
                             >
-                            Guardar
+                            Crear
+                        </button>
+                        <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2" v-else @click="updateSchedule()"
+                            >
+                            Actualizar
                         </button>
                     </div>
 
