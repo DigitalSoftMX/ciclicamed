@@ -21,6 +21,10 @@ import UserTestPage from './pages/user/UserTestPage';
 	import ScheduleComponent from './components/schedule/ScheduleComponent/ScheduleComponent.vue';
 
 	import HistorialClinicoComponent from './components/attachtments/HistorialClinico/Parent/HistorialClinicoComponent.vue';
+
+	import UroginecologiaComponent from './components/attachtments/Uroginecologia/UroginecologiaComponent.vue';
+	import ClimaterioSaludOseaComponent from './components/attachtments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue';
+	import MaternoFetalComponent from './components/attachtments/MaternoFetal/Parent/MaternoFetalComponent.vue';
 	
 const app = createApp({
     components: {
@@ -36,7 +40,10 @@ const app = createApp({
 		PrescriptionModalComponent,
 		UserTestPage,
 		ScheduleComponent,
-		HistorialClinicoComponent
+		HistorialClinicoComponent,
+		UroginecologiaComponent,
+		ClimaterioSaludOseaComponent,
+		MaternoFetalComponent
 	}
 });
 
