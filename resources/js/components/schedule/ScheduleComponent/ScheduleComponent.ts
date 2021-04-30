@@ -17,8 +17,8 @@ import { Schedule } from '../../../interfaces/Schedule/Schedule.interface';
 export default defineComponent({
     name: 'ScheduleComponent',
     components: {
-        'ScheduleActionComponent': require('../ScheduleActionComponent/ScheduleActionComponent.vue').default,
-        'LateralScheduleComponent': require('../LateralScheduleComponent/LateralScheduleComponent.vue').default
+        ScheduleActionComponent: require('../ScheduleActionComponent/ScheduleActionComponent.vue').default,
+        LateralScheduleComponent: require('../LateralScheduleComponent/LateralScheduleComponent.vue').default
     },
     props: {},
     data() {

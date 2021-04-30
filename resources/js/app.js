@@ -19,6 +19,8 @@ import UserTestPage from './pages/user/UserTestPage';
 	import UserProfileComponent from  './components/user/UserProfileComponent';
 	//Schedule
 	import ScheduleComponent from './components/schedule/ScheduleComponent/ScheduleComponent.vue';
+
+	import HistorialClinicoComponent from './components/attachtments/HistorialClinico/Parent/HistorialClinicoComponent.vue';
 	
 const app = createApp({
     components: {
@@ -34,6 +36,7 @@ const app = createApp({
 		PrescriptionModalComponent,
 		UserTestPage,
 		ScheduleComponent,
+		HistorialClinicoComponent
 	}
 });
 
