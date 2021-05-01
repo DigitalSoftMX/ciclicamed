@@ -1,4 +1,4 @@
-<aside class="sidebar">
+<!-- <aside class="sidebar">
    <div class="sidebar__menu-group">
       <ul class="sidebar_nav">
          <li class="menu-title">
@@ -34,4 +34,4 @@
          
       </ul>
    </div>
-</aside>
+</aside> -->

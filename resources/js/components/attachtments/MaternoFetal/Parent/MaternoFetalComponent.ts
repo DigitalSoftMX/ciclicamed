@@ -4,7 +4,8 @@ import {
 
 export default defineComponent({
     components: {
-        CalculoRiesgoFetoComponent: require('../Options/CalculoRiesgoFetoComponent.vue').default,
+        CuestionarioCalculoRiesgoComponent: require('../Options/CuestionarioCalculoRiesgoComponent.vue').default,
+        ResultadoCalculoRiesgoComponent: require('../Options/ResultadoCalculoRiesgoComponent.vue').default,
     },
     emits: [],
     props: {

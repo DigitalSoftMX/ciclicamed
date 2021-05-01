@@ -1,4 +1,4 @@
-<header class="header-top">
+<!-- <header class="header-top">
     <nav class="navbar navbar-light">
         <div class="navbar-left">
             <a href="" class="sidebar-toggle">
@@ -14,7 +14,6 @@
             </form>
             @include('layouts.partials._top_menu')
         </div>
-        <!-- ends: navbar-left -->
         <div class="navbar-right">
             <ul class="navbar-right__menu">
                 <li class="nav-search d-none">
@@ -119,7 +118,6 @@
                         </div>
                     </div>
                 </li>
-                <!-- ends: nav-message -->
                 <li class="nav-notification">
                     <div class="dropdown-custom">
                         <a href="javascript:;" class="nav-item-toggle">
@@ -208,7 +206,6 @@
                         </div>
                     </div>
                 </li>
-                <!-- ends: .nav-notification -->
                 <li class="nav-settings">
                     <div class="dropdown-custom">
                         <a href="javascript:;" class="nav-item-toggle">
@@ -273,7 +270,6 @@
                         </div>
                     </div>
                 </li>
-                <!-- ends: .nav-settings -->
                 <li class="nav-support">
                     <div class="dropdown-custom">
                         <a href="javascript:;" class="nav-item-toggle">
@@ -318,7 +314,6 @@
                         </div>
                     </div>
                 </li>
-                <!-- ends: .nav-support -->
                 <li class="nav-flag-select">
                     <div class="dropdown-custom">
                         <a href="javascript:;" class="nav-item-toggle"><img src="{{ asset('img/flag.png') }}" alt=""
@@ -331,7 +326,6 @@
                         </div>
                     </div>
                 </li>
-                <!-- ends: .nav-flag-select -->
                 <li class="nav-author">
                     <div class="dropdown-custom">
                         <a href="javascript:;" class="nav-item-toggle"><img src="{{ asset('img/author-nav.jpg') }}"
@@ -377,12 +371,9 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- ends: .dropdown-wrapper -->
                     </div>
                 </li>
-                <!-- ends: .nav-author -->
             </ul>
-            <!-- ends: .navbar-right__menu -->
             <div class="navbar-right__mobileAction d-md-none">
                 <a href="#" class="btn-search">
                     <span data-feather="search"></span>
@@ -391,6 +382,5 @@
                     <span data-feather="more-vertical"></span></a>
             </div>
         </div>
-        <!-- ends: .navbar-right -->
     </nav>
-</header>
+</header> -->

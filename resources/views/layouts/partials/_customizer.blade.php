@@ -1,4 +1,4 @@
-<a href="#" class="customizer-trigger">
+<!-- <a href="#" class="customizer-trigger">
    <span data-feather="settings"></span></a>
    <div class="customizer-wrapper">
       <div class="customizer">
@@ -26,7 +26,6 @@
                   </li>
                </ul>
             </div>
-            <!-- ends: .customizer__single -->
             <div class="customizer__single">
                <h4>Sidebar Type</h4>
                <ul class="customizer-list d-flex l_sidebar">
@@ -44,7 +43,6 @@
                   </li>
                </ul>
             </div>
-            <!-- ends: .customizer__single -->
             <div class="customizer__single">
                <h4>Navbar Type</h4>
                <ul class="customizer-list d-flex l_navbar">
@@ -62,7 +60,6 @@
                   </li>
                </ul>
             </div>
-            <!-- ends: .customizer__single -->
          </div>
       </div>
-   </div>
+   </div> -->
