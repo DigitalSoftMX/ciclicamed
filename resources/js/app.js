@@ -25,6 +25,9 @@ import UserTestPage from './pages/user/UserTestPage';
 	import UroginecologiaComponent from './components/attachtments/Uroginecologia/UroginecologiaComponent.vue';
 	import ClimaterioSaludOseaComponent from './components/attachtments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue';
 	import MaternoFetalComponent from './components/attachtments/MaternoFetal/Parent/MaternoFetalComponent.vue';
+	import NutricionPerinatalComponent from './components/attachtments/Nutricion/NutricionPerinatal/Parent/NutricionPerinatalComponent.vue';
+	import BiologiaReproduccionComponent from './components/attachtments/BiologiaReproduccion/BiologiaReproduccionComponent.vue';
+	import CirugiaEndoscopicaComponent from './components/attachtments/CirugiaEndoscopica/CirugiaEndoscopicaComponent.vue';
 	
 const app = createApp({
     components: {
@@ -43,7 +46,10 @@ const app = createApp({
 		HistorialClinicoComponent,
 		UroginecologiaComponent,
 		ClimaterioSaludOseaComponent,
-		MaternoFetalComponent
+		MaternoFetalComponent,
+		NutricionPerinatalComponent,
+		BiologiaReproduccionComponent,
+		CirugiaEndoscopicaComponent
 	}
 });
 

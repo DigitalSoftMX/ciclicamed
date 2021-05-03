@@ -3,7 +3,7 @@
 <div id="app" class="contents">
     <div class="content-fluid">
         <!-- <schedule-component></schedule-component> -->
-        <materno-fetal-component></materno-fetal-component>
+        <cirugia-endoscopica-component></cirugia-endoscopica-component>
     </div>
 </div>
 @endsection
