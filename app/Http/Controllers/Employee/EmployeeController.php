@@ -27,4 +27,9 @@ class EmployeeController extends Controller
             ->get(['branches.id', 'branches.name']);
         return response()->json($branches);
     }
+
+    public function getDoctorConsult($doctorID, $consultID)
+    {
+        return view('errors.401');
+    }
 }

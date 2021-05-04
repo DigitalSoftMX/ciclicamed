@@ -8,6 +8,7 @@ use App\Http\Controllers\Medical\Consult\MedicalConsultController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\User\UserController;
+use App\Models\Employee\Employee;
 use App\Models\Patient\Patient;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,10 @@ Route::group(['middleware' => 'auth'], function() {
         return view('test');
     } );
 
+    Route::get('agenda', function() {
+        return view('test');
+    } );
+
 
     Route::get('/images/users/{id}', function ($id) {
         $storage = storage_path('app/user/patient/photo/'.$id.'');
@@ -68,5 +73,10 @@ Route::group(['middleware' => 'auth'], function() {
     //Pacientes
     Route::group(['prefix' => 'pacientes'], function() {
         Route::get('/', [PatientController::class, 'getAllPatients'])->name('pacientes.todos');
+    });
+
+    //Doctores
+    Route::group(['prefix' => 'doctores'], function() {
+        Route::get('/{idDoctor}/consulta/{idConsult}', [EmployeeController::class, 'getDoctorConsult'])->name('doctores.consulta');
     });
 });

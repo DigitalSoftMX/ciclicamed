@@ -45,10 +45,10 @@ export default defineComponent({
     },
     methods: {
         formatScheduleTime(datetime: string): string {
-            return moment(datetime, 'YYYY-MM-DD HH:mm A').format('hh:mm A');
+            return moment(datetime).format('hh:mm A');
         },
         formatScheduleDate(datetime: string): string {
-            return moment(datetime, 'YYYY-MM-DD HH:mm A').format('D [de] MMMM [del] YYYY');
+            return moment(datetime).format('D [de] MMMM [del] YYYY');
         },
         openLateralSchedule()
         {

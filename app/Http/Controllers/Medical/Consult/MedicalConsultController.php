@@ -43,8 +43,8 @@ class MedicalConsultController extends Controller
             'doctor_id' => $request->input('data.doctor_id'),
             'medicalconsulttype_id' => $request->input('data.medicalconsulttype_id'),
             'consult_reason' => $request->input('data.consult_reason'),
-            'consult_schedule_start' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
-            'consult_schedule_finish' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
+            'consult_schedule_start' => Carbon::parse($request->input('data.consult_schedule_start')),
+            'consult_schedule_finish' => Carbon::parse($request->input('data.consult_schedule_start')),
             'branch_id' => $request->input('data.branch_id'),
             'medicalconsultstatus_id' => 1,
         ]);

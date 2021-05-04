@@ -319,7 +319,8 @@ export default defineComponent({
         {
             const time = this.wickedPicker.wickedpicker('time');
             const date = moment($(`#scheduleDate${this.id}`).datepicker('getDate')).format('YYYY-MM-DD');
-            this.formData.consult_schedule_start = moment(date + ' ' + time, 'YYYY-MM-DD HH:mm A').format('l LT');
+            this.formData.consult_schedule_start = moment(date + ' ' + time, 'YYYY-MM-DD HH:mm A').format('MM/DD/YY LT');
+            console.log(this.formData.consult_schedule_start)
             //this.formData.consult_schedule_start = moment(date + ' ' + time).unix();
         },
 

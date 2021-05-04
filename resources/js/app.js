@@ -28,6 +28,7 @@ import UserTestPage from './pages/user/UserTestPage';
 	import NutricionPerinatalComponent from './components/attachtments/Nutricion/NutricionPerinatal/Parent/NutricionPerinatalComponent.vue';
 	import BiologiaReproduccionComponent from './components/attachtments/BiologiaReproduccion/BiologiaReproduccionComponent.vue';
 	import CirugiaEndoscopicaComponent from './components/attachtments/CirugiaEndoscopica/CirugiaEndoscopicaComponent.vue';
+	import OncologiaComponent from './components/attachtments/Oncologia/OncologiaComponent.vue';
 	
 const app = createApp({
     components: {
@@ -49,7 +50,8 @@ const app = createApp({
 		MaternoFetalComponent,
 		NutricionPerinatalComponent,
 		BiologiaReproduccionComponent,
-		CirugiaEndoscopicaComponent
+		CirugiaEndoscopicaComponent,
+		OncologiaComponent
 	}
 });
 

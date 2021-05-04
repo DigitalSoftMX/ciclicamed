@@ -21,7 +21,7 @@ class EmployeeFactory extends Factory
      */
     public function definition()
     {
-        static $employeeUser = 2000;
+        static $employeeUser = 25;
         return [
             'first_name' => $this->faker->unique()->firstName(),
             'last_name' => $this->faker->unique()->lastName(),

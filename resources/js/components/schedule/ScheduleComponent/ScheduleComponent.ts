@@ -87,6 +87,7 @@ export default defineComponent({
 
         createNewSchedule(data: Schedule)
         {
+            console.log(data)
             this.addSchedule(data);
             this.scheduleSelected = ScheduleData;
             console.log(this.scheduleSelected)
