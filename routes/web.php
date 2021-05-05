@@ -53,7 +53,7 @@ Route::group(['middleware' => 'auth'], function() {
     } );
 
     Route::get('agenda', function() {
-        return view('test');
+        return view('agenda');
     } );
 
 
