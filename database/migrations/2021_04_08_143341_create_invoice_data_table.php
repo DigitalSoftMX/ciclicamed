@@ -20,7 +20,7 @@ class CreateInvoiceDataTable extends Migration
             $table->string('email', 100);
             $table->string('phone', 10);
             $table->string('cfdi', 100)->nullable();
-            $table->string('country', 50);
+            $table->string('country', 255);
             $table->timestamps();
 
             //Relaciones

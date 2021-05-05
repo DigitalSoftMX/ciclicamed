@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset('vendor_assets/css/bootstrap/'.(Session::get('layout')=='rtl' ? 'bootstrap-rtl.css' : 'bootstrap.css')) }}">
-<link rel="stylesheet" href="{{ asset('vendor_assets/css/daterangepicker.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('vendor_assets/css/daterangepicker.css') }}"> -->
 <link rel="stylesheet" href="{{ asset('vendor_assets/css/fontawesome.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor_assets/css/footable.standalone.min.css') }}"> 
 <link rel="stylesheet" href="{{ asset('vendor_assets/css/fullcalendar@5.2.0.css') }}">

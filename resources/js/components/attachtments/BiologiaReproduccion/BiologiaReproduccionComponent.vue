@@ -1,5 +1,4 @@
 <template>
-
     <div class="col-12 row p-3 mx-0 atbd-collapse atbd-collapse-custom">
         <div class="col-12 mb-25 card card-default card-md p-0">
             <div class="atbd-collapse-item__header active">

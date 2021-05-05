@@ -1,6 +1,6 @@
 <template>
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-normal card-bordered">
+        <div class="card card-default card-md card-bordered">
             <div class="card-header">
                 <h6>{{ title }}</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -9,12 +9,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="with-icon">
-                    <span class="mr-5">
-                        <img src="/svg/text.svg" alt="Text logo">
-                    </span>
-                    <textarea type="text" class="form-control" :id="`${id}Description`" :placeholder="description"></textarea>
-                </div>
+                <textarea type="text" class="form-control" :id="`ppc${id}Description`" :placeholder="description" rows="4"></textarea>
             </div>
         </div>
     </div>

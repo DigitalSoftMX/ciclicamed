@@ -29,6 +29,8 @@ import UserTestPage from './pages/user/UserTestPage';
 	import BiologiaReproduccionComponent from './components/attachtments/BiologiaReproduccion/BiologiaReproduccionComponent.vue';
 	import CirugiaEndoscopicaComponent from './components/attachtments/CirugiaEndoscopica/CirugiaEndoscopicaComponent.vue';
 	import OncologiaComponent from './components/attachtments/Oncologia/OncologiaComponent.vue';
+	import CitasSubsecuentesComponent from './components/attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue';
+	import ColposcopiaComponent from './components/attachtments/Colposcopia/ColposcopiaComponent.vue';
 	
 const app = createApp({
     components: {
@@ -51,7 +53,9 @@ const app = createApp({
 		NutricionPerinatalComponent,
 		BiologiaReproduccionComponent,
 		CirugiaEndoscopicaComponent,
-		OncologiaComponent
+		OncologiaComponent,
+		CitasSubsecuentesComponent,
+		ColposcopiaComponent
 	}
 });
 

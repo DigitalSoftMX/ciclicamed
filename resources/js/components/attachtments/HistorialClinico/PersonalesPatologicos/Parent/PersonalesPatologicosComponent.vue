@@ -1,27 +1,27 @@
 <template>
     <personales-patologicos-option-component
-        id="cirugias"
+        id="Cirugias"
         title="Cirugías"
         description="Descripción corta"
     >
     </personales-patologicos-option-component>
 
     <personales-patologicos-option-component
-        id="transfusionales"
+        id="Transfusionales"
         title="Transfusionales"
         description="¿Cúantas veces? ¿Hace cuanto?"
     >
     </personales-patologicos-option-component>
 
     <personales-patologicos-option-component
-        id="infecciosas"
+        id="Infecciosas"
         title="Infeccionsas"
         description="Descríbalas"
     >
     </personales-patologicos-option-component>
 
     <personales-patologicos-option-component
-        id="cronicoDegenerativo"
+        id="CronicoDegenerativo"
         title="Crónico degenerativas"
         description="Descríbalas"
     >
@@ -35,7 +35,7 @@
     </personales-patologicos-option-component>
 
     <personales-patologicos-option-component
-        id="ginecologicos"
+        id="Ginecologicos"
         title="Ginecológicos"
         description="Descríbalas"
     >
