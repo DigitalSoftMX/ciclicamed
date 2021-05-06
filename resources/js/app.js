@@ -31,6 +31,7 @@ import UserTestPage from './pages/user/UserTestPage';
 	import OncologiaComponent from './components/attachtments/Oncologia/OncologiaComponent.vue';
 	import CitasSubsecuentesComponent from './components/attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue';
 	import ColposcopiaComponent from './components/attachtments/Colposcopia/ColposcopiaComponent.vue';
+	import MedicalConsultPage from './pages/medicalConsult/MedicalConsultPage.vue';
 	
 const app = createApp({
     components: {
@@ -55,7 +56,8 @@ const app = createApp({
 		CirugiaEndoscopicaComponent,
 		OncologiaComponent,
 		CitasSubsecuentesComponent,
-		ColposcopiaComponent
+		ColposcopiaComponent,
+		MedicalConsultPage
 	}
 });
 
