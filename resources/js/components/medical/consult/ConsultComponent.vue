@@ -74,7 +74,7 @@
                         </div>
                         <div class="tab-pane fade" id="mccOrdenMedica" role="tabpanel"
                             aria-labelledby="mccOrdenMedica-tab">
-                            Orden Medica
+                            <test-order-component></test-order-component>
                         </div>
                     </div>
                 </div>

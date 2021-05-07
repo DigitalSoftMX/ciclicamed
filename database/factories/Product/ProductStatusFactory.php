@@ -21,8 +21,10 @@ class ProductStatusFactory extends Factory
      */
     public function definition()
     {
+        static $row = 0;
+        $status = ['Activo', 'Inactivo'];
         return [
-            'name' => $this->faker->text('50'),
+            'name' => $status[$row++],
             'color' => $this->faker->hexColor
         ];
     }

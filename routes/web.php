@@ -6,6 +6,7 @@ use App\Http\Controllers\Branch\BranchController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Medical\Consult\MedicalConsultController;
 use App\Http\Controllers\Patient\PatientController;
+use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\User\UserController;
 use App\Models\Employee\Employee;
@@ -78,5 +79,11 @@ Route::group(['middleware' => 'auth'], function() {
     //Doctores
     Route::group(['prefix' => 'doctores'], function() {
         Route::get('/{idDoctor}/consulta/{idConsult}', [EmployeeController::class, 'getDoctorConsult'])->name('doctores.consulta');
+    });
+
+    //Productos
+    Route::group(['prefix' => 'productos'], function() {
+        Route::get('/medicamentos', [ProductController::class, 'getMedicaments'])->name('productos.medicamentos');
+        Route::get('/estudios', [ProductController::class, 'getTestOrderProducts'])->name('productos.estudios');
     });
 });

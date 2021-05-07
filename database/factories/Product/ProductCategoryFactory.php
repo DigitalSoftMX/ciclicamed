@@ -21,8 +21,10 @@ class ProductCategoryFactory extends Factory
      */
     public function definition()
     {
+        static $row = 0;
+        $categories = ['Cirugía', 'Histeroscopía', 'Farmacia', 'Cíclica', 'Imagenología', 'Laboratorio'];
         return [
-            'name' => $this->faker->text('50'),
+            'name' => $categories[$row++],
         ];
     }
 }

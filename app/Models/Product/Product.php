@@ -34,7 +34,7 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class, 'productstatus_id');
     }
 
-    public function medicalconsults()
+    public function consults()
     {
         return $this->belongsToMany(MedicalConsult::class, 'product_payments', 'product_id', 'medicalconsult_id')->withPivot('payment_id');
     }
@@ -44,7 +44,7 @@ class Product extends Model
         return $this->belongsToMany(Payment::class, 'product_payments', 'product_id', 'payment_id')->withPivot('medicalconsult_id');;
     }
 
-    public function testorderannotations()
+    public function orderAnnotations()
     {
         return $this->hasMany(MedicalTestOrderAnnotation::class, 'product_id');
     }

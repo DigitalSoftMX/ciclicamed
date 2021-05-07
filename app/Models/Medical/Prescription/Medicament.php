@@ -16,6 +16,12 @@ class Medicament extends Model
         'presentation'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
+
     public function medicalconsults()
     {
         return $this->belongsToMany(MedicalConsult::class, 'medical_prescriptions', 'medicament_id', 'medicalconsult_id')

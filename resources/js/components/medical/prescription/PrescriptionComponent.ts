@@ -3,7 +3,7 @@ import {
 } from '@vue/runtime-core';
 import Vue from 'vue';
 import { DefineComponent, PropType } from 'vue';
-import MedicamentComponent from './medicament/MedicamentComponent.vue';
+import axios from 'axios';
 
 export default defineComponent({
     components: {
@@ -14,17 +14,32 @@ export default defineComponent({
     },
     data() {
         return {
-            medicamentList: [] as String[]
+            medicamentList: [] as String[],
+            prescriptionList: [] as String[],
         };
     },
     mounted() {
+        this.getMedicamentList();
     },
     watch: {
     },
     methods: {
-       addMedicament()
+       addPrescription()
        {
-           this.medicamentList.push('a');
-       }
+           this.prescriptionList.push('a');
+       },
+       getMedicamentList(): void
+        {
+            axios.get(`/productos/medicamentos`)
+                .then(response => {
+                    this.medicamentList = [{
+                        id: 0,
+                        name: 'Seleccione un medicamento',
+                    }, ...response.data];
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
     },
 })
