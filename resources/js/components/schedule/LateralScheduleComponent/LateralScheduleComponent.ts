@@ -161,7 +161,7 @@ export default defineComponent({
 
         getPatientsList(): void
         {
-            axios.get < Patient[] > (`/pacientes`)
+            axios.get < Patient[] > (`pacientes`)
                 .then(response => {
                     this.patientsList = [{
                         'id': 0,
@@ -176,7 +176,7 @@ export default defineComponent({
 
         getSchedulesCategories(): void
         {
-            axios.get(`/consultas/categorias`)
+            axios.get(`consultas/categorias`)
                 .then(response => {
                     this.scheduleTypeList = [{
                         id: 0,
@@ -191,7 +191,7 @@ export default defineComponent({
 
         getBranchList(): void
         {
-            axios.get < Branch[] > (`/sucursales`)
+            axios.get < Branch[] > (`sucursales`)
                 .then(response => {
                     this.branchesList = [{
                         id: 0,
@@ -206,7 +206,7 @@ export default defineComponent({
 
         getDoctorsList(): void
         {
-            axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${this.formData.branch_id}/especialidades/doctores`)
+            axios.get<BranchSpecialtyDoctors[]>(`sucursales/${this.formData.branch_id}/especialidades/doctores`)
                 .then(response => {
                     this.doctorsList = response.data.filter((list: BranchSpecialtyDoctors) => list.doctors.length > 0);
                     this.doctorsList = [{
@@ -226,7 +226,7 @@ export default defineComponent({
 
         createNewSchedule(): void
         {
-            axios.post('/consultas', {
+            axios.post('consultas', {
                 data: {
                     ...this.formData
                 }
@@ -243,7 +243,7 @@ export default defineComponent({
 
         updateSchedule(): void
         {
-            axios.patch<Schedule>(`/consultas/${this.schedule.id}`, {
+            axios.patch<Schedule>(`consultas/${this.schedule.id}`, {
                 data: {
                     ...this.formData
                 }

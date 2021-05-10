@@ -9,17 +9,17 @@
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0" @click="openLateralSchedule" v-if="isEditOptionEnabled"
                             data-dismiss="modal" aria-label="Close">
-                            <img src="/svg/edit.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
+                            <img src="svg/edit.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
                                 data-placement="bottom" title="Modificar cita">
                         </button>
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3" @click="deleteSchedule()" v-if="isCancelOptionEnabled"
                             data-dismiss="modal" aria-label="Close">
-                            <img src="/svg/delete.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
+                            <img src="svg/delete.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
                                 data-placement="bottom" title="Cancelar cita">
                         </button>
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3"
                             data-dismiss="modal" aria-label="Close">
-                            <img src="/svg/close.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
+                            <img src="svg/close.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
                                 data-placement="bottom" title="Cerrar">
                         </button>
                     </div>
@@ -27,7 +27,7 @@
                 <div class="modal-body">
                     <ul class="e-info-list">
                         <li>
-                            <img src="/svg/calendar.svg" alt="Calendar logo">
+                            <img src="svg/calendar.svg" alt="Calendar logo">
                             <span class="list-line">
                                 <span class="list-label">Fecha de cita :</span>
                                 <span
@@ -35,7 +35,7 @@
                             </span>
                         </li>
                         <li>
-                            <img src="/svg/clock.svg" alt="Clock logo">
+                            <img src="svg/clock.svg" alt="Clock logo">
                             <span class="list-line">
                                 <span class="list-label">Hora de cita :</span>
                                 <span class="list-meta">
@@ -43,14 +43,14 @@
                             </span>
                         </li>
                         <li>
-                            <img src="/svg/branch.svg" alt="Branch logo">
+                            <img src="svg/branch.svg" alt="Branch logo">
                             <span class="list-line">
                                 <span class="list-label">Sucursal :</span>
                                 <span class="list-meta"> {{ schedule.branch?.name }}</span>
                             </span>
                         </li>
                         <li>
-                            <img src="/svg/text.svg" alt="Text logo">
+                            <img src="svg/text.svg" alt="Text logo">
                             <span class="list-line">
                                 <span class="list-text">{{ schedule.consult_reason }}</span>
                             </span>

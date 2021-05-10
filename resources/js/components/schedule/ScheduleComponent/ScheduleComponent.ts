@@ -23,7 +23,7 @@ export default defineComponent({
     props: {},
     data() {
         return {
-            url: `/consultas/pacientes/1`,
+            url: `consultas/pacientes/1`,
             schedules: [] as Schedule[],
             scheduleSelected: ScheduleData,
             calendar: Calendar as any,
