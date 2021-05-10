@@ -1,8 +1,8 @@
 <template>
     <div class="card">
-        <div class="card-body" v-show="orderTestList.length > 0">
-            <div v-for="medicament in orderTestList" :key="medicament" class="atbd-collapse atbd-collapse-custom">
-                <order-component :testList="testList"></order-component>
+        <div class="card-body" v-show="orderComponentList.length > 0">
+            <div v-for="(medicament, index) in orderComponentList" :key="medicament" class="atbd-collapse atbd-collapse-custom">
+                <order-component :orderIndex="index" :orderList="orderList" @ocDelete="deleteOrderComponent" @ocChange="updateOrderSelected"></order-component>
             </div>
         </div>
         <div class="card-header d-flex justify-items-between py-3 border-top rounded-0 rounded-bottom">

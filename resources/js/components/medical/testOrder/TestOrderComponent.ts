@@ -14,8 +14,9 @@ export default defineComponent({
     },
     data() {
         return {
-            orderTestList: [] as String[],
-            testList: [] as any
+            orderDataList: [] as any,
+            orderComponentList: [] as Number[],
+            orderList: [] as any
         };
     },
     mounted() {
@@ -26,13 +27,14 @@ export default defineComponent({
     methods: {
        addMedicament()
        {
-           this.orderTestList.push('a');
+           this.orderDataList.push(0);
+           this.orderComponentList.push(Math.floor(Math.random() * (50 - 1 + 1)) + 1);
        },
        getTestList(): void
         {
             axios.get(`/productos/estudios`)
                 .then(response => {
-                    this.testList = [{
+                    this.orderList = [{
                         id: 0,
                         name: 'Seleccione un estudio',
                         order_annotations: []
@@ -42,5 +44,15 @@ export default defineComponent({
                     console.log(error)
                 })
         },
+        deleteOrderComponent(index: number)
+        {
+            this.orderDataList.splice(index, 1);
+            this.orderComponentList.splice(index, 1);
+        },
+        updateOrderSelected(index: number, value: number)
+        {
+            this.orderDataList[index] = value;
+            console.log(this.orderDataList)
+        }
     },
 })

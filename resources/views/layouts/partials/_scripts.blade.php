@@ -2,8 +2,8 @@
 <script src="{{ asset('vendor_assets/js/jquery/jquery-ui.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/bootstrap/popper.js') }}"></script>
-<!-- <script src="{{ asset('vendor_assets/js/bootstrap/bootstrap.min.js') }}"></script> -->
-<!-- <script src="{{ asset('vendor_assets/js/wickedpicker.min.js') }}"></script>
+<script src="{{ asset('vendor_assets/js/bootstrap/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendor_assets/js/wickedpicker.min.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/accordion.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/autoComplete.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/moment/moment.min.js') }}"></script>
@@ -42,6 +42,6 @@
 <script src="{{ asset('js/icon-loader.js') }}"></script>
 <script src="{{ asset('js/jvectormap-init.js') }}"></script>
 <script src="{{ asset('js/footable.js') }}"></script>
-<script src="{{ asset('js/leaflet-init.js') }}"></script> -->
+<script src="{{ asset('js/leaflet-init.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>

@@ -2,34 +2,43 @@ import {
     defineComponent
 } from '@vue/runtime-core';
 import Vue from 'vue';
-import { DefineComponent, PropType } from 'vue';
+import {
+    DefineComponent,
+    PropType
+} from 'vue';
 import axios from 'axios';
 
 export default defineComponent({
-    components: {
-    },
-    emits: [],
+    components: {},
+    emits: ['ocDelete', 'ocChange'],
     props: {
-        testList: {
-            type: Array as PropType<any[]>,
+        orderList: {
+            type: Array as PropType < any[] > ,
             default: []
         },
+        orderIndex: {
+            type: Number as PropType < Number > ,
+            default: -1
+        }
     },
     data() {
         return {
-            testSelected: 0,
+            orderSelected: 0,
             id: Math.floor(Math.random() * (50 - 1 + 1)) + 1
         };
     },
     mounted() {
         const self = this;
-        $(`#test${self.id}`).select2()
-        $(`#test${self.id}`).on('select2:select', function (e) {
-            self.testSelected = self.testList.findIndex(test => test.id === Number(e.params.data.id));
-          });
+        $(`#ocOrder${self.id}`).select2()
+        $(`#ocOrder${self.id}`).on('select2:select', function (e) {
+            self.orderSelected = self.orderList.findIndex(order => order.id === Number(e.params.data.id));
+            self.$emit('ocChange', self.orderIndex, self.orderSelected);
+        });
     },
-    watch: {
-    },
+    watch: {},
     methods: {
+        deleteOrder() {
+            this.$emit('ocDelete', this.orderIndex)
+        },
     },
 })

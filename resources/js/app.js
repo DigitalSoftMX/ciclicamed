@@ -20,7 +20,7 @@ import UserTestPage from './pages/user/UserTestPage';
 	//Schedule
 	import ScheduleComponent from './components/schedule/ScheduleComponent/ScheduleComponent.vue';
 
-	import HistorialClinicoComponent from './components/attachtments/HistorialClinico/Parent/HistorialClinicoComponent.vue';
+	import HistorialClinicoComponent from './components/attachtments/HistorialClinico/HistorialClinicoComponent.vue';
 
 	import UroginecologiaComponent from './components/attachtments/Uroginecologia/UroginecologiaComponent.vue';
 	import ClimaterioSaludOseaComponent from './components/attachtments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue';

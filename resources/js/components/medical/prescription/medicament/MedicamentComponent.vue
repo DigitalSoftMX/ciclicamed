@@ -7,7 +7,7 @@
                 <h6>{{ medicamentList[medicamentSelected].name }}</h6>
             </a>
             <div class="px-3">
-                <button class="btn btn-icon btn-danger btn-circle button-size">
+                <button class="btn btn-icon btn-danger btn-circle button-size" @click="deleteMedicament">
                     <img src="/svg/delete.svg" alt="Delete logo" class="svg-white">
                 </button>
             </div>
@@ -24,16 +24,16 @@
             </div>
             <div class="col-12 col-md-3 mb-25">
                 <label for="">Dosis</label>
-                <input class="form-control form-control-lg" type="text" placeholder="Dosis" v-model="medicamentData.dose">
+                <input class="form-control form-control-lg" type="text" placeholder="Dosis" v-model="medicamentData.dose" @keyup="updateMedicamentData">
             </div>
 
             <div class="col-12 col-md-3 mb-25">
                 <label for="">Frecuencia</label>
-                <input class="form-control form-control-lg" type="text" placeholder="Frecuencia" v-model="medicamentData.rate">
+                <input class="form-control form-control-lg" type="text" placeholder="Frecuencia" v-model="medicamentData.rate" @keyup="updateMedicamentData">
             </div>
             <div class="col-12 col-md-3">
                 <label for="">Duración</label>
-                <input class="form-control form-control-lg" type="text" placeholder="Duración" v-model="medicamentData.duration">
+                <input class="form-control form-control-lg" type="text" placeholder="Duración" v-model="medicamentData.duration" @keyup="updateMedicamentData">
             </div>
         </div>
     </div>

@@ -1,8 +1,8 @@
 <template>
     <div class="card">
         <div class="card-body" v-show="prescriptionList.length > 0">
-            <div v-for="prescription in prescriptionList" :key="prescription" class="atbd-collapse atbd-collapse-custom">
-                <medicament-component :medicamentList="medicamentList"></medicament-component>
+            <div v-for="(prescription, index) in prescriptionList" :key="prescription" class="atbd-collapse atbd-collapse-custom">
+                <medicament-component :medicamentIndex="index" :medicamentList="medicamentList" @mcDelete="deleteMedicamentComponent" @mcChange="updateMedicamentSelected"></medicament-component>
             </div>
         </div>
         <div class="card-header d-flex justify-items-between py-3 border-top rounded-0 rounded-bottom">

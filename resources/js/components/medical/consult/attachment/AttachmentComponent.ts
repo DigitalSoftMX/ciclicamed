@@ -5,7 +5,7 @@ import { DefineComponent, PropType } from 'vue';
 
 export default defineComponent({
     components: {
-        HistorialClinicoComponent: require('../../../attachtments/HistorialClinico/Parent/HistorialClinicoComponent.vue').default,
+        HistorialClinicoComponent: require('../../../attachtments/HistorialClinico/HistorialClinicoComponent.vue').default,
         UroginecologiaComponent: require('../../../attachtments/Uroginecologia/UroginecologiaComponent.vue').default,
         ClimaterioSaludOseaComponent: require('../../../attachtments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue').default,
         MaternoFetalComponent: require('../../../attachtments/MaternoFetal/Parent/MaternoFetalComponent.ts').default,

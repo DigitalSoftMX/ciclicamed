@@ -15,7 +15,8 @@ export default defineComponent({
     data() {
         return {
             medicamentList: [] as String[],
-            prescriptionList: [] as String[],
+            prescriptionDataList: [] as any,
+            prescriptionList: [] as Number[],
         };
     },
     mounted() {
@@ -26,7 +27,7 @@ export default defineComponent({
     methods: {
        addPrescription()
        {
-           this.prescriptionList.push('a');
+           this.prescriptionList.push(Math.floor(Math.random() * (50 - 1 + 1)) + 1);
        },
        getMedicamentList(): void
         {
@@ -41,5 +42,16 @@ export default defineComponent({
                     console.log(error)
                 })
         },
+        deleteMedicamentComponent(index: number)
+        {
+            this.prescriptionDataList.splice(index, 1);
+            this.prescriptionList.splice(index, 1);
+        },
+        updateMedicamentSelected(index: number, value: number)
+        {
+            this.prescriptionDataList[index] = value;
+            console.log(value)
+        }
+        
     },
 })
