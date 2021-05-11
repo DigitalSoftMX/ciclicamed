@@ -22,10 +22,6 @@ export default defineComponent({
     setup() {
     },
     methods: {
-        test()
-        {
-            console.log(this.heredoFamiliaresDataCopy)
-        }
     }
 
 })

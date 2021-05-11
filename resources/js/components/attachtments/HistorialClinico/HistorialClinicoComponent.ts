@@ -10,9 +10,9 @@ export default defineComponent({
     name: 'HistorialClinicoComponent',
     components: {
         HeredoFamiliaresComponent: require('./HeredoFamiliares/HeredoFamiliaresComponent.vue').default,
-        PersonalesNoPatologicosComponent: require('./PersonalesNoPatologicos/Parent/PersonalesNoPatologicosComponent.vue').default,
-        PersonalesPatologicosComponent: require('./PersonalesPatologicos/Parent/PersonalesPatologicosComponent.vue').default,
-        GinecoObstetrosComponent: require('./GinecoObstetros/Parent/GinecoObstetrosComponent.vue').default,
+        PersonalesNoPatologicosComponent: require('./PersonalesNoPatologicos/PersonalesNoPatologicosComponent.vue').default,
+        PersonalesPatologicosComponent: require('./PersonalesPatologicos/PersonalesPatologicosComponent.vue').default,
+        GinecoObstetrosComponent: require('./GinecoObstetros/GinecoObstetrosComponent.vue').default,
         TratamientoComponent: require('./Tratamiento/TratamientoComponent.vue').default,
     },
     props:{},

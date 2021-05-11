@@ -9,22 +9,6 @@
                     <div class="card-body">
                         <ul class="nav justify-items-start nav-pills nav-fill rounded" id="mccdTab" role="tablist">
                             <li class="nav-item px-0">
-                                <a class="nav-link px-3 py-2 rounded" id="mccdUroginecologia-tab" data-toggle="pill"
-                                    href="#mccdUroginecologia" role="tab" aria-controls="mccdUroginecologia"
-                                    aria-selected="false">Uroginecología</a>
-                            </li>
-                            <li class="nav-item px-0">
-                                <a class="nav-link px-3 py-2 rounded" id="mccdClimaterioSaludOsea-tab" data-toggle="pill"
-                                    href="#mccdClimaterioSaludOsea" role="tab" aria-controls="mccdClimaterioSaludOsea"
-                                    aria-selected="false">Climaterío y salud
-                                    ósea</a>
-                            </li>
-                            <li class="nav-item px-0">
-                                <a class="nav-link px-3 py-2 rounded" id="mccdMaternoFetal-tab" data-toggle="pill"
-                                    href="#mccdMaternoFetal" role="tab" aria-controls="mccdMaternoFetal"
-                                    aria-selected="false">Materno fetal</a>
-                            </li>
-                            <li class="nav-item px-0">
                                 <a class="nav-link px-3 py-2 rounded" id="mccdBiologiaReproduccion-tab"
                                     data-toggle="pill" href="#mccdBiologiaReproduccion" role="tab"
                                     aria-controls="mccdBiologiaReproduccion" aria-selected="false">Biología de la
@@ -37,15 +21,31 @@
                                     endoscópica</a>
                             </li>
                             <li class="nav-item px-0">
-                                <a class="nav-link px-3 py-2 rounded" id="mccdOncologia-tab" data-toggle="pill"
-                                    href="#mccdOncologia" role="tab" aria-controls="mccdOncologia"
-                                    aria-selected="false">Oncología</a>
+                                <a class="nav-link px-3 py-2 rounded" id="mccdClimaterioSaludOsea-tab" data-toggle="pill"
+                                    href="#mccdClimaterioSaludOsea" role="tab" aria-controls="mccdClimaterioSaludOsea"
+                                    aria-selected="false">Climaterío y salud
+                                    ósea</a>
                             </li>
                             <li class="nav-item px-0">
                                 <a class="nav-link px-3 py-2 rounded" id="mccdColposcopia-tab" data-toggle="pill"
                                     href="#mccdColposcopia" role="tab" aria-controls="mccdColposcopia"
                                     aria-selected="false">Colposcopía</a>
                             </li>
+                            <li class="nav-item px-0">
+                                <a class="nav-link px-3 py-2 rounded" id="mccdMaternoFetal-tab" data-toggle="pill"
+                                    href="#mccdMaternoFetal" role="tab" aria-controls="mccdMaternoFetal"
+                                    aria-selected="false">Materno fetal</a>
+                            </li>
+                            <li class="nav-item px-0">
+                                <a class="nav-link px-3 py-2 rounded" id="mccdOncologia-tab" data-toggle="pill"
+                                    href="#mccdOncologia" role="tab" aria-controls="mccdOncologia"
+                                    aria-selected="false">Oncología</a>
+                            </li>
+                            <li class="nav-item px-0">
+                                <a class="nav-link px-3 py-2 rounded" id="mccdUroginecologia-tab" data-toggle="pill"
+                                    href="#mccdUroginecologia" role="tab" aria-controls="mccdUroginecologia"
+                                    aria-selected="false">Uroginecología</a>
+                            </li>                            
                         </ul>
                     </div>
                 </div>

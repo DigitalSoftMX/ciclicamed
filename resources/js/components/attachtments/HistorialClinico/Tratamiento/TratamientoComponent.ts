@@ -1,3 +1,5 @@
+import { TratamientosData } from '../../../../defaultData/Attachments/HistorialClinico/Tratamientos.data';
+import { Tratamientos } from '@/resources/js/interfaces/Attachtments/HistorialClinico/options/Tratamientos.interface';
 import {
     defineComponent
 } from '@vue/runtime-core';
@@ -10,8 +12,16 @@ export default defineComponent({
     name: 'PersonalesPatologicosComponent',
     components: {
     },
+    props:{
+        formData: {
+            type: Object as PropType<Tratamientos>,
+            default: TratamientosData
+        },
+    },
     data(){
-        return {}
+        return {
+            formDataCopy: Object.assign({}, this.$props.formData)
+        }
     },
     methods: {}
 })

@@ -1,6 +1,6 @@
 <template>
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white card-bordered">
+        <div class="card card-default card-md bg-white">
             <div class="card-header">
                 <h6>Hipertensión</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white card-bordered">
+        <div class="card card-default card-md bg-white">
             <div class="card-header">
                 <h6>Cáncer</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -43,13 +43,11 @@
                         <div class="col-12 col-md-7 mb-25 mb-md-0">
                             <textarea type="text" class="form-control" id="hfcCancerGinecologico"
                                 v-model="heredoFamiliaresDataCopy.cancer.ginecologico.description"
-                                :value="heredoFamiliaresDataCopy.cancer.ginecologico.description"
                                 placeholder="Ginecológico"></textarea>
                         </div>
                         <div class="col-12 col-md-5">
                             <input type="number" class="form-control" id="hfcCancerGinecologicoEdad"
                                 v-model="heredoFamiliaresDataCopy.cancer.ginecologico.age"
-                                :value="heredoFamiliaresDataCopy.cancer.ginecologico.age"
                                 placeholder="Edad de aparición">
                         </div>
                     </div>
@@ -60,13 +58,11 @@
                         <div class="col-12 col-md-7 mb-25 mb-md-0">
                             <textarea type="text" class="form-control" id="hfcCancerOtros"
                                 v-model="heredoFamiliaresDataCopy.cancer.otros.description"
-                                :value="heredoFamiliaresDataCopy.cancer.otros.description"
                                 placeholder="Ginecológico"></textarea>
                         </div>
                         <div class="col-12 col-md-5">
                             <input type="number" class="form-control" id="hfcCancerOtrosEdad"
-                                v-model="heredoFamiliaresDataCopy.cancer.otros.age"
-                                :value="heredoFamiliaresDataCopy.cancer.otros.age" placeholder="Edad de aparición">
+                                v-model="heredoFamiliaresDataCopy.cancer.otros.age" placeholder="Edad de aparición">
                         </div>
                     </div>
                 </div>
@@ -75,7 +71,7 @@
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white card-bordered">
+        <div class="card card-default card-md bg-white">
             <div class="card-header">
                 <h6>Diabetes mellitus</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -101,7 +97,7 @@
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white card-bordered">
+        <div class="card card-default card-md bg-white">
             <div class="card-header">
                 <h6>Patología tiroidea</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -127,7 +123,7 @@
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white card-bordered">
+        <div class="card card-default card-md bg-white">
             <div class="card-header">
                 <h6>Otros</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -142,7 +138,6 @@
                     <div class="row mx-0">
                         <textarea type="text" class="form-control" id="hfcOtrosOtros"
                             v-model="heredoFamiliaresDataCopy.cancer.otros.description"
-                            :value="heredoFamiliaresDataCopy.cancer.otros.description"
                             placeholder="Ginecológico"></textarea>
                     </div>
                 </div>
