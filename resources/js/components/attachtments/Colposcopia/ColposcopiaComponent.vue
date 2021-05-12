@@ -1,234 +1,261 @@
 <template>
-    <div class="col-12 row p-3 mx-0 atbd-collapse atbd-collapse-custom">
-        <div class="col-12 mb-25 card card-default card-md p-0">
-            <div class="atbd-collapse-item__header active">
-                <a class="item-link" data-toggle="collapse" data-target="#rcrcDoppler" aria-expanded="true"
-                    aria-controls="rcrcDoppler">
-                    <i class="la la-angle-right"></i>
-                    Antecedentes de importancia
-                </a>
-            </div>
-            <div id="rcrcDoppler" class="atbd-collapse-item__body collapse px-0 py-4">
-                <div class="col-12 row mx-0">
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Antecedentes obstétricos</label>
-                        <textarea class="form-control form-control-lg" type="text" placeholder="" rows="2"></textarea>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Frecuencia coital</label>
-                        <input class="form-control form-control-lg" type="date" placeholder="">
-                    </div>
-                    <div class="col-12 col-md-6 mb-25 mb-md-0">
-                        <label for="">Uso hormonales</label>
-                        <input class="form-control form-control-lg" type="text" placeholder="">
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <label for="">Citología cervical previa</label>
-                        <input class="form-control form-control-lg" type="text" placeholder="">
-                    </div>
-                </div>
-            </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h6>Colposcopía</h6>
         </div>
-        <div class="col-12 mb-25 card card-default card-md p-0">
-            <div class="atbd-collapse-item__header active">
-                <a class="item-link" data-toggle="collapse" data-target="#rcrcDoppler" aria-expanded="true"
-                    aria-controls="rcrcDoppler">
-                    <i class="la la-angle-right"></i>
-                    Cervix
-                </a>
-            </div>
-            <div id="rcrcDoppler" class="atbd-collapse-item__body collapse px-0 py-4">
-                <div class="col-12 row mx-0 align-items-center">
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Volumen</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Eutrofico">Eutrófico</option>
-                            <option value="Hipotrofico">Hipotrófico</option>
-                            <option value="Atrofico">Atrófico</option>
-                            <option value="AuscenciaQuirurgica">Ausencia quirúrgica</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Zona transformación</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Tipo I">Tipo I</option>
-                            <option value="Tipo II">Tipo II</option>
-                            <option value="Tipo II">Tipo III</option>
-                            <option value="NoValorable">No valorable</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Estudio de colposcopia</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Satisfactoria">Satisfactoria</option>
-                            <option value="NoSatisfactoria">No satisfactoria</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Evasión glandular</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Pequenia">Pequeña</option>
-                            <option value="Moderada">Moderada</option>
-                            <option value="Grande">Grande</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Atrofia epitelial</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Ausente">Ausente</option>
-                            <option value="Leve">Leve</option>
-                            <option value="Moderada">Moderada</option>
-                            <option value="Severa">Severa</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Quistes de Naboth</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Presente">Presente</option>
-                            <option value="Ausente">Ausente</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Tumoración</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Presente">Presente</option>
-                            <option value="Ausente">Ausente</option>
-                        </select>
-                    </div>
+        <div class="card-body row mx-0 atbd-collapse atbd-collapse-custom">
+            <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+                <div class="atbd-collapse-item__header active">
+                    <a class="item-link" data-toggle="collapse" data-target="#ccAntecedentesImportancia"
+                        aria-expanded="true" aria-controls="ccAntecedentesImportancia">
+                        <i class="la la-angle-right"></i>
+                        Antecedentes de importancia
+                    </a>
                 </div>
-            </div>
-        </div>
-        <div class="col-12 mb-25 card card-default card-md p-0">
-            <div class="atbd-collapse-item__header active">
-                <a class="item-link" data-toggle="collapse" data-target="#rcrcDoppler" aria-expanded="true"
-                    aria-controls="rcrcDoppler">
-                    <i class="la la-angle-right"></i>
-                    A la aplicación de ácido acético al 5% se observa
-                </a>
-            </div>
-            <div id="rcrcDoppler" class="atbd-collapse-item__body collapse px-0 py-4">
-                <div class="col-12 row mx-0 align-items-center">
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Epitelio acetoblanco</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Presente">Presente</option>
-                            <option value="Ausente">Ausente</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Borde</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="DefinidosConRelieve">Definidos con relieve</option>
-                            <option value="DefinidosSinRelieve">Definidos sin relieve</option>
-                            <option value="DifusoConRelieve">Difuso con relieve</option>
-                            <option value="DifusoSinRelieve">Difuso sin relieve </option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Mosaico</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Fino">Fino</option>
-                            <option value="Grueso">Grueso</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6 mb-25">
-                        <label for="">Superficie</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="LisaConPuntilleoFino">Lisa con puntilleo fino</option>
-                            <option value="LisaConPuntilleoGrueso">Lisa con puntilleo grueso</option>
-                            <option value="MicroPapilarConPuntilleoFino">Micro papilar con puntilleo fino</option>
-                            <option value="MicroPapilarConPuntilleoFino">Micro papilar con puntilleo fino</option>
-                        </select>
-                    </div>
-                    <div class="col-12 row mx-0 p-0">
-                        <div class="col-12">
-                            <label for="">Test de Schiller (Lugol)</label>
+                <div id="ccAntecedentesImportancia" class="atbd-collapse-item__body collapse px-0 py-4">
+                    <div class="col-12 row mx-0">
+                        <div class="col-12 mb-25">
+                            <label for="ccAntecedentesObstetricos">Antecedentes obstétricos</label>
+                            <textarea class="form-control form-control-lg" type="text" rows="4"
+                                id="ccAntecedentesObstetricos"
+                                v-model="formDataCopy.antecedentesImportancia.antecedentesObstetricos"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
-                            <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
+                            <label for="ccFrecuenciaCoital">Frecuencia coital</label>
+                            <input class="form-control form-control-lg" type="date" id="ccFrecuenciaCoital"
+                                v-model="formDataCopy.antecedentesImportancia.frecuenciaCoital">
+                        </div>
+                        <div class="col-12 col-md-6 mb-25 mb-md-0">
+                            <label for="ccUsoHormonales">Uso hormonales</label>
+                            <input class="form-control form-control-lg" type="text" id="ccUsoHormonales"
+                                v-model="formDataCopy.antecedentesImportancia.usoHormonales">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="ccCitologiaCervical">Citología cervical previa</label>
+                            <input class="form-control form-control-lg" type="text" id="ccCitologiaCervical"
+                                v-model="formDataCopy.antecedentesImportancia.citologiaVerticalPrevia">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+                <div class="atbd-collapse-item__header active">
+                    <a class="item-link" data-toggle="collapse" data-target="#ccCervix" aria-expanded="true"
+                        aria-controls="ccCervix">
+                        <i class="la la-angle-right"></i>
+                        Cervix
+                    </a>
+                </div>
+                <div id="ccCervix" class="atbd-collapse-item__body collapse px-0 py-4">
+                    <div class="col-12 row mx-0 align-items-center">
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccVolumen">Volumen</label>
+                            <select class="form-control form-control-lg" id="ccVolumen"
+                                v-model="formDataCopy.cervix.volumen">
+                                <option value="Eutrofico">Eutrófico</option>
+                                <option value="Hipotrofico">Hipotrófico</option>
+                                <option value="Atrofico">Atrófico</option>
+                                <option value="AuscenciaQuirurgica">Ausencia quirúrgica</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccZonaTransformacion">Zona transformación</label>
+                            <select class="form-control form-control-lg" id="ccZonaTransformacion"
+                                v-model="formDataCopy.cervix.zonaTransformacion">
+                                <option value="Tipo I">Tipo I</option>
+                                <option value="Tipo II">Tipo II</option>
+                                <option value="Tipo II">Tipo III</option>
+                                <option value="NoValorable">No valorable</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccEstudioColposcopia">Estudio de colposcopia</label>
+                            <select class="form-control form-control-lg" id="ccEstudioColposcopia"
+                                v-model="formDataCopy.cervix.estudioColposcopia">
+                                <option value="Satisfactoria">Satisfactoria</option>
+                                <option value="NoSatisfactoria">No satisfactoria</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccEvasionGlandular">Evasión glandular</label>
+                            <select class="form-control form-control-lg" id="ccEvasionGlandular"
+                                v-model="formDataCopy.cervix.evasionGlandular">
+                                <option value="Pequenia">Pequeña</option>
+                                <option value="Moderada">Moderada</option>
+                                <option value="Grande">Grande</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccAtrofiaEpitelial">Atrofia epitelial</label>
+                            <select class="form-control form-control-lg" id="ccAtrofiaEpitelial"
+                                v-model="formDataCopy.cervix.atrofiaEpitelial">
+                                <option value="Ausente">Ausente</option>
+                                <option value="Leve">Leve</option>
+                                <option value="Moderada">Moderada</option>
+                                <option value="Severa">Severa</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccQuistesNaboth">Quistes de Naboth</label>
+                            <select class="form-control form-control-lg" id="ccQuistesNaboth"
+                                v-model="formDataCopy.cervix.quistesNaboth">
+                                <option value="Presente">Presente</option>
+                                <option value="Ausente">Ausente</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccTumoracion">Tumoración</label>
+                            <select class="form-control form-control-lg" id="ccTumoracion"
+                                v-model="formDataCopy.cervix.tumoracion">
+                                <option value="Presente">Presente</option>
+                                <option value="Ausente">Ausente</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+                <div class="atbd-collapse-item__header active">
+                    <a class="item-link" data-toggle="collapse" data-target="#ccAplicacionAcidoAcetico"
+                        aria-expanded="true" aria-controls="ccAplicacionAcidoAcetico">
+                        <i class="la la-angle-right"></i>
+                        A la aplicación de ácido acético al 5% se observa
+                    </a>
+                </div>
+                <div id="ccAplicacionAcidoAcetico" class="atbd-collapse-item__body collapse px-0 py-4">
+                    <div class="col-12 row mx-0 align-items-center">
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccAplicacionEpitelioAcetoblanco">Epitelio acetoblanco</label>
+                            <select class="form-control form-control-lg" id="ccAplicacionEpitelioAcetoblanco"
+                                v-model="formDataCopy.aplicacionAcidoAcetico.epitelioAcetoblanco">
+                                <option value="Presente">Presente</option>
+                                <option value="Ausente">Ausente</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="">Borde</label>
+                            <select class="form-control form-control-lg" id="ccBorde"
+                                v-model="formDataCopy.aplicacionAcidoAcetico.borde">
+                                <option value="DefinidosConRelieve">Definidos con relieve</option>
+                                <option value="DefinidosSinRelieve">Definidos sin relieve</option>
+                                <option value="DifusoConRelieve">Difuso con relieve</option>
+                                <option value="DifusoSinRelieve">Difuso sin relieve </option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccMosaico">Mosaico</label>
+                            <select class="form-control form-control-lg" id="ccMosaico"
+                                v-model="formDataCopy.aplicacionAcidoAcetico.mosaico">
+                                <option value="Fino">Fino</option>
+                                <option value="Grueso">Grueso</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-25">
+                            <label for="ccSuperficie">Superficie</label>
+                            <select class="form-control form-control-lg" id="ccSuperficie"
+                                v-model="formDataCopy.aplicacionAcidoAcetico.superficie">
+                                <option value="LisaConPuntilleoFino">Lisa con puntilleo fino</option>
+                                <option value="LisaConPuntilleoGrueso">Lisa con puntilleo grueso</option>
+                                <option value="MicroPapilarConPuntilleoFino">Micro papilar con puntilleo fino</option>
+                                <option value="MicroPapilarConPuntilleoFino">Micro papilar con puntilleo fino</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="ccTestSchiller">Test de Schiller (Lugol)</label>
+                            <select class="form-control form-control-lg" id="ccTestSchiller"
+                                v-model="formDataCopy.aplicacionAcidoAcetico.testSchiller">
                                 <option value="YodoPositivoHomogeneo">Yodo positivo homogéneo </option>
                                 <option value="YodoNegativoConZonasHipocaptantes">Yodo negativo con zonas hipocaptantes
                                 </option>
                             </select>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <input class="form-control form-control-lg" type="text" placeholder="">
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 mb-25 card card-default card-md p-0">
-            <div class="atbd-collapse-item__header active">
-                <a class="item-link" data-toggle="collapse" data-target="#rcrcDoppler" aria-expanded="true"
-                    aria-controls="rcrcDoppler">
-                    <i class="la la-angle-right"></i>
-                    Vaginoscopia
-                </a>
-            </div>
-            <div id="rcrcDoppler" class="atbd-collapse-item__body collapse px-0 py-4">
-                <div class="col-12 row mx-0 align-items-center">
-                    <div class="col-12 row mx-0 p-0 mb-25 align-items-center">
-                        <div class="col-12 mb-25">
-                            <div class="custom-control custom-switch switch-primary switch-md ">
-                                <input type="checkbox" class="custom-control-input" id="switch-s1" checked="">
-                                <label class="custom-control-label" for="switch-s1">Leucorrea</label>
+            <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+                <div class="atbd-collapse-item__header active">
+                    <a class="item-link" data-toggle="collapse" data-target="#ccVaginoscopia" aria-expanded="true"
+                        aria-controls="ccVaginoscopia">
+                        <i class="la la-angle-right"></i>
+                        Vaginoscopia
+                    </a>
+                </div>
+                <div id="ccVaginoscopia" class="atbd-collapse-item__body collapse px-0 py-4">
+                    <div class="col-12 row mx-0 align-items-center">
+                        <div class="card-single col-12 mb-4">
+                            <div class="card card-default card-md bg-white">
+                                <div class="card-header">
+                                    <h6>Leucorrea</h6>
+                                    <div class="custom-control custom-switch switch-primary switch-md ">
+                                        <input type="checkbox" class="custom-control-input" id="ccLeucorrea"
+                                            v-model="formDataCopy.vaginoscopia.leucorrea.check"
+                                            :checked="formDataCopy.vaginoscopia.leucorrea.check">
+                                        <label class="custom-control-label" for="ccLeucorrea"></label>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-normal" v-show="formDataCopy.vaginoscopia.leucorrea.check">
+                                    <label for="">Características</label>
+                                    <textarea class="form-control form-control-lg"></textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <label for="">Características</label>
-                            <textarea class="form-control form-control-lg" placeholder=""></textarea>
+                        <div class="col-12 col-md-6 mb-25 mb-md-0">
+                            <label for="ccVaginoscopiaEpitelioAcetoblanco">Epitelio acetoblanco</label>
+                            <select class="form-control form-control-lg" id="ccVaginoscopiaEpitelioAcetoblanco"
+                                v-model="formDataCopy.vaginoscopia.epitelioAcetoblanco">
+                                <option value="Presente">Presente</option>
+                                <option value="Ausente">Ausente</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="ccCaptacionLugol">Captación de lugol</label>
+                            <select class="form-control form-control-lg" id="ccCaptacionLugol"
+                                v-model="formDataCopy.vaginoscopia.captacionLugol">
+                                <option value="YodoPositivoHomogeneo">Yodo positivo homogéneo </option>
+                                <option value="YodoNegativoConZonasHipocaptantes">Yodo negativo con zonas hipocaptantes
+                                </option>
+                            </select>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 mb-25 mb-md-0">
-                        <label for="">Epitelio acetoblanco</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="Presente">Presente</option>
-                            <option value="Ausente">Ausente</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <label for="">Captación de lugol</label>
-                        <select name="select-size-1" id="select-size-1" class="form-control  form-control-lg">
-                            <option value="YodoPositivoHomogeneo">Yodo positivo homogéneo </option>
-                            <option value="YodoNegativoConZonasHipocaptantes">Yodo negativo con zonas hipocaptantes
-                            </option>
-                        </select>
+                </div>
+            </div>
+            <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+                <div class="atbd-collapse-item__header active">
+                    <a class="item-link" data-toggle="collapse" data-target="#ccVulvoscopia" aria-expanded="true"
+                        aria-controls="ccVulvoscopia">
+                        <i class="la la-angle-right"></i>
+                        Vulvoscopía
+                    </a>
+                </div>
+                <div id="ccVulvoscopia" class="atbd-collapse-item__body collapse px-0 py-4">
+                    <div class="col-12">
+                        <div class="col-12">
+                            <textarea class="form-control form-control-lg" rows="5" id="ccVulvoscopia"
+                                v-model="formDataCopy.vulvoscopia"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 mb-25 card card-default card-md p-0">
-            <div class="atbd-collapse-item__header active">
-                <a class="item-link" data-toggle="collapse" data-target="#rcrcDoppler" aria-expanded="true"
-                    aria-controls="rcrcDoppler">
-                    <i class="la la-angle-right"></i>
-                    Vulvoscopía
-                </a>
-            </div>
-            <div id="rcrcDoppler" class="atbd-collapse-item__body collapse px-0 py-4">
-                <div class="col-12">
-                    <div class="col-12">
-                        <textarea class="form-control form-control-lg" placeholder="" rows="5"></textarea>
-                    </div>
+            <div class="col-12 card card-default card-md p-0 border rounded">
+                <div class="atbd-collapse-item__header active">
+                    <a class="item-link" data-toggle="collapse" data-target="#ccDiagnosticoColposcopico"
+                        aria-expanded="true" aria-controls="ccDiagnosticoColposcopico">
+                        <i class="la la-angle-right"></i>
+                        Diagnóstico colposcópico
+                    </a>
                 </div>
-            </div>
-        </div>
-        <div class="col-12 card card-default card-md p-0">
-            <div class="atbd-collapse-item__header active">
-                <a class="item-link" data-toggle="collapse" data-target="#rcrcDoppler" aria-expanded="true"
-                    aria-controls="rcrcDoppler">
-                    <i class="la la-angle-right"></i>
-                    Diagnóstico colposcópico
-                </a>
-            </div>
-            <div id="rcrcDoppler" class="atbd-collapse-item__body collapse px-0 py-4">
-                <div class="col-12">
+                <div id="ccDiagnosticoColposcopico" class="atbd-collapse-item__body collapse px-0 py-4">
                     <div class="col-12">
-                        <textarea class="form-control form-control-lg" placeholder="" rows="5"></textarea>
+                        <div class="col-12">
+                            <textarea class="form-control form-control-lg" rows="5" id="ccDiagnosticoColposcopico"
+                                v-model="formDataCopy.diagnosticoColposcopico"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script lang="ts" src="./ColposcopiaComponent.ts"></script>

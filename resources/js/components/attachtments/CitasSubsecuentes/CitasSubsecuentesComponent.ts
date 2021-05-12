@@ -1,5 +1,5 @@
-import { CitasSubsecuentesData } from '../../../defaultData/Attachments/CitasSubsecuentes/CitasSubsecuentes.data';
-import { CitasSubsecuentes } from '@/resources/js/interfaces/Attachtments/CitasSubsecuentes/CitasSubsecuentes.interface';
+import { CitasSubsecuentesData } from '../../../defaultData/Attachments/CitasSubsecuentes.data';
+import { CitasSubsecuentes } from '@/resources/js/interfaces/Attachtments/CitasSubsecuentes.interface';
 import {
     defineComponent
 } from '@vue/runtime-core';

@@ -1,5 +1,5 @@
-import { ClimaterioSaludOseaData } from '../../../defaultData/Attachments/ClimaterioSaludOsea/ClimaterioSaludOsea.data';
-import { ClimaterioSaludOsea } from '@/resources/js/interfaces/Attachtments/ClimaterioSaludOsea/ClimaterioSaludOsea.interface';
+import { ClimaterioSaludOseaData } from '../../../defaultData/Attachments/ClimaterioSaludOsea.data';
+import { ClimaterioSaludOsea } from '@/resources/js/interfaces/Attachtments/ClimaterioSaludOsea.interface';
 import {
     defineComponent
 } from '@vue/runtime-core';

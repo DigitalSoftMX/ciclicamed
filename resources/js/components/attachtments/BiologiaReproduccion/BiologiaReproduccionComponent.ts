@@ -5,8 +5,8 @@ import {
     DefineComponent,
     PropType
 } from 'vue';
-import { BiologiaReproduccion } from '@/resources/js/interfaces/Attachtments/BiologiaReproduccion/BiologiaReproduccion.interface';
-import { BiologiaReproduccionData } from '../../../defaultData/Attachments/BiologiaReproduccion/BiologiaReproduccion.data';
+import { BiologiaReproduccion } from '@/resources/js/interfaces/Attachtments/BiologiaReproduccion.interface';
+import { BiologiaReproduccionData } from '../../../defaultData/Attachments/BiologiaReproduccion.data';
 
 export default defineComponent({
     name: 'BiologiaReproduccionComponent',

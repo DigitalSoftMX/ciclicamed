@@ -1,5 +1,5 @@
-import { CirugiaEndoscopicaData } from '../../../defaultData/Attachments/CirugiaEndoscopica/CirugiaEndoscopica.data';
-import { CirugiaEndoscopica } from '@/resources/js/interfaces/Attachtments/CirugiaEndoscopica/CirugiaEndoscopica.interface';
+import { CirugiaEndoscopicaData } from '../../../defaultData/Attachments/CirugiaEndoscopica.data';
+import { CirugiaEndoscopica } from '@/resources/js/interfaces/Attachtments/CirugiaEndoscopica.interface';
 import {
     defineComponent
 } from '@vue/runtime-core';

@@ -63,7 +63,7 @@
                 <climaterio-salud-osea-component></climaterio-salud-osea-component>
             </div>
             <div class="tab-pane fade" id="mccdMaternoFetal" role="tabpanel" aria-labelledby="mccdMaternoFetal-tab">
-                <!-- <materno-fetal-component></materno-fetal-component> -->
+                <materno-fetal-component></materno-fetal-component>
             </div>
             <div class="tab-pane fade" id="mccdBiologiaReproduccion" role="tabpanel"
                 aria-labelledby="mccdBiologiaReproduccion-tab">
