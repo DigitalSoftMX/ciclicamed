@@ -26,17 +26,17 @@
                         </div>
                     </div>
                     <div class="card-body bg-normal row mx-0" v-show="formDataCopy.incontinenciaUrinariaUrgencia.check">
-                        <div class="form-group col-md-4">
+                        <div class="col-md-4">
                             <label for="ucUrgenciaTiempoEvolucion">Tiempo de evolución</label>
                             <input class="form-control form-control-lg" type="text" id="ucUrgenciaTiempoEvolucion"
                                 v-model="formDataCopy.incontinenciaUrinariaUrgencia.tiempoEvolucion">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="col-md-4">
                             <label for="ucUrgenciaFrecuencia">Frecuencia</label>
                             <input class="form-control form-control-lg" type="text" id="ucUrgenciaFrecuencia"
                                 v-model="formDataCopy.incontinenciaUrinariaUrgencia.frecuencia">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="col-md-4">
                             <label for="ucUrgenciaCantidadPerdida">Cantidad perdida</label>
                             <input class="form-control form-control-lg" type="text" id="ucUrgenciaCantidadPerdida"
                                 v-model="formDataCopy.incontinenciaUrinariaUrgencia.cantidadPerdida">
@@ -56,17 +56,17 @@
                         </div>
                     </div>
                     <div class="card-body bg-normal row mx-0" v-show="formDataCopy.incontinenciaUrinariaEsfuerzo.check">
-                        <div class="form-group col-md-4">
+                        <div class="col-md-4">
                             <label for="ucEsfuerzoTiempoEvolucion">Tiempo de evolución</label>
                             <input class="form-control form-control-lg" type="text" id="ucEsfuerzoTiempoEvolucion"
                                 v-model="formDataCopy.incontinenciaUrinariaEsfuerzo.tiempoEvolucion">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="col-md-4">
                             <label for="ucEsfuerzoFrecuencia">Frecuencia</label>
                             <input class="form-control form-control-lg" type="text" id="ucEsfuerzoFrecuencia"
                                 v-model="formDataCopy.incontinenciaUrinariaEsfuerzo.frecuencia">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="col-md-4">
                             <label for="ucEsfuerzoCantidadPerdida">Cantidad perdida</label>
                             <input class="form-control form-control-lg" type="text" id="ucEsfuerzoCantidadPerdida"
                                 v-model="formDataCopy.incontinenciaUrinariaEsfuerzo.cantidadPerdida">

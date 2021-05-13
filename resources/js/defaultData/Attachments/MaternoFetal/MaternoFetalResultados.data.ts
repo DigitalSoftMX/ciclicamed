@@ -124,6 +124,6 @@ export const MaternoFetalResultadosData: MaternoFetalResultados = {
     calculoRiesgo: {
         preclamsia: '',
         restriccionCrecimiento: '',
-        partoPreterito: ''
+        partoPretermino: ''
     }
 }

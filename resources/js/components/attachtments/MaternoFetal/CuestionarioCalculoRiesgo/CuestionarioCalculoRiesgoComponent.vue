@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 row p-3 mx-0 atbd-collapse atbd-collapse-custom">
+    <div class="col-12 row card-body mx-0 atbd-collapse atbd-collapse-custom">
         <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
             <div class="atbd-collapse-item__header active">
                 <a class="item-link" data-toggle="collapse" data-target="#ccrcOrigen" aria-expanded="true"
@@ -391,7 +391,7 @@
             </div>
         </div>
 
-        <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+        <div class="col-12 card card-default card-md p-0 border rounded">
             <div class="atbd-collapse-item__header active">
                 <a class="item-link" data-toggle="collapse" data-target="#ccrcOvocitos" aria-expanded="true"
                     aria-controls="ccrcOvocitos">

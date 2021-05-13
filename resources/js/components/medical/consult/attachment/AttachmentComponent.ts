@@ -13,7 +13,9 @@ export default defineComponent({
         CirugiaEndoscopicaComponent: require('../../../attachtments/CirugiaEndoscopica/CirugiaEndoscopicaComponent.vue').default,
         OncologiaComponent: require('../../../attachtments/Oncologia/OncologiaComponent.vue').default,
         CitasSubsecuentesComponent: require('../../../attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
-        ColposcopiaComponent: require('../../../attachtments/Colposcopia/ColposcopiaComponent.vue').default
+        ColposcopiaComponent: require('../../../attachtments/Colposcopia/ColposcopiaComponent.vue').default,
+        NutricionPerinatalComponent: require('../../../attachtments/Nutricion/NutricionPerinatal/NutricionPerinatalComponent.vue').default,
+        NutricionGeneralComponent: require('../../../attachtments/Nutricion/NutricionGeneral/NutricionGeneralComponent.vue').default
     },
     emits: [],
     props: {

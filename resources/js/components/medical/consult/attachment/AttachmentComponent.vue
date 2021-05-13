@@ -45,7 +45,17 @@
                                 <a class="nav-link px-3 py-2 rounded" id="mccdUroginecologia-tab" data-toggle="pill"
                                     href="#mccdUroginecologia" role="tab" aria-controls="mccdUroginecologia"
                                     aria-selected="false">Uroginecología</a>
-                            </li>                            
+                            </li>
+                            <li class="nav-item px-0">
+                                <a class="nav-link px-3 py-2 rounded" id="mccdNutricionGeneral-tab" data-toggle="pill"
+                                    href="#mccdNutricionPerinatal" role="tab" aria-controls="mccdNutricionPerinatal"
+                                    aria-selected="false">Nutrición perinatal</a>
+                            </li>
+                            <li class="nav-item px-0">
+                                <a class="nav-link px-3 py-2 rounded" id="mccdNutricionGeneral-tab" data-toggle="pill"
+                                    href="#mccdNutricionGeneral" role="tab" aria-controls="mccdNutricionGeneral"
+                                    aria-selected="false">Nutrición general</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -78,6 +88,12 @@
             </div>
             <div class="tab-pane fade" id="mccdColposcopia" role="tabpanel" aria-labelledby="mccdColposcopia-tab">
                 <colposcopia-component></colposcopia-component>
+            </div>
+            <div class="tab-pane fade" id="mccdNutricionPerinatal" role="tabpanel" aria-labelledby="mccdNutricionPerinatal-tab">
+                <nutricion-perinatal-component></nutricion-perinatal-component>
+            </div>
+            <div class="tab-pane fade" id="mccdNutricionGeneral" role="tabpanel" aria-labelledby="mccdNutricionGeneral-tab">
+                <nutricion-general-component></nutricion-general-component>
             </div>
         </div>
     </div>

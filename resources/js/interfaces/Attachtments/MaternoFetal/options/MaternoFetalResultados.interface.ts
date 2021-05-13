@@ -123,6 +123,6 @@ export interface MaternoFetalResultados
     calculoRiesgo: {
         preclamsia: string,
         restriccionCrecimiento: string,
-        partoPreterito: string
+        partoPretermino: string
     }
 }

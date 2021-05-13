@@ -5,7 +5,7 @@
         </div>
         <div class="tab-wrapper">
             <div class="atbd-tab tab-horizontal">
-                <ul class="nav nav-tabs vertical-tabs" role="tablist">
+                <ul class="nav nav-tabs vertical-tabs justify-content-center px-2" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="mfcTab1" data-toggle="tab" href="#mfcTab1Panel" role="tab"
                             aria-controls="mfcTab1Panel" aria-selected="true">Cuestionario para el cálculo de tamizaje
