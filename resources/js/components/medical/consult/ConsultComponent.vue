@@ -59,7 +59,7 @@
                             <historial-clinico-component></historial-clinico-component>
                         </div>
                         <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel">
-                            Expediente
+                            <record-component></record-component>
                         </div>
                         <div class="tab-pane fade" id="mccEspecialidades" role="tabpanel"
                             aria-labelledby="mccEspecialidades-tab">

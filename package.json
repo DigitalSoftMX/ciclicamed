@@ -39,6 +39,7 @@
         "@fullcalendar/timegrid": "^5.6.0",
         "@types/jquery.ui.datetimepicker": "^0.3.29",
         "@types/select2": "^4.0.53",
+        "@types/swiper": "^5.4.2",
         "bootstrap": "^4.6.0",
         "daterangepicker": "^3.1.0",
         "jquery-datepicker": "^1.12.3",
@@ -47,6 +48,8 @@
         "moment": "^2.29.1",
         "select2": "^4.1.0-rc.0",
         "sweetalert2": "^10.16.3",
+        "swipejs": "^2.3.1",
+        "swiper": "^6.6.1",
         "vue": "^3.0.11",
         "vue-sweetalert2": "^4.3.1"
     }

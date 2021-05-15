@@ -9,12 +9,13 @@ export interface AntecedentesSalud
         pirosis: boolean,
         vomito: boolean,
         colitis: boolean,
+        dentadura: boolean,
         otros: {
             check: boolean,
             description: string
         }
     },
-    cantidadPerdida: string,
+    observaciones: string,
     ta: {
         brazoDerecho: string,
         brazoIzquierdo: string

@@ -10,7 +10,8 @@ export default defineComponent({
         HistorialClinicoComponent: require('../../attachtments/HistorialClinico/HistorialClinicoComponent.vue').default,
         CitasSubsecuentesComponent: require('../../attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
         PrescriptionComponent: require('../prescription/PrescriptionComponent.vue').default,
-        TestOrderComponent: require('../testOrder/TestOrderComponent.vue').default
+        TestOrderComponent: require('../testOrder/TestOrderComponent.vue').default,
+        RecordComponent: require('../record/RecordComponent.vue').default
     },
     emits: [],
     props: {
