@@ -29,11 +29,9 @@
                         <li v-bind:class="{'selected': index == 0}"
                             :data-date="formatConsultDateTime(consult.consult_schedule_start)"
                             v-for="(consult, index) in consultList" :key="consult.id">
-                            <h2>{{index}}</h2>
-                            <em>{{formatConsultDateTime(consult.consult_schedule_start)}}</em>
-                            <p>
-                                {{formatConsultDateTime(consult.consult_schedule_start)}}
-                            </p>
+                            <div class="row mx-0" v-if="followUp.id !== -1">
+                            </div>
+                            <h3>Expediente</h3>
                         </li>
                     </ol>
                 </div> <!-- .events-content -->

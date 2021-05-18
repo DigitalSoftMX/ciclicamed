@@ -70,9 +70,8 @@ class DatabaseSeeder extends Seeder
         MedicalConsultType::factory(5)->create();
         MedicalConsultStatus::factory(6)->create();
         MedicalConsult::factory(50)->create();
-        MedicalAttachmentForm::factory(15)->create();
-        MedicalAttachment::factory(30)->create();
-        MedicalAttachmentFollowUp::factory(30)->create();
+        MedicalAttachment::factory(100)->create();
+        MedicalAttachmentFollowUp::factory(100)->create();
         MedicalHistory::factory(30)->create();
         Medicament::factory(50)->create();
         MedicalPrescription::factory(50)->create();

@@ -9,6 +9,7 @@ use App\Models\Medical\Attachment\MedicalAttachmentFollowUp;
 use App\Models\Medical\Attachment\MedicalAttachmentForm;
 use App\Models\Medical\Clinical\ClinicalStudy;
 use App\Models\Medical\History\MedicalHistory;
+use App\Models\Medical\MedicalSpecialty;
 use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\Medical\Prescription\Medicament;
 use App\Models\Medical\Study\MedicalStudy;
@@ -69,13 +70,13 @@ class MedicalConsult extends Model
 
     public function attachments()
     {
-        return $this->belongsToMany(MedicalAttachmentForm::class, 'medical_attachments', 'medicalconsult_id', 'medicalattachmentform_id')
+        return $this->belongsToMany(MedicalSpecialty::class, 'medical_attachments', 'medicalconsult_id', 'medicalspecialty_id')
                     ->withPivot('data', 'updated_by', 'update_note');
     }
 
     public function followups()
     {
-        return $this->belongsToMany(MedicalAttachmentForm::class, 'medical_attachment_follow_ups', 'medicalconsult_id', 'medicalattachmentform_id')
+        return $this->belongsToMany(MedicalSpecialty::class, 'medical_attachment_follow_ups', 'medicalconsult_id', 'medicalspecialty_id')
                     ->withPivot('data', 'updated_by', 'update_note');
     }
 

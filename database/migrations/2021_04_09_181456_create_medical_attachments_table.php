@@ -16,14 +16,14 @@ class CreateMedicalAttachmentsTable extends Migration
         Schema::create('medical_attachments', function (Blueprint $table) {
             $table->unsignedInteger('medicalconsult_id', false);
             $table->json('data');
-            $table->unsignedSmallInteger('medicalattachmentform_id', false);
+            $table->unsignedSmallInteger('medicalspecialty_id', false);
             $table->unsignedSmallInteger('updated_by', false);
             $table->string('update_note', 255)->nullable();
             $table->timestamps();
 
             //Relaciones
             $table->foreign('medicalconsult_id')->references('id')->on('medical_consults');
-            $table->foreign('medicalattachmentform_id')->references('id')->on('medical_attachment_forms');
+            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties');
         });
     }
 

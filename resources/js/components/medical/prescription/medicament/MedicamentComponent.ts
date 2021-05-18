@@ -4,7 +4,7 @@ import {
 import Vue from 'vue';
 import { DefineComponent, PropType } from 'vue';
 import axios from 'axios';
-import { Prescription } from '@/resources/js/interfaces/Medical/Prescription/Prescription.interface';
+import { Prescription } from '@/resources/js/interfaces/Medical/Prescription.interface';
 
 export default defineComponent({
     components: {

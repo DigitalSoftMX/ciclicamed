@@ -2,7 +2,7 @@
 
 namespace App\Models\Medical\Attachment;
 
-use App\Models\Employee\Employee;
+use App\Models\Medical\MedicalSpecialty;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class MedicalAttachmentFollowUp extends Model
     protected $fillable = [
         'medicalconsult_id',
         'data',
-        'medicalattachmentform_id',
+        'medicalspecialty_id',
         'updated_by',
         'update_note'
     ];
@@ -23,8 +23,8 @@ class MedicalAttachmentFollowUp extends Model
         return $this->belongsTo(MedicalConsult::class);
     }
 
-    public function medicalattachmmentform()
+    public function medicalSpecialty()
     {
-        return $this->belongsTo(MedicalAttachmentForm::class);
+        return $this->belongsTo(MedicalSpecialty::class);
     }
 }

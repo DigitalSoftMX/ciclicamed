@@ -10,7 +10,8 @@ export interface IndicadoresBioquimicos
         glucosa1: {
             dia: string,
             glucosa: string
-        },glucosa2: {
+        },
+        glucosa2: {
             dia: string,
             glucosa: string
         }
