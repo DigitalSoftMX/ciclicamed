@@ -21,27 +21,27 @@ class MedicalTest extends Model
         return $this->belongsTo(MedicalTestStatus::class, 'medicalteststatus_id');
     }
 
-    public function consultcreated()
+    public function consultCreated()
     {
         return $this->belongsTo(MedicalConsult::class, 'created_in');
     }
 
-    public function consultscheduled()
+    public function consultScheduled()
     {
         return $this->belongsTo(MedicalConsult::class, 'scheduled_in');
     }
 
-    public function medicalsamples()
+    public function medicalSamples()
     {
         return $this->hasMany(MedicalStudySample::class, 'medicaltest_id');
     }
 
-    public function medicalresults()
+    public function medicalResults()
     {
         return $this->hasMany(MedicalTestResult::class, 'medicaltest_id');
     }
 
-    public function medicalorders()
+    public function medicalOrders()
     {
         return $this->hasMany(MedicalTestOrder::class, 'medicaltest_id');
     }

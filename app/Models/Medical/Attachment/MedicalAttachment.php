@@ -24,7 +24,7 @@ class MedicalAttachment extends Model
         return $this->belongsTo(MedicalConsult::class);
     }
 
-    public function medicalattachmmentform()
+    public function medicalAttachmmentForm()
     {
         return $this->belongsTo(MedicalAttachmentForm::class);
     }

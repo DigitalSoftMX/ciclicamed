@@ -18,16 +18,20 @@ mix.js('resources/js/app.js', 'public/js')
     .browserSync('http://127.0.0.1:8000/')
     .webpackConfig({
         module: {
-          rules: [
-            {
-              test: /\.tsx?$/,
-              loader: "ts-loader",
-              options: { appendTsSuffixTo: [/\.vue$/] },
-              exclude: /node_modules/
-            }
-          ]
+            rules: [{
+                test: /\.tsx?$/,
+                loader: "ts-loader",
+                options: {
+                    appendTsSuffixTo: [/\.vue$/]
+                },
+                exclude: /node_modules/
+            }]
         },
+        // output: {
+        //     filename: 'js/main/[name].js',
+        //     chunkFilename: 'js/chunks/[name].js',
+        // },
         resolve: {
-          extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx", ".interface.ts", ".data"]
+            extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx", ".interface.ts", ".data"]
         }
     });

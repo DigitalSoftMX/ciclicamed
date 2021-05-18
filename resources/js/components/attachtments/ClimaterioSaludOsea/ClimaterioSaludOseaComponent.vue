@@ -4,13 +4,13 @@
             <h5 class="title-ciclica">Climaterio y salud ósea</h5>
         </div>
         <div class="card-body row mx-0">
-            <div class="col-md-4 mb-25">
+            <div class="col-12 col-md-4 mb-25">
                 <label for="csocCiclosMenstruales" class="col-form-label col-form-label-lg mb-1">Ciclos
                     menstruales</label>
                 <input class="form-control form-control-lg" type="text" id="csocCiclosMenstruales"
                     v-model="formDataCopy.ciclosMenstruales">
             </div>
-            <div class="col-md-4 mb-25">
+            <div class="col-12 col-md-6 mb-25">
                 <label for="csocCantidadSangrado" class="col-form-label col-form-label-lg mb-1">Cantidad de sangrado
                     mestrual</label>
                 <select class="form-control form-control-lg" id="csocCantidadSangrado"

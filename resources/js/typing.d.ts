@@ -11,5 +11,5 @@ declare module 'swiper/vue';
 
 
 declare interface JQuery {
-    horizontalTimeline(): any;
+    horizontalTimeline(options?: any, options1?: any, options2?: any, options3?: any): any;
 }

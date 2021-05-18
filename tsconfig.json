@@ -7,7 +7,6 @@
       "experimentalDecorators": true,
       "sourceMap": true,
       "allowSyntheticDefaultImports": true,
-      "allowJs": true,
       "paths": {
         "@/*": [
          "./*"
@@ -17,6 +16,7 @@
   "include": ["resources/js/**/*", "resources/js/components/**/**/*"],
   "exclude": [
       "node_modules",
-      "vendor"
+      "vendor",
+      "dist",
   ]
 }

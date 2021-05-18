@@ -125,4 +125,16 @@ class MedicalConsultController extends Controller
         $consult->status;
         return response()->json($consult);
     }
+
+    public function getTests($id)
+    {
+        $consult = MedicalConsult::findOrFail($id);
+        return response()->json($consult->testsCreated->load(['medicalOrders', 'medicalResults']));
+    }
+
+    public function getFollowUps($id)
+    {
+        $consult = MedicalConsult::findOrFail($id);
+        return response()->json($consult->followUps);
+    }
 }

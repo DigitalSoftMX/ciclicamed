@@ -46,6 +46,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/pacientes/{id}', [MedicalConsultController::class, 'getConsultsByPatient'])->name('consulta.paciente');
         Route::delete('/{id}', [MedicalConsultController::class, 'cancelConsult'])->name('consulta.eliminar');
         Route::patch('/{id}', [MedicalConsultController::class, 'updateSchedule'])->name('consulta.actualizar');
+        Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.anexos');
+        Route::get('/{id}/seguimiento', [MedicalConsultController::class, 'getFollowUps'])->name('consulta.seguimiento');
     });
 
 
@@ -74,6 +76,7 @@ Route::group(['middleware' => 'auth'], function() {
     //Pacientes
     Route::group(['prefix' => 'pacientes'], function() {
         Route::get('/', [PatientController::class, 'getAllPatients'])->name('pacientes.todos');
+        Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getALlConsults'])->name('pacientes.todos');
     });
 
     //Doctores

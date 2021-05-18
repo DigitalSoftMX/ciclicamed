@@ -65,4 +65,10 @@ class PatientController extends Controller
             'medicaltest' => $tests
         ]);
     }
+
+    public function getALlConsults($id, $categoria)
+    {
+        $consults = Patient::findOrFail($id)->medicalConsults->where('medicalconsulttype_id', $categoria);
+        return response()->json($consults);
+    }
 }

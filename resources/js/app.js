@@ -8,10 +8,7 @@ import MedicalConsultPage from './pages/medicalConsult/MedicalConsultPage.vue';
 	
 const app = createApp({
     components: {
-		UserProfilePage,
-		UserPrescriptionPage,
-		UserTestPage,
-		MedicalConsultPage
+		MedicalConsultPage: MedicalConsultPage
 	}
 });
 
