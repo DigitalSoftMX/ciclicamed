@@ -5,7 +5,7 @@ import {
     DefineComponent,
     PropType
 } from 'vue';
-require('../../../../../public/js/horizontal_timeline.2.0.min');
+
 import axios from 'axios';
 import {
     Consult
@@ -19,26 +19,38 @@ import {
 } from '@/resources/js/interfaces/Medical/TestOrder.interface';
 import { FollowUp } from '@/resources/js/interfaces/Medical/FollowUp.interface';
 import { FollowUpData } from '../../../defaultData/Medical/FollowUp.data';
+import { Test } from '@/resources/js/interfaces/Medical/Test.interface';
 
 export default defineComponent({
     name: 'RecordComponent',
     components: {
+        // PatientProfileComponent: require('./patientProfile/PatientProfileComponent.vue').default,
+        // AttachmentComponent: require('./attachment/AttachmentComponent.vue').default,
+        // HistorialClinicoComponent: require('../../attachtments/HistorialClinico/HistorialClinicoComponent.vue').default,
+        // PrescriptionComponent: require('../prescription/PrescriptionComponent.vue').default,
+        // TestOrderComponent: require('../testOrder/TestOrderComponent.vue').default,
         CitasSubsecuentesComponent: require('../../attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default
     },
     props: {},
     mounted() {
         this.getConsultData();
-
     },
     data() {
         return {
             consultList: [] as Consult[],
             followUp: FollowUpData,
-            testOrderList: [] as TestOrder[],
-            prescriptionList: [] as Prescription[]
+            testList: [] as Test[],
+            prescriptionList: [] as Prescription[],
+            componentNumber: -1,
+            isChildEnabled: false,
+            consultDateSelected: ''
         }
     },
-    watch: {},
+    watch: {
+        consultList(){
+            require('../../../../../public/js/horizontal_timeline.2.0.min');
+        }
+    },
     methods: {
         getConsultData() {
             axios.get < Consult[] > ('/pacientes/1/consultas/categoria/5')
@@ -53,7 +65,9 @@ export default defineComponent({
         formatConsultDateTime(dateTime: string) {
             return moment(dateTime).format('DD/MM/YYYY')
         },
-        getInfoConsult(id: number) {
+        getInfoConsult(id: number, date: string) {
+            this.consultDateSelected = date;
+            this.componentNumber = -1;
             this.getFollowUps(id);
             this.getTestOrders(id);
             this.getPrescriptions(id);
@@ -69,10 +83,10 @@ export default defineComponent({
             })
         },
         getTestOrders(id: number) {
-            axios.get<TestOrder[]>(`/consultas/${id}/estudios`)
+            axios.get<Test[]>(`/consultas/${id}/estudios`)
             .then(response => {
-                this.testOrderList = Object.values(response.data);
-                console.log(this.testOrderList)
+                this.testList = Object.values(response.data);
+                console.log(this.testList)
             })
             .catch(error => {
                 console.log(error)
@@ -87,6 +101,10 @@ export default defineComponent({
             .catch(error => {
                 console.log(error)
             })
+        },
+        showComponent(component: number)
+        {
+            this.componentNumber = component;
         }
     }
 })

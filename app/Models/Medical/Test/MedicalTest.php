@@ -31,19 +31,24 @@ class MedicalTest extends Model
         return $this->belongsTo(MedicalConsult::class, 'scheduled_in');
     }
 
-    public function medicalSamples()
+    public function samples()
     {
-        return $this->hasMany(MedicalStudySample::class, 'medicaltest_id');
+        return $this->hasMany(MedicalTestSample::class, 'medicaltest_id');
     }
 
-    public function medicalResults()
+    public function results()
     {
         return $this->hasMany(MedicalTestResult::class, 'medicaltest_id');
     }
 
-    public function medicalOrders()
+    public function orders()
     {
         return $this->hasMany(MedicalTestOrder::class, 'medicaltest_id');
+    }
+
+    public function lastOrder()
+    {
+        return $this->hasOne(MedicalTestOrder::class, 'medicaltest_id')->orderBy('created_at', 'asc');
     }
 
 }
