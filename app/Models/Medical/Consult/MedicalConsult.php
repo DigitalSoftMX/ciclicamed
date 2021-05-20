@@ -85,6 +85,11 @@ class MedicalConsult extends Model
         return $this->hasMany(MedicalHistory::class, 'medicalconsult_id');
     }
 
+    public function getLastHistory()
+    {
+        return $this->hasOne(MedicalHistory::class, 'medicalconsult_id')->orderBy('created_at', 'asc');
+    }
+
     public function prescriptions()
     {
         return $this->hasMany(MedicalPrescription::class, 'medicalconsult_id');

@@ -4,16 +4,16 @@
             <div class="card-header">
                 <h6>Hipertensión</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
-                    <input type="checkbox" class="custom-control-input" id="hfcHipertension"
-                        :checked="heredoFamiliaresDataCopy.hipertension.check"
-                        v-model="heredoFamiliaresDataCopy.hipertension.check">
+                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="hfcHipertension"
+                        :checked="formData.hipertension.check"
+                        v-model="formData.hipertension.check">
                     <label class="custom-control-label" for="hfcHipertension"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="heredoFamiliaresDataCopy.hipertension.check">
+            <div class="card-body bg-normal" v-show="formData.hipertension.check">
                 <div class="w-auto">
                     <select name="select-size-1" class="form-control form-control-lg"
-                        v-model="heredoFamiliaresDataCopy.hipertension.description">
+                        v-model="formData.hipertension.description">
                         <option value="Familiar">Familiar</option>
                         <option value="Padre">Padre</option>
                         <option value="Madre">Madre</option>
@@ -30,24 +30,24 @@
             <div class="card-header">
                 <h6>Cáncer</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
-                    <input type="checkbox" class="custom-control-input" id="hfcCancer"
-                        :checked="heredoFamiliaresDataCopy.cancer.check"
-                        v-model="heredoFamiliaresDataCopy.cancer.check">
+                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="hfcCancer"
+                        :checked="formData.cancer.check"
+                        v-model="formData.cancer.check">
                     <label class="custom-control-label" for="hfcCancer"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="heredoFamiliaresDataCopy.cancer.check">
+            <div class="card-body bg-normal" v-show="formData.cancer.check">
                 <div class="col-12 p-0 mb-25">
                     <label>Ginecológico</label>
                     <div class="row mx-0">
                         <div class="col-12 col-md-7 mb-25 mb-md-0">
-                            <textarea type="text" class="form-control" id="hfcCancerGinecologico"
-                                v-model="heredoFamiliaresDataCopy.cancer.ginecologico.description"
+                            <textarea type="text" class="form-control" :disabled="disabled" id="hfcCancerGinecologico"
+                                v-model="formData.cancer.ginecologico.description"
                                 placeholder="Ginecológico"></textarea>
                         </div>
                         <div class="col-12 col-md-5">
-                            <input type="number" class="form-control" id="hfcCancerGinecologicoEdad"
-                                v-model="heredoFamiliaresDataCopy.cancer.ginecologico.age"
+                            <input type="number" class="form-control" :disabled="disabled" id="hfcCancerGinecologicoEdad"
+                                v-model="formData.cancer.ginecologico.age"
                                 placeholder="Edad de aparición">
                         </div>
                     </div>
@@ -56,13 +56,13 @@
                     <label>Otros</label>
                     <div class="row mx-0">
                         <div class="col-12 col-md-7 mb-25 mb-md-0">
-                            <textarea type="text" class="form-control" id="hfcCancerOtros"
-                                v-model="heredoFamiliaresDataCopy.cancer.otros.description"
+                            <textarea type="text" class="form-control" :disabled="disabled" id="hfcCancerOtros"
+                                v-model="formData.cancer.otros.description"
                                 placeholder="Ginecológico"></textarea>
                         </div>
                         <div class="col-12 col-md-5">
-                            <input type="number" class="form-control" id="hfcCancerOtrosEdad"
-                                v-model="heredoFamiliaresDataCopy.cancer.otros.age" placeholder="Edad de aparición">
+                            <input type="number" class="form-control" :disabled="disabled" id="hfcCancerOtrosEdad"
+                                v-model="formData.cancer.otros.age" placeholder="Edad de aparición">
                         </div>
                     </div>
                 </div>
@@ -75,16 +75,16 @@
             <div class="card-header">
                 <h6>Diabetes mellitus</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
-                    <input type="checkbox" class="custom-control-input" id="hfcDiabetesMellitus"
-                        :checked="heredoFamiliaresDataCopy.diabetesMellitus.check"
-                        v-model="heredoFamiliaresDataCopy.diabetesMellitus.check">
+                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="hfcDiabetesMellitus"
+                        :checked="formData.diabetesMellitus.check"
+                        v-model="formData.diabetesMellitus.check">
                     <label class="custom-control-label" for="hfcDiabetesMellitus"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="heredoFamiliaresDataCopy.diabetesMellitus.check">
+            <div class="card-body bg-normal" v-show="formData.diabetesMellitus.check">
                 <div class="w-auto">
                     <select name="select-size-1" class="form-control form-control-lg"
-                        v-model="heredoFamiliaresDataCopy.diabetesMellitus.description">
+                        v-model="formData.diabetesMellitus.description">
                         <option value="Familiar">Familiar</option>
                         <option value="Padre">Padre</option>
                         <option value="Madre">Madre</option>
@@ -101,16 +101,16 @@
             <div class="card-header">
                 <h6>Patología tiroidea</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
-                    <input type="checkbox" class="custom-control-input" id="hfcPatologiaTiroidea"
-                        :checked="heredoFamiliaresDataCopy.patologiaTiroidea.check"
-                        v-model="heredoFamiliaresDataCopy.patologiaTiroidea.check">
+                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="hfcPatologiaTiroidea"
+                        :checked="formData.patologiaTiroidea.check"
+                        v-model="formData.patologiaTiroidea.check">
                     <label class="custom-control-label" for="hfcPatologiaTiroidea"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="heredoFamiliaresDataCopy.patologiaTiroidea.check">
+            <div class="card-body bg-normal" v-show="formData.patologiaTiroidea.check">
                 <div class="w-auto">
                     <select name="select-size-1" class="form-control form-control-lg"
-                        v-model="heredoFamiliaresDataCopy.patologiaTiroidea.description">
+                        v-model="formData.patologiaTiroidea.description">
                         <option value="Familiar">Familiar</option>
                         <option value="Padre">Padre</option>
                         <option value="Madre">Madre</option>
@@ -127,17 +127,17 @@
             <div class="card-header">
                 <h6>Otros</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
-                    <input type="checkbox" class="custom-control-input" id="hfcOtros"
-                        :checked="heredoFamiliaresDataCopy.otros.check"
-                        v-model="heredoFamiliaresDataCopy.otros.check">
+                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="hfcOtros"
+                        :checked="formData.otros.check"
+                        v-model="formData.otros.check">
                     <label class="custom-control-label" for="hfcOtros"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="heredoFamiliaresDataCopy.otros.check">
+            <div class="card-body bg-normal" v-show="formData.otros.check">
                 <div class="col-12 p-0">
                     <div class="row mx-0">
-                        <textarea type="text" class="form-control" id="hfcOtrosOtros"
-                            v-model="heredoFamiliaresDataCopy.cancer.otros.description"
+                        <textarea type="text" class="form-control" :disabled="disabled" id="hfcOtrosOtros"
+                            v-model="formData.cancer.otros.description"
                             placeholder="Ginecológico"></textarea>
                     </div>
                 </div>

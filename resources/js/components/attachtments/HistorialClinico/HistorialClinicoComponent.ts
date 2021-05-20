@@ -1,3 +1,5 @@
+import { HistorialClinicoData } from '../../../defaultData/Attachments/HistorialClinico/HistorialClinico.data';
+import { HistorialClinico } from '@/resources/js/interfaces/Attachtments/HistorialClinico/HistorialClinico.interface';
 import {
     defineComponent
 } from '@vue/runtime-core';
@@ -15,9 +17,19 @@ export default defineComponent({
         GinecoObstetrosComponent: require('./GinecoObstetros/GinecoObstetrosComponent.vue').default,
         TratamientoComponent: require('./Tratamiento/TratamientoComponent.vue').default,
     },
-    props:{},
+    props:{
+        formData: {
+            type: Object as PropType<HistorialClinico>,
+            default: HistorialClinicoData
+        }
+    },
     data(){
-        return {}
+        return {
+            disabled: {
+                type: Boolean as PropType<Boolean>,
+                default: true
+            },
+        }
     },
     methods: {}
 })

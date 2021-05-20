@@ -4,7 +4,7 @@ export interface Patient
     first_name: string;
     last_name: string;
     gender?: boolean;
-    birthday?: Date;
+    birthday?: string;
     address?: string;
     phone?: string;
     cellphone?: string;

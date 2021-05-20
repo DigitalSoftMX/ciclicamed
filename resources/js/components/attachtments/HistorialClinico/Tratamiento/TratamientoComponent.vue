@@ -3,35 +3,35 @@
         <div class="col-12">
             <div class="col-12 mb-25">
                 <label for="tcPadecimientoActual">Padecimiento actual</label>
-                <textarea class="form-control form-control-lg" rows="3" id="tcPadecimientoActual" v-model="formDataCopy.padecimientoActual"></textarea>
+                <textarea class="form-control form-control-lg" rows="3" :disabled="disabled" id="tcPadecimientoActual" v-model="formDataCopy.padecimientoActual"></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="">Exploración
                     física</label>
-                <textarea class="form-control form-control-lg" rows="3" id="tcExploracionFisica" v-model="formDataCopy.exploracionFisica"
+                <textarea class="form-control form-control-lg" rows="3" :disabled="disabled" id="tcExploracionFisica" v-model="formDataCopy.exploracionFisica"
                 ></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="">Gabinete y
                     laboratoria</label>
-                <textarea class="form-control form-control-lg" rows="3" id="tcPadecimientoActual" v-model="formDataCopy.padecimientoActual"
+                <textarea class="form-control form-control-lg" rows="3" :disabled="disabled" id="tcPadecimientoActual" v-model="formDataCopy.padecimientoActual"
                     ></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="">Impresión
                     diagnostica</label>
-                <textarea class="form-control form-control-lg" rows="3" id="tcImpresionDiagnostica" v-model="formDataCopy.impresionDiagnostica"
+                <textarea class="form-control form-control-lg" rows="3" :disabled="disabled" id="tcImpresionDiagnostica" v-model="formDataCopy.impresionDiagnostica"
                 ></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="">Tratamiento</label>
-                <textarea class="form-control form-control-lg" rows="3" id="tcTratamiento" v-model="formDataCopy.tratamiento"
+                <textarea class="form-control form-control-lg" rows="3" :disabled="disabled" id="tcTratamiento" v-model="formDataCopy.tratamiento"
                 ></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="">Plan
                     médico</label>
-                <textarea class="form-control form-control-lg" rows="3" id="tcPlanMedico" v-model="formDataCopy.planMedico"></textarea>
+                <textarea class="form-control form-control-lg" rows="3" :disabled="disabled" id="tcPlanMedico" v-model="formDataCopy.planMedico"></textarea>
             </div>
         </div>
 
@@ -41,7 +41,7 @@
                 <div class="col-6 mb-25">
                     <label for="tcVida">Para la
                         vida</label>
-                    <select class="form-control form-control-lg" id="tcVida" v-model="formDataCopy.pronostico.vida">
+                    <select class="form-control form-control-lg" :disabled="disabled" id="tcVida" v-model="formDataCopy.pronostico.vida">
                         <option value="Bueno">Bueno</option>
                         <option value="Reservado">Reservado</option>
                         <option value="Malo">Malo</option>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-6 mb-25">
                     <label for="tcFuncion">Para la función</label>
-                    <select class="form-control form-control-lg" id="tcFuncion" v-model="formDataCopy.pronostico.funcion">
+                    <select class="form-control form-control-lg" :disabled="disabled" id="tcFuncion" v-model="formDataCopy.pronostico.funcion">
                         <option value="Bueno">Bueno</option>
                         <option value="Reservado">Reservado</option>
                         <option value="Malo">Malo</option>

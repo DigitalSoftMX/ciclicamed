@@ -1,6 +1,6 @@
 <template>
     <div class="row mx-0 p-0">
-        <div class="card mb-25 col-12">
+        <div class="card mb-25 col-12 p-0">
             <div class="card-body text-center pt-30 px-25 pb-0">
                 <div class="account-profile-cards  ">
                     <div class="ap-img d-flex justify-content-center">
@@ -9,8 +9,13 @@
                             src="https://demo.jsnorm.com/laravel/strikingdash/img/tm1.png" alt="profile">
                     </div>
                     <div class="ap-nameAddress">
-                        <h6 class="ap-nameAddress__title">Duran Clayton</h6>
-                        <p class="ap-nameAddress__subTitle  fs-14 pt-1 m-0 ">UI/UX Designer</p>
+                        <h4 class="ap-nameAddress__title mb-15">{{`${patientData.first_name} ${patientData.last_name}`}}</h4>
+                        <p class="ap-nameAddress__subTitle fs-14 pt-1 m-0 text-dark font-weight-bold">Fecha de nacimiento</p>
+                        <p>{{formatBirthDay()}}</p>
+                        <img src="/svg/phone.svg" class="svg-backgroundColor" alt="Phone">
+                        <p>{{patientData.cellphone}}</p>
+                        <img src="/svg/email.svg" class="svg-backgroundColor" alt="Phone">
+                        <p>{{patientData.email}}</p>
                     </div>
                     <div
                         class="ap-button account-profile-cards__button button-group d-flex justify-content-center flex-wrap pt-20">
@@ -19,18 +24,14 @@
                     </div>
                 </div>
                 <div class="card-footer mt-20 pt-20 pb-20 px-0">
-                    <div class="profile-overview d-flex justify-content-between flex-wrap">
-                        <div class="po-details">
-                            <h6 class="po-details__title">$72,572</h6>
-                            <span class="po-details__sTitle">Total Revenue</span>
+                    <div class="row mx-0">
+                        <div class="col-12">
+                            <h4>Último diagnóstico</h4>
+                            <p>{{lastDiagnostic}}</p>
                         </div>
-                        <div class="po-details">
-                            <h6 class="po-details__title">3,257</h6>
-                            <span class="po-details__sTitle">order</span>
-                        </div>
-                        <div class="po-details">
-                            <h6 class="po-details__title">74</h6>
-                            <span class="po-details__sTitle">Products</span>
+                        <div class="col-12">
+                            <h4>Notas</h4>
+                            <p>{{consultNote}}</p>
                         </div>
                     </div>
                 </div>
@@ -41,7 +42,7 @@
                 <h4>Tiempo de consulta</h4>
             </div>
             <div class="card-body text-center">
-                <h1>00:00</h1>
+                <h1>{{`${clock.hours}:${clock.minutes}:${clock.seconds}`}}</h1>
             </div>
         </div>
         <div class="col-12 p-0">
@@ -50,3 +51,8 @@
         </div>
     </div>
 </template>
+
+<script lang="ts" src="./PatientProfileComponent.ts"></script>
+<style lang="sass" scoped>
+    @import "./PatientProfileComponent.scss"
+</style>

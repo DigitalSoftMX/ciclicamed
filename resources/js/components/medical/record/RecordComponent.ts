@@ -24,11 +24,6 @@ import { Test } from '@/resources/js/interfaces/Medical/Test.interface';
 export default defineComponent({
     name: 'RecordComponent',
     components: {
-        // PatientProfileComponent: require('./patientProfile/PatientProfileComponent.vue').default,
-        // AttachmentComponent: require('./attachment/AttachmentComponent.vue').default,
-        // HistorialClinicoComponent: require('../../attachtments/HistorialClinico/HistorialClinicoComponent.vue').default,
-        // PrescriptionComponent: require('../prescription/PrescriptionComponent.vue').default,
-        // TestOrderComponent: require('../testOrder/TestOrderComponent.vue').default,
         CitasSubsecuentesComponent: require('../../attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default
     },
     props: {},
@@ -56,7 +51,6 @@ export default defineComponent({
             axios.get < Consult[] > ('/pacientes/1/consultas/categoria/5')
             .then(response => {
                 this.consultList = Object.values(response.data);
-                console.log(this.consultList)
             })
             .catch(error => {
                 console.log(error)
@@ -96,7 +90,6 @@ export default defineComponent({
             axios.get<Prescription[]>(`/consultas/${id}/receta`)
             .then(response => {
                 this.prescriptionList = Object.values(response.data);
-                console.log(this.prescriptionList)
             })
             .catch(error => {
                 console.log(error)

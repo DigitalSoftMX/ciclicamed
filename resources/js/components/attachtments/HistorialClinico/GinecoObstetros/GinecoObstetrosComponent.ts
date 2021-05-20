@@ -1,4 +1,4 @@
-import { GinecoObstetrosData } from '../../../../defaultData/Attachments/HistorialClinico/GinecoObstetros.data';
+import { GinecoObstetrosData } from '../../../../defaultData/Attachments/HistorialClinico/options/GinecoObstetros.data';
 import { GinecoObstetros } from '@/resources/js/interfaces/Attachtments/HistorialClinico/options/GinecoObstetros.interface';
 import {
     defineComponent
@@ -20,8 +20,18 @@ export default defineComponent({
     },
     data(){
         return {
-            formDataCopy: Object.assign({}, this.$props.formData)
+            formDataCopy: Object.assign({}, this.$props.formData),
+            disabled: {
+                type: Boolean as PropType<Boolean>,
+                default: true
+            },
         }
     },
-    methods: {}
+    methods: {},
+    watch: {
+        formData()
+        {
+            this.formDataCopy = Object.assign({}, this.$props.formData);
+        }
+    }
 })

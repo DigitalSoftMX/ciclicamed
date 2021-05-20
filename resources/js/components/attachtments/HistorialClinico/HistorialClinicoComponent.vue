@@ -31,26 +31,26 @@
 
                     <!-- Heredo Familiares -->
                     <div class="tab-pane fade active show" id="tab-v-1" role="tabpanel" aria-labelledby="tab-v-1-tab">
-                        <heredo-familiares-component></heredo-familiares-component>
+                        <heredo-familiares-component :formData="formData.heredoFamiliares"></heredo-familiares-component>
                     </div>
 
                     <!-- Personales no patologicos -->
                     <div class="tab-pane fade" id="tab-v-2" role="tabpanel" aria-labelledby="tab-v-2-tab">
-                        <personales-no-patologicos-component></personales-no-patologicos-component>
+                        <personales-no-patologicos-component :formData="formData.personalesNoPatologicos"></personales-no-patologicos-component>
                     </div>
 
                     <!-- Personales patologicos -->
                     <div class="tab-pane fade" id="tab-v-3" role="tabpanel" aria-labelledby="tab-v-3-tab">
-                        <personales-patologicos-component></personales-patologicos-component>
+                        <personales-patologicos-component :formData="formData.personalesPatologicos"></personales-patologicos-component>
                     </div>
 
                     <!-- Gineco-obstetros -->
                     <div class="tab-pane fade" id="tab-v-4" role="tabpanel" aria-labelledby="tab-v-4-tab">
-                        <gineco-obstetros-component></gineco-obstetros-component>
+                        <gineco-obstetros-component :formData="formData.ginecoObstetros"></gineco-obstetros-component>
                     </div>
 
                     <div class="tab-pane fade" id="tab-v-5" role="tabpanel" aria-labelledby="tab-v-5-tab">
-                        <tratamiento-component></tratamiento-component>
+                        <tratamiento-component :formData="formData.tratamientos"></tratamiento-component>
                     </div>
                 </div>
             </div>

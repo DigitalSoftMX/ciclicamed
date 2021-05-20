@@ -29,7 +29,7 @@ export default defineComponent({
     watch: {
         formData()
         {
-            console.log(this.formData)
+            this.formDataCopy = Object.assign({}, this.$props.formData);
         }
     },
     data(){

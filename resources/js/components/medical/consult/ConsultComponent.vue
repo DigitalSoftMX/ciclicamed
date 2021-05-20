@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-12 col-md-3 p-md-0 mb-25 mb-md-0">
-            <patient-profile-component></patient-profile-component>
+            <patient-profile-component :patientData="patientData" :clock="clock" :consultNote="consultData.consult_reason"></patient-profile-component>
         </div>
         <div class="col-12 col-md-9 p-0">
             <div class="container-fluid">
@@ -56,7 +56,7 @@
                 <div class="projects-tab-content projects-tab-content--progress">
                     <div class="tab-content mt-25" id="mdc">
                         <div class="tab-pane fade active show" id="mccHistorialClinico" role="tabpanel">
-                            <historial-clinico-component></historial-clinico-component>
+                            <historial-clinico-component :formData="historyData.data.form"></historial-clinico-component>
                         </div>
                         <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel">
                             <record-component></record-component>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
                             aria-labelledby="mccCitasSubsecuentes-tab">
-                            <citas-subsecuentes-component></citas-subsecuentes-component>
+                            <citas-subsecuentes-component :formData="followUp.pivot.data.form"></citas-subsecuentes-component>
                         </div>
                         <div class="tab-pane fade" id="mccReceta" role="tabpanel" aria-labelledby="mccReceta-tab">
                             <prescription-component></prescription-component>

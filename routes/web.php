@@ -49,8 +49,9 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.estudio');
         Route::get('/{id}/seguimiento', [MedicalConsultController::class, 'getFollowUps'])->name('consulta.seguimiento');
         Route::get('/{id}/receta', [MedicalConsultController::class, 'getPrescriptions'])->name('consulta.receta');
+        Route::get('/{id}', [MedicalConsultController::class, 'getConsultInfo'])->name('consulta.informacion');
+        Route::get('/{id}/historial', [MedicalConsultController::class, 'getHistory'])->name('consulta.informacion');
     });
-
 
     Route::get('test/{id}', function() {
         return view('test');
@@ -77,7 +78,8 @@ Route::group(['middleware' => 'auth'], function() {
     //Pacientes
     Route::group(['prefix' => 'pacientes'], function() {
         Route::get('/', [PatientController::class, 'getAllPatients'])->name('pacientes.todos');
-        Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getALlConsults'])->name('pacientes.todos');
+        Route::get('/{id}', [PatientController::class, 'getPatientByID'])->name('pacientes.paciente');
+        Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getALlConsults'])->name('pacientes.categoria');
     });
 
     //Doctores

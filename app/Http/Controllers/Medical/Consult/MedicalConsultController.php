@@ -144,4 +144,17 @@ class MedicalConsultController extends Controller
         $consult = MedicalConsult::findOrFail($id);
         return response()->json($consult->prescriptions->load('medicament'));
     }
+
+    public function getConsultInfo($id)
+    {
+        $consult = MedicalConsult::findOrFail($id);
+        return response()->json($consult);
+    }
+
+    public function getHistory($id)
+    {
+        $consult = MedicalConsult::findOrFail($id)->getLastHistory;
+        $consult->data = json_decode($consult->data);
+        return response()->json($consult);
+    }
 }

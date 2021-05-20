@@ -1,4 +1,4 @@
-import { HeredoFamiliaresData } from '../../../../defaultData/Attachments/HistorialClinico/HeredoFamiliares.data';
+import { HeredoFamiliaresData } from '../../../../defaultData/Attachments/HistorialClinico/options/HeredoFamiliares.data';
 import { HeredoFamiliares } from '@/resources/js/interfaces/Attachtments/HistorialClinico/options/HeredoFamiliares.interface';
 import {
     defineComponent
@@ -9,19 +9,29 @@ export default defineComponent({
     components: {
     },
     props: {
-        heredoFamiliaresData: {
+        formData: {
             type: Object as PropType<HeredoFamiliares>,
             default: HeredoFamiliaresData
         },
     },
     data(){
         return {
-            heredoFamiliaresDataCopy: Object.assign({}, this.$props.heredoFamiliaresData)
+            formDataCopy: Object.assign({}, this.$props.formData),
+            disabled: {
+                type: Boolean as PropType<Boolean>,
+                default: true
+            },
         }
     },
     setup() {
     },
     methods: {
+    },
+    watch: {
+        formData()
+        {
+            this.formDataCopy = Object.assign({}, this.$props.formData);
+        }
     }
 
 })

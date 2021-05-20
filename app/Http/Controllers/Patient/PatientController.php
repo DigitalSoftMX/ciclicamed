@@ -71,4 +71,10 @@ class PatientController extends Controller
         $consults = Patient::findOrFail($id)->medicalConsults->where('medicalconsulttype_id', $categoria);
         return response()->json($consults);
     }
+
+    public function show($id)
+    {
+        $patient = Patient::findOrFail($id);
+        return response()->json($patient);
+    }
 }

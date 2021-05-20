@@ -1,7 +1,17 @@
+import { ConsultData } from '../../../defaultData/Medical/Consult.data';
+import { PatientData } from '../../../defaultData/Patient/Patient.data';
+import { Consult } from '@/resources/js/interfaces/Medical/Consult.interface';
+import { Patient } from '@/resources/js/interfaces/Patient/Patient.interface';
 import {
     defineComponent
 } from '@vue/runtime-core';
+import axios from 'axios';
 import { DefineComponent, PropType } from 'vue';
+import moment from 'moment';
+import { HistoryData } from '../../../defaultData/Medical/History.data';
+import { History } from '@/resources/js/interfaces/Medical/History.interface';
+import { FollowUp } from '@/resources/js/interfaces/Medical/FollowUp.interface';
+import { FollowUpData } from '../../../defaultData/Medical/FollowUp.data';
 
 export default defineComponent({
     components: {
@@ -18,13 +28,75 @@ export default defineComponent({
     },
     data() {
         return {
+            patientData: PatientData,
+            consultData: ConsultData,
+            historyData: HistoryData,
+            followUp: FollowUpData,
+            clock: {
+                hours: 0,
+                minutes: 0,
+                seconds: 0
+            }
         };
     },
     mounted() {
+        this.getConsultInfo();
+        this.getPatientData();
+        this.getHistory();
+        this.getFollowUp();
+        this.updateClock();
     },
     watch: {
     },
     methods: {
-       
+        getConsultInfo()
+        {
+            axios.get<Patient>(`/pacientes/1`)
+                .then(response => {
+                    this.patientData = response.data;
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        getPatientData()
+        {
+            axios.get<Consult>(`/consultas/1`)
+                .then(response => {
+                    this.consultData = response.data;
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        getHistory()
+        {
+            axios.get<History>(`/consultas/1/historial`)
+                .then(response => {
+                    this.historyData = response.data;
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        getFollowUp()
+        {
+            axios.get<FollowUp>(`/consultas/1/seguimiento`)
+                .then(response => {
+                    this.followUp = response.data;
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        updateClock()
+        {
+            setInterval(() => {
+                const time: any = moment.duration(moment().diff(moment(this.consultData.consult_start_at, 'YYYY-MM-DD HH:mm:ss')));
+                this.clock.hours = time._data.hours < 10 ? `0${time._data.hours}` : time._data.hours;
+                this.clock.minutes = time._data.minutes < 10 ? `0${time._data.minutes}` : time._data.minutes;
+                this.clock.seconds = time._data.seconds < 10 ? `0${time._data.seconds}` : time._data.seconds;
+            }, 1000);
+        }
     },
 })

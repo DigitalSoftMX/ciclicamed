@@ -97,7 +97,7 @@
                         <h5>{{prescription.dose}}</h5>
                     </div>
                     <div class="col-12 col-md-4 mb-25">
-                        <label>Recuencia</label>
+                        <label>Frecuencia</label>
                         <h5>{{prescription.rate}}</h5>
                     </div>
                     <div class="col-12 col-md-4 mb-25">
@@ -113,5 +113,4 @@
 <script lang="ts" src="./RecordComponent.ts"></script>
 <style lang="sass">
     @import "./RecordComponent.scss"
-
 </style>

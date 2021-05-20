@@ -1,4 +1,4 @@
-import { PersonalesPatologicosData } from '../../../../defaultData/Attachments/HistorialClinico/PersonalesPatologicos.data';
+import { PersonalesPatologicosData } from '../../../../defaultData/Attachments/HistorialClinico/options/PersonalesPatologicos.data';
 import { PersonalesPatologicos } from '@/resources/js/interfaces/Attachtments/HistorialClinico/options/PersonalesPatologicos.interface';
 import {
     defineComponent
@@ -20,8 +20,18 @@ export default defineComponent({
     },
     data(){
         return {
-            formDataCopy: Object.assign({}, this.$props.formData)
+            formDataCopy: Object.assign({}, this.$props.formData),
+            disabled: {
+                type: Boolean as PropType<Boolean>,
+                default: true
+            },
         }
     },
-    methods: {}
+    methods: {},
+    watch: {
+        formData()
+        {
+            this.formDataCopy = Object.assign({}, this.$props.formData);
+        }
+    }
 })
