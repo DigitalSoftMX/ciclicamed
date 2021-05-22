@@ -36,6 +36,7 @@ class MedicalConsultFactory extends Factory
             'consult_start_at' => $scheduled,
             'consult_finish_at' => Carbon::createFromFormat('Y-m-d H:i:s', $scheduled)->addMinutes($this->faker->numberBetween(0, 15)),
             'branch_id' => $this->faker->numberBetween(1, 5),
+            'medicalspecialty_id' => $this->faker->numberBetween(1, 10),
             'updated_by' => $this->faker->numberBetween(1, 5),
             'update_note' => $this->faker->text(100),
         ];

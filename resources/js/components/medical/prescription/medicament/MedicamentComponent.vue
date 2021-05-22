@@ -1,6 +1,6 @@
 <template>
-    <div class="card mb-25 atbd-collapse-item border">
-        <div class="card-header d-flex justify-items-between atbd-collapse-item__header active p-0 active">
+    <div class="card mb-25 atbd-collapse-item rounded">
+        <div class="card-header d-flex justify-items-between atbd-collapse-item__header active p-0 active bg-white">
             <a href="#" class="item-link" data-toggle="collapse" :data-target="`#mc${id}`" aria-expanded="true"
                 :aria-controls="`#mc${id}`">
                 <i class="la la-angle-right"></i>
@@ -12,7 +12,7 @@
                 </button>
             </div>
         </div>
-        <div :id="`mc${id}`" class="card-body row mx-0 collapse atbd-collapse-item__body bg-white show">
+        <div :id="`mc${id}`" class="card-body row mx-0 collapse atbd-collapse-item__body bg-white show border-top">
             <div class="col-12 col-md-6 mb-25">
                 <label for="">Medicamento</label>
                 <select name="patients" :id="`mcMedicamento${id}`" class="form-control select2-hidden-accessible" tabindex="-1"
@@ -22,16 +22,18 @@
                     </option>
                 </select>
             </div>
-            <div class="col-12 col-md-3 mb-25">
-                <label for="">Dosis</label>
-                <input class="form-control form-control-lg" type="text" placeholder="Dosis" v-model="medicamentData.dose" @keyup="updateMedicamentData">
-            </div>
-
-            <div class="col-12 col-md-3 mb-25">
+            
+            <div class="col-12 col-md-6 mb-25">
                 <label for="">Frecuencia</label>
                 <input class="form-control form-control-lg" type="text" placeholder="Frecuencia" v-model="medicamentData.rate" @keyup="updateMedicamentData">
             </div>
-            <div class="col-12 col-md-3">
+
+            <div class="col-12 col-md-6 mb-25">
+                <label for="">Vía de administración</label>
+                <input class="form-control form-control-lg" type="text" placeholder="Dosis" v-model="medicamentData.administation_type" @keyup="updateMedicamentData">
+            </div>
+
+            <div class="col-12 col-md-6">
                 <label for="">Duración</label>
                 <input class="form-control form-control-lg" type="text" placeholder="Duración" v-model="medicamentData.duration" @keyup="updateMedicamentData">
             </div>

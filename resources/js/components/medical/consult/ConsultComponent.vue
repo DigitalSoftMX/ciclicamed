@@ -70,11 +70,11 @@
                             <citas-subsecuentes-component :formData="followUp.pivot.data.form"></citas-subsecuentes-component>
                         </div>
                         <div class="tab-pane fade" id="mccReceta" role="tabpanel" aria-labelledby="mccReceta-tab">
-                            <prescription-component></prescription-component>
+                            <prescription-component :patientData="patientData" :doctorData="doctorData" :consultData="consultData"></prescription-component>
                         </div>
                         <div class="tab-pane fade" id="mccOrdenMedica" role="tabpanel"
                             aria-labelledby="mccOrdenMedica-tab">
-                            <test-order-component></test-order-component>
+                            <test-order-component :patientData="patientData" :doctorData="doctorData" :consultData="consultData"></test-order-component>
                         </div>
                     </div>
                 </div>

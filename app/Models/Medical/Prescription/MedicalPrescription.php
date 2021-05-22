@@ -14,7 +14,7 @@ class MedicalPrescription extends Model
     protected $fillable = [
         'medicalconsult_id',
         'medicament_id',
-        'dose',
+        'administation_type',
         'rate',
         'duration',
         'updated_by',

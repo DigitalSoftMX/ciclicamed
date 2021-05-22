@@ -13,6 +13,7 @@ class Medicament extends Model
     protected $fillable = [
         'code',
         'name',
+        'generic_name',
         'presentation'
     ];
 

@@ -1,15 +1,40 @@
 <template>
-    <div class="card">
-        <div class="card-body" v-show="prescriptionList.length > 0">
-            <div v-for="(prescription, index) in prescriptionList" :key="prescription" class="atbd-collapse atbd-collapse-custom">
-                <medicament-component :medicamentIndex="index" :medicamentList="medicamentList" @mcDelete="deleteMedicamentComponent" @mcChange="updateMedicamentSelected"></medicament-component>
+    <div class="breadcrumb-main">
+        <h4 class="text-capitalize breadcrumb-title"></h4>
+        <div class="breadcrumb-action justify-content-center flex-wrap">
+            <div class="action-btn">
+                <button class="btn btn-primary btn-default" @click="printPDF()"
+                    :disabled="prescriptionDataList.length === 0">
+                    <img src="/svg/print.svg" class="mr-2 svg-white" alt="Print">
+                    Imprimir
+                </button>
+            </div>
+            <div class="action-btn">
+                <button class="btn btn-primary btn-default" @click="downloadPDF()"
+                    :disabled="prescriptionDataList.length === 0">
+                    <img src="/svg/download.svg" class="mr-2 svg-white" alt="Print">
+                    Descargar
+                </button>
+            </div>
+            <div class="action-btn">
+                <button class="btn btn-primary btn-default" @click="addPrescription()">
+                    <img src="/svg/newMedicament.svg" class="mr-2 svg-white" alt="New medicament">
+                    Agregar medicamento
+                </button>
             </div>
         </div>
-        <div class="card-header d-flex justify-items-between py-3 border-top rounded-0 rounded-bottom">
-            <h4 class="mb-15 mb-md-0">Receta</h4>
-            <button class="btn btn-primary btn-default btn-squared" @click="addPrescription()">Agregar medicamento</button>
-        </div>
+    </div>
+    <div class="atbd-collapse atbd-collapse-custom">
+        <medicament-component :medicamentIndex="index" :medicamentList="medicamentList"
+            @mcDelete="deleteMedicamentComponent" @mcChange="updateMedicamentSelected"
+            v-for="(prescription, index) in prescriptionList" :key="prescription">
+        </medicament-component>
     </div>
 </template>
 
 <script lang="ts" src="./PrescriptionComponent.ts"></script>
+
+<style lang="sass">
+    @import "./PrescriptionComponent.scss"
+
+</style>

@@ -1,6 +1,6 @@
 <template>
-    <div class="card mb-25 atbd-collapse-item border">
-        <div class="card-header d-flex justify-items-between atbd-collapse-item__header active p-0 active">
+    <div class="card mb-25 atbd-collapse-item rounded">
+        <div class="card-header d-flex justify-items-between atbd-collapse-item__header active p-0 active bg-white">
             <a href="#" class="item-link" data-toggle="collapse" :data-target="`#oc${id}`" aria-expanded="true"
                 :aria-controls="`#oc${id}`">
                 <i class="la la-angle-right"></i>
@@ -12,7 +12,7 @@
                 </button>
             </div>
         </div>
-        <div :id="`oc${id}`" class="card-body row mx-0 collapse atbd-collapse-item__body bg-white show">
+        <div :id="`oc${id}`" class="card-body row mx-0 collapse atbd-collapse-item__body bg-white show border-top">
             <div class="col-12 mb-25">
                 <label for="">Orden de estudio</label>
                 <select name="patients" :id="`ocOrder${id}`" class="form-control select2-hidden-accessible" tabindex="-1"

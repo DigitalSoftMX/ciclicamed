@@ -6066,11 +6066,9 @@ ul {
 .breadcrumb-main .breadcrumb-action .action-btn .btn {
   border-radius: 3px;
   font-weight: 500;
-  height: 34px;
   padding: 0 7.5px;
 }
 .breadcrumb-main .breadcrumb-action .action-btn .btn:focus, .breadcrumb-main .breadcrumb-action .action-btn .btn:active {
-  background: #fff;
   box-shadow: 0 3px 5px rgba(146, 153, 184, 0.05) !important;
   border-color: transparent;
 }

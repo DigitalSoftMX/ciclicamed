@@ -16,7 +16,7 @@ class CreateMedicalPrescriptionsTable extends Migration
         Schema::create('medical_prescriptions', function (Blueprint $table) {
             $table->unsignedInteger('medicalconsult_id', false);
             $table->unsignedMediumInteger('medicament_id');
-            $table->string('dose', 100);
+            $table->string('administation_type', 100);
             $table->string('rate', 100);
             $table->string('duration', 100);
             $table->unsignedMediumInteger('updated_by', false);

@@ -26,7 +26,7 @@ export default defineComponent({
             medicamentSelected: 0,
             medicamentData: {
                 medicament_id: 0,
-                dose: '',
+                administation_type: '',
                 duration: '',
                 rate: ''
             } as Prescription

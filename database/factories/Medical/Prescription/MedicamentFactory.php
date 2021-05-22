@@ -24,6 +24,7 @@ class MedicamentFactory extends Factory
         return [
             'code' => $this->faker->isbn10,
             'name' => $this->faker->text(50),
+            'generic_name' => $this->faker->text(50),
             'presentation' => $this->faker->text(70)
         ];
     }

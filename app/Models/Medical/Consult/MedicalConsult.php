@@ -39,6 +39,7 @@ class MedicalConsult extends Model
         'consult_start_at',
         'consult_finish_at',
         'branch_id',
+        'medicalspecialty',
         'updated_by',
         'update_note'
     ];
@@ -134,5 +135,10 @@ class MedicalConsult extends Model
     public function productPayments()
     {
         return $this->belongsToMany(Product::class, 'product_payments', 'medicalconsult_id', 'product_id')->withPivot('payment_id');
+    }
+
+    public function specialty()
+    {
+        return $this->belongsTo(MedicalSpecialty::class, 'medicalspecialty_id', 'medicalspecialty_id');
     }
 }

@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{id}/receta', [MedicalConsultController::class, 'getPrescriptions'])->name('consulta.receta');
         Route::get('/{id}', [MedicalConsultController::class, 'getConsultInfo'])->name('consulta.informacion');
         Route::get('/{id}/historial', [MedicalConsultController::class, 'getHistory'])->name('consulta.informacion');
+        Route::get('/{id}/doctor', [MedicalConsultController::class, 'getDoctor'])->name('consulta.doctor');
     });
 
     Route::get('test/{id}', function() {

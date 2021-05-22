@@ -20,7 +20,7 @@ class ProductController extends Controller
                             ->where('productstatus_id', $status)
                             ->orWhere('productcategory_id', $laboratorio)
                             ->where('productstatus_id', $status)
-                            ->get(['id', 'name']);
+                            ->get();
         $products->load('orderAnnotations:product_id,annotation');
         return response()->json($products);
     }

@@ -7,6 +7,7 @@ use App\Models\Employee\EmployeeLicense;
 use App\Models\Medical\Attachment\MedicalAttachment;
 use App\Models\Medical\Attachment\MedicalAttachmentFollowUp;
 use App\Models\Medical\Attachment\MedicalAttachmentForm;
+use App\Models\Medical\Consult\MedicalConsult;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,5 +34,10 @@ class MedicalSpecialty extends Model
     public function medicalFollowUp()
     {
         return $this->hasMany(MedicalAttachmentFollowUp::class);
+    }
+
+    public function consults()
+    {
+        return $this->hasMany(MedicalConsult::class, 'medicalspecialty_id');
     }
 }

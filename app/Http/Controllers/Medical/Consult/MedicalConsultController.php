@@ -157,4 +157,10 @@ class MedicalConsultController extends Controller
         $consult->data = json_decode($consult->data);
         return response()->json($consult);
     }
+
+    public function getDoctor($id)
+    {
+        $consult = MedicalConsult::findOrFail($id)->doctor->load('specialties');
+        return response()->json($consult);
+    }
 }

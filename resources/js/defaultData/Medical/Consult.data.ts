@@ -15,6 +15,7 @@ export const ConsultData: Consult = {
     consult_finish_at: '2021-01-01 00:00:00',
     branch_id: -1,
     medicalconsultstatus_id: -1,
+    medicalspecialty_id: -1,
     created_at: '2021-01-01 00:00:00',
     updated_at: '2021-01-01 00:00:00'
 }

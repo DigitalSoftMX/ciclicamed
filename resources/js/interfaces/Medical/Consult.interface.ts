@@ -14,6 +14,7 @@ export interface Consult
     consult_finish_at: string,
     branch_id: number,
     medicalconsultstatus_id: number,
+    medicalspecialty_id: number,
     created_at: string,
     updated_at: string
 }

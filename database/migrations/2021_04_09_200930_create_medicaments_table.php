@@ -17,6 +17,7 @@ class CreateMedicamentsTable extends Migration
             $table->unsignedMediumInteger('id', true);
             $table->string('code', 50);
             $table->string('name', 50);
+            $table->string('generic_name', 50);
             $table->string('presentation', 70);
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ class CreateEmployeeLicensesTable extends Migration
             $table->unsignedMediumInteger('employee_id', false);
             $table->string('degree_title', 100);
             $table->string('license_number', 8);
+            $table->string('school_name', 100);
             $table->unsignedSmallInteger('medicalspecialty_id');
             $table->timestamps();
 

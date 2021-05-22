@@ -28,6 +28,7 @@ class CreateMedicalConsultsTable extends Migration
             $table->dateTime('consult_finish_at')->nullable();
             $table->unsignedSmallInteger('branch_id', false);
             $table->unsignedTinyInteger('medicalconsultstatus_id', false);
+            $table->unsignedSmallInteger('medicalspecialty_id', false);
             $table->timestamps();
 
             //Relaciones
@@ -38,7 +39,7 @@ class CreateMedicalConsultsTable extends Migration
             $table->foreign('updated_by')->references('id')->on('employees');
             $table->foreign('branch_id')->references('id')->on('branches');
             $table->foreign('medicalconsultstatus_id')->references('id')->on('medical_consult_statuses');
-            
+            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties');
         });
     }
 

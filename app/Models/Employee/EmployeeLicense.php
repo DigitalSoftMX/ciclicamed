@@ -14,16 +14,17 @@ class EmployeeLicense extends Model
         'employee_id',
         'degree_title',
         'license_number',
+        'school_name',
         'medicalspecialty_id'
     ];
 
     public function employees()
     {
-        return $this->belongsToMany(Employee::class)->withPivot('degree_title', 'licence_number');
+        return $this->belongsToMany(Employee::class)->withPivot('degree_title', 'license_number');
     }
 
     public function medicalspecialties()
     {
-        return $this->belongsToMany(MedicalSpecialty::class)->withPivot('degree_title', 'licence_number');
+        return $this->belongsToMany(MedicalSpecialty::class)->withPivot('degree_title', 'license_number');
     }
 }

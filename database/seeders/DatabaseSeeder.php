@@ -55,15 +55,15 @@ class DatabaseSeeder extends Seeder
 
         UserStatus::factory(5)->create();
         UserCategory::factory(2)->create();
-        User::factory(50)->create();
+        User::factory(150)->create();
         Preregistration::factory(25)->create();
         Patient::factory(25)->create();
         InvoiceData::factory(5)->create();
         EmployeeCategory::factory(6)->create();
         EmployeeStatus::factory(5)->create();
-        Employee::factory(25)->create();
+        Employee::factory(100)->create();
         MedicalSpecialty::factory(10)->create();
-        EmployeeLicense::factory(20)->create();
+        EmployeeLicense::factory(50)->create();
         Branch::factory(15)->create();
         EmployeeSchedule::factory(20)->create();
         EmployeeDayOff::factory(20)->create();

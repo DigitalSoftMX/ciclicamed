@@ -22,9 +22,10 @@ class EmployeeLicenseFactory extends Factory
     public function definition()
     {
         return [
-            'employee_id' => $this->faker->numberBetween(1, 5),
+            'employee_id' => $this->faker->numberBetween(1, 100),
             'degree_title' => $this->faker->text(100),
             'license_number' => $this->faker->regexify('[0-9]{8}'),
+            'school_name' => $this->faker->text(100),
             'medicalspecialty_id' => $this->faker->numberBetween(1, 10),
         ];
     }

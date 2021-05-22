@@ -1,14 +1,32 @@
 <template>
-    <div class="card">
-        <div class="card-body" v-show="orderComponentList.length > 0">
-            <div v-for="(medicament, index) in orderComponentList" :key="medicament" class="atbd-collapse atbd-collapse-custom">
-                <order-component :orderIndex="index" :orderList="orderList" @ocDelete="deleteOrderComponent" @ocChange="updateOrderSelected"></order-component>
+    <div class="breadcrumb-main">
+        <h4 class="text-capitalize breadcrumb-title"></h4>
+        <div class="breadcrumb-action justify-content-center flex-wrap">
+            <div class="action-btn">
+                <button class="btn btn-primary btn-default" @click="printPDF()" :disabled="orderDataList.length === 0">
+                    <img src="/svg/print.svg" class="mr-2 svg-white" alt="Print">
+                    Imprimir
+                </button>
+            </div>
+            <div class="action-btn">
+                <button class="btn btn-primary btn-default" @click="downloadPDF()"
+                    :disabled="orderDataList.length === 0">
+                    <img src="/svg/download.svg" class="mr-2 svg-white" alt="Print">
+                    Descargar
+                </button>
+            </div>
+            <div class="action-btn">
+                <button class="btn btn-primary btn-default" @click="addTestOrder()">
+                    <img src="/svg/newTestOrder.svg" class="mr-2 svg-white" alt="New test order">
+                    Agregar estudio
+                </button>
             </div>
         </div>
-        <div class="card-header d-flex justify-items-between py-3 border-top rounded-0 rounded-bottom">
-            <h4 class="mb-15 mb-md-0">Orden de estudio</h4>
-            <button class="btn btn-primary btn-default btn-squared" @click="addMedicament()">Agregar orden</button>
-        </div>
+    </div>
+    <div class="atbd-collapse atbd-collapse-custom">
+        <order-component :orderIndex="index" :orderList="orderList" @ocDelete="deleteOrderComponent"
+            @ocChange="updateOrderSelected" v-for="(medicament, index) in orderComponentList" :key="medicament">
+        </order-component>
     </div>
 </template>
 

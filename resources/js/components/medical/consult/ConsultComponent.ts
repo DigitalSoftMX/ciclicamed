@@ -12,6 +12,8 @@ import { HistoryData } from '../../../defaultData/Medical/History.data';
 import { History } from '@/resources/js/interfaces/Medical/History.interface';
 import { FollowUp } from '@/resources/js/interfaces/Medical/FollowUp.interface';
 import { FollowUpData } from '../../../defaultData/Medical/FollowUp.data';
+import { Doctor } from '@/resources/js/interfaces/Doctor/Doctor.interface';
+import { DoctorData } from '../../../defaultData/Doctor/Doctor.data';
 
 export default defineComponent({
     components: {
@@ -29,6 +31,7 @@ export default defineComponent({
     data() {
         return {
             patientData: PatientData,
+            doctorData: DoctorData,
             consultData: ConsultData,
             historyData: HistoryData,
             followUp: FollowUpData,
@@ -42,6 +45,7 @@ export default defineComponent({
     mounted() {
         this.getConsultInfo();
         this.getPatientData();
+        this.getDoctorData();
         this.getHistory();
         this.getFollowUp();
         this.updateClock();
@@ -64,6 +68,16 @@ export default defineComponent({
             axios.get<Consult>(`/consultas/1`)
                 .then(response => {
                     this.consultData = response.data;
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        getDoctorData()
+        {
+            axios.get<Doctor>(`/consultas/1/doctor`)
+                .then(response => {
+                    this.doctorData = response.data;
                 })
                 .catch(error => {
                     console.log(error)
