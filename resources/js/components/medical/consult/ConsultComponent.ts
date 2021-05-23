@@ -23,13 +23,36 @@ export default defineComponent({
         CitasSubsecuentesComponent: require('../../attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
         PrescriptionComponent: require('../prescription/PrescriptionComponent.vue').default,
         TestOrderComponent: require('../testOrder/TestOrderComponent.vue').default,
-        RecordComponent: require('../record/RecordComponent.vue').default
+        RecordComponent: require('../record/RecordComponent.vue').default,
+        
+
+        UroginecologiaComponent: require('../../attachtments/Uroginecologia/UroginecologiaComponent.vue').default,
+        ClimaterioSaludOseaComponent: require('../../attachtments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue').default,
+        MaternoFetalComponent: require('../../attachtments/MaternoFetal/MaternoFetalComponent.vue').default,
+        BiologiaReproduccionComponent: require('../../attachtments/BiologiaReproduccion/BiologiaReproduccionComponent.vue').default,
+        CirugiaEndoscopicaComponent: require('../../attachtments/CirugiaEndoscopica/CirugiaEndoscopicaComponent.vue').default,
+        OncologiaComponent: require('../../attachtments/Oncologia/OncologiaComponent.vue').default,
+        ColposcopiaComponent: require('../../attachtments/Colposcopia/ColposcopiaComponent.vue').default,
+        NutricionPerinatalComponent: require('../../attachtments/Nutricion/NutricionPerinatal/NutricionPerinatalComponent.vue').default,
+        NutricionGeneralComponent: require('../../attachtments/Nutricion/NutricionGeneral/NutricionGeneralComponent.vue').default,
+
+        NetworkErrorComponent: require('../../error/NetworkErrorComponent.vue').default
+        
+      
     },
     emits: [],
     props: {
     },
     data() {
         return {
+            networkError: {
+                history: false,
+                specialty: false,
+                record: false,
+                followUp: false,
+                prescription: false,
+                testOrder: false
+            },
             patientData: PatientData,
             doctorData: DoctorData,
             consultData: ConsultData,
@@ -39,7 +62,8 @@ export default defineComponent({
                 hours: 0,
                 minutes: 0,
                 seconds: 0
-            }
+            },
+            specialtyEnabled: -1
         };
     },
     mounted() {
@@ -60,7 +84,7 @@ export default defineComponent({
                     this.patientData = response.data;
                 })
                 .catch(error => {
-                    console.log(error)
+                    // console.log(error)
                 })
         },
         getPatientData()
@@ -70,7 +94,7 @@ export default defineComponent({
                     this.consultData = response.data;
                 })
                 .catch(error => {
-                    console.log(error)
+                    // console.log(error)
                 })
         },
         getDoctorData()
@@ -80,7 +104,7 @@ export default defineComponent({
                     this.doctorData = response.data;
                 })
                 .catch(error => {
-                    console.log(error)
+                    // console.log(error)
                 })
         },
         getHistory()
@@ -90,7 +114,7 @@ export default defineComponent({
                     this.historyData = response.data;
                 })
                 .catch(error => {
-                    console.log(error)
+                    // console.log(error)
                 })
         },
         getFollowUp()
@@ -100,7 +124,7 @@ export default defineComponent({
                     this.followUp = response.data;
                 })
                 .catch(error => {
-                    console.log(error)
+                    // console.log(error)
                 })
         },
         updateClock()

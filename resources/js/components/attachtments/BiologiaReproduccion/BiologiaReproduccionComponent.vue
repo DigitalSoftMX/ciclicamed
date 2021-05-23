@@ -12,23 +12,23 @@
                         Biología de la reproducción
                     </a>
                 </div>
-                <div id="brcBiologia" class="atbd-collapse-item__body collapse px-0 py-4">
+                <div :disabled="disabled" id="brcBiologia" class="atbd-collapse-item__body collapse px-0 py-4">
                     <div class="col-12 row mx-0 mb-25">
                         <div class="col-12 col-md-6 mb-25 mb-md-0">
                             <label for="brcTiempoBusqueda">Tiempo de búsqueda del embarazo</label>
-                            <input class="form-control form-control-lg" type="text" id="brcTiempoBusqueda"
+                            <input class="form-control form-control-lg" type="text" :disabled="disabled" id="brcTiempoBusqueda"
                                 v-model="formDataCopy.biologiaReproduccion.tiempoBusquedaEmbarazo">
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="brcFrecuenciaCoital">Frecuencia coital</label>
-                            <input class="form-control form-control-lg" type="text" id="brcFrecuenciaCoital"
+                            <input class="form-control form-control-lg" type="text" :disabled="disabled" id="brcFrecuenciaCoital"
                                 v-model="formDataCopy.biologiaReproduccion.frecuenciaCoital">
                         </div>
                     </div>
                     <div class="col-12 row mx-0">
                         <div class="col-12 mb-25">
                             <label for="brcPenetracion">Penetración</label>
-                            <select name="select-size-1" class="form-control  form-control-lg" id="brcPenetracion"
+                            <select name="select-size-1" class="form-control  form-control-lg" :disabled="disabled" id="brcPenetracion"
                                 v-model="formDataCopy.biologiaReproduccion.penetracion">
                                 <option value="Completa">Completa</option>
                                 <option value="Incompleta">Incompleta</option>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-4 mb-25 m-auto">
                             <div class="custom-control custom-switch switch-primary switch-md ">
-                                <input type="checkbox" class="custom-control-input" id="brcDispareunia"
+                                <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcDispareunia"
                                     v-model="formDataCopy.biologiaReproduccion.dispareunia"
                                     :checked="formDataCopy.biologiaReproduccion.dispareunia">
                                 <label class="custom-control-label" for="brcDispareunia">Dispareunia</label>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-4 mb-25 m-auto">
                             <div class="custom-control custom-switch switch-primary switch-md ">
-                                <input type="checkbox" class="custom-control-input" id="brcEyaculacionVaginal"
+                                <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcEyaculacionVaginal"
                                     v-model="formDataCopy.biologiaReproduccion.eyaculacionVaginal"
                                     :checked="formDataCopy.biologiaReproduccion.eyaculacionVaginal">
                                 <label class="custom-control-label" for="brcEyaculacionVaginal">Eyaculación
@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-4 m-auto">
                             <div class="custom-control custom-switch switch-primary switch-md ">
-                                <input type="checkbox" class="custom-control-input" id="brcDismenorrea"
+                                <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcDismenorrea"
                                     v-model="formDataCopy.biologiaReproduccion.dismenorrea"
                                     :checked="formDataCopy.biologiaReproduccion.dismenorrea">
                                 <label class="custom-control-label" for="brcDismenorrea">Dismenorrea</label>
@@ -70,16 +70,16 @@
                         Factor masculino
                     </a>
                 </div>
-                <div id="brcFactorMasculino" class="atbd-collapse-item__body collapse px-0 py-4">
+                <div :disabled="disabled" id="brcFactorMasculino" class="atbd-collapse-item__body collapse px-0 py-4">
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="col-12 col-md-6 mb-25">
                             <label for="">Edad</label>
-                            <input class="form-control form-control-lg" type="text" id="brcEdad"
+                            <input class="form-control form-control-lg" type="text" :disabled="disabled" id="brcEdad"
                                 v-model="formDataCopy.factorMasculino.edad">
                         </div>
                         <div class="col-12 col-md-6 mb-25 align-self-center m-center">
                             <div class="custom-control custom-switch switch-primary switch-md ">
-                                <input type="checkbox" class="custom-control-input" id="brcPaternidadComprobada"
+                                <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcPaternidadComprobada"
                                     v-model="formDataCopy.factorMasculino.paternidadComrpobada"
                                     :checked="formDataCopy.factorMasculino.paternidadComrpobada">
                                 <label class="custom-control-label" for="brcPaternidadComprobada">Paternidad
@@ -88,23 +88,23 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcOcupacion">Ocupación</label>
-                            <textarea class="form-control form-control-lg" type="text" id="brcOcupacion"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcOcupacion"
                                 v-model="formDataCopy.factorMasculino.ocupacion"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcTraumatismoTesticular">Traumatismo o alteración testicular</label>
-                            <textarea class="form-control form-control-lg" type="text" id="brcTraumatismoTesticular"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcTraumatismoTesticular"
                                 v-model="formDataCopy.factorMasculino.traumatismo"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcAntecedentesParotiditis">Antecedentes de parotiditis, uso de anabólicos o
                                 medicamentos</label>
-                            <textarea class="form-control form-control-lg" type="text" id="brcAntecedentesParotiditis"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcAntecedentesParotiditis"
                                 v-model="formDataCopy.factorMasculino.antecedentesParotiditis"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcEBD">EBD previas</label>
-                            <textarea class="form-control form-control-lg" type="text" id="brcEBD"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcEBD"
                                 v-model="formDataCopy.factorMasculino.ebd"></textarea>
                         </div>
                     </div>
@@ -118,16 +118,16 @@
                         Factor tuboperitoneal
                     </a>
                 </div>
-                <div id="brcFactorTuboperitoneal" class="atbd-collapse-item__body collapse px-0 py-4">
+                <div :disabled="disabled" id="brcFactorTuboperitoneal" class="atbd-collapse-item__body collapse px-0 py-4">
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcCirugiasAbdominales">Cirugías abdominales</label>
-                            <textarea class="form-control form-control-lg" type="text" id="brcCirugiasAbdominales"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcCirugiasAbdominales"
                                 v-model="formDataCopy.factorTuboperitoneal.cirugiasAbdominales"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcInfeccionesVaginales">Infecciones vaginales de repetición</label>
-                            <textarea class="form-control form-control-lg" type="text" id="brcInfeccionesVaginales"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcInfeccionesVaginales"
                                 v-model="formDataCopy.factorTuboperitoneal.infeccionesVaginales"></textarea>
                         </div>
                     </div>
@@ -141,16 +141,16 @@
                         Factor endócrino ovárico
                     </a>
                 </div>
-                <div id="brcFactorEndocrino" class="atbd-collapse-item__body collapse px-0 py-4">
+                <div :disabled="disabled" id="brcFactorEndocrino" class="atbd-collapse-item__body collapse px-0 py-4">
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcCiclos">Ciclos</label>
-                            <textarea class="form-control form-control-lg" type="text" id="brcCiclos"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcCiclos"
                                 v-model="formDataCopy.factorEndocrino.ciclos"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcCantidad">Cantidad</label>
-                            <select class="form-control form-control-lg" id="brcCantidad"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="brcCantidad"
                                 v-model="formDataCopy.factorEndocrino.cantidad">
                                 <option value="Escaso">Escaso</option>
                                 <option value="Normal">Normal</option>
@@ -168,11 +168,11 @@
                         Factor cervical
                     </a>
                 </div>
-                <div id="brcFactorCervical" class="atbd-collapse-item__body collapse px-0 py-4">
+                <div :disabled="disabled" id="brcFactorCervical" class="atbd-collapse-item__body collapse px-0 py-4">
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="col-12 col-md-6 mb-25 align-self-center m-center">
                             <div class="custom-control custom-switch switch-primary switch-md ">
-                                <input type="checkbox" class="custom-control-input" id="brcInfeccionVaginalRepeticion"
+                                <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcInfeccionVaginalRepeticion"
                                     v-model="formDataCopy.factorCervical.infeccionVaginal"
                                     :checked="formDataCopy.factorCervical.infeccionVaginal">
                                 <label class="custom-control-label" for="brcInfeccionVaginalRepeticion">Infección
@@ -181,17 +181,17 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcUltimoPapanicolau">Último papanicolau</label>
-                            <input class="form-control form-control-lg" type="text" id="brcUltimoPapanicolau"
+                            <input class="form-control form-control-lg" type="text" :disabled="disabled" id="brcUltimoPapanicolau"
                                 v-model="formDataCopy.factorCervical.ultimoPapanicolau">
                         </div>
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcAnterioresLesiones">Anteriores lesiones cervicales</label>
-                            <textarea class="form-control form-control-lg" type="text" id="brcAnterioresLesiones"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcAnterioresLesiones"
                                 v-model="formDataCopy.factorCervical.anterioresLesiones"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcAnterioresCirugias">Anteriores cirugías uterinas</label>
-                            <textarea class="form-control form-control-lg" type="text" id="brcAnterioresCirugias"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcAnterioresCirugias"
                                 v-model="formDataCopy.factorCervical.anterioresCirugias"></textarea>
                         </div>
                     </div>
@@ -205,10 +205,10 @@
                         Notas
                     </a>
                 </div>
-                <div id="brcNotas" class="atbd-collapse-item__body collapse py-4">
+                <div :disabled="disabled" id="brcNotas" class="atbd-collapse-item__body collapse py-4">
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="col-12">
-                            <textarea class="form-control form-control-lg" type="text" rows="4" id="brcNotas"
+                            <textarea class="form-control form-control-lg" type="text" rows="4" :disabled="disabled" id="brcNotas"
                                 v-model="formDataCopy.notas"></textarea>
                         </div>
                     </div>

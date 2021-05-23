@@ -63,7 +63,17 @@
                         </div>
                         <div class="tab-pane fade" id="mccEspecialidades" role="tabpanel"
                             aria-labelledby="mccEspecialidades-tab">
-                            <attachment-component></attachment-component>
+                            <uroginecologia-component v-if="specialtyEnabled === 1"></uroginecologia-component>
+                            <climaterio-salud-osea-component v-if="specialtyEnabled === 2"></climaterio-salud-osea-component>
+                            <materno-fetal-component v-if="specialtyEnabled === 3"></materno-fetal-component>
+                            <biologia-reproduccion-component v-if="specialtyEnabled === 4"></biologia-reproduccion-component>
+                            <cirugia-endoscopica-component v-if="specialtyEnabled === 5"></cirugia-endoscopica-component>
+                            <oncologia-component v-if="specialtyEnabled === 6"></oncologia-component>
+                            <colposcopia-component v-if="specialtyEnabled === 7"></colposcopia-component>
+                            <nutricion-perinatal-component v-if="specialtyEnabled === 8"></nutricion-perinatal-component>
+                            <nutricion-general-component v-if="specialtyEnabled === 9"></nutricion-general-component>
+                            
+                            <network-error-component v-if="networkError.specialty"></network-error-component>
                         </div>
                         <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
                             aria-labelledby="mccCitasSubsecuentes-tab">

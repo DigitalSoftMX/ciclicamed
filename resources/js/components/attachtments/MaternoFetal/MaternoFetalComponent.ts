@@ -1,6 +1,7 @@
 import {
     defineComponent
 } from '@vue/runtime-core';
+import { PropType } from 'vue';
 
 export default defineComponent({
     components: {
@@ -9,6 +10,10 @@ export default defineComponent({
     },
     emits: [],
     props: {
+        disabled: {
+            type: Boolean as PropType<Boolean>,
+            default: true
+        },
     },
     data() {
         return {}

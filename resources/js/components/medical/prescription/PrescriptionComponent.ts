@@ -84,7 +84,6 @@ export default defineComponent({
         updateMedicamentSelected(index: number, value: any)
         {
             this.prescriptionDataList[index] = value;
-            console.log(index)
         },
         async createPDF()
         {

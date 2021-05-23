@@ -13,6 +13,10 @@ export default defineComponent({
     components: {
     },
     props:{
+        disabled: {
+            type: Boolean as PropType<Boolean>,
+            default: true
+        },
         formData: {
             type: Object as PropType<NutricionPerinatal>,
             default: NutricionPerinatalData

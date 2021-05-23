@@ -18,6 +18,10 @@ export default defineComponent({
         TratamientoComponent: require('./Tratamiento/TratamientoComponent.vue').default,
     },
     props:{
+        disabled: {
+            type: Boolean as PropType<Boolean>,
+            default: true
+        },
         formData: {
             type: Object as PropType<HistorialClinico>,
             default: HistorialClinicoData
@@ -25,10 +29,6 @@ export default defineComponent({
     },
     data(){
         return {
-            disabled: {
-                type: Boolean as PropType<Boolean>,
-                default: true
-            },
         }
     },
     methods: {}

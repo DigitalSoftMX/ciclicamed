@@ -53,7 +53,7 @@ export default defineComponent({
                 this.consultList = Object.values(response.data);
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
             })
         },
         formatConsultDateTime(dateTime: string) {
@@ -70,7 +70,6 @@ export default defineComponent({
             axios.get<FollowUp>(`/consultas/${id}/seguimiento`)
             .then(response => {
                 this.followUp = response.data;
-                console.log(response.data.pivot.data.form)
             })
             .catch(error => {
                 console.log(error)
@@ -80,10 +79,9 @@ export default defineComponent({
             axios.get<Test[]>(`/consultas/${id}/estudios`)
             .then(response => {
                 this.testList = Object.values(response.data);
-                console.log(this.testList)
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
             })
         },
         getPrescriptions(id: number) {
@@ -92,7 +90,7 @@ export default defineComponent({
                 this.prescriptionList = Object.values(response.data);
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
             })
         },
         showComponent(component: number)

@@ -16,27 +16,27 @@
                     <div class="col-12 row mx-0">
                         <div class="col-12 mb-25">
                             <label for="ocHistoriaFamiliar">Historia familiar de padecimientos oncológicos</label>
-                            <textarea class="form-control form-control-lg" type="text" id="ocHistoriaFamiliar"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="ocHistoriaFamiliar"
                                 v-model="formDataCopy.historiaFamiliar"></textarea>
                         </div>
                         <div class="col-12 mb-25">
                             <label for="ocMenarca">Menarca</label>
-                            <textarea class="form-control form-control-lg" type="text" id="ocMenarca"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="ocMenarca"
                                 v-model="formDataCopy.menarca"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ocEdadPrimerEmbarazo">Edad del primer embarazo</label>
-                            <input class="form-control form-control-lg" type="number" id="ocEdadPrimerEmbarazo"
+                            <input class="form-control form-control-lg" type="number" :disabled="disabled" id="ocEdadPrimerEmbarazo"
                                 v-model="formDataCopy.edadPrimerEmbarazo">
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ocLactanciaMaterna">Lactancia materna (tiempo)</label>
-                            <input class="form-control form-control-lg" type="text" id="ocLactanciaMaterna"
+                            <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ocLactanciaMaterna"
                                 v-model="formDataCopy.lanctanciaMaterna">
                         </div>
                         <div class="col-12">
                             <label for="ocUsoHormonas">Uso de hormonas</label>
-                            <textarea class="form-control form-control-lg" type="text" id="ocUsoHormonas"
+                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="ocUsoHormonas"
                                 v-model="formDataCopy.usoHormonas"></textarea>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                 <div id="ocNotas" class="atbd-collapse-item__body collapse py-4">
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="col-12">
-                            <textarea class="form-control form-control-lg" type="text" rows="4" id="ocNotas"
+                            <textarea class="form-control form-control-lg" type="text" rows="4" :disabled="disabled" id="ocNotas"
                                 v-model="formDataCopy.notas"></textarea>
                         </div>
                     </div>

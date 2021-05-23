@@ -18,22 +18,22 @@
                         <div class="col-12 mb-25">
                             <label for="ccAntecedentesObstetricos">Antecedentes obstétricos</label>
                             <textarea class="form-control form-control-lg" type="text" rows="4"
-                                id="ccAntecedentesObstetricos"
+                                :disabled="disabled" id="ccAntecedentesObstetricos"
                                 v-model="formDataCopy.antecedentesImportancia.antecedentesObstetricos"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccFrecuenciaCoital">Frecuencia coital</label>
-                            <input class="form-control form-control-lg" type="date" id="ccFrecuenciaCoital"
+                            <input class="form-control form-control-lg" type="date" :disabled="disabled" id="ccFrecuenciaCoital"
                                 v-model="formDataCopy.antecedentesImportancia.frecuenciaCoital">
                         </div>
                         <div class="col-12 col-md-6 mb-25 mb-md-0">
                             <label for="ccUsoHormonales">Uso hormonales</label>
-                            <input class="form-control form-control-lg" type="text" id="ccUsoHormonales"
+                            <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccUsoHormonales"
                                 v-model="formDataCopy.antecedentesImportancia.usoHormonales">
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="ccCitologiaCervical">Citología cervical previa</label>
-                            <input class="form-control form-control-lg" type="text" id="ccCitologiaCervical"
+                            <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccCitologiaCervical"
                                 v-model="formDataCopy.antecedentesImportancia.citologiaVerticalPrevia">
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccVolumen">Volumen</label>
-                            <select class="form-control form-control-lg" id="ccVolumen"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccVolumen"
                                 v-model="formDataCopy.cervix.volumen">
                                 <option value="Eutrofico">Eutrófico</option>
                                 <option value="Hipotrofico">Hipotrófico</option>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccZonaTransformacion">Zona transformación</label>
-                            <select class="form-control form-control-lg" id="ccZonaTransformacion"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccZonaTransformacion"
                                 v-model="formDataCopy.cervix.zonaTransformacion">
                                 <option value="Tipo I">Tipo I</option>
                                 <option value="Tipo II">Tipo II</option>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccEstudioColposcopia">Estudio de colposcopia</label>
-                            <select class="form-control form-control-lg" id="ccEstudioColposcopia"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccEstudioColposcopia"
                                 v-model="formDataCopy.cervix.estudioColposcopia">
                                 <option value="Satisfactoria">Satisfactoria</option>
                                 <option value="NoSatisfactoria">No satisfactoria</option>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccEvasionGlandular">Evasión glandular</label>
-                            <select class="form-control form-control-lg" id="ccEvasionGlandular"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccEvasionGlandular"
                                 v-model="formDataCopy.cervix.evasionGlandular">
                                 <option value="Pequenia">Pequeña</option>
                                 <option value="Moderada">Moderada</option>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccAtrofiaEpitelial">Atrofia epitelial</label>
-                            <select class="form-control form-control-lg" id="ccAtrofiaEpitelial"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccAtrofiaEpitelial"
                                 v-model="formDataCopy.cervix.atrofiaEpitelial">
                                 <option value="Ausente">Ausente</option>
                                 <option value="Leve">Leve</option>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccQuistesNaboth">Quistes de Naboth</label>
-                            <select class="form-control form-control-lg" id="ccQuistesNaboth"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccQuistesNaboth"
                                 v-model="formDataCopy.cervix.quistesNaboth">
                                 <option value="Presente">Presente</option>
                                 <option value="Ausente">Ausente</option>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccTumoracion">Tumoración</label>
-                            <select class="form-control form-control-lg" id="ccTumoracion"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccTumoracion"
                                 v-model="formDataCopy.cervix.tumoracion">
                                 <option value="Presente">Presente</option>
                                 <option value="Ausente">Ausente</option>
@@ -127,7 +127,7 @@
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccAplicacionEpitelioAcetoblanco">Epitelio acetoblanco</label>
-                            <select class="form-control form-control-lg" id="ccAplicacionEpitelioAcetoblanco"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccAplicacionEpitelioAcetoblanco"
                                 v-model="formDataCopy.aplicacionAcidoAcetico.epitelioAcetoblanco">
                                 <option value="Presente">Presente</option>
                                 <option value="Ausente">Ausente</option>
@@ -135,7 +135,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="">Borde</label>
-                            <select class="form-control form-control-lg" id="ccBorde"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccBorde"
                                 v-model="formDataCopy.aplicacionAcidoAcetico.borde">
                                 <option value="DefinidosConRelieve">Definidos con relieve</option>
                                 <option value="DefinidosSinRelieve">Definidos sin relieve</option>
@@ -145,7 +145,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccMosaico">Mosaico</label>
-                            <select class="form-control form-control-lg" id="ccMosaico"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccMosaico"
                                 v-model="formDataCopy.aplicacionAcidoAcetico.mosaico">
                                 <option value="Fino">Fino</option>
                                 <option value="Grueso">Grueso</option>
@@ -153,7 +153,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="ccSuperficie">Superficie</label>
-                            <select class="form-control form-control-lg" id="ccSuperficie"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccSuperficie"
                                 v-model="formDataCopy.aplicacionAcidoAcetico.superficie">
                                 <option value="LisaConPuntilleoFino">Lisa con puntilleo fino</option>
                                 <option value="LisaConPuntilleoGrueso">Lisa con puntilleo grueso</option>
@@ -163,7 +163,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="ccTestSchiller">Test de Schiller (Lugol)</label>
-                            <select class="form-control form-control-lg" id="ccTestSchiller"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccTestSchiller"
                                 v-model="formDataCopy.aplicacionAcidoAcetico.testSchiller">
                                 <option value="YodoPositivoHomogeneo">Yodo positivo homogéneo </option>
                                 <option value="YodoNegativoConZonasHipocaptantes">Yodo negativo con zonas hipocaptantes
@@ -188,7 +188,7 @@
                                 <div class="card-header">
                                     <h6>Leucorrea</h6>
                                     <div class="custom-control custom-switch switch-primary switch-md ">
-                                        <input type="checkbox" class="custom-control-input" id="ccLeucorrea"
+                                        <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccLeucorrea"
                                             v-model="formDataCopy.vaginoscopia.leucorrea.check"
                                             :checked="formDataCopy.vaginoscopia.leucorrea.check">
                                         <label class="custom-control-label" for="ccLeucorrea"></label>
@@ -202,7 +202,7 @@
                         </div>
                         <div class="col-12 col-md-6 mb-25 mb-md-0">
                             <label for="ccVaginoscopiaEpitelioAcetoblanco">Epitelio acetoblanco</label>
-                            <select class="form-control form-control-lg" id="ccVaginoscopiaEpitelioAcetoblanco"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccVaginoscopiaEpitelioAcetoblanco"
                                 v-model="formDataCopy.vaginoscopia.epitelioAcetoblanco">
                                 <option value="Presente">Presente</option>
                                 <option value="Ausente">Ausente</option>
@@ -210,7 +210,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="ccCaptacionLugol">Captación de lugol</label>
-                            <select class="form-control form-control-lg" id="ccCaptacionLugol"
+                            <select class="form-control form-control-lg" :disabled="disabled" id="ccCaptacionLugol"
                                 v-model="formDataCopy.vaginoscopia.captacionLugol">
                                 <option value="YodoPositivoHomogeneo">Yodo positivo homogéneo </option>
                                 <option value="YodoNegativoConZonasHipocaptantes">Yodo negativo con zonas hipocaptantes
@@ -231,7 +231,7 @@
                 <div id="ccVulvoscopia" class="atbd-collapse-item__body collapse px-0 py-4">
                     <div class="col-12">
                         <div class="col-12">
-                            <textarea class="form-control form-control-lg" rows="5" id="ccVulvoscopia"
+                            <textarea class="form-control form-control-lg" rows="5" :disabled="disabled" id="ccVulvoscopia"
                                 v-model="formDataCopy.vulvoscopia"></textarea>
                         </div>
                     </div>
@@ -248,7 +248,7 @@
                 <div id="ccDiagnosticoColposcopico" class="atbd-collapse-item__body collapse px-0 py-4">
                     <div class="col-12">
                         <div class="col-12">
-                            <textarea class="form-control form-control-lg" rows="5" id="ccDiagnosticoColposcopico"
+                            <textarea class="form-control form-control-lg" rows="5" :disabled="disabled" id="ccDiagnosticoColposcopico"
                                 v-model="formDataCopy.diagnosticoColposcopico"></textarea>
                         </div>
                     </div>
