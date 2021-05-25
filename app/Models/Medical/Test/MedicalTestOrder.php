@@ -13,7 +13,8 @@ class MedicalTestOrder extends Model
     protected $fillable = [
         'medicaltest_id',
         'product_id',
-        'updated_by'
+        'updated_by',
+        'updated_note'
     ];
 
 

@@ -1,3 +1,5 @@
+import { Order } from "./Order.interface";
+
 export interface Test
 {
     id: number;
@@ -7,26 +9,7 @@ export interface Test
     medicalteststatus_id: number;
     created_at: string;
     updated_at: string;
-    medical_orders: {
-        medicaltest_id: number,
-        product_id: number,
-        updated_by: number | null,
-        update_note: string | null,
-        created_at: string,
-        updated_at: string,
-    } | null;
-    last_order: {
-        medicaltest_id: number,
-        product_id: number,
-        updated_by: number | null,
-        update_note: string | null,
-        created_at: string,
-        updated_at: string,
-        product: {
-            id: number,
-            name: string
-        }
-    };
+    last_order: Order;
     medical_results: {
         medicaltest_id: number,
         created_by: number,

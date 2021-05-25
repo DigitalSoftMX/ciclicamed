@@ -14,6 +14,10 @@ import { FollowUp } from '@/resources/js/interfaces/Medical/FollowUp.interface';
 import { FollowUpData } from '../../../defaultData/Medical/FollowUp.data';
 import { Doctor } from '@/resources/js/interfaces/Doctor/Doctor.interface';
 import { DoctorData } from '../../../defaultData/Doctor/Doctor.data';
+import { PrescriptionData } from '@/resources/js/defaultData/Medical/Prescription.data';
+import { Prescription } from '@/resources/js/interfaces/Medical/Prescription.interface';
+import { TestOrder } from '@/resources/js/interfaces/Medical/TestOrder.interface';
+import { Test } from '@/resources/js/interfaces/Medical/Test.interface';
 
 export default defineComponent({
     components: {
@@ -42,6 +46,14 @@ export default defineComponent({
     },
     emits: [],
     props: {
+        specialty: {
+            type: Number,
+            default: -1
+        },
+        consultID: {
+            type: Number,
+            default: -1
+        }
     },
     data() {
         return {
@@ -58,12 +70,13 @@ export default defineComponent({
             consultData: ConsultData,
             historyData: HistoryData,
             followUp: FollowUpData,
+            prescriptionData: [] as Prescription[],
+            testData: [] as Test[],
             clock: {
                 hours: 0,
                 minutes: 0,
                 seconds: 0
             },
-            specialtyEnabled: -1
         };
     },
     mounted() {
@@ -72,12 +85,14 @@ export default defineComponent({
         this.getDoctorData();
         this.getHistory();
         this.getFollowUp();
+        this.getPrescription();
+        this.getTest();
         this.updateClock();
     },
     watch: {
     },
     methods: {
-        getConsultInfo()
+        getPatientData()
         {
             axios.get<Patient>(`/pacientes/1`)
                 .then(response => {
@@ -87,7 +102,7 @@ export default defineComponent({
                     // console.log(error)
                 })
         },
-        getPatientData()
+        getConsultInfo()
         {
             axios.get<Consult>(`/consultas/1`)
                 .then(response => {
@@ -122,6 +137,35 @@ export default defineComponent({
             axios.get<FollowUp>(`/consultas/1/seguimiento`)
                 .then(response => {
                     this.followUp = response.data;
+                })
+                .catch(error => {
+                    // console.log(error)
+                })
+        },
+        getPrescription()
+        {
+            axios.get<Prescription[]>(`/consultas/1/receta`)
+                .then(response => {
+                    this.prescriptionData = response.data;
+                })
+                .catch(error => {
+                    // console.log(error)
+                })
+        },
+        getTest()
+        {
+            axios.get<Test[]>(`/consultas/1/estudios`)
+                .then(response => {
+                    const data = Object.values(response.data);
+                    this.testData = data.map((test: Test) => {
+                        return {
+                            ...test,
+                            last_order: {
+                                ...test.last_order,
+                                status: test.medicalteststatus_id
+                            }
+                        }
+                    });
                 })
                 .catch(error => {
                     // console.log(error)

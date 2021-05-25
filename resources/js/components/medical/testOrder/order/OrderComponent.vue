@@ -22,11 +22,15 @@
                     </option>
                 </select>
             </div>
-            <div class="col-12 row mx-0 p-0" v-show="orderSelected > 0">
+            <div class="col-12" v-if="isUpdate">
+                <label for="">Nota de actualización</label>
+                <textarea class="form-control form-control-lg" rows="4" placeholder="Nota de actualización" v-model="orderDataCopy.last_order.update_note" @keyup="updateOrderData"></textarea>
+            </div>
+            <div class="col-12 row mx-0 p-0" v-show="orderDataCopy.last_order.product_id > 0">
                 <div class="col-12 mb-25 text-center">
                     <h4>Indicaciones</h4>
                 </div>
-                <div class="col-12 mb-25" v-for="order in orderList[orderSelected].order_annotations" :key="order.id">
+                <div class="col-12 mb-25" v-for="order in orderList[orderSelected].order_annotations" :key="order">
                     <label for="">{{order.annotation}}</label>
                 </div>
             </div>

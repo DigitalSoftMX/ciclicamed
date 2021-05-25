@@ -46,12 +46,16 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/pacientes/{id}', [MedicalConsultController::class, 'getConsultsByPatient'])->name('consulta.paciente');
         Route::delete('/{id}', [MedicalConsultController::class, 'cancelConsult'])->name('consulta.eliminar');
         Route::patch('/{id}', [MedicalConsultController::class, 'updateSchedule'])->name('consulta.actualizar');
-        Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.estudio');
+        
+        
         Route::get('/{id}/seguimiento', [MedicalConsultController::class, 'getFollowUps'])->name('consulta.seguimiento');
         Route::get('/{id}/receta', [MedicalConsultController::class, 'getPrescriptions'])->name('consulta.receta');
         Route::get('/{id}', [MedicalConsultController::class, 'getConsultInfo'])->name('consulta.informacion');
         Route::get('/{id}/historial', [MedicalConsultController::class, 'getHistory'])->name('consulta.informacion');
         Route::get('/{id}/doctor', [MedicalConsultController::class, 'getDoctor'])->name('consulta.doctor');
+
+        Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.estudio.obtener');
+        Route::post('/{id}/estudios', [MedicalConsultController::class, 'createTest'])->name('consulta.estudio.crear');
     });
 
     Route::get('test/{id}', function() {

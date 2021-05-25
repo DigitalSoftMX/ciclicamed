@@ -14,6 +14,11 @@ import { PDFDocument, PDFPage } from 'pdf-lib';
 import moment from 'moment';
 import * as download from 'downloadjs';
 import printJS from 'print-js'
+import { Order } from '@/resources/js/interfaces/Medical/Order.interface';
+import { OrderData } from '../../../defaultData/Medical/Order.data';
+import { TestOrder } from '@/resources/js/interfaces/Medical/TestOrder.interface';
+import { Test } from '@/resources/js/interfaces/Medical/Test.interface';
+import { TestData } from '../../../defaultData/Medical/Test.data';
 
 export default defineComponent({
     components: {
@@ -21,6 +26,10 @@ export default defineComponent({
     },
     emits: [],
     props: {
+        orderData: {
+            type: Array as PropType<Test[]>,
+            default: []
+        },
         consultData: {
             type: Object as PropType<Consult>,
             default: ConsultData
@@ -36,7 +45,7 @@ export default defineComponent({
     },
     data() {
         return {
-            orderDataList: [] as Number[],
+            orderDataCopy: Object.assign([], ...this.orderData),
             orderComponentList: [] as Number[],
             orderList: [] as {
                 id: number;
@@ -52,11 +61,15 @@ export default defineComponent({
         this.getTestList();
     },
     watch: {
+        orderData()
+        {
+            this.orderData.map(order => this.addTestOrder(order));
+        },
     },
     methods: {
-       addTestOrder()
+       addTestOrder(data: Test = TestData)
        {
-           this.orderDataList.unshift(-1);
+           this.orderDataCopy.unshift(data);
            this.orderComponentList.unshift(Math.floor(Math.random() * (50 - 1 + 1)) + 1);
        },
        getTestList(): void
@@ -73,14 +86,35 @@ export default defineComponent({
                     console.log(error)
                 })
         },
+        createTestOrder()
+        {
+            axios.post<Test[]>(`/consultas/1/estudios`, {
+                data: this.orderDataCopy
+            })
+            .then(response => {
+                const data = Object.values(response.data);
+                this.orderDataCopy = data.map((test: Test) => {
+                    return {
+                        ...test,
+                        last_order: {
+                            ...test.last_order,
+                            status: test.medicalteststatus_id
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         deleteOrderComponent(index: number)
         {
-            this.orderDataList.splice(index, 1);
-            this.orderComponentList.splice(index, 1);
+            this.orderDataCopy[index].status = 5;
+            // this.orderComponentList.splice(index, 1);
         },
-        updateOrderSelected(index: number, value: number)
+        updateOrderSelected(index: number, value: Order)
         {
-            this.orderDataList[index] = value;
+            this.orderDataCopy[index] = value;
         },
         async createPDF()
         {
@@ -89,12 +123,12 @@ export default defineComponent({
             const buffer: ArrayBuffer = await fetch(prescriptionDoc, {
                 headers: new Headers({'content-type': 'application/pdf'}),
             }).then(res => res.arrayBuffer());
-            const filterOrderList = this.orderDataList.filter(order => order !== -1);
+            const filterOrderList = this.orderDataCopy.filter((order: Number) => order !== -1);
 
             const pdfDoc = await PDFDocument.create();
             for await(let order of filterOrderList)
             {
-                console.log(order)
+                const index = this.orderList.findIndex(orderSelected => orderSelected.id === order.last_order.product_id);
                 var newPDF = await PDFDocument.load(buffer);
                 
                 newPDF.getForm().getTextField('patient').setText(`${this.patientData.first_name} ${this.patientData.last_name}`);
@@ -107,9 +141,9 @@ export default defineComponent({
                 newPDF.getForm().getTextField('doctorDegree').setText( doctorLicence?.pivot.degree_title );
                 newPDF.getForm().getTextField('doctorLicenseNumber').setText( doctorLicence?.pivot.license_number );
                 newPDF.getForm().getTextField('doctorSchool').setText( doctorLicence?.pivot.school_name );
-                newPDF.getForm().getTextField('code').setText(order.toString());
-                newPDF.getForm().getTextField('name').setText(this.orderList[Number(order)].name);
-                newPDF.getForm().getTextField('indications').setText( `${this.orderList[Number(order)].order_annotations.map(annotation => `${annotation.annotation}\n`)}` );
+                newPDF.getForm().getTextField('code').setText(index.toString());
+                newPDF.getForm().getTextField('name').setText(this.orderList[index].name);
+                newPDF.getForm().getTextField('indications').setText( `${this.orderList[index].order_annotations.map(annotation => `${annotation.annotation}\n`)}` );
 
                 newPDF.getForm().flatten();
                 const [copiedPages] = await pdfDoc.copyPages(newPDF, [0]);

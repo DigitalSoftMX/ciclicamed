@@ -7,6 +7,10 @@ use App\Http\Requests\Medical\Consult\MedicalConsultRequest;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\Consult\MedicalConsultStatus;
 use App\Models\Medical\Consult\MedicalConsultType;
+use App\Models\Medical\Prescription\MedicalPrescription;
+use App\Models\Medical\Test\MedicalTest;
+use App\Models\Medical\Test\MedicalTestOrder;
+use App\Models\Medical\Test\MedicalTestStatus;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Cast\Object_;
@@ -129,7 +133,40 @@ class MedicalConsultController extends Controller
     public function getTests($id)
     {
         $consult = MedicalConsult::findOrFail($id);
-        return response()->json($consult->testsCreated->load('lastOrder.product:id,name', 'results', 'samples'));
+        $testCancelStatus = MedicalTestStatus::where('name', 'Estudio cancelado')->first()->id;
+        $consultOrder = $consult->testsCreated->load('lastOrder.product:id,name', 'results', 'samples')->where('medicalteststatus_id', '<>', $testCancelStatus)->all();
+        return response()->json($consultOrder);
+    }
+
+    public function createTest(Request $request, $id)
+    {
+        $testStatus = MedicalTestStatus::where('name', 'Estudio creado')->first()->id;
+        foreach($request->input('data') as $order)
+        {
+            if($order['last_order']['medicaltest_id'] === -1)
+            {
+                $test = MedicalTest::create([
+                'created_in' => $id,
+                'scheduled_in' => null,
+                'finished_at' => null,
+                'medicalteststatus_id' => $testStatus
+                ]);
+                MedicalTestOrder::create([
+                    'medicaltest_id' => $test->id,
+                    'product_id' => $order['last_order']['product_id'],
+                    'updated_by' => null,
+                    'update_note' => null
+                ]);
+            } else {
+                MedicalTest::where('id', $order['id'])->update([
+                    'medicalteststatus_id' => $order['status'] ?? $order['last_order']['status']
+                ]);
+                MedicalTestOrder::create($order['last_order']);
+            }
+        }
+
+        $test = MedicalConsult::findOrFail($id)->testsCreated->load('lastOrder.product:id,name', 'results', 'samples')->where('medicalteststatus_id', '<>', 5)->all();
+        return response()->json($request->input('data'));
     }
 
     public function getFollowUps($id)
@@ -143,6 +180,26 @@ class MedicalConsultController extends Controller
     {
         $consult = MedicalConsult::findOrFail($id);
         return response()->json($consult->prescriptions->load('medicament'));
+    }
+
+    public function createPrescription(Request $request, $id)
+    {
+        MedicalPrescription::where('medicalconsult_id', $id)->delete();
+        $prescription = [];
+        foreach($request->input('data') as $medicament)
+        {
+            $data = MedicalPrescription::create([
+                'medicalconsult_id' => $id,
+                'medicament_id' => $medicament['medicament_id'],
+                'administation_type' => $medicament['administation_type'],
+                'rate' => $medicament['rate'],
+                'duration' => $medicament['duration'],
+                'update_by' => $medicament['update_by'] ?? null,
+                'update_note' => $medicament['update_note'] ?? null
+            ]);
+            array_push($prescription, $data);
+        }
+        return response()->json($prescription);
     }
 
     public function getConsultInfo($id)

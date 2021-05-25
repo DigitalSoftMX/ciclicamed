@@ -25,17 +25,22 @@
             
             <div class="col-12 col-md-6 mb-25">
                 <label for="">Frecuencia</label>
-                <input class="form-control form-control-lg" type="text" placeholder="Frecuencia" v-model="medicamentData.rate" @keyup="updateMedicamentData">
+                <input class="form-control form-control-lg" type="text" placeholder="Frecuencia" v-model="medicamentDataCopy.rate" @keyup="updateMedicamentData">
             </div>
 
             <div class="col-12 col-md-6 mb-25">
                 <label for="">Vía de administración</label>
-                <input class="form-control form-control-lg" type="text" placeholder="Dosis" v-model="medicamentData.administation_type" @keyup="updateMedicamentData">
+                <input class="form-control form-control-lg" type="text" placeholder="Dosis" v-model="medicamentDataCopy.administation_type" @keyup="updateMedicamentData">
             </div>
 
             <div class="col-12 col-md-6">
                 <label for="">Duración</label>
-                <input class="form-control form-control-lg" type="text" placeholder="Duración" v-model="medicamentData.duration" @keyup="updateMedicamentData">
+                <input class="form-control form-control-lg" type="text" placeholder="Duración" v-model="medicamentDataCopy.duration" @keyup="updateMedicamentData">
+            </div>
+
+            <div class="col-12" v-if="isUpdate">
+                <label for="">Nota de actualización</label>
+                <textarea class="form-control form-control-lg" rows="4" placeholder="Nota de actualización" v-model="medicamentDataCopy.update_note" @keyup="updateMedicamentData"></textarea>
             </div>
         </div>
     </div>

@@ -4,16 +4,22 @@
         <div class="breadcrumb-action justify-content-center flex-wrap">
             <div class="action-btn">
                 <button class="btn btn-primary btn-default" @click="printPDF()"
-                    :disabled="prescriptionDataList.length === 0">
+                    :disabled="prescriptionDataCopy.length === 0">
                     <img src="/svg/print.svg" class="mr-2 svg-white" alt="Print">
                     Imprimir
                 </button>
             </div>
             <div class="action-btn">
                 <button class="btn btn-primary btn-default" @click="downloadPDF()"
-                    :disabled="prescriptionDataList.length === 0">
+                    :disabled="prescriptionDataCopy.length === 0">
                     <img src="/svg/download.svg" class="mr-2 svg-white" alt="Print">
                     Descargar
+                </button>
+            </div>
+            <div class="action-btn">
+                <button class="btn btn-primary btn-default" @click="createPrescription()">
+                    <img src="/svg/save.svg" class="mr-2 svg-white" alt="Print">
+                    Guardar
                 </button>
             </div>
             <div class="action-btn">
@@ -26,8 +32,8 @@
     </div>
     <div class="atbd-collapse atbd-collapse-custom">
         <medicament-component :medicamentIndex="index" :medicamentList="medicamentList"
-            @mcDelete="deleteMedicamentComponent" @mcChange="updateMedicamentSelected"
-            v-for="(prescription, index) in prescriptionList" :key="prescription">
+            :medicamentData="prescriptionDataCopy[index]" @mcDelete="deleteMedicamentComponent"
+            @mcChange="updateMedicamentSelected" v-for="(prescription, index) in prescriptionList" :key="prescription">
         </medicament-component>
     </div>
 </template>

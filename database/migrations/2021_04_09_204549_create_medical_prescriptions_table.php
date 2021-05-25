@@ -19,7 +19,7 @@ class CreateMedicalPrescriptionsTable extends Migration
             $table->string('administation_type', 100);
             $table->string('rate', 100);
             $table->string('duration', 100);
-            $table->unsignedMediumInteger('updated_by', false);
+            $table->unsignedMediumInteger('updated_by', false)->nullable();
             $table->string('update_note', 255)->nullable();
             $table->timestamps();
 

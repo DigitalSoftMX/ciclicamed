@@ -16,8 +16,8 @@ class CreateMedicalTestsTable extends Migration
         Schema::create('medical_tests', function (Blueprint $table) {
             $table->unsignedInteger('id', true);
             $table->unsignedInteger('created_in', false)->nullable();
-            $table->unsignedInteger('scheduled_in', false);
-            $table->dateTime('finished_at');
+            $table->unsignedInteger('scheduled_in', false)->nullable();
+            $table->dateTime('finished_at')->nullable();
             $table->unsignedTinyInteger('medicalteststatus_id', false);
             $table->timestamps();
 

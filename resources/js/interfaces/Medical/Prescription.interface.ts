@@ -10,5 +10,7 @@ export interface Prescription
         code: number,
         name: string,
         presentation: string
-    }
+    };
+    update_by: string | null;
+    update_note: string | null;
 }

@@ -24,7 +24,9 @@ import { Test } from '@/resources/js/interfaces/Medical/Test.interface';
 export default defineComponent({
     name: 'RecordComponent',
     components: {
-        CitasSubsecuentesComponent: require('../../attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default
+        CitasSubsecuentesComponent: require('../../attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
+        EmptyErrorComponent: require('../../error/EmptyErrorComponent.vue').default,
+        NetworkErrorComponent: require('../../error/NetworkErrorComponent.vue').default
     },
     props: {},
     mounted() {
@@ -32,6 +34,7 @@ export default defineComponent({
     },
     data() {
         return {
+            hasError: false,
             consultList: [] as Consult[],
             followUp: FollowUpData,
             testList: [] as Test[],
@@ -43,7 +46,10 @@ export default defineComponent({
     },
     watch: {
         consultList(){
-            require('../../../../../public/js/horizontal_timeline.2.0.min');
+            if (this.consultList.length > 0)
+            {
+                require('../../../../../public/js/horizontal_timeline.2.0.min');
+            }
         }
     },
     methods: {
@@ -53,7 +59,7 @@ export default defineComponent({
                 this.consultList = Object.values(response.data);
             })
             .catch(error => {
-                // console.log(error)
+                this.hasError = true;
             })
         },
         formatConsultDateTime(dateTime: string) {

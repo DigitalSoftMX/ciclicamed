@@ -1,5 +1,11 @@
 <template>
-    <div class="card mb-25">
+    <div v-if="hasError">
+        <network-error-component></network-error-component>
+    </div>
+    <div v-else-if="consultList.length === 0">
+        <empty-error-component></empty-error-component>
+    </div>
+    <div class="card mb-25" v-else>
         <div class="card-header">
             <h3>Expediente</h3>
         </div>
@@ -29,8 +35,7 @@
                         <li :data-date="formatConsultDateTime(consult.consult_schedule_start)"
                             v-for="consult in consultList" :key="consult.id" class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-md-4  mb-25" v-if="followUp.id !== -1"
-                                    @click="showComponent(1)">
+                                <div class="col-12 col-md-4  mb-25" v-if="followUp.id !== -1" @click="showComponent(1)">
                                     <div class="card h-100 card-shadow">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
@@ -43,7 +48,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4  mb-25" v-if="prescriptionList.length > 0" @click="showComponent(2)">
+                                <div class="col-12 col-md-4  mb-25" v-if="prescriptionList.length > 0"
+                                    @click="showComponent(2)">
                                     <div class="card h-100 card-shadow">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
@@ -93,8 +99,8 @@
                         <h5>{{prescription.medicament?.presentation}}</h5>
                     </div>
                     <div class="col-12 col-md-4 mb-25 banner-feature--15">
-                        <label>Dosis</label>
-                        <h5>{{prescription.dose}}</h5>
+                        <label>Vía de administración</label>
+                        <h5>{{prescription.administation_type}}</h5>
                     </div>
                     <div class="col-12 col-md-4 mb-25 banner-feature--15">
                         <label>Frecuencia</label>
@@ -113,4 +119,5 @@
 <script lang="ts" src="./RecordComponent.ts"></script>
 <style lang="sass">
     @import "./RecordComponent.scss"
+
 </style>
