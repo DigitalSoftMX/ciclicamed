@@ -23,6 +23,7 @@ class PatientFactory extends Factory
     {
         static $user = 1;
         return [
+            'patient_code' => $this->faker->regexify('[A-Za-z0-9]{8}'),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             // 'first_name' => $this->faker->unique()->firstName(),

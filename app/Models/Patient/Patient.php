@@ -15,6 +15,7 @@ class Patient extends Model
     use HasFactory;
 
     protected $fillable = [
+        'patient_code',
         'first_name',
         'last_name',
         'gender',
@@ -26,6 +27,8 @@ class Patient extends Model
         'photo',
         'preregistration_id'
     ];
+
+    protected $perPage = 10;
 
     public function preregistration()
     {

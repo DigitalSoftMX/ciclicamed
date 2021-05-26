@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserUpdatePasswordRequest;
 use App\Http\Requests\User\UserUpdateRequest;
+use App\Models\Patient\Patient;
 use App\Models\User\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -106,5 +107,38 @@ class UserController extends Controller
         $user['password'] = Hash::make($request['password']);
         $user->save();
         return $user;
+    }
+
+    public function getPatientsTable(Request $request)
+    {
+        $patient = [];
+        if($request->has('query'))
+        {
+            $query = $request->input('query');
+            $patient = Patient::where('patient_code', 'like', '%'.$query.'%')
+                    ->orWhere('first_name', 'like', '%'.$query.'%')
+                    ->orWhere('last_name', 'like', '%'.$query.'%')
+                    ->orWhere('cellphone', 'like', '%'.$query.'%')
+                    ->paginate();
+        } else {
+            $patient = Patient::paginate();
+        }
+        
+        $response = [
+            'pagination' => [
+                'total' => $patient->total(),
+                'per_page' => $patient->perPage(),
+                'current_page' => $patient->currentPage(),
+                'last_page' => $patient->lastPage(),
+                'from' => $patient->firstItem(),
+                'to' => $patient->lastItem()
+            ],
+            'data' => $patient->load('preregistration')
+        ];
+        foreach($patient as $patientData)
+        {
+            $patientData->preregistration->data = json_decode($patientData->preregistration->data);
+        }
+        return response()->json($response);
     }
 }

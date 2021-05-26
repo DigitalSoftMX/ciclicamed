@@ -15,9 +15,7 @@ class CreatePreregistrationsTable extends Migration
     {
         Schema::create('preregistrations', function (Blueprint $table) {
             $table->unsignedMediumInteger('id', true);
-            $table->string('business_name', 50);
-            $table->boolean('has_children');
-            $table->string('children_total', 2)->nullable();
+            $table->json('data');
             $table->unsignedInteger('user_id', false)->unique();
             $table->timestamps();
 

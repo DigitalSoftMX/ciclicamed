@@ -1,7 +1,9 @@
 import { Patient } from "../../interfaces/Patient/Patient.interface";
+import { PreregistrationData } from "./Preregistration.data";
 
 export const PatientData: Patient = {
     id: -1,
+    patient_code: '',
     first_name: '',
     last_name: '',
     gender: true,
@@ -11,5 +13,6 @@ export const PatientData: Patient = {
     cellphone: '',
     email: '',
     photo: '',
-    preregistration_id: -1
+    preregistration_id: -1,
+    preregistration: PreregistrationData
 }

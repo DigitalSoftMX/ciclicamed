@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{id}/recetas', [PatientController::class, 'showMedicalPrescriptions'])->name('usuarios.medicalPrescription');
         Route::get('/{id}/estudios', [PatientController::class, 'showMedicalTests'])->name('usuarios.medicalTest');
         Route::patch('/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
+
+        Route::get('/pacientes', [UserController::class, 'getPatientsTable'])->name('usuarios.pacientes');
     });
 
     Route::group(['prefix' => 'consultas'], function() {

@@ -35,6 +35,7 @@ import {
 import {
     BranchSpecialtyDoctors
 } from '@/resources/js/interfaces/Branch/BranchSpecialtyDoctors.interface';
+import { PatientData } from '@/resources/js/defaultData/Patient/Patient.data';
 
 export default defineComponent({
     name: 'LateralScheduleComponent',
@@ -164,9 +165,11 @@ export default defineComponent({
             axios.get < Patient[] > (`pacientes`)
                 .then(response => {
                     this.patientsList = [{
-                        'id': 0,
-                        'first_name': 'Seleccione un paciente',
-                        'last_name': ''
+                        ...PatientData,
+                        id: 0,
+                        first_name: 'Seleccione un paciente',
+                        last_name: '',
+                        
                     }, ...response.data];
                 })
                 .catch(error => {
