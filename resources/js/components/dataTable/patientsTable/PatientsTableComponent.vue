@@ -1,22 +1,21 @@
 <template>
-    <div class="card mt-30">
+    <div class="breadcrumb-main">
+        <h4 class="text-capitalize breadcrumb-title mb-25 mb-md-0">Pacientes</h4>
+        <div class="form-group p-0">
+            <div class="with-icon">
+                <span class="mr-5">
+                    <img src="/svg/search.svg" alt="Search">
+                </span>
+                <input type="text" class="form-control form-control-lg bg-white" v-model="query"
+                    @keyup="getUserDataQuery()" placeholder="Buscar">
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-30 spin-embadded" v-bind:class="{'spin-active': loading}">
         <div class="card-body">
-            <div class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table">
-                <div class="table-responsive">
-                    <div class="row mx-0 justify-content-end">
-                        <div class="form-group col-12 col-md-4 p-0 mb-25">
-                            <div class="with-icon">
-                                <span class="mr-5">
-                                    <img src="/svg/search.svg" alt="Search">
-                                </span>
-                                <input type="text" class="form-control form-control-lg bg-white" v-model="query"
-                                    @keyup="getUserDataQuery()" placeholder="Buscar">
-                                <span class="mr-5">
-                                    <img src="/svg/search.svg" alt="Search">
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
+                <div class="table-responsive  hide-y-overflow">
                     <table
                         class="table mb-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
                         data-sorting="true" data-paging-current="1" data-paging-position="right" data-paging-size="10"
@@ -92,7 +91,8 @@
                                         </li>
                                         <li>
                                             <button
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
+                                                @click="openPreregistration(user)">
                                                 <img src="/svg/edit.svg">
                                             </button>
                                         </li>
@@ -148,7 +148,14 @@
                 </div>
             </div>
         </div>
+        <div class="loaded-spin text-center">
+            <div class="spinner-border text-primary"></div>
+        </div>
+        
     </div>
+
+    <preregistration-component :patientData="patientData" :isNew="false"></preregistration-component>
+    
 </template>
 
 <script lang="ts" src="./PatientsTableComponent.ts"></script>
@@ -156,5 +163,6 @@
 <style scoped>
     @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
     @import './PatientsTableComponent.scss';
+    @import '../../../../../public/css/global.css';
 
 </style>

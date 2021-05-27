@@ -6,11 +6,13 @@ use App\Http\Controllers\Branch\BranchController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Medical\Consult\MedicalConsultController;
 use App\Http\Controllers\Patient\PatientController;
+use App\Http\Controllers\Patient\PreregistrationController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\User\UserController;
 use App\Models\Employee\Employee;
 use App\Models\Patient\Patient;
+use App\Models\Patient\Preregistration;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -39,7 +41,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{id}/estudios', [PatientController::class, 'showMedicalTests'])->name('usuarios.medicalTest');
         Route::patch('/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
 
-        Route::get('/pacientes', [UserController::class, 'getPatientsTable'])->name('usuarios.pacientes');
+        Route::get('/pacientes', [UserController::class, 'getPatientsTable'])->name('usuarios.pacientes'); //NOTA PASAR A GRUPO PACIENTES
     });
 
     Route::group(['prefix' => 'consultas'], function() {
@@ -86,12 +88,19 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'pacientes'], function() {
         Route::get('/', [PatientController::class, 'getAllPatients'])->name('pacientes.todos');
         Route::get('/{id}', [PatientController::class, 'getPatientByID'])->name('pacientes.paciente');
-        Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getALlConsults'])->name('pacientes.categoria');
+        Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getAllConsults'])->name('pacientes.categoria');
+
+        Route::patch('/{id}/preregistro', [PreregistrationController::class, 'updatePreregistration'])->name('pacientes.preregistro');
     });
 
     //Doctores
     Route::group(['prefix' => 'doctores'], function() {
         Route::get('/{idDoctor}/consulta/{idConsult}', [EmployeeController::class, 'getDoctorConsult'])->name('doctores.consulta');
+    });
+
+    //Empleados
+    Route::group(['prefix' => 'empleados'], function() {
+        Route::get('/', [EmployeeController::class, 'getAllEmployees'])->name('empleados.todos');
     });
 
     //Productos

@@ -66,7 +66,7 @@ class PatientController extends Controller
         ]);
     }
 
-    public function getALlConsults($id, $categoria)
+    public function getAllConsults($id, $categoria)
     {
         $consults = Patient::findOrFail($id)->medicalConsults->where('medicalconsulttype_id', $categoria);
         return response()->json($consults);

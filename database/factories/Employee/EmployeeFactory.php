@@ -33,7 +33,7 @@ class EmployeeFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'photo' => $this->faker->regexify('[A-Za-z0-9]{25}'),
             'employeecategory_id' => $this->faker->numberBetween(1, 6),
-            'employeestatus_id' => $this->faker->numberBetween(1, 5),
+            'employeestatus_id' => $this->faker->numberBetween(1, 2),
             'user_id' => $employeeUser++
         ];
     }

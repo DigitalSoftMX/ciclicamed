@@ -21,9 +21,13 @@ class EmployeeStatusFactory extends Factory
      */
     public function definition()
     {
+        static $row = -1;
+        $data = ['Empleado', 'Cesado'];
+        $color = ['#4CAF50', '#F44336'];
+        $row++;
         return [
-            'name' => $this->faker->text('50'),
-            'color' => $this->faker->hexColor
+            'name' => $data[$row],
+            'color' => $color[$row]
         ];
     }
 }

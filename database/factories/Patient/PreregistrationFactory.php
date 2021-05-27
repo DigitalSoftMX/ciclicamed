@@ -29,6 +29,10 @@ class PreregistrationFactory extends Factory
                     'ciudad' => $this->faker->text($this->faker->numberBetween(5, 15)),
                     'estado' => $this->faker->text($this->faker->numberBetween(5, 15))
                 ],
+                'estadoCivil' => $this->faker->text($this->faker->numberBetween(5, 15)),
+                'escolaridad' => $this->faker->text($this->faker->numberBetween(5, 15)),
+                'ocupacion' => $this->faker->text($this->faker->numberBetween(5, 15)),
+                'religion' => $this->faker->text($this->faker->numberBetween(5, 15)),
                 'seguroGastos' => [
                     'check' => $this->faker->numberBetween(0, 1),
                     'description' => $this->faker->text($this->faker->numberBetween(5, 15))

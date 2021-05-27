@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Models\Branch\Branch;
+use App\Models\Employee\Employee;
 use App\Models\Medical\MedicalSpecialty;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -31,5 +33,34 @@ class EmployeeController extends Controller
     public function getDoctorConsult($doctorID, $consultID)
     {
         return view('errors.401');
+    }
+
+    public function getAllEmployees(Request $request)
+    {
+        $employee = [];
+        if($request->has('query'))
+        {
+            $query = $request->input('query');
+            $employee = Employee::where('id', 'like', '%'.$query.'%')
+                    ->orWhere('first_name', 'like', '%'.$query.'%')
+                    ->orWhere('last_name', 'like', '%'.$query.'%')
+                    ->orWhere('cellphone', 'like', '%'.$query.'%')
+                    ->paginate();
+        } else {
+            $employee = Employee::paginate();
+        }
+        
+        $response = [
+            'pagination' => [
+                'total' => $employee->total(),
+                'per_page' => $employee->perPage(),
+                'current_page' => $employee->currentPage(),
+                'last_page' => $employee->lastPage(),
+                'from' => $employee->firstItem(),
+                'to' => $employee->lastItem()
+            ],
+            'data' => $employee->load('user', 'category', 'status', 'specialties', 'user.status')
+        ];
+        return response()->json($response);
     }
 }

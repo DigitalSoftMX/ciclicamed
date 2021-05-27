@@ -5,23 +5,23 @@
         </div>
         <div class="card-body row mx-0">
             <div class="col-12 col-md-4 mb-25">
-                <label for="csocCiclosMenstruales" class="col-form-label col-form-label-lg mb-1">Ciclos
+                <label for="csocCiclosMenstruales">Ciclos
                     menstruales</label>
                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="csocCiclosMenstruales"
                     v-model="formDataCopy.ciclosMenstruales">
             </div>
             <div class="col-12 col-md-6 mb-25">
-                <label for="csocCantidadSangrado" class="col-form-label col-form-label-lg mb-1">Cantidad de sangrado
+                <label for="csocCantidadSangrado">Cantidad de sangrado
                     mestrual</label>
                 <select class="form-control form-control-lg" :disabled="disabled" id="csocCantidadSangrado"
                     v-model="formDataCopy.cantidadSangrado">
-                    <option>Escaso</option>
-                    <option>Normal</option>
-                    <option>Abundante</option>
+                    <option value="Escaso">Escaso</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Abundante">Abundante</option>
                 </select>
             </div>
             <div class="col-md-4 mb-25">
-                <label for="csocToallas" class="col-form-label col-form-label-lg mb-1">Toallas por día</label>
+                <label for="csocToallas">Toallas por día</label>
                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="csocToallas"
                     v-model="formDataCopy.toallas">
             </div>

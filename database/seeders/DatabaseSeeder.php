@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
         Patient::factory(25)->create();
         InvoiceData::factory(5)->create();
         EmployeeCategory::factory(6)->create();
-        EmployeeStatus::factory(5)->create();
+        EmployeeStatus::factory(2)->create();
         Employee::factory(100)->create();
         MedicalSpecialty::factory(10)->create();
         EmployeeLicense::factory(50)->create();

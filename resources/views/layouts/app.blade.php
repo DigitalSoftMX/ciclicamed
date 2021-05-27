@@ -24,7 +24,7 @@
       {{-- Endinject --}}
       <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon.png') }}">
    </head>
-   <body class="layout-light side-menu @auth() overlayScroll @endauth">
+   <body class="layout-light side-menu @auth() @endauth">
       @auth()
       <div class="mobile-search"></div>
       <div class="mobile-author-actions"></div>

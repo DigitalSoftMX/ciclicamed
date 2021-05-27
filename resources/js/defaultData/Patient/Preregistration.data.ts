@@ -2,6 +2,7 @@ import { Preregistration } from "../../interfaces/Patient/Preregistration.interf
 
 export const PreregistrationData: Preregistration = {
     id: -1,
+    user_id: -1,
     data: {
         type: '',
         form: {
@@ -35,8 +36,12 @@ export const PreregistrationData: Preregistration = {
             lugarTrabajo: '',
             hijos: {
                 check: false,
-                description: false
-            }
+                description: ''
+            },
+            escolaridad: '',
+            estadoCivil: '',
+            ocupacion: '',
+            religion: ''
         }
     }
 }

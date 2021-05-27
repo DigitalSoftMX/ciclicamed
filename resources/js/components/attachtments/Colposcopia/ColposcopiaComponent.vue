@@ -134,7 +134,7 @@
                             </select>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
-                            <label for="">Borde</label>
+                            <label for="ccBorde">Borde</label>
                             <select class="form-control form-control-lg" :disabled="disabled" id="ccBorde"
                                 v-model="formDataCopy.aplicacionAcidoAcetico.borde">
                                 <option value="DefinidosConRelieve">Definidos con relieve</option>
@@ -195,8 +195,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body bg-normal" v-show="formDataCopy.vaginoscopia.leucorrea.check">
-                                    <label for="">Características</label>
-                                    <textarea class="form-control form-control-lg"></textarea>
+                                    <label for="ccLeucorreaDescription">Características</label>
+                                    <textarea class="form-control form-control-lg" id="ccLeucorreaDescription" v-model="formDataCopy.vaginoscopia.leucorrea.description" :disabled="disabled"></textarea>
                                 </div>
                             </div>
                         </div>

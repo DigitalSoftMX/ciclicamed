@@ -1,5 +1,6 @@
 export interface Preregistration {
     id: number;
+    user_id: number;
     data: {
         type: string;
         form: {
@@ -8,6 +9,10 @@ export interface Preregistration {
                 ciudad: string,
                 estado: string
             };
+            estadoCivil: string;
+            escolaridad: string;
+            ocupacion: string;
+            religion: string;
             seguroGastos: {
                 check: boolean,
                 description: string
@@ -33,7 +38,7 @@ export interface Preregistration {
             lugarTrabajo: string;
             hijos: {
                 check: boolean,
-                description: boolean
+                description: string
             }
         }
     }
