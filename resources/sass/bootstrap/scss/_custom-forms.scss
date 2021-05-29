@@ -20,7 +20,7 @@
 }
 
 .custom-control-input {
-  position: absolute;
+  // position: absolute;
   left: 0;
   z-index: -1; // Put the input behind the label so it doesn't overlay text
   width: $custom-control-indicator-size;

@@ -1,0 +1,21 @@
+.canvas-container
+{
+    margin: auto;
+    overflow: visible;
+}
+
+.rounded-button
+{
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.rounded-button >img
+{
+    filter: invert(16%) sepia(39%) saturate(5814%) hue-rotate(262deg) brightness(92%) contrast(93%);
+}
+
+.rounded-button:hover >img
+{
+    filter: invert(100%) sepia(4%) saturate(7492%) hue-rotate(188deg) brightness(105%) contrast(89%);
+}
