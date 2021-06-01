@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Branch\BranchController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Medical\Consult\MedicalConsultController;
+use App\Http\Controllers\Medical\Test\MedicalTestResultController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Patient\PreregistrationController;
 use App\Http\Controllers\Product\ProductController;
@@ -107,5 +108,14 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'productos'], function() {
         Route::get('/medicamentos', [ProductController::class, 'getMedicaments'])->name('productos.medicamentos');
         Route::get('/estudios', [ProductController::class, 'getTestOrderProducts'])->name('productos.estudios');
+    });
+
+    //Estudios
+    Route::group(['prefix' => 'estudios'], function() {
+        Route::get('/resultados/{id}', [MedicalTestResultController::class, 'getResultFile'])->name('estudios.resultados');
+        Route::get('/{id}/resultados/', [MedicalTestResultController::class, 'testResult'])->name('estudios.resultados');
+        
+        Route::post('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.resultados');
+        
     });
 });

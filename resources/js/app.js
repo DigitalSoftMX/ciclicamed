@@ -12,7 +12,7 @@ const app = createApp({
     components: {
 		MedicalConsultPage: MedicalConsultPage,
 		UsersPage: UsersPage,
-		PruebaHostComponent: PruebaHostComponent
+		UploadFileComponent: require('./components/general/uploadFile/UploadFileComponent.vue').default
 	}
 });
 
