@@ -38,7 +38,6 @@ export default defineComponent({
     watch: {
         schedule()
         {
-            console.log(this.schedule)
             this.showCancelOption();
             this.showEditOption();
         }

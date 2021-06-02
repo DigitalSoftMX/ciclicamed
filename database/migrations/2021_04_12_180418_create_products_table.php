@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('name', 255);
             $table->string('unit', 25)->nullable();
             $table->unsignedSmallInteger('quantity_available', false)->nullable();
-            $table->decimal('price', 7, 2);
-            $table->decimal('discount', 5, 2);
+            $table->decimal('price', 9, 2);
+            $table->decimal('discount', 9, 2)->nullable();
             $table->unsignedTinyInteger('productcategory_id', false);
             $table->unsignedTinyInteger('productstatus_id', false);
             $table->timestamps();

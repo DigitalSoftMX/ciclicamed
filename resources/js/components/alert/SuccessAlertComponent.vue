@@ -1,7 +1,7 @@
 <template>
     <div class="modal fade" :id="id" tabindex="-1" role="dialog" aria-labelledby="successModal"
         aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-info" role="document">
+        <div class="modal-dialog modal-sm modal-info modal-dialog-centered" role="document">
             <div class="modal-content modal-bg-success modal-colored">
                 <div class="modal-header ">
                     <h6 class="modal-title">{{ title }}</h6>

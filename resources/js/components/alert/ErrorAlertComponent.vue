@@ -1,6 +1,6 @@
 <template>
     <div class="modal fade" :id="id" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-info" role="document">
+        <div class="modal-dialog modal-sm modal-info modal-dialog-centered" role="document">
             <div class="modal-content modal-bg-danger modal-colored">
                 <div class="modal-header ">
                     <h6 class="modal-title">{{ title }}</h6>
@@ -27,7 +27,6 @@
     export default {
         props: ['id', 'title', 'errors'],
         mounted:  function() {
-            console.log(this.$props.errors)
         }
     }
 

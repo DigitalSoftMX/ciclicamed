@@ -1,7 +1,6 @@
 <template>
     <div class="breadcrumb-main">
-        <h4 class="text-capitalize breadcrumb-title mb-25 mb-md-0">{{title}}</h4>
-        <div class="form-group p-0">
+        <div class="form-group p-0 m-0">
             <div class="with-icon">
                 <span class="mr-5">
                     <img src="/svg/search.svg" alt="Search">
@@ -10,11 +9,13 @@
                     @keyup="getUserDataQuery()" placeholder="Buscar">
             </div>
         </div>
+        <button class="btn btn-primary btn-default btn-squared" @click="createProduct">Crear nuevo producto</button>
     </div>
 
     <div class="card mt-30 spin-embadded" v-bind:class="{'spin-active': loading}">
         <div class="card-body">
-            <div class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
+            <div
+                class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
                 <div class="table-responsive  hide-y-overflow">
                     <table
                         class="table mb-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
@@ -33,7 +34,7 @@
                                 <th class="footable-sortable" style="display: table-cell;">
                                     <span class="userDatatable-title">Descripción</span>
                                     <span class="fooicon fooicon-sort"></span></th>
-                                
+
                                 <th class="footable-sortable" style="display: table-cell;">
                                     <span class="userDatatable-title">Cantidad</span>
                                     <span class="fooicon fooicon-sort"></span></th>
@@ -92,13 +93,14 @@
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
-                                                @click="openPreregistration(product)">
+                                                @click="editProduct(product)">
                                                 <img src="/svg/edit.svg">
                                             </button>
                                         </li>
                                         <li>
                                             <button
-                                                class="btn btn-icon btn-circle btn-outline-danger border-0 button-img">
+                                                class="btn btn-icon btn-circle btn-outline-danger border-0 button-img"
+                                                @click="openDeleteConfirmation(product)">
                                                 <img src="/svg/delete.svg">
                                             </button>
                                         </li>
@@ -136,8 +138,8 @@
                                                     class="footable-page-link">›</a></li>
                                             <li class="footable-page-nav"
                                                 v-bind:class="{'disabled': paginationActive === paginationData.pagination.last_page}"
-                                                @click="getUserData(paginationData.pagination.last_page)" data-page="last"><a
-                                                    class="footable-page-link">»</a></li>
+                                                @click="getUserData(paginationData.pagination.last_page)"
+                                                data-page="last"><a class="footable-page-link">»</a></li>
                                         </ul>
                                         <div class="divider"></div><span class="label label-default">1 of 3</span>
                                     </div>
@@ -151,9 +153,17 @@
         <div class="loaded-spin text-center">
             <div class="spinner-border text-primary"></div>
         </div>
-        
     </div>
-    
+
+    <product-component :id="id" :productData="productData" :isNew="isNewProduct" :productCategory="title">
+    </product-component>
+    <success-alert-component :id="`productTableAlertSuccess${id}`" message="Se ha borrado el producto de forma exitosa"
+        :title="'Producto eliminado satisfactoriamente'"></success-alert-component>
+    <error-alert-component :id="`productTableAlertError${id}`" :errors="errors" :title="'Error borrar el producto'">
+    </error-alert-component>
+    <confirmation-alert-component :id="`productTableAlertConfirmation${id}`"
+        title="¿Desea eliminar este producto?. Esta acción no se puede deshacer" @confirmAction="deleteProduct">
+    </confirmation-alert-component>
 </template>
 
 <script lang="ts" src="./ProductTableComponent.ts"></script>

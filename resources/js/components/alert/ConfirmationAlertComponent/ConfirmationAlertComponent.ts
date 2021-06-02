@@ -1,12 +1,16 @@
-import {
-    defineComponent
-} from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
+import $ from 'jquery';
 
 export default defineComponent({
+    emits: [`confirmAction`],
     props: {
+        id: {
+            type: String,
+            default: ''
+        },
         title: {
-            type: Number,
-            default: 0
+            type: String,
+            default: ''
         }
     },
     data() {
@@ -16,5 +20,14 @@ export default defineComponent({
     mounted() {
     },
     methods: {
+        closeAlert()
+        {
+            $(`#${this.id}`).modal('hide');
+        },
+        confirmAction()
+        {
+            this.$emit('confirmAction', this.id);
+            this.closeAlert();
+        }
     },
 })

@@ -45,25 +45,25 @@
         <div class="projects-tab-content projects-tab-content--progress">
             <div class="tab-content mt-25" id="ap-tabContent">
                 <div class="tab-pane fade px-3 active show" id="ppConsultas" role="tabpanel" aria-labelledby="ppConsultas-tab">
-                    <product-table-component title="Consulta" productCategory="consulta"></product-table-component>
+                    <product-table-component id="Consulta" title="Consulta" productCategory="consulta"></product-table-component>
                 </div>
                 <div class="tab-pane fade px-3" id="ppCirugias" role="tabpanel" aria-labelledby="ppCirugias-tab">
-                    <product-table-component title="Cirugías" productCategory="cirugia"></product-table-component>
+                    <product-table-component title="Cirugía" productCategory="cirugia"></product-table-component>
                 </div>
                 <div class="tab-pane fade px-3" id="ppHisteroscopia" role="tabpanel" aria-labelledby="ppHisteroscopia-tab">
-                    <product-table-component title="Histeroscopía" productCategory="histeroscopia"></product-table-component>
+                    <product-table-component id="Histeroscopia" title="Histeroscopía" productCategory="histeroscopia"></product-table-component>
                 </div>
                 <div class="tab-pane fade px-3" id="ppCiclica" role="tabpanel" aria-labelledby="ppCiclica-tab">
-                    <product-table-component title="Cíclica" productCategory="ciclica"></product-table-component>
+                    <product-table-component id="Ciclica" title="Cíclica" productCategory="ciclica"></product-table-component>
                 </div>
                 <div class="tab-pane fade px-3" id="ppImagenologia" role="tabpanel" aria-labelledby="ppImagenologia-tab">
-                    <product-table-component title="Imagenología" productCategory="imagenologia"></product-table-component>
+                    <product-table-component id="Imagenologia" title="Imagenología" productCategory="imagenologia"></product-table-component>
                 </div>
                 <div class="tab-pane fade px-3" id="ppLaboratorio" role="tabpanel" aria-labelledby="ppLaboratorio-tab">
-                    <product-table-component title="Laboratorio" productCategory="laboratorio"></product-table-component>
+                    <product-table-component id="Laboratorio" title="Laboratorio" productCategory="laboratorio"></product-table-component>
                 </div>
                 <div class="tab-pane fade px-3" id="ppFarmacia" role="tabpanel" aria-labelledby="ppFarmacia-tab">
-                    <product-table-component title="Farmacia" productCategory="farmacia"></product-table-component>
+                    <product-table-component id="Farmacia" title="Farmacia" productCategory="farmacia"></product-table-component>
                 </div>
             </div>
         </div>

@@ -116,6 +116,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/imagenologia', [ProductController::class, 'getImagenologia'])->name('productos.imagenologia');
         Route::get('/laboratorio', [ProductController::class, 'getLaboratorio'])->name('productos.laboratorio');
         Route::get('/farmacia', [ProductController::class, 'getFarmacia'])->name('productos.farmacia');
+
+        Route::post('/', [ProductController::class, 'createProduct'])->name('productos.nuevo');
+        Route::patch('/{id}', [ProductController::class, 'updateProduct'])->name('productos.actualizar');
+        Route::delete('/{id}', [ProductController::class, 'deleteProduct'])->name('productos.eliminar');
     });
 
     //Estudios

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\ProductRequest;
 use App\Models\Medical\Prescription\Medicament;
 use App\Models\Product\Product;
 use App\Models\Product\ProductCategory;
@@ -11,6 +12,54 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    public function createProduct(ProductRequest $request)
+    {
+        $request->validated();
+        $category = ProductCategory::where('name', $request->input('category'))->first()->id;
+        $status = ProductStatus::where('name', 'Activo')->first()->id;
+        $product = Product::create([
+            'product_code' => $request->input('data.product_code'),
+            'lans_code' => $request->input('data.lans_code'),
+            'name' => $request->input('data.name'),
+            'unit' => $request->input('data.unit'),
+            'quantity_available' => $request->input('data.quantity_available'),
+            'price' => $request->input('data.price'),
+            'discount' => $request->input('data.discount'),
+            'productcategory_id' => $category,
+            'productstatus_id' => $status,
+        ]);
+        return response()->json($product);
+    }
+
+    public function updateProduct(ProductRequest $request, $id)
+    {
+        $request->validated();
+        $product = Product::findOrFail($id);
+        $product->update([
+            'product_code' => $request->input('data.product_code'),
+            'lans_code' => $request->input('data.lans_code'),
+            'name' => $request->input('data.name'),
+            'unit' => $request->input('data.unit'),
+            'quantity_available' => $request->input('data.quantity_available'),
+            'price' => $request->input('data.price'),
+            'discount' => $request->input('data.discount'),
+            'productcategory_id' => $request->input('data.productcategory_id'),
+            'productstatus_id' => $request->input('data.productstatus_id'),
+        ]);
+        return response()->json($product);
+    }
+
+    public function deleteProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        $status = ProductStatus::where('name', 'Inactivo')->first()->id;
+        $product->update([
+            'productstatus_id' => $status,
+        ]);
+        return response()->json($product);
+    }
+
     public function getTestOrderProducts()
     {
         $imagenologia = ProductCategory::where('name', 'Imagenología')->first()->id;
