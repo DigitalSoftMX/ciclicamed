@@ -61,10 +61,10 @@ export default defineComponent({
         this.getTestList();
     },
     watch: {
-        orderData()
-        {
-            this.orderData.map(order => this.addTestOrder(order));
-        },
+        // orderData()
+        // {
+        //     this.orderData.map(order => this.addTestOrder(order));
+        // },
     },
     methods: {
        addTestOrder(data: Test = TestData)

@@ -1,0 +1,166 @@
+<template>
+    <div class="breadcrumb-main">
+        <h4 class="text-capitalize breadcrumb-title mb-25 mb-md-0">{{title}}</h4>
+        <div class="form-group p-0">
+            <div class="with-icon">
+                <span class="mr-5">
+                    <img src="/svg/search.svg" alt="Search">
+                </span>
+                <input type="text" class="form-control form-control-lg bg-white" v-model="query"
+                    @keyup="getUserDataQuery()" placeholder="Buscar">
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-30 spin-embadded" v-bind:class="{'spin-active': loading}">
+        <div class="card-body">
+            <div class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
+                <div class="table-responsive  hide-y-overflow">
+                    <table
+                        class="table mb-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
+                        data-sorting="true" data-paging-current="1" data-paging-position="right" data-paging-size="10"
+                        style="">
+                        <thead>
+                            <tr class="userDatatable-header footable-header">
+                                <th class="footable-sortable footable-first-visible" style="display: table-cell;">
+                                    <span class="userDatatable-title">Código</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
+
+                                <th class="footable-sortable" style="display: table-cell;">
+                                    <span class="userDatatable-title">Código LANS</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
+
+                                <th class="footable-sortable" style="display: table-cell;">
+                                    <span class="userDatatable-title">Descripción</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
+                                
+                                <th class="footable-sortable" style="display: table-cell;">
+                                    <span class="userDatatable-title">Cantidad</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
+
+                                <th class="footable-sortable" style="display: table-cell;">
+                                    <span class="userDatatable-title">Precio</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
+
+                                <th class="footable-sortable" style="display: table-cell;">
+                                    <span class="userDatatable-title">Descuento</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
+
+                                <th class="footable-sortable text-right" style="display: table-cell;">
+                                    <span class="userDatatable-title">Acciones</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr v-for="product in paginationData.data" :key="product.id">
+
+                                <td class="footable-first-visible border-primary border-bottom"
+                                    style="display: table-cell;">
+                                    <div class="userDatatable-content">{{product.product_code}}</div>
+                                </td>
+
+                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                    <div class="userDatatable-content">
+                                        {{product.lans_code}}
+                                    </div>
+                                </td>
+                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                    <div class="userDatatable-content">
+                                        {{product.name}}
+                                    </div>
+                                </td>
+                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                    <div class="userDatatable-content">
+                                        {{product.quantity_available}}
+                                    </div>
+                                </td>
+                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                    <div class="userDatatable-content">
+                                        {{product.price}}
+                                    </div>
+                                </td>
+                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                    <div class="userDatatable-content">
+                                        {{product.discount}}
+                                    </div>
+                                </td>
+
+                                <td class="footable-last-visible border-primary border-bottom"
+                                    style="display: table-cell;">
+                                    <ul class="orderDatatable_actions mb-0 d-flex">
+                                        <li>
+                                            <button
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
+                                                @click="openPreregistration(product)">
+                                                <img src="/svg/edit.svg">
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                class="btn btn-icon btn-circle btn-outline-danger border-0 button-img">
+                                                <img src="/svg/delete.svg">
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr class="footable-paging">
+                                <td colspan="8">
+                                    <div class="footable-pagination-wrapper">
+                                        <ul class="pagination justify-content-center">
+
+                                            <li class="footable-page-nav"
+                                                v-bind:class="{'disabled': paginationActive === 1}" data-page="first"
+                                                @click="getUserData(1)"><a class="footable-page-link">«</a>
+                                            </li>
+                                            <li class="footable-page-nav"
+                                                v-bind:class="{'disabled': paginationActive === 1}" data-page="prev"
+                                                @click="getUserData(paginationActive - 1)"><a
+                                                    class="footable-page-link">‹</a></li>
+
+                                            <li class="footable-page visible"
+                                                v-bind:class="{ 'active': pagination === paginationActive }"
+                                                data-page="1" v-for="pagination in paginationPages" :key="pagination"
+                                                @click="getUserData(pagination)">
+                                                <a class="footable-page-link">{{pagination}}</a>
+                                            </li>
+
+
+                                            <li class="footable-page-nav"
+                                                v-bind:class="{'disabled': paginationActive === paginationData.pagination.last_page}"
+                                                @click="getUserData(paginationActive + 1)" data-page="next"><a
+                                                    class="footable-page-link">›</a></li>
+                                            <li class="footable-page-nav"
+                                                v-bind:class="{'disabled': paginationActive === paginationData.pagination.last_page}"
+                                                @click="getUserData(paginationData.pagination.last_page)" data-page="last"><a
+                                                    class="footable-page-link">»</a></li>
+                                        </ul>
+                                        <div class="divider"></div><span class="label label-default">1 of 3</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="loaded-spin text-center">
+            <div class="spinner-border text-primary"></div>
+        </div>
+        
+    </div>
+    
+</template>
+
+<script lang="ts" src="./ProductTableComponent.ts"></script>
+
+<style scoped>
+    @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
+    @import './ProductTableComponent.scss';
+    @import '../../../../../public/css/global.css';
+
+</style>

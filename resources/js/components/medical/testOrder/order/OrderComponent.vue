@@ -49,5 +49,4 @@
     .svg-white {
         filter: invert(1);
     }
-
 </style>

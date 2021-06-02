@@ -42,7 +42,7 @@ export default defineComponent({
         dropFile(event: DragEvent)
         {
             event.preventDefault();
-            this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf');
+            this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf').slice(0,3);
             this.isFileOver = false;
         },
         deleteFileSelected(index: number)
@@ -51,7 +51,7 @@ export default defineComponent({
         },
         onChange(event: Event) {
             const files = (event.target as HTMLInputElement).files || [];
-            this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf');
+            this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
         },
         uploadFile()
         {

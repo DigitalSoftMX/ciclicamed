@@ -1,25 +1,12 @@
-import {
-    defineComponent
-} from '@vue/runtime-core';
-import {
-    DefineComponent,
-    PropType
-} from 'vue';
-
+import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
-import {
-    Consult
-} from '@/resources/js/interfaces/Medical/Consult.interface';
+import { Consult } from '@/resources/js/interfaces/Medical/Consult.interface';
 import moment from 'moment';
-import {
-    Prescription
-} from '@/resources/js/interfaces/Medical/Prescription.interface';
-import {
-    TestOrder
-} from '@/resources/js/interfaces/Medical/TestOrder.interface';
+import { Prescription } from '@/resources/js/interfaces/Medical/Prescription.interface';
 import { FollowUp } from '@/resources/js/interfaces/Medical/FollowUp.interface';
 import { FollowUpData } from '../../../defaultData/Medical/FollowUp.data';
 import { Test } from '@/resources/js/interfaces/Medical/Test.interface';
+
 
 export default defineComponent({
     name: 'RecordComponent',
@@ -48,6 +35,7 @@ export default defineComponent({
         consultList(){
             if (this.consultList.length > 0)
             {
+                require('jquery');
                 require('../../../../../public/js/horizontal_timeline.2.0.min');
             }
         }

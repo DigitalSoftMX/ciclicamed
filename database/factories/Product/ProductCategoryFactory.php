@@ -22,7 +22,7 @@ class ProductCategoryFactory extends Factory
     public function definition()
     {
         static $row = 0;
-        $categories = ['Cirugía', 'Histeroscopía', 'Farmacia', 'Cíclica', 'Imagenología', 'Laboratorio'];
+        $categories = ['Consulta', 'Cirugía', 'Histeroscopía', 'Farmacia', 'Cíclica', 'Imagenología', 'Laboratorio'];
         return [
             'name' => $categories[$row++],
         ];

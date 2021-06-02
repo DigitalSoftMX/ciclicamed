@@ -24,6 +24,8 @@ class Product extends Model
         'productstatus_id'
     ];
 
+    protected $perPage = 10;
+
     public function category()
     {
         return $this->belongsTo(ProductCategory::class, 'productcategory_id');

@@ -1673,7 +1673,7 @@ table.table-basic .table-actions a img, .order-search__form svg, .create-passord
 .draggable-events a img, .date-picker__calendar .ui-datepicker-calendar thead tr th span, .date-picker__top a svg,
 .date-picker__top a img, .user-list-item .users-list-body-title p, .user-list-item .users-list-body .last-chat-time small, .chat-wrapper form svg, .chat-body .chat-header .dropdown svg, .new-member .modal-header .close, .application-ui .btn-group-toggle .btn, .size-control-nav .nav-item .nav-link, .page-info__single .info-list span, .page-title-wrap .atbd-breadcrumb__item a, .page-title-wrap .atbd-breadcrumb__item:first-child a, .spin-embadded p, .statistics-countdown__title, .statistics-item__title, .atbd-date-ranger .date-picker-icon svg,
 .atbd-date-ranger .date-picker-icon img, .atbd-tag.tag-light.tag-transparented, .form-basic .form-inline-action .custom-checkbox .checkbox-text, .icon-list-social__link:hover, .icon-list-social__link, .project-category .select2-container .select2-selection--single .select2-selection__rendered,
-.project-category .select2-container--default .select2-selection--single .select2-selection__placeholder, .project-tap .nav-link, .form-group-calender a svg, .user-info-tab .ap-tab-main .nav-item .nav-link svg, .userDatatable-inline-title p, .projectDatatable-title, .users-list-body__title span, .atbd-pagination__link.pagination-control, .atbd-pagination__item .paging-option:after, .social-connector span, .signUp-condition .custom-checkbox .checkbox-text, .notification-content__body span, .account-profile-cards__button span, .account-profile-cards__button svg, .ps-tab .nav-link, .ffw__title span, .ap-post-content__feedback a, .ap-post-content__title h6 small, .ap-content-wrapper .ap-po-details-time small, .ap-tab-main .nav-link, .user-content-info__item svg, .profile-header-title, .po-details__sTitle, .ap-nameAddress__subTitle, .atbd-comment-box__content .cci__comment-text, .atbd-collapse .atbd-collapse-item__body .collapse-body-text p, .atbd-collapse .atbd-collapse-item__header .item-link i,
+.project-category .select2-container--default .select2-selection--single .select2-selection__placeholder, .form-group-calender a svg, .user-info-tab .ap-tab-main .nav-item .nav-link svg, .userDatatable-inline-title p, .projectDatatable-title, .users-list-body__title span, .atbd-pagination__link.pagination-control, .atbd-pagination__item .paging-option:after, .social-connector span, .signUp-condition .custom-checkbox .checkbox-text, .notification-content__body span, .account-profile-cards__button span, .account-profile-cards__button svg, .ps-tab .nav-link, .ffw__title span, .ap-post-content__feedback a, .ap-post-content__title h6 small, .ap-content-wrapper .ap-po-details-time small, .ap-tab-main .nav-link, .user-content-info__item svg, .profile-header-title, .po-details__sTitle, .ap-nameAddress__subTitle, .atbd-comment-box__content .cci__comment-text, .atbd-collapse .atbd-collapse-item__body .collapse-body-text p, .atbd-collapse .atbd-collapse-item__header .item-link i,
 .atbd-collapse .atbd-collapse-item__header .item-link span,
 .atbd-collapse .atbd-collapse-item__header .item-link svg,
 .atbd-collapse .atbd-collapse-item__header .item-link img, .custom-checkbox input[type=checkbox] + label, .atbd-breadcrumb__item:last-child span, .atbd-nav-controller .nav .nav-link, .badge.badge-transparent.badge-light, .atbd-badge-text, .badge.badge-outlined.badge-light, .dropdown-default .dropdown-item,
@@ -10446,7 +10446,6 @@ table.table-basic tr td.card .card-body,
   border-bottom: none;
   padding: 10px 20px;
   vertical-align: middle;
-  white-space: nowrap;
 }
 .userDatatable table thead tr {
   border-radius: 10px;
@@ -10620,7 +10619,7 @@ table.table-basic tr td.card .card-body,
   border-radius: 5px;
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 50px;
 }
 .project-tap .nav-link {
   font-size: 14px;
@@ -10628,6 +10627,9 @@ table.table-basic tr td.card .card-body,
   font-weight: 400;
   padding: 0 15px;
   text-transform: capitalize;
+}
+.project-tap .nav-link.active {
+  font-weight: 700 !important;
 }
 .project-tap .nav-item {
   position: relative;

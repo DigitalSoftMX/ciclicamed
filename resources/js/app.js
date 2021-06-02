@@ -12,7 +12,12 @@ const app = createApp({
     components: {
 		MedicalConsultPage: MedicalConsultPage,
 		UsersPage: UsersPage,
-		UploadFileComponent: require('./components/general/uploadFile/UploadFileComponent.vue').default
+		UploadFileComponent: require('./components/general/uploadFile/UploadFileComponent.vue').default,
+		ProductPage: require('./pages/product/ProductPage.vue').default,
+		PatientsDataTable: require('./components/dataTable/patientsTable/PatientsTableComponent.vue').default,
+		EmployeesDataTable: require('./components/dataTable/employeesTable/EmployeesTableComponent.vue').default,
+		CuestionarioMastografia: require('./components/test/Imagenologia/CuestionarioMastografia/CuestionarioMastografiaComponent.vue').default,
+		InterpretacionResultados: require('./components/test/Imagenologia/InterpretacionUltrasonidos/InterpretacionUltrasonidosComponent.vue').default,
 	}
 });
 

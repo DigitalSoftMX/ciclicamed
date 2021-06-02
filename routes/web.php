@@ -108,6 +108,14 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'productos'], function() {
         Route::get('/medicamentos', [ProductController::class, 'getMedicaments'])->name('productos.medicamentos');
         Route::get('/estudios', [ProductController::class, 'getTestOrderProducts'])->name('productos.estudios');
+
+        Route::get('/consulta', [ProductController::class, 'getConsulta'])->name('productos.consulta');
+        Route::get('/cirugia', [ProductController::class, 'getCirugia'])->name('productos.cirugia');
+        Route::get('/histeroscopia', [ProductController::class, 'getHisteroscopia'])->name('productos.histeroscopia');
+        Route::get('/ciclica', [ProductController::class, 'getCiclica'])->name('productos.ciclica');
+        Route::get('/imagenologia', [ProductController::class, 'getImagenologia'])->name('productos.imagenologia');
+        Route::get('/laboratorio', [ProductController::class, 'getLaboratorio'])->name('productos.laboratorio');
+        Route::get('/farmacia', [ProductController::class, 'getFarmacia'])->name('productos.farmacia');
     });
 
     //Estudios
