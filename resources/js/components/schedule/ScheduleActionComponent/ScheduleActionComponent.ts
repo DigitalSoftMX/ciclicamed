@@ -1,13 +1,11 @@
-import {
-    defineComponent
-} from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
 import moment from 'moment';
 import { DefineComponent, PropType } from 'vue';
 moment.locale('es');
 import axios from 'axios';
-import { Schedule } from '../../../interfaces/Schedule/Schedule.interface';
-import { ScheduleData } from '../../../defaultData/Schedule/Schedule.data';
-import { AlertError } from '../../../interfaces/Alert/Error/AlertError.interface';
+import { Schedule } from '@interface/Schedule/Schedule.interface';
+import { ScheduleData } from '@data/Schedule/Schedule.data';
+import { AlertError } from '@interface/General/Alert/Error/AlertError.interface';
 require('bootstrap');
 
 export default defineComponent({

@@ -1,5 +1,5 @@
 import { History } from '../../interfaces/Medical/History.interface';
-import { HistorialClinicoData } from "../Attachments/HistorialClinico/HistorialClinico.data";
+import { HistorialClinicoData } from "./Attachments/HistorialClinico/HistorialClinico.data";
 
 export const HistoryData: History = {
     medicalconsult_id: 0,

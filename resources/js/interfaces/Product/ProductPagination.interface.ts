@@ -1,4 +1,4 @@
-import { Pagination } from "../other/Pagination.interface";
+import { Pagination } from "@interface/General/Pagination.interface";
 import { Product } from "./Product.interface";
 
 export interface ProductPagination

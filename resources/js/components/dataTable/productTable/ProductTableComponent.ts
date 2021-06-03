@@ -1,18 +1,18 @@
+import { ProductData } from '@data/Product/Product.data';
+import { ProductPaginationData } from '@data/Product/ProductPagination.data';
+import { Product } from '@interface/Product/Product.interface';
+import { ProductPagination } from '@interface/Product/ProductPagination.interface';
 import{ defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
-import { ProductPaginationData } from '../../../defaultData/Product/ProductPagination.data';
-import { ProductData } from '../../../defaultData/Product/Product.data';
-import { ProductPagination } from '@/resources/js/interfaces/Product/ProductPagination.interface';
-import { Product } from '@/resources/js/interfaces/Product/Product.interface';
 import $ from 'jquery';
 
 export default defineComponent({
     components: {
-        PreregistrationComponent: require('../../patient/preregistration/PreregistrationComponent.vue').default,
-        ProductComponent: require('../../product/ProductComponent.vue').default,
-        SuccessAlertComponent: require('../../alert/SuccessAlertComponent.vue').default,
-        ErrorAlertComponent: require('../../alert/ErrorAlertComponent.vue').default,
-        ConfirmationAlertComponent: require('../../alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue').default
+        PreregistrationComponent: require('@component/patient/preregistration/PreregistrationComponent.vue').default,
+        ProductComponent: require('@component/product/ProductComponent.vue').default,
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
+        ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
+        ConfirmationAlertComponent: require('@component/general/alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue').default
     },
     emits: [],
     props: {
@@ -104,7 +104,6 @@ export default defineComponent({
         },
         deleteProduct()
         {
-            console.log('asasd')
             axios.delete<Product>(`/productos/${this.productData.id}`)
             .then(response => {
                 $(`#productTableAlertSuccess${this.id}`).modal('show');

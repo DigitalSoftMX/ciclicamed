@@ -1,20 +1,16 @@
-import { PreregistrationData } from '../../../defaultData/Patient/Preregistration.data';
-import { Preregistration } from '@/resources/js/interfaces/Patient/Preregistration.interface';
-import {
-    defineComponent
-} from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
-import { DefineComponent, PropType } from 'vue';
-import { Patient } from '@/resources/js/interfaces/Patient/Patient.interface';
-import { PatientData } from '../../../defaultData/Patient/Patient.data';
+import { PropType } from 'vue';
 import moment from 'moment';
 import $ from 'jquery';
+import { Patient } from '@interface/Patient/Patient.interface';
+import { PatientData } from '@data/Patient/Patient.data';
 // require('../../../../../public/vendor_assets/js/jquery.mCustomScrollbar.min');
 
 export default defineComponent({
     components: {
-        SuccessAlertComponent: require('../../alert/SuccessAlertComponent.vue').default,
-        ErrorAlertComponent: require('../../alert/ErrorAlertComponent.vue').default
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
+        ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default
     },
     emits: [],
     props: {

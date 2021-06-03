@@ -1,46 +1,43 @@
-import { ConsultData } from '../../../defaultData/Medical/Consult.data';
-import { PatientData } from '../../../defaultData/Patient/Patient.data';
-import { Consult } from '@/resources/js/interfaces/Medical/Consult.interface';
-import { Patient } from '@/resources/js/interfaces/Patient/Patient.interface';
 import {
     defineComponent
 } from '@vue/runtime-core';
 import axios from 'axios';
-import { DefineComponent, PropType } from 'vue';
 import moment from 'moment';
-import { HistoryData } from '../../../defaultData/Medical/History.data';
-import { History } from '@/resources/js/interfaces/Medical/History.interface';
-import { FollowUp } from '@/resources/js/interfaces/Medical/FollowUp.interface';
-import { FollowUpData } from '../../../defaultData/Medical/FollowUp.data';
-import { Doctor } from '@/resources/js/interfaces/Doctor/Doctor.interface';
-import { DoctorData } from '../../../defaultData/Doctor/Doctor.data';
-import { PrescriptionData } from '@/resources/js/defaultData/Medical/Prescription.data';
-import { Prescription } from '@/resources/js/interfaces/Medical/Prescription.interface';
-import { TestOrder } from '@/resources/js/interfaces/Medical/TestOrder.interface';
-import { Test } from '@/resources/js/interfaces/Medical/Test.interface';
+import { Patient } from '@interface/Patient/Patient.interface';
+import { PatientData } from '@data/Patient/Patient.data';
+import { DoctorData } from '@data/Doctor/Doctor.data';
+import { ConsultData } from '@data/Medical/Consult.data';
+import { HistoryData } from '@data/Medical/History.data';
+import { FollowUpData } from '@data/Medical/FollowUp.data';
+import { Prescription } from '@interface/Medical/Prescription.interface';
+import { Test } from '@interface/Medical/Test.interface';
+import { Consult } from '@interface/Medical/Consult.interface';
+import { Doctor } from '@interface/Doctor/Doctor.interface';
+import { FollowUp } from '@interface/Medical/FollowUp.interface';
+import { History } from '@interface/Medical/History.interface';
 
 export default defineComponent({
     components: {
-        PatientProfileComponent: require('./patientProfile/PatientProfileComponent.vue').default,
-        AttachmentComponent: require('./attachment/AttachmentComponent.vue').default,
-        HistorialClinicoComponent: require('../../attachtments/HistorialClinico/HistorialClinicoComponent.vue').default,
-        CitasSubsecuentesComponent: require('../../attachtments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
-        PrescriptionComponent: require('../prescription/PrescriptionComponent.vue').default,
-        TestOrderComponent: require('../testOrder/TestOrderComponent.vue').default,
-        RecordComponent: require('../record/RecordComponent.vue').default,
+        PatientProfileComponent: require('@component/medical/consult/consultPatientProfile/ConsultPatientProfileComponent.vue').default,
+        AttachmentComponent: require('@component/medical/consult/consultAttachment/ConsultAttachmentComponent.vue').default,
+        HistorialClinicoComponent: require('@component/medical/attachments/HistorialClinico/HistorialClinicoComponent.vue').default,
+        CitasSubsecuentesComponent: require('@component/medical/attachments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
+        PrescriptionComponent: require('@component/medical/consult/consultPrescription/ConsultPrescriptionComponent.vue').default,
+        TestOrderComponent: require('@component/medical/consult/consultTestOrder/ConsultTestOrderComponent.vue').default,
+        RecordComponent: require('@component/medical/consult/consultRecord/ConsultRecordComponent.vue').default,
         
 
-        UroginecologiaComponent: require('../../attachtments/Uroginecologia/UroginecologiaComponent.vue').default,
-        ClimaterioSaludOseaComponent: require('../../attachtments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue').default,
-        MaternoFetalComponent: require('../../attachtments/MaternoFetal/MaternoFetalComponent.vue').default,
-        BiologiaReproduccionComponent: require('../../attachtments/BiologiaReproduccion/BiologiaReproduccionComponent.vue').default,
-        CirugiaEndoscopicaComponent: require('../../attachtments/CirugiaEndoscopica/CirugiaEndoscopicaComponent.vue').default,
-        OncologiaComponent: require('../../attachtments/Oncologia/OncologiaComponent.vue').default,
-        ColposcopiaComponent: require('../../attachtments/Colposcopia/ColposcopiaComponent.vue').default,
-        NutricionPerinatalComponent: require('../../attachtments/Nutricion/NutricionPerinatal/NutricionPerinatalComponent.vue').default,
-        NutricionGeneralComponent: require('../../attachtments/Nutricion/NutricionGeneral/NutricionGeneralComponent.vue').default,
+        UroginecologiaComponent: require('@component/medical/attachments/Uroginecologia/UroginecologiaComponent.vue').default,
+        ClimaterioSaludOseaComponent: require('@component/medical/attachments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue').default,
+        MaternoFetalComponent: require('@component/medical/attachments/MaternoFetal/MaternoFetalComponent.vue').default,
+        BiologiaReproduccionComponent: require('@component/medical/attachments/BiologiaReproduccion/BiologiaReproduccionComponent.vue').default,
+        CirugiaEndoscopicaComponent: require('@component/medical/attachments/CirugiaEndoscopica/CirugiaEndoscopicaComponent.vue').default,
+        OncologiaComponent: require('@component/medical/attachments/Oncologia/OncologiaComponent.vue').default,
+        ColposcopiaComponent: require('@component/medical/attachments/Colposcopia/ColposcopiaComponent.vue').default,
+        NutricionPerinatalComponent: require('@component/medical/attachments/NutricionPerinatal/NutricionPerinatalComponent.vue').default,
+        NutricionGeneralComponent: require('@component/medical/attachments/NutricionGeneral/NutricionGeneralComponent.vue').default,
 
-        NetworkErrorComponent: require('../../error/NetworkErrorComponent.vue').default
+        NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default
         
       
     },

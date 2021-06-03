@@ -1,4 +1,4 @@
-import { HistorialClinico } from "../Attachtments/HistorialClinico/HistorialClinico.interface";
+import { HistorialClinico } from "./Attachtments/HistorialClinico/HistorialClinico.interface";
 
 export interface History
 {

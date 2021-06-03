@@ -1,13 +1,14 @@
-import { UserPaginationData } from '../../../defaultData/User/UserPagination.data';
-import { UserPagination } from '@/resources/js/interfaces/User/UserPagination.interface';
 import {
     defineComponent
 } from '@vue/runtime-core';
 import axios from 'axios';
 import { DefineComponent, PropType } from 'vue';
 import $ from 'jquery';
-import { Patient } from '@/resources/js/interfaces/Patient/Patient.interface';
-import { PatientData } from '../../../defaultData/Patient/Patient.data';
+import moment from 'moment';
+import { UserPaginationData } from '@data/User/UserPagination.data';
+import { PatientData } from '@data/Patient/Patient.data';
+import { UserPagination } from '@interface/User/UserPagination.interface';
+import { Patient } from '@interface/Patient/Patient.interface';
 
 export default defineComponent({
     components: {
@@ -34,6 +35,10 @@ export default defineComponent({
 
     },
     methods: {
+        formatBirthday(birthday: string)
+        {
+            return moment(birthday).format('DD-MM-YYYY');
+        },
         getUserData(page: number)
         {
             this.loading = true;

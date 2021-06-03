@@ -28,7 +28,7 @@
                                     <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable" style="display: table-cell;">
-                                    <span class="userDatatable-title">Código LANS</span>
+                                    <span class="userDatatable-title">Código del proveedor</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable" style="display: table-cell;">

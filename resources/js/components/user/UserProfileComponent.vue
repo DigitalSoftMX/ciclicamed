@@ -178,15 +178,13 @@
     import $ from 'jquery';
     import axios from "axios";
     import moment from 'moment';
-    import ErrorAlertComponent from '../alert/ErrorAlertComponent.vue';
-    import SuccessAlertComponent from '../alert/SuccessAlertComponent.vue';
     // import datepickerFactory from 'jquery-datepicker';
     // datepickerFactory($);
 
     export default {
         components: {
-            ErrorAlertComponent,
-            SuccessAlertComponent
+            ErrorAlertComponent: require('../general/alert/ErrorAlertComponent.vue').default,
+            SuccessAlertComponent: require('../general/alert/SuccessAlertComponent.vue').default,
         },
         props: ['user'],
         emits: ['updateUser'],

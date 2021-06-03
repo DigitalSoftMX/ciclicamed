@@ -58,14 +58,12 @@
 <script>
     import axios from "axios";
     import $ from 'jquery';
-    import ErrorAlertComponent from '../alert/ErrorAlertComponent.vue';
-    import SuccessAlertComponent from '../alert/SuccessAlertComponent.vue';
     require('../../../../public/vendor_assets/js/bootstrap/bootstrap.min');
 
     export default {
         components: {
-            ErrorAlertComponent,
-            SuccessAlertComponent
+            ErrorAlertComponent: require('../general/alert/ErrorAlertComponent.vue').default,
+            SuccessAlertComponent: require('../general/alert/SuccessAlertComponent.vue').default
         },
         props: ['user', 'category'],
         data: function () {

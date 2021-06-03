@@ -1,5 +1,4 @@
 import { UserStatus } from "./UserStatus.interface";
-
 export interface User
 {
     id: number;

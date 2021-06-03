@@ -5,11 +5,9 @@
 </template>
 
 <script>
-    import TestComponent from '../../components/test/TestComponent.vue'
-
     export default {
         components: {
-            TestComponent
+            TestComponent: require('../../components/medical/test/TestComponent.vue').default
         },
         props: ['tests'],
         data: function () {

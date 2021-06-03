@@ -1,4 +1,4 @@
-import { CitasSubsecuentes } from "../Attachtments/CitasSubsecuentes.interface";
+import { CitasSubsecuentes } from "./Attachtments/CitasSubsecuentes.interface";
 
 export interface FollowUp
 {

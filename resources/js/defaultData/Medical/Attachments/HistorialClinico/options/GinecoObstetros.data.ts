@@ -1,0 +1,70 @@
+import { GinecoObstetros } from "@interface/Medical/Attachtments/HistorialClinico/options/GinecoObstetros.interface";
+
+export const GinecoObstetrosData: GinecoObstetros = {
+    menarca: '',
+    ritmo: '',
+    cantidad: '',
+    toallas: '',
+    dolor: '',
+    tratamiento: '',
+    fum: '',
+    ivsa: '',
+    parejas: '',
+    mpf: '',
+    gestas: '',
+    cesareas: '',
+    partos: '',
+    abortos: '',
+    ectopicos: '',
+    citologiaVertical: '',
+    docma: '',
+    autoexploracion: '',
+    usg: '',
+    mastografia: '',
+    menopausia: '',
+    antecedentesInfertilidad: '',
+    g1: {
+        anio: 0,
+        edad: 0,
+        duracion: '',
+        sexo: '',
+        peso: '',
+        vivoSano: false,
+        resol: '',
+        comp: '',
+        lactancia: ''
+    },
+    g2: {
+        anio: 0,
+        edad: 0,
+        duracion: '',
+        sexo: '',
+        peso: '',
+        vivoSano: false,
+        resol: '',
+        comp: '',
+        lactancia: ''
+    },
+    g3: {
+        anio: 0,
+        edad: 0,
+        duracion: '',
+        sexo: '',
+        peso: '',
+        vivoSano: false,
+        resol: '',
+        comp: '',
+        lactancia: ''
+    },
+    g4: {
+        anio: 0,
+        edad: 0,
+        duracion: '',
+        sexo: '',
+        peso: '',
+        vivoSano: false,
+        resol: '',
+        comp: '',
+        lactancia: ''
+    }
+}

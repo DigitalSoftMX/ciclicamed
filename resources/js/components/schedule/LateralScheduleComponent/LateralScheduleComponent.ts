@@ -11,31 +11,14 @@ require('jquery');
 require('jquery-ui-bundle');
 import 'select2';
 import axios from "axios";
-import {
-    Schedule
-} from '@/resources/js/interfaces/Schedule/Schedule.interface';
-import {
-    ScheduleData
-} from '../../../defaultData/Schedule/Schedule.data';
-import {
-    Patient
-} from '@/resources/js/interfaces/Patient/Patient.interface';
-import {
-    Branch
-} from '@/resources/js/interfaces/Branch/Branch.interface';
-import {
-    Doctor
-} from '@/resources/js/interfaces/Doctor/Doctor.interface';
-import {
-    ScheduleType
-} from '@/resources/js/interfaces/Schedule/ScheduleType.interface';
-import {
-    ScheduleForm
-} from '@/resources/js/interfaces/Schedule/ScheduleForm.interface';
-import {
-    BranchSpecialtyDoctors
-} from '@/resources/js/interfaces/Branch/BranchSpecialtyDoctors.interface';
-import { PatientData } from '@/resources/js/defaultData/Patient/Patient.data';
+import { Schedule } from '@interface/Schedule/Schedule.interface';
+import { ScheduleData } from '@data/Schedule/Schedule.data';
+import { Patient } from '@interface/Patient/Patient.interface';
+import { Branch } from '@interface/Branch/Branch.interface';
+import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors.interface';
+import { ScheduleType } from '@interface/Schedule/ScheduleType.interface';
+import { ScheduleForm } from '@interface/Schedule/ScheduleForm.interface';
+import { PatientData } from '@data/Patient/Patient.data';
 
 export default defineComponent({
     name: 'LateralScheduleComponent',

@@ -3,14 +3,14 @@ import {
 } from '@vue/runtime-core';
 import axios from 'axios';
 import { PropType } from 'vue';
-import { ProductData } from '../../defaultData/Product/Product.data';
-import { Product } from '../../interfaces/Product/Product.interface';
 import $ from 'jquery';
+import { Product } from '@interface/Product/Product.interface';
+import { ProductData } from '@data/Product/Product.data';
 
 export default defineComponent({
     components: {
-        SuccessAlertComponent: require('../alert/SuccessAlertComponent.vue').default,
-        ErrorAlertComponent: require('../alert/ErrorAlertComponent.vue').default,
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
+        ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
     },
     emits: [],
     props: {

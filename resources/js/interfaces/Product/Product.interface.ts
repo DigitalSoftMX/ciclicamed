@@ -1,6 +1,5 @@
 import { ProductCategory } from "./ProductCategory.interface";
 import { ProductStatus } from "./ProductStatus.interface";
-
 export interface Product
 {
     id: number;

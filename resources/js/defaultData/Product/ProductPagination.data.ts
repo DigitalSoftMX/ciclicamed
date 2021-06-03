@@ -1,5 +1,5 @@
-import { ProductPagination } from "../../interfaces/Product/ProductPagination.interface";
-import { PaginationData } from "../other/Pagination.data";
+import { PaginationData } from "@data/General/Pagination.data";
+import { ProductPagination } from "@interface/Product/ProductPagination.interface";
 import { ProductData } from "./Product.data";
 
 export const ProductPaginationData: ProductPagination = {

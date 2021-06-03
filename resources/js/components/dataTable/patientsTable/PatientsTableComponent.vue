@@ -39,6 +39,10 @@
                                     <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable" style="display: table-cell;">
+                                    <span class="userDatatable-title">Fecha de nacimiento</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
+
+                                <th class="footable-sortable" style="display: table-cell;">
                                     <span class="userDatatable-title">Teléfono</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
@@ -72,6 +76,11 @@
                                 <td style="display: table-cell;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
                                         {{user.last_name}}
+                                    </div>
+                                </td>
+                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                    <div class="userDatatable-content">
+                                        {{formatBirthday(user.birthday)}}
                                     </div>
                                 </td>
                                 <td style="display: table-cell;" class="border-primary border-bottom">

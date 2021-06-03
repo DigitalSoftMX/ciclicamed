@@ -1,4 +1,3 @@
-import { EventChangeArg, EventInput } from '@fullcalendar/core';
 import {
     defineComponent
 } from '@vue/runtime-core';

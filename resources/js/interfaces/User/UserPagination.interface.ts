@@ -1,6 +1,6 @@
-import { Employee } from "../Employee/Employee.interface";
-import { Pagination } from "../other/Pagination.interface";
-import { Patient } from "../Patient/Patient.interface";
+import { Employee } from "@interface/Employee/Employee.interface";
+import { Pagination } from "@interface/General/Pagination.interface";
+import { Patient } from "@interface/Patient/Patient.interface";
 
 export interface UserPagination
 {

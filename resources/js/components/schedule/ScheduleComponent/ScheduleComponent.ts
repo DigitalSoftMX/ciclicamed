@@ -1,18 +1,14 @@
 import axios from 'axios';
-import {
-    Calendar
-} from '@fullcalendar/core'
+import { Calendar } from '@fullcalendar/core'
 import $ from 'jquery';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import {
-    defineComponent
-} from '@vue/runtime-core';
-import { DefineComponent, PropType, ref } from 'vue';
+import { defineComponent } from '@vue/runtime-core';
 import interactionPlugin from '@fullcalendar/interaction';
-import { ScheduleData } from '../../../defaultData/Schedule/Schedule.data';
-import { Schedule } from '../../../interfaces/Schedule/Schedule.interface';
+import { Schedule } from '@interface/Schedule/Schedule.interface';
+import { ScheduleData } from '@data/Schedule/Schedule.data';
+import { DefineComponent } from 'vue';
 
 export default defineComponent({
     name: 'ScheduleComponent',

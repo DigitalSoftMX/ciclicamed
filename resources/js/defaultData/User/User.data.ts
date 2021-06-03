@@ -1,4 +1,4 @@
-import { User } from "../../interfaces/User/User.interface";
+import { User } from "@interface/User/User.interface";
 import { UserStatusData } from "./UserStatus.data";
 
 export const UserData: User = {

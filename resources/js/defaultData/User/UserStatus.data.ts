@@ -1,4 +1,4 @@
-import { UserStatus } from "../../interfaces/User/UserStatus.interface";
+import { UserStatus } from "@interface/User/UserStatus.interface";
 
 export const UserStatusData: UserStatus = {
     id: -1,

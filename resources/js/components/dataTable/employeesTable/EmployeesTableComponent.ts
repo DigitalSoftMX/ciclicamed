@@ -4,9 +4,9 @@ import {
 import axios from 'axios';
 import { DefineComponent, PropType } from 'vue';
 import $ from 'jquery';
-import { EmployeeData } from '../../../defaultData/Employee/Employee.data';
-import { EmployeePaginationData } from '../../../defaultData/Employee/EmployeePagination.data';
-import { EmployeePagination } from '@/resources/js/interfaces/Employee/EmployeePagination.interface';
+import { EmployeePaginationData } from '@data/Employee/EmployeePagination.data';
+import { EmployeeData } from '@data/Employee/Employee.data';
+import { EmployeePagination } from '@interface/Employee/EmployeePagination.interface';
 
 export default defineComponent({
     components: {

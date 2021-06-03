@@ -1,5 +1,5 @@
-import { EmployeePagination } from "../../interfaces/Employee/EmployeePagination.interface";
-import { PaginationData } from "../other/Pagination.data";
+import { PaginationData } from "@data/General/Pagination.data";
+import { EmployeePagination } from "@interface/Employee/EmployeePagination.interface";
 import { EmployeeData } from "./Employee.data";
 
 export const EmployeePaginationData: EmployeePagination = {

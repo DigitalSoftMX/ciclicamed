@@ -1,5 +1,5 @@
 import { FollowUp } from "../../interfaces/Medical/FollowUp.interface";
-import { CitasSubsecuentesData } from "../Attachments/CitasSubsecuentes.data";
+import { CitasSubsecuentesData } from "./Attachments/CitasSubsecuentes.data";
 
 export const FollowUpData: FollowUp = {
     id: -1,
