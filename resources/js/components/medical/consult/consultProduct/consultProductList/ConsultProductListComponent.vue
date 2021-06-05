@@ -56,8 +56,12 @@
                                                 <td class="footable-first-visible border-primary border-bottom"
                                                     style="display: table-cell;">
                                                     <div class="custom-control custom-switch switch-primary switch-md ">
-                                                        <input type="checkbox" class="custom-control-input" :id="`cplcSelected${product.id}`">
-                                                        <label class="custom-control-label" :for="`cplcSelected${product.id}`"></label>
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            :id="`cplcSelected${product.id}`"
+                                                            @change="sendProductSelected(product, $event.target)"
+                                                            :checked="productCheckList[product.id]">
+                                                        <label class="custom-control-label"
+                                                            :for="`cplcSelected${product.id}`"></label>
                                                     </div>
                                                 </td>
                                                 <td class="footable-first-visible border-primary border-bottom"

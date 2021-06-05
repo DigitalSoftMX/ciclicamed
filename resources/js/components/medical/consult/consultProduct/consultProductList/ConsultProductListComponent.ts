@@ -1,13 +1,15 @@
 import { ProductData } from '@data/Product/Product.data';
 import { ProductPaginationData } from '@data/Product/ProductPagination.data';
+import { Product } from '@interface/Product/Product.interface';
 import { ProductPagination } from '@interface/Product/ProductPagination.interface';
 import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
+import { PropType } from 'vue';
 
 export default defineComponent({
     components: {
     },
-    emits: [],
+    emits: ['productSelected'],
     props: {
         id: {
             type: String,
@@ -20,6 +22,10 @@ export default defineComponent({
         productCategory: {
             type: String,
             default: ''
+        },
+        productSelectedList: {
+            type: Array as PropType<Product[]>,
+            default: []
         }
     },
     data() {
@@ -31,7 +37,10 @@ export default defineComponent({
             activateSearch: true,
             productData: ProductData,
             loading: true,
-            reset: false
+            reset: false,
+            productCheckList: {} as {
+                [key: number]: boolean
+            }
         };
     },
     mounted() {
@@ -41,9 +50,25 @@ export default defineComponent({
         {
             this.reset = true;
             this.getProductData(1);
+        },
+        productCheckList()
+        {
+            console.log(this.productCheckList)
         }
     },
     methods: {
+        checkProductSelected(productList: Product[])
+        {
+            this.productCheckList = Object.assign({}, ...productList.map(product => {
+                return {
+                    [product.id]: this.productSelectedList.filter(item => item.id === product.id).length > 0
+                }
+            }));
+        },
+        sendProductSelected(product: Product, event: HTMLInputElement)
+        {
+            this.$emit('productSelected', product, event.checked);
+        },
         getProductData(page: number)
         {
             this.loading = true;
@@ -56,9 +81,9 @@ export default defineComponent({
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
                     this.reset = false;
+                    this.checkProductSelected(response.data.data);
                 })
                 .catch(error => {
-                    console.log(error);
                     this.loading = false;
                 })
             }

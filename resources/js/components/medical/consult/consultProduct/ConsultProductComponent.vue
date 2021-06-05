@@ -64,13 +64,19 @@
                 </div>
                 <div class="card-body row mx-0">
                     <empty-error-component v-if="productSelectedList.length === 0"></empty-error-component>
-                    <div class="col-12 row mx-0" v-else>
-                        <h6 class="col-9">Servicio</h6>
-                        <h6 class="col-3">Precio</h6>
-                    </div>
-                    <div class="col-12 row mx-0" v-for="product in productSelectedList" :key="product.id">
-                        <h6 class="col-9">{{product.name}}</h6>
-                        <h6 class="col-3">{{product.price}}</h6>
+                    <div v-else>
+                        <div class="col-12 row mx-0 mb-25 p-0">
+                            <h6 class="col-9">Servicio</h6>
+                            <h6 class="col-3 text-right">Precio</h6>
+                        </div>
+                        <div class="col-12 row mx-0 mb-25 p-0" v-for="product in productSelectedList" :key="product.id">
+                            <h6 class="col-9 font-weight-normal">Código: {{product.product_code}}<p>{{product.name}}</p></h6>
+                            <h6 class="col-3 text-right font-weight-normal">${{product.price}}</h6>
+                        </div>
+                        <div class="col-12 row mx-0 border-top pt-3 px-0">
+                            <h6 class="col-7">Total</h6>
+                            <h6 class="col-5 text-right">${{getTotalPrice()}}</h6>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -80,7 +86,9 @@
         </div>
     </div>
 
-    <consult-product-list-component id="cpcProductList" :title="titleSelected" :productCategory="categorySelected"></consult-product-list-component>
+    <consult-product-list-component id="cpcProductList" :title="titleSelected" :productCategory="categorySelected"
+        @productSelected="editProducSelectedList" :productSelectedList="productSelectedList">
+    </consult-product-list-component>
 </template>
 
 <script lang="ts" src="./ConsultProductComponent.ts"></script>
