@@ -43,13 +43,13 @@ export default defineComponent({
         };
     },
     mounted() {
-        this.getUserData(1);
+        this.getProductData(1);
     },
     watch: {
 
     },
     methods: {
-        getUserData(page: number)
+        getProductData(page: number)
         {
             this.loading = true;
             if(page >= 1 && page <= this.paginationData.pagination.last_page && page !== this.paginationActive)
@@ -67,7 +67,7 @@ export default defineComponent({
                 })
             }
         },
-        getUserDataQuery()
+        getProductDataQuery()
         {
             this.loading = true;
             const queryPagination = this.query === '' ? this.paginationActive : 0;

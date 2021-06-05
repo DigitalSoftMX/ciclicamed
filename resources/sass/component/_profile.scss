@@ -766,14 +766,14 @@
     text-transform: capitalize;
     padding: 8px 14px;
     border-radius: $border-radius;
-    border: 1px solid #f1f2f6;
+    border: 1px solid #E0E0E0;
 
     &:focus {
       box-shadow: 0 0;
     }
 
     &.friends-follow {
-      border: 1px solid #f1f2f6;
+      border: 1px solid #E0E0E0;
       @extend .color-gray;
 
       svg {
@@ -1412,7 +1412,7 @@
   li {
     button {
       box-shadow: 0px 5px 15px #9299b81a;
-      border: 1px solid #f1f2f6;
+      border: 1px solid #E0E0E0;
       background: #f8f9fb;
       white-space: nowrap;
     }
@@ -1453,7 +1453,7 @@
 
 .social-connector:before,
 .social-connector:after {
-  background-color: #f1f2f6;
+  background-color: #E0E0E0;
   content: "";
   display: inline-block;
   height: 1px;

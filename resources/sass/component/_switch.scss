@@ -10,7 +10,7 @@
         &:focus:not(:checked)~.custom-control-label{
             &:before{
                 border-color: transparent;
-                background-color: #F5F5F5;
+                background-color: #757575;
             }
         }
         .custom-control-input:checked~.custom-control-label::before{
@@ -20,7 +20,7 @@
     }
     .custom-control-label{
         &:before{
-            background-color: #F5F5F5;
+            background-color: #757575;
             border: transparent;
             box-shadow: none;
         }

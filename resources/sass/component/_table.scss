@@ -1,4 +1,8 @@
 //Table Top Selection
+.userDatatable-title {
+  color: #424242;
+  font-weight: 600;
+}
 
 .order-search {
   @include e(form) {
@@ -34,7 +38,7 @@
   border: 1px solid #F5F5F5;
 
   &:not(:first-child):after {
-    background-color: #f1f2f6;
+    background-color: #E0E0E0;
   }
 }
 
@@ -340,7 +344,7 @@ table.table-rounded {
   }
 
   .userDatatable-title {
-    color: rgba(0, 0, 0, .85);
+    color: #212121;
   }
 
   .userDatatable-content {

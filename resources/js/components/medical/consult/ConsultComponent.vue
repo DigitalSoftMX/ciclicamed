@@ -65,14 +65,13 @@
                             aria-labelledby="mccEspecialidades-tab">´
                             <uroginecologia-component v-if="specialty === 1"></uroginecologia-component>
                             <climaterio-salud-osea-component v-if="specialty === 2"></climaterio-salud-osea-component>
-                            <materno-fetal-component></materno-fetal-component>
+                            <materno-fetal-component v-if="specialty === 3"></materno-fetal-component>
                             <biologia-reproduccion-component v-if="specialty === 4"></biologia-reproduccion-component>
                             <cirugia-endoscopica-component v-if="specialty === 5"></cirugia-endoscopica-component>
                             <oncologia-component v-if="specialty === 6"></oncologia-component>
                             <colposcopia-component v-if="specialty === 7"></colposcopia-component>
                             <nutricion-perinatal-component v-if="specialty === 8"></nutricion-perinatal-component>
                             <nutricion-general-component v-if="specialty === 9"></nutricion-general-component>
-                            
                             <network-error-component v-if="networkError.specialty"></network-error-component>
                         </div>
                         <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"

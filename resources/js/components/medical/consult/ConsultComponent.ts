@@ -25,8 +25,6 @@ export default defineComponent({
         PrescriptionComponent: require('@component/medical/consult/consultPrescription/ConsultPrescriptionComponent.vue').default,
         TestOrderComponent: require('@component/medical/consult/consultTestOrder/ConsultTestOrderComponent.vue').default,
         RecordComponent: require('@component/medical/consult/consultRecord/ConsultRecordComponent.vue').default,
-        
-
         UroginecologiaComponent: require('@component/medical/attachments/Uroginecologia/UroginecologiaComponent.vue').default,
         ClimaterioSaludOseaComponent: require('@component/medical/attachments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue').default,
         MaternoFetalComponent: require('@component/medical/attachments/MaternoFetal/MaternoFetalComponent.vue').default,
@@ -36,10 +34,8 @@ export default defineComponent({
         ColposcopiaComponent: require('@component/medical/attachments/Colposcopia/ColposcopiaComponent.vue').default,
         NutricionPerinatalComponent: require('@component/medical/attachments/NutricionPerinatal/NutricionPerinatalComponent.vue').default,
         NutricionGeneralComponent: require('@component/medical/attachments/NutricionGeneral/NutricionGeneralComponent.vue').default,
-
-        NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default
-        
-      
+        NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default,
+        ProductComponent: require('@component/medical/consult/consultProduct/ConsultProductComponent.vue').default
     },
     emits: [],
     props: {

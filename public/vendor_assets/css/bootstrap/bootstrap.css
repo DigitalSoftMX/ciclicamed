@@ -459,7 +459,7 @@ hr {
 	margin-top: 4.67rem;
 	margin-bottom: 4.67rem;
 	border: 0;
-	border-top: 1px solid #f1f2f6;
+	border-top: 1px solid #E0E0E0;
 }
 
 small,
@@ -1008,16 +1008,16 @@ pre code {
 .table td {
 	padding: 0.75rem;
 	vertical-align: top;
-	border-top: 1px solid #f1f2f6;
+	border-top: 1px solid #E0E0E0;
 }
 
 .table thead th {
 	vertical-align: bottom;
-	border-bottom: 2px solid #f1f2f6;
+	border-bottom: 2px solid #E0E0E0;
 }
 
 .table tbody + tbody {
-	border-top: 2px solid #f1f2f6;
+	border-top: 2px solid #E0E0E0;
 }
 
 .table-sm th,
@@ -1026,12 +1026,12 @@ pre code {
 }
 
 .table-bordered {
-	border: 1px solid #f1f2f6;
+	border: 1px solid #E0E0E0;
 }
 
 .table-bordered th,
 .table-bordered td {
-	border: 1px solid #f1f2f6;
+	border: 1px solid #E0E0E0;
 }
 
 .table-bordered thead th,
@@ -1365,7 +1365,7 @@ pre code {
 .table .thead-light th {
 	color: #212121;
 	background-color: #e9ecef;
-	border-color: #f1f2f6;
+	border-color: #E0E0E0;
 }
 
 .table-dark {
@@ -1415,7 +1415,7 @@ pre code {
 	background-color: #fff;
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
-	border: 1px solid #f1f2f6;
+	border: 1px solid #E0E0E0;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	-webkit-box-shadow: 0 0;
@@ -4500,7 +4500,7 @@ input[type="button"].btn-block {
 	background-color: #fff;
 	-webkit-background-clip: border-box;
 	background-clip: border-box;
-	border: 1px solid #f1f2f6;
+	border: 1px solid #E0E0E0;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 }
@@ -4564,7 +4564,7 @@ input[type="button"].btn-block {
 	padding: 0.75rem 1.56rem;
 	margin-bottom: 0;
 	background-color: #fff;
-	border-bottom: 1px solid #f1f2f6;
+	border-bottom: 1px solid #E0E0E0;
 }
 
 .card-header:first-child {
@@ -4579,7 +4579,7 @@ input[type="button"].btn-block {
 .card-footer {
 	padding: 0.75rem 1.56rem;
 	background-color: #fff;
-	border-top: 1px solid #f1f2f6;
+	border-top: 1px solid #E0E0E0;
 }
 
 .card-footer:last-child {
@@ -17995,12 +17995,12 @@ body {
 .table-dark td,
 .table-dark thead th,
 .table-dark tbody + tbody {
-	border-color: #f1f2f6;
+	border-color: #E0E0E0;
 }
 
 .table .thead-dark th {
 	color: inherit;
-	border-color: #f1f2f6;
+	border-color: #E0E0E0;
 }
 
 }

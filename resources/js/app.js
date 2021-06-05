@@ -13,6 +13,7 @@ const app = createApp({
 		EmployeesDataTable: require('@component/dataTable/employeesTable/EmployeesTableComponent.vue').default,
 		CuestionarioMastografia: require('@component/medical/test/Imagenologia/CuestionarioMastografia/CuestionarioMastografiaComponent.vue').default,
 		InterpretacionResultados: require('@component/medical/test/Imagenologia/InterpretacionUltrasonidos/InterpretacionUltrasonidosComponent.vue').default,
+		ConsultProduct: require('./components/medical/consult/consultProduct/ConsultProductComponent.vue').default
 	}
 });
 

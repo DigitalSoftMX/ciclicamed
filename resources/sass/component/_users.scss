@@ -256,7 +256,7 @@
 //Users Table
 .userDatatable {
   table {
-    border-bottom: 1px solid #f1f2f6;
+    border-bottom: 1px solid #E0E0E0;
     border-collapse: separate;
     border-spacing: 0;
 
@@ -272,10 +272,8 @@
       border-radius: 10px;
 
       th {
-        color: rgb(90, 95, 125);
-        background: rgb(248, 249, 251);
-        border-top: 1px solid rgb(241, 242, 246);
-        border-bottom: 1px solid rgb(241, 242, 246);
+        color: #212121;
+        background: #E0E0E0;
         white-space: nowrap;
 
         &:first-child {
@@ -322,7 +320,7 @@
   border-bottom: none;
   padding: 13px 20px 15px 20px;
   vertical-align: middle;
-  background: #f8f9fb;
+  background: #BDBDBD;
   .checkbox-text{
     @extend .color-gray;
     font-size:14px;

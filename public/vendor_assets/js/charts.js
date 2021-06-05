@@ -1733,7 +1733,7 @@ function chartjsLineChartAccount(selector, bcolor = "#FA8B0C") {
           titleSpacing: 15,
           bodyFontColor: "#868EAE",
           bodyFontSize: 12,
-          borderColor: "#F1F2F6",
+          borderColor: "#E0E0E0",
           borderWidth: 2,
           bodySpacing: 15,
           xPadding: 15,

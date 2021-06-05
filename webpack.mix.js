@@ -33,7 +33,7 @@ mix.js('resources/js/app.js', 'public/js')
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)$/i,
-                    loader: 'file-loader'
+                    loader: 'file-loader',
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)$/i,

@@ -151,7 +151,6 @@
                                                 @click="getUserData(userData.pagination.last_page)" data-page="last"><a
                                                     class="footable-page-link">»</a></li>
                                         </ul>
-                                        <div class="divider"></div><span class="label label-default">1 of 3</span>
                                     </div>
                                 </td>
                             </tr>

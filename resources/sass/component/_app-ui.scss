@@ -45,7 +45,7 @@
     .panel-body {
         padding: 21px 25px 29px 25px;
         border-radius: 0 0 5px 5px;
-        border-top: 1px solid #F1F2F6;
+        border-top: 1px solid #E0E0E0;
 
         p {
             @include ofs(15px, lh(15px, 25px), 400);
@@ -60,7 +60,7 @@
     .panel {
         border-radius: 5px;
         margin-bottom: 5px;
-        border: 1px solid #F1F2F6;
+        border: 1px solid #E0E0E0;
     }
 
     .button-group button {

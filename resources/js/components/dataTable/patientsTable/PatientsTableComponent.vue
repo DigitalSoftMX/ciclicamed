@@ -148,7 +148,6 @@
                                                 @click="getUserData(userData.pagination.last_page)" data-page="last"><a
                                                     class="footable-page-link">»</a></li>
                                         </ul>
-                                        <div class="divider"></div><span class="label label-default">1 of 3</span>
                                     </div>
                                 </td>
                             </tr>
@@ -160,11 +159,9 @@
         <div class="loaded-spin text-center">
             <div class="spinner-border text-primary"></div>
         </div>
-        
     </div>
 
     <preregistration-component :patientData="patientData" :isNew="false"></preregistration-component>
-    
 </template>
 
 <script lang="ts" src="./PatientsTableComponent.ts"></script>
@@ -173,5 +170,4 @@
     @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
     @import './PatientsTableComponent.scss';
     @import '../../../../../public/css/global.css';
-
 </style>

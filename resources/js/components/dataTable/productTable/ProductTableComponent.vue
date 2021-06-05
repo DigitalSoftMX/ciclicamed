@@ -6,7 +6,7 @@
                     <img src="/svg/search.svg" alt="Search">
                 </span>
                 <input type="text" class="form-control form-control-lg bg-white" v-model="query"
-                    @keyup="getUserDataQuery()" placeholder="Buscar">
+                    @keyup="getProductDataQuery()" placeholder="Buscar">
             </div>
         </div>
         <button class="btn btn-primary btn-default btn-squared" @click="createProduct">Crear nuevo producto</button>
@@ -117,31 +117,30 @@
 
                                             <li class="footable-page-nav"
                                                 v-bind:class="{'disabled': paginationActive === 1}" data-page="first"
-                                                @click="getUserData(1)"><a class="footable-page-link">«</a>
+                                                @click="getProductData(1)"><a class="footable-page-link">«</a>
                                             </li>
                                             <li class="footable-page-nav"
                                                 v-bind:class="{'disabled': paginationActive === 1}" data-page="prev"
-                                                @click="getUserData(paginationActive - 1)"><a
+                                                @click="getProductData(paginationActive - 1)"><a
                                                     class="footable-page-link">‹</a></li>
 
                                             <li class="footable-page visible"
                                                 v-bind:class="{ 'active': pagination === paginationActive }"
                                                 data-page="1" v-for="pagination in paginationPages" :key="pagination"
-                                                @click="getUserData(pagination)">
+                                                @click="getProductData(pagination)">
                                                 <a class="footable-page-link">{{pagination}}</a>
                                             </li>
 
 
                                             <li class="footable-page-nav"
                                                 v-bind:class="{'disabled': paginationActive === paginationData.pagination.last_page}"
-                                                @click="getUserData(paginationActive + 1)" data-page="next"><a
+                                                @click="getProductData(paginationActive + 1)" data-page="next"><a
                                                     class="footable-page-link">›</a></li>
                                             <li class="footable-page-nav"
                                                 v-bind:class="{'disabled': paginationActive === paginationData.pagination.last_page}"
-                                                @click="getUserData(paginationData.pagination.last_page)"
+                                                @click="getProductData(paginationData.pagination.last_page)"
                                                 data-page="last"><a class="footable-page-link">»</a></li>
                                         </ul>
-                                        <div class="divider"></div><span class="label label-default">1 of 3</span>
                                     </div>
                                 </td>
                             </tr>

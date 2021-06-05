@@ -27,7 +27,7 @@ $danger: #ff4d4f;
 $dark: #272b41;
 $light: #9299b8;
 $extra-light: #adb4d2;
-$gray: #5a5f7d;
+$gray: #616161;
 $gray-solid: #9299b8;
 $body-color: #666d92;
 $text-color: #666d92;
@@ -77,10 +77,10 @@ $hover-colors: (
 );
 
 // border color
-$border-normal: #f1f2f6;
+$border-normal: #E0E0E0;
 $border-deep: #c6d0dc;
 $border-color: #F5F5F5;
-$border-light:#f1f2f6;
+$border-light:#E0E0E0;
 
 $border-colors: (
   "normal": $border-normal,
@@ -89,7 +89,7 @@ $border-colors: (
 );
 
 // background Color
-$bg-normal: #f8f9fb;
+$bg-normal: #BDBDBD;
 $bg-lighter: #F5F5F5;
 $bg-deep: #eff0f3;
 

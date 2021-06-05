@@ -1922,46 +1922,46 @@ table.table-rounded tr td, table.table-basic tr td, .orderDatatable-title, .paym
 .dropdown button .icon-right i,
 .dropdown button .icon-right span, .strikingDash-top-menu ul li a, .navbar-left form svg,
 .navbar-left form img, .tooltip-title, .btn-outline-lighten {
-  color: #5a5f7d;
+  color: #616161;
 }
 
 .bg-gray, .menu-mob-trigger span, .slick-slider__single {
-  background: #5a5f7d;
+  background: #616161;
 }
 
 .iborder-gray {
-  color: #5a5f7d;
+  color: #616161;
 }
 
 .outline-gray {
-  border: 1px solid #5a5f7d;
-  color: #5a5f7d;
+  border: 1px solid #616161;
+  color: #616161;
 }
 
 .active-color-gray label input:checked + span {
-  background: #5a5f7d;
-  border-color: #5a5f7d;
+  background: #616161;
+  border-color: #616161;
 }
 
 .circle-gray {
-  color: #5a5f7d;
-  background: rgba(90, 95, 125, 0.1);
+  color: #616161;
+  background: rgba(97, 97, 97, 0.1);
 }
 
 .border-gray {
-  border: 1px solid #5a5f7d;
+  border: 1px solid #616161;
 }
 
 .bg-opacity-gray {
-  background: rgba(90, 95, 125, 0.15);
+  background: rgba(97, 97, 97, 0.15);
 }
 
 .order-bg-opacity-gray {
-  background: rgba(90, 95, 125, 0.1);
+  background: rgba(97, 97, 97, 0.1);
 }
 
 .hover-gray:hover {
-  background: #5a5f7d;
+  background: #616161;
   color: #ffffff;
 }
 
@@ -2076,7 +2076,7 @@ table.table-rounded tr td, table.table-basic tr td, .orderDatatable-title, .paym
 
 .border-normal, .payment-method-card, .c-event-form .form-control-md, .fc-theme-standard .fc-scrollgrid, .fc-theme-standard td,
 .fc-theme-standard th, .fc-view .fc-col-header tr th, #full-calendar .fc-toolbar-chunk .fc-button-group .fc-button, .slider-wrapper.disabled .ui-slider-handle:after, .atbd-pagination__link, .atbd-pagination__item .page-selection, .card.card-default .card-header {
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
 }
 
 .border-deep, .size-control-nav .nav-item .nav-link, .atbd-select.disabled .form-control, .custom-radio input[type=radio] + label:after, .custom-radio.disabled input[type=radio]:checked + label:after, .custom-checkbox.disabled input[type=checkbox]:checked + label:after, .custom-checkbox input[type=checkbox] + label:after {
@@ -2099,7 +2099,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 .atbd-collapse.atbd-collapse-custom .card.atbd-collapse-item .card-body, .atbd-collapse .atbd-collapse-item__header, .atbd-collapse .card.atbd-collapse-item__header .card-header,
 .atbd-collapse .card.atbd-collapse-item__header .card-body, .card.bg-normal .card-header,
 .card.bg-normal .card-body {
-  background: #f8f9fb;
+  background: #BDBDBD;
 }
 
 .bg-lighter, .mailbox-list__single .mail-content__bottom .mail-attatchment, .mailbox-top__search .form-control-lg, .kanban-modal__list .checkbox-group:hover, .kanban-modal__list button, .kanban-modal__research button, .kanban-modal__form textarea, .kanban-board__add-card button, .list__add-card, .kanban-list, .kanban-board__body, .wizard10 .payment-method-card .card-body .form-control, .wizard10 .select2-container--default .select2-selection--single,
@@ -2276,7 +2276,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .btn-shadow-gray {
-  box-shadow: 0 10px 15px rgba(90, 95, 125, 0.2);
+  box-shadow: 0 10px 15px rgba(97, 97, 97, 0.2);
 }
 
 .btn-shadow-third {
@@ -2354,9 +2354,9 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .outline-lg-gray {
-  border: 2px solid #5a5f7d;
+  border: 2px solid #616161;
   background: none;
-  color: #5a5f7d;
+  color: #616161;
 }
 
 .outline-lg-third {
@@ -2427,8 +2427,8 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .btn-transparent-gray {
-  background: rgba(90, 95, 125, 0.15);
-  color: #5a5f7d;
+  background: rgba(97, 97, 97, 0.15);
+  color: #616161;
 }
 
 .btn-transparent-third {
@@ -2563,11 +2563,11 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 }
 
 .checkbox-gray .custom-control-label::before {
-  background: #5a5f7d;
+  background: #616161;
 }
 .checkbox-gray .custom-control-input:checked ~ .custom-control-label::before {
-  background: #5a5f7d;
-  border: 1px solid #5a5f7d;
+  background: #616161;
+  border: 1px solid #616161;
 }
 .checkbox-gray .custom-control-input:checked ~ .custom-control-label::after {
   color: #9299b8;
@@ -2720,8 +2720,8 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
   border: 1px solid #F5F5F5;
 }
 .checkbox-outline-gray .custom-control-input:checked ~ .custom-control-label::before {
-  border: 1px solid #5a5f7d;
-  background: #5a5f7d;
+  border: 1px solid #616161;
+  background: #616161;
 }
 .checkbox-outline-gray .custom-control-input:checked ~ .custom-control-label::after {
   color: #fff;
@@ -3632,7 +3632,7 @@ ul {
   box-shadow: 0 8px 10px #9299b815;
   padding: 10px 12px !important;
   border-radius: 3px;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   min-width: 80px;
   transition: all 0.5s ease;
   pointer-events: none;
@@ -3887,7 +3887,7 @@ ul {
   font-weight: 600;
   width: 100%;
   padding: 10px 18px;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   border-radius: 4px;
 }
 .daterangepicker .ranges ul li:not(:last-child) {
@@ -4037,7 +4037,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-color: #f1f2f6;
+  border-color: #E0E0E0;
 }
 .daterangepicker.show-calendar .drp-buttons .drp-selected {
   font-size: 13px;
@@ -4046,7 +4046,7 @@ ul {
 }
 .daterangepicker.show-calendar .drp-buttons .cancelBtn {
   color: #5a5f7d;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   border-radius: 5px;
 }
 .daterangepicker.show-calendar .drp-buttons .btn {
@@ -4091,7 +4091,7 @@ ul {
   padding: 22px 15px 15px;
   font-size: 14px;
   text-align: center;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .daterangepicker.single .drp-calendar {
   max-width: 305px;
@@ -4639,7 +4639,7 @@ ul {
   right: 40px;
   height: 50px;
   background-color: #fff;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   border-radius: 6px;
 }
 .search-form-topMenu.show {
@@ -5054,7 +5054,7 @@ ul {
   width: 36px;
   height: 36px;
   z-index: 9;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   border-left: 0;
   border-radius: 0 5px 5px 0;
 }
@@ -5709,7 +5709,7 @@ ul {
 }
 
 .btn.btn-outline-light {
-  border-color: #f1f2f6;
+  border-color: #E0E0E0;
 }
 .btn.btn-outline-light:hover {
   background-color: #e2e6ea;
@@ -5737,10 +5737,10 @@ ul {
   z-index: 0 !important;
 }
 .atbd-button-group .btn:focus, .atbd-button-group .btn:active {
-  color: #5a5f7d !important;
+  color: #616161 !important;
   outline: none;
   box-shadow: 0 0px 0px rgba(146, 153, 184, 0) !important;
-  border-color: #f1f2f6 !important;
+  border-color: #E0E0E0 !important;
 }
 .atbd-button-group .btn:first-child {
   border-radius: 3px 0 0 3px;
@@ -5919,7 +5919,7 @@ ul {
   margin: 0 10px;
 }
 .avatar.avatar-light {
-  background: #f1f2f6;
+  background: #E0E0E0;
 }
 .avatar.avatar-light.avatar-transparent {
   background: rgba(146, 153, 184, 0.15);
@@ -6085,19 +6085,19 @@ ul {
   font-size: 12px;
   line-height: 1.25;
   font-weight: 500;
-  color: #5a5f7d;
+  color: #616161;
 }
 .breadcrumb-main .breadcrumb-action .input-container.icon-left input:-ms-input-placeholder {
   font-size: 12px;
   line-height: 1.25;
   font-weight: 500;
-  color: #5a5f7d;
+  color: #616161;
 }
 .breadcrumb-main .breadcrumb-action .input-container.icon-left input::placeholder {
   font-size: 12px;
   line-height: 1.25;
   font-weight: 500;
-  color: #5a5f7d;
+  color: #616161;
 }
 .breadcrumb-main .breadcrumb-action .input-container .icon-left {
   left: 12px;
@@ -6154,13 +6154,13 @@ ul {
 }
 .custom-switch .custom-control-input:focus:not(:checked) ~ .custom-control-label:before {
   border-color: transparent;
-  background-color: #F5F5F5;
+  background-color: #757575;
 }
 .custom-switch .custom-control-input .custom-control-input:checked ~ .custom-control-label::before {
   border-color: #60269E;
 }
 .custom-switch .custom-control-label:before {
-  background-color: #F5F5F5;
+  background-color: #757575;
   border: transparent;
   box-shadow: none;
 }
@@ -6313,10 +6313,10 @@ ul {
   color: #ffffff !important;
 }
 .card .card-header .card-tab .btn.btn-white.border {
-  border-color: #f1f2f6 !important;
+  border-color: #E0E0E0 !important;
 }
 .card .card-header .card-tab .btn.btn-white.border-light, .card .card-header .card-tab .product-item__button button.btn.btn-white, .product-item__button .card .card-header .card-tab button.btn.btn-white, .card .card-header .card-tab .btn.btn-white.page-title-wrap.wrapper-bordered, .card .card-header .card-tab .btn.btn-white.atbd-steps__icon, .card .card-header .card-tab .form-basic select.btn.btn-white, .form-basic .card .card-header .card-tab select.btn.btn-white, .card .card-header .card-tab .atbd-collapse .btn.btn-white.atbd-collapse-item, .atbd-collapse .card .card-header .card-tab .btn.btn-white.atbd-collapse-item, .card .card-header .card-tab .custom-checkbox.checkbox-theme-2 input[type=checkbox] + label.btn.btn-white:after, .custom-checkbox.checkbox-theme-2 .card .card-header .card-tab input[type=checkbox] + label.btn.btn-white:after, .card .card-header .card-tab .btn.btn-white.badge.badge-outlined.badge-light, .card .card-header .card-tab .dynamic-badge-block .btn.btn-white.atbd-button-group, .dynamic-badge-block .card .card-header .card-tab .btn.btn-white.atbd-button-group, .card .card-header .card-tab .btn.btn-white.btn-outline-dashed {
-  border-color: #f1f2f6 !important;
+  border-color: #E0E0E0 !important;
 }
 .card .card-header .card-tab .btn.active {
   box-shadow: 0 0;
@@ -6440,10 +6440,10 @@ ul {
 
 .card.card-bordered {
   border-radius: 4px;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
 }
 .card.card-bordered .card-header {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .card.bg-white .card-header, .jvectormap-container .card.jvectormap-zoomin .card-header,
@@ -6502,8 +6502,8 @@ table.table-basic tr td.card .card-body,
   padding: 22px;
   text-align: center;
   border-top: 0 none;
-  border-bottom: 1px solid #f1f2f6;
-  border-left: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
+  border-left: 1px solid #E0E0E0;
 }
 .card-grid-table tr td p {
   font-size: 14px;
@@ -7223,7 +7223,7 @@ table.table-basic tr td.card .card-body,
 }
 
 .checkbox-group-header {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
   padding-bottom: 5px;
   margin-bottom: 30px;
 }
@@ -7253,7 +7253,7 @@ table.table-basic tr td.card .card-body,
   border-radius: 0 5px 5px 0;
 }
 .atbd-collapse .atbd-collapse-item__header {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
   margin-bottom: -1px;
 }
 .atbd-collapse .atbd-collapse-item__header.active i:before,
@@ -7301,7 +7301,7 @@ table.table-basic tr td.card .card-body,
 .atbd-collapse.atbd-collapse-borderless .atbd-collapse-item {
   border-width: 0px;
   border-radius: 0px;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .atbd-collapse.atbd-collapse-custom .atbd-collapse-item {
@@ -7364,7 +7364,7 @@ table.table-basic tr td.card .card-body,
 .comment-list__title {
   padding-bottom: 10px;
   margin-bottom: 30px;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .comment-list__title h1,
 .comment-list__title h2,
@@ -7538,7 +7538,7 @@ table.table-basic tr td.card .card-body,
 }
 
 .card-overview .br-1 {
-  border-right: 1px solid #f1f2f6;
+  border-right: 1px solid #E0E0E0;
 }
 @media only screen and (max-width: 1199px) {
   .card-overview .br-1 {
@@ -8053,7 +8053,7 @@ table.table-basic tr td.card .card-body,
   flex: 0 0 25%;
   max-width: 25%;
   padding: 25px 0;
-  border-right: 1px solid #f1f2f6;
+  border-right: 1px solid #E0E0E0;
 }
 @media only screen and (max-width: 1599px) {
   .inEx-wrap .inEx-box {
@@ -9033,13 +9033,13 @@ table.table-basic tr td.card .card-body,
   text-transform: capitalize;
   padding: 8px 14px;
   border-radius: 5px;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
 }
 .ffw button:focus {
   box-shadow: 0 0;
 }
 .ffw button.friends-follow {
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
 }
 .ffw button.friends-follow svg {
   display: none;
@@ -9268,19 +9268,19 @@ table.table-basic tr td.card .card-body,
   font-size: 14px;
   line-height: 1.7857142857;
   font-weight: 400;
-  color: #5a5f7d;
+  color: #616161;
 }
 .edit-profile__body .form-group .form-control:-ms-input-placeholder {
   font-size: 14px;
   line-height: 1.7857142857;
   font-weight: 400;
-  color: #5a5f7d;
+  color: #616161;
 }
 .edit-profile__body .form-group .form-control::placeholder {
   font-size: 14px;
   line-height: 1.7857142857;
   font-weight: 400;
-  color: #5a5f7d;
+  color: #616161;
 }
 .edit-profile__body .form-group .form-control:focus {
   border: 1px solid #60269E;
@@ -9330,21 +9330,21 @@ table.table-basic tr td.card .card-body,
   font-size: 14px;
   line-height: 1.7857142857;
   font-weight: 400;
-  color: #5a5f7d;
+  color: #616161;
 }
 
 .select2-container--default .select2-search--inline .select2-search__field:-ms-input-placeholder {
   font-size: 14px;
   line-height: 1.7857142857;
   font-weight: 400;
-  color: #5a5f7d;
+  color: #616161;
 }
 
 .select2-container--default .select2-search--inline .select2-search__field::placeholder {
   font-size: 14px;
   line-height: 1.7857142857;
   font-weight: 400;
-  color: #5a5f7d;
+  color: #616161;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -9378,7 +9378,7 @@ table.table-basic tr td.card .card-body,
   font-size: 14px;
   line-height: 1.7857142857;
   font-weight: 400;
-  color: #5a5f7d;
+  color: #616161;
   text-transform: capitalize;
 }
 
@@ -9649,7 +9649,7 @@ table.table-basic tr td.card .card-body,
 }
 .signUp-socialBtn li button {
   box-shadow: 0px 5px 15px #9299b81a;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   background: #f8f9fb;
   white-space: nowrap;
 }
@@ -9681,7 +9681,7 @@ table.table-basic tr td.card .card-body,
 
 .social-connector:before,
 .social-connector:after {
-  background-color: #f1f2f6;
+  background-color: #E0E0E0;
   content: "";
   display: inline-block;
   height: 1px;
@@ -9764,10 +9764,10 @@ table.table-basic tr td.card .card-body,
 }
 .table-social tbody tr:not(:first-child) {
   transition: all 0.3s ease;
-  color: #5a5f7d;
+  color: #616161;
 }
 .table-social tbody tr:not(:first-child):hover {
-  background: #f8f9fb;
+  background: #BDBDBD;
 }
 .table-social tbody tr:first-child td {
   color: #272b41;
@@ -9839,13 +9839,13 @@ table.table-basic tr td.card .card-body,
 }
 .table--default tbody tr {
   transition: all 0.3s ease;
-  color: #5a5f7d;
+  color: #616161;
 }
 .table--default tbody tr:hover {
-  background: #f8f9fb;
+  background: #BDBDBD;
 }
 .table--default tbody tr:last-child {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .table--default tbody tr td:not(:first-child) {
   text-align: right;
@@ -9876,7 +9876,7 @@ table.table-basic tr td.card .card-body,
 
 /* table top region */
 .table-top-regions {
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   max-height: 289px;
   max-width: 300px;
   overflow-y: auto;
@@ -9912,7 +9912,7 @@ table.table-basic tr td.card .card-body,
 
 /* table top selling location  */
 .table-top-location {
-  border-top: 1px solid #f1f2f6;
+  border-top: 1px solid #E0E0E0;
   margin-top: 18px;
   padding-top: 10px;
   margin-bottom: -8px;
@@ -10437,7 +10437,7 @@ table.table-basic tr td.card .card-body,
 }
 
 .userDatatable table {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
   border-collapse: separate;
   border-spacing: 0;
 }
@@ -10451,10 +10451,8 @@ table.table-basic tr td.card .card-body,
   border-radius: 10px;
 }
 .userDatatable table thead tr th {
-  color: #5a5f7d;
-  background: #f8f9fb;
-  border-top: 1px solid #f1f2f6;
-  border-bottom: 1px solid #f1f2f6;
+  color: #212121;
+  background: #E0E0E0;
   white-space: nowrap;
 }
 .userDatatable table thead tr th:first-child {
@@ -10485,7 +10483,7 @@ table.table-basic tr td.card .card-body,
   border-bottom: none;
   padding: 13px 20px 15px 20px;
   vertical-align: middle;
-  background: #f8f9fb;
+  background: #BDBDBD;
 }
 .userDatatable-header th .checkbox-text {
   font-size: 14px;
@@ -11276,27 +11274,27 @@ table.table-basic tr td.card .card-body,
 .list-box__item {
   font-size: 14px;
   padding: 12px 20px;
-  border-left: 1px solid #f1f2f6;
-  border-right: 1px solid #f1f2f6;
+  border-left: 1px solid #E0E0E0;
+  border-right: 1px solid #E0E0E0;
 }
 .list-box__item:not(:last-child) {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .list-box__item:last-child {
   border-radius: 0 0 5px 5px;
-  border-bottom: 1px solid #f1f2f6;
-  border-left: 1px solid #f1f2f6;
-  border-right: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
+  border-left: 1px solid #E0E0E0;
+  border-right: 1px solid #E0E0E0;
 }
 .list-box__item:first-child {
   border-radius: 5px 5px 0 0;
-  border-top: 1px solid #f1f2f6;
-  border-left: 1px solid #f1f2f6;
-  border-right: 1px solid #f1f2f6;
+  border-top: 1px solid #E0E0E0;
+  border-left: 1px solid #E0E0E0;
+  border-right: 1px solid #E0E0E0;
 }
 
 .atbd-menu.menu-horizontal {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .atbd-menu.menu-horizontal .atbd-menu__item {
   position: relative;
@@ -11418,7 +11416,7 @@ table.table-basic tr td.card .card-body,
 }
 
 .atbd-menu.menu-vertical {
-  border-right: 1px solid #f1f2f6;
+  border-right: 1px solid #E0E0E0;
 }
 .atbd-menu.menu-vertical .atbd-menu__item {
   padding-right: 15px;
@@ -11762,7 +11760,7 @@ table.table-basic tr td.card .card-body,
 
 .atbd-date-ranger {
   margin: 20px;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   border-radius: 5px;
 }
 .atbd-date-ranger.date-picker-disabled .divider {
@@ -11883,7 +11881,7 @@ table.table-basic tr td.card .card-body,
   top: 50%;
   transform: translateY(-50%);
   left: 0;
-  background-color: #f1f2f6;
+  background-color: #E0E0E0;
   z-index: -1;
 }
 @media only screen and (max-width: 575px) {
@@ -12217,7 +12215,7 @@ table.table-basic tr td.card .card-body,
 .atbd-skeleton__title {
   width: 30%;
   height: 16px;
-  background: #f1f2f6;
+  background: #E0E0E0;
   margin-bottom: 15px;
 }
 .atbd-skeleton__list li {
@@ -12530,7 +12528,7 @@ table.table-basic tr td.card .card-body,
 }
 .atbd-drawer__header {
   padding: 18px 25px;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .atbd-drawer__body {
   padding: 20px 24px 24px;
@@ -12586,7 +12584,7 @@ table.table-basic tr td.card .card-body,
 .atbd-drawer .profile-info-box__single:not(:last-child) {
   padding-bottom: 30px;
   margin-bottom: 30px;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .atbd-drawer .profile-info-box__single h6 {
   margin-bottom: 15px;
@@ -12607,7 +12605,7 @@ table.table-basic tr td.card .card-body,
 }
 
 .drawer-profile-box {
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   border-radius: 3px;
 }
 .drawer-profile-box__single {
@@ -12619,7 +12617,7 @@ table.table-basic tr td.card .card-body,
   }
 }
 .drawer-profile-box__single:not(:last-child) {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .drawer-profile-box__single .profile-author img {
   max-width: 32px;
@@ -12880,7 +12878,7 @@ select.select-arrow-none::-ms-expand,
   width: 12px;
   height: 8px;
   border-left: 1px solid transparent;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .tooltip .arrow:before {
   display: block;
@@ -12890,15 +12888,15 @@ select.select-arrow-none::-ms-expand,
   position: absolute;
   width: 10px;
   height: 10px;
-  border-left: 1px solid #f1f2f6;
-  border-top: 1px solid #f1f2f6;
+  border-left: 1px solid #E0E0E0;
+  border-top: 1px solid #E0E0E0;
   border-bottom: 3px solid transparent;
   transform: rotate(45deg) skew(10deg, 10deg);
   left: 0px;
   bottom: -6px;
 }
 .tooltip .tooltip-inner {
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   box-shadow: 0 8px 15px rgba(146, 153, 184, 0.15);
 }
 
@@ -13727,7 +13725,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
 }
 
 .fc-theme-standard .fc-list {
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
 }
 @media only screen and (max-width: 1599px) {
   .calendar-grid .col-xl-3 {
@@ -13896,7 +13894,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
   text-transform: capitalize;
   font-size: 13px;
   font-weight: 500;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   margin-right: 30px;
 }
 @media only screen and (max-width: 479px) {
@@ -13908,7 +13906,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
 #full-calendar .fc-toolbar-chunk .fc-button.fc-prev-button,
 #full-calendar .fc-toolbar-chunk .fc-button.fc-next-button {
   padding: 0.25em 0.563em;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   border-radius: 4px;
 }
 @media only screen and (max-width: 479px) {
@@ -13958,7 +13956,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
 }
 #full-calendar .fc-toolbar-chunk .fc-button-group .fc-button.fc-dayGridMonth-button {
   border-radius: 0 4px 4px 0;
-  border-right: 1px solid #f1f2f6;
+  border-right: 1px solid #E0E0E0;
 }
 #full-calendar .fc-toolbar-chunk .fc-button-group .fc-button.fc-listMonth-button {
   display: flex;
@@ -14041,7 +14039,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
 }
 
 .fc-timegrid-slots tr:nth-child(2n) {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .fc-timegrid-slots .fc-timegrid-slot {
   height: 10px;
@@ -14050,7 +14048,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
   border: 0 none;
 }
 .fc-timegrid-slots .fc-timegrid-slot:first-child {
-  border-right: 1px solid #f1f2f6;
+  border-right: 1px solid #E0E0E0;
 }
 .fc-timegrid-slots .fc-timegrid-slot .fc-timegrid-slot-label-frame {
   position: relative;
@@ -14219,10 +14217,10 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
 .fc-listMonth-view .fc-list-day {
   flex: 0 0 20%;
   max-width: 20%;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .fc-listMonth-view .fc-list-day:last-child {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .fc-listMonth-view .fc-list-day th {
   border: 0 none;
@@ -14393,7 +14391,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
   color: #60269E !important;
 }
 .todo-list .custom-checkbox input[type=checkbox] + label {
-  color: #5a5f7d !important;
+  color: #616161 !important;
 }
 
 .add-task-action {
@@ -15227,7 +15225,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
 }
 .product-cart__cupon input {
   width: 180px;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   margin-right: 10px;
   height: 44px;
 }
@@ -15349,7 +15347,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .fc-scroller {
 
 .order-summery {
   border-radius: 20px;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
 }
 .order-summery .card-body {
   border-radius: 20px;
@@ -16404,6 +16402,11 @@ td.order-summery .total > div {
   font-weight: 400;
 }
 
+.userDatatable-title {
+  color: #424242;
+  font-weight: 600;
+}
+
 .order-search__form {
   padding: 15px 20px;
   background: #F5F5F5;
@@ -16447,7 +16450,7 @@ td.order-summery .total > div {
   border: 1px solid #F5F5F5;
 }
 .project-tap.order-project-tap:not(:first-child):after {
-  background-color: #f1f2f6;
+  background-color: #E0E0E0;
 }
 
 .order-button-group button {
@@ -16566,7 +16569,7 @@ td.order-summery .total > div {
 
 table.table-basic tr:not(:last-child) th,
 table.table-basic tr:not(:last-child) td {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 table.table-basic tr td {
   border: 0 none;
@@ -16596,7 +16599,7 @@ table.table-rounded tr td {
 table.table-rounded thead tr th {
   padding: 16px 20px;
   text-transform: capitalize;
-  background-color: #f8f9fb;
+  background-color: #BDBDBD;
 }
 table.table-rounded thead tr th:first-child {
   border-radius: 10px 0 0 10px;
@@ -16646,7 +16649,7 @@ table.table-rounded tbody tr td:last-child {
   padding: 15px 20px 15px 20px;
 }
 .table4 .userDatatable-title {
-  color: rgba(0, 0, 0, 0.85);
+  color: #212121;
 }
 .table4 .userDatatable-content {
   font-weight: 400;
@@ -16851,7 +16854,7 @@ table.table-rounded tbody tr td:last-child {
   margin: 3px;
 }
 .footable.adv-table .pagination > li > a {
-  border: 1px solid #F1F2F6;
+  border: 1px solid #E0E0E0;
   width: 32px;
   height: 32px;
   display: flex;
@@ -16884,7 +16887,7 @@ table.table-rounded tbody tr td:last-child {
   border-bottom: none;
 }
 .userDatatable table.adv-table .pagination {
-  border-top: 1px solid #F1F2F6;
+  border-top: 1px solid #E0E0E0;
   margin: 0;
   margin-top: 2;
   padding-top: 27px;
@@ -16925,8 +16928,8 @@ table.table-rounded tbody tr td:last-child {
 
 .add-product {
   border-radius: 20px;
-  border: 1px solid #F1F2F6;
-  background-color: #f8f9fb;
+  border: 1px solid #E0E0E0;
+  background-color: #BDBDBD;
   padding: 30px;
 }
 .add-product .card-body {
@@ -17004,13 +17007,13 @@ table.table-rounded tbody tr td:last-child {
   border-bottom-left-radius: 0;
 }
 .add-product__body .form-group .input-group input::-moz-placeholder {
-  color: #5a5f7d;
+  color: #616161;
 }
 .add-product__body .form-group .input-group input:-ms-input-placeholder {
-  color: #5a5f7d;
+  color: #616161;
 }
 .add-product__body .form-group .input-group input::placeholder {
-  color: #5a5f7d;
+  color: #616161;
 }
 .add-product__body-img {
   padding: 30px 40px;
@@ -17194,7 +17197,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .shipped-dataTable table tbody tr:not(:last-child) {
-  border-bottom: 1px solid #F1F2F6;
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .dashboard-base {
@@ -17518,7 +17521,7 @@ table.table-rounded tbody tr td:last-child {
 .application-faqs .panel-body {
   padding: 21px 25px 29px 25px;
   border-radius: 0 0 5px 5px;
-  border-top: 1px solid #F1F2F6;
+  border-top: 1px solid #E0E0E0;
 }
 .application-faqs .panel-body p {
   font-size: 15px;
@@ -17531,7 +17534,7 @@ table.table-rounded tbody tr td:last-child {
 .application-faqs .panel {
   border-radius: 5px;
   margin-bottom: 5px;
-  border: 1px solid #F1F2F6;
+  border: 1px solid #E0E0E0;
 }
 .application-faqs .button-group button {
   height: 36px;
@@ -17994,7 +17997,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .note-action__left a svg {
   width: 16px;
-  color: #5a5f7d;
+  color: #616161;
 }
 .note-action__left a.favorite svg {
   color: #fa8b0c;
@@ -18623,7 +18626,7 @@ table.table-rounded tbody tr td:last-child {
   border-radius: 6px;
   padding: 30px;
   transition: all 0.3s ease;
-  border: 1px solid #F1F2F6;
+  border: 1px solid #E0E0E0;
 }
 .banner-feature--15:hover {
   box-shadow: 0 15px 25px rgba(146, 153, 187, 0.15);
@@ -18704,7 +18707,7 @@ table.table-rounded tbody tr td:last-child {
   font-size: 13px;
   line-height: 1.6923076923;
   font-weight: 400;
-  color: rgba(90, 95, 125, 0.7);
+  color: rgba(97, 97, 97, 0.7);
   margin: 4px 0 0 0;
 }
 .testimonial-slider-global .author-comment {
@@ -19116,14 +19119,14 @@ table.table-rounded tbody tr td:last-child {
   text-transform: uppercase;
 }
 .filleM-table .table thead tr th {
-  border-top: 1px solid #F1F2F6;
+  border-top: 1px solid #E0E0E0;
   padding: 14px 10px;
 }
 .filleM-table .table thead tr th:first-child {
-  border-left: 1px solid #F1F2F6;
+  border-left: 1px solid #E0E0E0;
 }
 .filleM-table .table thead tr th:last-child {
-  border-right: 1px solid #F1F2F6;
+  border-right: 1px solid #E0E0E0;
 }
 .filleM-table .table th,
 .filleM-table .table td {
@@ -20277,21 +20280,21 @@ table.table-rounded tbody tr td:last-child {
   min-height: 88px;
 }
 .kanban-modal__form textarea::-moz-placeholder {
-  color: #5a5f7d;
+  color: #616161;
   font-size: 15px;
   line-height: 1.3333333333;
   font-weight: 400;
   padding: 4px 0px;
 }
 .kanban-modal__form textarea:-ms-input-placeholder {
-  color: #5a5f7d;
+  color: #616161;
   font-size: 15px;
   line-height: 1.3333333333;
   font-weight: 400;
   padding: 4px 0px;
 }
 .kanban-modal__form textarea::placeholder {
-  color: #5a5f7d;
+  color: #616161;
   font-size: 15px;
   line-height: 1.3333333333;
   font-weight: 400;
@@ -20480,7 +20483,7 @@ table.table-rounded tbody tr td:last-child {
   padding: 19px 30px;
 }
 .task-card__body:not(:last-child) {
-  border-bottom: 1px solid #F1F2F6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .task-card .table-actions a {
   margin-right: 10px;
@@ -20847,21 +20850,21 @@ table.table-rounded tbody tr td:last-child {
 }
 .formElement-editor .trumbowyg-button-pane {
   background-color: transparent;
-  border-bottom: 1px solid #F1F2F6;
+  border-bottom: 1px solid #E0E0E0;
   min-height: 56px;
   display: flex;
   align-items: center;
 }
 .formElement-editor .trumbowyg-box {
-  border: 1px solid #F1F2F6;
+  border: 1px solid #E0E0E0;
   border-radius: 4px;
 }
 .formElement-editor .trumbowyg-button-pane::after {
-  background: #F1F2F6;
+  background: #E0E0E0;
   display: none;
 }
 .formElement-editor .trumbowyg-button-pane .trumbowyg-button-group::after {
-  background: #F1F2F6;
+  background: #E0E0E0;
   display: none;
 }
 .formElement-editor .trumbowyg-box {
@@ -21067,7 +21070,7 @@ table.table-rounded tbody tr td:last-child {
   }
 }
 .columnCard-wrapper .card .card-header {
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .columnGrid-wrapper .card .card-body {
@@ -21245,7 +21248,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .add-lebel-from input {
   font-size: 14px;
-  border-color: #f1f2f6;
+  border-color: #E0E0E0;
 }
 .add-lebel-from .label-action {
   margin-top: 16px;
@@ -21253,7 +21256,7 @@ table.table-rounded tbody tr td:last-child {
 
 .mailbox-top {
   padding: 16px 30px;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 @media only screen and (max-width: 1599px) {
   .mailbox-top {
@@ -21438,7 +21441,7 @@ table.table-rounded tbody tr td:last-child {
   padding: 18px 30px;
   padding-top: 17px;
   align-items: flex-start;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
   position: relative;
   z-index: 10;
 }
@@ -21660,7 +21663,7 @@ table.table-rounded tbody tr td:last-child {
   padding: 0px 20px 30px;
 }
 .atbd-mailCompose__footer {
-  border-top: 1px solid #f1f2f6;
+  border-top: 1px solid #E0E0E0;
   margin: 0 30px;
   padding: 20px 0px 30px;
   border-radius: 0 0 10px 10px;
@@ -21685,7 +21688,7 @@ table.table-rounded tbody tr td:last-child {
   border: 0 none;
   height: 3.44rem;
   width: 100%;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .mailCompose-form-content .form-group {
   position: relative;
@@ -21720,7 +21723,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .mailCompose-form-content .select2-selection {
   border: 0 none !important;
-  border-bottom: 1px solid #f1f2f6 !important;
+  border-bottom: 1px solid #E0E0E0 !important;
 }
 .mailCompose-form-content .select2-selection .select2-selection__rendered {
   padding: 0 20px 0 25px !important;
@@ -21755,7 +21758,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .mailCompose-form-content .trumbowyg-box .trumbowyg-button-pane {
   padding: 12px 0;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .mailCompose-form-content .trumbowyg-box .trumbowyg-button-pane:after {
   display: none;
@@ -21795,7 +21798,7 @@ table.table-rounded tbody tr td:last-child {
 .mail-details__content {
   padding-bottom: 30px;
   margin-bottom: 30px;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 @media only screen and (max-width: 1199px) {
   .mail-details__content {
@@ -21831,7 +21834,7 @@ table.table-rounded tbody tr td:last-child {
   margin: 10px 5px;
   flex: 0 0 20%;
   padding: 10px;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(146, 153, 184, 0.1);
 }
@@ -22101,7 +22104,7 @@ table.table-rounded tbody tr td:last-child {
 .reply-form {
   padding: 10px 30px 30px 30px;
   border-radius: 5px;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
   box-shadow: 0 10px 40px rgba(146, 153, 184, 0.15);
 }
 @media only screen and (max-width: 479px) {
@@ -22146,7 +22149,7 @@ table.table-rounded tbody tr td:last-child {
 }
 .reply-form .mailCompose-form-content .trumbowyg-box {
   margin-bottom: 20px;
-  border-bottom: 1px solid #f1f2f6;
+  border-bottom: 1px solid #E0E0E0;
 }
 .reply-form .mailCompose-form-content .trumbowyg-editor,
 .reply-form .mailCompose-form-content .trumbowyg-box {
@@ -22416,7 +22419,7 @@ table.table-rounded tbody tr td:last-child {
   right: 0;
   top: auto;
   left: auto;
-  border: 1px solid #f1f2f6;
+  border: 1px solid #E0E0E0;
 }
 .jvectormap-container .jvectormap-zoomin {
   border-radius: 6px 6px 0 0;
