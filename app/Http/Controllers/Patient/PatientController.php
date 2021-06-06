@@ -13,7 +13,7 @@ class PatientController extends Controller
 
     public function getAllPatients()
     {
-        $patients = Patient::get(['id', 'first_name', 'last_name']);
+        $patients = Patient::get(['id', 'first_name', 'last_name', 'patient_code']);
         return response()->json($patients);
     }
     /**

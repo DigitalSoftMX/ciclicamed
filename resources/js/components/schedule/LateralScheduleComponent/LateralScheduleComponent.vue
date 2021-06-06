@@ -6,8 +6,8 @@
             <!-- Drawer header-->
             <div class="atbd-drawer__header d-flex justify-content-between border-title-bottom border-bottom">
                 <h6 class="drawer-title align-self-center">{{ getLateralScheduleTitle() }}</h6>
-                <button type="button" class="btn btn-icon btn-circle p-0" data-dismiss="modal" @click="closeLateralSchedule()"
-                    aria-label="Close">
+                <button type="button" class="btn btn-icon btn-circle p-0" data-dismiss="modal"
+                    @click="closeLateralSchedule()" aria-label="Close">
                     <img src="/svg/close-alternative.svg" alt="Alert logo" data-toggle="tooltip" data-placement="bottom"
                         title="Cerrar">
                 </button>
@@ -19,50 +19,35 @@
 
                     <!-- Paciente -->
                     <div class="form-group" v-show="schedule.id < 1">
-                        <label for="patients">Pacientes</label>
-                        <select name="patients" :id="`patients${id}`" class="form-control select2-hidden-accessible"
-                            tabindex="-1" aria-hidden="true" :disabled="isPatientDisabled">
-                            <option v-for="patient in patientsList" :key="patient.id" :value="patient.id">
-                                {{ `${patient.first_name} ${patient.last_name}` }}
-                            </option>
-                        </select>
+                        <label for="lscPacientes">Pacientes</label>
+                        <select-component id="lscPacientes" :data="patientsList" v-model="formData.patient_id"
+                            @onChange="getPatientSelected" :disabled="isPatientDisabled"
+                            firstText='Seleccione un paciente'></select-component>
                     </div>
 
                     <!-- Tipo de cita -->
                     <div class="form-group">
-                        <label for="scheduleCategories">Tipo de cita</label>
-                        <select name="scheduleCategories" :id="`scheduleCategories${id}`"
-                            class="form-control select2-hidden-accessible" :disabled="isScheduleCategoryDisabled"
-                            tabindex="-1" aria-hidden="true">
-                            <option v-for="scheduleType in scheduleTypeList" :key="scheduleType.id"
-                                :value="scheduleType.id">
-                                {{scheduleType.name}}
-                            </option>
-                        </select>
+                        <label for="lscCategoria">Tipo de cita</label>
+                        <select-component id="lscCategoria" :data="scheduleTypeList"
+                            v-model="formData.medicalconsulttype_id" :disabled="isScheduleCategoryDisabled"
+                            @onChange="getScheduleCategorySelected" firstText='Seleccione un tipo de cita'>
+                        </select-component>
                     </div>
 
                     <!-- Sucursal -->
                     <div class="form-group mb-25">
-                        <label for="branches">Sucursal</label>
-                        <select name="branches" :id="`branches${id}`" class="form-control select2-hidden-accessible"
-                            :disabled="isBranchDisabled" tabindex="-1" aria-hidden="true">
-                            <option v-for="branch in branchesList" :key="branch.id" :value="branch.id">
-                                {{branch.name}}
-                            </option>
-                        </select>
+                        <label for="lscSucursal">Sucursal</label>
+                        <select-component id="lscSucursal" :data="branchesList" v-model="formData.branch_id"
+                            @onChange="getBranchSelected" :disabled="isBranchDisabled"
+                            firstText='Seleccione una sucursal'></select-component>
                     </div>
 
                     <!-- Doctor -->
                     <div class="form-group mb-25">
-                        <label for="doctors">Doctor</label>
-                        <select name="doctors" :id="`doctors${id}`" class="form-control select2-hidden-accessible"
-                            :disabled="isDoctorDisabled" tabindex="-1" aria-hidden="true">
-                            <optgroup :label="`Especialidad: ${specialty.name}`" v-for="specialty in doctorsList"
-                                :key="specialty.id">
-                                <option v-for="doctor in specialty.doctors" :key="doctor.id" :value="doctor.id">
-                                    {{ `${doctor.first_name} ${doctor.last_name}` }}</option>
-                            </optgroup>
-                        </select>
+                        <label for="lscDoctor">Doctor</label>
+                        <select-component id="lscDoctor" :data="doctorsList" v-model="formData.doctor_id"
+                            :isGroup="true" :disabled="isDoctorDisabled" firstText='Seleccione un doctor'>
+                        </select-component>
                     </div>
 
                     <!-- Motivo de cita -->
@@ -73,7 +58,8 @@
                                 <img src="/svg/text.svg" alt="Text logo">
                             </span>
                             <textarea type="text" class="form-control" id="address" placeholder="Motivo de cita"
-                                v-model="formData.consult_reason" maxlength="255" @keyup="updateConsultReasonCharLength()"></textarea>
+                                v-model="formData.consult_reason" maxlength="255"
+                                @keyup="updateConsultReasonCharLength()"></textarea>
                         </div>
                         <div class="float-right">
                             {{ `${getConsultReasonCharLength()}/255` }}
@@ -99,7 +85,8 @@
                             <span class="mr-5">
                                 <img src="/svg/clock.svg" alt="Calendar logo">
                             </span>
-                            <input type="text" class="form-control form-control-lg bg-white" :id="`scheduleTimeStart${id}`" readonly>
+                            <input type="text" class="form-control form-control-lg bg-white"
+                                :id="`scheduleTimeStart${id}`" readonly>
                         </div>
                     </div>
 
@@ -110,7 +97,8 @@
                             <span class="mr-5">
                                 <img src="/svg/clock.svg" alt="Calendar logo">
                             </span>
-                            <input type="text" class="form-control form-control-lg bg-white" :id="`scheduleTimeFinish${id}`" readonly>
+                            <input type="text" class="form-control form-control-lg bg-white"
+                                :id="`scheduleTimeFinish${id}`" readonly>
                         </div>
                     </div>
 
@@ -134,7 +122,7 @@
                     <div class="card rounded-0 lateralCardColor" v-if="schedule.id > 0">
                         <div class="card-body py-2 px-3">
                             <h6 class="text-primary mb-1">
-                                {{ `${patientsList[schedule.patient_id].first_name} ${patientsList[schedule.patient_id].last_name}` }}
+                                {{ patientsList[schedule.patient_id].text }}
                             </h6>
                             <p class="m-0 text-primary">
                                 {{ `${formatScheduleTime(this.schedule.consult_schedule_start)} - ${formatScheduleTime(this.schedule.consult_schedule_finish)}` }}
