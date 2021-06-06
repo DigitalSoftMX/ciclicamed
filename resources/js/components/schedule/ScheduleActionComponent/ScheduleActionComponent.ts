@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { AlertError } from '@interface/General/Alert/Error/AlertError.interface';
-require('bootstrap');
+import $ from 'jquery';
 
 export default defineComponent({
     components: {

@@ -1,15 +1,11 @@
-import {
-    defineComponent
-} from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
+import { DefineComponent, PropType } from 'vue';
 import moment from 'moment';
-import {
-    DefineComponent,
-    PropType
-} from 'vue';
 moment.locale('es');
-require('jquery');
-require('jquery-ui-bundle');
+import $ from 'jquery';
 import 'select2';
+import 'jquery-ui-bundle';
+import 'wickedpicker';
 import axios from "axios";
 import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleData } from '@data/Schedule/Schedule.data';
@@ -322,7 +318,8 @@ export default defineComponent({
     },
     mounted() {
         const self = this;
-        this.timeStart = $(`#scheduleTimeStart${this.id}`);
+        var $j = jQuery.noConflict();
+        this.timeStart = $j(`#scheduleTimeStart${this.id}`);
         const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
         overlay.addEventListener('click', () => self.closeLateralSchedule())
         $(`#patients${this.id}`).select2()

@@ -7,7 +7,6 @@
 {
     left: 0 !important;
     transform: translateX(0) !important;
-    margin-left: 0 !important;
     border-radius: 4px !important;
 }
 
@@ -31,6 +30,7 @@
 
 .fc-event-time {
     color: #fff !important;
+    cursor: pointer !important;
 }
 
 .fc-header-toolbar {
@@ -144,6 +144,52 @@
 {
     text-align: center !important;
     margin: 1em !important;
+}
+
+.fc-col-header
+{
+    background-color: #EEEEEE !important;
+}
+
+.fc-col-header-cell-cushion
+{
+    cursor: default;
+    color: #212121 !important;
+    font-size: 0.9rem !important;
+    text-align: center !important;
+    background-color: #EEEEEE !important;
+    text-transform: capitalize !important;
+}
+
+.fc-scrollgrid-sync-inner
+{
+    text-align: center !important;
+}
+
+.fc-daygrid-day-number
+{
+    cursor: default;
+}
+
+.fc-timeGridWeek-view
+{
+    .fc-scroller
+    {
+        background-color: #EEEEEE !important;
+    }
+}
+
+.fc-timeGridDay-view
+{
+    .fc-scroller
+    {
+        background-color: #EEEEEE !important;
+    }
+}
+
+.fc-list-day-text
+{
+    text-transform: capitalize !important;
 }
 
 @media (max-width: 720px) {

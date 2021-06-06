@@ -41,7 +41,14 @@ mix.js('resources/js/app.js', 'public/js')
                     options: {
                         limit: 8192,
                     },
-                  },
+                },
+                {
+                    test: require.resolve("jquery"),
+                    loader: "expose-loader",
+                    options: {
+                      exposes: ["$", "jQuery"],
+                    },
+                },
             ]
         },
         // output: {

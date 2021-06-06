@@ -1,9 +1,9 @@
 import axios from 'axios';
+import $ from 'jquery';
 import { defineComponent } from '@vue/runtime-core';
 import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { DefineComponent } from 'vue';
-
 import FullCalendar, { CalendarOptions } from '@fullcalendar/vue3';
 import listPlugin from '@fullcalendar/list';
 import dayGridPlugin from '@fullcalendar/daygrid';

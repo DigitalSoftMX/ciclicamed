@@ -20,3 +20,7 @@ declare interface JQuery {
 declare interface JQuery {
     customScrollbar(options?: any): any;
 }
+
+declare interface JQuery {
+    wickedpicker(options?: any): any;
+}
