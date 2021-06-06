@@ -1,30 +1,38 @@
 import axios from 'axios';
-import { Calendar } from '@fullcalendar/core'
-import $ from 'jquery';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list';
 import { defineComponent } from '@vue/runtime-core';
-import interactionPlugin from '@fullcalendar/interaction';
 import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { DefineComponent } from 'vue';
 
+import FullCalendar, { CalendarOptions } from '@fullcalendar/vue3';
+import listPlugin from '@fullcalendar/list';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { FullCalendarConfig } from '@config/FullCalendar.config';
+
 export default defineComponent({
     name: 'ScheduleComponent',
     components: {
+        FullCalendar,
         ScheduleActionComponent: require('../ScheduleActionComponent/ScheduleActionComponent.vue').default,
-        LateralScheduleComponent: require('../LateralScheduleComponent/LateralScheduleComponent.vue').default
+        LateralScheduleComponent: require('../LateralScheduleComponent/LateralScheduleComponent.vue').default,
+        
     },
     props: {},
     data() {
         return {
-            url: `consultas/pacientes/1`,
+            calendarOptions: {
+                plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+                allDaySlot: false,
+                ...FullCalendarConfig,
+                dateClick: this.fullcalendarDateClick,
+                eventClick: this.fullcalendarEventClick
+            },
+            url: `/consultas/pacientes/1`,
             schedules: [] as Schedule[],
             scheduleSelected: ScheduleData,
-            calendar: Calendar as any,
-            lateralMenu: null as any,
-            scheduleSelectDate: {} as Date
+            scheduleSelectDate: {} as Date,
         }
     },
     methods: {
@@ -71,7 +79,8 @@ export default defineComponent({
         {
             const name = this.getNameSchedule(data);
             this.schedules =  this.schedules.map(schedule => schedule.id === data.id ? {...schedule, ...data} : schedule);
-            const scheduleEvent = this.calendar.getEventById( data.id );
+            const calendar = this.$refs.fullCalendar as DefineComponent;
+            const scheduleEvent = calendar.getApi().getEventById( data.id );
             
             scheduleEvent.setDates( data.consult_schedule_start,  data.consult_schedule_finish );
             scheduleEvent.setProp( 'title', this.getScheduleTitle(data.type!.name, name) );
@@ -83,16 +92,15 @@ export default defineComponent({
 
         createNewSchedule(data: Schedule)
         {
-            console.log(data)
             this.addSchedule(data);
             this.scheduleSelected = ScheduleData;
-            console.log(this.scheduleSelected)
         },
 
         addSchedule(schedule: Schedule)
         {
             const name = this.getNameSchedule(schedule);
-            this.calendar.addEvent({
+            const calendar = this.$refs.fullCalendar as DefineComponent;
+            calendar.getApi().addEvent({
                 id: schedule.id!.toString(),
                 title: this.getScheduleTitle(schedule.type!.name, name),
                 start: schedule.consult_schedule_start,
@@ -102,50 +110,24 @@ export default defineComponent({
                 backgroundColor: schedule.status?.color,
                 display: 'block',
             })
+            
+        },
+        fullcalendarDateClick(data: any)
+        {
+            this.scheduleSelectDate = data.date;
+            this.scheduleSelected = ScheduleData;
+            const lateral = this.$refs.openLateralSchedule as DefineComponent;
+            lateral.openLateralSchedule();
+        },
+        fullcalendarEventClick(data: any)
+        {
+            this.scheduleSelected = Object.values(this.schedules).filter(schedule => schedule[`id`] === Number(data.event.id))[0];
+            $('#schedule-action').modal('show');
         }
     },
     mounted() {
-        const self = this;
-        this.lateralMenu = this.$refs.openLateralSchedule as DefineComponent;
-        const el:HTMLElement = document.getElementById('full-calendar') ?? document.createElement('div', ) as HTMLDivElement;
-        new ResizeObserver(() => this.calendar.updateSize()).observe(el);
-        this.calendar = new Calendar(el, {
-            plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
-            initialView: 'dayGridMonth',
-            displayEventTime: true,
-            editable: false,
-            displayEventEnd: true,
-            progressiveEventRendering: true,
-            headerToolbar: {
-                left: 'dayGridMonth,timeGridWeek,timeGridDay,listDay',
-                right: "prev,next",
-                center: "title",
-            },
-            allDaySlot: false,
-            buttonText: {
-                today: 'Hoy',
-                month: 'Mes',
-                week: 'Semana',
-                day: 'Día',
-                list: 'Lista'
-            },
-            eventTimeFormat: {
-                hour: 'numeric',
-                minute: '2-digit',
-                meridiem: 'short'
-            },
-            dateClick: function (data) {
-                self.scheduleSelectDate = data.date;
-                self.scheduleSelected = ScheduleData;
-                self.lateralMenu.openLateralSchedule();
-            },
-            eventClick: function (data) {
-                self.scheduleSelected = Object.values(self.schedules).filter(schedule => schedule[`id`] === Number(data.event.id))[0];
-                $('#schedule-action').modal('show');
-            },
-        });
-        this.calendar.setOption('locale', 'es');
-        this.calendar.render();
+        // const el:HTMLElement = document.getElementById('full-calendar') ?? document.createElement('div', ) as HTMLDivElement;
+        // new ResizeObserver(() => this.calendar.updateSize()).observe(el);
         this.getSchedules();
     },
 })

@@ -49,6 +49,7 @@ export default defineComponent({
         productCategory()
         {
             this.reset = true;
+            this.query = '';
             this.getProductData(1);
         },
         productCheckList()

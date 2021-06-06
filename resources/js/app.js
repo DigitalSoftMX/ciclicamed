@@ -5,6 +5,7 @@ import UsersPage from './pages/user/users/UsersPage.vue';
 	
 const app = createApp({
     components: {
+		ScheduleComponent: require('./components/schedule/ScheduleComponent/ScheduleComponent.vue').default,
 		MedicalConsultPage: MedicalConsultPage,
 		UsersPage: UsersPage,
 		UploadFileComponent: require('@component/general/uploadFile/UploadFileComponent.vue').default,

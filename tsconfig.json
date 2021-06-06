@@ -21,6 +21,9 @@
       "@page/*": [
         "resources/js/pages/*"
       ],
+      "@config/*": [
+        "resources/js/config/*"
+      ],
       "@svg/*": [
         "public/svg/*"
       ],

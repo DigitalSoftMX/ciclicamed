@@ -41,6 +41,7 @@
         "@fullcalendar/interaction": "^5.6.0",
         "@fullcalendar/list": "^5.6.0",
         "@fullcalendar/timegrid": "^5.6.0",
+        "@fullcalendar/vue3": "^5.7.1",
         "@types/jquery.ui.datetimepicker": "^0.3.29",
         "@types/select2": "^4.0.53",
         "@types/swiper": "^5.4.2",

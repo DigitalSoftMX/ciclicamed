@@ -44,7 +44,7 @@ export default defineComponent({
             scheduleTypeList: [] as ScheduleType[],
             formData: {} as ScheduleForm,
             id: Math.floor(Math.random() * 5) + 1,
-            wickedPicker: {} as any,
+            timeStart: {} as any,
             isButtonActivated: false as boolean,
             consultReasonCharLength: 0 as number
         };
@@ -60,7 +60,6 @@ export default defineComponent({
 
         schedule(): void
         {
-            
             this.formData = {
                 patient_id: this.schedule.patient_id,
                 branch_id: this.schedule.branch_id,
@@ -80,7 +79,7 @@ export default defineComponent({
                 $(`#scheduleCategories${this.id}`).val('0').trigger('change');
                 $(`#branches${this.id}`).val('0').trigger('change');
                 $(`#doctors${this.id}`).val('0').trigger('change');
-                this.wickedPicker.wickedpicker('setTime', 0, '08:00');
+                this.timeStart.wickedpicker('setTime', 0, '08:00');
             }
             else
             {
@@ -103,7 +102,7 @@ export default defineComponent({
                 }
                 $(`#scheduleDate${this.id}`).datepicker("setDate", new Date(this.schedule.consult_schedule_start) );
                 const time = moment(this.formData.consult_schedule_start, 'YYYY-MM-DD HH:mm A').format('HH:mm')
-                this.wickedPicker.wickedpicker('setTime', 0, time);
+                this.timeStart.wickedpicker('setTime', 0, time);
             }
 
         }
@@ -145,7 +144,7 @@ export default defineComponent({
 
         getPatientsList(): void
         {
-            axios.get < Patient[] > (`pacientes`)
+            axios.get < Patient[] > (`/pacientes`)
                 .then(response => {
                     this.patientsList = [{
                         ...PatientData,
@@ -162,7 +161,7 @@ export default defineComponent({
 
         getSchedulesCategories(): void
         {
-            axios.get(`consultas/categorias`)
+            axios.get(`/consultas/categorias`)
                 .then(response => {
                     this.scheduleTypeList = [{
                         id: 0,
@@ -177,7 +176,7 @@ export default defineComponent({
 
         getBranchList(): void
         {
-            axios.get < Branch[] > (`sucursales`)
+            axios.get < Branch[] > (`/sucursales`)
                 .then(response => {
                     this.branchesList = [{
                         id: 0,
@@ -192,7 +191,7 @@ export default defineComponent({
 
         getDoctorsList(): void
         {
-            axios.get<BranchSpecialtyDoctors[]>(`sucursales/${this.formData.branch_id}/especialidades/doctores`)
+            axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${this.formData.branch_id}/especialidades/doctores`)
                 .then(response => {
                     this.doctorsList = response.data.filter((list: BranchSpecialtyDoctors) => list.doctors.length > 0);
                     this.doctorsList = [{
@@ -212,7 +211,7 @@ export default defineComponent({
 
         createNewSchedule(): void
         {
-            axios.post('consultas', {
+            axios.post('/consultas', {
                 data: {
                     ...this.formData
                 }
@@ -229,7 +228,7 @@ export default defineComponent({
 
         updateSchedule(): void
         {
-            axios.patch<Schedule>(`consultas/${this.schedule.id}`, {
+            axios.patch<Schedule>(`/consultas/${this.schedule.id}`, {
                 data: {
                     ...this.formData
                 }
@@ -303,7 +302,7 @@ export default defineComponent({
 
         formatScheduleDateTime(): void
         {
-            const time = this.wickedPicker.wickedpicker('time');
+            const time = this.timeStart.wickedpicker('time');
             const date = moment($(`#scheduleDate${this.id}`).datepicker('getDate')).format('YYYY-MM-DD');
             this.formData.consult_schedule_start = moment(date + ' ' + time, 'YYYY-MM-DD HH:mm A').format('MM/DD/YY LT');
             console.log(this.formData.consult_schedule_start)
@@ -323,7 +322,7 @@ export default defineComponent({
     },
     mounted() {
         const self = this;
-        this.wickedPicker = $(`#scheduleTime${this.id}`);
+        this.timeStart = $(`#scheduleTimeStart${this.id}`);
         const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
         overlay.addEventListener('click', () => self.closeLateralSchedule())
         $(`#patients${this.id}`).select2()
@@ -340,7 +339,7 @@ export default defineComponent({
             }
         })
 
-        this.wickedPicker.wickedpicker({
+        this.timeStart.wickedpicker({
             title: 'Hora de cita',
             now: "08:00",
             minutesInterval: 30,

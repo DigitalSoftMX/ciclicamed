@@ -10,9 +10,9 @@ require('bootstrap');
 
 export default defineComponent({
     components: {
-        'LateralScheduleComponent': require('../LateralScheduleComponent/LateralScheduleComponent.vue').default,
-        'SuccessAlertComponent': require('../../alert/SuccessAlertComponent.vue').default,
-        'ErrorAlertComponent': require('../../alert/ErrorAlertComponent.vue').default
+        'LateralScheduleComponent': require('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue').default,
+        'SuccessAlertComponent': require('@component/general/alert/SuccessAlertComponent.vue').default,
+        'ErrorAlertComponent': require('@component/general/alert/ErrorAlertComponent.vue').default
     },
     emits: ['scheduleCanceled', ''],
     props: {

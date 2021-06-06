@@ -7,6 +7,7 @@
 <!-- <patients-data-table></patients-data-table> -->
 <!-- <employees-data-table></employees-data-table> -->
 <!-- <interpretacion-resultados></interpretacion-resultados> -->
-<consult-product></consult-product>
+<!-- <consult-product></consult-product> -->
+<schedule-component></schedule-component>
 </div>
 @endsection

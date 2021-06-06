@@ -55,6 +55,7 @@ mix.js('resources/js/app.js', 'public/js')
                 '@data': path.resolve('./resources/js/defaultData'),
                 '@interface': path.resolve('./resources/js/interfaces'),
                 '@page': path.resolve('./resources/js/pages'),
+                '@config': path.resolve('./resources/js/config'),
                 '@library': path.resolve('./public/js'),
                 '@svg': path.resolve('./public/svg'),
             },
