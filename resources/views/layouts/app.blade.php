@@ -26,18 +26,18 @@
    </head>
    <body class="layout-light side-menu @auth() @endauth">
       @auth()
-      <div class="mobile-search"></div>
-      <div class="mobile-author-actions"></div>
-      @include('layouts.partials._header')
+      <!-- <div class="mobile-search"></div> -->
+      <!-- <div class="mobile-author-actions"></div> -->
+      <!-- @include('layouts.partials._header') -->
       @endauth
       <main class="main-content">
          @auth()
-            @include('layouts.partials._aside')
+            <!-- @include('layouts.partials._aside') -->
          @endauth
          @section('content')
          @show
          @auth()
-            @include('layouts.partials._footer')
+            <!-- @include('layouts.partials._footer') -->
          @endauth
       </main>
       @auth()

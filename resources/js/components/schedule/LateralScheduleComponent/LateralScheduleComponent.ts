@@ -112,8 +112,6 @@ export default defineComponent({
             drawerBasic.classList.add('show');
             overlay.classList.add('show');
         },
-
-
         closeLateralSchedule(): void
         {
             const drawerBasic = document.getElementById(`drawer${this.id}`) ?? document.createElement('div') as HTMLDivElement;
@@ -121,20 +119,16 @@ export default defineComponent({
             drawerBasic.classList.remove('show');
             overlay.classList.remove('show');
         },
-
-
         clickScheduleDate(): void
         {
             const menuLateral = this.$refs.scheduleDate as DefineComponent;;
             $(`#scheduleDate${this.id}`).datepicker('show');
             menuLateral.click()
         },
-
         getLateralScheduleTitle(): string
         {
             return this.schedule.id < 1 ? 'Crear cita médica' : 'Modificar cita médica'
         },
-
         getPatientsList(): void
         {
             axios.get < Patient[] > (`/pacientes`)
@@ -151,7 +145,6 @@ export default defineComponent({
                 console.log(error)
             })
         },
-
         getSchedulesCategories(): void
         {
             axios.get<ScheduleType[]>(`/consultas/categorias`)
@@ -168,8 +161,6 @@ export default defineComponent({
                 console.log(error)
             })
         },
-
-
         getBranchList(): void
         {
             axios.get < Branch[] > (`/sucursales`)
@@ -186,8 +177,6 @@ export default defineComponent({
                 console.log(error)
             })
         },
-
-
         getDoctorsList(): void
         {
             console.log('dotco')
@@ -213,7 +202,6 @@ export default defineComponent({
                 console.log(error)
             })
         },
-
         createNewSchedule(): void
         {
             axios.post('/consultas', {
@@ -230,7 +218,6 @@ export default defineComponent({
                 console.log(error)
             })
         },
-
         updateSchedule(): void
         {
             axios.patch<Schedule>(`/consultas/${this.schedule.id}`, {
@@ -247,11 +234,9 @@ export default defineComponent({
                 console.log(error)
             })
         },
-
         getPatientSelected(): void {
             this.isScheduleCategoryDisabled = false;
         },
-
         getScheduleCategorySelected(): void {
             const index = this.formData.medicalconsulttype_id - 1;
             const scheduleTypeSelected = index > -1 ? this.scheduleTypeList[index].text : '';
@@ -267,7 +252,6 @@ export default defineComponent({
             this.formData.doctor_id = 0;
             this.isBranchDisabled = false;
         },
-
         getBranchSelected():void {
             const index = this.formData.medicalconsulttype_id - 1;
             const scheduleTypeSelected = index > -1 ? this.scheduleTypeList[index].text : '';
@@ -278,11 +262,9 @@ export default defineComponent({
                 this.isDoctorDisabled = false;
             }
         },
-
         formatScheduleTime(datetime: string): string {
             return moment(datetime, 'YYYY-MM-DD HH:mm A').format('hh:mm A');
         },
-
         formatScheduleDateTime(): void
         {
             const time = this.timeStart.wickedpicker('time');
@@ -291,17 +273,14 @@ export default defineComponent({
             console.log(this.formData.consult_schedule_start)
             //this.formData.consult_schedule_start = moment(date + ' ' + time).unix();
         },
-
         updateConsultReasonCharLength(): void
         {
             this.consultReasonCharLength = this.formData.consult_reason.length;
         },
-
         getConsultReasonCharLength(): number
         {
             return this.consultReasonCharLength;
         },
-
     },
     mounted() {
         const self = this;

@@ -84,15 +84,6 @@ class MedicalConsultController extends Controller
         return response()->json($type);
     }
 
-    public function getConsultsByPatient($id)
-    {
-        $patient = MedicalConsult::where('patient_id', '=', $id)
-                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsulttype_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
-                                ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
-        //broadcast(new ScheduleEvent($patient));
-        return response()->json($patient);
-    }
-
     public function cancelConsult(Request $request, $id)
     {
         $consultType = MedicalConsultStatus::where('name', 'Cancelado')->firstOrFail()->id;

@@ -1026,12 +1026,12 @@ pre code {
 }
 
 .table-bordered {
-	border: 1px solid #E0E0E0;
+	
 }
 
 .table-bordered th,
 .table-bordered td {
-	border: 1px solid #E0E0E0;
+	
 }
 
 .table-bordered thead th,
@@ -1415,7 +1415,7 @@ pre code {
 	background-color: #fff;
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
-	border: 1px solid #E0E0E0;
+	
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	-webkit-box-shadow: 0 0;
@@ -4500,7 +4500,7 @@ input[type="button"].btn-block {
 	background-color: #fff;
 	-webkit-background-clip: border-box;
 	background-clip: border-box;
-	border: 1px solid #E0E0E0;
+	
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 }

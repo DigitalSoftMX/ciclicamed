@@ -24,3 +24,7 @@
 </template>
 
 <script lang="ts" src="./SelectComponent.ts"></script>
+
+<style lang="scss">
+    @import '../../../../../public/vendor_assets/css/select2.min.css';
+</style>

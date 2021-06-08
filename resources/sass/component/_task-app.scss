@@ -98,7 +98,7 @@
 
         form {
             input {
-                border: 1px solid #F5F5F5;
+                border: 1px solid #BDBDBD;
                 height: 36px;
 
                 &::placeholder {
@@ -109,7 +109,7 @@
 
             textarea {
                 height: 123px;
-                border: 1px solid #F5F5F5;
+                border: 1px solid #BDBDBD;
                 resize: none;
 
                 &::placeholder {
@@ -141,7 +141,7 @@
             height: 36px;
             padding: 0 22px;
             &:first-child{
-                border: 1px solid #F5F5F5;
+                border: 1px solid #BDBDBD;
                 background: transparent;
                 color: #9299B8;
                 @include ofs(14px, lh(14px, 22px), 500);

@@ -431,7 +431,7 @@
     line-height: 16px;
     padding: 7px 15px;
     height: 30px;
-    background-color: #F5F5F5;
+    background-color: #BDBDBD;
     @extend .color-gray;
     @include ofs(12px, null, 500);
 
@@ -491,7 +491,7 @@
   }
 
   @include e(write) {
-    background-color: #F5F5F5;
+    background-color: #BDBDBD;
     height: 50px;
     border-radius: 25px;
     @extend .color-gray;
@@ -766,14 +766,14 @@
     text-transform: capitalize;
     padding: 8px 14px;
     border-radius: $border-radius;
-    border: 1px solid #E0E0E0;
+    
 
     &:focus {
       box-shadow: 0 0;
     }
 
     &.friends-follow {
-      border: 1px solid #E0E0E0;
+      
       @extend .color-gray;
 
       svg {
@@ -1032,7 +1032,7 @@
     }
 
     .form-control {
-      border: 1px solid #F5F5F5;
+      border: 1px solid #BDBDBD;
       border-radius: 4px;
       display: flex;
       align-items: center;
@@ -1080,7 +1080,7 @@
 .select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {
   background-color: #fff;
-  border: 1px solid #F5F5F5;
+  border: 1px solid #BDBDBD;
   border-radius: 4px;
   height: 48px;
   display: flex;
@@ -1229,11 +1229,11 @@
 
     .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
       border-color: transparent;
-      background-color: #F5F5F5;
+      background-color: #BDBDBD;
     }
 
     .custom-control-label::before {
-      background-color: #F5F5F5;
+      background-color: #BDBDBD;
       border: transparent;
       box-shadow: none;
     }
@@ -1412,7 +1412,7 @@
   li {
     button {
       box-shadow: 0px 5px 15px #9299b81a;
-      border: 1px solid #E0E0E0;
+      
       background: #f8f9fb;
       white-space: nowrap;
     }

@@ -48,7 +48,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'consultas'], function() {
         Route::post('/', [MedicalConsultController::class, 'store'])->name('consulta.nueva');
         Route::get('/categorias', [MedicalConsultController::class, 'getConsultTypes'])->name('consulta.categorias');
-        Route::get('/pacientes/{id}', [MedicalConsultController::class, 'getConsultsByPatient'])->name('consulta.paciente');
         Route::delete('/{id}', [MedicalConsultController::class, 'cancelConsult'])->name('consulta.eliminar');
         Route::patch('/{id}', [MedicalConsultController::class, 'updateSchedule'])->name('consulta.actualizar');
         
@@ -90,18 +89,17 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/', [PatientController::class, 'getAllPatients'])->name('pacientes.todos');
         Route::get('/{id}', [PatientController::class, 'getPatientByID'])->name('pacientes.paciente');
         Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getAllConsults'])->name('pacientes.categoria');
+        Route::get('/{id}/agenda', [PatientController::class, 'getSchedules'])->name('pacientes.agenda');
 
         Route::patch('/{id}/preregistro', [PreregistrationController::class, 'updatePreregistration'])->name('pacientes.preregistro');
-    });
-
-    //Doctores
-    Route::group(['prefix' => 'doctores'], function() {
-        Route::get('/{idDoctor}/consulta/{idConsult}', [EmployeeController::class, 'getDoctorConsult'])->name('doctores.consulta');
     });
 
     //Empleados
     Route::group(['prefix' => 'empleados'], function() {
         Route::get('/', [EmployeeController::class, 'getAllEmployees'])->name('empleados.todos');
+        Route::get('/{idDoctor}/consulta/{idConsult}', [EmployeeController::class, 'getDoctorConsult'])->name('doctores.consulta');
+        Route::get('/{id}/sucursal/{branch}/agenda', [EmployeeController::class, 'getSchedules'])->name('empleados.agenda');
+        Route::get('/{id}/sucursal/{branch}/horarios', [EmployeeController::class, 'getBusinessHours'])->name('empleados.horarios');
     });
 
     //Productos

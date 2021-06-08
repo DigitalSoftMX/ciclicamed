@@ -7,7 +7,7 @@
 @import "scss/variables";
 
 //Border
-$b-light: #F5F5F5;
+$b-light: #BDBDBD;
 
 //Radius
 
@@ -79,7 +79,7 @@ $hover-colors: (
 // border color
 $border-normal: #E0E0E0;
 $border-deep: #c6d0dc;
-$border-color: #F5F5F5;
+$border-color: #BDBDBD;
 $border-light:#E0E0E0;
 
 $border-colors: (
@@ -90,8 +90,8 @@ $border-colors: (
 
 // background Color
 $bg-normal: #BDBDBD;
-$bg-lighter: #F5F5F5;
-$bg-deep: #eff0f3;
+$bg-lighter: #F2F2F2;
+$bg-deep: #757575;
 
 $bg-colors: (
   "normal": $bg-normal,
@@ -167,7 +167,7 @@ $enable-caret: false;
 $enable-shadows: true;
 
 // shadows
-$box-shadow-color: #9299b8;
+$box-shadow-color: #9E9E9E;
 $box-shadow: 0 0.67rem 0.67rem rgba($box-shadow-color, 0.08);
 $box-shadow-lg: 0 0.67rem 0.67rem rgba($box-shadow-color, 0.1);
 
@@ -233,7 +233,7 @@ $navbar-dark-color: rgba($white, 0.7);
 $navbar-dark-hover-color: $white;
 
 // section bg
-$section-bg: #F5F5F5;
+$section-bg: #BDBDBD;
 $section-bg2: #f8f9fb;
 
 //breadcrumb

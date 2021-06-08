@@ -6,6 +6,8 @@ export const FullCalendarConfig: CalendarOptions = {
     editable: false,
     displayEventEnd: true,
     locale: 'es',
+    height: 'auto',
+    allDaySlot: false,
     progressiveEventRendering: true,
     headerToolbar: {
         left: 'dayGridMonth,timeGridWeek,timeGridDay,listDay',
@@ -24,5 +26,5 @@ export const FullCalendarConfig: CalendarOptions = {
         minute: '2-digit',
         meridiem: 'short'
     },
-    noEventsText: 'No hay citas programadas para hoy'
+    noEventsText: 'No hay citas programadas para hoy',
 }

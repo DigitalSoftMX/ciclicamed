@@ -4,7 +4,7 @@
         <div class="atbd-drawer drawer-basic d-none lateral-schedule-background">
 
             <!-- Drawer header-->
-            <div class="atbd-drawer__header d-flex justify-content-between border-title-bottom border-bottom">
+            <div class="atbd-drawer__header d-flex justify-content-between border-title-bottom border-bottom py-2 px-3">
                 <h6 class="drawer-title align-self-center">{{ getLateralScheduleTitle() }}</h6>
                 <button type="button" class="btn btn-icon btn-circle p-0" data-dismiss="modal"
                     @click="closeLateralSchedule()" aria-label="Close">
@@ -103,7 +103,7 @@
                     </div>
 
                     <!-- Botones de Cancelar y guardar -->
-                    <div class="button-group d-flex justify-content-end mb-25">
+                    <div class="button-group d-flex justify-content-end">
                         <!-- <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
                             v-on:click="closeLateralSchedule()" >
                             Cancelar
@@ -119,7 +119,7 @@
                     </div>
 
                     <!-- Tarjeta de cita -->
-                    <div class="card rounded-0 lateralCardColor" v-if="schedule.id > 0">
+                    <div class="card rounded-0 lateralCardColor mt-25" v-if="schedule.id > 0">
                         <div class="card-body py-2 px-3">
                             <h6 class="text-primary mb-1">
                                 {{ patientsList[schedule.patient_id].text }}
@@ -134,9 +134,13 @@
             </div>
         </div>
     </div>
-    <div class="overlay-dark"></div>
 </template>
 
 <script lang="ts" src="./LateralScheduleComponent.ts"></script>
 
-<style src="./LateralScheduleComponent.css"></style>
+<style lang="scss">
+    @import './LateralScheduleComponent.scss';
+    @import '../../../../../public/vendor_assets/css/line-awesome.min.css';
+    @import '../../../../../public/vendor_assets/css/wickedpicker.min.css';
+    @import '../../../../../public/css/style.css';
+</style>

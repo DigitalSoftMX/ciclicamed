@@ -21,14 +21,15 @@ class EmployeeScheduleFactory extends Factory
      */
     public function definition()
     {
-        $date = $this->faker->numberBetween(1, 7);
+        $dateStart = $this->faker->numberBetween(0, 3);
+        $dateFinish = $this->faker->numberBetween(4, 7);
         return [
-            'employee_id' => $this->faker->numberBetween(1, 5),
-            'start_day' => $date,
+            'employee_id' => $this->faker->numberBetween(1, 50),
+            'start_day' => $dateStart,
             'start_time' => $this->faker->time('h:m:s'),
-            'finish_day' => $date,
+            'finish_day' => $dateFinish,
             'finish_time' => $this->faker->time('h:m:s'),
-            'branch_id' => $this->faker->numberBetween(1, 10),
+            'branch_id' => $this->faker->numberBetween(1, 15),
         ];
     }
 }
