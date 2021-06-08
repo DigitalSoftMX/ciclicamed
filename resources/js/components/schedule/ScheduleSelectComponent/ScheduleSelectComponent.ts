@@ -3,6 +3,7 @@ import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors
 import { Select } from '@interface/General/Select.interface';
 import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
+import { PropType } from 'vue';
 
 export default defineComponent({
     name: 'ScheduleSelectComponent',
@@ -11,17 +12,19 @@ export default defineComponent({
     },
     emits: ['onDoctorSelected'],
     props: {
+        branchesList: {
+            type: Array as PropType<Select[]>,
+            default: []
+        }
     },
     data() {
         return {
             branchSelected: 0,
             userSelected: 0,
-            branchesList: [] as Select[],
             usersList: [] as Select[],
         }
     },
     mounted() {
-        this.getBranchesList();
     },
     watch: {
         branchSelected()
@@ -34,22 +37,6 @@ export default defineComponent({
         }
     },
     methods: {
-        getBranchesList(): void
-        {
-            axios.get<Branch[]>(`/sucursales`)
-            .then(response => {
-                this.branchesList = response.data.map(branch => {
-                    return {
-                        id: branch.id,
-                        text: branch.name,
-                        data: []
-                    }
-                });
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
         getUsersList(): void
         {
             axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${this.branchSelected}/especialidades/doctores`)

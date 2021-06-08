@@ -4,21 +4,20 @@ import moment from 'moment';
 moment.locale('es');
 import $ from 'jquery';
 import 'jquery-ui-bundle';
-import 'wickedpicker';
 import axios from "axios";
 import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { Patient } from '@interface/Patient/Patient.interface';
-import { Branch } from '@interface/Branch/Branch.interface';
 import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors.interface';
 import { ScheduleType } from '@interface/Schedule/ScheduleType.interface';
 import { ScheduleForm } from '@interface/Schedule/ScheduleForm.interface';
-import { PatientData } from '@data/Patient/Patient.data';
 import { Select } from '@interface/General/Select.interface';
-
+import {DatePicker} from 'v-calendar';
+import { ScheduleFormData } from '@data/Schedule/ScheduleForm.data';
 export default defineComponent({
     name: 'LateralScheduleComponent',
     components: {
+        DatePicker,
         SelectComponent: require('@component/general/select/SelectComponent.vue').default
     },
     props:
@@ -27,26 +26,28 @@ export default defineComponent({
             type: Object as PropType <Schedule> ,
             default: () => ScheduleData
         },
+        branchesList: {
+            type: Array as PropType<Select[]>,
+            default: []
+        },
         selectDate: null
     },
     emits: ['newSchedule', 'updateSchedule'],
     data()
     {
         return {
+            date: '',
             isPatientDisabled: true,
             isScheduleCategoryDisabled: true,
             isBranchDisabled: true,
             isDoctorDisabled: true,
             patientsList: [] as Select[],
-            branchesList: [] as Select[],
             doctorsList: [] as Select[],
             scheduleTypeList: [] as Select[],
-            formData: {} as ScheduleForm,
+            formData: ScheduleFormData,
             id: Math.floor(Math.random() * 5) + 1,
-            timeStart: {} as any,
             isButtonActivated: false as boolean,
             consultReasonCharLength: 0 as number,
-            aaa: 0
         };
     },
     watch:
@@ -54,7 +55,6 @@ export default defineComponent({
         selectDate(): void
         {
             $(`#scheduleDate${this.id}`).datepicker("setDate", this.selectDate );
-            this.formData.consult_schedule_start;
             this.formatScheduleDateTime();
         },
 
@@ -66,16 +66,15 @@ export default defineComponent({
                 consult_reason: this.schedule.consult_reason,
                 consult_schedule_start: moment(this.schedule.consult_schedule_start, 'YYYY-MM-DD HH:mm A').format('l LT'),
                 doctor_id: this.schedule.doctor_id,
-                medicalconsulttype_id: this.schedule.medicalconsulttype_id
+                medicalconsulttype_id: this.schedule.medicalconsulttype_id,
+                consult_schedule_finish: moment(this.schedule.consult_schedule_finish, 'YYYY-MM-DD HH:mm A').format('l LT'),
             }
 
-            this.getBranchList();
             if(this.formData.patient_id < 1)
             {
                 this.isScheduleCategoryDisabled = true;
                 this.isBranchDisabled = true;
                 this.isDoctorDisabled = true;
-                this.timeStart.wickedpicker('setTime', 0, '08:00');
             }
             else
             {
@@ -95,7 +94,6 @@ export default defineComponent({
                 }
                 $(`#scheduleDate${this.id}`).datepicker("setDate", new Date(this.schedule.consult_schedule_start) );
                 const time = moment(this.formData.consult_schedule_start, 'YYYY-MM-DD HH:mm A').format('HH:mm')
-                this.timeStart.wickedpicker('setTime', 0, time);
             }
 
         }
@@ -161,22 +159,6 @@ export default defineComponent({
                 console.log(error)
             })
         },
-        getBranchList(): void
-        {
-            axios.get < Branch[] > (`/sucursales`)
-            .then(response => {
-                this.branchesList = response.data.map(branch => {
-                    return {
-                        id: branch.id,
-                        text: branch.name,
-                        data: []
-                    }
-                });
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
         getDoctorsList(): void
         {
             console.log('dotco')
@@ -204,19 +186,20 @@ export default defineComponent({
         },
         createNewSchedule(): void
         {
-            axios.post('/consultas', {
-                data: {
-                    ...this.formData
-                }
-            })
-            .then(response => {
-                console.log(response);
-                this.$emit('newSchedule', response.data);
-                this.closeLateralSchedule()
-            })
-            .catch(error => {
-                console.log(error)
-            })
+            console.log(this.formData)
+            // axios.post('/consultas', {
+            //     data: {
+            //         ...this.formData
+            //     }
+            // })
+            // .then(response => {
+            //     console.log(response);
+            //     this.$emit('newSchedule', response.data);
+            //     this.closeLateralSchedule()
+            // })
+            // .catch(error => {
+            //     console.log(error)
+            // })
         },
         updateSchedule(): void
         {
@@ -267,11 +250,9 @@ export default defineComponent({
         },
         formatScheduleDateTime(): void
         {
-            const time = this.timeStart.wickedpicker('time');
             const date = moment($(`#scheduleDate${this.id}`).datepicker('getDate')).format('YYYY-MM-DD');
-            this.formData.consult_schedule_start = moment(date + ' ' + time, 'YYYY-MM-DD HH:mm A').format('MM/DD/YY LT');
-            console.log(this.formData.consult_schedule_start)
-            //this.formData.consult_schedule_start = moment(date + ' ' + time).unix();
+            this.formData.consult_schedule_start = moment(date + ' ' + this.formData.consult_schedule_start, 'YYYY-MM-DD HH:mm A').format('MM/DD/YY LT');
+            this.formData.consult_schedule_finish = moment(date + ' ' + this.formData.consult_schedule_finish, 'YYYY-MM-DD HH:mm A').format('MM/DD/YY LT');
         },
         updateConsultReasonCharLength(): void
         {
@@ -284,30 +265,21 @@ export default defineComponent({
     },
     mounted() {
         const self = this;
-        var $j = jQuery.noConflict();
-        this.timeStart = $j(`#scheduleTimeStart${this.id}`);
         const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
         overlay.addEventListener('click', () => self.closeLateralSchedule())
+
         $(`#scheduleDate${this.id}`).datepicker({
             changeMonth: true,
             changeYear: true,
             dateFormat: "dd/mm/yy",
-            yearRange: `1930:${new Date().getFullYear().toString()}`,
+            yearRange: `${new Date().getFullYear().toString()}:${new Date().getFullYear().toString()}`,
             onSelect() {
                 self.formatScheduleDateTime();
             }
         })
 
-        this.timeStart.wickedpicker({
-            title: 'Hora de cita',
-            now: "08:00",
-            minutesInterval: 30,
-            timeSeparator: ':',
-        })
-
         this.getPatientsList();
         this.isPatientDisabled = false;
-        this.getBranchList();
         this.getSchedulesCategories();
     },
 })

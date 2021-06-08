@@ -4,7 +4,7 @@
     </div>
     <schedule-action-component :schedule="scheduleSelected" @scheduleCanceled="updateSchedule">
     </schedule-action-component>
-    <lateral-schedule-component ref="openLateralSchedule" :selectDate="scheduleSelectDate" :schedule="scheduleSelected"
+    <lateral-schedule-component ref="openLateralSchedule" :branchesList="branchesList" :selectDate="scheduleSelectDate" :schedule="scheduleSelected"
         @updateSchedule="updateSchedule" @newSchedule="createNewSchedule"></lateral-schedule-component>
 </template>
 

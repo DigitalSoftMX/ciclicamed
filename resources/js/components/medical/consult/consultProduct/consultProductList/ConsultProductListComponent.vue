@@ -19,13 +19,13 @@
                         </div>
                     </div>
 
-                    <div class="card mt-30 spin-embadded border-0" v-bind:class="{'spin-active': loading}">
+                    <div class="card mt-30 spin-embadded border-0 shadow-none" v-bind:class="{'spin-active': loading}">
                         <div class="card-body p-0 border-0">
                             <div
                                 class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
                                 <div class="table-responsive  hide-y-overflow">
                                     <table
-                                        class="table mb-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
+                                        class="table mb-0 p-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
                                         data-sorting="true" data-paging-current="1" data-paging-position="right"
                                         data-paging-size="10" style="">
                                         <thead>

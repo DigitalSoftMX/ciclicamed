@@ -24,3 +24,7 @@ declare interface JQuery {
 declare interface JQuery {
     wickedpicker(options?: any): any;
 }
+
+declare interface JQuery {
+    timepicker(options?: any): any;
+}

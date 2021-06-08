@@ -21,10 +21,12 @@ export default defineComponent({
             branchSelected: 0,
             userSelected: 0,
             schedules: [] as Schedule[],
+            branchesList: [] as Select[],
             businessHours: [] as FullCalendarBusinessHour[]
         }
     },
     mounted() {
+        this.getBranchesList();
     },
     watch: {
     },
@@ -61,6 +63,22 @@ export default defineComponent({
                         daysOfWeek: days,
                         startTime: hour.start_time,
                         endTime: hour.finish_time
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        getBranchesList(): void
+        {
+            axios.get<Branch[]>(`/sucursales`)
+            .then(response => {
+                this.branchesList = response.data.map(branch => {
+                    return {
+                        id: branch.id,
+                        text: branch.name,
+                        data: []
                     }
                 });
             })

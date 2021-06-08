@@ -34,6 +34,10 @@ select {
 input,
 textarea,
 .form-control {
+    border-style: solid;
+    border-color: $gray-400;
+    border-width: 1px;
+    color: $input-color;
     transition: 0s;
 
     &:focus {

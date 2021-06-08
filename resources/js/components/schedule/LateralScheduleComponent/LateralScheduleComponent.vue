@@ -81,33 +81,17 @@
                     <!-- Cita -->
                     <div class="form-group mb-25">
                         <label>Hora de inicio</label>
-                        <div class="with-icon">
-                            <span class="mr-5">
-                                <img src="/svg/clock.svg" alt="Calendar logo">
-                            </span>
-                            <input type="text" class="form-control form-control-lg bg-white"
-                                :id="`scheduleTimeStart${id}`" readonly>
-                        </div>
+                        <date-picker mode="time" v-model="formData.consult_schedule_start"/>
                     </div>
 
                     <!-- Cita -->
                     <div class="form-group mb-25">
                         <label>Hora de conclusión</label>
-                        <div class="with-icon">
-                            <span class="mr-5">
-                                <img src="/svg/clock.svg" alt="Calendar logo">
-                            </span>
-                            <input type="text" class="form-control form-control-lg bg-white"
-                                :id="`scheduleTimeFinish${id}`" readonly>
-                        </div>
+                        <date-picker mode="time" v-model="formData.consult_schedule_finish"/>
                     </div>
 
                     <!-- Botones de Cancelar y guardar -->
                     <div class="button-group d-flex justify-content-end">
-                        <!-- <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
-                            v-on:click="closeLateralSchedule()" >
-                            Cancelar
-                        </button> -->
                         <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
                             v-if="schedule.id < 1" @click="createNewSchedule()">
                             Crear cita

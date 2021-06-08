@@ -3330,6 +3330,10 @@ select:active {
 input,
 textarea,
 .form-control {
+  border-style: solid;
+  border-color: #ced4da;
+  border-width: 1px;
+  color: #424242;
   transition: 0s;
 }
 input:focus,
@@ -12761,6 +12765,7 @@ table.table-basic tr td.card .card-body,
 
 .atbd-select {
   min-width: 110px;
+  border-color: #ced4da;
 }
 .atbd-select .select2-selection {
   height: 42px;

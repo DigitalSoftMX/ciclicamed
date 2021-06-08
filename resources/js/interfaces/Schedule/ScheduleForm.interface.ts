@@ -6,4 +6,5 @@ export interface ScheduleForm
     branch_id: number;
     consult_reason: string;
     consult_schedule_start: any;
+    consult_schedule_finish: any;
 }

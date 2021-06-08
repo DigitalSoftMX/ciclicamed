@@ -21,3 +21,33 @@
 {
     border-bottom-color: #60269E !important;
 }
+.vc-time-picker
+{
+    > :first-child
+    {
+        display: none !important;
+    }
+}
+.vc-time-date
+{
+    display: none !important;
+}
+.vc-select
+{
+    > select
+    {
+        background-color: #fff !important;
+        border: none !important;
+    }
+}
+.vc-am-pm
+{
+    background-color: #fff !important;
+    padding: 0 !important;
+
+    .active
+    {
+        background-color: #60269E !important;
+        border: none !important;
+    }
+}

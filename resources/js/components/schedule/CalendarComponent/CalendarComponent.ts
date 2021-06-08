@@ -12,6 +12,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarConfig } from '@config/FullCalendar.config';
 import { FullCalendarBusinessHour } from '@interface/General/FullCalendarBusinessHour.interface';
 import moment from 'moment';
+import { Select } from '@interface/General/Select.interface';
 
 export default defineComponent({
     name: 'CalendarComponent',
@@ -28,6 +29,10 @@ export default defineComponent({
         },
         businessHours: {
             type: Array as PropType<FullCalendarBusinessHour[]>,
+            default: []
+        },
+        branchesList: {
+            type: Array as PropType<Select[]>,
             default: []
         }
     },
@@ -52,7 +57,6 @@ export default defineComponent({
         businessHours()
         {
             this.calendarOptions.businessHours = [...this.businessHours];
-            console.log(this.businessHours, this.calendarOptions.businessHours)
         },
         schedules()
         {
@@ -133,6 +137,7 @@ export default defineComponent({
         {
             var isDateOnBusinessHour = this.businessHours.some(hours => hours.daysOfWeek.includes(moment(data.date).day()));
             if(moment().isSameOrBefore(data.date, 'days') && isDateOnBusinessHour)
+            // if(moment().isSameOrBefore(data.date, 'days'))
             {
                 this.scheduleSelectDate = data.date;
                 this.scheduleSelected = ScheduleData;

@@ -7,49 +7,49 @@
                 </div>
                 <div class="card-body row mx-0">
                     <div class="col-12 col-sm-6 col-md-3 col-xl-4 mb-25">
-                        <div class="card" @click="openProductListModal('cirugia', 'Cirugías')">
+                        <div class="card shadow-none border" @click="openProductListModal('cirugia', 'Cirugías')">
                             <div class="card-body text-center">
-                                <img class="mb-10 w-25" src="/svg/pdf.svg" alt="Cirugía">
+                                <img class="mb-10 w-25" src="/svg/cirugia.svg" alt="Cirugía">
                                 <p class="m-0">Cirugías</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-3 col-xl-4 mb-25">
-                        <div class="card" @click="openProductListModal('histeroscopia', 'Histeroscopía')">
+                        <div class="card shadow-none border" @click="openProductListModal('histeroscopia', 'Histeroscopía')">
                             <div class="card-body text-center">
-                                <img class="mb-10 w-25" src="/svg/pdf.svg" alt="Histeroscopía">
+                                <img class="mb-10 w-25" src="/svg/histeroscopia.svg" alt="Histeroscopía">
                                 <p class="m-0">Histeroscopía</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-3 col-xl-4 mb-25">
-                        <div class="card" @click="openProductListModal('ciclica', 'Cíclica')">
+                        <div class="card shadow-none border" @click="openProductListModal('ciclica', 'Cíclica')">
                             <div class="card-body text-center">
-                                <img class="mb-10 w-25" src="/svg/pdf.svg" alt="Cíclica">
+                                <img class="mb-10 w-25" src="/svg/ciclica.svg" alt="Cíclica">
                                 <p class="m-0">Cíclica</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-3 col-xl-4 mb-25">
-                        <div class="card" @click="openProductListModal('imagenologia', 'Imagenología')">
+                        <div class="card shadow-none border" @click="openProductListModal('imagenologia', 'Imagenología')">
                             <div class="card-body text-center">
-                                <img class="mb-10 w-25" src="/svg/pdf.svg" alt="Imagenología">
+                                <img class="mb-10 w-25" src="/svg/imagenologia.svg" alt="Imagenología">
                                 <p class="m-0">Imagenología</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-3 col-xl-4 mb-25">
-                        <div class="card" @click="openProductListModal('laboratorio', 'Laboratorio')">
+                        <div class="card shadow-none border" @click="openProductListModal('laboratorio', 'Laboratorio')">
                             <div class="card-body text-center">
-                                <img class="mb-10 w-25" src="/svg/pdf.svg" alt="Laboratorio">
+                                <img class="mb-10 w-25" src="/svg/laboratorio.svg" alt="Laboratorio">
                                 <p class="m-0">Laboratorio</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-3 col-xl-4 mb-25">
-                        <div class="card" @click="openProductListModal('farmacia', 'Farmacia')">
+                        <div class="card shadow-none border" @click="openProductListModal('farmacia', 'Farmacia')">
                             <div class="card-body text-center">
-                                <img class="mb-10 w-25" src="/svg/pdf.svg" alt="Farmacia">
+                                <img class="mb-10 w-25" src="/svg/farmacia.svg" alt="Farmacia">
                                 <p class="m-0">Farmacia</p>
                             </div>
                         </div>
