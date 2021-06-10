@@ -7,6 +7,6 @@ export const ScheduleFormData: ScheduleForm = {
     medicalconsulttype_id: -1,
     branch_id: -1,
     consult_reason: '',
-    consult_schedule_start: '',
-    consult_schedule_finish: ''
+    consult_schedule_start: moment().format('MM/DD/YY LT'),
+    consult_schedule_finish: moment().format('MM/DD/YY LT')
 }

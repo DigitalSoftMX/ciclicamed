@@ -49,6 +49,7 @@ export default defineComponent({
             schedulesCopy: Object.assign([], ...this.schedules) as Schedule[],
             scheduleSelected: ScheduleData,
             scheduleSelectDate: {} as Date,
+            hoursEnabled: [] as FullCalendarBusinessHour[],
         }
     },
     mounted() {
@@ -135,9 +136,10 @@ export default defineComponent({
         },
         fullcalendarDateClick(data: any)
         {
-            var isDateOnBusinessHour = this.businessHours.some(hours => hours.daysOfWeek.includes(moment(data.date).day()));
-            if(moment().isSameOrBefore(data.date, 'days') && isDateOnBusinessHour)
-            // if(moment().isSameOrBefore(data.date, 'days'))
+            const  dayOfWeek = moment(data.date).day();
+            this.hoursEnabled = this.businessHours.filter(hours => hours.daysOfWeek.includes(dayOfWeek));
+            // if(moment().isSameOrBefore(data.date, 'days') && this.hoursEnabled.length > 0)
+            if(moment().isSameOrBefore(data.date, 'days'))
             {
                 this.scheduleSelectDate = data.date;
                 this.scheduleSelected = ScheduleData;

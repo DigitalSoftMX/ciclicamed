@@ -10,24 +10,33 @@ import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { Patient } from '@interface/Patient/Patient.interface';
 import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors.interface';
 import { ScheduleType } from '@interface/Schedule/ScheduleType.interface';
-import { ScheduleForm } from '@interface/Schedule/ScheduleForm.interface';
 import { Select } from '@interface/General/Select.interface';
 import {DatePicker} from 'v-calendar';
 import { ScheduleFormData } from '@data/Schedule/ScheduleForm.data';
+
+import LightVueTimepicker from 'light-vue-timepicker';
+import { FullCalendarBusinessHour } from '@interface/General/FullCalendarBusinessHour.interface';
+
 export default defineComponent({
     name: 'LateralScheduleComponent',
     components: {
         DatePicker,
+        LightVueTimepicker,
+        TimePickerComponent: require('@component/general/timePicker/TimePickerComponent.vue').default,
         SelectComponent: require('@component/general/select/SelectComponent.vue').default
     },
     props:
     {
         schedule: {
-            type: Object as PropType <Schedule> ,
-            default: () => ScheduleData
+            type: Object as PropType <Schedule>,
+            default: ScheduleData
         },
         branchesList: {
             type: Array as PropType<Select[]>,
+            default: []
+        },
+        hourConfig: {
+            type: Object as PropType<FullCalendarBusinessHour[]>,
             default: []
         },
         selectDate: null
@@ -36,7 +45,6 @@ export default defineComponent({
     data()
     {
         return {
-            date: '',
             isPatientDisabled: true,
             isScheduleCategoryDisabled: true,
             isBranchDisabled: true,
@@ -48,26 +56,35 @@ export default defineComponent({
             id: Math.floor(Math.random() * 5) + 1,
             isButtonActivated: false as boolean,
             consultReasonCharLength: 0 as number,
+            hoursEnabled: [] as string[],
+            minutesEnabled: [] as string[],
         };
     },
     watch:
     {
+        hourConfig()
+        {
+            this.hoursEnabled = [];
+            this.hourConfig.map(item => {
+                this.hoursEnabled.push(`${ item.startTime.split(':')[0] }-${ item.endTime.split(':')[0] }`);
+            });
+        },
         selectDate(): void
         {
             $(`#scheduleDate${this.id}`).datepicker("setDate", this.selectDate );
             this.formatScheduleDateTime();
         },
-
         schedule(): void
         {
+            console.log(this.schedule.consult_schedule_finish);
             this.formData = {
                 patient_id: this.schedule.patient_id,
                 branch_id: this.schedule.branch_id,
                 consult_reason: this.schedule.consult_reason,
-                consult_schedule_start: moment(this.schedule.consult_schedule_start, 'YYYY-MM-DD HH:mm A').format('l LT'),
+                consult_schedule_start: this.schedule.consult_schedule_start,
                 doctor_id: this.schedule.doctor_id,
                 medicalconsulttype_id: this.schedule.medicalconsulttype_id,
-                consult_schedule_finish: moment(this.schedule.consult_schedule_finish, 'YYYY-MM-DD HH:mm A').format('l LT'),
+                consult_schedule_finish: this.schedule.consult_schedule_finish,
             }
 
             if(this.formData.patient_id < 1)
@@ -161,7 +178,6 @@ export default defineComponent({
         },
         getDoctorsList(): void
         {
-            console.log('dotco')
             axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${this.formData.branch_id}/especialidades/doctores`)
             .then(response => {
                 const doctorFilter = response.data.filter((list: BranchSpecialtyDoctors) => list.doctors.length > 0);
@@ -246,13 +262,18 @@ export default defineComponent({
             }
         },
         formatScheduleTime(datetime: string): string {
-            return moment(datetime, 'YYYY-MM-DD HH:mm A').format('hh:mm A');
+            console.log(datetime)
+            return moment(datetime).format('hh:mm');
         },
         formatScheduleDateTime(): void
         {
             const date = moment($(`#scheduleDate${this.id}`).datepicker('getDate')).format('YYYY-MM-DD');
-            this.formData.consult_schedule_start = moment(date + ' ' + this.formData.consult_schedule_start, 'YYYY-MM-DD HH:mm A').format('MM/DD/YY LT');
-            this.formData.consult_schedule_finish = moment(date + ' ' + this.formData.consult_schedule_finish, 'YYYY-MM-DD HH:mm A').format('MM/DD/YY LT');
+            this.formData.consult_schedule_start = moment(date).set('hour',moment(this.formData.consult_schedule_start).hours()).format('MM/DD/YY LT');;
+            this.formData.consult_schedule_start = moment(date).set('minutes',moment(this.formData.consult_schedule_start).minutes()).format('MM/DD/YY LT');;
+
+
+            // this.formData.consult_schedule_start = moment(date + ' ' + moment(this.formData.consult_schedule_start).format('HH:mm'), 'YYYY-MM-DD HH:mm').format('MM/DD/YY LT');
+            // this.formData.consult_schedule_finish = moment(date + ' ' + this.formData.consult_schedule_finish).format('MM/DD/YY LT');
         },
         updateConsultReasonCharLength(): void
         {
@@ -266,13 +287,14 @@ export default defineComponent({
     mounted() {
         const self = this;
         const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
-        overlay.addEventListener('click', () => self.closeLateralSchedule())
+        overlay.addEventListener('click', () => self.closeLateralSchedule());
+        const actualYear = new Date().getFullYear().toString();
 
         $(`#scheduleDate${this.id}`).datepicker({
             changeMonth: true,
             changeYear: true,
             dateFormat: "dd/mm/yy",
-            yearRange: `${new Date().getFullYear().toString()}:${new Date().getFullYear().toString()}`,
+            yearRange: `${actualYear}:${actualYear}`,
             onSelect() {
                 self.formatScheduleDateTime();
             }

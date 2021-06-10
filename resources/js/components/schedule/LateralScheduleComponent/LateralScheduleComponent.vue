@@ -79,15 +79,18 @@
                     </div>
 
                     <!-- Cita -->
-                    <div class="form-group mb-25">
+                    <div class="form-group mb-25 time-select">
                         <label>Hora de inicio</label>
-                        <date-picker mode="time" v-model="formData.consult_schedule_start"/>
+                        <time-picker-component :hourRange="hoursEnabled" v-model="formData.consult_schedule_start"></time-picker-component>
+                        <!-- <light-vue-timepicker v-model="formData.consult_schedule_start" :hourRange="hoursEnabled"></light-vue-timepicker> -->
+                        <!-- <date-picker mode="time" v-model="formData.consult_schedule_start" :model-config="hourConfig"/> -->
                     </div>
 
                     <!-- Cita -->
-                    <div class="form-group mb-25">
+                    <div class="form-group mb-25 time-select">
                         <label>Hora de conclusión</label>
-                        <date-picker mode="time" v-model="formData.consult_schedule_finish"/>
+                        <time-picker-component :hourRange="hoursEnabled" v-model="formData.consult_schedule_finish"></time-picker-component>
+                        <!-- <light-vue-timepicker v-model="formData.consult_schedule_finish"></light-vue-timepicker> -->
                     </div>
 
                     <!-- Botones de Cancelar y guardar -->

@@ -23,12 +23,14 @@ class EmployeeScheduleFactory extends Factory
     {
         $dateStart = $this->faker->numberBetween(0, 3);
         $dateFinish = $this->faker->numberBetween(4, 7);
+        $hourStart = '0'.$this->faker->numberBetween(8, 9).':'.$this->faker->numberBetween(0, 5).$this->faker->numberBetween(0, 9).':00';
+        $hourFinish = $this->faker->numberBetween(12, 20).':'.$this->faker->numberBetween(0, 5).$this->faker->numberBetween(0, 9).':00';
         return [
             'employee_id' => $this->faker->numberBetween(1, 50),
             'start_day' => $dateStart,
-            'start_time' => $this->faker->time('h:m:s'),
+            'start_time' => $hourStart,
             'finish_day' => $dateFinish,
-            'finish_time' => $this->faker->time('h:m:s'),
+            'finish_time' => $hourFinish,
             'branch_id' => $this->faker->numberBetween(1, 15),
         ];
     }

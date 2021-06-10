@@ -18,7 +18,7 @@ export default defineComponent({
     props: {
         schedule: {
             type: Object as PropType<Schedule>,
-            default: () => ScheduleData
+            default: ScheduleData
         },
     },
     data() {
@@ -42,7 +42,7 @@ export default defineComponent({
     },
     methods: {
         formatScheduleTime(datetime: string): string {
-            return moment(datetime).format('hh:mm A');
+            return moment(datetime).format('hh:mm');
         },
         formatScheduleDate(datetime: string): string {
             return moment(datetime).format('D [de] MMMM [del] YYYY');

@@ -28,3 +28,6 @@ declare interface JQuery {
 declare interface JQuery {
     timepicker(options?: any): any;
 }
+
+
+declare module 'light-vue-timepicker';
