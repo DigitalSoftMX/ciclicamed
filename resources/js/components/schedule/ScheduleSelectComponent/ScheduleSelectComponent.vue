@@ -26,10 +26,9 @@
                 <label>Doctor</label>
                 <select-component
                     id="sscDoctor"
-                    :data="usersList"
+                    :data="doctorList"
                     v-model="userSelected"
-                    firstText='Seleccione un doctor'
-                    :isGroup="true">
+                    firstText='Seleccione un doctor'>
                 </select-component>
             </div>
         </div>

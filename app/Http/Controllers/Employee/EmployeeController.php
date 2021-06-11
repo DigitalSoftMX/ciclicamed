@@ -67,19 +67,4 @@ class EmployeeController extends Controller
         ];
         return response()->json($response);
     }
-
-    public function getSchedules($id, $branch)
-    {
-        $schedules = MedicalConsult::where('doctor_id', $id)->where('branch_id', $branch)
-                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsulttype_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
-                                ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
-        //broadcast(new ScheduleEvent($patient));
-        return response()->json($schedules);
-    }
-
-    public function getBusinessHours($id, $branch)
-    {
-        $schedules = EmployeeSchedule::where('employee_id', $id)->where('branch_id', $branch)->get();
-        return response()->json($schedules);
-    }
 }

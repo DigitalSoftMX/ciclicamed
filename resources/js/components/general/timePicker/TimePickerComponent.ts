@@ -3,7 +3,7 @@ import moment from 'moment';
 import { PropType } from 'vue';
 
 export default defineComponent({
-    emits: ['update:modelValue'],
+    emits: ['update:modelValue', 'onChange'],
     props: {
         hourRange: {
             type: Array as PropType<string[]>,
@@ -15,7 +15,7 @@ export default defineComponent({
         },
         modelValue: {
             type: String,
-            default: moment().format('MM/DD/YY LT')
+            default: moment().format('YYYY-MM-DD HH:mm:00')
         },
     },
     data() {
@@ -28,7 +28,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log(this.modelValue)
         this.hourEnabled = this.orderNumbers(this.hourRange);
         this.minuteEnabled = this.orderNumbers(this.minuteRange);
     },
@@ -42,10 +41,9 @@ export default defineComponent({
             this.minuteEnabled = this.orderNumbers(this.minuteRange);
         },
         modelValue() {
-            console.log(this.modelValue)
             this.hourSelected = this.convertToString(moment(this.modelValue).hours());
             this.minuteSelected = this.convertToString(moment(this.modelValue).minutes());
-            this.date = moment(this.modelValue).format('MM/DD/YY');
+            this.date = moment(this.modelValue).format('YYYY-MM-DD');
         }
     },
     methods: {
@@ -65,20 +63,18 @@ export default defineComponent({
         {
             return number < 10 ? `0${number}` : number.toString();
         },
-        updateHour(event: Event)
+        updateTime(event: Event, isHourUpdated: boolean)
         {
+            
             const time = (event.target as HTMLSelectElement);
-            this.hourSelected = time.value;
-            const dateTime = moment(`${this.date} ${this.hourSelected}:${this.minuteSelected}`, 'MM/DD/YY HH:mm').format('MM/DD/YY LT');
+            this.hourSelected = isHourUpdated ? time.value: this.hourSelected;
+            this.minuteSelected = !isHourUpdated ? time.value: this.minuteSelected;
+            const dateTime = moment(this.date)
+                                .set('hours', Number(this.hourSelected))
+                                .set('minutes', Number(this.minuteSelected))
+                                .format('YYYY-MM-DD HH:mm:00');
             this.$emit('update:modelValue', dateTime);
+            this.$emit('onChange', isHourUpdated);
         },
-        updateMinute(event: Event)
-        {
-            const time = (event.target as HTMLSelectElement);
-            this.minuteSelected = time.value;
-            const dateTime = moment(`${this.date} ${this.hourSelected}:${this.minuteSelected}`, 'MM/DD/YY HH:mm').format('MM/DD/YY LT');
-            this.$emit('update:modelValue', dateTime);
-            console.log(this.minuteSelected)
-        }
     },
 })

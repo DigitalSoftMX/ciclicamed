@@ -48,16 +48,15 @@ class MedicalConsultController extends Controller
             'medicalconsulttype_id' => $request->input('data.medicalconsulttype_id'),
             'consult_reason' => $request->input('data.consult_reason'),
             'consult_schedule_start' => Carbon::parse($request->input('data.consult_schedule_start')),
-            'consult_schedule_finish' => Carbon::parse($request->input('data.consult_schedule_start')),
+            'consult_schedule_finish' => Carbon::parse($request->input('data.consult_schedule_finish')),
             'branch_id' => $request->input('data.branch_id'),
             'medicalconsultstatus_id' => 1,
         ]);
         $consult->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
-        return $consult;
+        return  response()->json($consult);
 
         //Todo
         // Revisar si existe una cita ya creada con anterioridad que coincida con la hora ocupada
-        // Agregar el tiempo de finalizacion de la cita automaticamente de acuerdo a tipo de cita
         // Agregar verificaciones de request
         // Revisar el envio de tiempo y conversion de Carbon
     }
@@ -71,7 +70,7 @@ class MedicalConsultController extends Controller
             'medicalconsulttype_id' => $request->input('data.medicalconsulttype_id'),
             'consult_reason' => $request->input('data.consult_reason'),
             'consult_schedule_start' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
-            'consult_schedule_finish' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
+            'consult_schedule_finish' => Carbon::createFromTimestamp($request->input('data.consult_schedule_finish')),
             'branch_id' => $request->input('data.branch_id'),
             'medicalconsultstatus_id' => 1,
         ]);

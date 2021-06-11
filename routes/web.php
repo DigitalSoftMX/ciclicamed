@@ -32,10 +32,21 @@ Auth::routes();
 Route::get('/', [LoginController::class, 'loginForm'])->name('login.login');
 
 Route::group(['middleware' => 'auth'], function() {
+
+    // Vistas
+    Route::get('test/{id}', function() {
+        return view('test');
+    } );
+
+    Route::get('agenda', function() {
+        return view('agenda');
+    } );
+
+
     // Route::resource('usuarios', UserController::class);
     Route::resource('pacientes', PatientController::class);
 
-
+    // Usuarios
     Route::group(['prefix' => 'usuarios'], function() {
         Route::get('/{id}/perfil', [UserController::class, 'show'])->name('usuarios.show');
         Route::get('/{id}/recetas', [PatientController::class, 'showMedicalPrescriptions'])->name('usuarios.medicalPrescription');
@@ -45,6 +56,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/pacientes', [UserController::class, 'getPatientsTable'])->name('usuarios.pacientes'); //NOTA PASAR A GRUPO PACIENTES
     });
 
+    // Consultas
     Route::group(['prefix' => 'consultas'], function() {
         Route::post('/', [MedicalConsultController::class, 'store'])->name('consulta.nueva');
         Route::get('/categorias', [MedicalConsultController::class, 'getConsultTypes'])->name('consulta.categorias');
@@ -62,15 +74,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('/{id}/estudios', [MedicalConsultController::class, 'createTest'])->name('consulta.estudio.crear');
     });
 
-    Route::get('test/{id}', function() {
-        return view('test');
-    } );
-
-    Route::get('agenda', function() {
-        return view('agenda');
-    } );
-
-
+    
+    //Imagenes
     Route::get('/images/users/{id}', function ($id) {
         $storage = storage_path('app/user/patient/photo/'.$id.'');
         return file_exists($storage) ? Image::make($storage)->response() : response()->view('errors.404',[], 404);
@@ -81,6 +86,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'sucursales'], function() {
         Route::get('/', [BranchController::class, 'getAllBranches'])->name('sucursal.sucursales');
         Route::get('/{id}/especialidades/doctores', [BranchController::class, 'getDoctorsAllSpecialties'])->name('sucursal.especialidades');
+        Route::get('/{id}/empleados/{employeeID}/agenda', [BranchController::class, 'getSchedules'])->name('sucursales.empleados.agenda');
+        Route::get('/{id}/empleados/{employeeID}/horarios', [BranchController::class, 'getBusinessHours'])->name('sucursales.empleados.horarios');
     });
 
 
@@ -98,8 +105,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'empleados'], function() {
         Route::get('/', [EmployeeController::class, 'getAllEmployees'])->name('empleados.todos');
         Route::get('/{idDoctor}/consulta/{idConsult}', [EmployeeController::class, 'getDoctorConsult'])->name('doctores.consulta');
-        Route::get('/{id}/sucursal/{branch}/agenda', [EmployeeController::class, 'getSchedules'])->name('empleados.agenda');
-        Route::get('/{id}/sucursal/{branch}/horarios', [EmployeeController::class, 'getBusinessHours'])->name('empleados.horarios');
     });
 
     //Productos

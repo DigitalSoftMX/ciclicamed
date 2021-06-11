@@ -16,18 +16,3 @@ declare interface JQuery {
 declare interface JQuery {
     footable(options?: any): any;
 }
-
-declare interface JQuery {
-    customScrollbar(options?: any): any;
-}
-
-declare interface JQuery {
-    wickedpicker(options?: any): any;
-}
-
-declare interface JQuery {
-    timepicker(options?: any): any;
-}
-
-
-declare module 'light-vue-timepicker';

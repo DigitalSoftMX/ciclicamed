@@ -1,5 +1,6 @@
 export interface ScheduleForm
 {
+    id?: number;
     patient_id: number;
     doctor_id: number;
     medicalconsulttype_id: number;
@@ -7,4 +8,5 @@ export interface ScheduleForm
     consult_reason: string;
     consult_schedule_start: any;
     consult_schedule_finish: any;
+    medicalspecialty_id: number;
 }

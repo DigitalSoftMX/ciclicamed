@@ -1,3 +1,4 @@
+import { SelectData } from '@data/General/SelectSelected.data';
 import { Select } from '@interface/General/Select.interface';
 import { defineComponent } from '@vue/runtime-core';
 import $ from 'jquery';
@@ -25,8 +26,8 @@ export default defineComponent({
             default: ''
         },
         modelValue: {
-            type: Number,
-            default: 1
+            type: Object as PropType<Select>,
+            default: SelectData
         },
         isGroup: {
             type: Boolean,
@@ -34,24 +35,58 @@ export default defineComponent({
         }
     },
     watch: {
+        data() {
+            $(`#${this.id}`).empty();
+            $(`#${this.id}`).select2({
+                data: [
+                    {
+                        id: -1,
+                        text: this.firstText,
+                        disabled: true
+                    },
+                    ...this.data
+                ]
+            });
+            $(`#${this.id}`).val('-1').trigger('change');
+        },
         localValue() {
             this.$emit('update:modelValue', this.localValue);
         },
-        modelValue() {
-            this.localValue = this.modelValue; 
-            $(`#${this.id}`).val(this.modelValue).trigger('change');
+        modelValue: {
+            handler()
+            {
+                this.localValue = this.modelValue;
+                console.log(this.localValue)
+                $(`#${this.id}`).val(this.localValue.id).trigger('change');
+            },
+            deep: true,
         }
     },
     data() {
         return {
-            localValue: this.modelValue
+            localValue: this.modelValue,
         };
     },
     mounted() {
         const self = this;
-        $(`#${this.id}`).select2();
-        $(`#${this.id}`).on('select2:select', function () {
-            self.localValue = Number($(`#${self.id}`).select2('data')[0].id);
+        $(`#${this.id}`).select2({
+            data: [
+                {
+                    id: -1,
+                    text: this.firstText,
+                    disabled: true
+                },
+                ...this.data
+            ]
+        });
+        $(`#${this.id}`).val('-1').trigger('change');
+        $(`#${this.id}`).on('select2:select', function (event: any) {
+            self.localValue = {
+                id: Number(event.params.data.id),
+                text: '',
+                childID: Number(event.params.data.childID),
+                parentID: Number(event.params.data.parentID)
+            }
             self.$emit('onChange');
         });
     },

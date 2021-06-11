@@ -22,6 +22,7 @@ export default defineComponent({
         LateralScheduleComponent: require('../LateralScheduleComponent/LateralScheduleComponent.vue').default,
         
     },
+    emits: ['onNewSchedule', 'onSelectedSchedule'],
     props: {
         schedules: {
             type: Array as PropType<Schedule[]>,
@@ -136,16 +137,7 @@ export default defineComponent({
         },
         fullcalendarDateClick(data: any)
         {
-            const  dayOfWeek = moment(data.date).day();
-            this.hoursEnabled = this.businessHours.filter(hours => hours.daysOfWeek.includes(dayOfWeek));
-            // if(moment().isSameOrBefore(data.date, 'days') && this.hoursEnabled.length > 0)
-            if(moment().isSameOrBefore(data.date, 'days'))
-            {
-                this.scheduleSelectDate = data.date;
-                this.scheduleSelected = ScheduleData;
-                const lateral = this.$refs.openLateralSchedule as DefineComponent;
-                lateral.openLateralSchedule();
-            }
+            this.$emit('onNewSchedule', data.date);
         },
         fullcalendarEventClick(data: any)
         {
