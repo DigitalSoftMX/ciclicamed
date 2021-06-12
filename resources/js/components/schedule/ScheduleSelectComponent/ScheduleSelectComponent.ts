@@ -1,15 +1,12 @@
 import { SelectData } from '@data/General/SelectSelected.data';
-import { Branch } from '@interface/Branch/Branch.interface';
-import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors.interface';
 import { Select } from '@interface/General/Select.interface';
-import { defineComponent } from '@vue/runtime-core';
-import axios from 'axios';
+import { defineAsyncComponent, defineComponent } from '@vue/runtime-core';
 import { PropType } from 'vue';
 
 export default defineComponent({
     name: 'ScheduleSelectComponent',
     components: {
-        SelectComponent: require('@component/general/select/SelectComponent.vue').default,
+        SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue'))
     },
     emits: ['onBranchSelected', 'onDoctorSelected'],
     props: {

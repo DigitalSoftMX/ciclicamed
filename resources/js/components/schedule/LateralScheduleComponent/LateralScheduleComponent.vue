@@ -27,7 +27,7 @@
                     <!-- Tipo de cita -->
                     <div class="form-group">
                         <label for="lscCategoria">Tipo de cita</label>
-                        <select-component id="lscCategoria" :data="categoryList"
+                        <select-component id="lscCategoria" :data="categoryList" :disabled="isScheduleCategoryDisabled"
                             v-model="categorySelect" firstText='Seleccione un tipo de cita'>
                         </select-component>
                     </div>
@@ -35,14 +35,14 @@
                     <!-- Sucursal -->
                     <div class="form-group mb-25">
                         <label for="lscSucursal">Sucursal</label>
-                        <select-component id="lscSucursal" :data="branchesList" v-model="branchSelect"
+                        <select-component id="lscSucursal" :data="branchesList" v-model="branchSelect" :disabled="isBranchDisabled"
                             firstText='Seleccione una sucursal'></select-component>
                     </div>
 
                     <!-- Doctor -->
                     <div class="form-group mb-25">
                         <label for="lscDoctor">Doctor</label>
-                        <select-component id="lscDoctor" :data="doctorsList" v-model="doctorSelect" firstText='Seleccione un doctor'>
+                        <select-component id="lscDoctor" :data="doctorListCopy" v-model="doctorSelect" :disabled="isDoctorDisabled" firstText='Seleccione un doctor'>
                         </select-component>
                     </div>
 
@@ -91,7 +91,7 @@
                     </div>
 
                     <!-- Botones de Cancelar y guardar -->
-                    <!-- <div class="button-group d-flex justify-content-end">
+                    <div class="button-group d-flex justify-content-end">
                         <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
                             v-if="schedule.id < 1" @click="createNewSchedule()">
                             Crear cita
@@ -100,10 +100,10 @@
                             @click="updateSchedule()">
                             Actualizar cita
                         </button>
-                    </div> -->
+                    </div>
 
                     <!-- Tarjeta de cita -->
-                    <!-- <div class="card rounded-0 lateralCardColor mt-25" v-if="schedule.id > 0">
+                    <div class="card rounded-0 lateralCardColor mt-25" v-if="schedule.id > 0">
                         <div class="card-body py-2 px-3">
                             <h6 class="text-primary mb-1">
                                 {{ patientsList[scheduleSelectedCopy.patient_id].text }}
@@ -112,7 +112,7 @@
                                 {{ `${formatScheduleTime(this.scheduleSelectedCopy.consult_schedule_start)} - ${formatScheduleTime(this.scheduleSelectedCopy.consult_schedule_finish)}` }}
                             </p>
                         </div>
-                    </div> -->
+                    </div>
 
                 </div>
             </div>

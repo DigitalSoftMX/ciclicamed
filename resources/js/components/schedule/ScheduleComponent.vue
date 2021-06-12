@@ -6,11 +6,11 @@
         </div>
         <div class="col-12 col-md-8 col-xl-9">
             <calendar-componet :branchesList="branchesList" :schedules="schedules" :businessHours="businessHours"
-                @onNewSchedule="updateScheduleSelected"></calendar-componet>
+                @onNewSchedule="copyScheduleData" @onSelectedSchedule="getScheduleSelected"></calendar-componet>
         </div>
     </div>
 
-    <schedule-action-component></schedule-action-component>
+    <schedule-action-component :schedule="scheduleSelected"></schedule-action-component>
     <lateral-schedule-component
         ref="openLateralSchedule"
         :schedule="scheduleSelected" :branchesList="branchesList"

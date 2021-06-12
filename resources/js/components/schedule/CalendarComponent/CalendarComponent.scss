@@ -192,6 +192,10 @@
     text-transform: capitalize !important;
 }
 
+.fc-scroller
+{
+    overflow: hidden !important;
+}
 @media (max-width: 720px) {
     .fc-toolbar
     {

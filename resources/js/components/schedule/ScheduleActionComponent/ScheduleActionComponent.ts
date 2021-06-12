@@ -1,6 +1,6 @@
 import { defineComponent } from '@vue/runtime-core';
 import moment from 'moment';
-import { DefineComponent, PropType } from 'vue';
+import { defineAsyncComponent, DefineComponent, PropType } from 'vue';
 moment.locale('es');
 import axios from 'axios';
 import { Schedule } from '@interface/Schedule/Schedule.interface';
@@ -10,9 +10,9 @@ import $ from 'jquery';
 
 export default defineComponent({
     components: {
-        'LateralScheduleComponent': require('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue').default,
-        'SuccessAlertComponent': require('@component/general/alert/SuccessAlertComponent.vue').default,
-        'ErrorAlertComponent': require('@component/general/alert/ErrorAlertComponent.vue').default
+        'LateralScheduleComponent': defineAsyncComponent(() => import('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue')),
+        'SuccessAlertComponent': defineAsyncComponent(() => import('@component/general/alert/SuccessAlertComponent.vue')),
+        'ErrorAlertComponent': defineAsyncComponent(() => import('@component/general/alert/ErrorAlertComponent.vue'))
     },
     emits: ['scheduleCanceled', ''],
     props: {
@@ -34,10 +34,15 @@ export default defineComponent({
           })
     },
     watch: {
-        schedule()
+        schedule:
         {
-            this.showCancelOption();
-            this.showEditOption();
+            handler()
+            {
+                console.log(this.schedule)
+                this.showCancelOption();
+                this.showEditOption();
+            },
+            deep: true,
         }
     },
     methods: {

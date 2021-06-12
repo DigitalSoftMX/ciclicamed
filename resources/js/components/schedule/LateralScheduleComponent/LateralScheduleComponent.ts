@@ -1,5 +1,5 @@
 import { defineComponent } from '@vue/runtime-core';
-import { DefineComponent, PropType } from 'vue';
+import { defineAsyncComponent, PropType } from 'vue';
 import moment from 'moment';
 moment.locale('es');
 import $ from 'jquery';
@@ -7,23 +7,18 @@ import 'jquery-ui-bundle';
 import axios from "axios";
 import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleData } from '@data/Schedule/Schedule.data';
-import { Patient } from '@interface/Patient/Patient.interface';
 import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors.interface';
-import { ScheduleType } from '@interface/Schedule/ScheduleType.interface';
 import { Select } from '@interface/General/Select.interface';
 import { DatePicker } from 'v-calendar';
-
 import { FullCalendarBusinessHour } from '@interface/General/FullCalendarBusinessHour.interface';
 import { SelectData } from '@data/General/SelectSelected.data';
-import { ScheduleForm } from '@interface/Schedule/ScheduleForm.interface';
-import { ScheduleFormData } from '@data/Schedule/ScheduleForm.data';
 
 export default defineComponent({
     name: 'LateralScheduleComponent',
     components: {
         DatePicker,
-        TimePickerComponent: require('@component/general/timePicker/TimePickerComponent.vue').default,
-        SelectComponent: require('@component/general/select/SelectComponent.vue').default
+        TimePickerComponent: defineAsyncComponent(() => import('@component/general/timePicker/TimePickerComponent.vue')),
+        SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue'))
     },
     emits: ['newSchedule', 'updateSchedule'],
     props:
@@ -52,28 +47,28 @@ export default defineComponent({
             type: Object as PropType<FullCalendarBusinessHour[]>,
             default: []
         },
-        selectDate: null
     },
     data()
     {
         return {
             id: Math.floor(Math.random() * 5) + 1,
             scheduleSelectedCopy: Object.assign({}, this.schedule),
-            isPatientDisabled: true,
             startHoursEnabled: [] as string[],
             startMinutesEnabled: ['0-59'],
             finishHoursEnabled: [] as string[],
             finishMinutesEnabled: ['0-59'],
-            isScheduleCategoryDisabled: true,
             patientSelect: SelectData,
             categorySelect: SelectData,
             branchSelect: SelectData,
             doctorSelect: SelectData,
             consultReasonCharLength: 0 as number,
-            // isBranchDisabled: true,
-            // isDoctorDisabled: true,
-            // scheduleTypeList: [] as Select[],
-            // isButtonActivated: false as boolean,
+            scheduleTypeList: [] as Select[],
+            isButtonActivated: false,
+            isPatientDisabled: false,
+            isScheduleCategoryDisabled: false,
+            isBranchDisabled: false,
+            isDoctorDisabled: false,
+            doctorListCopy: Object.assign([], ...this.doctorsList)
         };
     },
     watch:
@@ -82,9 +77,11 @@ export default defineComponent({
             handler()
             {
                 this.scheduleSelectedCopy = Object.assign({}, this.schedule);
+                this.doctorListCopy = Object.assign([], this.doctorsList);
                 $(`#scheduleDate${this.id}`).datepicker("setDate", new Date(this.scheduleSelectedCopy.consult_schedule_start) );
                 this.updateStartMinute(true);
-                this.branchSelect.id = this.branchesList.filter(branch => branch.childID === this.scheduleSelectedCopy.branch_id)[0].id;
+                this.branchSelect = getBranchPosition(this.branchesList,  this.scheduleSelectedCopy.branch_id);
+                this.doctorSelect = getDoctorPosition(this.doctorListCopy, this.scheduleSelectedCopy.doctor_id, this.scheduleSelectedCopy.medicalspecialty_id);
             },
             deep: true,
         },
@@ -95,67 +92,41 @@ export default defineComponent({
                 this.startHoursEnabled.push(`${ item.startTime.split(':')[0] }-${ item.endTime.split(':')[0] }`);
             });
             this.finishHoursEnabled = this.startHoursEnabled;
-            
         },
         patientSelect()
         {
             this.scheduleSelectedCopy.patient_id = this.patientSelect.childID;
-            console.log(this.scheduleSelectedCopy)
         },
         categorySelect()
         {
             this.scheduleSelectedCopy.medicalconsulttype_id = this.categorySelect.childID;
-            console.log(this.scheduleSelectedCopy)
         },
         branchSelect()
         {
+            if(this.branchSelect.childID !== this.scheduleSelectedCopy.branch_id)
+            {
+                this.getDoctorList();
+            }
             this.scheduleSelectedCopy.branch_id = this.branchSelect.childID;
-            console.log(this.scheduleSelectedCopy)
         },
         doctorSelect()
         {
             this.scheduleSelectedCopy.doctor_id = this.doctorSelect.childID;
             this.scheduleSelectedCopy.medicalspecialty_id = this.doctorSelect.parentID!;
-            console.log(this.scheduleSelectedCopy)
+        },
+        doctorList()
+        {
+            this.doctorListCopy = [...this.doctorsList];
         }
-        // selectDate(): void
-        // {
-        //     $(`#scheduleDate${this.id}`).datepicker("setDate", this.selectDate );
-        //     this.formatScheduleDateTime();
-        // },
-        // scheduleSelectedCopy(): void
-        // {
-        //     console.log(this.schedule);
-        //     this.scheduleSelectedCopy = Object.assign({}, this.schedule);
-
-        //     if(this.scheduleSelectedCopy.patient_id < 1)
-        //     {
-        //         this.isScheduleCategoryDisabled = true;
-        //         this.isBranchDisabled = true;
-        //         this.isDoctorDisabled = true;
-        //     }
-        //     else
-        //     {
-        //         if (this.schedule.id > 0)
-        //         {
-        //             this.isScheduleCategoryDisabled = false;
-        //             this.isBranchDisabled = false;
-        //         }
-        //         if (this.schedule.doctor_id > 0)
-        //         {
-        //             // this.getDoctorsList();
-        //             this.isDoctorDisabled = false;
-        //         }
-        //         if(this.scheduleTypeList[this.schedule.medicalconsulttype_id].text !== 'Cita médica')
-        //         {
-        //             this.isDoctorDisabled = true;
-        //         }
-        //     }
-        //     $(`#scheduleDate${this.id}`).datepicker("setDate", moment(this.scheduleSelectedCopy.consult_schedule_start).format('YYYY-MM-DD') );
-        // }
     },
     methods: {
-
+        clearData()
+        {
+            this.scheduleSelectedCopy = Object.assign({}, this.schedule);
+            this.doctorListCopy = Object.assign([], [...this.doctorsList]);
+            this.doctorSelect = getDoctorPosition(this.doctorsList, this.scheduleSelectedCopy.doctor_id, this.scheduleSelectedCopy.medicalspecialty_id);
+            this.branchSelect = getBranchPosition(this.branchesList,  this.scheduleSelectedCopy.branch_id);
+        },
         openLateralSchedule(): void
         {
             const drawerBasic = document.getElementById(`drawer${this.id}`) ?? document.createElement('div') as HTMLDivElement;
@@ -168,6 +139,12 @@ export default defineComponent({
         },
         closeLateralSchedule(): void
         {
+            if(this.branchSelect.childID !== this.schedule.branch_id || 
+                (this.doctorSelect.childID !== this.schedule.doctor_id && this.doctorSelect.parentID !== this.schedule.medicalspecialty_id)
+            )
+            {
+                this.clearData();
+            }
             const drawerBasic = document.getElementById(`drawer${this.id}`) ?? document.createElement('div') as HTMLDivElement;
             const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
             drawerBasic.classList.remove('show');
@@ -178,8 +155,12 @@ export default defineComponent({
             const date = moment($(`#scheduleDate${this.id}`).datepicker('getDate')).format('YYYY-MM-DD');
             const startTime = moment(this.scheduleSelectedCopy.consult_schedule_start);
             const finishTime = moment(this.scheduleSelectedCopy.consult_schedule_finish);
-            this.scheduleSelectedCopy.consult_schedule_start = moment(`${date} ${startTime.hours()}:${startTime.minutes()}:00`).format('YYYY-MM-DD HH:mm:00');
-            this.scheduleSelectedCopy.consult_schedule_finish = moment(`${date} ${finishTime.hours()}:${finishTime.minutes()}:00`).format('YYYY-MM-DD HH:mm:00');
+            this.scheduleSelectedCopy.consult_schedule_start = moment(
+                `${date} ${startTime.hours()}:${startTime.minutes()}:00`, 'YYYY-MM-DD HH:mm:00'
+            ).format('YYYY-MM-DD HH:mm:00');
+            this.scheduleSelectedCopy.consult_schedule_finish = moment(
+                `${date} ${finishTime.hours()}:${finishTime.minutes()}:00`, 'YYYY-MM-DD HH:mm:00'
+            ).format('YYYY-MM-DD HH:mm:00');
         },
         getLateralScheduleTitle(): string
         {
@@ -234,73 +215,67 @@ export default defineComponent({
         {
             return this.consultReasonCharLength;
         },
-        // clickScheduleDate(): void
-        // {
-        //     const menuLateral = this.$refs.scheduleDate as DefineComponent;;
-        //     $(`#scheduleDate${this.id}`).datepicker('show');
-        //     menuLateral.click()
-        // },
-        
-        
-        // createNewSchedule(): void
-        // {
-        //     console.log(this.scheduleSelectedCopy)
-        //     axios.post('/consultas', {
-        //         data: {
-        //             ...this.scheduleSelectedCopy
-        //         }
-        //     })
-        //     .then(response => {
-        //         console.log(response);
-        //         this.$emit('newSchedule', response.data);
-        //         this.closeLateralSchedule()
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     })
-        // },
-        // updateSchedule(): void
-        // {
-        //     axios.patch<Schedule>(`/consultas/${this.schedule.id}`, {
-        //         data: {
-        //             ...this.scheduleSelectedCopy
-        //         }
-        //     })
-        //     .then(response => {
-        //         this.$emit('updateSchedule', response.data);
-        //         this.closeLateralSchedule()
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     })
-        // },
-        
-        // getScheduleCategorySelected(): void {
-        //     const index = this.scheduleSelectedCopy.medicalconsulttype_id - 1;
-        //     const scheduleTypeSelected = index > -1 ? this.scheduleTypeList[index].text : '';
-        //     if (scheduleTypeSelected !== 'Cita médica' && !this.isBranchDisabled)
-        //     {
-        //         this.isDoctorDisabled = true;
-        //     }
-        //     if (scheduleTypeSelected === 'Cita médica' && !this.isBranchDisabled)
-        //     {
-        //         this.isDoctorDisabled = false;
-        //     }
-        //     this.scheduleSelectedCopy.branch_id = 0;
-        //     this.scheduleSelectedCopy.doctor_id = 0;
-        //     this.isBranchDisabled = false;
-        // },
-        // getBranchSelected():void {
-        //     const index = this.scheduleSelectedCopy.medicalconsulttype_id - 1;
-        //     const scheduleTypeSelected = index > -1 ? this.scheduleTypeList[index].text : '';
-        //     this.scheduleSelectedCopy.doctor_id = 0;
-        //     if (scheduleTypeSelected === 'Cita médica')
-        //     {
-        //         // this.getDoctorsList();
-        //         this.isDoctorDisabled = false;
-        //     }
-        // },
-        
+        createNewSchedule(): void
+        {
+            
+            axios.post('/consultas', {
+                data: {
+                    ...this.scheduleSelectedCopy
+                }
+            })
+            .then(response => {
+                this.patientSelect = SelectData,
+                this.branchSelect = SelectData;
+                this.categorySelect = SelectData;
+                this.doctorSelect = SelectData;
+                this.$emit('newSchedule', response.data);
+                this.closeLateralSchedule()
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        updateSchedule(): void
+        {
+            axios.patch<Schedule>(`/consultas/${this.schedule.id}`, {
+                data: {
+                    ...this.scheduleSelectedCopy
+                }
+            })
+            .then(response => {
+                this.$emit('updateSchedule', response.data);
+                this.closeLateralSchedule()
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        getDoctorList(): void
+        {
+            axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${this.scheduleSelectedCopy.branch_id}/especialidades/doctores`)
+            .then(response => {
+                var index = 0;
+                const doctorFilter = response.data.filter((list: BranchSpecialtyDoctors) => list.doctors.length > 0);
+                this.doctorListCopy = doctorFilter.map(specialty => {
+                    return {
+                        id: index++,
+                        childID: specialty.id,
+                        text: specialty.name,
+                        children: specialty.doctors.map(doctor => {
+                            return {
+                                id: index++,
+                                text: `${doctor.first_name} ${doctor.last_name}`,
+                                childID: doctor.id,
+                                parentID: specialty.id
+                            }
+                        })
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
     },
     mounted() {
         const self = this;
@@ -318,7 +293,23 @@ export default defineComponent({
             }
         })
         this.isPatientDisabled = false;
-        // this.getSchedulesCategories();
-        console.log(this.scheduleSelectedCopy)
     },
 })
+
+export function getBranchPosition(branchesList: Select[], branchID: number): Select
+{
+    return {...branchesList.filter(branch => branch.childID === branchID)[0]};
+}
+
+export function getDoctorPosition(doctorsList: Select[], doctorID: number, specialtyID: number): Select
+{
+    var doctorSelected = SelectData;
+    doctorsList.map(doctors => {
+        const data = doctors.children?.filter(doctor => doctor.childID === doctorID && doctor.parentID === specialtyID)[0]!
+        if(data)
+        {
+            doctorSelected = data;
+        }
+    });
+    return {...doctorSelected};
+}

@@ -16,6 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/style.scss', 'public/css')
     .sourceMaps()
     .vue()
+    .extract(['vue'])
     .browserSync('http://127.0.0.1:8000/')
     .webpackConfig({
         module: {

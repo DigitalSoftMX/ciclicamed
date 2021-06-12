@@ -9,7 +9,7 @@ import { Select } from '@interface/General/Select.interface';
 import { Patient } from '@interface/Patient/Patient.interface';
 import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleType } from '@interface/Schedule/ScheduleType.interface';
-import { defineComponent } from '@vue/runtime-core';
+import { defineAsyncComponent, defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import moment from 'moment';
 import { DefineComponent } from 'vue';
@@ -17,10 +17,10 @@ import { DefineComponent } from 'vue';
 export default defineComponent({
     name: 'ScheduleComponent',
     components: {
-        CalendarComponet: require('@component/schedule/CalendarComponent/CalendarComponent.vue').default,
-        ScheduleSelectComponent: require('@component/schedule/ScheduleSelectComponent/ScheduleSelectComponent.vue').default,
-        ScheduleActionComponent: require('@component/schedule/ScheduleActionComponent/ScheduleActionComponent.vue').default,
-        LateralScheduleComponent: require('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue').default,
+        CalendarComponet: defineAsyncComponent(() => import('@component/schedule/CalendarComponent/CalendarComponent.vue')),
+        ScheduleSelectComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleSelectComponent/ScheduleSelectComponent.vue')),
+        ScheduleActionComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleActionComponent/ScheduleActionComponent.vue')),
+        LateralScheduleComponent: defineAsyncComponent(() => import('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue')),
     },
     props: {
     },
@@ -153,7 +153,7 @@ export default defineComponent({
                 console.log(error)
             })
         },
-        updateScheduleSelected(date: string)
+        copyScheduleData(date: string)
         {
             const dayOfWeek = moment(date).day();
             this.hoursEnabled = this.businessHours.filter(hours => hours.daysOfWeek.includes(dayOfWeek));
@@ -169,6 +169,11 @@ export default defineComponent({
                 const lateral = this.$refs.openLateralSchedule as DefineComponent;
                 lateral.openLateralSchedule();
             }
+        },
+        getScheduleSelected(schedule: Schedule)
+        {
+            console.log(schedule)
+            this.scheduleSelected = Object.assign({}, schedule);
         }
     },
 })

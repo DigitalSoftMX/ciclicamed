@@ -56,7 +56,6 @@ export default defineComponent({
             handler()
             {
                 this.localValue = this.modelValue;
-                console.log(this.localValue)
                 $(`#${this.id}`).val(this.localValue.id).trigger('change');
             },
             deep: true,

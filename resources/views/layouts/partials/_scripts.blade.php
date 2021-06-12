@@ -50,4 +50,6 @@
 <script src="{{ asset('vendor_assets/js/bootstrap/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendor_assets/js/jquery/jquery-ui.js') }}"></script> -->
 <!-- <script src="{{ asset('vendor_assets/js/wickedpicker.min.js') }}"></script> -->
+<script src="{{ asset('js/manifest.js') }}"></script>
+<script src="{{ asset('js/vendor.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>

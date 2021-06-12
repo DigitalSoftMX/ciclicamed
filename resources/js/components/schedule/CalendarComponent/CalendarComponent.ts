@@ -18,9 +18,6 @@ export default defineComponent({
     name: 'CalendarComponent',
     components: {
         FullCalendar,
-        ScheduleActionComponent: require('../ScheduleActionComponent/ScheduleActionComponent.vue').default,
-        LateralScheduleComponent: require('../LateralScheduleComponent/LateralScheduleComponent.vue').default,
-        
     },
     emits: ['onNewSchedule', 'onSelectedSchedule'],
     props: {
@@ -48,7 +45,6 @@ export default defineComponent({
                 eventClick: this.fullcalendarEventClick
             },
             schedulesCopy: Object.assign([], ...this.schedules) as Schedule[],
-            scheduleSelected: ScheduleData,
             scheduleSelectDate: {} as Date,
             hoursEnabled: [] as FullCalendarBusinessHour[],
         }
@@ -113,12 +109,10 @@ export default defineComponent({
             scheduleEvent.setProp( 'borderColor', data.status?.color );
             scheduleEvent.setProp( 'borderColor', data.status?.color );
             scheduleEvent.setProp( 'backgroundColor', data.status?.color );
-            this.scheduleSelected = ScheduleData;
         },
         createNewSchedule(data: Schedule)
         {
             this.addSchedule(data);
-            this.scheduleSelected = ScheduleData;
         },
         addSchedule(schedule: Schedule)
         {
@@ -141,7 +135,8 @@ export default defineComponent({
         },
         fullcalendarEventClick(data: any)
         {
-            this.scheduleSelected = Object.values(this.schedulesCopy).filter(schedule => schedule[`id`] === Number(data.event.id))[0];
+            const schedule = Object.values(this.schedulesCopy).filter(schedule => schedule[`id`] === Number(data.event.id))[0];
+            this.$emit('onSelectedSchedule', schedule);
             $('#schedule-action').modal('show');
         }
     },

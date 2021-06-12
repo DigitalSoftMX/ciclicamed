@@ -39,7 +39,7 @@ class MedicalConsult extends Model
         'consult_start_at',
         'consult_finish_at',
         'branch_id',
-        'medicalspecialty',
+        'medicalspecialty_id',
         'updated_by',
         'update_note'
     ];
