@@ -26,7 +26,7 @@ class PaymentDebtFactory extends Factory
             'description' => $this->faker->text(255),
             'total' => $this->faker->randomFloat(2, 1, 100000 ),
             'missing_payment' => $this->faker->randomFloat(2, 1, 100000 ),
-            'paymentmethod_id' => $this->faker->numberBetween(1, 5),
+            'paymentmethod_id' => $this->faker->numberBetween(1, 3),
             'charged_by' => $this->faker->numberBetween(1, 5),
             'credit_card' => $this->faker->regexify('[0-9]{4}'),
         ];

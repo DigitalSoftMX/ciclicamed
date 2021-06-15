@@ -2099,7 +2099,7 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 .atbd-collapse.atbd-collapse-custom .card.atbd-collapse-item .card-body, .atbd-collapse .atbd-collapse-item__header, .atbd-collapse .card.atbd-collapse-item__header .card-header,
 .atbd-collapse .card.atbd-collapse-item__header .card-body, .card.bg-normal .card-header,
 .card.bg-normal .card-body {
-  background: #BDBDBD;
+  background: #E0E0E0;
 }
 
 .bg-lighter, .mailbox-list__single .mail-content__bottom .mail-attatchment, .mailbox-top__search .form-control-lg, .kanban-modal__list .checkbox-group:hover, .kanban-modal__list button, .kanban-modal__research button, .kanban-modal__form textarea, .kanban-board__add-card button, .list__add-card, .kanban-list, .kanban-board__body, .wizard10 .payment-method-card .card-body .form-control, .wizard10 .select2-container--default .select2-selection--single,
@@ -9759,7 +9759,7 @@ table.table-basic tr td.card .card-body,
   color: #616161;
 }
 .table-social tbody tr:not(:first-child):hover {
-  background: #BDBDBD;
+  background: #E0E0E0;
 }
 .table-social tbody tr:first-child td {
   color: #272b41;
@@ -9834,7 +9834,7 @@ table.table-basic tr td.card .card-body,
   color: #616161;
 }
 .table--default tbody tr:hover {
-  background: #BDBDBD;
+  background: #E0E0E0;
 }
 .table--default tbody tr:last-child {
   border-bottom: 1px solid #E0E0E0;
@@ -12253,8 +12253,6 @@ table.table-basic tr td.card .card-body,
   cursor: not-allowed;
 }
 .custom-radio input[type=radio] + label {
-  min-width: 18px;
-  min-height: 18px;
   font-size: 14px;
   display: flex;
   flex-flow: column;
@@ -12263,13 +12261,15 @@ table.table-basic tr td.card .card-body,
   margin-bottom: 0;
   line-height: 1.2;
   font-weight: 400;
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
 }
 .custom-radio input[type=radio] + label:after {
   position: absolute;
   left: 0;
   top: 0;
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   content: "";
   border-width: 1px;
@@ -12277,17 +12277,16 @@ table.table-basic tr td.card .card-body,
 }
 .custom-radio input[type=radio] + label:before {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  left: 5px;
-  top: 46%;
   font-weight: 900;
   display: block;
   opacity: 0;
   transition: all 0.3s ease 0s;
+  top: 5px;
+  left: 5px;
   z-index: 2;
-  transform: translateY(-50%);
   content: "";
 }
 .custom-radio input[type=radio]:checked + label:before {
@@ -16590,7 +16589,7 @@ table.table-rounded tr td {
 table.table-rounded thead tr th {
   padding: 16px 20px;
   text-transform: capitalize;
-  background-color: #BDBDBD;
+  background-color: #E0E0E0;
 }
 table.table-rounded thead tr th:first-child {
   border-radius: 10px 0 0 10px;
@@ -16918,7 +16917,7 @@ table.table-rounded tbody tr td:last-child {
 
 .add-product {
   border-radius: 20px;
-  background-color: #BDBDBD;
+  background-color: #E0E0E0;
   padding: 30px;
 }
 .add-product .card-body {

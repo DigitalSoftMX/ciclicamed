@@ -21,8 +21,10 @@ class PaymentMethodFactory extends Factory
      */
     public function definition()
     {
+        $data = ['En efectivo', 'Tarjeta de crédito', 'Tarjeta de débito'];
+        static $row = 0;
         return [
-            'name' => $this->faker->text('50'),
+            'name' => $data[$row++],
         ];
     }
 }

@@ -54,7 +54,7 @@ export default defineComponent({
         },
         openLateralSchedule()
         {
-            const child = this.$parent?.$refs.openLateralSchedule as DefineComponent;
+            const child = this.$parent?.$parent?.$refs.openLateralSchedule as DefineComponent;
             child.openLateralSchedule()
         },
         deleteSchedule()

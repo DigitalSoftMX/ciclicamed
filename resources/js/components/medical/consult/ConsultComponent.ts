@@ -35,7 +35,7 @@ export default defineComponent({
         NutricionPerinatalComponent: require('@component/medical/attachments/NutricionPerinatal/NutricionPerinatalComponent.vue').default,
         NutricionGeneralComponent: require('@component/medical/attachments/NutricionGeneral/NutricionGeneralComponent.vue').default,
         NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default,
-        ProductComponent: require('@component/medical/consult/consultProduct/ConsultProductComponent.vue').default
+        ProductComponent: require('@component/payment/chargePayment/ChargePaymentComponent.vue').default
     },
     emits: [],
     props: {

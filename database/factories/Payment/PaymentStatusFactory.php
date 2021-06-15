@@ -21,8 +21,10 @@ class PaymentStatusFactory extends Factory
      */
     public function definition()
     {
+        $data = ['Creado', 'Deuda', 'Completado', 'Cancelado'];
+        static $row = 0;
         return [
-            'name' => $this->faker->text('50'),
+            'name' => $data[$row++],
             'color' => $this->faker->hexColor
         ];
     }

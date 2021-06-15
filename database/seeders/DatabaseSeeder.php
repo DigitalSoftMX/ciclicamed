@@ -79,8 +79,8 @@ class DatabaseSeeder extends Seeder
         MedicalTest::factory(25)->create();
         MedicalTestSample::factory(25)->create();
         MedicalTestResult::factory(25)->create();
-        PaymentStatus::factory(5)->create();
-        PaymentMethod::factory(5)->create();
+        PaymentStatus::factory(4)->create();
+        PaymentMethod::factory(3)->create();
         Payment::factory(50)->create();
         PaymentDebt::factory(100)->create();
         ProductStatus::factory(2)->create();

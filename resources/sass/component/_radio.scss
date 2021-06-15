@@ -26,8 +26,8 @@
         }
     }
     input[type="radio"] + label{
-        min-width: 18px;
-        min-height: 18px;
+        // min-width: 22px;
+        // min-height: 22px;
         font-size: 14px;
         display: flex;
 		flex-flow: column;
@@ -36,13 +36,15 @@
 		margin-bottom: 0;
         line-height: 1.2;
         font-weight: 400;
+        padding-top: 2.5px;
+        padding-bottom: 2.5px;
         @extend .color-gray;
         &:after{
             position: absolute;
 			left: 0;
 			top: 0;
-			width: 16px;
-			height: 16px;
+			width: 22px;
+			height: 22px;
 			border-radius: 50%;
             content: "";
             border-width: 1px;
@@ -52,18 +54,16 @@
         }
         &:before{
             position: absolute;
-            width: 6px;
-            height: 6px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-			left: 5px;
-			top: 46%;
 			font-weight: 900;
 			display: block;
 			opacity: 0;
             transition: all 0.3s ease 0s;
-            
+            top: 5px;
+            left: 5px;
             z-index: 2;
-            transform: translateY(-50%);
 			content: "";
 			@extend .bg-white;
         }

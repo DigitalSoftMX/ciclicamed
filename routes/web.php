@@ -8,6 +8,7 @@ use App\Http\Controllers\Medical\Consult\MedicalConsultController;
 use App\Http\Controllers\Medical\Test\MedicalTestResultController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Patient\PreregistrationController;
+use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\User\UserController;
@@ -131,6 +132,12 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{id}/resultados/', [MedicalTestResultController::class, 'testResult'])->name('estudios.resultados');
         
         Route::post('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.resultados');
+        
+    });
+
+    //Pagos
+    Route::group(['prefix' => 'pagos'], function() {
+        Route::get('/pacientes/deudas', [PaymentController::class, 'getAllPaymentsWithDebts'])->name('pagos.pacientes.deudas');
         
     });
 });

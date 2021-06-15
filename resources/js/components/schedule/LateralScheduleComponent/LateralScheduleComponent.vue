@@ -103,7 +103,7 @@
                     </div>
 
                     <!-- Tarjeta de cita -->
-                    <div class="card rounded-0 lateralCardColor mt-25" v-if="schedule.id > 0">
+                    <div class="card rounded-0 lateralCardColor mt-25 shadow-none" v-if="schedule.id > 0">
                         <div class="card-body py-2 px-3">
                             <h6 class="text-primary mb-1">
                                 {{ patientsList[scheduleSelectedCopy.patient_id].text }}
