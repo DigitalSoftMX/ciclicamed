@@ -1,6 +1,7 @@
+@use 'sass:math';
 @function remy($value, $base: 15px) {
   @return ($value / $base) * 1rem;
 }
 @function lh($font-size, $line-height) {
-  @return $line-height / $font-size;
+  @return math.div($line-height, $font-size);
 }

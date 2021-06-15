@@ -1,6 +1,4 @@
-import { Select } from "@interface/General/Select.interface";
-
-export const CountriesData: Select[] = [
+export const CountriesData = [
     {
         id: "AF",
         text: "Afganistán",

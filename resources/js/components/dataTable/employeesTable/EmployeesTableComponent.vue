@@ -168,9 +168,8 @@
 
 <script lang="ts" src="./EmployeesTableComponent.ts"></script>
 
-<style scoped>
+<style>
     @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
     @import './EmployeesTableComponent.scss';
     @import '../../../../../public/css/global.css';
-
 </style>

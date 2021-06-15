@@ -1,9 +1,5 @@
-import {
-    defineComponent
-} from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
-import { DefineComponent, PropType } from 'vue';
-import $ from 'jquery';
 import { EmployeePaginationData } from '@data/Employee/EmployeePagination.data';
 import { EmployeeData } from '@data/Employee/Employee.data';
 import { EmployeePagination } from '@interface/Employee/EmployeePagination.interface';

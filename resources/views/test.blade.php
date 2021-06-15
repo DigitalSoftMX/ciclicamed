@@ -10,6 +10,7 @@
 <consult-product></consult-product> -->
 <!-- <consult-product></consult-product>  -->
 <!-- <schedule-component></schedule-component> -->
-<consult-product></consult-product>
+<!-- <consult-product></consult-product> -->
+<patient-debt-table></patient-debt-table>
 </div>
 @endsection

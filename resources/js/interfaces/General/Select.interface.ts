@@ -1,8 +1,8 @@
 export interface Select
 {
-    id: number | string;
+    id: number;
     text: string;
-    childID: number | string;
+    childID: number;
     parentID?: number;
     children?: Select[]
 }

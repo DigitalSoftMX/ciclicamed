@@ -1,3 +1,6 @@
+import { Product } from "@interface/Product/Product.interface";
+import { Debt } from "./Debt.interface";
+
 export interface Payment
 {
     id: number;
@@ -13,4 +16,6 @@ export interface Payment
     patient_id: number;
     created_at: string;
     updated_at: string;
+    last_debt_payment?: Debt,
+    products?: Product[]
 }

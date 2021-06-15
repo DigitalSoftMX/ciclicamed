@@ -35,8 +35,18 @@ Route::get('/', [LoginController::class, 'loginForm'])->name('login.login');
 Route::group(['middleware' => 'auth'], function() {
 
     // Vistas
-    Route::get('test/{id}', function() {
+    Route::get('test', function() {
         return view('test');
+    } );
+
+    //Vista test 2
+    Route::get('test2', function() {
+        return view('test2');
+    } );
+
+    //Vista test 3
+    Route::get('test3', function() {
+        return view('test3');
     } );
 
     Route::get('agenda', function() {
@@ -45,7 +55,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 
     // Route::resource('usuarios', UserController::class);
-    Route::resource('pacientes', PatientController::class);
+    // Route::resource('pacientes', PatientController::class);
 
     // Usuarios
     Route::group(['prefix' => 'usuarios'], function() {
@@ -68,7 +78,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{id}/seguimiento', [MedicalConsultController::class, 'getFollowUps'])->name('consulta.seguimiento');
         Route::get('/{id}/receta', [MedicalConsultController::class, 'getPrescriptions'])->name('consulta.receta');
         Route::get('/{id}', [MedicalConsultController::class, 'getConsultInfo'])->name('consulta.informacion');
-        Route::get('/{id}/historial', [MedicalConsultController::class, 'getHistory'])->name('consulta.informacion');
+        Route::get('/{id}/historial', [MedicalConsultController::class, 'getHistory'])->name('consulta.historial');
         Route::get('/{id}/doctor', [MedicalConsultController::class, 'getDoctor'])->name('consulta.doctor');
 
         Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.estudio.obtener');
@@ -85,21 +95,25 @@ Route::group(['middleware' => 'auth'], function() {
 
     //Sucursales
     Route::group(['prefix' => 'sucursales'], function() {
-        Route::get('/', [BranchController::class, 'getAllBranches'])->name('sucursal.sucursales');
-        Route::get('/{id}/especialidades/doctores', [BranchController::class, 'getDoctorsAllSpecialties'])->name('sucursal.especialidades');
-        Route::get('/{id}/empleados/{employeeID}/agenda', [BranchController::class, 'getSchedules'])->name('sucursales.empleados.agenda');
-        Route::get('/{id}/empleados/{employeeID}/horarios', [BranchController::class, 'getBusinessHours'])->name('sucursales.empleados.horarios');
+        Route::get('/', [BranchController::class, 'getAllBranches'])->name('sucursal.getSucursales');
+        Route::get('/{id}/especialidades/doctores', [BranchController::class, 'getDoctorsAllSpecialties'])->name('sucursal.getEspecialidades');
+        Route::get('/{id}/empleados/{employeeID}/agenda', [BranchController::class, 'getSchedules'])->name('sucursales.getAgendaEmpleado');
+        Route::get('/{id}/empleados/{employeeID}/horarios', [BranchController::class, 'getBusinessHours'])->name('sucursales.getHorarioEmpleado');
     });
 
 
     //Pacientes
     Route::group(['prefix' => 'pacientes'], function() {
-        Route::get('/', [PatientController::class, 'getAllPatients'])->name('pacientes.todos');
-        Route::get('/{id}', [PatientController::class, 'getPatientByID'])->name('pacientes.paciente');
-        Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getAllConsults'])->name('pacientes.categoria');
-        Route::get('/{id}/agenda', [PatientController::class, 'getSchedules'])->name('pacientes.agenda');
+        Route::get('/', [PatientController::class, 'getAllPatients'])->name('pacientes.getPacientes');
+        Route::get('/deudas', [PatientController::class, 'getPatientsWithDebts'])->name('pacientes.getPacientesDeudas');
+        Route::get('/{id}/deudas', [PatientController::class, 'getPatientDebts'])->name('pacientes.getPacienteDeudas');
+        Route::get('/{id}', [PatientController::class, 'getPatientByID'])->name('pacientes.getPaciente');
+        Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getAllConsults'])->name('pacientes.getCategoria');
+        Route::get('/{id}/agenda', [PatientController::class, 'getSchedules'])->name('pacientes.getAgenda');
+        
 
-        Route::patch('/{id}/preregistro', [PreregistrationController::class, 'updatePreregistration'])->name('pacientes.preregistro');
+        Route::patch('/{id}/preregistro', [PreregistrationController::class, 'updatePreregistration'])->name('pacientes.updatePreregistro');
+
     });
 
     //Empleados
@@ -128,16 +142,15 @@ Route::group(['middleware' => 'auth'], function() {
 
     //Estudios
     Route::group(['prefix' => 'estudios'], function() {
-        Route::get('/resultados/{id}', [MedicalTestResultController::class, 'getResultFile'])->name('estudios.resultados');
-        Route::get('/{id}/resultados/', [MedicalTestResultController::class, 'testResult'])->name('estudios.resultados');
+        Route::get('/resultados/{id}', [MedicalTestResultController::class, 'getResultFile'])->name('estudios.getResultado');
+        Route::get('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.getResultados');
         
-        Route::post('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.resultados');
+        Route::post('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.setResultados');
         
     });
 
     //Pagos
     Route::group(['prefix' => 'pagos'], function() {
-        Route::get('/pacientes/deudas', [PaymentController::class, 'getAllPaymentsWithDebts'])->name('pagos.pacientes.deudas');
-        
+        Route::get('/{id}/deudas', [PaymentController::class, 'getAllDebtsByPaymentID'])->name('pagos.getDeudas');
     });
 });

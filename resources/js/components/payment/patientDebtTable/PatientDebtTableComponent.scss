@@ -1,0 +1,10 @@
+.button-img
+{
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.button-img:hover > img
+{
+    filter: invert(1) !important;
+}

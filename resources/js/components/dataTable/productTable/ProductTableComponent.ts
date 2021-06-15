@@ -2,7 +2,7 @@ import { ProductData } from '@data/Product/Product.data';
 import { ProductPaginationData } from '@data/Product/ProductPagination.data';
 import { Product } from '@interface/Product/Product.interface';
 import { ProductPagination } from '@interface/Product/ProductPagination.interface';
-import{ defineComponent } from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import $ from 'jquery';
 

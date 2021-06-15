@@ -166,7 +166,7 @@
 
 <script lang="ts" src="./PatientsTableComponent.ts"></script>
 
-<style scoped>
+<style lang="scss" scoped>
     @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
     @import './PatientsTableComponent.scss';
     @import '../../../../../public/css/global.css';

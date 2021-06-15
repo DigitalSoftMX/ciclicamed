@@ -1,8 +1,5 @@
-import {
-    defineComponent
-} from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
-import { DefineComponent, PropType } from 'vue';
 import $ from 'jquery';
 import moment from 'moment';
 import { UserPaginationData } from '@data/User/UserPagination.data';

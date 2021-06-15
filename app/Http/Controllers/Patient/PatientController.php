@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Patient\PatientUpdateRequest;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Patient\Patient;
+use App\Models\Payment\Payment;
+use App\Models\Payment\PaymentStatus;
 use App\Models\User\User;
 use Illuminate\Http\Request;
 
@@ -86,5 +88,58 @@ class PatientController extends Controller
                                 ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
         //broadcast(new ScheduleEvent($patient));
         return response()->json($patient);
+    }
+
+    public function getPatientsWithDebts(Request $request)
+    {
+        $status = PaymentStatus::where('name', 'Deuda')->first()->id;
+        $payment = Patient::whereHas('payments', function($query) use($status) {
+            $query->where('paymentstatus_id', $status);
+        });
+
+        $patientsDebt = [];
+        if($request->has('query'))
+        {
+            $query = $request->input('query');
+            $patientsDebt = $payment->where('first_name', 'like', '%'.$query.'%')
+                    ->orWhere('last_name', 'like', '%'.$query.'%')
+                    ->orWhere('patient_code', 'like', '%'.$query.'%')
+                    ->paginate();
+        } else {
+            $patientsDebt = $payment->paginate();
+        }
+        
+        $response = [
+            'pagination' => [
+                'total' => $patientsDebt->total(),
+                'per_page' => $patientsDebt->perPage(),
+                'current_page' => $patientsDebt->currentPage(),
+                'last_page' => $patientsDebt->lastPage(),
+                'from' => $patientsDebt->firstItem(),
+                'to' => $patientsDebt->lastItem()
+            ],
+            'data' => $patientsDebt->getCollection()
+        ];
+
+        return response()->json($response);
+    }
+
+    public function getPatientDebts($idPatient)
+    {
+        $status = PaymentStatus::where('name', 'Deuda')->first()->id;
+        $debts = Payment::where('patient_id', $idPatient)->where('paymentstatus_id', $status)->paginate();        
+        $response = [
+            'pagination' => [
+                'total' => $debts->total(),
+                'per_page' => $debts->perPage(),
+                'current_page' => $debts->currentPage(),
+                'last_page' => $debts->lastPage(),
+                'from' => $debts->firstItem(),
+                'to' => $debts->lastItem()
+            ],
+            'data' => $debts->load('lastDebtPayment', 'products')
+        ];
+
+        return response()->json($response);
     }
 }

@@ -19,4 +19,9 @@ class PaymentMethod extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function debts()
+    {
+        return $this->hasMany(PaymentDebt::class);
+    }
 }

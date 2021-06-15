@@ -52,9 +52,14 @@ class Payment extends Model
         return $this->hasMany(PaymentDebt::class, 'payment_id');
     }
 
+    public function lastDebtPayment()
+    {
+        return $this->hasOne(PaymentDebt::class, 'payment_id')->orderBy('created_at', 'asc');
+    }
+
     public function medicalconsults()
     {
-        return $this->belongsToMany(MedicalConsult::class, ProductPayment::class, 'payment_id', 'medicalconsult_id')->withPivot('payment_id');
+        return $this->belongsToMany(MedicalConsult::class, ProductPayment::class, 'payment_id', 'medicalconsult_id');
     }
 
     public function products()
