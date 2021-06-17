@@ -34,17 +34,6 @@ class PatientController extends Controller
         return $patient;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function showMedicalPrescriptions($id)
     {
         $patient = User::findOrFail($id)->patient->prescriptions
@@ -75,7 +64,7 @@ class PatientController extends Controller
         return response()->json($consults);
     }
 
-    public function show($id)
+    public function getPatientByID($id)
     {
         $patient = Patient::findOrFail($id);
         return response()->json($patient);

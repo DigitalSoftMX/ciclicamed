@@ -16,7 +16,7 @@ class MedicalTestStatus extends Model
         'color'
     ];
 
-    public function studies()
+    public function tests()
     {
         return $this->hasMany(MedicalStudy::class, 'medicalteststatus_id');
     }

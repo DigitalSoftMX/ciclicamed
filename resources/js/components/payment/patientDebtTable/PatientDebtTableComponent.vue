@@ -17,7 +17,7 @@
             <div class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
                 <div class="table-responsive  hide-y-overflow">
                     <table
-                        class="table mb-0 table-borderless table-hover adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
+                        class="table mb-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
                         data-sorting="true" data-paging-current="1" data-paging-position="right" data-paging-size="10"
                         style="">
                         <thead>
@@ -153,6 +153,4 @@
 
 <style scoped>
     @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
-    @import './PatientDebtTableComponent.scss';
-    @import '../../../../../public/css/global.css';
 </style>

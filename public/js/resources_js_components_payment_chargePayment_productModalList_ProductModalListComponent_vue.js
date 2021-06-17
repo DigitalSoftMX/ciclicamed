@@ -19,6 +19,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./resources/js/defaultData/General/Pagination.data.ts":
+/*!*************************************************************!*\
+  !*** ./resources/js/defaultData/General/Pagination.data.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"PaginationData\": () => (/* binding */ PaginationData)\n/* harmony export */ });\nvar PaginationData = {\n  total: 1,\n  per_page: 1,\n  current_page: 1,\n  last_page: 1,\n  from: 1,\n  to: 1\n};//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvZGVmYXVsdERhdGEvR2VuZXJhbC9QYWdpbmF0aW9uLmRhdGEudHM/ZjY5ZiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBRU8sSUFBTSxjQUFjLEdBQWU7QUFDdEMsT0FBSyxFQUFFLENBRCtCO0FBRXRDLFVBQVEsRUFBRSxDQUY0QjtBQUd0QyxjQUFZLEVBQUUsQ0FId0I7QUFJdEMsV0FBUyxFQUFFLENBSjJCO0FBS3RDLE1BQUksRUFBRSxDQUxnQztBQU10QyxJQUFFLEVBQUU7QUFOa0MsQ0FBbkMiLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvZGVmYXVsdERhdGEvR2VuZXJhbC9QYWdpbmF0aW9uLmRhdGEudHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBQYWdpbmF0aW9uIH0gZnJvbSBcIkBpbnRlcmZhY2UvR2VuZXJhbC9QYWdpbmF0aW9uLmludGVyZmFjZVwiO1xyXG5cclxuZXhwb3J0IGNvbnN0IFBhZ2luYXRpb25EYXRhOiBQYWdpbmF0aW9uID0ge1xyXG4gICAgdG90YWw6IDEsXHJcbiAgICBwZXJfcGFnZTogMSxcclxuICAgIGN1cnJlbnRfcGFnZTogMSxcclxuICAgIGxhc3RfcGFnZTogMSxcclxuICAgIGZyb206IDEsXHJcbiAgICB0bzogMVxyXG59Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/defaultData/General/Pagination.data.ts\n");
+
+/***/ }),
+
 /***/ "./resources/js/defaultData/Product/ProductPagination.data.ts":
 /*!********************************************************************!*\
   !*** ./resources/js/defaultData/Product/ProductPagination.data.ts ***!

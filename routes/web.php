@@ -106,6 +106,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'pacientes'], function() {
         Route::get('/', [PatientController::class, 'getAllPatients'])->name('pacientes.getPacientes');
         Route::get('/deudas', [PatientController::class, 'getPatientsWithDebts'])->name('pacientes.getPacientesDeudas');
+        Route::get('/{id}', [PatientController::class, 'getPatientByID'])->name('pacientes.getPaciente');
         Route::get('/{id}/deudas', [PatientController::class, 'getPatientDebts'])->name('pacientes.getPacienteDeudas');
         Route::get('/{id}', [PatientController::class, 'getPatientByID'])->name('pacientes.getPaciente');
         Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getAllConsults'])->name('pacientes.getCategoria');
@@ -142,6 +143,9 @@ Route::group(['middleware' => 'auth'], function() {
 
     //Estudios
     Route::group(['prefix' => 'estudios'], function() {
+        Route::get('/creados', [MedicalTestResultController::class, 'getCreatedTests'])->name('estudios.getCreados');
+        Route::get('/muestras', [MedicalTestResultController::class, 'getSampleTests'])->name('estudios.getMuestra');
+        Route::get('/completados', [MedicalTestResultController::class, 'getCompletedTest'])->name('estudios.getMuestra');
         Route::get('/resultados/{id}', [MedicalTestResultController::class, 'getResultFile'])->name('estudios.getResultado');
         Route::get('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.getResultados');
         
@@ -151,6 +155,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     //Pagos
     Route::group(['prefix' => 'pagos'], function() {
+        Route::get('/{id}', [PaymentController::class, 'getPayment'])->name('pagos.getPago');
         Route::get('/{id}/deudas', [PaymentController::class, 'getAllDebtsByPaymentID'])->name('pagos.getDeudas');
     });
 });

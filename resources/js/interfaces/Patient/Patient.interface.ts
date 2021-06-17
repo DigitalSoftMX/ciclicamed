@@ -6,7 +6,7 @@ export interface Patient
     patient_code?: string;
     first_name: string;
     last_name: string;
-    gender?: boolean;
+    gender?: number;
     birthday?: string;
     address?: string;
     phone?: string;

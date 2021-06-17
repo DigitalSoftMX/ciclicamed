@@ -17,6 +17,12 @@ class PaymentController extends Controller
         return response()->json($payment);
     }
 
+    public function getPayment($id)
+    {
+        $payment = Payment::findOrFail($id);
+        return response()->json($payment);
+    }
+
     public function getAllDebtsByPaymentID($id)
     {
         $payment = PaymentDebt::where('payment_id', $id)->get()->load('paymentMethod');

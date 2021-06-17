@@ -32,17 +32,17 @@ class Payment extends Model
         return $this->belongsTo(Patient::class. 'patient_id');
     }
 
-    public function chargedby()
+    public function chargedBy()
     {
         return $this->belongsTo(Employee::class, 'charged_by');
     }
 
-    public function paymentmethod()
+    public function paymentMethod()
     {
         return $this->belongsTo(PaymentMethod::class, 'paymentmethod_id');
     }
 
-    public function paymentstatus()
+    public function status()
     {
         return $this->belongsTo(PaymentStatus::class, 'paymentstatus_id');
     }
@@ -57,7 +57,7 @@ class Payment extends Model
         return $this->hasOne(PaymentDebt::class, 'payment_id')->orderBy('created_at', 'asc');
     }
 
-    public function medicalconsults()
+    public function medicalConsults()
     {
         return $this->belongsToMany(MedicalConsult::class, ProductPayment::class, 'payment_id', 'medicalconsult_id');
     }
