@@ -1,5 +1,5 @@
 <template>
-    <div class="card card-default card-md mb-4">
+    <div class="card card-md mb-4">
         <div class="card-header  py-20">
             <h6>Subir resultados (3 archivos máximo)</h6>
         </div>
@@ -10,7 +10,8 @@
                         @drop="dropFile">
                         <div class="atbd-upload-avatar media-import mb-25 dropzone-lg-s"
                             v-bind:class="{'upload-drag': isFileOver}">
-                            <p class="color-light mt-0 fs-15">Suelta el  o los archivos a subir o de click para seleccionarlos
+                            <p class="color-light mt-0 fs-15">Suelta el o los archivos a subir o de click para
+                                seleccionarlos
                             </p>
                         </div>
                         <div class="avatar-up">
@@ -20,42 +21,47 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div class="card">
-        <div class="card-header">
-            <h4>Archivos seleccionados</h4>
-        </div>
-        <div class="card-body row mx-0">
-            <div v-for="(file, index) in fileList" :key="index" class="col-12 col-md-3 mb-25">
-                <div class="fileM-single">
-                    <div class="fileM-card ">
-                        <div class="card border-0">
-                            <div class="card-body ">
-                                <div class="fileM-img">
-                                    <img class="" src="/svg/pdf.svg" alt="PDF logo">
-                                </div>
-                                <p class="fileM-excerpt">{{file.name}}</p>
-                                <div class="fileM-action">
-                                    <div class="fileM-action__right ">
-                                        <div class="dropdown dropleft position-absolute">
-                                            <img class="" src="/svg/delete.svg" alt="PDF logo" @click="deleteFileSelected(index)">
+            <div class="card shadow-none mb-25">
+                <div class="card-header">
+                    <h4>Archivos seleccionados</h4>
+                </div>
+                <div class="card-body rounded-bottom row mx-0">
+                    <div v-for="(file, index) in fileList" :key="index" class="col-12 col-md-3 mb-25">
+                        <div class="fileM-single">
+                            <div class="fileM-card ">
+                                <div class="card border-0">
+                                    <div class="card-body ">
+                                        <div class="fileM-img">
+                                            <img class="" src="/svg/pdf.svg" alt="PDF logo">
+                                        </div>
+                                        <p class="fileM-excerpt">{{file.name}}</p>
+                                        <div class="fileM-action">
+                                            <div class="fileM-action__right ">
+                                                <div class="dropdown dropleft position-absolute">
+                                                    <img class="" src="/svg/delete.svg" alt="PDF logo"
+                                                        @click="deleteFileSelected(index)">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div v-if="fileList.length === 0" class="col-12 text-center">
+                        <img src="/svg/empty.svg" alt="Empty" class="w-25">
+                        <p>Ningún archivo seleccionado</p>
+                    </div>
                 </div>
             </div>
-            <div v-if="fileList.length === 0" class="col-12 text-center">
-                <img src="/svg/empty.svg" alt="Empty" class="w-25">
-                <p>Ningún archivo seleccionado</p>
+
+            <div>
+                <label for="cscDiagnosticos">Notas adicionales</label>
+                <textarea class="form-control form-control-lg" rows="5" id="cscDiagnosticos"></textarea>
             </div>
         </div>
     </div>
-    <button @click="uploadFile">Enbviar</button>
 </template>
 
 <script lang="ts" src="./UploadFileComponent.ts"></script>

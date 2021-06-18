@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Branch\BranchController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Medical\Consult\MedicalConsultController;
+use App\Http\Controllers\Medical\Test\ImagenologiaTestController;
+use App\Http\Controllers\Medical\Test\LaboratorioTestController;
 use App\Http\Controllers\Medical\Test\MedicalTestResultController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Patient\PreregistrationController;
@@ -143,9 +145,14 @@ Route::group(['middleware' => 'auth'], function() {
 
     //Estudios
     Route::group(['prefix' => 'estudios'], function() {
-        Route::get('/creados', [MedicalTestResultController::class, 'getCreatedTests'])->name('estudios.getCreados');
-        Route::get('/muestras', [MedicalTestResultController::class, 'getSampleTests'])->name('estudios.getMuestra');
-        Route::get('/completados', [MedicalTestResultController::class, 'getCompletedTest'])->name('estudios.getMuestra');
+        Route::get('/laboratorio/creados', [LaboratorioTestController::class, 'getCreatedTests'])->name('estudios.getLaboratorioCreados');
+        Route::get('/laboratorio/muestras', [LaboratorioTestController::class, 'getSampleTests'])->name('estudios.getLaboratorioMuestra');
+        Route::get('/laboratorio/completados', [LaboratorioTestController::class, 'getCompletedTest'])->name('estudios.getLaboratorioMuestra');
+
+        Route::get('/imagenologia/creados', [ImagenologiaTestController::class, 'getCreatedTests'])->name('estudios.getImagenologiaCreados');
+        Route::get('/imagenologia/muestras', [ImagenologiaTestController::class, 'getSampleTests'])->name('estudios.getImagenologiaMuestra');
+        Route::get('/imagenologia/completados', [ImagenologiaTestController::class, 'getCompletedTest'])->name('estudios.getImagenologiaMuestra');
+
         Route::get('/resultados/{id}', [MedicalTestResultController::class, 'getResultFile'])->name('estudios.getResultado');
         Route::get('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.getResultados');
         

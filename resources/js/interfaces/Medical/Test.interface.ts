@@ -1,3 +1,4 @@
+import { Patient } from "@interface/Patient/Patient.interface";
 import { Order } from "./Order.interface";
 
 export interface Test
@@ -10,7 +11,7 @@ export interface Test
     created_at: string;
     updated_at: string;
     last_order: Order;
-    medical_results: {
+    medical_results?: {
         medicaltest_id: number,
         created_by: number,
         results: {
@@ -22,5 +23,6 @@ export interface Test
         medicalteststatus_id: number,
         created_at: string;
         updated_at: string;
-    }
+    },
+    patient?: Patient
 }

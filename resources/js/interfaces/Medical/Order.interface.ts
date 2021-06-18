@@ -2,13 +2,15 @@ export interface Order
 {
     medicaltest_id: number,
     product_id: number,
-    updated_by: number | null,
-    update_note: string | null,
+    updated_by: number,
+    update_note: string,
     created_at: string,
     updated_at: string,
     product: {
         id: number,
-        name: string
+        name: string,
+        product_code?: string,
+        lans_code?: string
     },
-    status?: number | null
+    status?: number
 }

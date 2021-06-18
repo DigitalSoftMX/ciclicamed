@@ -1,13 +1,12 @@
 import {
     defineComponent
 } from '@vue/runtime-core';
-import { DefineComponent, PropType } from 'vue';
+import { defineAsyncComponent, DefineComponent, PropType } from 'vue';
 
 export default defineComponent({
     components: {
-        PatientsTableComponent: require('../../../components/dataTable/patientsTable/PatientsTableComponent.vue').default,
-        EmployeesTableComponent: require('../../../components/dataTable/employeesTable/EmployeesTableComponent.vue').default
-    },
+        PatientsTableComponent: defineAsyncComponent(() => import('@component/patient/patientsTable/PatientsTableComponent.vue')),
+        EmployeesTableComponent: defineAsyncComponent(() => import('@component/employee/employeesTable/EmployeesTableComponent.vue'))    },
     emits: [],
     props: {
     },

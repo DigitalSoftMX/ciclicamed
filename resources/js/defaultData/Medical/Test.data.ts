@@ -1,3 +1,4 @@
+import { PatientData } from "@data/Patient/Patient.data";
 import { Test } from "../../interfaces/Medical/Test.interface";
 import { OrderData } from "./Order.data";
 
@@ -22,5 +23,6 @@ export const TestData: Test = {
         medicalteststatus_id: -1,
         created_at: '',
         updated_at: '',
-    }
+    },
+    patient: PatientData
 }

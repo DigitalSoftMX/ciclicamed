@@ -11,6 +11,7 @@
 <!-- <consult-product></consult-product>  -->
 <!-- <schedule-component></schedule-component> -->
 <!-- <consult-product></consult-product> -->
-<debts-table></debts-table>
+<!-- <debts-table></debts-table>-->
+<test-upload></test-upload>
 </div>
 @endsection

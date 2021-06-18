@@ -2,12 +2,17 @@
 
 namespace App\Models\Medical\Test;
 
+use App\Models\Medical\Consult\MedicalConsult;
+use App\Models\Patient\Patient;
+use App\Models\Product\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class MedicalTest extends Model
 {
     use HasFactory;
+    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
+    use \Znck\Eloquent\Traits\BelongsToThrough;
 
     protected $fillable = [
         'created_in',
@@ -15,6 +20,8 @@ class MedicalTest extends Model
         'finished_at',
         'medicalteststatus_id'
     ];
+
+    protected $perPage = 10;
 
     public function status()
     {
@@ -46,9 +53,19 @@ class MedicalTest extends Model
         return $this->hasMany(MedicalTestOrder::class, 'medicaltest_id');
     }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'medical_test_orders', 'medicaltest_id', 'product_id');
+    }
+
     public function lastOrder()
     {
-        return $this->hasOne(MedicalTestOrder::class, 'medicaltest_id')->orderBy('created_at', 'asc');
+        return $this->hasOne(MedicalTestOrder::class, 'medicaltest_id')->orderBy('created_at', 'desc');
+    }
+
+    public function patient()
+    {
+        return $this->belongsToThrough(Patient::class, MedicalConsult::class, 'patient_id', '', [MedicalConsult::class => 'scheduled_in']);
     }
 
 }

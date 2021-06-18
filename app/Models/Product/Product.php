@@ -3,6 +3,7 @@
 namespace App\Models\Product;
 
 use App\Models\Medical\Consult\MedicalConsult;
+use App\Models\Medical\Test\MedicalTest;
 use App\Models\Medical\Test\MedicalTestOrderAnnotation;
 use App\Models\Payment\Payment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
     protected $fillable = [
         'product_code',
@@ -49,5 +51,10 @@ class Product extends Model
     public function orderAnnotations()
     {
         return $this->hasMany(MedicalTestOrderAnnotation::class, 'product_id');
+    }
+
+    public function tests()
+    {
+        return $this->hasManyThrough(MedicalTest::class, 'medical_test_orders', 'product_id', 'medicaltest_id');
     }
 }

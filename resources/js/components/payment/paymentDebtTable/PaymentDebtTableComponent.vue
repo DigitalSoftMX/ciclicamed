@@ -40,7 +40,6 @@
                                 <img :src="'/svg/address.svg'" alt="Cellphone" class="mr-2">
                                 {{patientData.address}}
                             </p>
-
                         </div>
                     </div>
                 </div>

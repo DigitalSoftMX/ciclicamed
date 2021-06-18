@@ -3,10 +3,10 @@ import axios from 'axios';
 import { EmployeePaginationData } from '@data/Employee/EmployeePagination.data';
 import { EmployeeData } from '@data/Employee/Employee.data';
 import { EmployeePagination } from '@interface/Employee/EmployeePagination.interface';
+import { defineAsyncComponent } from 'vue';
 
 export default defineComponent({
     components: {
-        PreregistrationComponent: require('../../patient/preregistration/PreregistrationComponent.vue').default,
     },
     emits: [],
     props: {

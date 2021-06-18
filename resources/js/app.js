@@ -18,6 +18,8 @@ const app = createApp({
 		PatientDebtTable: defineAsyncComponent(() => import('./components/payment/patientDebtTable/PatientDebtTableComponent.vue')),
 		DebtsTable: defineAsyncComponent(() => import('./components/payment/paymentDebtTable/PaymentDebtTableComponent.vue')),
 		DebtsData: defineAsyncComponent(() => import('./components/payment/debtsTable/DebtsTableComponent.vue')),
+		TestTable: defineAsyncComponent(() => import('./components/medical/test/testTable/TestTableComponent.vue')),
+		TestUpload: defineAsyncComponent(() => import('./components/medical/test/testUpload/TestUploadComponent.vue')),
 	}
 });
 

@@ -6,10 +6,11 @@ import { UserPaginationData } from '@data/User/UserPagination.data';
 import { PatientData } from '@data/Patient/Patient.data';
 import { UserPagination } from '@interface/User/UserPagination.interface';
 import { Patient } from '@interface/Patient/Patient.interface';
+import { defineAsyncComponent } from 'vue';
 
 export default defineComponent({
     components: {
-        PreregistrationComponent: require('../../patient/preregistration/PreregistrationComponent.vue').default
+        PreregistrationComponent: defineAsyncComponent(() => import('@component/patient/preregistration/PreregistrationComponent.vue'))
     },
     emits: [],
     props: {

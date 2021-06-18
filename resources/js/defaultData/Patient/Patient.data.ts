@@ -6,7 +6,7 @@ export const PatientData: Patient = {
     patient_code: '',
     first_name: '',
     last_name: '',
-    gender: true,
+    gender: 0,
     birthday: '2000-01-01',
     address: '',
     phone: '',

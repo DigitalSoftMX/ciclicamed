@@ -3,12 +3,14 @@ import { Order } from "../../interfaces/Medical/Order.interface";
 export const OrderData: Order = {
     medicaltest_id: -1,
     product_id: 0,
-    updated_by: null,
-    update_note: null,
+    updated_by: -1,
+    update_note: '',
     created_at: '',
     updated_at: '',
     product: {
         id: -1,
-        name: ''
+        name: '',
+        lans_code: '',
+        product_code: ''
     },
 }
