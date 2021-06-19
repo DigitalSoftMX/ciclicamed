@@ -67,7 +67,7 @@
 
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <div class="userDatatable-content">{{test.last_order.product.lans_code}}</div>
+                                    <div class="userDatatable-content">{{test.last_order.product.supplier_code}}</div>
                                 </td>
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">

@@ -10,7 +10,7 @@ export interface Order
         id: number,
         name: string,
         product_code?: string,
-        lans_code?: string
+        supplier_code?: string
     },
     status?: number
 }

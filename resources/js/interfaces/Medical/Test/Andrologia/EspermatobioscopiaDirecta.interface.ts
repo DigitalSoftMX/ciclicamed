@@ -31,8 +31,6 @@ export interface EspermatobioscopiaDirecta
             c: number,
             d: number
         },
-        indiceMovilidad: number,
-        movilidadTotal: number,
         morfologia: number,
         defectosCabeza: number,
         defectosPiezaMedia: number,

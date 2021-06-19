@@ -7,7 +7,7 @@ export interface TestOrder {
     }],
     created_at: string;
     discount: number;
-    lans_code: string;
+    supplier_code: string;
     price: number
     product_code: string;
     productcategory_id: number;

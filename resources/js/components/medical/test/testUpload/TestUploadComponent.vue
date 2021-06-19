@@ -13,22 +13,22 @@
 
         <div class="col-12 col-lg-9">
             <div class="mb-25">
-                <mastografia-component></mastografia-component>
+                <mastografia-component v-model="interpretacionUltrasonidos" :disabled="false"></mastografia-component>
             </div>
             <div class="mb-25">
-                <espermatobioscopia-directa-component></espermatobioscopia-directa-component>
+                <espermatobioscopia-directa-component :disabled="false"></espermatobioscopia-directa-component>
             </div>
             <div class="mb-25">
-                <inseminacion-artificial-component></inseminacion-artificial-component>
+                <inseminacion-artificial-component :disabled="false"></inseminacion-artificial-component>
             </div>
             <div class="mb-25">
-                <orina-post-eyaculado-component></orina-post-eyaculado-component>
+                <orina-post-eyaculado-component :disabled="false"></orina-post-eyaculado-component>
             </div>
             <div class="mb-25">
-                <prueba-capacitacion-component></prueba-capacitacion-component>
+                <prueba-capacitacion-component :disabled="false"></prueba-capacitacion-component>
             </div>
             <div class="mb-25">
-                <prueba-host-component></prueba-host-component>
+                <prueba-host-component :disabled="false"></prueba-host-component>
             </div>
             <div>
                 <upload-file-component></upload-file-component>

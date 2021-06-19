@@ -85,9 +85,9 @@ class DatabaseSeeder extends Seeder
         PaymentDebt::factory(100)->create();
         ProductStatus::factory(2)->create();
         ProductCategory::factory(7)->create();
-        Product::factory(100)->create();
+        Product::factory(969)->create();
         ProductPayment::factory(100)->create();
-        MedicalTestOrderAnnotation::factory(200)->create();
+        MedicalTestOrderAnnotation::factory(863)->create();
         MedicalTestOrder::factory(100)->create();
     }
 }

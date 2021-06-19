@@ -4,41 +4,33 @@
             <h3>Interpretación de ultrasonidos</h3>
         </div>
         <div class="card-body row mx-0">
-            <div class="col-12 col-md-8 mb-25 ">
-                <label for="cscFUM">Nombre</label>
-                <input class="form-control form-control-lg" type="text" id="cscFUM" :disabled="disabled">
-            </div>
-            <div class="col-12 col-md-4 mb-25 ">
-                <label for="cscFUM">Fecha</label>
-                <input class="form-control form-control-lg" type="date" id="cscFUM" :disabled="disabled">
+            <div class="col-12 mb-25">
+                <label for="iucMotivoEstudio">Motivo del estudio</label>
+                <textarea class="form-control form-control-lg" rows="5" id="iucMotivoEstudio" v-model="formData.motivosEstudio" :disabled="disabled"></textarea>
             </div>
             <div class="col-12 mb-25">
-                <label for="cscPlan">Motivo del estudio</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" :disabled="disabled"></textarea>
+                <label for="iucTipoEstudio">Tipo del estudio</label>
+                <textarea class="form-control form-control-lg" rows="5" id="iucTipoEstudio" v-model="formData.tipoEstudio" :disabled="disabled"></textarea>
             </div>
             <div class="col-12 mb-25">
-                <label for="cscPlan">Tipo del estudio</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" :disabled="disabled"></textarea>
+                <label for="iucTecnicaEstudio">Técnica del estudio</label>
+                <textarea class="form-control form-control-lg" rows="5" id="iucTecnicaEstudio" v-model="formData.tecnicaEstudio" :disabled="disabled"></textarea>
             </div>
             <div class="col-12 mb-25">
-                <label for="cscPlan">Técnica del estudio</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" :disabled="disabled"></textarea>
+                <label for="iucHallazgos">Hallazgos</label>
+                <textarea class="form-control form-control-lg" rows="5" id="iucHallazgos" v-model="formData.hallazgos" :disabled="disabled"></textarea>
             </div>
             <div class="col-12 mb-25">
-                <label for="cscPlan">Hallazgos</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" :disabled="disabled"></textarea>
+                <label for="iucConclusion">Conclusión</label>
+                <textarea class="form-control form-control-lg" rows="5" id="iucConclusion" v-model="formData.conclusion" :disabled="disabled"></textarea>
             </div>
             <div class="col-12 mb-25">
-                <label for="cscPlan">Conclusión</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" :disabled="disabled"></textarea>
+                <label for="iucCategoria">Categoría</label>
+                <textarea class="form-control form-control-lg" rows="5" id="iucCategoria" v-model="formData.categoria" :disabled="disabled"></textarea>
             </div>
             <div class="col-12 mb-25">
-                <label for="cscPlan">Categoría</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" :disabled="disabled"></textarea>
-            </div>
-            <div class="col-12 mb-25">
-                <label for="cscPlan">Conducta</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" :disabled="disabled"></textarea>
+                <label for="iucConduct">Conducta</label>
+                <textarea class="form-control form-control-lg" rows="5" id="iucConduct" v-model="formData.conducta" :disabled="disabled"></textarea>
             </div>
         </div>
     </div>

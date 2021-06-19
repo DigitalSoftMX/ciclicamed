@@ -22,14 +22,14 @@
             }
         }
         @include e("header"){
-            border-bottom: 1px solid $border-light;
-            margin-bottom: -1px;
-            @extend .bg-normal;
+            @extend .bg-lighter;
             &.active{
                 i,
                 span{
                     &:before{
-                        content: '\f107';
+                        font-size: large;
+                        content: '\21F5';
+                        font-style: normal;
                     }
                 }
             }

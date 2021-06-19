@@ -5,8 +5,8 @@
         </div>
         <div class="card-body row mx-0">
 
-            <div class="col-12 card-body row mx-0 atbd-collapse atbd-collapse-custom p-0">
-                <div class="col-12 mb-25 card card-default card-md p-0 rounded border">
+            <div class="col-12 shadow-none card-body row mx-0 atbd-collapse atbd-collapse-custom p-0">
+                <div class="col-12 mb-25 shadow-none card p-0 rounded border">
                     <div class="atbd-collapse-item__header active">
                         <a class="item-link" data-toggle="collapse" data-target="#cecCervix" aria-expanded="true"
                             aria-controls="cecCervix">
@@ -14,148 +14,148 @@
                             Observaciones
                         </a>
                     </div>
-                    <div id="cecCervix" class="atbd-collapse-item__body collapse card-body row mx-0">
+                    <div id="cecCervix" class="atbd-collapse-item__body collapse shadow-none card-body row mx-0">
 
-                        <div class="col-12 card card-default card-md bg-white mb-25">
+                        <div class="col-12 shadow-none card bg-white mb-25 p-0">
                             <div class="card-header">
                                 <h6 class="mb-25 mb-md-0">¿Medicamentos?
                                 </h6>
                                 <div class="custom-control custom-switch switch-primary switch-md ">
-                                    <input type="checkbox" class="custom-control-input" :disabled="disabled"
-                                        id="ccLeucorrea">
-                                    <label class="custom-control-label" for="ccLeucorrea"></label>
+                                    <input type="checkbox" class="custom-control-input" :disabled="disabled" v-model="formData.observaciones.medicamentos.check" :checked="formData.observaciones.medicamentos.check"
+                                        id="opecMedicamentos">
+                                    <label class="custom-control-label" for="opecMedicamentos"></label>
                                 </div>
                             </div>
-                            <div class="card-body bg-normal">
+                            <div class="card-body" v-if="formData.observaciones.medicamentos.check">
                                 <label for="ccLeucorreaDescription">¿Cúales?</label>
-                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
-                                    id="cecForma">
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled" v-model="formData.observaciones.medicamentos.description"
+                                    id="opecMedicamentosCuales">
                             </div>
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Días de abstinencia sexual</label>
-                            <input class="form-control form-control-lg" type="text" id="cscFUM" :disabled="disabled">
+                            <label for="opecDiasAbstinencia">Días de abstinencia sexual</label>
+                            <input class="form-control form-control-lg" type="text" id="opecDiasAbstinencia" :disabled="disabled" v-model="formData.observaciones.diasAbstinenciaSexual">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Hora de recolección</label>
-                            <input class="form-control form-control-lg" type="text" id="cscFUM" :disabled="disabled">
+                            <label for="opecHoraRecoleccion">Hora de recolección</label>
+                            <input class="form-control form-control-lg" type="text" id="opecHoraRecoleccion" :disabled="disabled" v-model="formData.observaciones.horaRecoleccion">
                         </div>
 
                         <div class="col-12 col-md-4">
-                            <label for="cscFUM">Hora de procesado</label>
-                            <input class="form-control form-control-lg" type="text" id="cscFUM" :disabled="disabled">
+                            <label for="opecHoraProcesado">Hora de procesado</label>
+                            <input class="form-control form-control-lg" type="text" id="opecHoraProcesado" :disabled="disabled" v-model="formData.observaciones.horaProcesado">
                         </div>
 
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 card-body row mx-0 atbd-collapse atbd-collapse-custom p-0">
-                <div class="col-12 mb-25 card card-default card-md p-0 rounded border">
+            <div class="col-12 shadow-none card-body row mx-0 atbd-collapse atbd-collapse-custom p-0">
+                <div class="col-12 mb-25 shadow-none card p-0 rounded border">
                     <div class="atbd-collapse-item__header active">
-                        <a class="item-link" data-toggle="collapse" data-target="#cecCervix" aria-expanded="true"
-                            aria-controls="cecCervix">
+                        <a class="item-link" data-toggle="collapse" data-target="#opecAnalisisMacroscopico" aria-expanded="true"
+                            aria-controls="opecAnalisisMacroscopico">
                             <i class="la la-angle-right"></i>
                             Análisis macroscópico
                         </a>
                     </div>
-                    <div id="cecCervix" class="atbd-collapse-item__body collapse card-body row mx-0">
+                    <div id="opecAnalisisMacroscopico" class="atbd-collapse-item__body collapse shadow-none card-body row mx-0">
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">PH</label>
-                            <input class="form-control form-control-lg" type="text" id="cscFUM" :disabled="disabled">
+                            <label for="opecPH">PH</label>
+                            <input class="form-control form-control-lg" type="text" id="opecPH" :disabled="disabled" v-model="formData.analisisMacroscopico.ph">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Aspecto</label>
-                            <input class="form-control form-control-lg" type="text" id="cscFUM" :disabled="disabled">
+                            <label for="opecAspecto">Aspecto</label>
+                            <input class="form-control form-control-lg" type="text" id="opecAspecto" :disabled="disabled" v-model="formData.analisisMacroscopico.aspecto">
                         </div>
 
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 card-body row mx-0 atbd-collapse atbd-collapse-custom p-0">
-                <div class="col-12 mb-25 card card-default card-md p-0 rounded border">
+            <div class="col-12 shadow-none card-body row mx-0 atbd-collapse atbd-collapse-custom p-0">
+                <div class="col-12 mb-25 shadow-none card p-0 rounded border">
                     <div class="atbd-collapse-item__header active">
-                        <a class="item-link" data-toggle="collapse" data-target="#cecCervix" aria-expanded="true"
-                            aria-controls="cecCervix">
+                        <a class="item-link" data-toggle="collapse" data-target="#opecAnalisisMicroscopico" aria-expanded="true"
+                            aria-controls="opecAnalisisMicroscopico">
                             <i class="la la-angle-right"></i>
                             Análisis microscópico
                         </a>
                     </div>
-                    <div id="cecCervix" class="atbd-collapse-item__body collapse card-body row mx-0">
+                    <div id="opecAnalisisMicroscopico" class="atbd-collapse-item__body collapse shadow-none card-body row mx-0">
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Concentración</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecConcentracion">Concentración</label>
+                            <input class="form-control form-control-lg" type="number" id="opecConcentracion" :disabled="disabled" v-model="formData.analisisMicroscopico.concentracion">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Movilidad A</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecMovilidadA">Movilidad A</label>
+                            <input class="form-control form-control-lg" type="number" id="opecMovilidadA" :disabled="disabled" v-model="formData.analisisMicroscopico.movilidad.a">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Movilidad B</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecMovilidadB">Movilidad B</label>
+                            <input class="form-control form-control-lg" type="number" id="opecMovilidadB" :disabled="disabled" v-model="formData.analisisMicroscopico.movilidad.b">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Movilidad C</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecMovilidadC">Movilidad C</label>
+                            <input class="form-control form-control-lg" type="number" id="opecMovilidadC" :disabled="disabled" v-model="formData.analisisMicroscopico.movilidad.c">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Movilidad D</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecMovilidadD">Movilidad D</label>
+                            <input class="form-control form-control-lg" type="number" id="opecMovilidadD" :disabled="disabled" v-model="formData.analisisMicroscopico.movilidad.d">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
                             <label for="cscFUM">Movilidad total (A+B+C)</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <input class="form-control form-control-lg" type="number" id="cscFUM" disabled :value="indiceMovilidad">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
                             <label for="cscFUM">Movilidad progresiva (A+B)</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <input class="form-control form-control-lg" type="number" id="cscFUM" disabled :value="indiceMovilidadTotal">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Eritrocitos</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecEritrocitos">Eritrocitos</label>
+                            <input class="form-control form-control-lg" type="number" id="opecEritrocitos" :disabled="disabled" v-model="formData.analisisMicroscopico.eritrocitos">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Leucocitos</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecLeucocitos">Leucocitos</label>
+                            <input class="form-control form-control-lg" type="number" id="opecLeucocitos" :disabled="disabled" v-model="formData.analisisMicroscopico.leucocitos">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Inmaduras</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecInmaduras">Inmaduras</label>
+                            <input class="form-control form-control-lg" type="number" id="opecInmaduras" :disabled="disabled" v-model="formData.analisisMicroscopico.inmaduras">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Epiteliales</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecEpiteliales">Epiteliales</label>
+                            <input class="form-control form-control-lg" type="number" id="opecEpiteliales" :disabled="disabled" v-model="formData.analisisMicroscopico.epiteliales">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Bacterias</label>
-                            <input class="form-control form-control-lg" type="text" id="cscFUM" :disabled="disabled">
+                            <label for="opecBacterias">Bacterias</label>
+                            <input class="form-control form-control-lg" type="text" id="opecBacterias" :disabled="disabled" v-model="formData.analisisMicroscopico.bacterias">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Cristales</label>
-                            <input class="form-control form-control-lg" type="text" id="cscFUM" :disabled="disabled">
+                            <label for="opecCristales">Cristales</label>
+                            <input class="form-control form-control-lg" type="text" id="opecCristales" :disabled="disabled" v-model="formData.analisisMicroscopico.cristales">
                         </div>
 
                         <div class="col-12 col-md-4 mb-25 ">
-                            <label for="cscFUM">Residuos / Detritos</label>
-                            <input class="form-control form-control-lg" type="number" id="cscFUM" :disabled="disabled">
+                            <label for="opecResiduos">Residuos / Detritos</label>
+                            <input class="form-control form-control-lg" type="number" id="opecResiduos" :disabled="disabled" v-model="formData.analisisMicroscopico.residuos">
                         </div>
 
                     </div>
@@ -163,8 +163,8 @@
             </div>
 
             <div class="col-12 p-0">
-                <label for="cscFUM">Observaciones adicionales</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscFUM" :disabled="disabled"></textarea>
+                <label for="opecObservacionesAdicionales">Observaciones adicionales</label>
+                <textarea class="form-control form-control-lg" rows="5" id="opecObservacionesAdicionales" :disabled="disabled" v-model="formData.observacionesAdicionales"></textarea>
             </div>
 
         </div>

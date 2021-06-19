@@ -5,7 +5,7 @@ import { ProductStatusData } from "./ProductStatus.data";
 export const ProductData: Product = {
     id: -1,
     product_code: '',
-    lans_code: '',
+    supplier_code: '',
     name: '',
     unit: '',
     quantity_available: 0,

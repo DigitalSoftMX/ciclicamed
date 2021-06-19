@@ -1,3 +1,5 @@
+import { EspermatobioscopiaDirectaData } from '@data/Medical/Test/Andrologia/EspermatobioscopiaDirecta.data';
+import { InterpretacionUltrasonidosData } from '@data/Medical/Test/Imagenologia/InterpretacionUltrasonidos.data';
 import { defineComponent } from '@vue/runtime-core';
 import { defineAsyncComponent } from 'vue';
 
@@ -33,12 +35,13 @@ export default defineComponent({
     },
     data() {
         return {
+            interpretacionUltrasonidos: InterpretacionUltrasonidosData,
+            espermatobioscopiaDirecta: EspermatobioscopiaDirectaData
         };
     },
     mounted() {
     },
     watch: {
-
     },
     methods: {
     },

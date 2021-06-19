@@ -62,7 +62,7 @@
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
-                                        {{product.lans_code}}
+                                        {{product.supplier_code}}
                                     </div>
                                 </td>
                                 <td style="display: table-cell;" class="border-primary border-bottom">

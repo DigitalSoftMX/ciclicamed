@@ -2075,7 +2075,7 @@ table.table-rounded tr td, table.table-basic tr td, .orderDatatable-title, .paym
 }
 
 .border-normal, .payment-method-card, .c-event-form .form-control-md, .fc-theme-standard .fc-scrollgrid, .fc-theme-standard td,
-.fc-theme-standard th, .fc-view .fc-col-header tr th, #full-calendar .fc-toolbar-chunk .fc-button-group .fc-button, .slider-wrapper.disabled .ui-slider-handle:after, .atbd-pagination__link, .atbd-pagination__item .page-selection, .card.card-default .card-header {
+.fc-theme-standard th, .fc-view .fc-col-header tr th, #full-calendar .fc-toolbar-chunk .fc-button-group .fc-button, .slider-wrapper.disabled .ui-slider-handle:after, .atbd-pagination__link, .atbd-pagination__item .page-selection {
   border: 1px solid #E0E0E0;
 }
 
@@ -2096,14 +2096,13 @@ table.fc-scrollgrid thead .fc-scroller-harness .card.fc-scroller .card-body, .sl
 .slider-wrapper.disabled .card.atbd-slider .card-body, .table-social th, .table-social th.card .card-header,
 .table-social th.card .card-body, .ap-product .table tbody tr:hover td, .ap-product .table tbody tr:hover td.card .card-header,
 .ap-product .table tbody tr:hover td.card .card-body, .atbd-collapse.atbd-collapse-custom .atbd-collapse-item, .atbd-collapse.atbd-collapse-custom .card.atbd-collapse-item .card-header,
-.atbd-collapse.atbd-collapse-custom .card.atbd-collapse-item .card-body, .atbd-collapse .atbd-collapse-item__header, .atbd-collapse .card.atbd-collapse-item__header .card-header,
-.atbd-collapse .card.atbd-collapse-item__header .card-body, .card.bg-normal .card-header,
+.atbd-collapse.atbd-collapse-custom .card.atbd-collapse-item .card-body, .card.bg-normal .card-header,
 .card.bg-normal .card-body {
   background: #E0E0E0;
 }
 
 .bg-lighter, .mailbox-list__single .mail-content__bottom .mail-attatchment, .mailbox-top__search .form-control-lg, .kanban-modal__list .checkbox-group:hover, .kanban-modal__list button, .kanban-modal__research button, .kanban-modal__form textarea, .kanban-board__add-card button, .list__add-card, .kanban-list, .kanban-board__body, .wizard10 .payment-method-card .card-body .form-control, .wizard10 .select2-container--default .select2-selection--single,
-.wizard10 .select2-container--default .select2-selection--multiple, .wizard10 .edit-profile__body .form-group .form-control, .chat-wrapper form input:focus, .chat-wrapper form input, .chat-wrapper form, .atbd-select.disabled .form-control, .atbd-tab .nav-tabs:after, .atbd-upload__file li:hover, .atbd-date-ranger.date-picker-disabled .divider, .atbd-date-ranger.date-picker-disabled, .card .card-header .card-tab .btn.btn-white:hover, .atbd-button-group.btn-group-solid, .badge-dot.dot-light, .dropdown.dropdown-disable, .contents, .cbg-light {
+.wizard10 .select2-container--default .select2-selection--multiple, .wizard10 .edit-profile__body .form-group .form-control, .chat-wrapper form input:focus, .chat-wrapper form input, .chat-wrapper form, .atbd-select.disabled .form-control, .atbd-tab .nav-tabs:after, .atbd-upload__file li:hover, .atbd-date-ranger.date-picker-disabled .divider, .atbd-date-ranger.date-picker-disabled, .atbd-collapse .atbd-collapse-item__header, .card .card-header .card-tab .btn.btn-white:hover, .atbd-button-group.btn-group-solid, .badge-dot.dot-light, .dropdown.dropdown-disable, .contents, .cbg-light {
   background: #F2F2F2;
 }
 
@@ -7250,13 +7249,11 @@ table.table-basic tr td.card .card-body,
 .atbd-collapse .atbd-collapse-item:not(:first-child) .atbd-collapse-item__header {
   border-radius: 0 5px 5px 0;
 }
-.atbd-collapse .atbd-collapse-item__header {
-  border-bottom: 1px solid #E0E0E0;
-  margin-bottom: -1px;
-}
 .atbd-collapse .atbd-collapse-item__header.active i:before,
 .atbd-collapse .atbd-collapse-item__header.active span:before {
-  content: "";
+  font-size: large;
+  content: "⇵";
+  font-style: normal;
 }
 .atbd-collapse .atbd-collapse-item__header .item-link {
   display: flex;

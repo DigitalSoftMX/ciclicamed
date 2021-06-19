@@ -4,7 +4,7 @@ export interface Product
 {
     id: number;
     product_code: string;
-    lans_code: string;
+    supplier_code: string;
     name: string;
     unit: string;
     quantity_available: number;

@@ -24,7 +24,7 @@ class ProductPaymentFactory extends Factory
         return [
             'medicalconsult_id' => $this->faker->numberBetween(1, 50),
             'payment_id' => $this->faker->numberBetween(1, 50),
-            'product_id' => $this->faker->numberBetween(1, 50),
+            'product_id' => $this->faker->numberBetween(1, 969),
         ];
     }
 }

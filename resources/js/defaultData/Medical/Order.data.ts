@@ -10,7 +10,7 @@ export const OrderData: Order = {
     product: {
         id: -1,
         name: '',
-        lans_code: '',
+        supplier_code: '',
         product_code: ''
     },
 }

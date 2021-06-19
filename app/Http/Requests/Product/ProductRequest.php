@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'data.product_code' => ['required', 'max:25'],
-            'data.lans_code' => ['nullable', 'max:25'],
+            'data.supplier_code' => ['nullable', 'max:25'],
             'data.name' => ['required', 'max:255'],
             'data.unit' => ['nullable', 'max:25'],
             'data.quantity_available' => ['nullable', 'numeric', 'between:0,9999999.99'],
@@ -41,7 +41,7 @@ class ProductRequest extends FormRequest
         return [
             'data.product_code.required' => 'Ingrese un código de producto',
             'data.product_code.max' => 'El código del producto no debe de sobrepasar los 25 caracteres',
-            'data.lans_code.max' => 'El código del proovedor no debe de sobrepasar los 25 caracteres',
+            'data.supplier_code.max' => 'El código del proovedor no debe de sobrepasar los 25 caracteres',
             'data.name.required' => 'Ingrese una descripción del producto',
             'data.name.max' => 'La descripción del producto no debe de sobrepasar los 255 caracteres',
             'data.unit.max' => 'La unidad del producto no debe de sobrepasar los 255 caracteres',

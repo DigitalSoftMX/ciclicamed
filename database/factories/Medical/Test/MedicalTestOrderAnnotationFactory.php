@@ -21,8 +21,9 @@ class MedicalTestOrderAnnotationFactory extends Factory
      */
     public function definition()
     {
+        static $row = 107;
         return [
-            'product_id' => $this->faker->numberBetween(1, 100),
+            'product_id' => $row++,
             'annotation' => $this->faker->text(200)
         ];
     }

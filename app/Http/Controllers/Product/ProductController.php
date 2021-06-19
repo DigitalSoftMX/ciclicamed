@@ -20,7 +20,7 @@ class ProductController extends Controller
         $status = ProductStatus::where('name', 'Activo')->first()->id;
         $product = Product::create([
             'product_code' => $request->input('data.product_code'),
-            'lans_code' => $request->input('data.lans_code'),
+            'supplier_code' => $request->input('data.supplier_code'),
             'name' => $request->input('data.name'),
             'unit' => $request->input('data.unit'),
             'quantity_available' => $request->input('data.quantity_available'),
@@ -38,7 +38,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->update([
             'product_code' => $request->input('data.product_code'),
-            'lans_code' => $request->input('data.lans_code'),
+            'supplier_code' => $request->input('data.supplier_code'),
             'name' => $request->input('data.name'),
             'unit' => $request->input('data.unit'),
             'quantity_available' => $request->input('data.quantity_available'),
@@ -127,7 +127,7 @@ class ProductController extends Controller
         {
             $query = $request->input('query');
             $productCiclica = $product->where('product_code', 'like', '%'.$query.'%')
-                    ->orWhere('lans_code', 'like', '%'.$query.'%')
+                    ->orWhere('supplier_code', 'like', '%'.$query.'%')
                     ->orWhere('name', 'like', '%'.$query.'%')
                     ->paginate();
         } else {

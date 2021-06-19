@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-12 col-md-6 mb-25">
                         <label for="pcCodigoProveedor">Código de proveedor</label>
-                        <input class="form-control form-control-lg" type="text" :id="`pc${id}CodigoProveedor`" v-model="productDataCopy.lans_code">
+                        <input class="form-control form-control-lg" type="text" :id="`pc${id}CodigoProveedor`" v-model="productDataCopy.supplier_code">
                     </div>
                     <div class="col-12 mb-25">
                         <label for="pcDescripcion">Descripción</label>
