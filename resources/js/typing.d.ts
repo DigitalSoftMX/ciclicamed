@@ -16,3 +16,5 @@ declare interface JQuery {
 declare interface JQuery {
     footable(options?: any): any;
 }
+
+declare module 'vue-material/dist/components';

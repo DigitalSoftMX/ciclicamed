@@ -15,22 +15,26 @@
         <div class="card-body">
             <div class="mb-25">
                 <label>Sucursal</label>
-                <select-component
-                    id="sscSucursal"
-                    :data="branchesList"
-                    v-model="branchSelected"
+                <select-component id="sscSucursal" :data="branchesList" v-model="branchSelected"
                     firstText='Seleccione una sucursal'>
                 </select-component>
             </div>
-            <div>
+            <div class="mb-25">
                 <label>Doctor</label>
-                <select-component
-                    id="sscDoctor"
-                    :data="doctorList"
-                    v-model="userSelected"
+                <select-component id="sscDoctor" :data="doctorList" v-model="userSelected"
                     firstText='Seleccione un doctor'>
                 </select-component>
             </div>
+
+        </div>
+    </div>
+
+    <div class="card mb-25">
+        <div class="card-header">
+            <h4>Agendar checkup</h4>
+        </div>
+        <div class="card-body">
+            <button class="btn btn-primary btn-lg btn-squared btn-block ">Nuevo checkup</button>
         </div>
     </div>
 </template>

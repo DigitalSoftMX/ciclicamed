@@ -82,7 +82,7 @@ export default defineComponent({
         $(`#${this.id}`).on('select2:select', function (event: any) {
             self.localValue = {
                 id: Number(event.params.data.id),
-                text: '',
+                text: event.params.data.text,
                 childID: Number(event.params.data.childID),
                 parentID: Number(event.params.data.parentID)
             }

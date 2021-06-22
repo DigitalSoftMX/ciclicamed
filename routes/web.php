@@ -3,6 +3,7 @@
 use App\Events\Schedule\ScheduleEvent;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Branch\BranchController;
+use App\Http\Controllers\Checkup\CheckupCategoryController;
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Medical\Consult\MedicalConsultController;
 use App\Http\Controllers\Medical\Test\ImagenologiaTestController;
@@ -164,5 +165,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'pagos'], function() {
         Route::get('/{id}', [PaymentController::class, 'getPayment'])->name('pagos.getPago');
         Route::get('/{id}/deudas', [PaymentController::class, 'getAllDebtsByPaymentID'])->name('pagos.getDeudas');
+    });
+
+    //Checkup
+    Route::group(['prefix' => 'checkup'], function() {
+        Route::get('/categorias', [CheckupCategoryController::class, 'getAllCategories'])->name('checkup.getTodos');
     });
 });

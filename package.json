@@ -23,7 +23,7 @@
         "file-loader": "^6.2.0",
         "fork-ts-checker-webpack-plugin": "^6.2.10",
         "laravel-echo": "^1.10.0",
-        "laravel-mix": "^6.0.19",
+        "laravel-mix": "^6.0.24",
         "lodash": "^4.17.21",
         "popper.js": "^1.12",
         "pusher-js": "^7.0.3",

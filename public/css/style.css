@@ -12834,7 +12834,7 @@ table.table-basic tr td.card .card-body,
   padding: 15px 0;
   z-index: 1;
   border: none;
-  z-index: 33;
+  z-index: 10000;
 }
 .select2-dropdown .select2-results__option {
   font-size: 14px;
@@ -19257,7 +19257,7 @@ table.table-rounded tbody tr td:last-child {
 }
 
 .select2-dropdown {
-  z-index: 9999;
+  z-index: 10000;
 }
 
 .dropzone-lg-s {

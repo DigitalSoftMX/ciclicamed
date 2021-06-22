@@ -12,6 +12,6 @@
 <!-- <schedule-component></schedule-component> -->
 <!-- <consult-product></consult-product> -->
 <!-- <debts-table></debts-table> -->
-<debts-data></debts-data>
+<test-table></test-table>
 </div>
 @endsection
