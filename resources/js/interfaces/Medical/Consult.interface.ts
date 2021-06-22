@@ -4,7 +4,7 @@ export interface Consult
     patient_id: number,
     doctor_id: number | null,
     created_by: number,
-    medicalconsulttype_id: number,
+    medicalconsultcategory_id: number,
     updated_by: number | null,
     update_note: string | null,
     consult_reason: string,

@@ -12,7 +12,7 @@ export interface Schedule
     branch_id: number;
     doctor_id: number;
     consult_reason: string;
-    medicalconsulttype_id: number;
+    medicalconsultcategory_id: number;
     medicalconsultstatus_id: number;
     medicalspecialty_id: number;
     patient_id: number;

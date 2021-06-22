@@ -12,7 +12,7 @@ export const ScheduleData:Schedule = {
     branch_id: -1,
     doctor_id: -1,
     consult_reason: '',
-    medicalconsulttype_id: -1,
+    medicalconsultcategory_id: -1,
     medicalconsultstatus_id: -1,
     medicalspecialty_id: -1,
     patient_id: -1,

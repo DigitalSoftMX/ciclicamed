@@ -38,7 +38,6 @@ export default defineComponent({
         {
             handler()
             {
-                console.log(this.schedule)
                 this.showCancelOption();
                 this.showEditOption();
             },

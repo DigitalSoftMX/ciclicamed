@@ -35,7 +35,7 @@ class BranchController extends Controller
     public function getSchedules($id, $employeeID)
     {
         $schedules = MedicalConsult::where('doctor_id', $employeeID)->where('branch_id', $id)
-                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsulttype_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
+                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
                                 ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
         //broadcast(new ScheduleEvent($patient));
         return response()->json($schedules);

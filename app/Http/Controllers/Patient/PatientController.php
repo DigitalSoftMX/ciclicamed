@@ -60,7 +60,7 @@ class PatientController extends Controller
 
     public function getAllConsults($id, $categoria)
     {
-        $consults = Patient::findOrFail($id)->medicalConsults->where('medicalconsulttype_id', $categoria);
+        $consults = Patient::findOrFail($id)->medicalConsults->where('medicalconsultcategory_id', $categoria);
         return response()->json($consults);
     }
 
@@ -73,7 +73,7 @@ class PatientController extends Controller
     public function getSchedules($id)
     {
         $patient = MedicalConsult::where('patient_id', '=', $id)
-                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsulttype_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
+                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
                                 ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
         //broadcast(new ScheduleEvent($patient));
         return response()->json($patient);

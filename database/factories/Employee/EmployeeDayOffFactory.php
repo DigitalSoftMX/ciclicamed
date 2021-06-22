@@ -26,7 +26,7 @@ class EmployeeDayOffFactory extends Factory
             'day_off' => $this->faker->date(),
             'start_time' => $this->faker->time('h:m:s'),
             'finish_time' => $this->faker->time('h:m:s'),
-            'branch_id' => $this->faker->numberBetween(1, 15),
+            'branch_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

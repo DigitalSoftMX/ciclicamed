@@ -3,7 +3,7 @@
 namespace Database\Factories\Medical\Consult;
 
 use App\Models\Medical\Consult\MedicalConsultStatus;
-use App\Models\Medical\Consult\MedicalConsultType;
+use App\Models\Medical\Consult\MedicalConsultCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MedicalConsultStatusFactory extends Factory

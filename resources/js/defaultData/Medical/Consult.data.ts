@@ -5,7 +5,7 @@ export const ConsultData: Consult = {
     patient_id: -1,
     doctor_id: -1,
     created_by: -1,
-    medicalconsulttype_id: -1,
+    medicalconsultcategory_id: -1,
     updated_by: -1,
     update_note: '',
     consult_reason: '',

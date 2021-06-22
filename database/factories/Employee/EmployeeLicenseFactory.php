@@ -21,8 +21,34 @@ class EmployeeLicenseFactory extends Factory
      */
     public function definition()
     {
+        static $row = 1;
+
+        if($row === 1)
+        {
+            $row++;
+            EmployeeLicense::create([
+                'employee_id' => 1,
+                'degree_title' => '',
+                'license_number' => '',
+                'school_name' => '',
+                'medicalspecialty_id' => 11,
+            ]);
+        }
+
+        if($row === 2)
+        {
+            $row++;
+            EmployeeLicense::create([
+                'employee_id' => 2,
+                'degree_title' => '',
+                'license_number' => '',
+                'school_name' => '',
+                'medicalspecialty_id' => 12,
+            ]);
+        }
+
         return [
-            'employee_id' => $this->faker->numberBetween(1, 100),
+            'employee_id' => $this->faker->numberBetween(3, 100),
             'degree_title' => $this->faker->text(100),
             'license_number' => $this->faker->regexify('[0-9]{8}'),
             'school_name' => $this->faker->text(100),

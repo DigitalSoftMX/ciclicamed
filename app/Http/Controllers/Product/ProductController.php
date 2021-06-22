@@ -122,30 +122,35 @@ class ProductController extends Controller
         $ciclica = ProductCategory::where('name', $category)->first()->id;
         $product = Product::where('productcategory_id', $ciclica)->where('productstatus_id', $status);
 
-        $productCiclica = [];
-        if($request->has('query'))
+        if(!$request->has('all'))
         {
-            $query = $request->input('query');
-            $productCiclica = $product->where('product_code', 'like', '%'.$query.'%')
-                    ->orWhere('supplier_code', 'like', '%'.$query.'%')
-                    ->orWhere('name', 'like', '%'.$query.'%')
-                    ->paginate();
-        } else {
-            $productCiclica = $product->paginate();
-        }
-        
-        $response = [
-            'pagination' => [
-                'total' => $productCiclica->total(),
-                'per_page' => $productCiclica->perPage(),
-                'current_page' => $productCiclica->currentPage(),
-                'last_page' => $productCiclica->lastPage(),
-                'from' => $productCiclica->firstItem(),
-                'to' => $productCiclica->lastItem()
-            ],
-            'data' => $productCiclica->load('status', 'category')
-        ];
+            $productCiclica = [];
+            if($request->has('query'))
+            {
+                $query = $request->input('query');
+                $productCiclica = $product->where('product_code', 'like', '%'.$query.'%')
+                        ->orWhere('supplier_code', 'like', '%'.$query.'%')
+                        ->orWhere('name', 'like', '%'.$query.'%')
+                        ->paginate();
+            } else {
+                $productCiclica = $product->paginate();
+            }
+            
+            $response = [
+                'pagination' => [
+                    'total' => $productCiclica->total(),
+                    'per_page' => $productCiclica->perPage(),
+                    'current_page' => $productCiclica->currentPage(),
+                    'last_page' => $productCiclica->lastPage(),
+                    'from' => $productCiclica->firstItem(),
+                    'to' => $productCiclica->lastItem()
+                ],
+                'data' => $productCiclica->load('status', 'category')
+            ];
 
-        return response()->json($response);
+            return response()->json($response);
+        }
+
+        return response()->json($product->get()->load('status', 'category'));
     }
 }

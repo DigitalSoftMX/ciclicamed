@@ -22,6 +22,45 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         static $employeeUser = 25;
+
+        if($employeeUser === 26)
+        {
+            $employeeUser++;
+            Employee::create([
+                'first_name' => 'Laboratorio',
+                'last_name' => '',
+                'gender' => 0,
+                'birthday' => $this->faker->dateTimeThisCentury->format('Y-m-d'),
+                'address' => null,
+                'phone' => null,
+                'cellphone' => null,
+                'email' => null,
+                'photo' => null,
+                'employeecategory_id' => 1,
+                'employeestatus_id' => 1,
+                'user_id' => null
+            ]);
+        }
+
+        if($employeeUser === 27)
+        {
+            $employeeUser++;
+            Employee::create([
+                'first_name' => 'Imagenología',
+                'last_name' => '',
+                'gender' => 0,
+                'birthday' => $this->faker->dateTimeThisCentury->format('Y-m-d'),
+                'address' => null,
+                'phone' => null,
+                'cellphone' => null,
+                'email' => null,
+                'photo' => null,
+                'employeecategory_id' => 1,
+                'employeestatus_id' => 1,
+                'user_id' => null
+            ]);
+        }
+
         return [
             'first_name' => $this->faker->unique()->firstName(),
             'last_name' => $this->faker->unique()->lastName(),

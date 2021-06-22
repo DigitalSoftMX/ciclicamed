@@ -26,7 +26,7 @@ class CreateEmployeesTable extends Migration
             $table->string('photo', 100)->nullable();
             $table->unsignedTinyInteger('employeecategory_id', false);
             $table->unsignedTinyInteger('employeestatus_id', false);
-            $table->unsignedInteger('user_id', false);
+            $table->unsignedInteger('user_id', false)->nullable();
             $table->timestamps();
 
             //Relaciones

@@ -12,6 +12,8 @@ import { Select } from '@interface/General/Select.interface';
 import { DatePicker } from 'v-calendar';
 import { FullCalendarBusinessHour } from '@interface/General/FullCalendarBusinessHour.interface';
 import { SelectData } from '@data/General/SelectSelected.data';
+import { Product } from '@interface/Product/Product.interface';
+import cloneDeep from 'lodash/cloneDeep';
 
 export default defineComponent({
     name: 'LateralScheduleComponent',
@@ -59,6 +61,7 @@ export default defineComponent({
             finishMinutesEnabled: ['0-59'],
             patientSelect: SelectData,
             categorySelect: SelectData,
+            testSelect: SelectData,
             branchSelect: SelectData,
             doctorSelect: SelectData,
             consultReasonCharLength: 0 as number,
@@ -68,7 +71,10 @@ export default defineComponent({
             isScheduleCategoryDisabled: false,
             isBranchDisabled: false,
             isDoctorDisabled: false,
-            doctorListCopy: Object.assign([], ...this.doctorsList)
+            isTestDisabled: true,
+            doctorListCopy: cloneDeep(this.doctorsList),
+            testList: [] as Select[],
+            categoryListCopy: cloneDeep(this.categoryList)
         };
     },
     watch:
@@ -99,7 +105,22 @@ export default defineComponent({
         },
         categorySelect()
         {
-            this.scheduleSelectedCopy.medicalconsulttype_id = this.categorySelect.childID;
+            const category = this.categoryList.filter(category => category.id === this.categorySelect.id)[0];
+            switch(category.text)
+            {
+                case 'Estudio de imagenología':
+                    this.getTestList('imagenologia');
+                    this.isTestDisabled = false;
+                    break;
+                case 'Estudio de laboratorio':
+                    this.getTestList('laboratorio');
+                    this.isTestDisabled = false;
+                    break;
+                default:
+                    this.isTestDisabled = true;
+                    break;
+            };
+            this.scheduleSelectedCopy.medicalconsultcategory_id = this.categorySelect.childID;
         },
         branchSelect()
         {
@@ -111,6 +132,18 @@ export default defineComponent({
         },
         doctorSelect()
         {
+            switch(this.doctorSelect.childID)
+            {
+                case 1: //Laboratorio
+                    this.categoryListCopy = this.categoryList.filter(doctor => doctor.text === 'Estudio de laboratorio');
+                    break;
+                case 2: //Imagenologia
+                    this.categoryListCopy = this.categoryList.filter(doctor => doctor.text === 'Estudio de imagenología');
+                    break;
+                default:
+                    this.categoryListCopy = this.categoryList.filter(doctor => doctor.text !== 'Estudio de laboratorio' && doctor.text !== 'Estudio de imagenología');
+                    break;
+            }
             this.scheduleSelectedCopy.doctor_id = this.doctorSelect.childID;
             this.scheduleSelectedCopy.medicalspecialty_id = this.doctorSelect.parentID!;
         },
@@ -206,7 +239,6 @@ export default defineComponent({
         formatScheduleTime(datetime: string): string {
             return moment(datetime).format('hh:mm');
         },
-
         updateConsultReasonCharLength(): void
         {
             this.consultReasonCharLength = this.scheduleSelectedCopy.consult_reason.length;
@@ -217,7 +249,6 @@ export default defineComponent({
         },
         createNewSchedule(): void
         {
-            
             axios.post('/consultas', {
                 data: {
                     ...this.scheduleSelectedCopy
@@ -276,6 +307,27 @@ export default defineComponent({
                 console.log(error)
             })
         },
+        getTestList(testCategory: string)
+        {
+            axios.get<Product[]>(`/productos/${testCategory}`, {
+                params: {
+                    all: true
+                }
+            })
+            .then(response => {
+                var index = 0;
+                this.testList = response.data.map(test => {
+                    return {
+                        id: index++,
+                        childID: test.id,
+                        text: testCategory === 'imagenologia' ? `${test.product_code} ${test.name}` : `${test.product_code} ${test.supplier_code} ${test.name}`,
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        }
     },
     mounted() {
         const self = this;

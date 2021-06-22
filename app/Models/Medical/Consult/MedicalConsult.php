@@ -31,7 +31,7 @@ class MedicalConsult extends Model
         'patient_id',
         'doctor_id',
         'created_by',
-        'medicalconsulttype_id',
+        'medicalconsultcategory_id',
         'medicalconsultstatus_id',
         'consult_reason',
         'consult_schedule_start',
@@ -56,7 +56,7 @@ class MedicalConsult extends Model
 
     public function type()
     {
-        return $this->belongsTo(MedicalConsultType::class, 'medicalconsulttype_id');
+        return $this->belongsTo(MedicalConsultCategory::class, 'medicalconsultcategory_id');
     }
 
     public function status()

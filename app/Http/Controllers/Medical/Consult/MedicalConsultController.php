@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Medical\Consult\MedicalConsultRequest;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\Consult\MedicalConsultStatus;
-use App\Models\Medical\Consult\MedicalConsultType;
+use App\Models\Medical\Consult\MedicalConsultCategory;
 use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\Medical\Test\MedicalTest;
 use App\Models\Medical\Test\MedicalTestOrder;
@@ -20,7 +20,7 @@ class MedicalConsultController extends Controller
     public function store(Request $request)
     {
         $consultExist = false;
-        // $consulType = MedicalConsultType::find($request->input('data.scheduleCategory'));
+        // $consulType = MedicalConsultCategory::find($request->input('data.scheduleCategory'));
 
 
         // switch($consulType->id)
@@ -45,7 +45,7 @@ class MedicalConsultController extends Controller
         $consult = MedicalConsult::create([
             'patient_id' => $request->input('data.patient_id'),
             'doctor_id' => $request->input('data.doctor_id'),
-            'medicalconsulttype_id' => $request->input('data.medicalconsulttype_id'),
+            'medicalconsultcategory_id' => $request->input('data.medicalconsultcategory_id'),
             'consult_reason' => $request->input('data.consult_reason'),
             'consult_schedule_start' => Carbon::parse($request->input('data.consult_schedule_start')),
             'consult_schedule_finish' => Carbon::parse($request->input('data.consult_schedule_finish')),
@@ -68,7 +68,7 @@ class MedicalConsultController extends Controller
         $consult->update([
             'patient_id' => $request->input('data.patient_id'),
             'doctor_id' => $request->input('data.doctor_id'),
-            'medicalconsulttype_id' => $request->input('data.medicalconsulttype_id'),
+            'medicalconsultcategory_id' => $request->input('data.medicalconsultcategory_id'),
             'consult_reason' => $request->input('data.consult_reason'),
             'consult_schedule_start' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
             'consult_schedule_finish' => Carbon::createFromTimestamp($request->input('data.consult_schedule_finish')),
@@ -81,7 +81,7 @@ class MedicalConsultController extends Controller
 
     public function getConsultTypes()
     {
-        $type = MedicalConsultType::all();
+        $type = MedicalConsultCategory::all();
         return response()->json($type);
     }
 

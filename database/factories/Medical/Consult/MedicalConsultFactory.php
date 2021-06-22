@@ -28,7 +28,7 @@ class MedicalConsultFactory extends Factory
             'patient_id' => $this->faker->numberBetween(1, 5),
             'doctor_id' => $this->faker->numberBetween(1, 15),
             'created_by' => $this->faker->numberBetween(1, 15),
-            'medicalconsulttype_id' => $this->faker->numberBetween(1, 5),
+            'medicalconsultcategory_id' => $this->faker->numberBetween(1, 4),
             'medicalconsultstatus_id' => $this->faker->numberBetween(1, 5),
             'consult_reason' => $this->faker->text(200),
             'consult_schedule_start' => $scheduled,
@@ -37,6 +37,7 @@ class MedicalConsultFactory extends Factory
             'consult_finish_at' => Carbon::createFromFormat('Y-m-d H:i:s', $scheduled)->addMinutes($this->faker->numberBetween(0, 15)),
             'branch_id' => $this->faker->numberBetween(1, 5),
             'medicalspecialty_id' => $this->faker->numberBetween(1, 10),
+            'checkup_id' => $this->faker->boolean(50) ? $this->faker->numberBetween(1, 6) : null,
             'updated_by' => $this->faker->numberBetween(1, 5),
             'update_note' => $this->faker->text(100),
         ];

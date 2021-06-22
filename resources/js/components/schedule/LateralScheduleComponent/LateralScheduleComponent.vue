@@ -27,8 +27,16 @@
                     <!-- Tipo de cita -->
                     <div class="form-group">
                         <label for="lscCategoria">Tipo de cita</label>
-                        <select-component id="lscCategoria" :data="categoryList" :disabled="isScheduleCategoryDisabled"
+                        <select-component id="lscCategoria" :data="categoryListCopy" :disabled="isScheduleCategoryDisabled"
                             v-model="categorySelect" firstText='Seleccione un tipo de cita'>
+                        </select-component>
+                    </div>
+
+                    <!-- Lista de estudios (solo si es imagenologia o laboratorio) -->
+                    <div class="form-group" v-if="!isTestDisabled">
+                        <label for="lscEstudios">Estudio clínico</label>
+                        <select-component id="lscEstudios" :data="testList" :disabled="isTestDisabled"
+                            v-model="testSelect" firstText='Seleccione un estudio'>
                         </select-component>
                     </div>
 
