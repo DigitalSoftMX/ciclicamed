@@ -17,19 +17,27 @@
                 </div>
                 <div class="modal-body">
                     <div class="px-3">
-                        <div class="card mb-25 shadow-none">
+                        <div class="card shadow-none mb-25">
                             <div class="card-header">
-                                <h4>Lista de checkups</h4>
+                                <h4>Opciones de agenda</h4>
                             </div>
-                            <div class="card-body">
-                                <select-component id="ckpscLista" :data="categoryList" v-model="categorySelected"
-                                    firstText="Seleccione un checkup"></select-component>
+                            <div class="card-body row mx-0 px-0">
+                                <div class="col-12 col-md-6 mb-25 mb-md-0">
+                                    <label>Checkup</label>
+                                    <select-component id="ckpscCheckup" :data="categoryList" v-model="categorySelected"
+                                        firstText="Seleccione un checkup"></select-component>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label>Paciente</label>
+                                    <select-component id="ckpscPaciente" :data="patients" v-model="patientSelected"
+                                        firstText="Seleccione un paciente"></select-component>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row mx-0">
-                        <div class="col-12 col-md-6 mb-25" v-for="(checkup, index) in checkupData" :key="checkup.code">
+                        <div class="col-12 col-md-6 mb-25" v-for="(checkup, index) in checkupData.checkupList" :key="index">
                             <div class="card shadow-none">
                                 <div class="card-header">
                                     <h4>{{checkup.name}}</h4>
@@ -38,21 +46,28 @@
                                     <div class="mb-25">
                                         <label>Sucursal</label>
                                         <select-component :id="`ckpscAgenda${index}`"
-                                            firstText="Seleccione una sucursal" :data="branchesList">
+                                            firstText="Seleccione una sucursal" :data="branches" v-model="branchesSelected[index]">
                                         </select-component>
                                     </div>
                                     <div class="mb-25">
+                                        <label>Fecha</label>
+                                        <input type="date" class="form-control form-control-lg" @change="updateDate($event.target.value, index)" :value="formatDate(index)">
+                                    </div>
+                                    <div class="mb-25">
                                         <label>Hora de inicio</label>
-                                        <timepicker :hourRange="['8-20']"></timepicker>
+                                        <timepicker :hourRange="['08-20']" v-model="checkup.consult_schedule_start"></timepicker>
                                     </div>
                                     <div>
                                         <label>Hora de conclusión</label>
-                                        <timepicker :hourRange="['8-20']"></timepicker>
+                                        <timepicker :hourRange="['08-20']" v-model="checkup.consult_schedule_finish"></timepicker>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer justify-items-end">
+                    <button class="btn btn-primary btn-default btn-squared" @click="saveCheckupData" :disabled="isButtonDisabled">Guardar</button>
                 </div>
             </div>
         </div>

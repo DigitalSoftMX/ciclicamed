@@ -2,6 +2,7 @@
 
 namespace App\Models\Patient;
 
+use App\Models\Checkup\Checkup;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\Medical\Test\MedicalTest;
@@ -63,5 +64,10 @@ class Patient extends Model
     public function medicalTestsScheduled()
     {
         return $this->hasManyThrough(MedicalTest::class, MedicalConsult::class, 'patient_id', 'scheduled_in');
+    }
+
+    public function checkups()
+    {
+        return $this->hasMany(Checkup::class, 'patient_id');
     }
 }

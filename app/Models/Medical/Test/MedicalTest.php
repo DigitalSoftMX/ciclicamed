@@ -2,6 +2,7 @@
 
 namespace App\Models\Medical\Test;
 
+use App\Models\Checkup\Checkup;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Patient\Patient;
 use App\Models\Product\Product;
@@ -66,6 +67,11 @@ class MedicalTest extends Model
     public function patient()
     {
         return $this->belongsToThrough(Patient::class, MedicalConsult::class, 'patient_id', '', [MedicalConsult::class => 'scheduled_in']);
+    }
+
+    public function checkup()
+    {
+        return $this->belongsTo(Checkup::class, 'checkup_id');
     }
 
 }

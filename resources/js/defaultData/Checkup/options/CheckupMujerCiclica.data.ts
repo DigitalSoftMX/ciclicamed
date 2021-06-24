@@ -1,46 +1,56 @@
-import { CheckupSelect } from "@interface/Checkup/CheckupSelect.interface";
+import { CheckupItem } from "@interface/Checkup/CheckupItem.interface";
+import moment from "moment";
 
-export const CheckupMujerCiclicaData: CheckupSelect[] = [
+const time = moment().format('YYYY-MM-DD HH:mm:00');
+
+export const CheckupMujerCiclicaData: CheckupItem[] = [
     {
         code: 'IMA-0013',
         name: 'USG mamario',
-        consult_schedule_start: '',
-        consult_schedule_finish: ''
+        branch_id: -1,
+        consult_schedule_start: time,
+        consult_schedule_finish: time
     },
     {
         code: 'IMA-0001',
         name: 'USG pélvico',
-        consult_schedule_start: '',
-        consult_schedule_finish: ''
+        branch_id: -1,
+        consult_schedule_start: time,
+        consult_schedule_finish: time
     },
     {
         code: 'LAB-0015',
         name: 'Cultivos especiales',
-        consult_schedule_start: '',
-        consult_schedule_finish: ''
+        branch_id: -1,
+        consult_schedule_start: time,
+        consult_schedule_finish: time
     },
     {
         code: 'LAB-0040',
         name: 'Papanicolau',
-        consult_schedule_start: '',
-        consult_schedule_finish: ''
+        branch_id: -1,
+        consult_schedule_start: time,
+        consult_schedule_finish: time
     },
     {
         code: 'LAB-0586',
         name: 'Perfil hormonal femenino fase I',
-        consult_schedule_start: '',
-        consult_schedule_finish: ''
+        branch_id: -1,
+        consult_schedule_start: time,
+        consult_schedule_finish: time
     },
     {
         code: 'LAB-0854',
         name: 'Perfil hormonal femenino fase II',
-        consult_schedule_start: '',
-        consult_schedule_finish: ''
+        branch_id: -1,
+        consult_schedule_start: time,
+        consult_schedule_finish: time
     },
     {
         code: 'LAB-0710',
         name: 'Genotipificación de VPH (opcional)',
-        consult_schedule_start: '',
-        consult_schedule_finish: ''
+        branch_id: -1,
+        consult_schedule_start: time,
+        consult_schedule_finish: time
     },
 ]

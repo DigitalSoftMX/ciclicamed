@@ -10,7 +10,11 @@ class CheckupCategory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'checkupcategory_id',
-        'patient_id'
+        'name',
     ];
+
+    public function checkups()
+    {
+        return $this->hasMany(Checkup::class, 'checkupcategory_id');
+    }
 }

@@ -4,12 +4,12 @@
             <img src="/svg/clock.svg" alt="Clock" class="align-self-center">
         </span>
         <div class="col-10 input-group p-0">
-            <select class="form-control col-6 border-0" @input="updateTime($event, true)" v-bind:value="hourSelected">
+            <select class="form-control col-6 border-0" @input="updateTime($event, true)" :value="hourSelected">
                 <option :value="convertToString(hour)" v-for="hour in hourEnabled" :key="hour">
                     {{convertToString(hour)}}
                 </option>
             </select>
-            <select class="form-control col-6 border-0" @input="updateTime($event, false)" v-bind:value="minuteSelected">
+            <select class="form-control col-6 border-0" @input="updateTime($event, false)" :value="minuteSelected">
                 <option :value="convertToString(minute)" v-for="minute in minuteEnabled" :key="minute">
                     {{convertToString(minute)}}</option>
             </select>

@@ -21,7 +21,7 @@ export default defineComponent({
         ScheduleSelectComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleSelectComponent/ScheduleSelectComponent.vue')),
         ScheduleActionComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleActionComponent/ScheduleActionComponent.vue')),
         LateralScheduleComponent: defineAsyncComponent(() => import('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue')),
-        ScheduleActionSelectComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleActionSelect/ScheduleActionSelectComponent.vue')),
+        CheckupScheduleComponent: defineAsyncComponent(() => import('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue'))
     },
     props: {
     },
@@ -175,6 +175,6 @@ export default defineComponent({
         {
             console.log(schedule)
             this.scheduleSelected = Object.assign({}, schedule);
-        }
+        },
     },
 })

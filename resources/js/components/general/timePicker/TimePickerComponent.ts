@@ -28,6 +28,8 @@ export default defineComponent({
         };
     },
     mounted() {
+        this.hourSelected = this.convertToString(moment(this.modelValue).hours());
+        this.minuteSelected = this.convertToString(moment(this.modelValue).minutes());
         this.hourEnabled = this.orderNumbers(this.hourRange);
         this.minuteEnabled = this.orderNumbers(this.minuteRange);
     },
@@ -65,7 +67,6 @@ export default defineComponent({
         },
         updateTime(event: Event, isHourUpdated: boolean)
         {
-            
             const time = (event.target as HTMLSelectElement);
             this.hourSelected = isHourUpdated ? time.value: this.hourSelected;
             this.minuteSelected = !isHourUpdated ? time.value: this.minuteSelected;
@@ -74,7 +75,7 @@ export default defineComponent({
                                 .set('minutes', Number(this.minuteSelected))
                                 .format('YYYY-MM-DD HH:mm:00');
             this.$emit('update:modelValue', dateTime);
-            this.$emit('onChange', isHourUpdated);
+            this.$emit('onChange', isHourUpdated, dateTime);
         },
     },
 })

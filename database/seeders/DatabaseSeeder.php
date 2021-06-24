@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Branch\Branch;
 use App\Models\Checkup\Checkup;
 use App\Models\Checkup\CheckupCategory;
+use App\Models\Checkup\CheckupStatus;
 use App\Models\Employee\Employee;
 use App\Models\Employee\EmployeeCategory;
 use App\Models\Employee\EmployeeDayOff;
@@ -65,6 +66,7 @@ class DatabaseSeeder extends Seeder
         EmployeeStatus::factory(2)->create();
         Employee::factory(100)->create();
         MedicalSpecialty::factory(12)->create();
+        CheckupStatus::factory(4)->create();
         CheckupCategory::factory(6)->create();
         Checkup::factory(200)->create();
         EmployeeLicense::factory(50)->create();

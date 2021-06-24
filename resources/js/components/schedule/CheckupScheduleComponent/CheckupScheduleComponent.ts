@@ -1,3 +1,4 @@
+import { CheckupListData } from '@data/Checkup/CheckupList.data';
 import { CheckupConvenioInstitucional } from '@data/Checkup/options/CheckupConvenioInstitucional.data';
 import { CheckupDiagnosticoPrenatal } from '@data/Checkup/options/CheckupDiagnosticoPrenatal.data';
 import { CheckupMatureData } from '@data/Checkup/options/CheckupMature.data';
@@ -6,11 +7,13 @@ import { CheckupMujerCiclicaData } from '@data/Checkup/options/CheckupMujerCicli
 import { CheckupTeenData } from '@data/Checkup/options/CheckupTeen.data';
 import { SelectData } from '@data/General/SelectSelected.data';
 import { CheckupCategory } from '@interface/Checkup/CheckupCategory.interface';
-import { CheckupSelect } from '@interface/Checkup/CheckupSelect.interface';
+import { CheckupItem } from '@interface/Checkup/CheckupItem.interface';
+import { CheckupList } from '@interface/Checkup/CheckupList.interface';
 import { Select } from '@interface/General/Select.interface';
 import { defineAsyncComponent, defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import $ from 'jquery';
+import moment from 'moment';
 import { PropType } from 'vue';
 
 export default defineComponent({
@@ -20,7 +23,11 @@ export default defineComponent({
         Timepicker: defineAsyncComponent(() => import('@component/general/timePicker/TimePickerComponent.vue'))
     },
     props: {
-        branchesList: {
+        branches: {
+            type: Array as PropType<Select[]>,
+            default: []
+        },
+        patients: {
             type: Array as PropType<Select[]>,
             default: []
         }
@@ -29,12 +36,14 @@ export default defineComponent({
         return {
             categoryList: [] as Select[],
             categorySelected: SelectData,
-            checkupData: [] as CheckupSelect[]
+            checkupData: CheckupListData,
+            patientSelected: SelectData,
+            branchesSelected: [] as Select[],
+            isButtonDisabled: true
         }
     },
     mounted() {
         this.getCategories();
-        $('#ckpscCheckups').modal('show')
     },
     watch: {
         categorySelected:
@@ -44,24 +53,51 @@ export default defineComponent({
                 switch(this.categorySelected.text)
                 {
                     case 'Mature':
-                        this.checkupData = CheckupMatureData;
+                        this.checkupData.checkupList = CheckupMatureData;
                         break;
                     case 'Mujer cíclica':
-                        this.checkupData = CheckupMujerCiclicaData;
+                        this.checkupData.checkupList = CheckupMujerCiclicaData;
                         break;
                     case 'Teen':
-                        this.checkupData = CheckupTeenData;
+                        this.checkupData.checkupList = CheckupTeenData;
                         break;
                     case 'Mom':
-                        this.checkupData = CheckupMom;
+                        this.checkupData.checkupList = CheckupMom;
                         break;
                     case 'Diagnóstico prenatal':
-                        this.checkupData = CheckupDiagnosticoPrenatal;
+                        this.checkupData.checkupList = CheckupDiagnosticoPrenatal;
                         break;
                     case 'Convenio institucional':
-                        this.checkupData = CheckupConvenioInstitucional;
+                        this.checkupData.checkupList = CheckupConvenioInstitucional;
                         break;
                 }
+                this.branchesSelected = [];
+                this.checkupData.checkupcategory_id = this.categorySelected.childID;
+            },
+            deep: true
+        },
+        patientSelected:
+        {
+            handler()
+            {
+                this.checkupData.patient_id = this.patientSelected.childID;
+            },
+            deep: true
+        },
+        branchesSelected:
+        {
+            handler()
+            {
+                this.branchesSelected.map((item, index) => this.checkupData.checkupList[index].branch_id = item.childID);
+            },
+            deep: true
+        },
+        checkupData:
+        {
+            handler()
+            {
+                const incorrectScheduled = this.checkupData.checkupList.filter(item => item.branch_id === -1 && !item.name.includes('opcional') && !item.name.includes('50 años')).length;
+                this.isButtonDisabled = this.checkupData.checkupList.length > 0 && this.checkupData.patient_id > 0 && incorrectScheduled === 0 ? false : true;
             },
             deep: true
         }
@@ -78,6 +114,30 @@ export default defineComponent({
                         childID: item.id
                     }
                 })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        updateDate(datetime: string, index: number)
+        {
+            const startTime = moment(this.checkupData.checkupList[index].consult_schedule_start);
+            const finishTime = moment(this.checkupData.checkupList[index].consult_schedule_finish);
+            this.checkupData.checkupList[index].consult_schedule_start = moment(datetime).set('hours', startTime.hours()).set('minutes', startTime.minutes()).format('YYYY-MM-DD HH:mm:00');
+            this.checkupData.checkupList[index].consult_schedule_finish = moment(datetime).set('hours', finishTime.hours()).set('minutes', finishTime.minutes()).format('YYYY-MM-DD HH:mm:00');
+        },
+        formatDate(index: number)
+        {
+            return moment(this.checkupData.checkupList[index].consult_schedule_start).format('YYYY-MM-DD');
+        },
+        saveCheckupData()
+        {
+            console.log(this.checkupData)
+            axios.post(`/checkup`, {
+                data: this.checkupData
+            })
+            .then(response => {
+                console.log(response)
             })
             .catch(error => {
                 console.log(error)

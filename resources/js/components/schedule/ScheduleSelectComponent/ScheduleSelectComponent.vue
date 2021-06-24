@@ -34,7 +34,7 @@
             <h4>Agendar checkup</h4>
         </div>
         <div class="card-body">
-            <button class="btn btn-primary btn-lg btn-squared btn-block ">Nuevo checkup</button>
+            <button class="btn btn-primary btn-lg btn-squared btn-block" @click="openCheckupComponent">Nuevo checkup</button>
         </div>
     </div>
 </template>

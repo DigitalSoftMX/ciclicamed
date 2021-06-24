@@ -38,5 +38,9 @@ export default defineComponent({
         }
     },
     methods: {
+        openCheckupComponent()
+        {
+            $('#ckpscCheckups').modal('show');
+        }
     },
 })

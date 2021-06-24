@@ -11,6 +11,7 @@
     </div>
 
     <schedule-action-component :schedule="scheduleSelected"></schedule-action-component>
+    <checkup-schedule-component :branches="branchesList" :patients="patientsList"></checkup-schedule-component>
     <lateral-schedule-component
         ref="openLateralSchedule"
         :schedule="scheduleSelected" :branchesList="branchesList"
