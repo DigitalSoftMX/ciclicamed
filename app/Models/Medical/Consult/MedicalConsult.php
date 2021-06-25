@@ -15,6 +15,7 @@ use App\Models\Medical\Prescription\Medicament;
 use App\Models\Medical\Study\MedicalStudy;
 use App\Models\Medical\Study\MedicalStudySample;
 use App\Models\Medical\Test\MedicalTest;
+use App\Models\Medical\Test\MedicalTestOrder;
 use App\Models\Medical\Test\MedicalTestResult;
 use App\Models\Medical\Test\MedicalTestSample;
 use App\Models\Patient\Patient;
@@ -26,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 class MedicalConsult extends Model
 {
     use HasFactory;
+    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
     protected $fillable = [
         'patient_id',
@@ -113,6 +115,11 @@ class MedicalConsult extends Model
         return $this->hasMany(MedicalTest::class, 'scheduled_in');
     }
 
+    public function testOrderScheduled()
+    {
+        return $this->hasManyThrough(MedicalTestOrder::class, MedicalTest::class, 'scheduled_in', 'medicaltest_id');
+    }
+
     public function testSamplesCreated()
     {
         return $this->hasManyThrough(MedicalTestSample::class, MedicalTest::class, 'created_in', 'medicaltest_id');
@@ -123,7 +130,7 @@ class MedicalConsult extends Model
         return $this->hasManyThrough(MedicalTestSample::class, MedicalTest::class, 'scheduled_in', 'medicaltest_id');
     }
 
-    public function testrResultsCreated()
+    public function testResultsCreated()
     {
         return $this->hasManyThrough(MedicalTestResult::class, MedicalTest::class, 'created_in', 'medicaltest_id');
     }

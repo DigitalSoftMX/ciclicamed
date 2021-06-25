@@ -3,7 +3,10 @@
 namespace App\Models\Checkup;
 
 use App\Models\Medical\Consult\MedicalConsult;
+use App\Models\Medical\Test\MedicalTest;
+use App\Models\Medical\Test\MedicalTestOrder;
 use App\Models\Patient\Patient;
+use App\Models\Product\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,5 +42,10 @@ class Checkup extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'patient_id');
+    }
+
+    public function order()
+    {
+        return $this->hasManyDeep(MedicalTestOrder::class, [MedicalConsult::class, MedicalTest::class], ['checkup_id', 'scheduled_in', 'medicaltest_id']);
     }
 }

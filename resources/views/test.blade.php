@@ -13,6 +13,7 @@
 <!-- <consult-product></consult-product> -->
 <!-- <patient-debt-table></patient-debt-table> -->
 <!-- <consult-product></consult-product> -->
-<checkup-schedule></checkup-schedule>
+<!-- <checkup-schedule></checkup-schedule> -->
+<checkup-table></checkup-table>
 </div>
 @endsection

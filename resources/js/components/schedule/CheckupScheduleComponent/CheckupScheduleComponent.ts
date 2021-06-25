@@ -7,18 +7,16 @@ import { CheckupMujerCiclicaData } from '@data/Checkup/options/CheckupMujerCicli
 import { CheckupTeenData } from '@data/Checkup/options/CheckupTeen.data';
 import { SelectData } from '@data/General/SelectSelected.data';
 import { CheckupCategory } from '@interface/Checkup/CheckupCategory.interface';
-import { CheckupItem } from '@interface/Checkup/CheckupItem.interface';
-import { CheckupList } from '@interface/Checkup/CheckupList.interface';
 import { Select } from '@interface/General/Select.interface';
 import { defineAsyncComponent, defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
-import $ from 'jquery';
 import moment from 'moment';
 import { PropType } from 'vue';
 
 export default defineComponent({
     name: 'CheckupScheduleComponent',
     components: {
+        SuccessAlertComponent: defineAsyncComponent(() => import('@component/general/alert/SuccessAlertComponent.vue')),
         SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue')),
         Timepicker: defineAsyncComponent(() => import('@component/general/timePicker/TimePickerComponent.vue'))
     },
@@ -73,6 +71,7 @@ export default defineComponent({
                 }
                 this.branchesSelected = [];
                 this.checkupData.checkupcategory_id = this.categorySelected.childID;
+                this.checkupData.name = this.categorySelected.text;
             },
             deep: true
         },
@@ -137,11 +136,22 @@ export default defineComponent({
                 data: this.checkupData
             })
             .then(response => {
-                console.log(response)
+                $('#ckpscCheckups').modal('hide');
+                $('#ckscSuccess').modal('show');
+                this.clearData();
             })
             .catch(error => {
                 console.log(error)
             })
+        },
+        clearData()
+        {
+            this.categorySelected = SelectData,
+            this.checkupData = CheckupListData,
+            this.checkupData.checkupList = [];
+            this.patientSelected = SelectData,
+            this.branchesSelected = [],
+            this.isButtonDisabled = true
         }
     },
 })

@@ -21,6 +21,7 @@ const app = createApp({
 		TestTable: defineAsyncComponent(() => import('./components/medical/test/testTable/TestTableComponent.vue')),
 		TestUpload: defineAsyncComponent(() => import('./components/medical/test/testUpload/TestUploadComponent.vue')),
 		CheckupSchedule: defineAsyncComponent(() => import('./components/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue')),
+		CheckupTable: defineAsyncComponent(() => import('./components/checkup/checkupTable/CheckupTableComponent.vue'))
 	}
 });
 

@@ -73,6 +73,7 @@
         </div>
     </div>
 
+    <success-alert-component id="ckscSuccess" title="Checkup guardado correctamente" message="El checkup se ha guardado correctamente"></success-alert-component>
 </template>
 <script lang="ts" src="./CheckupScheduleComponent.ts"></script>
 <style scoped>

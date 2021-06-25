@@ -171,6 +171,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'checkup'], function() {
         Route::get('/categorias', [CheckupCategoryController::class, 'getAllCategories'])->name('checkup.getTodos');
         Route::get('/pendientes', [CheckupCategoryController::class, 'getPendings'])->name('checkup.getTodos');
+        Route::get('/{id}', [CheckupCategoryController::class, 'getCheckupByID'])->name('checkup.getCheckup');
 
         Route::post('/', [CheckupCategoryController::class, 'createCheckups'])->name('checkup.setNuevo');
     });
