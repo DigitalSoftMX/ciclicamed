@@ -1,4 +1,4 @@
-<template>
+<template>    
     <div class="breadcrumb-main">
         <h4 class="breadcrumb-title mb-25 mb-md-0">{{title}}</h4>
         <div class="form-group p-0">
@@ -79,7 +79,7 @@
                                         </li>
                                         <li>
                                             <button
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img" @click="getCheckupDataByID(checkup.id)">
                                                 <img src="/svg/edit.svg" alt="Editar">
                                             </button>
                                         </li>
@@ -138,6 +138,7 @@
             <div class="spinner-border text-primary"></div>
         </div>
     </div>
+    <checkup-shedule-component :enable-options="false" :checkupData="checkupSelected" :branches="branchesList"></checkup-shedule-component>
 
 </template>
 

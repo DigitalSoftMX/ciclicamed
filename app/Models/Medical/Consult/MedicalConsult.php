@@ -117,7 +117,7 @@ class MedicalConsult extends Model
 
     public function testOrderScheduled()
     {
-        return $this->hasManyThrough(MedicalTestOrder::class, MedicalTest::class, 'scheduled_in', 'medicaltest_id');
+        return $this->hasOneThrough(MedicalTestOrder::class, MedicalTest::class, 'scheduled_in', 'medicaltest_id');
     }
 
     public function testSamplesCreated()

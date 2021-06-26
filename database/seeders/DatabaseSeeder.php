@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
         EmployeeCategory::factory(6)->create();
         EmployeeStatus::factory(2)->create();
         Employee::factory(100)->create();
-        MedicalSpecialty::factory(12)->create();
+        MedicalSpecialty::factory(13)->create();
         CheckupStatus::factory(4)->create();
         CheckupCategory::factory(6)->create();
         Checkup::factory(200)->create();

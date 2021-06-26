@@ -1,3 +1,4 @@
+import { Consult } from "@interface/Medical/Consult.interface";
 import { Order } from "@interface/Medical/Order.interface";
 import { Patient } from "@interface/Patient/Patient.interface";
 import { CheckupCategory } from "./CheckupCategory.interface";
@@ -12,5 +13,6 @@ export interface Checkup
     updated_at: string;
     category?: CheckupCategory;
     patient?: Patient;
-    order?: Order[]
+    order?: Order[];
+    consults?: Consult[];
 }

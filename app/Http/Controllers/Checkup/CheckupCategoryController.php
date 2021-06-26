@@ -7,7 +7,6 @@ use App\Models\Checkup\Checkup;
 use App\Models\Checkup\CheckupCategory;
 use App\Models\Checkup\CheckupStatus;
 use App\Models\Medical\Consult\MedicalConsult;
-use App\Models\Medical\Consult\MedicalConsultCategory;
 use App\Models\Medical\Test\MedicalTest;
 use App\Models\Medical\Test\MedicalTestOrder;
 use App\Models\Product\Product;
@@ -25,7 +24,7 @@ class CheckupCategoryController extends Controller
     public function getCheckupByID($id)
     {
         $checkup = Checkup::findOrFail($id);
-        $checkup->load('consults.testOrderScheduled.product');
+        $checkup->load('consults.testOrderScheduled.product', 'category');
 
         return response()->json($checkup);
     }
@@ -82,37 +81,83 @@ class CheckupCategoryController extends Controller
         $checkups = [];
         foreach($request['data.checkupList'] as $item)
         {
-            $medicalconsultcategory_id = str_contains($item['code'], 'IMA') ? 3 : 4;
-            $medicalspecialty_id = str_contains($item['code'], 'IMA') ? 11 : 12;
-            $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;
-            $consult = MedicalConsult::create([
-                'patient_id' => $request['data.patient_id'],
-                'doctor_id' => $doctor_id,
-                'consult_reason' => 'Estudio '.$item['name'].' de checkup '.$request['data.name'],
-                'consult_schedule_start' => Carbon::createFromTimeString($item['consult_schedule_start']),
-                'consult_schedule_finish' => Carbon::createFromTimeString($item['consult_schedule_start']),
-                'medicalspecialty_id' => $medicalspecialty_id,
-                'medicalconsultcategory_id' => $medicalconsultcategory_id,
-                'branch_id' => $item['branch_id'],
-                'medicalconsultstatus_id' => 1,
-                'checkup_id' => $checkup
-            ]);
-            
-            $test = MedicalTest::create([
-                'scheduled_in' => $consult->id,
-                'medicalteststatus_id' => 1
-            ]);
+            if($item['branch_id'] > 0)
+            {
+                $medicalconsultcategory_id = str_contains($item['code'], 'IMA') ? 3 : 4;
+                $medicalspecialty_id = str_contains($item['code'], 'IMA') ? 11 : 12;
+                $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;
+                $consult = MedicalConsult::create([
+                    'patient_id' => $request['data.patient_id'],
+                    'doctor_id' => $doctor_id,
+                    'consult_reason' => 'Estudio '.$item['name'].' de checkup '.$request['data.name'],
+                    'consult_schedule_start' => Carbon::createFromTimeString($item['consult_schedule_start']),
+                    'consult_schedule_finish' => Carbon::createFromTimeString($item['consult_schedule_start']),
+                    'medicalspecialty_id' => $medicalspecialty_id,
+                    'medicalconsultcategory_id' => $medicalconsultcategory_id,
+                    'branch_id' => $item['branch_id'],
+                    'medicalconsultstatus_id' => 1,
+                    'checkup_id' => $checkup
+                ]);
+                
+                $test = MedicalTest::create([
+                    'scheduled_in' => $consult->id,
+                    'medicalteststatus_id' => 1
+                ]);
 
-            $product_id = Product::where('product_code', $item['code'])->where('productstatus_id', 1)->first()->id;
+                $product_id = Product::where('product_code', $item['code'])->where('productstatus_id', 1)->first()->id;
 
-            $order = MedicalTestOrder::create([
-                'medicaltest_id' => $test->id,
-                'product_id' => $product_id
-            ]);
+                $order = MedicalTestOrder::create([
+                    'medicaltest_id' => $test->id,
+                    'product_id' => $product_id
+                ]);
 
-            $consult['test'] = $test;
-            $test['order'] = $order;
-            array_push($checkups, $consult);
+                $consult['test'] = $test;
+                $test['order'] = $order;
+                array_push($checkups, $consult);
+            }
+        }
+        return response()->json($checkups);
+    }
+
+    public function updateCheckups(Request $request)
+    {
+        $checkups = [];
+        foreach($request['data.checkupList'] as $item)
+        {
+            if($item['branch_id'] > 0)
+            {
+                $medicalconsultcategory_id = str_contains($item['code'], 'IMA') ? 3 : 4;
+                $medicalspecialty_id = str_contains($item['code'], 'IMA') ? 11 : 12;
+                $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;
+                $consult = MedicalConsult::create([
+                    'patient_id' => $request['data.patient_id'],
+                    'doctor_id' => $doctor_id,
+                    'consult_reason' => 'Estudio '.$item['name'].' de checkup '.$request['data.name'],
+                    'consult_schedule_start' => Carbon::createFromTimeString($item['consult_schedule_start']),
+                    'consult_schedule_finish' => Carbon::createFromTimeString($item['consult_schedule_start']),
+                    'medicalspecialty_id' => $medicalspecialty_id,
+                    'medicalconsultcategory_id' => $medicalconsultcategory_id,
+                    'branch_id' => $item['branch_id'],
+                    'medicalconsultstatus_id' => 1,
+                    'checkup_id' => $request['data.checkup_id'],
+                ]);
+                
+                $test = MedicalTest::create([
+                    'scheduled_in' => $consult->id,
+                    'medicalteststatus_id' => 1
+                ]);
+
+                $product_id = Product::where('product_code', $item['code'])->where('productstatus_id', 1)->first()->id;
+
+                $order = MedicalTestOrder::create([
+                    'medicaltest_id' => $test->id,
+                    'product_id' => $product_id
+                ]);
+
+                $consult['test'] = $test;
+                $test['order'] = $order;
+                array_push($checkups, $consult);
+            }
         }
         return response()->json($checkups);
     }

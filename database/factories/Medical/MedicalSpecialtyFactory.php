@@ -34,7 +34,8 @@ class MedicalSpecialtyFactory extends Factory
             'Oncología',
             'Colposcopía',
             'Laboratorio',
-            'Imagenologia'
+            'Imagenologia',
+            'Ginecología'
         ];
         static $row = -1;
         $row++;

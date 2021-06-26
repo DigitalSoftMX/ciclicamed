@@ -174,5 +174,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{id}', [CheckupCategoryController::class, 'getCheckupByID'])->name('checkup.getCheckup');
 
         Route::post('/', [CheckupCategoryController::class, 'createCheckups'])->name('checkup.setNuevo');
+        Route::patch('/', [CheckupCategoryController::class, 'updateCheckups'])->name('checkup.setNuevo');
     });
 });

@@ -71,8 +71,9 @@ mix.js('resources/js/app.js', 'public/js')
                 path.resolve('./node_modules'),
                 path.resolve('./resources/js'),
                 path.resolve('./public/js'),
-                path.resolve('./public/svg')
-            ]
+                path.resolve('./public/svg'),
+                path.resolve('./node_modules')
+            ],
         },
         plugins: [new ForkTsCheckerWebpackPlugin()]
     });

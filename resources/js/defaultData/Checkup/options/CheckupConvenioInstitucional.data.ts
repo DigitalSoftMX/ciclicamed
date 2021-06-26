@@ -8,6 +8,8 @@ export const CheckupConvenioInstitucional: CheckupItem[] = [
         code: 'IMA-0013',
         name: 'USG mamario',
         branch_id: -1,
+        medicalconsult_id: -1,
+        medicalspecialty_id: -1,
         consult_schedule_start: time,
         consult_schedule_finish: time
     },
@@ -15,6 +17,8 @@ export const CheckupConvenioInstitucional: CheckupItem[] = [
         code: 'IMA-0001',
         name: 'USG pélvico',
         branch_id: -1,
+        medicalconsult_id: -1,
+        medicalspecialty_id: -1,
         consult_schedule_start: time,
         consult_schedule_finish: time
     },
@@ -22,6 +26,17 @@ export const CheckupConvenioInstitucional: CheckupItem[] = [
         code: 'LAB-0040',
         name: 'Papanicolau',
         branch_id: -1,
+        medicalconsult_id: -1,
+        medicalspecialty_id: -1,
+        consult_schedule_start: time,
+        consult_schedule_finish: time
+    },
+    {
+        code: 'CON',
+        name: 'Consulta de colposcopía',
+        branch_id: -1,
+        medicalconsult_id: -1,
+        medicalspecialty_id: 10,
         consult_schedule_start: time,
         consult_schedule_finish: time
     },

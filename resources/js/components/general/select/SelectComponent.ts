@@ -4,7 +4,6 @@ import { defineComponent } from '@vue/runtime-core';
 import $ from 'jquery';
 import 'select2';
 import { PropType } from 'vue';
-
 export default defineComponent({
     emits: ['update:modelValue', 'onChange'],
     props: {

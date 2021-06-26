@@ -17,4 +17,4 @@ declare interface JQuery {
     footable(options?: any): any;
 }
 
-declare module 'vue-material/dist/components';
+declare module 'vue-select-3/src';

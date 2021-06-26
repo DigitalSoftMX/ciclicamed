@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <div class="px-3">
+                    <div class="px-3" v-if="enableOptions">
                         <div class="card shadow-none mb-25">
                             <div class="card-header">
                                 <h4>Opciones de agenda</h4>
@@ -24,20 +24,18 @@
                             <div class="card-body row mx-0 px-0">
                                 <div class="col-12 col-md-6 mb-25 mb-md-0">
                                     <label>Checkup</label>
-                                    <select-component id="ckpscCheckup" :data="categoryList" v-model="categorySelected"
-                                        firstText="Seleccione un checkup"></select-component>
+                                    <v-select :options="categoryList" label="name" :reduce="item => item.id" v-model="categorySelected"/>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label>Paciente</label>
-                                    <select-component id="ckpscPaciente" :data="patients" v-model="patientSelected"
-                                        firstText="Seleccione un paciente"></select-component>
+                                    <v-select :options="patients" label="text" :reduce="item => item.childID" v-model="checkupDataCopy.patient_id"/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row mx-0">
-                        <div class="col-12 col-md-6 mb-25" v-for="(checkup, index) in checkupData.checkupList" :key="index">
+                        <div class="col-12 col-md-6 mb-25" v-for="(checkup, index) in checkupDataCopy.checkupList" :key="index">
                             <div class="card shadow-none">
                                 <div class="card-header">
                                     <h4>{{checkup.name}}</h4>
@@ -45,9 +43,7 @@
                                 <div class="card-body">
                                     <div class="mb-25">
                                         <label>Sucursal</label>
-                                        <select-component :id="`ckpscAgenda${index}`"
-                                            firstText="Seleccione una sucursal" :data="branches" v-model="branchesSelected[index]">
-                                        </select-component>
+                                        <v-select :options="branches" label="text" :reduce="item => item.childID" v-model="branchesSelected[index]"/>
                                     </div>
                                     <div class="mb-25">
                                         <label>Fecha</label>
