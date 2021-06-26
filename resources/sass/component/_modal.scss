@@ -11,7 +11,7 @@
 // Modal Content
 .modal-content{
     p{
-        font-size: 14px;
+        color: #000;
         &:last-child{
             margin-bottom: 0;
         }
@@ -55,9 +55,6 @@
 }
 // Modal Info
 .modal-info{
-    .modal-body{
-        padding-bottom: 10px;
-    }
     .modal-footer{
         padding: .5rem .5rem 1rem;
         border-top: 0 none;

@@ -30,7 +30,6 @@ class MedicalTestSampleFactory extends Factory
             'sent_at' => $this->faker->dateTimeThisYear(),
             'updated_by' => $this->faker->numberBetween(1, 5),
             'update_note' => $this->faker->text(200),
-            'medicalteststatus_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

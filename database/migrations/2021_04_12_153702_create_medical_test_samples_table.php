@@ -22,7 +22,6 @@ class CreateMedicalTestSamplesTable extends Migration
             $table->dateTime('sent_at');
             $table->unsignedMediumInteger('updated_by', false)->nullable();
             $table->string('update_note', 255)->nullable();
-            $table->unsignedTinyInteger('medicalteststatus_id', false);
             $table->timestamps();
 
             //Relaciones
@@ -30,7 +29,6 @@ class CreateMedicalTestSamplesTable extends Migration
             $table->foreign('collected_by')->references('id')->on('employees');
             $table->foreign('sent_by')->references('id')->on('employees');
             $table->foreign('updated_by')->references('id')->on('employees');
-            $table->foreign('medicalteststatus_id')->references('id')->on('medical_test_statuses');
         });
     }
 

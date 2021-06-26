@@ -114,6 +114,25 @@ class CheckupCategoryController extends Controller
         return response()->json($checkups);
     }
 
+    public function cancelCheckup($id)
+    {
+        $checkup = Checkup::findOrFail($id)->update([
+            'checkupstatus_id' => 4
+        ]);
+        $consults = MedicalConsult::where('checkup_id', $id);
+        $consults->update([
+            'medicalconsultstatus_id' => 6
+        ]);
+        
+        foreach($consults->get() as $consult)
+        {
+            MedicalTest::where('scheduled_in', $consult->id)->update([
+                'medicalteststatus_id' => 5
+            ]);
+        }
+        return response()->json($checkup);
+    }
+
     private function createCheckupData($request, $item, $checkup, $medicalconsultcategory_id, $medicalspecialty_id)
     {
         $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;

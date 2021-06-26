@@ -18,13 +18,7 @@ class MedicalTestSample extends Model
         'sent_at',
         'updated_by',
         'update_note',
-        'medicalteststatus_id'
     ];
-
-    public function status()
-    {
-        return $this->belongsTo(MedicalTestStatus::class, 'medicalteststatus_id');
-    }
 
     public function medicaltest()
     {

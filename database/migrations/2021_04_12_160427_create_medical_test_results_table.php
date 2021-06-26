@@ -20,14 +20,12 @@ class CreateMedicalTestResultsTable extends Migration
             $table->string('result_note', 500);
             $table->unsignedMediumInteger('updated_by', false)->nullable();
             $table->string('update_note', 255)->nullable();
-            $table->unsignedTinyInteger('medicalteststatus_id', false);
             $table->timestamps();
 
             //Relaciones
             $table->foreign('medicaltest_id')->references('id')->on('medical_tests');
             $table->foreign('created_by')->references('id')->on('employees');
             $table->foreign('updated_by')->references('id')->on('employees');
-            $table->foreign('medicalteststatus_id')->references('id')->on('medical_test_statuses');
         });
     }
 

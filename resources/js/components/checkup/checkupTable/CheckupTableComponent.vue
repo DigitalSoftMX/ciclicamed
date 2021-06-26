@@ -1,4 +1,4 @@
-<template>    
+<template>
     <div class="breadcrumb-main">
         <h4 class="breadcrumb-title mb-25 mb-md-0">{{title}}</h4>
         <div class="form-group p-0">
@@ -45,7 +45,7 @@
                             </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody v-if="checkupData.data.length > 0">
                             <tr v-for="checkup in checkupData.data" :key="checkup.id">
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
@@ -59,7 +59,8 @@
 
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <div class="userDatatable-content">{{`${checkup.patient?.first_name} ${checkup.patient?.last_name}`}}</div>
+                                    <div class="userDatatable-content">
+                                        {{`${checkup.patient?.first_name} ${checkup.patient?.last_name}`}}</div>
                                 </td>
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">
@@ -79,14 +80,15 @@
                                         </li>
                                         <li>
                                             <button
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img" @click="getCheckupDataByID(checkup.id)">
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
+                                                @click="getCheckupDataByID(checkup.id)">
                                                 <img src="/svg/edit.svg" alt="Editar">
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img src="/svg/cancel.svg" alt="Subir">
+                                                <img src="/svg/cancel.svg" alt="Subir" @click="showCancelConfirm(checkup.id)">
                                             </button>
                                         </li>
                                     </ul>
@@ -94,7 +96,13 @@
                             </tr>
                         </tbody>
 
-                        <tfoot>
+                        <tbody v-else>
+                            <td colspan="5">
+                                <empty-error-component></empty-error-component>
+                            </td>
+                        </tbody>
+
+                        <tfoot v-if="checkupData.data.length > 0">
                             <tr class="footable-paging">
                                 <td colspan="8">
                                     <div class="footable-pagination-wrapper">
@@ -123,8 +131,8 @@
                                                     class="footable-page-link">›</a></li>
                                             <li class="footable-page-nav"
                                                 v-bind:class="{'disabled': paginationActive === checkupData.pagination.last_page}"
-                                                @click="getCheckupData(checkupData.pagination.last_page)" data-page="last"><a
-                                                    class="footable-page-link">»</a></li>
+                                                @click="getCheckupData(checkupData.pagination.last_page)"
+                                                data-page="last"><a class="footable-page-link">»</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -138,12 +146,15 @@
             <div class="spinner-border text-primary"></div>
         </div>
     </div>
-    <checkup-shedule-component :enable-options="false" :checkupData="checkupSelected" :branches="branchesList"></checkup-shedule-component>
-
+    <checkup-shedule-component :enable-options="false" :checkupData="checkupSelected" :branches="branchesList">
+    </checkup-shedule-component>
+    <confirmation-alert-component id="cktcConfirmation" title="¿Está seguro de cancelar este checkup? Esta acción no puede deshacerse" @confirmAction="cancelCheckup"></confirmation-alert-component>
+    <success-alert-component id="cktcSuccess" :title="successAlert.title" :message="successAlert.message"></success-alert-component>
 </template>
 
 <script lang="ts" src="./CheckupTableComponent.ts"></script>
 
 <style>
     @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
+
 </style>

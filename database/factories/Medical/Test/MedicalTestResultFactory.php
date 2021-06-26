@@ -53,7 +53,6 @@ class MedicalTestResultFactory extends Factory
             'result_note' => $this->faker->text(200),
             'updated_by' => $this->faker->numberBetween(1, 5),
             'update_note' => $this->faker->text(200),
-            'medicalteststatus_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

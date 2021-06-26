@@ -10036,7 +10036,7 @@ table.table-basic tr td.card .card-body,
 }
 
 .modal-content p {
-  font-size: 14px;
+  color: #000;
 }
 .modal-content p:last-child {
   margin-bottom: 0;
@@ -10051,9 +10051,6 @@ table.table-basic tr td.card .card-body,
   border-color: transparent;
 }
 
-.modal-info .modal-body {
-  padding-bottom: 10px;
-}
 .modal-info .modal-footer {
   padding: 0.5rem 0.5rem 1rem;
   border-top: 0 none;

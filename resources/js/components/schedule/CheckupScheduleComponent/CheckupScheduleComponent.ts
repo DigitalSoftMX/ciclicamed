@@ -49,6 +49,11 @@ export default defineComponent({
             checkupDataCopy: this.checkupData,
             branchesSelected: [] as number[],
             isButtonDisabled: true,
+            successAlert: {
+                title: '',
+                message: ''
+            },
+            isCheckupNew: true
         }
     },
     mounted() {
@@ -100,7 +105,7 @@ export default defineComponent({
             {
                 this.checkupDataCopy = this.checkupData;
                 this.branchesSelected = this.checkupData.checkupList!.map(item => item.branch_id);
-                console.log(this.checkupData.checkupList)
+                this.isCheckupNew = this.checkupData.checkup_id > 0 ? false : true;
             },
             deep: true
         },
@@ -136,12 +141,18 @@ export default defineComponent({
         {
             return moment(this.checkupDataCopy.checkupList[index].consult_schedule_start).format('YYYY-MM-DD');
         },
+        uploadCheckupData()
+        {
+            this.isCheckupNew ? this.saveCheckupData() : this.updateCheckupData();
+        },
         saveCheckupData()
         {
             axios.post(`/checkup`, {
                 data: this.checkupDataCopy
             })
             .then(response => {
+                this.successAlert.title = "Checkup creado";
+                this.successAlert.message = "El checkup se ha creado correctamente";
                 $('#ckpscCheckups').modal('hide');
                 $('#ckscSuccess').modal('show');
                 this.clearData();
@@ -152,14 +163,14 @@ export default defineComponent({
         },
         updateCheckupData()
         {
-            console.log(this.checkupDataCopy)
             axios.patch(`/checkup`, {
                 data: this.checkupDataCopy
             })
             .then(response => {
-                console.log(response.data)
-                // $('#ckpscCheckups').modal('hide');
-                // $('#ckscSuccess').modal('show');
+                this.successAlert.title = "Checkup actualizado";
+                this.successAlert.message = "El checkup se ha actualizado correctamente";
+                $('#ckpscCheckups').modal('hide');
+                $('#ckscSuccess').modal('show');
                 this.clearData();
             })
             .catch(error => {

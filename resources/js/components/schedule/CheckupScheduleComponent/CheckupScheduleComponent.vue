@@ -63,13 +63,13 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-items-end">
-                    <button class="btn btn-primary btn-default btn-squared" @click="updateCheckupData" :disabled="isButtonDisabled">Guardar</button>
+                    <button class="btn btn-primary btn-default btn-squared" @click="uploadCheckupData" :disabled="isButtonDisabled">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <success-alert-component id="ckscSuccess" title="Checkup guardado correctamente" message="El checkup se ha guardado correctamente"></success-alert-component>
+    <success-alert-component id="ckscSuccess" :title="successAlert.title" :message="successAlert.message"></success-alert-component>
 </template>
 <script lang="ts" src="./CheckupScheduleComponent.ts"></script>
 <style scoped>

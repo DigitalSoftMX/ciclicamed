@@ -16,10 +16,14 @@ import { CheckupItem } from '@interface/Checkup/CheckupItem.interface';
 import { CheckupList } from '@interface/Checkup/CheckupList.interface';
 import { Branch } from '@interface/Branch/Branch.interface';
 import { Select } from '@interface/General/Select.interface';
+import { defineAsyncComponent } from 'vue';
 
 export default defineComponent({
     components: {
-        CheckupSheduleComponent: require('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue').default
+        SuccessAlertComponent: defineAsyncComponent(() => import('@component/general/alert/SuccessAlertComponent.vue')),
+        ConfirmationAlertComponent: defineAsyncComponent(() => import('@component/general/alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue')),
+        EmptyErrorComponent: defineAsyncComponent(() => import('@component/general/error/EmptyErrorComponent.vue')),
+        CheckupSheduleComponent: defineAsyncComponent(() => import('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue'))
     },
     emits: [],
     props: {
@@ -41,8 +45,12 @@ export default defineComponent({
             activateSearch: true,
             loading: true,
             checkupSelected: CheckupListData,
+            checkupIDSelected: 0,
             branchesList: [] as Select[],
-            options: [{country: 'Canada', code: 'CA'},]
+            successAlert: {
+                title: '',
+                message: ''
+            },
         };
     },
     mounted() {
@@ -105,11 +113,29 @@ export default defineComponent({
         },
         getCheckupDataByID(id: number)
         {
-            console.log(id)
             axios.get<Checkup>(`/checkup/${id}`)
             .then(response => {
                 this.checkupSelected = setCheckupData(response.data, this.checkupSelected, id);
                 $('#ckpscCheckups').modal('show');
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        showCancelConfirm(id: number)
+        {
+            this.checkupIDSelected = id;
+            $('#cktcConfirmation').modal('show');
+        },
+        cancelCheckup()
+        {
+            console.log('canceled')
+            axios.delete<Checkup>(`/checkup/${this.checkupIDSelected}`)
+            .then(response => {
+                this.successAlert.title = 'Checkup cancelado';
+                this.successAlert.message = 'Checkup cancelado correctamente';
+                this.checkupData.data = this.checkupData.data.filter(item => item.id !== this.checkupIDSelected);
+                $('#cktcSuccess').modal('show');
             })
             .catch(error => {
                 console.log(error)
