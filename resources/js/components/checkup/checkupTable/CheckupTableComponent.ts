@@ -108,7 +108,7 @@ export default defineComponent({
             console.log(id)
             axios.get<Checkup>(`/checkup/${id}`)
             .then(response => {
-                this.checkupSelected = setCheckupData(response.data, this.checkupSelected);
+                this.checkupSelected = setCheckupData(response.data, this.checkupSelected, id);
                 $('#ckpscCheckups').modal('show');
             })
             .catch(error => {
@@ -134,14 +134,22 @@ export default defineComponent({
     },
 })
 
-export function setCheckupData(checkup: Checkup, checkupSelected: CheckupList): CheckupList
+export function setCheckupData(checkup: Checkup, checkupSelected: CheckupList, checkupID: number): CheckupList
 {
     checkupSelected.patient_id = checkup.patient_id;
     checkupSelected.name = checkup.category!.name;
     checkupSelected.checkupcategory_id = checkup.category!.id;
     checkupSelected.checkupList = setCheckupList(checkup.category!.name);
+    checkupSelected.checkup_id = checkupID;
+    console.log(checkupSelected.checkup_id)
     checkup.consults!.map(item => {
-        const index = checkupSelected.checkupList.findIndex(data => data.code === item.test_order_scheduled!.product.product_code && item.consult_reason.includes(data.name));
+        let index = -1;
+        if(item.test_order_scheduled === null)
+        {
+            index = checkupSelected.checkupList.findIndex(data => data.medicalspecialty_id === item.medicalspecialty_id);
+        } else {
+            index = checkupSelected.checkupList.findIndex(data => data.code === item.test_order_scheduled!.product.product_code && item.consult_reason.includes(data.name));
+        }
         checkupSelected.checkupList[index].branch_id = item.branch_id;
         checkupSelected.checkupList[index].medicalconsult_id = item.id;
         checkupSelected.checkupList[index].consult_schedule_start = item.consult_schedule_start;

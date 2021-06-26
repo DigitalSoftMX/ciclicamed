@@ -157,8 +157,9 @@ export default defineComponent({
                 data: this.checkupDataCopy
             })
             .then(response => {
-                $('#ckpscCheckups').modal('hide');
-                $('#ckscSuccess').modal('show');
+                console.log(response.data)
+                // $('#ckpscCheckups').modal('hide');
+                // $('#ckscSuccess').modal('show');
                 this.clearData();
             })
             .catch(error => {

@@ -85,35 +85,7 @@ class CheckupCategoryController extends Controller
             {
                 $medicalconsultcategory_id = str_contains($item['code'], 'IMA') ? 3 : 4;
                 $medicalspecialty_id = str_contains($item['code'], 'IMA') ? 11 : 12;
-                $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;
-                $consult = MedicalConsult::create([
-                    'patient_id' => $request['data.patient_id'],
-                    'doctor_id' => $doctor_id,
-                    'consult_reason' => 'Estudio '.$item['name'].' de checkup '.$request['data.name'],
-                    'consult_schedule_start' => Carbon::createFromTimeString($item['consult_schedule_start']),
-                    'consult_schedule_finish' => Carbon::createFromTimeString($item['consult_schedule_start']),
-                    'medicalspecialty_id' => $medicalspecialty_id,
-                    'medicalconsultcategory_id' => $medicalconsultcategory_id,
-                    'branch_id' => $item['branch_id'],
-                    'medicalconsultstatus_id' => 1,
-                    'checkup_id' => $checkup
-                ]);
-                
-                $test = MedicalTest::create([
-                    'scheduled_in' => $consult->id,
-                    'medicalteststatus_id' => 1
-                ]);
-
-                $product_id = Product::where('product_code', $item['code'])->where('productstatus_id', 1)->first()->id;
-
-                $order = MedicalTestOrder::create([
-                    'medicaltest_id' => $test->id,
-                    'product_id' => $product_id
-                ]);
-
-                $consult['test'] = $test;
-                $test['order'] = $order;
-                array_push($checkups, $consult);
+                array_push($checkups, $this->createCheckupData($request, $item, $checkup, $medicalconsultcategory_id, $medicalspecialty_id));
             }
         }
         return response()->json($checkups);
@@ -124,41 +96,58 @@ class CheckupCategoryController extends Controller
         $checkups = [];
         foreach($request['data.checkupList'] as $item)
         {
-            if($item['branch_id'] > 0)
+            if($item['medicalconsult_id'] > 0)
             {
-                $medicalconsultcategory_id = str_contains($item['code'], 'IMA') ? 3 : 4;
-                $medicalspecialty_id = str_contains($item['code'], 'IMA') ? 11 : 12;
-                $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;
-                $consult = MedicalConsult::create([
-                    'patient_id' => $request['data.patient_id'],
-                    'doctor_id' => $doctor_id,
-                    'consult_reason' => 'Estudio '.$item['name'].' de checkup '.$request['data.name'],
+                $consult = MedicalConsult::findOrFail($item['medicalconsult_id'])->update([
                     'consult_schedule_start' => Carbon::createFromTimeString($item['consult_schedule_start']),
                     'consult_schedule_finish' => Carbon::createFromTimeString($item['consult_schedule_start']),
-                    'medicalspecialty_id' => $medicalspecialty_id,
-                    'medicalconsultcategory_id' => $medicalconsultcategory_id,
                     'branch_id' => $item['branch_id'],
-                    'medicalconsultstatus_id' => 1,
-                    'checkup_id' => $request['data.checkup_id'],
                 ]);
-                
-                $test = MedicalTest::create([
-                    'scheduled_in' => $consult->id,
-                    'medicalteststatus_id' => 1
-                ]);
-
-                $product_id = Product::where('product_code', $item['code'])->where('productstatus_id', 1)->first()->id;
-
-                $order = MedicalTestOrder::create([
-                    'medicaltest_id' => $test->id,
-                    'product_id' => $product_id
-                ]);
-
-                $consult['test'] = $test;
-                $test['order'] = $order;
                 array_push($checkups, $consult);
+            } elseif($item['branch_id'] > 0)
+            {
+                $medicalconsultcategory_id = str_contains($item['code'], 'CON') ? 2 :(str_contains($item['code'], 'IMA') ? 3 : 4);
+                $checkup = $this->createCheckupData($request, $item, $request['data.checkup_id'], $medicalconsultcategory_id, $item['medicalspecialty_id']);
+                array_push($checkups, $checkup);
             }
         }
         return response()->json($checkups);
+    }
+
+    private function createCheckupData($request, $item, $checkup, $medicalconsultcategory_id, $medicalspecialty_id)
+    {
+        $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;
+        $consult = MedicalConsult::create([
+            'patient_id' => $request['data.patient_id'],
+            'doctor_id' => $doctor_id,
+            'consult_reason' => 'Estudio '.$item['name'].' de checkup '.$request['data.name'],
+            'consult_schedule_start' => Carbon::createFromTimeString($item['consult_schedule_start']),
+            'consult_schedule_finish' => Carbon::createFromTimeString($item['consult_schedule_start']),
+            'medicalspecialty_id' => $medicalspecialty_id,
+            'medicalconsultcategory_id' => $medicalconsultcategory_id,
+            'branch_id' => $item['branch_id'],
+            'medicalconsultstatus_id' => 1,
+            'checkup_id' => $checkup
+        ]);
+        
+        if($medicalconsultcategory_id !== 2)
+        {
+            $test = MedicalTest::create([
+                'scheduled_in' => $consult->id,
+                'medicalteststatus_id' => 1
+            ]);
+    
+            $product_id = Product::where('product_code', $item['code'])->where('productstatus_id', 1)->first()->id;
+    
+            $order = MedicalTestOrder::create([
+                'medicaltest_id' => $test->id,
+                'product_id' => $product_id
+            ]);
+    
+            $consult['test'] = $test;
+            $test['order'] = $order;
+        }
+
+        return $consult;
     }
 }

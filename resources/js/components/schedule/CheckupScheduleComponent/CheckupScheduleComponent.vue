@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-items-end">
-                    <button class="btn btn-primary btn-default btn-squared" @click="saveCheckupData" :disabled="isButtonDisabled">Guardar</button>
+                    <button class="btn btn-primary btn-default btn-squared" @click="updateCheckupData" :disabled="isButtonDisabled">Guardar</button>
                 </div>
             </div>
         </div>
