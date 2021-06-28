@@ -24,7 +24,7 @@ class CheckupFactory extends Factory
         return [
             'checkupcategory_id' => $this->faker->numberBetween(1, 6),
             'patient_id' => $this->faker->numberBetween(1, 25),
-            'checkupstatus_id' => $this->faker->numberBetween(1, 4),
+            'checkupstatus_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

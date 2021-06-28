@@ -21,7 +21,7 @@ class CheckupStatusFactory extends Factory
      */
     public function definition()
     {
-        $statuses = ['En estudios', 'En consultas', 'Completado', 'Cancelado'];
+        $statuses = ['En estudios', 'Estudios completados', 'En consultas', 'Completado', 'Cancelado'];
         static $row = 0;
         return [
             'name' => $statuses[$row++]

@@ -5,7 +5,7 @@
             <div class="modal-content">
                 <div class="modal-header justify-content-betweem bg-primary">
                     <div>
-                        <h6 class="modal-title e-info-title text-white">Agendar Checkup</h6>
+                        <h6 class="modal-title e-info-title text-white">{{title}}</h6>
                     </div>
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3"

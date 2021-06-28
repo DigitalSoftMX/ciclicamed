@@ -56,6 +56,12 @@ export default defineComponent({
             isCheckupNew: true
         }
     },
+    computed: {
+        title(): string
+        {
+            return this.enableOptions ? 'Crear checkup' : `Editar checkup ${this.checkupData.name}`;
+        }
+    },
     mounted() {
         this.getCategories();
     },

@@ -2,6 +2,7 @@ import { OrderData } from "@data/Medical/Order.data";
 import { PatientData } from "@data/Patient/Patient.data";
 import { Checkup } from "@interface/Checkup/Checkup.interface";
 import { CheckupCategoryData } from "./CheckupCategory.data";
+import { CheckupStatusData } from "./CheckupStatus.data";
 
 export const CheckupData: Checkup = {
     id: -1,
@@ -10,6 +11,7 @@ export const CheckupData: Checkup = {
     checkupstatus_id: -1,
     created_at: '',
     updated_at: '',
+    status: CheckupStatusData,
     category: CheckupCategoryData,
     patient: PatientData,
     order: []

@@ -48,4 +48,9 @@ class Checkup extends Model
     {
         return $this->hasOneDeep(MedicalTestOrder::class, [MedicalConsult::class, MedicalTest::class], ['checkup_id', 'scheduled_in', 'medicaltest_id']);
     }
+
+    public function test()
+    {
+        return $this->hasManyDeep(MedicalTest::class, [MedicalConsult::class], ['checkup_id', 'scheduled_in']);
+    }
 }

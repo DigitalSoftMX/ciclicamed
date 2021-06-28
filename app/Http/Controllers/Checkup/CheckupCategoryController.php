@@ -24,7 +24,7 @@ class CheckupCategoryController extends Controller
     public function getCheckupByID($id)
     {
         $checkup = Checkup::findOrFail($id);
-        $checkup->load('consults.testOrderScheduled.product', 'category');
+        $checkup->load('consults.status', 'category', 'consults.testScheduled.lastOrder.product',  'consults.testScheduled.status');
 
         return response()->json($checkup);
     }
@@ -37,6 +37,7 @@ class CheckupCategoryController extends Controller
             $query = $request->input('query');
             $checkups = Checkup::whereHas('status', function($query) {
                 $query->where('name', 'En estudios')
+                      ->orWhere('name', 'Estudios completados')
                       ->orWhere('name', 'En consultas');
             })
             ->where(function($item) use($query) {
@@ -45,6 +46,9 @@ class CheckupCategoryController extends Controller
                           ->orWhere('last_name', 'like', '%'.$query.'%');
                 })
                 ->orWhereHas('category', function($item) use($query) {
+                    $item->where('name', 'like', '%'.$query.'%');
+                })
+                ->orWhereHas('status', function($item) use($query) {
                     $item->where('name', 'like', '%'.$query.'%');
                 })
                 ->orWhere('id', 'like', '%'.$query.'%');
@@ -65,7 +69,7 @@ class CheckupCategoryController extends Controller
                 'from' => $checkups->firstItem(),
                 'to' => $checkups->lastItem()
             ],
-            'data' => $checkups->load('category', 'patient')
+            'data' => $checkups->load('category', 'patient', 'status')
         ];
         return response()->json($response);
     }
@@ -136,10 +140,11 @@ class CheckupCategoryController extends Controller
     private function createCheckupData($request, $item, $checkup, $medicalconsultcategory_id, $medicalspecialty_id)
     {
         $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;
+        $consult_reason = str_contains($item['code'], 'CON') ? $item['name'].' de checkup '.$request['data.name'] : 'Estudio '.$item['name'].' de checkup '.$request['data.name'];
         $consult = MedicalConsult::create([
             'patient_id' => $request['data.patient_id'],
             'doctor_id' => $doctor_id,
-            'consult_reason' => 'Estudio '.$item['name'].' de checkup '.$request['data.name'],
+            'consult_reason' => $consult_reason,
             'consult_schedule_start' => Carbon::createFromTimeString($item['consult_schedule_start']),
             'consult_schedule_finish' => Carbon::createFromTimeString($item['consult_schedule_start']),
             'medicalspecialty_id' => $medicalspecialty_id,

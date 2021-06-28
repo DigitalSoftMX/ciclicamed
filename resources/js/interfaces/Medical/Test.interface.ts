@@ -1,5 +1,6 @@
 import { Patient } from "@interface/Patient/Patient.interface";
 import { Order } from "./Order.interface";
+import { TestStatus } from "./TestStatus.interface";
 
 export interface Test
 {
@@ -25,4 +26,5 @@ export interface Test
         updated_at: string;
     },
     patient?: Patient
+    status?: TestStatus
 }

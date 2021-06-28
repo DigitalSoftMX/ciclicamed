@@ -112,7 +112,7 @@ class MedicalConsult extends Model
 
     public function testScheduled()
     {
-        return $this->hasMany(MedicalTest::class, 'scheduled_in');
+        return $this->hasOne(MedicalTest::class, 'scheduled_in');
     }
 
     public function testOrderScheduled()

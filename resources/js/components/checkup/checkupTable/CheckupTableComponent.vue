@@ -37,6 +37,10 @@
                                 <th class="footable-sortable footable-first-visible" style="display: table-cell;">
                                     <span class="userDatatable-title">Checkup</span>
                                     <span class="fooicon fooicon-sort"></span></th>
+                                
+                                <th class="footable-sortable footable-first-visible" style="display: table-cell;">
+                                    <span class="userDatatable-title">Estado</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable footable-last-visible border-primary border-0 border-bottom rounded-0"
                                     style="display: table-cell;">
@@ -69,19 +73,26 @@
                                     </div>
                                 </td>
 
+                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                    <div class="userDatatable-content">
+                                        {{checkup.status.name}}
+                                    </div>
+                                </td>
+
                                 <td class="footable-last-visible border-primary border-bottom"
                                     style="display: table-cell;">
                                     <ul class="orderDatatable_actions mb-0 d-flex flex-wrap justify-content-end">
                                         <li>
                                             <button
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
+                                                @click="getCheckupDataByID(checkup.id, 'show')">
                                                 <img src="/svg/show.svg" alt="Ver">
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
-                                                @click="getCheckupDataByID(checkup.id)">
+                                                @click="getCheckupDataByID(checkup.id, 'edit')">
                                                 <img src="/svg/edit.svg" alt="Editar">
                                             </button>
                                         </li>
@@ -146,6 +157,7 @@
             <div class="spinner-border text-primary"></div>
         </div>
     </div>
+    <checkup-info-component :checkupData="checkupInfoSelected"></checkup-info-component>
     <checkup-shedule-component :enable-options="false" :checkupData="checkupSelected" :branches="branchesList">
     </checkup-shedule-component>
     <confirmation-alert-component id="cktcConfirmation" title="¿Está seguro de cancelar este checkup? Esta acción no puede deshacerse" @confirmAction="cancelCheckup"></confirmation-alert-component>

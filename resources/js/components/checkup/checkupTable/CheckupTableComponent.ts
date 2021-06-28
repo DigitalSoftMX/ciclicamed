@@ -17,9 +17,11 @@ import { CheckupList } from '@interface/Checkup/CheckupList.interface';
 import { Branch } from '@interface/Branch/Branch.interface';
 import { Select } from '@interface/General/Select.interface';
 import { defineAsyncComponent } from 'vue';
+import { CheckupData } from '@data/Checkup/Checkup.data';
 
 export default defineComponent({
     components: {
+        CheckupInfoComponent: defineAsyncComponent(() => import('@component/checkup/checkupInfo/CheckupInfoComponent.vue')),
         SuccessAlertComponent: defineAsyncComponent(() => import('@component/general/alert/SuccessAlertComponent.vue')),
         ConfirmationAlertComponent: defineAsyncComponent(() => import('@component/general/alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue')),
         EmptyErrorComponent: defineAsyncComponent(() => import('@component/general/error/EmptyErrorComponent.vue')),
@@ -45,6 +47,7 @@ export default defineComponent({
             activateSearch: true,
             loading: true,
             checkupSelected: CheckupListData,
+            checkupInfoSelected: CheckupData,
             checkupIDSelected: 0,
             branchesList: [] as Select[],
             successAlert: {
@@ -77,6 +80,7 @@ export default defineComponent({
                 this.paginationActive = page;
                 axios.get<CheckupPagination>(`/checkup/pendientes?page=${this.paginationActive}`)
                 .then(response => {
+                    console.log(response.data)
                     this.checkupData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
@@ -111,12 +115,14 @@ export default defineComponent({
                 this.activateSearch = this.query === '' ? false : true;
             }
         },
-        getCheckupDataByID(id: number)
+        getCheckupDataByID(id: number, category: string)
         {
             axios.get<Checkup>(`/checkup/${id}`)
             .then(response => {
+                console.log(response.data)
+                this.checkupInfoSelected = response.data;
                 this.checkupSelected = setCheckupData(response.data, this.checkupSelected, id);
-                $('#ckpscCheckups').modal('show');
+                category === 'show' ? $('#ckpscCheckupInfo').modal('show') : $('#ckpscCheckups').modal('show');
             })
             .catch(error => {
                 console.log(error)
@@ -129,7 +135,6 @@ export default defineComponent({
         },
         cancelCheckup()
         {
-            console.log('canceled')
             axios.delete<Checkup>(`/checkup/${this.checkupIDSelected}`)
             .then(response => {
                 this.successAlert.title = 'Checkup cancelado';
@@ -167,20 +172,20 @@ export function setCheckupData(checkup: Checkup, checkupSelected: CheckupList, c
     checkupSelected.checkupcategory_id = checkup.category!.id;
     checkupSelected.checkupList = setCheckupList(checkup.category!.name);
     checkupSelected.checkup_id = checkupID;
-    console.log(checkupSelected.checkup_id)
     checkup.consults!.map(item => {
         let index = -1;
-        if(item.test_order_scheduled === null)
+        if(item.test_scheduled! === null)
         {
             index = checkupSelected.checkupList.findIndex(data => data.medicalspecialty_id === item.medicalspecialty_id);
         } else {
-            index = checkupSelected.checkupList.findIndex(data => data.code === item.test_order_scheduled!.product.product_code && item.consult_reason.includes(data.name));
+            index = checkupSelected.checkupList.findIndex(data => data.code === item.test_scheduled!.last_order!.product.product_code && item.consult_reason.includes(data.name));
         }
         checkupSelected.checkupList[index].branch_id = item.branch_id;
         checkupSelected.checkupList[index].medicalconsult_id = item.id;
         checkupSelected.checkupList[index].consult_schedule_start = item.consult_schedule_start;
         checkupSelected.checkupList[index].consult_schedule_finish = item.consult_schedule_finish;
     });
+    // checkupSelected.checkupList = checkupSelected.checkupList.filter(item => moment(item.consult_schedule_start).isAfter(moment()));
     return checkupSelected;
 }
 
