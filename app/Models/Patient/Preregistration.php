@@ -11,7 +11,8 @@ class Preregistration extends Model
     use HasFactory;
 
     protected $fillable = [
-        'data'
+        'data',
+        'user_id'
     ];
     
     public function user()

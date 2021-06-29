@@ -34,34 +34,18 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 Auth::routes();
 Route::get('/', [LoginController::class, 'loginForm'])->name('login.login');
+Route::post('/register', [UserController::class, 'createPatient'])->name('usuarios.createUser');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth', 'verified'], function() {
 
-    // Vistas
-    Route::get('test', function() {
-        return view('test');
-    } );
-
-    //Vista test 2
-    Route::get('test2', function() {
-        return view('test2');
-    } );
-
-    //Vista test 3
-    Route::get('test3', function() {
-        return view('test3');
-    } );
-
-    Route::get('agenda', function() {
-        return view('agenda');
-    } );
-
-
-    // Route::resource('usuarios', UserController::class);
-    // Route::resource('pacientes', PatientController::class);
+    //Paginas
+    Route::group(['prefix' => 'app'], function() {
+        Route::get('/inicio', [UserController::class, 'showDashboard'])->name('pagina.dashboard');
+    });
 
     // Usuarios
     Route::group(['prefix' => 'usuarios'], function() {
+        Route::post('/', [UserController::class, 'createPatient'])->name('usuarios.createUser');
         Route::get('/{id}/perfil', [UserController::class, 'show'])->name('usuarios.show');
         Route::get('/{id}/recetas', [PatientController::class, 'showMedicalPrescriptions'])->name('usuarios.medicalPrescription');
         Route::get('/{id}/estudios', [PatientController::class, 'showMedicalTests'])->name('usuarios.medicalTest');

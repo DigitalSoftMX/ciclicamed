@@ -1,0 +1,46 @@
+.login-splash
+{
+    background-image: url('/svg/login.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: none !important;
+}
+
+.login-container
+{
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.center-div
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.password-text
+{
+    padding-top: 12.5px !important;
+}
+
+.login-logo
+{
+    width: 20%;
+}
+
+.delete-icon
+{
+    filter: invert(31%) sepia(21%) saturate(6839%) hue-rotate(343deg) brightness(97%) contrast(85%);
+}
+
+@media (min-width: 768px)
+{
+    .login-splash
+    {
+        display: flex !important;
+    }
+}

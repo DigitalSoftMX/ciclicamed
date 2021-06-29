@@ -15,7 +15,7 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->unsignedMediumInteger('id', true);
-            $table->string('patient_code', 25);
+            $table->string('patient_code', 25)->nullable();
             $table->string('first_name', 100);
             $table->string('last_name', 100);
             $table->boolean('gender');
@@ -23,7 +23,6 @@ class CreatePatientsTable extends Migration
             $table->string('address', 255)->nullable();
             $table->string('phone', 10)->nullable();
             $table->string('cellphone', 10)->nullable();
-            $table->string('email', 100);
             $table->string('photo', 100)->nullable();
             $table->unsignedMediumInteger('preregistration_id', false);//->unique();
             $table->timestamps();

@@ -33,7 +33,6 @@ class PatientFactory extends Factory
             'address' => $this->faker->address,
             'phone' => $this->faker->regexify('[0-9]{10}'),
             'cellphone' => $this->faker->regexify('[0-9]{10}'),
-            'email' => $this->faker->safeEmail(),
             //'email' => $this->faker->unique()->safeEmail(),
             'photo' => $this->faker->regexify('[A-Za-z0-9]{25}'),
             'preregistration_id' => $user++

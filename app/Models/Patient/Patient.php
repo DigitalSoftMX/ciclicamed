@@ -24,7 +24,6 @@ class Patient extends Model
         'address',
         'phone',
         'cellphone',
-        'email',
         'photo',
         'preregistration_id'
     ];

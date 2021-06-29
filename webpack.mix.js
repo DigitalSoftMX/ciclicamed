@@ -1,6 +1,7 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const mix = require('laravel-mix');
 var path = require('path');
+const webpack = require('webpack');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,7 +13,7 @@ var path = require('path');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.ts', 'public/js')
     .sass('resources/sass/style.scss', 'public/css')
     .sourceMaps()
     .vue()
@@ -75,5 +76,11 @@ mix.js('resources/js/app.js', 'public/js')
                 path.resolve('./node_modules')
             ],
         },
-        plugins: [new ForkTsCheckerWebpackPlugin()]
+        plugins: [
+            new ForkTsCheckerWebpackPlugin(),
+            new webpack.DefinePlugin({
+                __VUE_OPTIONS_API__: true,
+                __VUE_PROD_DEVTOOLS__: true,
+            }),
+        ]
     });

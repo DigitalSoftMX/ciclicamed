@@ -27,7 +27,6 @@ use App\Models\Medical\Test\MedicalTestOrder;
 use App\Models\Medical\Test\MedicalTestOrderAnnotation;
 use App\Models\Medical\Test\MedicalTestResult;
 use App\Models\Medical\Test\MedicalTestSample;
-use App\Models\Medical\Test\MedicalTestSampleStatus;
 use App\Models\Medical\Test\MedicalTestStatus;
 use App\Models\Patient\InvoiceData;
 use App\Models\Patient\Patient;
@@ -40,11 +39,11 @@ use App\Models\Product\Product;
 use App\Models\Product\ProductCategory;
 use App\Models\Product\ProductPayment;
 use App\Models\Product\ProductStatus;
-use App\Models\User\Role;
 use App\Models\User\User;
 use App\Models\User\UserCategory;
 use App\Models\User\UserStatus;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -55,10 +54,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $roles = ['Administrador', 'Doctor', 'Enfermera', 'Checkup', 'Caja', 'Laboratorio', 'Imagenologia', 'Asistente', 'Paciente'];
+
+        for($i = 0; $i < 9; $i++)
+        {
+            DB::table('roles')->insert([
+                'name' => $roles[$i]
+            ]);
+        }
+        
 
         UserStatus::factory(5)->create();
         UserCategory::factory(2)->create();
-        User::factory(150)->create();
+        User::factory(150)->create()->each(function ($user) {
+            $user->assignRole('Paciente');
+        });;
         Preregistration::factory(25)->create();
         Patient::factory(25)->create();
         InvoiceData::factory(5)->create();

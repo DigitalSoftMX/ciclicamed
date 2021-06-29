@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserRequest;
 use App\Http\Requests\User\UserUpdatePasswordRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Models\Patient\Patient;
+use App\Models\Patient\Preregistration;
 use App\Models\User\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Traits\HasRoles;
 
 class UserController extends Controller
 {
+    use HasRoles;
     /**
      * Display the specified resource.
      *
@@ -58,15 +63,39 @@ class UserController extends Controller
         return $user;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function createPatient(UserRequest $request)
     {
-        //
+        $request->validate($request->input());
+        $user = User::create([
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'userstatus_id' => 1,
+            'usercategory_id' => 1
+        ]);
+
+        $user->assignRole('Paciente');
+
+        $preregistration = Preregistration::create([
+            'data' => null,
+            'user_id' => $user->id
+        ]);
+
+        $file = $request->file('photo');
+        $photo = basename($file->store('user'));
+
+        $patient = Patient::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'gender' => $request->input('gender'),
+            'birthday' => $request->input('birthday'),
+            'address' => $request->input('address'),
+            'phone' => $request->input('phone'),
+            'cellphone' => $request->input('cellphone'),
+            'photo' => $photo,
+            'preregistration_id' => $preregistration->id
+        ]);
+
+        return response()->json( $patient);
     }
 
     public function updatePassword(UserUpdatePasswordRequest $request, $id)
@@ -109,5 +138,80 @@ class UserController extends Controller
             $patientData->preregistration->data = json_decode($patientData->preregistration->data);
         }
         return response()->json($response);
+    }
+
+    public function showDashboard()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user['usercategory_id'] === 1 && $user->hasRole('Paciente'))
+        {
+            return response()->view('dashboard', [
+                'user' => $user->patient,
+                'role' => $user->roles
+            ], 200);
+        }
+        else
+        {
+            if($user->hasRole('Administrador'))
+            {
+                return response()->view('dashboard', [
+                    'user' => $user->employee,
+                    'role' => $user->roles
+                ], 200);
+            }
+            else if($user->hasRole('Doctor'))
+            {
+                return response()->view('dashboard', [
+                    'user' => $user->employee,
+                    'role' => $user->roles
+                ], 200);
+            }
+            else if($user->hasRole('Enfermera'))
+            {
+                return response()->view('dashboard', [
+                    'user' => $user->employee,
+                    'role' => $user->roles
+                ], 200);
+            }
+            else if($user->hasRole('Checkup'))
+            {
+                return response()->view('dashboard', [
+                    'user' => $user->employee,
+                    'role' => $user->roles
+                ], 200);
+            }
+            else if($user->hasRole('Caja'))
+            {
+                return response()->view('dashboard', [
+                    'user' => $user->employee,
+                    'role' => $user->roles
+                ], 200);
+            }
+            else if($user->hasRole('Laboratorio'))
+            {
+                return response()->view('dashboard', [
+                    'user' => $user->employee,
+                    'role' => $user->roles
+                ], 200);
+            }
+            else if($user->hasRole('Imagenologia'))
+            {
+                return response()->view('dashboard', [
+                    'user' => $user->employee,
+                    'role' => $user->roles
+                ], 200);
+            }
+            else if($user->hasRole('Asistente'))
+            {
+                return response()->view('dashboard', [
+                    'user' => $user->employee,
+                    'role' => $user->roles
+                ], 200);
+            }
+        }
+
+        return response()->view('error.404', 404);
+
     }
 }
