@@ -2,7 +2,7 @@
     <div class="row mx-0">
         <div class="col-12 col-md-4 col-xl-3">
             <schedule-select-component :branchesList="branchesList" :doctorList="doctorList"
-                @onDoctorSelected="getScheduleList" @onBranchSelected="getDoctorList"></schedule-select-component>
+                @onDoctorSelected="getScheduleList" @onBranchSelected="getDoctorList" @onUserSchedule="selectUserSchedule"></schedule-select-component>
         </div>
         <div class="col-12 col-md-8 col-xl-9">
             <calendar-componet :branchesList="branchesList" :schedules="schedules" :businessHours="businessHours"

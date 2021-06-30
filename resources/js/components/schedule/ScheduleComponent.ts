@@ -24,6 +24,14 @@ export default defineComponent({
         CheckupScheduleComponent: defineAsyncComponent(() => import('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue'))
     },
     props: {
+        userID: {
+            type: Number,
+            default: -1
+        },
+        userCategory: {
+            type: String,
+            default: ''
+        },
     },
     data() {
         return {
@@ -41,12 +49,42 @@ export default defineComponent({
         this.getPatientsList();
         this.getBranchesList();
         this.getSchedulesCategories();
+        this.userCategory === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
     },
     watch: {
+        userCategory()
+        {
+            this.userCategory === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
+        }
     },
     methods: {
+        selectUserSchedule()
+        {
+            this.userCategory === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
+        },
+        getPatientScheduleList()
+        {
+            axios.get<Schedule[]>(`/pacientes/${this.userID}/agenda`)
+            .then(response => {
+                this.schedules = response.data;
+                this.businessHours = []
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        getDoctorScheduleList()
+        {
+            axios.get<Schedule[]>(`/pacientes/${this.userID}/agenda`)
+            .then(response => {
+                this.schedules = response.data;
+                this.getBusinessHours();
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         getScheduleList(doctorSelected: Select): void {
-        
             this.scheduleSelected.doctor_id = doctorSelected.childID;
             this.scheduleSelected.medicalspecialty_id = doctorSelected.parentID!;
             axios.get<Schedule[]>(`/sucursales/${this.scheduleSelected.branch_id}/empleados/${this.scheduleSelected.doctor_id}/agenda`)
@@ -158,8 +196,8 @@ export default defineComponent({
         {
             const dayOfWeek = moment(date).day();
             this.hoursEnabled = this.businessHours.filter(hours => hours.daysOfWeek.includes(dayOfWeek));
-            // if(moment().isSameOrBefore(date, 'days') && this.hoursEnabled.length > 0)
-            if(moment().isSameOrBefore(date, 'days'))
+            if(moment().isSameOrBefore(date, 'days') && this.hoursEnabled.length > 0)
+            // if(moment().isSameOrBefore(date, 'days'))
             {
                 const startHour = Number(this.hoursEnabled[0].startTime.split(':')[0]);
                 const startMinute = Number(this.hoursEnabled[0].startTime.split(':')[1]);
@@ -173,7 +211,6 @@ export default defineComponent({
         },
         getScheduleSelected(schedule: Schedule)
         {
-            console.log(schedule)
             this.scheduleSelected = Object.assign({}, schedule);
         },
     },

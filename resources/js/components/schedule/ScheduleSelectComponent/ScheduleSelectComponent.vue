@@ -4,7 +4,7 @@
             <h1>Mi agenda</h1>
         </div>
         <div class="card-body">
-            <button class="btn btn-primary btn-lg btn-squared btn-block ">Ver mi agenda</button>
+            <button class="btn btn-primary btn-lg btn-squared btn-block" @click="selectUserSchedule">Ver mi agenda</button>
         </div>
     </div>
 

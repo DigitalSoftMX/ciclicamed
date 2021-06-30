@@ -3353,22 +3353,23 @@ ul {
 }
 
 .contents {
-  padding: 74px 15px 72px 295px;
+  height: auto;
+  padding: 100px 15px 24px 295px;
   transition: all 0.3s ease;
 }
 @media (max-width: 1150px) {
   .contents {
-    padding: 73px 15px 72px 16px;
+    padding: 80px 15px 24px 16px;
   }
 }
 @media only screen and (max-width: 991px) {
   .contents {
-    padding: 73px 15px 64px 16px;
+    padding: 80px 15px 24px 16px;
   }
 }
 @media only screen and (max-width: 767px) {
   .contents {
-    padding: 56px 0 85px 0;
+    padding: 80px 0 12px 0;
   }
 }
 .contents.expanded {
@@ -3383,6 +3384,7 @@ ul {
 @media only screen and (max-width: 767px) {
   .contents.expanded {
     padding-left: 0px;
+    padding-top: 100px;
   }
 }
 .contents.expanded + .footer-wrapper {
@@ -4132,7 +4134,7 @@ ul {
 }
 
 .navbar {
-  padding: 0 30px;
+  padding: 0 30px 0 0;
 }
 @media only screen and (max-width: 767px) {
   .navbar {
@@ -4146,7 +4148,13 @@ ul {
   align-items: center;
 }
 .navbar-left .sidebar-toggle {
-  margin-right: 15px;
+  width: 74px;
+  margin-right: 24px;
+}
+@media only screen and (max-width: 767px) {
+  .navbar-left .sidebar-toggle {
+    width: 24px;
+  }
 }
 .navbar-left .navbar-brand {
   margin-right: 115px;
@@ -5229,7 +5237,7 @@ ul {
 
 .sidebar {
   position: fixed;
-  height: calc(100% - 74px);
+  height: 100vh;
   overflow-y: auto;
   left: 0;
   top: 74px;
@@ -5374,7 +5382,7 @@ ul {
   color: #adb4d2;
   display: inline-block;
   margin-right: 20px;
-  width: 16px;
+  width: 45px;
   transition: all 0.3s ease;
 }
 .sidebar__menu-group ul.sidebar_nav li > a .toggle-icon {
@@ -5419,8 +5427,10 @@ ul {
   border-radius: 50%;
   background-color: transparent;
 }
-.sidebar-toggle:hover {
+.sidebar-toggle:hover img {
   background-color: rgba(96, 38, 158, 0.1);
+  border-radius: 50%;
+  padding: 12px;
 }
 .sidebar-toggle:hover svg #Path_1,
 .sidebar-toggle:hover svg #Path_2,

@@ -7,6 +7,7 @@ import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { AlertError } from '@interface/General/Alert/Error/AlertError.interface';
 import $ from 'jquery';
+require('bootstrap');
 
 export default defineComponent({
     components: {

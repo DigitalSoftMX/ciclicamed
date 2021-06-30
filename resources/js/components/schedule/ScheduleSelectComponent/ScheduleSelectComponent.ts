@@ -8,7 +8,7 @@ export default defineComponent({
     components: {
         SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue'))
     },
-    emits: ['onBranchSelected', 'onDoctorSelected'],
+    emits: ['onBranchSelected', 'onDoctorSelected', 'onUserSchedule'],
     props: {
         branchesList: {
             type: Array as PropType<Select[]>,
@@ -41,6 +41,10 @@ export default defineComponent({
         openCheckupComponent()
         {
             $('#ckpscCheckups').modal('show');
+        },
+        selectUserSchedule()
+        {
+            this.$emit('onUserSchedule');
         }
     },
 })

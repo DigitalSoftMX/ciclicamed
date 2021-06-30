@@ -10,7 +10,8 @@ const app = createApp({
     components: {
 		LoginComponent: defineAsyncComponent(() => import('@component/login/LoginComponent.vue')),
 		SignupComponent: defineAsyncComponent(() => import('@component/signUp/SignupComponent.vue')),
-		PatientDashboardPage: defineAsyncComponent(() => import('@page/patient/PatientDashboardPage.vue'))
+		PatientDashboardPage: defineAsyncComponent(() => import('@page/patient/patientDashboardPage/PatientDashboardPage.vue')),
+		PatientTestOrderPage: defineAsyncComponent(() => import('@page/patient/patientTestOrderPage/PatientTestOrderPage.vue')),
 		// ScheduleComponent: defineAsyncComponent(() => import('./components/schedule/ScheduleComponent.vue')),
 		// MedicalConsultPage: MedicalConsultPage,
 		// UsersPage: UsersPage,
@@ -26,8 +27,8 @@ const app = createApp({
 		// DebtsData: defineAsyncComponent(() => import('./components/payment/debtsTable/DebtsTableComponent.vue')),
 		// TestTable: defineAsyncComponent(() => import('./components/medical/test/testTable/TestTableComponent.vue')),
 		// TestUpload: defineAsyncComponent(() => import('./components/medical/test/testUpload/TestUploadComponent.vue')),
-		// CheckupSchedule: defineAsyncComponent(() => import('./components/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue')),
-		// CheckupTable: defineAsyncComponent(() => import('./components/checkup/checkupTable/CheckupTableComponent.vue'))
+		CheckupSchedule: defineAsyncComponent(() => import('./components/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue')),
+		CheckupTable: defineAsyncComponent(() => import('./components/checkup/checkupTable/CheckupTableComponent.vue'))
 	}
 });
 

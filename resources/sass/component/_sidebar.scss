@@ -1,6 +1,6 @@
 .sidebar {
   position: fixed;
-  height: calc(100% - 74px);
+  height: 100vh;
   overflow-y: auto;
   left: 0;
   top: 74px;
@@ -172,7 +172,7 @@
           color: $text-grey2;
           display: inline-block;
           margin-right: 20px;
-          width: 16px;
+          width: 45px;
           transition: $transition-base;
         }
 
@@ -252,7 +252,12 @@
   background-color: transparent;
 
   &:hover {
-    background-color: rgba($primary, 0.1);
+
+    img{
+      background-color: rgba($primary, 0.1);
+      border-radius: 50%;
+      padding: 12px;
+    }
 
     svg,
     i {

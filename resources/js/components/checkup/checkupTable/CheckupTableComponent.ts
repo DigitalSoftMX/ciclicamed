@@ -18,6 +18,8 @@ import { Branch } from '@interface/Branch/Branch.interface';
 import { Select } from '@interface/General/Select.interface';
 import { defineAsyncComponent } from 'vue';
 import { CheckupData } from '@data/Checkup/Checkup.data';
+import $ from 'jquery';
+require('bootstrap');
 
 export default defineComponent({
     components: {

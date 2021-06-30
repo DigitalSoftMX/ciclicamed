@@ -9,6 +9,7 @@ use App\Http\Controllers\Medical\Consult\MedicalConsultController;
 use App\Http\Controllers\Medical\Test\ImagenologiaTestController;
 use App\Http\Controllers\Medical\Test\LaboratorioTestController;
 use App\Http\Controllers\Medical\Test\MedicalTestResultController;
+use App\Http\Controllers\Page\PageController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Patient\PreregistrationController;
 use App\Http\Controllers\Payment\PaymentController;
@@ -40,15 +41,14 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
 
     //Paginas
     Route::group(['prefix' => 'app'], function() {
-        Route::get('/inicio', [UserController::class, 'showDashboard'])->name('pagina.dashboard');
+        Route::get('/inicio', [PageController::class, 'showDashboard'])->name('app.dashboard');
+        Route::get('/recetas', [PageController::class, 'showTestOrder'])->name('app.recetas');
     });
 
     // Usuarios
     Route::group(['prefix' => 'usuarios'], function() {
         Route::post('/', [UserController::class, 'createPatient'])->name('usuarios.createUser');
         Route::get('/{id}/perfil', [UserController::class, 'show'])->name('usuarios.show');
-        Route::get('/{id}/recetas', [PatientController::class, 'showMedicalPrescriptions'])->name('usuarios.medicalPrescription');
-        Route::get('/{id}/estudios', [PatientController::class, 'showMedicalTests'])->name('usuarios.medicalTest');
         Route::patch('/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
 
         Route::get('/pacientes', [UserController::class, 'getPatientsTable'])->name('usuarios.pacientes'); //NOTA PASAR A GRUPO PACIENTES
@@ -60,14 +60,11 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/categorias', [MedicalConsultController::class, 'getConsultTypes'])->name('consulta.categorias');
         Route::delete('/{id}', [MedicalConsultController::class, 'cancelConsult'])->name('consulta.eliminar');
         Route::patch('/{id}', [MedicalConsultController::class, 'updateSchedule'])->name('consulta.actualizar');
-        
-        
         Route::get('/{id}/seguimiento', [MedicalConsultController::class, 'getFollowUps'])->name('consulta.seguimiento');
         Route::get('/{id}/receta', [MedicalConsultController::class, 'getPrescriptions'])->name('consulta.receta');
         Route::get('/{id}', [MedicalConsultController::class, 'getConsultInfo'])->name('consulta.informacion');
         Route::get('/{id}/historial', [MedicalConsultController::class, 'getHistory'])->name('consulta.historial');
         Route::get('/{id}/doctor', [MedicalConsultController::class, 'getDoctor'])->name('consulta.doctor');
-
         Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.estudio.obtener');
         Route::post('/{id}/estudios', [MedicalConsultController::class, 'createTest'])->name('consulta.estudio.crear');
     });
@@ -75,7 +72,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     
     //Imagenes
     Route::get('/images/users/{id}', function ($id) {
-        $storage = storage_path('app/user/patient/photo/'.$id.'');
+        $storage = storage_path('app/user/'.$id.'');
         return file_exists($storage) ? Image::make($storage)->response() : response()->view('errors.404',[], 404);
     });
 
@@ -98,10 +95,9 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}', [PatientController::class, 'getPatientByID'])->name('pacientes.getPaciente');
         Route::get('/{id}/consultas/categoria/{categoria}', [PatientController::class, 'getAllConsults'])->name('pacientes.getCategoria');
         Route::get('/{id}/agenda', [PatientController::class, 'getSchedules'])->name('pacientes.getAgenda');
-        
-
+        Route::get('/{id}/recetas', [PatientController::class, 'showMedicalPrescriptions'])->name('usuarios.medicalPrescription');
+        Route::get('/{id}/estudios', [PatientController::class, 'showMedicalTests'])->name('usuarios.medicalTest');
         Route::patch('/{id}/preregistro', [PreregistrationController::class, 'updatePreregistration'])->name('pacientes.updatePreregistro');
-
     });
 
     //Empleados

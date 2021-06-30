@@ -34,15 +34,35 @@ class PatientController extends Controller
         return $patient;
     }
 
-    public function showMedicalPrescriptions($id)
+    public function showMedicalPrescriptions(Request $request, $id)
     {
-        $patient = User::findOrFail($id)->patient->prescriptions
-                                                 ->load('medicament:id,name', 'medicalconsult:id,consult_schedule_start')
-                                                 ->groupBy('medicalconsult_id');
+        // $patientsDebt = [];
+        // if($request->has('query'))
+        // {
+        //     $query = $request->input('query');
+        //     $patientsDebt = $payment->where('first_name', 'like', '%'.$query.'%')
+        //             ->orWhere('last_name', 'like', '%'.$query.'%')
+        //             ->orWhere('patient_code', 'like', '%'.$query.'%')
+        //             ->paginate();
+        // } else {
+        //     $patientsDebt = $payment->paginate();
+        // }
+        
+        // $response = [
+        //     'pagination' => [
+        //         'total' => $patientsDebt->total(),
+        //         'per_page' => $patientsDebt->perPage(),
+        //         'current_page' => $patientsDebt->currentPage(),
+        //         'last_page' => $patientsDebt->lastPage(),
+        //         'from' => $patientsDebt->firstItem(),
+        //         'to' => $patientsDebt->lastItem()
+        //     ],
+        //     'data' => $patientsDebt->getCollection()
+        // ];
 
-        return view('patient.medical-prescription', [
-            'prescriptions' => $patient
-        ]);
+        $patient = MedicalConsult::where('patient_id', $id)->Has('prescriptions')->paginate()->load('prescriptions');
+
+        return response()->json($patient);
     }
 
     public function showMedicalTests($id)
