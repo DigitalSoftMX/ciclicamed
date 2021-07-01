@@ -1,4 +1,5 @@
 import { Prescription } from "../../interfaces/Medical/Prescription.interface";
+import { MedicamentData } from "./Medicament.data";
 
 export const PrescriptionData: Prescription = {
     medicalconsult_id: -1,
@@ -6,12 +7,7 @@ export const PrescriptionData: Prescription = {
     administation_type: '',
     rate: '',
     duration: '',
-    medicament: {
-        id: -1,
-        code: -1,
-        name: '',
-        presentation: ''
-    },
+    medicament: MedicamentData,
     update_by: null,
     update_note: null
 }

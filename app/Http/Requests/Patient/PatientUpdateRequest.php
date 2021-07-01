@@ -24,34 +24,38 @@ class PatientUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'data.first_name' => ['required', 'max:100'],
-            'data.last_name' => ['required', 'max:100'],
-            'data.gender' => ['required', 'boolean'],
-            'data.birthday' => ['required', 'date'],
-            'data.address' => ['nullable', 'max:255'],
-            'data.phone' => ['nullable', 'max:10'],
-            'data.cellphone' => ['nullable', 'max:10'],
-            'data.email' => ['required', 'email', 'max:100'],
+            'first_name' => ['required', 'max:100'],
+            'last_name' => ['required', 'max:100'],
+            'gender' => ['required', 'boolean'],
+            'birthday' => ['required', 'date'],
+            'address' => ['nullable', 'max:255'],
+            'phone' => ['nullable', 'max:10'],
+            'cellphone' => ['nullable', 'max:10'],
+            'email' => ['required', 'email', 'max:100'],
+            'photo' => ['nullable', 'image', 'max:10240'],
         ];
     }
 
     public function messages()
     {
         return [
-            'data.first_name.required' => 'Debe de ingresar su nombre(s)',
-            'data.first_name.max' => 'El nombre(s) no debe de exceder los 100 caracteres',
-            'data.last_name.required' => 'Debe de ingresar su apellidos',
-            'data.last_name.max' => 'Los apellidos no deben de exceder los 100 caracteres',
-            'data.gender.required' => 'Debe se seleccionar un sexo',
-            'data.gender.boolean' => 'El sexo debe ser hombre o mujer',
-            'data.birthday.required' => 'Ingrese una fecha de nacimiento',
-            'data.birthday.date' => 'El formato de la fecha de nacimiento es incorrecto',
-            'data.address.max' => 'La dirección completa no debe de exceder los 255 caracteres',
-            'data.phone.max' => 'El número de teléfono no debe de exceder de los 10 dígitos',
-            'data.cellphone.max' => 'El número celular no debe de exceder de los 10 dígitos',
-            'data.email.required' => 'El correo electrónico no puede estar vacío',
-            'data.email.email' => 'El correo electrónico debe de tener un formato válido (ej. correo@correo.com)',
-            'data.email.max' => 'El correo electrónico no debe de exceder los 100 dígitos',
+            'email.required' => 'Debe de ingresar un correo',
+            'email.email' => 'El correo debe tener un formato válido (ejemplo: correo@ejemplo.com)',
+            'first_name.required' => 'Debe de ingresar su nombre(s)',
+            'first_name.max' => 'Su nombre no debe de contener más de 100 caracteres',
+            'last_name.required' => 'Debe de ingresar su apellido(s)',
+            'last_name.max' => 'Sus apellidos no debe de contener más de 100 caracteres',
+            'gender.required' => 'Debe de ingresar su sexo',
+            'gender.boolean' => 'Su sexo debe ser másculino o femenino',
+            'birthday.required' => 'Debe de ingresar su fecha de nacimiento',
+            'birthday.date' => 'La fecha de nacimiento debe tener un formato válido',
+            'address.required' => 'Debe de ingresar su dirección',
+            'address.max' => 'La dirección no debe de contener más de 255 caracteres',
+            'phone.size' => 'El número de teléfono debe tener 10 dígitos (incluye código LADA)',
+            'cellphone.required' => 'Debe de ingresar un número de celular',
+            'cellphone.size' => 'El número de teléfono debe tener 10 dígitos (incluye código LADA)',
+            'photo.image' => 'El archivo que seleccionó debe ser un archivo de imagen compatible (.jpg, .jpeg, .png, .bmp, .svg)',
+            'photo.max' => 'El peso del archivo debe ser máximo de 10MB',
         ];
     }
 }

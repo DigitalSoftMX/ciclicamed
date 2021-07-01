@@ -1,3 +1,4 @@
+import { UserData } from "@data/User/User.data";
 import { Patient } from "../../interfaces/Patient/Patient.interface";
 import { PreregistrationData } from "./Preregistration.data";
 
@@ -11,8 +12,8 @@ export const PatientData: Patient = {
     address: '',
     phone: '',
     cellphone: '',
-    email: '',
     photo: '',
     preregistration_id: -1,
-    preregistration: PreregistrationData
+    preregistration: PreregistrationData,
+    user: UserData
 }

@@ -18,5 +18,6 @@ export const ConsultData: Consult = {
     medicalspecialty_id: -1,
     checkup_id: -1,
     created_at: '2021-01-01 00:00:00',
-    updated_at: '2021-01-01 00:00:00'
+    updated_at: '2021-01-01 00:00:00',
+    prescriptions: []
 }

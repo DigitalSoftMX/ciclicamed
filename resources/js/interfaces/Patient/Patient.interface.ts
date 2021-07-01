@@ -1,5 +1,5 @@
+import { User } from "@interface/User/User.interface";
 import { Preregistration } from "./Preregistration.interface";
-
 export interface Patient
 {
     id: number;
@@ -11,8 +11,8 @@ export interface Patient
     address?: string;
     phone?: string;
     cellphone?: string;
-    email?: string;
     photo?: string;
+    user: User;
     preregistration_id?: number;
     preregistration?: Preregistration
 }

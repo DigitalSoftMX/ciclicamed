@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     use HasFactory;
+    use \Znck\Eloquent\Traits\BelongsToThrough;
 
     protected $fillable = [
         'patient_code',
@@ -68,5 +69,10 @@ class Patient extends Model
     public function checkups()
     {
         return $this->hasMany(Checkup::class, 'patient_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsToThrough(User::class, Preregistration::class);
     }
 }

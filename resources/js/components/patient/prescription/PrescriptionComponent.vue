@@ -3,8 +3,7 @@
         <div class="col-12 mb-5">
             <div class="breadcrumb-main user-member justify-content-between p-0">
                 <div class="d-flex align-items-center user-member__title justify-content-center mr-sm-25">
-                    <h4 class="text-capitalize fw-500 breadcrumb-title">Recetas</h4>
-                    <!-- <span class="sub-title ml-sm-25 pl-sm-25">24 recetas</span> -->
+                    <h4 class="text-capitalize fw-500 breadcrumb-title"></h4>
                 </div>
 
                 <div class="d-flex align-items-center user-member__form my-sm-0 my-2 float-right">
@@ -20,21 +19,19 @@
             </div>
         </div>
     </div>
-    <div class="row" v-bind:class="{'justify-content-center': enableEmptyData }">
-        <div class="text-center" v-if="enableEmptyData">
+    <div class="row" v-bind:class="{'justify-content-center': prescriptionsData.data.length === 0 }">
+        <div class="text-center" v-if="prescriptionsData.data.length === 0">
             <img src="/svg/empty.svg" alt="View prescription" class="ml-4 w-25">
             <h5 class="fw-500 mt-5 display-4">No se encontraron recetas</h5>
         </div>
 
-
-        <div class="col-lg-4" v-for="prescription in prescriptionsData" :key="prescription" v-else>
-
+        <div class="col-lg-4" v-for="prescription in prescriptionsData.data" :key="prescription" v-else>
             <div class="card shadow-none border-0 mb-25">
                 <div class="card-body banner-feature--15">
                     <div class="pb-md-0 text-center">
-                        <h4 class="m-0">{{ getDateFormatted(prescription[0].medicalconsult.consult_schedule_start) }}
+                        <h4 class="m-0">{{ getDateFormatted(prescription.consult_schedule_start) }}
                         </h4>
-                        <p>{{prescription.length}} medicamento(s) recetados</p>
+                        <p>{{prescription.prescriptions?.length}} medicamento(s) recetados</p>
                     </div>
                     <div class="content-center mt-25">
                         <button class="btn btn-primary btn-sm btn-squared btn-transparent-primary rounded-pill"
@@ -45,70 +42,54 @@
         </div>
     </div>
 
+    <div>
+        <table class="table mb-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
+                        data-sorting="true" data-paging-current="1" data-paging-position="right" data-paging-size="10"
+                        style="">
+            <tfoot v-if="prescriptionsData.data.length > 0">
+                <tr class="footable-paging">
+                    <td colspan="8">
+                        <div class="footable-pagination-wrapper">
+                            <ul class="pagination justify-content-center">
+
+                                <li class="footable-page-nav" v-bind:class="{'disabled': paginationActive === 1}"
+                                    data-page="first" @click="getPrescriptionsData(1)"><a class="footable-page-link">«</a>
+                                </li>
+                                <li class="footable-page-nav" v-bind:class="{'disabled': paginationActive === 1}"
+                                    data-page="prev" @click="getPrescriptionsData(paginationActive - 1)"><a
+                                        class="footable-page-link">‹</a></li>
+
+                                <li class="footable-page visible"
+                                    v-bind:class="{ 'active': pagination === paginationActive }" data-page="1"
+                                    v-for="pagination in paginationPages" :key="pagination"
+                                    @click="getPrescriptionsData(pagination)">
+                                    <a class="footable-page-link">{{pagination}}</a>
+                                </li>
+
+
+                                <li class="footable-page-nav"
+                                    v-bind:class="{'disabled': paginationActive === prescriptionsData.pagination.last_page}"
+                                    @click="getPrescriptionsData(paginationActive + 1)" data-page="next"><a
+                                        class="footable-page-link">›</a></li>
+                                <li class="footable-page-nav"
+                                    v-bind:class="{'disabled': paginationActive === prescriptionsData.pagination.last_page}"
+                                    @click="getPrescriptionsData(prescriptionsData.pagination.last_page)" data-page="last"><a
+                                        class="footable-page-link">»</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
     <!-- Modal -->
-    <prescription-modal-component :id="'medicamentsModal'" :medicaments="medicaments"></prescription-modal-component>
+    <prescription-modal-component :id="'medicamentsModal'" :prescriptions="prescriptions"></prescription-modal-component>
 </template>
 
-<script>
-    import $ from 'jquery';
-    import moment from 'moment';
-    import PrescriptionModalComponent from './PrescriptionModalComponent.vue';
-    require('daterangepicker'); 
-    export default {
-        components: {
-            PrescriptionModalComponent
-        },
-        props: ['prescriptions'],
-        data: function () {
-            return {
-                prescriptionsData: Object.assign({}, this.$props.prescriptions),
-                enableEmptyData: false,
-                medicaments: []
-            }
-        },
-        mounted() {
-            const that = this;
-            $("#search").daterangepicker({
-                showDropdowns: true,
-                minYear: 1930,
-                maxYear: moment().endOf("year").year(),
-                ranges: {
-                    'Hoy': [moment(), moment()],
-                    'Últimos 7 dias': [moment().subtract(6, 'days'), moment()],
-                    'Últimos 30 dias': [moment().subtract(29, 'days'), moment()],
-                    'Este mes': [moment().startOf('month'), moment().endOf('month')],
-                    'Último mes': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
-                        .endOf('month')
-                    ],
-                    'Este año': [moment().startOf('year'), moment().endOf('year')],
-                    'Todos': [moment().year('1930').startOf(), moment().endOf('year')],
-                },
-                locale: {
-                    cancelLabel: 'Cancelar',
-                    applyLabel: 'Seleccionar',
-                    "customRangeLabel": "Seleccionar otra fecha",
-                }
-            });
-            $('#search').on('apply.daterangepicker', function (ev, picker) {
-                that.getPrescriptionsByDate(picker.startDate, picker.endDate)
-            });
-        },
-        methods: {
-            getDateFormatted(date) {
-                moment.locale('es');
-                return moment(date).format('D MMMM YYYY');
-            },
-            getPrescriptionsByDate(start, finish) {
-                const data = Object.values(this.$props.prescriptions).filter(data => moment(data[0].medicalconsult
-                    .consult_schedule_start).isBetween(start, finish))
-                this.prescriptionsData = data;
-                this.enableEmptyData = this.prescriptionsData.length === 0 ? true : false;
-            },
-            showMedicaments(medicaments) {
-                this.medicaments = medicaments
-                $('#medicamentsModal').modal('show');
-            }
-        }
-    }
+<script lang="ts" src="./PrescriptionComponent.ts"></script>
 
-</script>
+<style scoped>
+    @import '../../../../../public/vendor_assets/css/daterangepicker.css';
+    @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
+</style>

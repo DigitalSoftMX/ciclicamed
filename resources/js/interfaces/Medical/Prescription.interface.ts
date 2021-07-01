@@ -1,3 +1,5 @@
+import { Medicament } from "./Medicament.interface";
+
 export interface Prescription
 {
     medicalconsult_id?: number;
@@ -5,12 +7,7 @@ export interface Prescription
     administation_type: string;
     rate: string;
     duration: string;
-    medicament?: {
-        id: number,
-        code: number,
-        name: string,
-        presentation: string
-    };
+    medicament?: Medicament;
     update_by: string | null;
     update_note: string | null;
 }

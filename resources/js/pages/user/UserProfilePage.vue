@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import UserCardBioComponent from '../../components/user/UserCardBioComponent.vue'
+    import UserCardBioComponent from '../../components/user/userBio/UserBioComponent.vue'
     import UserCardComponent from '../../components/user/UserCardComponent.vue'
     import UserProfileComponent from '../../components/user/UserProfileComponent.vue'
 

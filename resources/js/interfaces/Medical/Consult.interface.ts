@@ -1,5 +1,6 @@
 import { Status } from "@interface/General/Status.interface";
 import { Order } from "./Order.interface";
+import { Prescription } from "./Prescription.interface";
 import { Test } from "./Test.interface";
 
 export interface Consult
@@ -23,5 +24,6 @@ export interface Consult
     updated_at: string;
     checkup_id: number;
     test_scheduled?: Test,
-    status?: Status
+    status?: Status,
+    prescriptions?: Prescription[]
 }

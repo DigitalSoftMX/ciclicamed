@@ -21,6 +21,8 @@ class MedicalPrescription extends Model
         'update_note'
     ];
 
+    protected $perPage = 10;
+
     public function medicalconsult()
     {
         return $this->belongsTo(MedicalConsult::class, 'medicalconsult_id');

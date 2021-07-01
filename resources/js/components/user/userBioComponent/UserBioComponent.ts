@@ -2,11 +2,7 @@ import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import moment from 'moment';
 import { Patient } from '@interface/Patient/Patient.interface';
-import { PaymentPaginationData } from '@data/Payment/PaymentPagination.data';
-import { PaymentPagination } from '@interface/Payment/PaymentPagination.interface';
-import { Payment } from '@interface/Payment/Payment.interface';
 import { PatientData } from '@data/Patient/Patient.data';
-import { Product } from '@interface/Product/Product.interface';
 
 export default defineComponent({
     components: {

@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Patient\PatientUpdateRequest;
+use App\Http\Requests\User\UserUpdatePasswordRequest;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Patient\Patient;
 use App\Models\Payment\Payment;
 use App\Models\Payment\PaymentStatus;
 use App\Models\User\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class PatientController extends Controller
 {
@@ -19,50 +23,70 @@ class PatientController extends Controller
         $patients = Patient::get(['id', 'first_name', 'last_name', 'patient_code']);
         return response()->json($patients);
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(PatientUpdateRequest $request, $id)
+
+    public function updatePatient(PatientUpdateRequest $request, $id)
     {
         $request->validated();
-        $patient = Patient::findOrFail($id);
-        $patient->update($request->input('data'));
-        return $patient;
+        $patient = Patient::findOrFail($id)->load('user');
+        $user = User::findOrFail(Auth::user()->id);
+        if($patient->user->id === Auth::user()->id && ($user->hasRole('Paciente') || $user->hasRole('Administrador')))
+        {
+            $file = $request->file('photo');
+            if($file)
+            {
+                unlink(storage_path('app/user/'.$patient->photo));
+                $photo = basename($file->store('user'));
+            } else {
+                $photo = $patient->photo;
+            }
+            $patient->update([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'gender' => $request->input('gender'),
+                'birthday' => $request->input('birthday'),
+                'address' => $request->input('address'),
+                'phone' => $request->input('phone'),
+                'cellphone' => $request->input('cellphone'),
+                'photo' => $photo,
+            ]);
+            User::findOrFail(Auth::user()->id)->update([
+                'email' => $request->input('email')
+            ]);
+            return response()->json($patient->load('user'));
+        }
+        
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function showMedicalPrescriptions(Request $request, $id)
     {
-        // $patientsDebt = [];
-        // if($request->has('query'))
-        // {
-        //     $query = $request->input('query');
-        //     $patientsDebt = $payment->where('first_name', 'like', '%'.$query.'%')
-        //             ->orWhere('last_name', 'like', '%'.$query.'%')
-        //             ->orWhere('patient_code', 'like', '%'.$query.'%')
-        //             ->paginate();
-        // } else {
-        //     $patientsDebt = $payment->paginate();
-        // }
+        $consult = MedicalConsult::where('patient_id', $id)->Has('prescriptions')->paginate();
+
+        $prescriptions = [];
+        if($request->has('query'))
+        {
+            $query = $request->input('query');
+            $prescriptions = $consult->whereDate('consult_schedule_start', '>=', $query)->whereDate('consult_schedule_start', '<=', $query)
+                    ->paginate()->load('prescriptions.medicament');
+        } else {
+            $prescriptions = $consult;
+        }
         
-        // $response = [
-        //     'pagination' => [
-        //         'total' => $patientsDebt->total(),
-        //         'per_page' => $patientsDebt->perPage(),
-        //         'current_page' => $patientsDebt->currentPage(),
-        //         'last_page' => $patientsDebt->lastPage(),
-        //         'from' => $patientsDebt->firstItem(),
-        //         'to' => $patientsDebt->lastItem()
-        //     ],
-        //     'data' => $patientsDebt->getCollection()
-        // ];
+        $response = [
+            'pagination' => [
+                'total' => $prescriptions->total(),
+                'per_page' => $prescriptions->perPage(),
+                'current_page' => $prescriptions->currentPage(),
+                'last_page' => $prescriptions->lastPage(),
+                'from' => $prescriptions->firstItem(),
+                'to' => $prescriptions->lastItem()
+            ],
+            'data' => $prescriptions->load('prescriptions.medicament')
+        ];
 
-        $patient = MedicalConsult::where('patient_id', $id)->Has('prescriptions')->paginate()->load('prescriptions');
-
-        return response()->json($patient);
+        return response()->json($response);
     }
 
     public function showMedicalTests($id)
@@ -86,7 +110,7 @@ class PatientController extends Controller
 
     public function getPatientByID($id)
     {
-        $patient = Patient::findOrFail($id);
+        $patient = Patient::findOrFail($id)->load('user');
         return response()->json($patient);
     }
 
@@ -106,28 +130,28 @@ class PatientController extends Controller
             $query->where('paymentstatus_id', $status);
         });
 
-        $patientsDebt = [];
+        $prescriptions = [];
         if($request->has('query'))
         {
             $query = $request->input('query');
-            $patientsDebt = $payment->where('first_name', 'like', '%'.$query.'%')
+            $prescriptions = $payment->where('first_name', 'like', '%'.$query.'%')
                     ->orWhere('last_name', 'like', '%'.$query.'%')
                     ->orWhere('patient_code', 'like', '%'.$query.'%')
                     ->paginate();
         } else {
-            $patientsDebt = $payment->paginate();
+            $prescriptions = $payment->paginate();
         }
         
         $response = [
             'pagination' => [
-                'total' => $patientsDebt->total(),
-                'per_page' => $patientsDebt->perPage(),
-                'current_page' => $patientsDebt->currentPage(),
-                'last_page' => $patientsDebt->lastPage(),
-                'from' => $patientsDebt->firstItem(),
-                'to' => $patientsDebt->lastItem()
+                'total' => $prescriptions->total(),
+                'per_page' => $prescriptions->perPage(),
+                'current_page' => $prescriptions->currentPage(),
+                'last_page' => $prescriptions->lastPage(),
+                'from' => $prescriptions->firstItem(),
+                'to' => $prescriptions->lastItem()
             ],
-            'data' => $patientsDebt->getCollection()
+            'data' => $prescriptions->getCollection()
         ];
 
         return response()->json($response);
@@ -150,5 +174,14 @@ class PatientController extends Controller
         ];
 
         return response()->json($response);
+    }
+
+    public function updatePassword(UserUpdatePasswordRequest $request, $id)
+    {
+        $request->validated();
+        $user = User::findOrFail($id);
+        $user['password'] = Hash::make($request['password']);
+        $user->save();
+        return response()->json($user);
     }
 }

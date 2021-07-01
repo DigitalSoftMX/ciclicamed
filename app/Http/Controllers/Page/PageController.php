@@ -16,7 +16,7 @@ class PageController extends Controller
         if($user['usercategory_id'] === 1 && $user->hasRole('Paciente'))
         {
             return response()->view('pages.dashboard', [
-                'user' => $user->patient,
+                'user' => $user->patient->load('user'),
                 'roles' => $user->roles
             ], 200);
         }
@@ -82,14 +82,28 @@ class PageController extends Controller
         return response()->view('error.404', 404);
     }
 
-    public function showTestOrder()
+    public function showPrescriptions()
     {
         $user = User::findOrFail(Auth::user()->id);
 
         if($user['usercategory_id'] === 1 && $user->hasRole('Paciente'))
         {
-            return response()->view('pages.testOrders', [
-                'user' => $user->patient,
+            return response()->view('pages.prescriptions', [
+                'user' => $user->patient->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+        return response()->view('error.404', 404);
+    }
+
+    public function showProfile()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user['usercategory_id'] === 1 && $user->hasRole('Paciente'))
+        {
+            return response()->view('pages.profile', [
+                'user' => $user->patient->load('user'),
                 'roles' => $user->roles
             ], 200);
         }
@@ -97,7 +111,7 @@ class PageController extends Controller
         {
             if($user->hasRole('Administrador'))
             {
-                return response()->view('pages.dashboard', [
+                return response()->view('pages.prescriptions', [
                     'user' => $user->employee,
                     'roles' => $user->roles
                 ], 200);
