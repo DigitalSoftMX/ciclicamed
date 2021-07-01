@@ -50,7 +50,7 @@
                             </span>
                         </li>
                         <li>
-                            <img src="/svg/text.svg" alt="Text logo">
+                            <img src="/svg/text.svg" alt="Text logo" v-if="schedule.consult_reason">
                             <span class="list-line">
                                 <span class="list-text">{{ schedule.consult_reason }}</span>
                             </span>

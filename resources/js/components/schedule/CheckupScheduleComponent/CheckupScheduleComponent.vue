@@ -26,7 +26,7 @@
                                     <label>Checkup</label>
                                     <v-select :options="categoryList" label="name" :reduce="item => item.id" v-model="categorySelected"/>
                                 </div>
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-6" v-if="patientID < 1">
                                     <label>Paciente</label>
                                     <v-select :options="patients" label="text" :reduce="item => item.childID" v-model="checkupDataCopy.patient_id"/>
                                 </div>

@@ -18,7 +18,7 @@
                 <div class="drawer-content">
 
                     <!-- Paciente -->
-                    <div class="form-group" v-show="schedule.id < 1">
+                    <div class="form-group" v-show="schedule.id < 1 && patientID < 1">
                         <label for="lscPacientes">Pacientes</label>
                         <select-component id="lscPacientes" :data="patientsList" v-model="patientSelect" :disabled="isPatientDisabled"
                             firstText='Seleccione un paciente'></select-component>
@@ -111,21 +111,25 @@
                     </div>
 
                     <!-- Tarjeta de cita -->
-                    <div class="card rounded-0 lateralCardColor mt-25 shadow-none" v-if="schedule.id > 0">
+                    <div class="card rounded-0 lateralCardColor mt-25 shadow-none" v-if="schedule.id > 0 && isScheduleCardEnabled">
                         <div class="card-body py-2 px-3">
                             <h6 class="text-primary mb-1">
-                                {{ patientsList[scheduleSelectedCopy.patient_id].text }}
+                                {{ patientsList[scheduleSelectedCopy.patient_id ?? 0].text ?? '' }}
                             </h6>
                             <p class="m-0 text-primary">
                                 {{ `${formatScheduleTime(this.scheduleSelectedCopy.consult_schedule_start)} - ${formatScheduleTime(this.scheduleSelectedCopy.consult_schedule_finish)}` }}
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+
+    <error-alert-component id="latscError" :errors="errors" :title="`Error al ${scheduleAction} la cita`">
+    </error-alert-component>
+    <success-alert-component id="latscSuccess" :message="`Se ha podido ${scheduleAction} correctamente la cita`"
+        :title="'Cita procesada correctamente'"></success-alert-component>
 </template>
 
 <script lang="ts" src="./LateralScheduleComponent.ts"></script>

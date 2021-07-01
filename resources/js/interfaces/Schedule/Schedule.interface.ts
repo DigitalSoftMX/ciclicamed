@@ -11,11 +11,11 @@ export interface Schedule
     consult_schedule_finish: string;
     branch_id: number;
     doctor_id: number;
-    consult_reason: string;
-    medicalconsultcategory_id: number;
-    medicalconsultstatus_id: number;
-    medicalspecialty_id: number;
-    patient_id: number;
+    consult_reason?: string;
+    medicalconsultcategory_id?: number;
+    medicalconsultstatus_id?: number;
+    medicalspecialty_id?: number;
+    patient_id?: number;
     doctor?: Doctor;
     patient?: Patient;
     status?: ScheduleStatus;

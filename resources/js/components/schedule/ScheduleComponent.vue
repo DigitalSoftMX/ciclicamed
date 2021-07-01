@@ -6,12 +6,12 @@
         </div>
         <div class="col-12 col-md-8 col-xl-9">
             <calendar-componet :branchesList="branchesList" :schedules="schedules" :businessHours="businessHours"
-                @onNewSchedule="copyScheduleData" @onSelectedSchedule="getScheduleSelected"></calendar-componet>
+                @onNewSchedule="copyScheduleData" @onSelectedSchedule="getScheduleSelected" :roles="roles"></calendar-componet>
         </div>
     </div>
 
     <schedule-action-component :schedule="scheduleSelected"></schedule-action-component>
-    <checkup-schedule-component :branches="branchesList" :patients="patientsList"></checkup-schedule-component>
+    <checkup-schedule-component :branches="branchesList" :patients="patientsList" :patientID="userID"></checkup-schedule-component>
     <lateral-schedule-component
         ref="openLateralSchedule"
         :schedule="scheduleSelected" :branchesList="branchesList"
@@ -19,6 +19,7 @@
         :businessHours="businessHours"
         :patientsList="patientsList"
         :categoryList="scheduleCategoryList"
+        :patientID="userID"
     ></lateral-schedule-component>
     <div class="overlay-dark"></div>
 </template>

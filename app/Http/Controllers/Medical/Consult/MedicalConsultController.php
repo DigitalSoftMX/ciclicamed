@@ -11,8 +11,10 @@ use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\Medical\Test\MedicalTest;
 use App\Models\Medical\Test\MedicalTestOrder;
 use App\Models\Medical\Test\MedicalTestStatus;
+use App\Models\User\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\Cast\Object_;
 
 class MedicalConsultController extends Controller
@@ -41,21 +43,27 @@ class MedicalConsultController extends Controller
         //                 ->where('consult_schedule_start', '<=', $start)->where('consult_schedule_finish', '>=', $start)->get();
         // }
 
-        
-        $consult = MedicalConsult::create([
-            'patient_id' => $request->input('data.patient_id'),
-            'doctor_id' => $request->input('data.doctor_id'),
-            'medicalconsultcategory_id' => $request->input('data.medicalconsultcategory_id'),
-            'consult_reason' => $request->input('data.consult_reason'),
-            'consult_schedule_start' => Carbon::parse($request->input('data.consult_schedule_start')),
-            'consult_schedule_finish' => Carbon::parse($request->input('data.consult_schedule_finish')),
-            'medicalspecialty_id' => $request->input('data.medicalspecialty_id'),
-            'branch_id' => $request->input('data.branch_id'),
-            'medicalconsultstatus_id' => 1,
-        ]);
-        $consult->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
-        return  response()->json($consult);
+        $user = User::findOrFail(Auth::user()->id)->hasRole(['Paciente', 'Laboratorio', 'Imagenología']);
+        if(!$user)
+        {
+            $consult = MedicalConsult::create([
+                'patient_id' => $request->input('data.patient_id'),
+                'doctor_id' => $request->input('data.doctor_id'),
+                'medicalconsultcategory_id' => $request->input('data.medicalconsultcategory_id'),
+                'consult_reason' => $request->input('data.consult_reason'),
+                'consult_schedule_start' => Carbon::parse($request->input('data.consult_schedule_start')),
+                'consult_schedule_finish' => Carbon::parse($request->input('data.consult_schedule_finish')),
+                'medicalspecialty_id' => $request->input('data.medicalspecialty_id'),
+                'branch_id' => $request->input('data.branch_id'),
+                'medicalconsultstatus_id' => 1,
+            ]);
+            $consult->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+            return  response()->json($consult);
+        }
 
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
         //Todo
         // Revisar si existe una cita ya creada con anterioridad que coincida con la hora ocupada
         // Agregar verificaciones de request
@@ -64,19 +72,27 @@ class MedicalConsultController extends Controller
 
     public function updateSchedule(Request $request, $id)
     {
-        $consult = MedicalConsult::findOrFail($id);
-        $consult->update([
-            'patient_id' => $request->input('data.patient_id'),
-            'doctor_id' => $request->input('data.doctor_id'),
-            'medicalconsultcategory_id' => $request->input('data.medicalconsultcategory_id'),
-            'consult_reason' => $request->input('data.consult_reason'),
-            'consult_schedule_start' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
-            'consult_schedule_finish' => Carbon::createFromTimestamp($request->input('data.consult_schedule_finish')),
-            'medicalspecialty_id' => $request->input('data.medicalspecialty_id'),
-            'branch_id' => $request->input('data.branch_id'),
-            'medicalconsultstatus_id' => 1,
-        ]);
-        return response()->json($consult);
+        $user = User::findOrFail(Auth::user()->id)->hasRole(['Paciente', 'Laboratorio', 'Imagenología']);
+        if(!$user)
+        {
+            $consult = MedicalConsult::findOrFail($id);
+            $consult->update([
+                'patient_id' => $request->input('data.patient_id'),
+                'doctor_id' => $request->input('data.doctor_id'),
+                'medicalconsultcategory_id' => $request->input('data.medicalconsultcategory_id'),
+                'consult_reason' => $request->input('data.consult_reason'),
+                'consult_schedule_start' => Carbon::createFromTimestamp($request->input('data.consult_schedule_start')),
+                'consult_schedule_finish' => Carbon::createFromTimestamp($request->input('data.consult_schedule_finish')),
+                'medicalspecialty_id' => $request->input('data.medicalspecialty_id'),
+                'branch_id' => $request->input('data.branch_id'),
+                'medicalconsultstatus_id' => 1,
+            ]);
+            return response()->json($consult);
+        }
+
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function getConsultTypes()
@@ -87,39 +103,47 @@ class MedicalConsultController extends Controller
 
     public function cancelConsult(Request $request, $id)
     {
-        $consultType = MedicalConsultStatus::where('name', 'Cancelado')->firstOrFail()->id;
-        $consult = MedicalConsult::findOrFail($id);
-        $today = Carbon::now()->startOfDay();
-        $consultDate = Carbon::parse($consult->consult_schedule_start)->startOfDay();
-        $dayDifference = $today->diffInDays($consultDate, false);
-        if ($dayDifference < 0)
-        {
-            return response()->json([
-                'errors' => [
-                    'date' => [
-                        "Solo se pueden cancelar citas del día de hoy o posteriores"
-                    ]
-                ]
-            ], 422);
-        }
-        if(in_array($consult->status->name, ['En consulta', 'Finalizado', 'Cancelado']))
-        {
-            return response()->json([
-                'errors' => [
-                    'consult' => [
-                        "No se puede cancelar esta cita por que está {$consult->status->name}"
-                    ]
-                ]
-            ], 422);
-        }
 
-        $consult->update([
-            'medicalconsultstatus_id' => $consultType,
-            'consult_schedule_start' => Carbon::parse($consult->consult_schedule_start)->setTime(21,0,0),
-            'consult_schedule_finish' => Carbon::parse($consult->consult_schedule_start)->setTime(21,0,0)
-        ]);
-        $consult->status;
-        return response()->json($consult);
+        $user = User::findOrFail(Auth::user()->id)->hasRole(['Paciente', 'Laboratorio', 'Imagenología']);
+        if(!$user)
+        {
+            $consultType = MedicalConsultStatus::where('name', 'Cancelado')->firstOrFail()->id;
+            $consult = MedicalConsult::findOrFail($id);
+            $today = Carbon::now()->startOfDay();
+            $consultDate = Carbon::parse($consult->consult_schedule_start)->startOfDay();
+            $dayDifference = $today->diffInDays($consultDate, false);
+            if ($dayDifference < 0)
+            {
+                return response()->json([
+                    'errors' => [
+                        'date' => [
+                            "Solo se pueden cancelar citas del día de hoy o posteriores"
+                        ]
+                    ]
+                ], 422);
+            }
+            if(in_array($consult->status->name, ['En consulta', 'Finalizado', 'Cancelado']))
+            {
+                return response()->json([
+                    'errors' => [
+                        'consult' => [
+                            "No se puede cancelar esta cita por que está {$consult->status->name}"
+                        ]
+                    ]
+                ], 422);
+            }
+
+            $consult->update([
+                'medicalconsultstatus_id' => $consultType,
+                'consult_schedule_start' => Carbon::parse($consult->consult_schedule_start)->setTime(21,0,0),
+                'consult_schedule_finish' => Carbon::parse($consult->consult_schedule_start)->setTime(21,0,0)
+            ]);
+            $consult->status;
+            return response()->json($consult);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function getTests($id)
@@ -196,7 +220,14 @@ class MedicalConsultController extends Controller
 
     public function getConsultInfo($id)
     {
+        $user = User::findOrFail(Auth::user()->id)->hasRole('Paciente');
         $consult = MedicalConsult::findOrFail($id);
+        if($user)
+        {
+            $data = $consult->get(['id', 'consult_schedule_start', 'consult_schedule_finish']);
+            return response()->json($data);
+        }
+        
         return response()->json($consult);
     }
 

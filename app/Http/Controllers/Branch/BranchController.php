@@ -8,7 +8,9 @@ use App\Models\Employee\EmployeeSchedule;
 use App\Models\Employee\EmployeeStatus;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\MedicalSpecialty;
+use App\Models\User\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class BranchController extends Controller
@@ -34,6 +36,14 @@ class BranchController extends Controller
 
     public function getSchedules($id, $employeeID)
     {
+        $user = User::findOrFail(Auth::user()->id)->hasRole('Paciente');
+        if($user)
+        {
+            $schedules = MedicalConsult::where('doctor_id', $employeeID)->where('branch_id', $id)
+                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id'])
+                                ->load('doctor:id,first_name,last_name', 'branch:id,name');
+            return response()->json($schedules);
+        }
         $schedules = MedicalConsult::where('doctor_id', $employeeID)->where('branch_id', $id)
                                 ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
                                 ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');

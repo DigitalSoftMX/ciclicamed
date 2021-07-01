@@ -24,9 +24,15 @@
 </template>
 
 <script>
+import { watch } from '@vue/runtime-core'
     export default {
         props: ['id', 'title', 'errors'],
         mounted:  function() {
+        },
+        watch:{
+            errors() {
+                console.log(errors)
+            }
         }
     }
 

@@ -7,6 +7,7 @@ import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { AlertError } from '@interface/General/Alert/Error/AlertError.interface';
 import $ from 'jquery';
+import { Role } from '@interface/User/Role.interface';
 require('bootstrap');
 
 export default defineComponent({
@@ -21,6 +22,10 @@ export default defineComponent({
             type: Object as PropType<Schedule>,
             default: ScheduleData
         },
+        roles: {
+            type: Array as PropType<Role[]>,
+            default: []
+        }
     },
     data() {
         return {
@@ -32,15 +37,22 @@ export default defineComponent({
     mounted() {
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
-          })
+        })
     },
     watch: {
         schedule:
         {
             handler()
             {
-                this.showCancelOption();
-                this.showEditOption();
+                if(this.roles.filter(item => item.name === 'Paciente' || item.name === 'Laboratorio' || item.name === 'Imagenología').length === 0)
+                {
+                    this.isCancelOptionEnabled = false;
+                    this.isEditOptionEnabled = false;
+                    
+                } else {
+                    this.showCancelOption();
+                    this.showEditOption();
+                }
             },
             deep: true,
         }

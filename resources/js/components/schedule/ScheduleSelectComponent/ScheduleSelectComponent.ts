@@ -17,7 +17,7 @@ export default defineComponent({
         doctorList: {
             type: Array as PropType<Select[]>,
             default: []
-        },
+        }
     },
     data() {
         return {

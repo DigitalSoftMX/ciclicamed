@@ -1,8 +1,6 @@
-import axios from 'axios';
 import $ from 'jquery';
 import { defineComponent } from '@vue/runtime-core';
 import { Schedule } from '@interface/Schedule/Schedule.interface';
-import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { DefineComponent, PropType } from 'vue';
 import FullCalendar, { CalendarOptions } from '@fullcalendar/vue3';
 import listPlugin from '@fullcalendar/list';
@@ -11,8 +9,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarConfig } from '@config/FullCalendar.config';
 import { FullCalendarBusinessHour } from '@interface/General/FullCalendarBusinessHour.interface';
-import moment from 'moment';
 import { Select } from '@interface/General/Select.interface';
+import { Role } from '@interface/User/Role.interface';
 
 export default defineComponent({
     name: 'CalendarComponent',
@@ -31,6 +29,10 @@ export default defineComponent({
         },
         branchesList: {
             type: Array as PropType<Select[]>,
+            default: []
+        },
+        roles: {
+            type: Array as PropType<Role[]>,
             default: []
         }
     },
@@ -118,14 +120,22 @@ export default defineComponent({
         {
             const name = this.getNameSchedule(schedule);
             const calendar = this.$refs.fullCalendar as DefineComponent;
+            var title = 'Consulta';
+            var borderColor = '#60269E';
+            var backgroundColor = '#60269E';
+            if(this.roles.filter(item => item.name === 'Paciente').length === 0) {
+                title = this.getScheduleTitle(schedule.type!.name, name);
+                borderColor = schedule.status?.color!;
+                backgroundColor = schedule.status?.color!;
+            }
             calendar.getApi().addEvent({
                 id: schedule.id!.toString(),
-                title: this.getScheduleTitle(schedule.type!.name, name),
+                title: title,
                 start: schedule.consult_schedule_start,
                 end: schedule.consult_schedule_finish,
                 textColor: '#000000',
-                borderColor: schedule.status?.color,
-                backgroundColor: schedule.status?.color,
+                borderColor: borderColor,
+                backgroundColor: backgroundColor,
                 display: 'block',
             })
         },

@@ -40,6 +40,10 @@ export default defineComponent({
         {
             type: Boolean,
             default: true
+        },
+        patientID: {
+            type: Number,
+            default: -1
         }
     },
     data() {
@@ -64,8 +68,13 @@ export default defineComponent({
     },
     mounted() {
         this.getCategories();
+        this.checkupDataCopy.patient_id = this.patientID;
     },
     watch: {
+        patientID()
+        {
+            this.checkupDataCopy.patient_id = this.patientID;
+        },
         categorySelected:
         {
             handler()

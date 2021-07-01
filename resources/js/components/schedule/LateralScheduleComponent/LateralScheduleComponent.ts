@@ -14,13 +14,16 @@ import { FullCalendarBusinessHour } from '@interface/General/FullCalendarBusines
 import { SelectData } from '@data/General/SelectSelected.data';
 import { Product } from '@interface/Product/Product.interface';
 import cloneDeep from 'lodash/cloneDeep';
+import { Role } from '@interface/User/Role.interface';
 
 export default defineComponent({
     name: 'LateralScheduleComponent',
     components: {
         DatePicker,
         TimePickerComponent: defineAsyncComponent(() => import('@component/general/timePicker/TimePickerComponent.vue')),
-        SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue'))
+        SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue')),
+        ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default
     },
     emits: ['newSchedule', 'updateSchedule'],
     props:
@@ -49,6 +52,14 @@ export default defineComponent({
             type: Object as PropType<FullCalendarBusinessHour[]>,
             default: []
         },
+        patientID: {
+            type: Number,
+            default: -1
+        },
+        roles: {
+            type: Array as PropType<Role[]>,
+            default: []
+        }
     },
     data()
     {
@@ -74,11 +85,23 @@ export default defineComponent({
             isTestDisabled: true,
             doctorListCopy: cloneDeep(this.doctorsList),
             testList: [] as Select[],
-            categoryListCopy: cloneDeep(this.categoryList)
+            categoryListCopy: cloneDeep(this.categoryList),
+            errors: [],
+            isScheduleCardEnabled: true
         };
+    },
+    computed: {
+        scheduleAction(): string
+        {
+            return this.schedule.id < 1 ? 'crear' : 'actualizar';
+        }
     },
     watch:
     {
+        patientID()
+        {
+            this.scheduleSelectedCopy.patient_id = this.patientID;
+        },
         schedule: {
             handler()
             {
@@ -87,7 +110,15 @@ export default defineComponent({
                 $(`#scheduleDate${this.id}`).datepicker("setDate", new Date(this.scheduleSelectedCopy.consult_schedule_start) );
                 this.updateStartMinute(true);
                 this.branchSelect = getBranchPosition(this.branchesList,  this.scheduleSelectedCopy.branch_id);
-                this.doctorSelect = getDoctorPosition(this.doctorListCopy, this.scheduleSelectedCopy.doctor_id, this.scheduleSelectedCopy.medicalspecialty_id);
+                this.doctorSelect = getDoctorPosition(this.doctorListCopy, this.scheduleSelectedCopy.doctor_id, this.scheduleSelectedCopy.medicalspecialty_id!);
+                this.scheduleSelectedCopy.patient_id = this.patientID;
+                if(this.roles.filter(item => item.name === 'Paciente' || item.name === 'Laboratorio' || item.name === 'Imagenología').length === 0)
+                {
+                    this.isScheduleCardEnabled = false;
+                } else
+                {
+                    this.isScheduleCardEnabled = true;
+                }
             },
             deep: true,
         },
@@ -157,7 +188,7 @@ export default defineComponent({
         {
             this.scheduleSelectedCopy = Object.assign({}, this.schedule);
             this.doctorListCopy = Object.assign([], [...this.doctorsList]);
-            this.doctorSelect = getDoctorPosition(this.doctorsList, this.scheduleSelectedCopy.doctor_id, this.scheduleSelectedCopy.medicalspecialty_id);
+            this.doctorSelect = getDoctorPosition(this.doctorsList, this.scheduleSelectedCopy.doctor_id, this.scheduleSelectedCopy.medicalspecialty_id!);
             this.branchSelect = getBranchPosition(this.branchesList,  this.scheduleSelectedCopy.branch_id);
         },
         openLateralSchedule(): void
@@ -241,7 +272,7 @@ export default defineComponent({
         },
         updateConsultReasonCharLength(): void
         {
-            this.consultReasonCharLength = this.scheduleSelectedCopy.consult_reason.length;
+            this.consultReasonCharLength = this.scheduleSelectedCopy.consult_reason!.length;
         },
         getConsultReasonCharLength(): number
         {
@@ -260,10 +291,12 @@ export default defineComponent({
                 this.categorySelect = SelectData;
                 this.doctorSelect = SelectData;
                 this.$emit('newSchedule', response.data);
+                $('#latscSuccess').modal('show');
                 this.closeLateralSchedule()
             })
             .catch(error => {
-                console.log(error)
+                this.errors = error.response.data.errors;
+                $('#latscError').modal('show');
             })
         },
         updateSchedule(): void
@@ -274,11 +307,12 @@ export default defineComponent({
                 }
             })
             .then(response => {
-                this.$emit('updateSchedule', response.data);
+                $('#latscSuccess').modal('show');
                 this.closeLateralSchedule()
             })
             .catch(error => {
-                console.log(error)
+                this.errors = error.response.data.errors;
+                $('#latscError').modal('show');
             })
         },
         getDoctorList(): void

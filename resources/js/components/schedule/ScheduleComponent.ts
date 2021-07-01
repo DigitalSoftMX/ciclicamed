@@ -9,10 +9,11 @@ import { Select } from '@interface/General/Select.interface';
 import { Patient } from '@interface/Patient/Patient.interface';
 import { Schedule } from '@interface/Schedule/Schedule.interface';
 import { ScheduleType } from '@interface/Schedule/ScheduleType.interface';
+import { Role } from '@interface/User/Role.interface';
 import { defineAsyncComponent, defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import moment from 'moment';
-import { DefineComponent } from 'vue';
+import { DefineComponent, PropType } from 'vue';
 
 export default defineComponent({
     name: 'ScheduleComponent',
@@ -21,7 +22,7 @@ export default defineComponent({
         ScheduleSelectComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleSelectComponent/ScheduleSelectComponent.vue')),
         ScheduleActionComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleActionComponent/ScheduleActionComponent.vue')),
         LateralScheduleComponent: defineAsyncComponent(() => import('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue')),
-        CheckupScheduleComponent: defineAsyncComponent(() => import('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue'))
+        CheckupScheduleComponent: defineAsyncComponent(() => import('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue')),
     },
     props: {
         userID: {
@@ -32,6 +33,10 @@ export default defineComponent({
             type: String,
             default: ''
         },
+        roles: {
+            type: Array as PropType<Role[]>,
+            default: []
+        }
     },
     data() {
         return {
@@ -46,7 +51,10 @@ export default defineComponent({
         }
     },
     mounted() {
-        this.getPatientsList();
+        if(this.userCategory !== 'Paciente')
+        {
+            this.getPatientsList();
+        }
         this.getBranchesList();
         this.getSchedulesCategories();
         this.userCategory === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();

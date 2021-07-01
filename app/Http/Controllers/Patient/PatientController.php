@@ -20,8 +20,15 @@ class PatientController extends Controller
 
     public function getAllPatients()
     {
-        $patients = Patient::get(['id', 'first_name', 'last_name', 'patient_code']);
-        return response()->json($patients);
+        $patient = User::findOrFail(Auth::user()->id)->hasRole('Paciente');
+        if(!$patient)
+        {
+            $patients = Patient::get(['id', 'first_name', 'last_name', 'patient_code']);
+            return response()->json($patients);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function updatePatient(PatientUpdateRequest $request, $id)
