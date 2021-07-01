@@ -10,7 +10,7 @@ export const TestData: Test = {
     medicalteststatus_id: -1,
     created_at: '',
     updated_at: '',
-    last_order: OrderData,
+    order: OrderData,
     medical_results: {
         medicaltest_id: -1,
         created_by: -1,

@@ -92,8 +92,8 @@ export default defineComponent({
                 this.orderDataCopy = data.map((test: Test) => {
                     return {
                         ...test,
-                        last_order: {
-                            ...test.last_order,
+                        order: {
+                            ...test.order,
                             status: test.medicalteststatus_id
                         }
                     }
@@ -124,7 +124,7 @@ export default defineComponent({
             const pdfDoc = await PDFDocument.create();
             for await(let order of filterOrderList)
             {
-                const index = this.orderList.findIndex(orderSelected => orderSelected.id === order.last_order.product_id);
+                const index = this.orderList.findIndex(orderSelected => orderSelected.id === order.order.product_id);
                 var newPDF = await PDFDocument.load(buffer);
                 
                 newPDF.getForm().getTextField('patient').setText(`${this.patientData.first_name} ${this.patientData.last_name}`);

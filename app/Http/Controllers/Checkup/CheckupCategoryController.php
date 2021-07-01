@@ -24,7 +24,7 @@ class CheckupCategoryController extends Controller
     public function getCheckupByID($id)
     {
         $checkup = Checkup::findOrFail($id);
-        $checkup->load('consults.status', 'category', 'consults.testScheduled.lastOrder.product',  'consults.testScheduled.status');
+        $checkup->load('consults.status', 'category', 'consults.testScheduled.order.product',  'consults.testScheduled.status');
 
         return response()->json($checkup);
     }

@@ -69,44 +69,76 @@ class PatientController extends Controller
 
     public function showMedicalPrescriptions(Request $request, $id)
     {
-        $consult = MedicalConsult::where('patient_id', $id)->Has('prescriptions')->paginate();
-
-        $prescriptions = [];
-        if($request->has('query'))
+        $user = User::findOrFail(Auth::user()->id)->hasRole(['Administrador', 'Paciente']);
+        if($user)
         {
-            $query = $request->input('query');
-            $prescriptions = $consult->whereDate('consult_schedule_start', '>=', $query)->whereDate('consult_schedule_start', '<=', $query)
-                    ->paginate()->load('prescriptions.medicament');
-        } else {
-            $prescriptions = $consult;
-        }
-        
-        $response = [
-            'pagination' => [
-                'total' => $prescriptions->total(),
-                'per_page' => $prescriptions->perPage(),
-                'current_page' => $prescriptions->currentPage(),
-                'last_page' => $prescriptions->lastPage(),
-                'from' => $prescriptions->firstItem(),
-                'to' => $prescriptions->lastItem()
-            ],
-            'data' => $prescriptions->load('prescriptions.medicament')
-        ];
+            $consult = MedicalConsult::where('patient_id', $id)->Has('prescriptions')->paginate();
 
-        return response()->json($response);
+            $prescriptions = [];
+            if($request->has('query'))
+            {
+                $query = $request->input('query');
+                $prescriptions = $consult->whereDate('consult_schedule_start', '>=', $query)->whereDate('consult_schedule_start', '<=', $query)
+                        ->paginate()->load('prescriptions.medicament');
+            } else {
+                $prescriptions = $consult;
+            }
+            
+            $response = [
+                'pagination' => [
+                    'total' => $prescriptions->total(),
+                    'per_page' => $prescriptions->perPage(),
+                    'current_page' => $prescriptions->currentPage(),
+                    'last_page' => $prescriptions->lastPage(),
+                    'from' => $prescriptions->firstItem(),
+                    'to' => $prescriptions->lastItem()
+                ],
+                'data' => $prescriptions->load('prescriptions.medicament')
+            ];
+
+            return response()->json($response);
+        }
+
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
-    public function showMedicalTests($id)
+    public function showMedicalTests(Request $request, $id)
     {
-        $tests = User::findOrFail($id)->patient->medicaltestsscheduled->load('status');
-
-        foreach($tests as $test)
+        $user = User::findOrFail(Auth::user()->id)->hasRole(['Administrador', 'Paciente']);
+        if($user)
         {
-            $test->medicalorders->load('product:id,name');
+            $consult = MedicalConsult::where('patient_id', $id)->Has('testScheduled')->paginate();
+
+            $prescriptions = [];
+            if($request->has('query'))
+            {
+                $query = $request->input('query');
+                $prescriptions = $consult->whereDate('consult_schedule_start', '>=', $query)->whereDate('consult_schedule_start', '<=', $query)
+                        ->paginate()->load('prescriptions.medicament');
+            } else {
+                $prescriptions = $consult;
+            }
+            
+            $response = [
+                'pagination' => [
+                    'total' => $prescriptions->total(),
+                    'per_page' => $prescriptions->perPage(),
+                    'current_page' => $prescriptions->currentPage(),
+                    'last_page' => $prescriptions->lastPage(),
+                    'from' => $prescriptions->firstItem(),
+                    'to' => $prescriptions->lastItem()
+                ],
+                'data' => $prescriptions->load('status', 'testScheduled.order', 'testScheduled.result', 'testScheduled.order.product')
+            ];
+
+            return response()->json($response);
         }
-        return view('patient.medical-test', [
-            'medicaltest' => $tests
-        ]);
+
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function getAllConsults($id, $categoria)

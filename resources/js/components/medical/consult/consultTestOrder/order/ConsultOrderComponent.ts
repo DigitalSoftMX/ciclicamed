@@ -37,7 +37,7 @@ export default defineComponent({
     data() {
         return {
             orderDataCopy: Object.assign({}, this.orderData),
-            orderSelected: this.orderList.findIndex(order => order.id === this.orderData.last_order.product_id) ?? 0,
+            orderSelected: this.orderList.findIndex(order => order.id === this.orderData.order.product_id) ?? 0,
             id: Math.floor(Math.random() * (50 - 1 + 1)) + 1
         };
     },
@@ -46,10 +46,10 @@ export default defineComponent({
         $(`#ocOrder${self.id}`).select2()
         $(`#ocOrder${self.id}`).on('select2:select', function (e) {
             self.orderSelected = self.orderList.findIndex(order => order.id === Number(e.params.data.id));
-            self.orderDataCopy.last_order.product_id = self.orderList[self.orderSelected].id;
+            self.orderDataCopy.order.product_id = self.orderList[self.orderSelected].id;
             self.$emit('ocChange', self.orderIndex, self.orderDataCopy);
         });
-        $(`#ocOrder${self.id}`).val(this.orderDataCopy.last_order.product_id).trigger('change');
+        $(`#ocOrder${self.id}`).val(this.orderDataCopy.order.product_id).trigger('change');
     },
     methods: {
         deleteOrder() {

@@ -11,7 +11,7 @@ export interface Test
     medicalteststatus_id: number;
     created_at: string;
     updated_at: string;
-    last_order: Order;
+    order: Order;
     medical_results?: {
         medicaltest_id: number,
         created_by: number,

@@ -180,7 +180,7 @@ export function setCheckupData(checkup: Checkup, checkupSelected: CheckupList, c
         {
             index = checkupSelected.checkupList.findIndex(data => data.medicalspecialty_id === item.medicalspecialty_id);
         } else {
-            index = checkupSelected.checkupList.findIndex(data => data.code === item.test_scheduled!.last_order!.product.product_code && item.consult_reason.includes(data.name));
+            index = checkupSelected.checkupList.findIndex(data => data.code === item.test_scheduled!.order!.product.product_code && item.consult_reason.includes(data.name));
         }
         checkupSelected.checkupList[index].branch_id = item.branch_id;
         checkupSelected.checkupList[index].medicalconsult_id = item.id;

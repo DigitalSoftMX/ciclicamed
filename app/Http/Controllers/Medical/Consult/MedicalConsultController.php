@@ -150,7 +150,7 @@ class MedicalConsultController extends Controller
     {
         $consult = MedicalConsult::findOrFail($id);
         $testCancelStatus = MedicalTestStatus::where('name', 'Estudio cancelado')->first()->id;
-        $consultOrder = $consult->testsCreated->load('lastOrder.product:id,name', 'results', 'samples')->where('medicalteststatus_id', '<>', $testCancelStatus)->all();
+        $consultOrder = $consult->testsCreated->load('order.product:id,name', 'results', 'samples')->where('medicalteststatus_id', '<>', $testCancelStatus)->all();
         return response()->json($consultOrder);
     }
 
@@ -159,7 +159,7 @@ class MedicalConsultController extends Controller
         $testStatus = MedicalTestStatus::where('name', 'Estudio creado')->first()->id;
         foreach($request->input('data') as $order)
         {
-            if($order['last_order']['medicaltest_id'] === -1)
+            if($order['order']['medicaltest_id'] === -1)
             {
                 $test = MedicalTest::create([
                 'created_in' => $id,
@@ -169,19 +169,19 @@ class MedicalConsultController extends Controller
                 ]);
                 MedicalTestOrder::create([
                     'medicaltest_id' => $test->id,
-                    'product_id' => $order['last_order']['product_id'],
+                    'product_id' => $order['order']['product_id'],
                     'updated_by' => null,
                     'update_note' => null
                 ]);
             } else {
                 MedicalTest::where('id', $order['id'])->update([
-                    'medicalteststatus_id' => $order['status'] ?? $order['last_order']['status']
+                    'medicalteststatus_id' => $order['status'] ?? $order['order']['status']
                 ]);
-                MedicalTestOrder::create($order['last_order']);
+                MedicalTestOrder::create($order['order']);
             }
         }
 
-        $test = MedicalConsult::findOrFail($id)->testsCreated->load('lastOrder.product:id,name', 'results', 'samples')->where('medicalteststatus_id', '<>', 5)->all();
+        $test = MedicalConsult::findOrFail($id)->testsCreated->load('order.product:id,name', 'results', 'samples')->where('medicalteststatus_id', '<>', 5)->all();
         return response()->json($request->input('data'));
     }
 

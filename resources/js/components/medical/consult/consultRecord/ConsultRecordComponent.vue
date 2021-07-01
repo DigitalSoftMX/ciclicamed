@@ -68,7 +68,7 @@
                                                 <img src="/svg/medicalTest.svg" alt="FollowUp">
                                             </div>
                                             <div class="col-8 align-self-center">
-                                                <h5>{{test.last_order.product.name}}</h5>
+                                                <h5>{{test.order.product.name}}</h5>
                                             </div>
                                         </div>
                                     </div>

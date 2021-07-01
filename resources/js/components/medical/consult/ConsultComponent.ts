@@ -153,8 +153,8 @@ export default defineComponent({
                     this.testData = data.map((test: Test) => {
                         return {
                             ...test,
-                            last_order: {
-                                ...test.last_order,
+                            order: {
+                                ...test.order,
                                 status: test.medicalteststatus_id
                             }
                         }

@@ -46,6 +46,8 @@ class MedicalConsult extends Model
         'updated_by',
         'update_note'
     ];
+
+    protected $perPage = 10;
     
     public function patient()
     {
@@ -147,6 +149,6 @@ class MedicalConsult extends Model
 
     public function specialty()
     {
-        return $this->belongsTo(MedicalSpecialty::class, 'medicalspecialty_id', 'medicalspecialty_id');
+        return $this->belongsTo(MedicalSpecialty::class, 'medicalspecialty_id');
     }
 }

@@ -62,12 +62,12 @@
 
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <div class="userDatatable-content">{{test.last_order.product.product_code}}</div>
+                                    <div class="userDatatable-content">{{test.order.product.product_code}}</div>
                                 </td>
 
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <div class="userDatatable-content">{{test.last_order.product.supplier_code}}</div>
+                                    <div class="userDatatable-content">{{test.order.product.supplier_code}}</div>
                                 </td>
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">
@@ -84,7 +84,7 @@
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
-                                        {{test.last_order.product.name}}
+                                        {{test.order.product.name}}
                                     </div>
                                 </td>
 

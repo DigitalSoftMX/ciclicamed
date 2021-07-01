@@ -34,11 +34,11 @@ export default defineComponent({
     methods: {
         showNameInfo(consult: Consult): string
         {
-            return consult.test_scheduled === null ? consult.consult_reason.split(' ', 3).join(' ') : consult.test_scheduled!.last_order.product.name;
+            return consult.test_scheduled === null ? consult.consult_reason.split(' ', 3).join(' ') : consult.test_scheduled!.order.product.name;
         },
         showCategoryInfo(consult: Consult): string
         {
-            return consult.test_scheduled === null ? 'Consulta' : consult.test_scheduled!.last_order!.product.product_code!.includes('IMA') ? 'Imagenología': 'Laboratorio';
+            return consult.test_scheduled === null ? 'Consulta' : consult.test_scheduled!.order!.product.product_code!.includes('IMA') ? 'Imagenología': 'Laboratorio';
         },
         showStatusInfo(consult: Consult): string
         {

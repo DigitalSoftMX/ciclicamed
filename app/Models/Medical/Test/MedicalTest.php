@@ -59,9 +59,14 @@ class MedicalTest extends Model
         return $this->belongsToMany(Product::class, 'medical_test_orders', 'medicaltest_id', 'product_id');
     }
 
-    public function lastOrder()
+    public function order()
     {
         return $this->hasOne(MedicalTestOrder::class, 'medicaltest_id')->orderBy('created_at', 'desc');
+    }
+
+    public function result()
+    {
+        return $this->hasOne(MedicalTestResult::class, 'medicaltest_id')->orderBy('created_at', 'desc');
     }
 
     public function patient()

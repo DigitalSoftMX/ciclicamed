@@ -7,7 +7,7 @@
 <script>
     export default {
         components: {
-            TestComponent: require('../../components/patient/testData/TestComponent.vue').default
+            TestComponent: require('../../components/patient/testData/PatientTestComponent.vue').default
         },
         props: ['tests'],
         data: function () {

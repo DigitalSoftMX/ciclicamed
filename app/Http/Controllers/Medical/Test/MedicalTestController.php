@@ -64,7 +64,7 @@ class MedicalTestController extends Controller
                 'from' => $test->firstItem(),
                 'to' => $test->lastItem()
             ],
-            'data' => $test->load('lastOrder.product:id,name,product_code,supplier_code', 'patient')
+            'data' => $test->load('order.product:id,name,product_code,supplier_code', 'patient')
         ];
 
         return response()->json($response);
