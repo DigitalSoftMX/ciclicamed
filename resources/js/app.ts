@@ -12,7 +12,11 @@ const app = createApp({
 		SignupComponent: defineAsyncComponent(() => import('@component/signUp/SignupComponent.vue')),
 		PatientDashboardPage: defineAsyncComponent(() => import('@page/patient/patientDashboardPage/PatientDashboardPage.vue')),
 		PatientPrescriptionPage: defineAsyncComponent(() => import('@page/patient/patientPrescriptionPage/PatientPrescriptionPage.vue')),
+		PatientTestPage: defineAsyncComponent(() => import('@page/patient/patientTestPage/PatientTestPage.vue')),
 		PatientProfilePage: defineAsyncComponent(() => import('@page/patient/patientProfilePage/PatientProfilePage.vue')),
+
+		DoctorDashboardPage: defineAsyncComponent(() => import('@page/doctor/doctorDashboardPage/DoctorDashboardPage.vue')),
+		DoctorProfilePage: defineAsyncComponent(() => import('@page/doctor/doctorProfilePage/DoctorProfilePage.vue')),
 		// ScheduleComponent: defineAsyncComponent(() => import('./components/schedule/ScheduleComponent.vue')),
 		// MedicalConsultPage: MedicalConsultPage,
 		// UsersPage: UsersPage,

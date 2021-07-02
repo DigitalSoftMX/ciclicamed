@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\employee\employeeUpdateRequest;
+use App\Http\Requests\Patient\PatientUpdateRequest;
 use App\Models\Branch\Branch;
 use App\Models\Employee\Employee;
 use App\Models\Employee\EmployeeSchedule;
 use App\Models\Employee\EmployeeStatus;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\MedicalSpecialty;
+use App\Models\User\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -32,11 +37,6 @@ class EmployeeController extends Controller
         }])
             ->get(['branches.id', 'branches.name']);
         return response()->json($branches);
-    }
-
-    public function getDoctorConsult($doctorID, $consultID)
-    {
-        return view('errors.401');
     }
 
     public function getAllEmployees(Request $request)
@@ -66,5 +66,58 @@ class EmployeeController extends Controller
             'data' => $employee->load('user', 'category', 'status', 'specialties', 'user.status')
         ];
         return response()->json($response);
+    }
+
+    public function updateEmployee(PatientUpdateRequest $request, $id)
+    {
+        $request->validated();
+        $employee = Employee::findOrFail($id)->load('user');
+        $user = User::findOrFail(Auth::user()->id);
+        if(($employee->user->id === Auth::user()->id && !$user->hasRole('Paciente')) || $user->hasRole('Administrador'))
+        {
+            $file = $request->file('photo');
+            if($file)
+            {
+                if(file_exists('app/user/'.$employee->photo))
+                {
+                    unlink(storage_path('app/user/'.$employee->photo));
+                }
+                $photo = basename($file->store('user'));
+            } else {
+                $photo = $employee->photo;
+            }
+            $employee->update([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'gender' => $request->input('gender'),
+                'birthday' => $request->input('birthday'),
+                'address' => $request->input('address'),
+                'phone' => $request->input('phone'),
+                'cellphone' => $request->input('cellphone'),
+                'photo' => $photo,
+            ]);
+            User::findOrFail($id)->update([
+                'email' => $request->input('email')
+            ]);
+            return response()->json($employee->load('user'));
+        }
+        
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function getEmployeeBranches($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if(($id === Auth::user()->id && !$user->hasRole('Paciente')) || $user->hasRole('Administrador'))
+        {
+            DB::statement("SET SQL_MODE=''");
+            $employee = EmployeeSchedule::where('employee_id', $id)->groupBy('branch_id', 'employee_id')->get()->load('branch');
+            return response()->json($employee);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 }

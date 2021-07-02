@@ -13,7 +13,6 @@ export const EmployeeData: Employee = {
     address: '',
     phone: '',
     cellphone: '',
-    email: '',
     photo: '',
     employeecategory_id: -1,
     employeestatus_id: -1,

@@ -12,7 +12,7 @@ export interface Test
     created_at: string;
     updated_at: string;
     order: Order;
-    medical_results?: {
+    result?: {
         medicaltest_id: number,
         created_by: number,
         results: {

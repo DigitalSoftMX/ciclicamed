@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        static $row = 0;
         $roles = ['Administrador', 'Doctor', 'Enfermera', 'Checkup', 'Caja', 'Laboratorio', 'Imagenologia', 'Asistente', 'Paciente'];
 
         for($i = 0; $i < 9; $i++)
@@ -66,8 +67,15 @@ class DatabaseSeeder extends Seeder
 
         UserStatus::factory(5)->create();
         UserCategory::factory(2)->create();
-        User::factory(150)->create()->each(function ($user) {
-            $user->assignRole('Paciente');
+        User::factory(150)->create()->each(function ($user, $key){
+            if($key < 24)
+            {
+                $user->assignRole('Paciente');
+            }
+            else {
+                $user->assignRole('Doctor');
+            }
+            
         });;
         Preregistration::factory(25)->create();
         Patient::factory(25)->create();

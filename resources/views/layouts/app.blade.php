@@ -15,7 +15,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
       @include('layouts.partials._styles')
       @yield('styles')
-      <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon.png') }}">
+      <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon.ico') }}">
    </head>
    <body class="layout-light side-menu @auth() @endauth">
       @auth()

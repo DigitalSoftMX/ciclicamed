@@ -15,10 +15,6 @@ export default defineComponent({
         userData: {
             type: Object as PropType<Patient | Employee>,
             default: 1
-        },
-        userCategory: {
-            type: String,
-            default: 'paciente'
         }
     },
     data() {
@@ -34,10 +30,14 @@ export default defineComponent({
     mounted() {
     },
     computed: {
+        category(): string
+        {
+            return this.userData.user.usercategory_id === 1 ? 'Usuario' : 'Empleado'
+        }
     },
     methods: {
         changePassword() {
-            axios.post(`/pacientes/${this.userData.id}/password`, {
+            axios.post(`/usuarios/${this.userData.id}/password`, {
                 password: this.password,
                 confirmPassword: this.confirmPassword,
                 _method: 'patch'

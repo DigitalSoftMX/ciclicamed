@@ -102,9 +102,14 @@ class UserController extends Controller
     {
         $request->validated();
         $user = User::findOrFail($id);
-        $user['password'] = Hash::make($request['password']);
-        $user->save();
-        return $user;
+        
+        if($user->id === Auth::user()->id)
+        {
+            $user->update([
+                'password' => Hash::make($request['password'])
+            ]);
+        }
+        return response()->json($user);
     }
 
     public function getPatientsTable(Request $request)

@@ -43,12 +43,14 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     Route::group(['prefix' => 'app'], function() {
         Route::get('/inicio', [PageController::class, 'showDashboard'])->name('app.dashboard');
         Route::get('/recetas', [PageController::class, 'showPrescriptions'])->name('app.recetas');
+        Route::get('/estudios', [PageController::class, 'showTests'])->name('app.estudios');
         Route::get('/perfil', [PageController::class, 'showProfile'])->name('app.recetas');
     });
 
     // Usuarios
     Route::group(['prefix' => 'usuarios'], function() {
         Route::post('/', [UserController::class, 'createPatient'])->name('usuarios.createUser');
+        Route::patch('/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
         Route::get('/pacientes', [UserController::class, 'getPatientsTable'])->name('usuarios.pacientes'); //NOTA PASAR A GRUPO PACIENTES
     });
 
@@ -74,6 +76,12 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         return file_exists($storage) ? Image::make($storage)->response() : response()->view('errors.404',[], 404);
     });
 
+    //Archivos
+    Route::get('/estudio/archivo/{id}', function ($id) {
+        $storage = storage_path('app/test/results/'.$id.'');
+        return file_exists($storage) ? response()->file($storage) : response()->view('errors.404',[], 404);
+    });
+
 
     //Sucursales
     Route::group(['prefix' => 'sucursales'], function() {
@@ -97,13 +105,13 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/recetas', [PatientController::class, 'showMedicalPrescriptions'])->name('usuarios.medicalPrescription');
         Route::get('/{id}/estudios', [PatientController::class, 'showMedicalTests'])->name('usuarios.medicalTest');
         Route::patch('/{id}/preregistro', [PreregistrationController::class, 'updatePreregistration'])->name('pacientes.updatePreregistro');
-        Route::patch('/{id}/password', [PatientController::class, 'updatePassword'])->name('usuarios.password');
     });
 
     //Empleados
     Route::group(['prefix' => 'empleados'], function() {
         Route::get('/', [EmployeeController::class, 'getAllEmployees'])->name('empleados.todos');
-        Route::get('/{idDoctor}/consulta/{idConsult}', [EmployeeController::class, 'getDoctorConsult'])->name('doctores.consulta');
+        Route::patch('/{id}', [EmployeeController::class, 'updateEmployee'])->name('empleados.updateEmpleado');
+        Route::get('/{id}/sucursales', [EmployeeController::class, 'getEmployeeBranches'])->name('empleados.todos');
     });
 
     //Productos

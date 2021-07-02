@@ -51,7 +51,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        if(this.userCategory !== 'Paciente')
+        if(!this.userCategory.includes('Paciente' || 'Laboratorio' || 'Imagenología'))
         {
             this.getPatientsList();
         }

@@ -88,7 +88,7 @@ export default defineComponent({
                 formData.append('photo', this.photo);
             }
 
-            axios.post(`/pacientes/${this.userForm.id}`, formData, {headers: { "Content-Type": "multipart/form-data"}})
+            axios.post(`/${this.userCategory}/${this.userForm.id}`, formData, {headers: { "Content-Type": "multipart/form-data"}})
             .then(response => {
                 this.successMessage = 'Los datos del perfil se han actualizado correctamente';
                 $('#profileSuccess').modal('show');

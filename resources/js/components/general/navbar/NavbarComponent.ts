@@ -27,6 +27,7 @@ export default defineComponent({
     },
     data() {
         return {
+            token: document.querySelector('meta[name="csrf-token"]')!.getAttribute('content')
         };
     },
     mounted() {
@@ -50,6 +51,11 @@ export default defineComponent({
        {
            this.$emit('menuSelect');
        },
+       logout(event: Event)
+       {
+           event.preventDefault();
+           (document.getElementById('ncLogout') as HTMLFormElement).submit();
+       }
     },
 })
 

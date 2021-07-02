@@ -41,7 +41,10 @@ class PatientController extends Controller
             $file = $request->file('photo');
             if($file)
             {
-                unlink(storage_path('app/user/'.$patient->photo));
+                if(file_exists('app/user/'.$patient->photo))
+                {
+                    unlink(storage_path('app/user/'.$patient->photo));
+                }
                 $photo = basename($file->store('user'));
             } else {
                 $photo = $patient->photo;
@@ -56,7 +59,7 @@ class PatientController extends Controller
                 'cellphone' => $request->input('cellphone'),
                 'photo' => $photo,
             ]);
-            User::findOrFail(Auth::user()->id)->update([
+            User::findOrFail($id)->update([
                 'email' => $request->input('email')
             ]);
             return response()->json($patient->load('user'));
@@ -72,7 +75,7 @@ class PatientController extends Controller
         $user = User::findOrFail(Auth::user()->id)->hasRole(['Administrador', 'Paciente']);
         if($user)
         {
-            $consult = MedicalConsult::where('patient_id', $id)->Has('prescriptions')->paginate();
+            $consult = MedicalConsult::where('patient_id', $id)->Has('prescriptions')->orderBy('consult_schedule_start', 'desc')->paginate();
 
             $prescriptions = [];
             if($request->has('query'))
@@ -109,7 +112,7 @@ class PatientController extends Controller
         $user = User::findOrFail(Auth::user()->id)->hasRole(['Administrador', 'Paciente']);
         if($user)
         {
-            $consult = MedicalConsult::where('patient_id', $id)->Has('testScheduled')->paginate();
+            $consult = MedicalConsult::where('patient_id', $id)->Has('testScheduled')->orderBy('consult_schedule_start', 'desc')->paginate();
 
             $prescriptions = [];
             if($request->has('query'))
@@ -130,8 +133,19 @@ class PatientController extends Controller
                     'from' => $prescriptions->firstItem(),
                     'to' => $prescriptions->lastItem()
                 ],
-                'data' => $prescriptions->load('status', 'testScheduled.order', 'testScheduled.result', 'testScheduled.order.product')
+                'data' => $prescriptions->load('status', 'testScheduled.order', 'testScheduled.result', 'testScheduled.order.product', 'testScheduled.status')
             ];
+
+            foreach($prescriptions as $result)
+            {
+                if(!is_null($result->testScheduled->result))
+                {
+                    if(!is_null($result->testScheduled->result->results))
+                    {
+                        $result->testScheduled->result['results'] = json_decode($result->testScheduled->result->results);
+                    }
+                }
+            }
 
             return response()->json($response);
         }
@@ -213,14 +227,5 @@ class PatientController extends Controller
         ];
 
         return response()->json($response);
-    }
-
-    public function updatePassword(UserUpdatePasswordRequest $request, $id)
-    {
-        $request->validated();
-        $user = User::findOrFail($id);
-        $user['password'] = Hash::make($request['password']);
-        $user->save();
-        return response()->json($user);
     }
 }

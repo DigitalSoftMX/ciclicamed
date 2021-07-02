@@ -19,3 +19,5 @@ declare interface JQuery {
 }
 
 declare module 'vue-select-3/src';
+
+declare module 'vue3-pdf';

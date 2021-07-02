@@ -13,7 +13,6 @@ export interface Employee
     address: string;
     phone: string;
     cellphone: string;
-    email: string;
     photo: string;
     employeecategory_id: number;
     employeestatus_id: number;

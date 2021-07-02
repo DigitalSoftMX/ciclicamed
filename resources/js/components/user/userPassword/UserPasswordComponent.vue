@@ -12,7 +12,7 @@
                 <div class="ap-nameAddress pb-3 pt-1">
                     <h5 class="ap-nameAddress__title text-capitalize">
                         {{ `${userData.first_name} ${userData.last_name}` }}</h5>
-                    <p class="ap-nameAddress__subTitle fs-14 m-0 text-capitalize">{{ userCategory }}</p>
+                    <p class="ap-nameAddress__subTitle fs-14 m-0 text-capitalize">{{ category }}</p>
                     <p class="ap-nameAddress__subTitle fs-14 m-0"> {{ userData.user.email }} </p>
                 </div>
             </div>

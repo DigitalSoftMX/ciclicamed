@@ -25,9 +25,13 @@
                                     </div>
                                 </div>
                                 <div class="nav-author__options">
-                                    <a class="nav-author__signout" role="button">
+                                    <a href="/logout" class="nav-author__signout" role="button" @click="logout($event)">
                                         Cerrar sesión
                                     </a>
+                                    <form id="ncLogout" action="/logout"
+                                        method="POST" class="d-none">
+                                        <input type="hidden" name="_token" :value="token">
+                                    </form>
                                 </div>
                             </div>
                         </div>
