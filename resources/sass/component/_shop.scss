@@ -712,16 +712,6 @@
   }
 }
 
-.project-top-left {
-  @include xxl {
-    margin-bottom: 20px;
-  }
-
-  @include lg {
-    margin-bottom: 20px;
-  }
-}
-
 .project-top-left,
 .project-top-right {
   @include xxl {

@@ -44,7 +44,10 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/inicio', [PageController::class, 'showDashboard'])->name('app.dashboard');
         Route::get('/recetas', [PageController::class, 'showPrescriptions'])->name('app.recetas');
         Route::get('/estudios', [PageController::class, 'showTests'])->name('app.estudios');
-        Route::get('/perfil', [PageController::class, 'showProfile'])->name('app.recetas');
+        Route::get('/perfil', [PageController::class, 'showProfile'])->name('app.perfil');
+        Route::get('/checkup', [PageController::class, 'showCheckup'])->name('app.checkup');
+        Route::get('/productos', [PageController::class, 'showProducts'])->name('app.productos');
+        Route::get('/consulta', [PageController::class, 'showConsulta'])->name('app.consulta');
     });
 
     // Usuarios
@@ -118,7 +121,6 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     Route::group(['prefix' => 'productos'], function() {
         Route::get('/medicamentos', [ProductController::class, 'getMedicaments'])->name('productos.medicamentos');
         Route::get('/estudios', [ProductController::class, 'getTestOrderProducts'])->name('productos.estudios');
-
         Route::get('/consulta', [ProductController::class, 'getConsulta'])->name('productos.consulta');
         Route::get('/cirugia', [ProductController::class, 'getCirugia'])->name('productos.cirugia');
         Route::get('/histeroscopia', [ProductController::class, 'getHisteroscopia'])->name('productos.histeroscopia');

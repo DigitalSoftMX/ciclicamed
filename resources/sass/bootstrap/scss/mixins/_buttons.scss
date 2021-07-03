@@ -17,6 +17,7 @@
 
   &:focus,
   &.focus {
+    background-color: #000;
     color: color-yiq($hover-background);
     @include gradient-bg($hover-background);
     border-color: $hover-border;

@@ -21,7 +21,7 @@ $primary: #60269E;
 $secondary: #B11CAB;
 $terciary: #00A0DF;
 $success: #20c997;
-$info: #2c99ff;
+$info: #bf9ae7;
 $warning: #fa8b0c;
 $danger: #ff4d4f;
 $dark: #272b41;
@@ -32,6 +32,7 @@ $gray-solid: #9299b8;
 $body-color: #666d92;
 $text-color: #666d92;
 $third:$primary;
+$primary-light: #bf9ae7;
 
 $theme-colors: ();
 
@@ -66,9 +67,10 @@ $other-colors: (
 
 $hover-colors: (
   "primary": #60269E,
+  "primary-light": #bf9ae7,
   "secondary": #B11CAB,
   "success": #0cab7c,
-  "info": #0d79df,
+  "info": #bf9ae7,
   "warning": #d47407,
   "danger": #e30d0f,
   "dark": #131623,

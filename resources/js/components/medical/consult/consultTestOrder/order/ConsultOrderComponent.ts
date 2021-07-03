@@ -1,18 +1,14 @@
-import {
-    defineComponent
-} from '@vue/runtime-core';
-import Vue from 'vue';
-import {
-    DefineComponent,
-    PropType
-} from 'vue';
-import axios from 'axios';
+import { defineComponent } from '@vue/runtime-core';
+import { PropType } from 'vue';
 import { Test } from '@interface/Medical/Test.interface';
 import { OrderData } from '@data/Medical/Order.data';
 import { TestOrder } from '@interface/Medical/TestOrder.interface';
+import vSelect from "vue-select-3/src";
 
 export default defineComponent({
-    components: {},
+    components: {
+        vSelect
+    },
     emits: ['ocDelete', 'ocChange'],
     props: {
         isUpdate: {
@@ -28,11 +24,20 @@ export default defineComponent({
             default: []
         },
         orderIndex: {
-            type: Number as PropType < Number > ,
+            type: Number as PropType<Number> ,
             default: -1
-        }
+        },
     },
     watch: {
+        orderDataCopy:
+        {
+            handler()
+            {
+                this.orderSelected = this.orderList.findIndex(order => order.id === this.orderDataCopy.order.product_id) ?? 0,
+                this.$emit('ocChange', this.orderIndex, this.orderDataCopy);
+            },
+            deep: true
+        }
     },
     data() {
         return {
@@ -42,14 +47,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        const self = this;
-        $(`#ocOrder${self.id}`).select2()
-        $(`#ocOrder${self.id}`).on('select2:select', function (e) {
-            self.orderSelected = self.orderList.findIndex(order => order.id === Number(e.params.data.id));
-            self.orderDataCopy.order.product_id = self.orderList[self.orderSelected].id;
-            self.$emit('ocChange', self.orderIndex, self.orderDataCopy);
-        });
-        $(`#ocOrder${self.id}`).val(this.orderDataCopy.order.product_id).trigger('change');
     },
     methods: {
         deleteOrder() {

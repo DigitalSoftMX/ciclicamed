@@ -15,12 +15,7 @@
         <div :id="`mc${id}`" class="card-body row mx-0 collapse atbd-collapse-item__body bg-white show border-top">
             <div class="col-12 col-md-6 mb-25">
                 <label for="">Medicamento</label>
-                <select name="patients" :id="`mcMedicamento${id}`" class="form-control select2-hidden-accessible" tabindex="-1"
-                    aria-hidden="true">
-                    <option v-for="medicament in medicamentList" :key="medicament.id" :value="medicament.id">
-                        {{ medicament.name }}
-                    </option>
-                </select>
+                <v-select :options="medicamentList" label="name" :reduce="item => item.id" v-model="medicamentDataCopy.medicament_id"/>
             </div>
             
             <div class="col-12 col-md-6 mb-25">

@@ -8,56 +8,79 @@ use App\Models\Medical\Prescription\Medicament;
 use App\Models\Product\Product;
 use App\Models\Product\ProductCategory;
 use App\Models\Product\ProductStatus;
+use App\Models\User\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
 
     public function createProduct(ProductRequest $request)
     {
-        $request->validated();
-        $category = ProductCategory::where('name', $request->input('category'))->first()->id;
-        $status = ProductStatus::where('name', 'Activo')->first()->id;
-        $product = Product::create([
-            'product_code' => $request->input('data.product_code'),
-            'supplier_code' => $request->input('data.supplier_code'),
-            'name' => $request->input('data.name'),
-            'unit' => $request->input('data.unit'),
-            'quantity_available' => $request->input('data.quantity_available'),
-            'price' => $request->input('data.price'),
-            'discount' => $request->input('data.discount'),
-            'productcategory_id' => $category,
-            'productstatus_id' => $status,
-        ]);
-        return response()->json($product);
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $request->validated();
+            $category = ProductCategory::where('name', $request->input('category'))->first()->id;
+            $status = ProductStatus::where('name', 'Activo')->first()->id;
+            $product = Product::create([
+                'product_code' => $request->input('data.product_code'),
+                'supplier_code' => $request->input('data.supplier_code'),
+                'name' => $request->input('data.name'),
+                'unit' => $request->input('data.unit'),
+                'quantity_available' => $request->input('data.quantity_available'),
+                'price' => $request->input('data.price'),
+                'discount' => $request->input('data.discount'),
+                'productcategory_id' => $category,
+                'productstatus_id' => $status,
+            ]);
+            return response()->json($product);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function updateProduct(ProductRequest $request, $id)
     {
-        $request->validated();
-        $product = Product::findOrFail($id);
-        $product->update([
-            'product_code' => $request->input('data.product_code'),
-            'supplier_code' => $request->input('data.supplier_code'),
-            'name' => $request->input('data.name'),
-            'unit' => $request->input('data.unit'),
-            'quantity_available' => $request->input('data.quantity_available'),
-            'price' => $request->input('data.price'),
-            'discount' => $request->input('data.discount'),
-            'productcategory_id' => $request->input('data.productcategory_id'),
-            'productstatus_id' => $request->input('data.productstatus_id'),
-        ]);
-        return response()->json($product);
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $request->validated();
+            $product = Product::findOrFail($id);
+            $product->update([
+                'product_code' => $request->input('data.product_code'),
+                'supplier_code' => $request->input('data.supplier_code'),
+                'name' => $request->input('data.name'),
+                'unit' => $request->input('data.unit'),
+                'quantity_available' => $request->input('data.quantity_available'),
+                'price' => $request->input('data.price'),
+                'discount' => $request->input('data.discount'),
+                'productcategory_id' => $request->input('data.productcategory_id'),
+                'productstatus_id' => $request->input('data.productstatus_id'),
+            ]);
+            return response()->json($product);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function deleteProduct($id)
     {
-        $product = Product::findOrFail($id);
-        $status = ProductStatus::where('name', 'Inactivo')->first()->id;
-        $product->update([
-            'productstatus_id' => $status,
-        ]);
-        return response()->json($product);
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $product = Product::findOrFail($id);
+            $status = ProductStatus::where('name', 'Inactivo')->first()->id;
+            $product->update([
+                'productstatus_id' => $status,
+            ]);
+            return response()->json($product);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function getTestOrderProducts()
@@ -76,9 +99,15 @@ class ProductController extends Controller
 
     public function getMedicaments()
     {
-        $status = ProductStatus::where('name', 'Activo')->first()->id;
-        $medicaments = Medicament::all();
-        return response()->json($medicaments);
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador') || $user->hasRole('Doctor'))
+        {
+            $medicaments = Medicament::all();
+            return response()->json($medicaments);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function getConsulta(Request $request)
@@ -118,39 +147,46 @@ class ProductController extends Controller
 
     private function getPaginateData(Request $request, string $category)
     {
-        $status = ProductStatus::where('name', 'Activo')->first()->id;
-        $ciclica = ProductCategory::where('name', $category)->first()->id;
-        $product = Product::where('productcategory_id', $ciclica)->where('productstatus_id', $status);
-
-        if(!$request->has('all'))
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador') || $user->hasRole('Doctor') || $user->hasRole('Caja') || $user->hasRole('Asistente'))
         {
-            $productCiclica = [];
-            if($request->has('query'))
+            $status = ProductStatus::where('name', 'Activo')->first()->id;
+            $ciclica = ProductCategory::where('name', $category)->first()->id;
+            $product = Product::where('productcategory_id', $ciclica)->where('productstatus_id', $status);
+
+            if(!$request->has('all'))
             {
-                $query = $request->input('query');
-                $productCiclica = $product->where('product_code', 'like', '%'.$query.'%')
-                        ->orWhere('supplier_code', 'like', '%'.$query.'%')
-                        ->orWhere('name', 'like', '%'.$query.'%')
-                        ->paginate();
-            } else {
-                $productCiclica = $product->paginate();
+                $productCiclica = [];
+                if($request->has('query'))
+                {
+                    $query = $request->input('query');
+                    $productCiclica = $product->where('product_code', 'like', '%'.$query.'%')
+                            ->orWhere('supplier_code', 'like', '%'.$query.'%')
+                            ->orWhere('name', 'like', '%'.$query.'%')
+                            ->paginate();
+                } else {
+                    $productCiclica = $product->paginate();
+                }
+                
+                $response = [
+                    'pagination' => [
+                        'total' => $productCiclica->total(),
+                        'per_page' => $productCiclica->perPage(),
+                        'current_page' => $productCiclica->currentPage(),
+                        'last_page' => $productCiclica->lastPage(),
+                        'from' => $productCiclica->firstItem(),
+                        'to' => $productCiclica->lastItem()
+                    ],
+                    'data' => $productCiclica->load('status', 'category')
+                ];
+
+                return response()->json($response);
             }
-            
-            $response = [
-                'pagination' => [
-                    'total' => $productCiclica->total(),
-                    'per_page' => $productCiclica->perPage(),
-                    'current_page' => $productCiclica->currentPage(),
-                    'last_page' => $productCiclica->lastPage(),
-                    'from' => $productCiclica->firstItem(),
-                    'to' => $productCiclica->lastItem()
-                ],
-                'data' => $productCiclica->load('status', 'category')
-            ];
 
-            return response()->json($response);
+            return response()->json($product->get()->load('status', 'category'));
         }
-
-        return response()->json($product->get()->load('status', 'category'));
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 }

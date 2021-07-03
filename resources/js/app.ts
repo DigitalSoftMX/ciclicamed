@@ -16,7 +16,16 @@ const app = createApp({
 		PatientProfilePage: defineAsyncComponent(() => import('@page/patient/patientProfilePage/PatientProfilePage.vue')),
 
 		DoctorDashboardPage: defineAsyncComponent(() => import('@page/doctor/doctorDashboardPage/DoctorDashboardPage.vue')),
+		DoctorConsultPage: defineAsyncComponent(() => import('@page/doctor/doctorConsultPage/DoctorConsultPage.vue')),
 		DoctorProfilePage: defineAsyncComponent(() => import('@page/doctor/doctorProfilePage/DoctorProfilePage.vue')),
+
+		CheckupDashboardPage: defineAsyncComponent(() => import('@page/checkup/checkupDashboardPage/CheckupDashboardPage.vue')),
+		CheckupCheckupPage: defineAsyncComponent(() => import('@page/checkup/checkupCheckupPage/CheckupCheckupPage.vue')),
+		CheckupProfilePage: defineAsyncComponent(() => import('@page/checkup/checkupProfilePage/CheckupProfilePage')),
+
+		AsistenteDashboardPage: defineAsyncComponent(() => import('@page/asistente/AsistenteDashboardPage/AsistenteDashboardPage.vue')),
+		AsistenteProductPage: defineAsyncComponent(() => import('@page/asistente/AsistenteProductPage/AsistenteProductPage.vue')),
+		AsistenteProfilePage: defineAsyncComponent(() => import('@page/asistente/AsistenteProfilePage/AsistenteProfilePage.vue')),
 		// ScheduleComponent: defineAsyncComponent(() => import('./components/schedule/ScheduleComponent.vue')),
 		// MedicalConsultPage: MedicalConsultPage,
 		// UsersPage: UsersPage,
@@ -32,8 +41,8 @@ const app = createApp({
 		// DebtsData: defineAsyncComponent(() => import('./components/payment/debtsTable/DebtsTableComponent.vue')),
 		// TestTable: defineAsyncComponent(() => import('./components/medical/test/testTable/TestTableComponent.vue')),
 		// TestUpload: defineAsyncComponent(() => import('./components/medical/test/testUpload/TestUploadComponent.vue')),
-		CheckupSchedule: defineAsyncComponent(() => import('./components/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue')),
-		CheckupTable: defineAsyncComponent(() => import('./components/checkup/checkupTable/CheckupTableComponent.vue'))
+		// CheckupSchedule: defineAsyncComponent(() => import('./components/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue')),
+		// CheckupTable: defineAsyncComponent(() => import('./components/checkup/checkupTable/CheckupTableComponent.vue'))
 	}
 });
 

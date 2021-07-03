@@ -42,5 +42,5 @@
 
 <style lang="sass">
     @import "./ConsultPrescriptionComponent.scss"
-
+    @import "../../../../../../public/vendor_assets/css/select2.min.css"
 </style>

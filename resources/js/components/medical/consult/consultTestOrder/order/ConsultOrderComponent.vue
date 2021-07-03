@@ -15,12 +15,7 @@
         <div :id="`oc${id}`" class="card-body row mx-0 collapse atbd-collapse-item__body bg-white show border-top">
             <div class="col-12 mb-25">
                 <label for="">Orden de estudio</label>
-                <select name="patients" :id="`ocOrder${id}`" class="form-control select2-hidden-accessible" tabindex="-1"
-                    aria-hidden="true">
-                    <option v-for="order in orderList" :key="order.id" :value="order.id">
-                        {{ order.name }}
-                    </option>
-                </select>
+                <v-select :options="orderList" label="name" :reduce="item => item.id" v-model="orderDataCopy.order.product_id"/>
             </div>
             <div class="col-12" v-if="isUpdate">
                 <label for="">Nota de actualización</label>

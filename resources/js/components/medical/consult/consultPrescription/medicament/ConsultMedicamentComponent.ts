@@ -1,12 +1,12 @@
 import { PrescriptionData } from '@data/Medical/Prescription.data';
 import { Prescription } from '@interface/Medical/Prescription.interface';
-import {
-    defineComponent
-} from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
 import { PropType } from 'vue';
+import vSelect from "vue-select-3/src";
 
 export default defineComponent({
     components: {
+        vSelect,
     },
     emits: ['mcDelete', 'mcChange'],
     props: {
@@ -35,16 +35,16 @@ export default defineComponent({
         };
     },
     mounted() {
-        const self = this;
-        $(`#mcMedicamento${self.id}`).select2()
-        $(`#mcMedicamento${self.id}`).on('select2:select', function (e) {
-            self.medicamentSelected = self.medicamentList.findIndex(medicament => medicament.id === Number(e.params.data.id));
-            self.medicamentDataCopy.medicament_id = self.medicamentSelected;
-            self.$emit('mcChange', self.medicamentIndex, self.medicamentDataCopy);
-        });
-        $(`#mcMedicamento${self.id}`).val(this.medicamentDataCopy.medicament_id).trigger('change');
     },
     watch: {
+        medicamentDataCopy:
+        {
+            handler()
+            {
+                this.$emit('mcChange', this.medicamentIndex, this.medicamentDataCopy);
+            },
+            deep: true
+        }
     },
     methods: {
         deleteMedicament() {

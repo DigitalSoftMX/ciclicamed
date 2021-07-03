@@ -9,7 +9,7 @@
                     @keyup="getProductDataQuery()" placeholder="Buscar">
             </div>
         </div>
-        <button class="btn btn-primary btn-default btn-squared" @click="createProduct">Crear nuevo producto</button>
+        <button class="btn btn-primary btn-default btn-squared" @click="createProduct" v-if="enableActions">Crear nuevo producto</button>
     </div>
 
     <div class="card mt-30 spin-embadded" v-bind:class="{'spin-active': loading}">
@@ -26,7 +26,7 @@
                                     <span class="userDatatable-title">Código</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
-                                <th class="footable-sortable" style="display: table-cell;">
+                                <th class="footable-sortable" style="display: table-cell;" v-if="showProductCode">
                                     <span class="userDatatable-title">Código del proveedor</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
@@ -34,7 +34,7 @@
                                     <span class="userDatatable-title">Descripción</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
-                                <th class="footable-sortable" style="display: table-cell;">
+                                <th class="footable-sortable" style="display: table-cell;" v-if="showQuantityAvailable">
                                     <span class="userDatatable-title">Cantidad</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
@@ -42,11 +42,11 @@
                                     <span class="userDatatable-title">Precio</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
-                                <th class="footable-sortable" style="display: table-cell;">
+                                <th class="footable-sortable" style="display: table-cell;" v-if="showDiscount">
                                     <span class="userDatatable-title">Descuento</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
-                                <th class="footable-sortable text-right" style="display: table-cell;">
+                                <th class="footable-sortable text-right" style="display: table-cell;" v-if="enableActions">
                                     <span class="userDatatable-title">Acciones</span>
                                     <span class="fooicon fooicon-sort"></span></th>
                             </tr>
@@ -55,38 +55,38 @@
                         <tbody>
                             <tr v-for="product in paginationData.data" :key="product.id">
 
-                                <td class="footable-first-visible border-primary border-bottom"
+                                <td class="footable-first-visible border-primary border-bottom" v-bind:class="{'py-3': !enableActions}"
                                     style="display: table-cell;">
                                     <div class="userDatatable-content">{{product.product_code}}</div>
                                 </td>
 
-                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                <td style="display: table-cell;" class="border-primary border-bottom" v-bind:class="{'py-3': !enableActions}" v-if="showProductCode">
                                     <div class="userDatatable-content">
                                         {{product.supplier_code}}
                                     </div>
                                 </td>
-                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                <td style="display: table-cell;" class="border-primary border-bottom" v-bind:class="{'py-3': !enableActions}">
                                     <div class="userDatatable-content">
                                         {{product.name}}
                                     </div>
                                 </td>
-                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                <td style="display: table-cell;" class="border-primary border-bottom" v-bind:class="{'py-3': !enableActions}" v-if="showQuantityAvailable">
                                     <div class="userDatatable-content">
                                         {{product.quantity_available}}
                                     </div>
                                 </td>
-                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                <td style="display: table-cell;" class="border-primary border-bottom" v-bind:class="{'py-3': !enableActions}">
                                     <div class="userDatatable-content">
-                                        {{product.price}}
+                                        ${{product.price}}
                                     </div>
                                 </td>
-                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                <td style="display: table-cell;" class="border-primary border-bottom" v-bind:class="{'py-3': !enableActions}" v-if="showDiscount">
                                     <div class="userDatatable-content">
-                                        {{product.discount}}
+                                        ${{product.discount}}
                                     </div>
                                 </td>
 
-                                <td class="footable-last-visible border-primary border-bottom"
+                                <td class="footable-last-visible border-primary border-bottom" v-if="enableActions"
                                     style="display: table-cell;">
                                     <ul class="orderDatatable_actions mb-0 d-flex">
                                         <li>

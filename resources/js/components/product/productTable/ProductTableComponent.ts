@@ -5,6 +5,7 @@ import { ProductPagination } from '@interface/Product/ProductPagination.interfac
 import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import $ from 'jquery';
+require('bootstrap');
 
 export default defineComponent({
     components: {
@@ -27,6 +28,10 @@ export default defineComponent({
         id: {
             type: String,
             default: ''
+        },
+        enableActions: {
+            type: Boolean,
+            default: true
         }
     },
     data() {
@@ -45,8 +50,19 @@ export default defineComponent({
     mounted() {
         this.getProductData(1);
     },
-    watch: {
-
+    computed: {
+        showProductCode(): boolean
+        {
+            return this.paginationData.data.filter(item => item.supplier_code !== null).length > 0 ? true: false;
+        },
+        showQuantityAvailable(): boolean
+        {
+            return this.paginationData.data.filter(item => item.quantity_available !== null).length > 0 ? true: false;
+        },
+       showDiscount(): boolean
+        {
+            return this.paginationData.data.filter(item => item.discount !== null).length > 0 ? true: false;
+        }
     },
     methods: {
         getProductData(page: number)

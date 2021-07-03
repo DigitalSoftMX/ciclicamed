@@ -72,8 +72,29 @@ class DatabaseSeeder extends Seeder
             {
                 $user->assignRole('Paciente');
             }
-            else {
+            else if($key < 34) {
                 $user->assignRole('Doctor');
+            }
+            else if($key < 44) {
+                $user->assignRole('Enfermera');
+            }
+            else if($key < 54) {
+                $user->assignRole('Checkup');
+            }
+            else if($key < 64) {
+                $user->assignRole('Caja');
+            }
+            else if($key < 74) {
+                $user->assignRole('Laboratorio');
+            }
+            else if($key < 84) {
+                $user->assignRole('Imagenologia');
+            }
+            else if($key < 94) {
+                $user->assignRole('Asistente');
+            }
+            else if($key < 104) {
+                $user->assignRole('Administrador');
             }
             
         });;
