@@ -9,13 +9,13 @@ export default defineComponent({
     components: {
         vSelect
     },
-    emits: ['ocDelete', 'ocChange'],
+    emits: ['update:modelValue', 'onDelete'],
     props: {
         isUpdate: {
             type: Boolean,
             default: false
         },
-        orderData: {
+        modelValue: {
             type: Object as PropType<Test>,
             default: OrderData
         },
@@ -23,38 +23,38 @@ export default defineComponent({
             type: Array as PropType<TestOrder[]>,
             default: []
         },
-        orderIndex: {
-            type: Number as PropType<Number> ,
-            default: -1
+        id: {
+            type: Number as PropType<Number>,
+            default: 0
         },
     },
     watch: {
-        orderDataCopy:
-        {
+        modelValue: {
             handler()
             {
-                this.orderSelected = this.orderList.findIndex(order => order.id === this.orderDataCopy.order.product_id) ?? 0,
-                this.$emit('ocChange', this.orderIndex, this.orderDataCopy);
+                this.order = this.modelValue;
+            },
+            deep: true
+        },
+        medicament: {
+            handler()
+            {
+                this.$emit('update:modelValue', this.order);
             },
             deep: true
         }
     },
     data() {
         return {
-            orderDataCopy: Object.assign({}, this.orderData),
-            orderSelected: this.orderList.findIndex(order => order.id === this.orderData.order.product_id) ?? 0,
-            id: Math.floor(Math.random() * (50 - 1 + 1)) + 1
+            order: this.modelValue
         };
     },
     mounted() {
     },
     methods: {
-        deleteOrder() {
-            this.$emit('ocDelete', this.orderIndex)
-        },
-        updateOrderData()
+        deleteThisComponent()
         {
-            this.$emit('ocChange', this.orderIndex, this.orderDataCopy);
+            this.$emit('onDelete', this.id);
         }
     },
 })

@@ -30,9 +30,9 @@
         </div>
     </div>
     <div class="atbd-collapse atbd-collapse-custom">
-        <div v-for="(order, index) in orderComponentList" :key="order">
-            <order-component v-if="orderDataCopy.length > 0 && (orderDataCopy[index].status !== 5 ?? true)" :orderIndex="index" :orderList="orderList" @ocDelete="deleteOrderComponent"
-                :orderData="orderDataCopy[index]" @ocChange="updateOrderSelected">
+        <div v-for="(order, index) in orderDataCopy" :key="`ctoc${index}`">
+            <order-component v-if="orderDataCopy.length > 0 && (orderDataCopy[index].medicalteststatus_id !== 5 ?? true)" :id="index" :orderList="orderList"
+                v-model="orderDataCopy[index]" @onDelete="deleteTestOrder">
             </order-component>
         </div>
     </div>

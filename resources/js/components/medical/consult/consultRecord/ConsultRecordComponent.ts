@@ -6,13 +6,14 @@ import { Test } from '@interface/Medical/Test.interface';
 import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import moment from 'moment';
+import { defineAsyncComponent } from 'vue';
 
 export default defineComponent({
     name: 'RecordComponent',
     components: {
-        CitasSubsecuentesComponent: require('@component/medical/attachments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
-        EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
-        NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default
+        CitasSubsecuentesComponent: defineAsyncComponent(() => import('@component/medical/attachments/CitasSubsecuentes/CitasSubsecuentesComponent.vue')),
+        EmptyErrorComponent: defineAsyncComponent(() => import('@component/general/error/EmptyErrorComponent.vue')),
+        NetworkErrorComponent: defineAsyncComponent(() => import('@component/general/error/NetworkErrorComponent.vue'))
     },
     props: {},
     mounted() {

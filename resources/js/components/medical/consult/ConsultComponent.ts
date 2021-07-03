@@ -15,6 +15,7 @@ import { Consult } from '@interface/Medical/Consult.interface';
 import { Doctor } from '@interface/Doctor/Doctor.interface';
 import { FollowUp } from '@interface/Medical/FollowUp.interface';
 import { History } from '@interface/Medical/History.interface';
+import { defineAsyncComponent } from 'vue';
 
 export default defineComponent({
     components: {
@@ -25,16 +26,6 @@ export default defineComponent({
         PrescriptionComponent: require('@component/medical/consult/consultPrescription/ConsultPrescriptionComponent.vue').default,
         TestOrderComponent: require('@component/medical/consult/consultTestOrder/ConsultTestOrderComponent.vue').default,
         RecordComponent: require('@component/medical/consult/consultRecord/ConsultRecordComponent.vue').default,
-        UroginecologiaComponent: require('@component/medical/attachments/Uroginecologia/UroginecologiaComponent.vue').default,
-        ClimaterioSaludOseaComponent: require('@component/medical/attachments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue').default,
-        MaternoFetalComponent: require('@component/medical/attachments/MaternoFetal/MaternoFetalComponent.vue').default,
-        BiologiaReproduccionComponent: require('@component/medical/attachments/BiologiaReproduccion/BiologiaReproduccionComponent.vue').default,
-        CirugiaEndoscopicaComponent: require('@component/medical/attachments/CirugiaEndoscopica/CirugiaEndoscopicaComponent.vue').default,
-        OncologiaComponent: require('@component/medical/attachments/Oncologia/OncologiaComponent.vue').default,
-        ColposcopiaComponent: require('@component/medical/attachments/Colposcopia/ColposcopiaComponent.vue').default,
-        NutricionPerinatalComponent: require('@component/medical/attachments/NutricionPerinatal/NutricionPerinatalComponent.vue').default,
-        NutricionGeneralComponent: require('@component/medical/attachments/NutricionGeneral/NutricionGeneralComponent.vue').default,
-        NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default,
         ProductComponent: require('@component/payment/chargePayment/ChargePaymentComponent.vue').default
     },
     emits: [],
@@ -45,7 +36,7 @@ export default defineComponent({
         },
         consultID: {
             type: Number,
-            default: -1
+            default: 1
         }
     },
     data() {
@@ -70,24 +61,58 @@ export default defineComponent({
                 minutes: 0,
                 seconds: 0
             },
+            val: true
         };
     },
     mounted() {
         this.getConsultInfo();
-        this.getPatientData();
-        this.getDoctorData();
         this.getHistory();
         this.getFollowUp();
         this.getPrescription();
         this.getTest();
-        this.updateClock();
     },
-    watch: {
+    computed: {
+        specialties(): any
+        {
+            switch(this.consultData.medicalspecialty_id)
+            {
+                case 1:
+                    return defineAsyncComponent(() => import('@component/medical/attachments/Uroginecologia/UroginecologiaComponent.vue'));
+                case 2:
+                    return defineAsyncComponent(() => import('@component/medical/attachments/ClimaterioSaludOsea/ClimaterioSaludOseaComponent.vue'));
+                case 3:
+                    return defineAsyncComponent(() => import('@component/medical/attachments/MaternoFetal/MaternoFetalComponent.vue'));
+                case 4:
+                    return defineAsyncComponent(() => import('@component/medical/attachments/NutricionPerinatal/NutricionPerinatalComponent.vue'));
+                case 5:
+                    return defineAsyncComponent(() => import('@component/medical/attachments/NutricionGeneral/NutricionGeneralComponent.vue'));
+                case 7:
+                    return defineAsyncComponent(() => import('@component/medical/attachments/BiologiaReproduccion/BiologiaReproduccionComponent.vue'));
+                case 8:
+                    return defineAsyncComponent(() => import('@component/medical/attachments/CirugiaEndoscopica/CirugiaEndoscopicaComponent.vue'));
+                case 9:
+                    return defineAsyncComponent(() => import('@component/medical/attachments/Oncologia/OncologiaComponent.vue'));
+                case 10:
+                    return defineAsyncComponent(() => import('@component/medical/attachments/Colposcopia/ColposcopiaComponent.vue'));
+                default:
+                    return defineAsyncComponent(() => import('@component/general/error/NetworkErrorComponent.vue'));
+            }
+        }
     },
     methods: {
+        prueba()
+        {
+            switch(this.consultData.medicalspecialty_id)
+            {
+                case 1:
+                    return 'CitasSubsecuentesComponent';
+                default:
+                    return 'ColposcopiaComponent'
+            }
+        },
         getPatientData()
         {
-            axios.get<Patient>(`/pacientes/1`)
+            axios.get<Patient>(`/pacientes/${this.consultData.patient_id}`)
                 .then(response => {
                     this.patientData = response.data;
                 })
@@ -97,9 +122,12 @@ export default defineComponent({
         },
         getConsultInfo()
         {
-            axios.get<Consult>(`/consultas/1`)
+            axios.get<Consult>(`/consultas/${this.consultID}`)
                 .then(response => {
                     this.consultData = response.data;
+                    this.getPatientData();
+                    this.getDoctorData();
+                    this.updateClock();
                 })
                 .catch(error => {
                     // console.log(error)
@@ -107,7 +135,7 @@ export default defineComponent({
         },
         getDoctorData()
         {
-            axios.get<Doctor>(`/consultas/1/doctor`)
+            axios.get<Doctor>(`/consultas/${this.consultData.doctor_id}/doctor`)
                 .then(response => {
                     this.doctorData = response.data;
                 })
@@ -117,7 +145,7 @@ export default defineComponent({
         },
         getHistory()
         {
-            axios.get<History>(`/consultas/1/historial`)
+            axios.get<History>(`/consultas/${this.consultID}/historial`)
                 .then(response => {
                     this.historyData = response.data;
                 })
@@ -127,7 +155,7 @@ export default defineComponent({
         },
         getFollowUp()
         {
-            axios.get<FollowUp>(`/consultas/1/seguimiento`)
+            axios.get<FollowUp>(`/consultas/${this.consultID}/seguimiento`)
                 .then(response => {
                     this.followUp = response.data;
                 })
@@ -137,7 +165,7 @@ export default defineComponent({
         },
         getPrescription()
         {
-            axios.get<Prescription[]>(`/consultas/1/receta`)
+            axios.get<Prescription[]>(`/consultas/${this.consultID}/receta`)
                 .then(response => {
                     this.prescriptionData = response.data;
                 })
@@ -147,7 +175,7 @@ export default defineComponent({
         },
         getTest()
         {
-            axios.get<Test[]>(`/consultas/1/estudios`)
+            axios.get<Test[]>(`/consultas/${this.consultID}/estudios`)
                 .then(response => {
                     const data = Object.values(response.data);
                     this.testData = data.map((test: Test) => {

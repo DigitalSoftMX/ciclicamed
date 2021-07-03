@@ -1,6 +1,7 @@
 import { PrescriptionData } from '@data/Medical/Prescription.data';
 import { Prescription } from '@interface/Medical/Prescription.interface';
 import { defineComponent } from '@vue/runtime-core';
+import cloneDeep from 'lodash/cloneDeep';
 import { PropType } from 'vue';
 import vSelect from "vue-select-3/src";
 
@@ -8,13 +9,13 @@ export default defineComponent({
     components: {
         vSelect,
     },
-    emits: ['mcDelete', 'mcChange'],
+    emits: ['update:modelValue', 'onDelete'],
     props: {
         isUpdate: {
             type: Boolean,
             default: false
         },
-        medicamentData: {
+        modelValue: {
             type: Object as PropType<Prescription>,
             default: PrescriptionData
         },
@@ -22,37 +23,38 @@ export default defineComponent({
             type: Array as PropType<any[]>,
             default: []
         },
-        medicamentIndex: {
-            type: Number as PropType < Number > ,
-            default: -1
+        id: {
+            type: Number as PropType<Number>,
+            default: 0
         }
     },
     data() {
         return {
-            id: Math.floor(Math.random() * (50 - 1 + 1)) + 1,
-            medicamentSelected: 0,
-            medicamentDataCopy: Object.assign({}, this.medicamentData)
+            medicament: this.modelValue
         };
     },
     mounted() {
     },
     watch: {
-        medicamentDataCopy:
-        {
+        modelValue: {
             handler()
             {
-                this.$emit('mcChange', this.medicamentIndex, this.medicamentDataCopy);
+                this.medicament = this.modelValue;
+            },
+            deep: true
+        },
+        medicament: {
+            handler()
+            {
+                this.$emit('update:modelValue', this.medicament);
             },
             deep: true
         }
     },
     methods: {
-        deleteMedicament() {
-            this.$emit('mcDelete', this.medicamentIndex)
-        },
-        updateMedicamentData()
+        deleteThisComponent()
         {
-            this.$emit('mcChange', this.medicamentIndex, this.medicamentDataCopy);
+            this.$emit('onDelete', this.id);
         }
     },
 })

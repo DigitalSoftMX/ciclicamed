@@ -1,5 +1,5 @@
 import { defineComponent } from '@vue/runtime-core';
-import { PropType } from 'vue';
+import { defineAsyncComponent, PropType } from 'vue';
 import axios from 'axios';
 import { PDFDocument } from 'pdf-lib';
 import * as download from 'downloadjs';
@@ -17,7 +17,7 @@ import { PrescriptionData } from '@data/Medical/Prescription.data';
 
 export default defineComponent({
     components: {
-        MedicamentComponent: require('@component/medical/consult/consultPrescription/medicament/ConsultMedicamentComponent.vue').default
+        MedicamentComponent: defineAsyncComponent(() => import('@component/medical/consult/consultPrescription/medicament/ConsultMedicamentComponent.vue'))
     },
     emits: [],
     props: {
@@ -41,8 +41,7 @@ export default defineComponent({
     data() {
         return {
             medicamentList: [] as Medicament[],
-            prescriptionDataCopy: Object.assign([], ...this.prescriptionData),
-            prescriptionList: [] as Number[],
+            prescriptionDataCopy: this.prescriptionData,
         };
     },
     mounted() {
@@ -57,8 +56,11 @@ export default defineComponent({
     methods: {
        addPrescription(data: Prescription = PrescriptionData)
        {
-           this.prescriptionDataCopy.unshift(data);
-           this.prescriptionList.unshift(Math.floor(Math.random() * (50 - 1 + 1)) + 1);
+           this.prescriptionDataCopy.unshift({...data});
+       },
+       deletePrescription(index: number)
+       {
+           this.prescriptionDataCopy.splice(index, 1);
        },
        getMedicamentList(): void
         {
@@ -84,15 +86,6 @@ export default defineComponent({
             .catch(error => {
                 console.log(error)
             })
-        },
-        deleteMedicamentComponent(index: number)
-        {
-            this.prescriptionDataCopy.splice(index, 1);
-            this.prescriptionList.splice(index, 1);
-        },
-        updateMedicamentSelected(index: number, value: any)
-        {
-            this.prescriptionDataCopy[index] = value;
         },
         async createPDF()
         {

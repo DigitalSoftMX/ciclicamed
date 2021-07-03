@@ -31,9 +31,8 @@
         </div>
     </div>
     <div class="atbd-collapse atbd-collapse-custom">
-        <medicament-component :medicamentIndex="index" :medicamentList="medicamentList"
-            :medicamentData="prescriptionDataCopy[index]" @mcDelete="deleteMedicamentComponent"
-            @mcChange="updateMedicamentSelected" v-for="(prescription, index) in prescriptionList" :key="prescription">
+        <medicament-component :id="index" :medicamentList="medicamentList" v-model="prescriptionDataCopy[index]"
+            v-for="(prescription, index) in prescriptionDataCopy" :key="`conpc${index}`" @onDelete="deletePrescription">
         </medicament-component>
     </div>
 </template>
@@ -43,4 +42,5 @@
 <style lang="sass">
     @import "./ConsultPrescriptionComponent.scss"
     @import "../../../../../../public/vendor_assets/css/select2.min.css"
+
 </style>

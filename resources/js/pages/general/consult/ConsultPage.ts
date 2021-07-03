@@ -1,11 +1,11 @@
 import {
     defineComponent
 } from '@vue/runtime-core';
-import { DefineComponent, PropType } from 'vue';
+import { defineAsyncComponent, DefineComponent, PropType } from 'vue';
 
 export default defineComponent({
     components: {
-        ConsultComponent: require('@component/medical/consult/ConsultComponent.vue').default
+        ConsultComponent: defineAsyncComponent(() => import('@component/medical/consult/ConsultComponent.vue'))
     },
     emits: [],
     props: {

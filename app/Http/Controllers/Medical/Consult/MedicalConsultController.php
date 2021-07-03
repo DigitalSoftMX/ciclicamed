@@ -150,7 +150,7 @@ class MedicalConsultController extends Controller
     {
         $consult = MedicalConsult::findOrFail($id);
         $testCancelStatus = MedicalTestStatus::where('name', 'Estudio cancelado')->first()->id;
-        $consultOrder = $consult->testsCreated->load('order.product:id,name', 'results', 'samples')->where('medicalteststatus_id', '<>', $testCancelStatus)->all();
+        $consultOrder = $consult->testsCreated->load('order.product:id,name,product_code', 'results', 'samples')->where('medicalteststatus_id', '<>', $testCancelStatus)->all();
         return response()->json($consultOrder);
     }
 

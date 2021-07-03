@@ -4,10 +4,10 @@
             <a href="#" class="item-link" data-toggle="collapse" :data-target="`#oc${id}`" aria-expanded="true"
                 :aria-controls="`#oc${id}`">
                 <i class="la la-angle-right"></i>
-                <h6>{{orderList[orderSelected].name}}</h6>
+                <h6>{{orderList[order.order.product_id].name}}</h6>
             </a>
             <div class="px-3">
-                <button class="btn btn-icon btn-danger btn-circle button-size" @click="deleteOrder()">
+                <button class="btn btn-icon btn-danger btn-circle button-size" @click="deleteThisComponent()">
                     <img src="/svg/delete.svg" alt="Delete logo" class="svg-white">
                 </button>
             </div>
@@ -15,17 +15,17 @@
         <div :id="`oc${id}`" class="card-body row mx-0 collapse atbd-collapse-item__body bg-white show border-top">
             <div class="col-12 mb-25">
                 <label for="">Orden de estudio</label>
-                <v-select :options="orderList" label="name" :reduce="item => item.id" v-model="orderDataCopy.order.product_id"/>
+                <v-select :options="orderList" label="name" :reduce="item => item.id" v-model="order.order.product_id"/>
             </div>
             <div class="col-12" v-if="isUpdate">
                 <label for="">Nota de actualización</label>
-                <textarea class="form-control form-control-lg" rows="4" placeholder="Nota de actualización" v-model="orderDataCopy.order.update_note" @keyup="updateOrderData"></textarea>
+                <textarea class="form-control form-control-lg" rows="4" placeholder="Nota de actualización" v-model="order.order.update_note"></textarea>
             </div>
-            <div class="col-12 row mx-0 p-0" v-show="orderDataCopy.order.product_id > 0">
+            <div class="col-12 row mx-0 p-0" v-show="order.order.product_id > 0">
                 <div class="col-12 mb-25 text-center">
                     <h4>Indicaciones</h4>
                 </div>
-                <div class="col-12 mb-25" v-for="order in orderList[orderSelected].order_annotations" :key="order">
+                <div class="col-12 mb-25" v-for="order in orderList[order.order.product_id].order_annotations" :key="order">
                     <label for="">{{order.annotation}}</label>
                 </div>
             </div>

@@ -16,6 +16,7 @@ import { Doctor } from '@interface/Doctor/Doctor.interface';
 import { DoctorData } from '@data/Doctor/Doctor.data';
 import { TestData } from '@data/Medical/Test.data';
 import { Order } from '@interface/Medical/Order.interface';
+import cloneDeep from 'lodash/cloneDeep';
 export default defineComponent({
     components: {
         OrderComponent: require('./order/ConsultOrderComponent.vue').default
@@ -41,11 +42,12 @@ export default defineComponent({
     },
     data() {
         return {
-            orderDataCopy: Object.assign([], ...this.orderData),
+            orderDataCopy: [...this.orderData],
             orderComponentList: [] as Number[],
             orderList: [] as {
                 id: number;
                 name: string;
+                product_code: string;
                 order_annotations: [{
                     product_id: number,
                     annotation: string
@@ -57,16 +59,19 @@ export default defineComponent({
         this.getTestList();
     },
     watch: {
-        // orderData()
-        // {
-        //     this.orderData.map(order => this.addTestOrder(order));
-        // },
+        orderData()
+        {
+            this.orderData.map(order => this.addTestOrder(order));
+        },
     },
     methods: {
        addTestOrder(data: Test = TestData)
        {
-           this.orderDataCopy.unshift(data);
-           this.orderComponentList.unshift(Math.floor(Math.random() * (50 - 1 + 1)) + 1);
+           this.orderDataCopy.unshift(cloneDeep(data));
+       },
+       deleteTestOrder(index: number)
+       {
+           this.orderDataCopy[index].id > 0 ? this.orderDataCopy[index].medicalteststatus_id = 5 : this.orderDataCopy.splice(index, 1);
        },
        getTestList(): void
         {
@@ -103,15 +108,6 @@ export default defineComponent({
                 console.log(error)
             })
         },
-        deleteOrderComponent(index: number)
-        {
-            this.orderDataCopy[index].status = 5;
-            // this.orderComponentList.splice(index, 1);
-        },
-        updateOrderSelected(index: number, value: Order)
-        {
-            this.orderDataCopy[index] = value;
-        },
         async createPDF()
         {
             const doctorLicence = this.doctorData.specialties?.filter(specialty => specialty.pivot.medicalspecialty_id === this.consultData.medicalspecialty_id)[0];
@@ -119,13 +115,14 @@ export default defineComponent({
             const buffer: ArrayBuffer = await fetch(prescriptionDoc, {
                 headers: new Headers({'content-type': 'application/pdf'}),
             }).then(res => res.arrayBuffer());
-            const filterOrderList = this.orderDataCopy.filter((order: Number) => order !== -1);
+            const filterOrderList = this.orderDataCopy.filter(item => item.order.product_id !== -1);
 
             const pdfDoc = await PDFDocument.create();
             for await(let order of filterOrderList)
             {
                 const index = this.orderList.findIndex(orderSelected => orderSelected.id === order.order.product_id);
                 var newPDF = await PDFDocument.load(buffer);
+                const testCategory = this.orderList[index].product_code.includes('IMA') ? 'IMAGENOLOGÍA' : 'LABORATORIO';
                 
                 newPDF.getForm().getTextField('patient').setText(`${this.patientData.first_name} ${this.patientData.last_name}`);
                 newPDF.getForm().getTextField('birthday').setText(moment(this.patientData.birthday).format('DD/MM/YYYY'));
@@ -137,7 +134,7 @@ export default defineComponent({
                 newPDF.getForm().getTextField('doctorDegree').setText( doctorLicence?.pivot.degree_title );
                 newPDF.getForm().getTextField('doctorLicenseNumber').setText( doctorLicence?.pivot.license_number );
                 newPDF.getForm().getTextField('doctorSchool').setText( doctorLicence?.pivot.school_name );
-                newPDF.getForm().getTextField('code').setText(index.toString());
+                newPDF.getForm().getTextField('code').setText(testCategory);
                 newPDF.getForm().getTextField('name').setText(this.orderList[index].name);
                 newPDF.getForm().getTextField('indications').setText( `${this.orderList[index].order_annotations.map(annotation => `${annotation.annotation}\n`)}` );
 
