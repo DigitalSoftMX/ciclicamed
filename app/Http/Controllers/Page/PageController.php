@@ -112,7 +112,7 @@ class PageController extends Controller
 
     public function showConsulta()
     {
-        
+        // return response()->view('errors.404', [], 404)->withCookie('consult', 1);
         $cookie = request()->cookie('consult');
         $consult= MedicalConsult::findOrFail($cookie);
         if($cookie && $consult)

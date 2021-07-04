@@ -61,8 +61,10 @@ export default defineComponent({
                 minutes: 0,
                 seconds: 0
             },
-            val: true
         };
+    },
+    watch: 
+    {
     },
     mounted() {
         this.getConsultInfo();
@@ -100,16 +102,6 @@ export default defineComponent({
         }
     },
     methods: {
-        prueba()
-        {
-            switch(this.consultData.medicalspecialty_id)
-            {
-                case 1:
-                    return 'CitasSubsecuentesComponent';
-                default:
-                    return 'ColposcopiaComponent'
-            }
-        },
         getPatientData()
         {
             axios.get<Patient>(`/pacientes/${this.consultData.patient_id}`)
@@ -150,7 +142,7 @@ export default defineComponent({
                     this.historyData = response.data;
                 })
                 .catch(error => {
-                    // console.log(error)
+                    console.log(error)
                 })
         },
         getFollowUp()

@@ -12,26 +12,39 @@ export default defineComponent({
     name: 'PersonalesPatologicosComponent',
     components: {
     },
+    emits: ['update:modelValue'],
     props: {
-        formData: {
+        modelValue: {
             type: Object as PropType<GinecoObstetros>,
             default: GinecoObstetrosData
+        },
+        disabled: {
+            type: Boolean as PropType<Boolean>,
+            default: true
         },
     },
     data(){
         return {
-            formDataCopy: Object.assign({}, this.$props.formData),
-            disabled: {
-                type: Boolean as PropType<Boolean>,
-                default: true
-            },
+            formData: this.modelValue,
         }
     },
     methods: {},
     watch: {
-        formData()
+        modelValue: 
         {
-            this.formDataCopy = Object.assign({}, this.$props.formData);
+            handler()
+            {
+                this.formData = this.modelValue;
+            },
+            deep: true
+        },
+        formData:
+        {
+            handler()
+            {
+                this.$emit('update:modelValue', this.formData);
+            },
+            deep: true
         }
     }
 })

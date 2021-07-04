@@ -1,18 +1,18 @@
 <template>
    <div class="row mx-0 mb-25 p-0">
       <div class="col-12 col-md-3 mb-25">
-         <label for="">Menarca</label>
+         <label for="gocMenarca">Menarca</label>
          <input class="form-control form-control-lg" type="number" placeholder="Edad en que comenzó" :disabled="disabled" id="gocMenarca"
-               v-model="formDataCopy.menarca">
+               v-model="formData.menarca">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocRitmo">Ritmo</label>
          <input class="form-control form-control-lg" type="number" placeholder="Ritmo" :disabled="disabled" id="gocRitmo"
-               v-model="formDataCopy.ritmo">
+               v-model="formData.ritmo">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocCantidad">Cantidad</label>
-         <select class="form-control form-control-lg" :disabled="disabled" id="gocCantidad" v-model="formDataCopy.cantidad">
+         <select class="form-control form-control-lg" :disabled="disabled" id="gocCantidad" v-model="formData.cantidad">
                <option>Escaso</option>
                <option>Normal</option>
                <option>Abundante</option>
@@ -21,11 +21,11 @@
       <div class="col-12 col-md-3 mb-25">
          <label for="gocToallas">Toallas por día</label>
          <input class="form-control form-control-lg" type="number" placeholder="Cantidad" :disabled="disabled" id="gocToallas"
-               v-model="formDataCopy.toallas">
+               v-model="formData.toallas">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocDolor">Dolor</label>
-         <select class="form-control form-control-lg" :disabled="disabled" id="gocDolor" v-model="formDataCopy.dolor">
+         <select class="form-control form-control-lg" :disabled="disabled" id="gocDolor" v-model="formData.dolor">
                <option>Seleccione una opción</option>
                <option>Leve</option>
                <option>Moderado</option>
@@ -35,26 +35,26 @@
       <div class="col-12 col-md-9 mb-25">
          <label for="gocTratamiento">Tratamiento</label>
          <textarea type="text" class="form-control form-control-lg" placeholder="Tratamiento" :disabled="disabled" id="gocTratamiento"
-               v-model="formDataCopy.tratamiento"></textarea>
+               v-model="formData.tratamiento"></textarea>
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocFUM">FUM</label>
          <input class="form-control form-control-lg" type="date" placeholder="Fecha" :disabled="disabled" id="gocFUM"
-               v-model="formDataCopy.fum">
+               v-model="formData.fum">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocIVSA">IVSA</label>
          <input class="form-control form-control-lg" type="number" placeholder="IVSA" :disabled="disabled" id="gocIVSA"
-               v-model="formDataCopy.ivsa">
+               v-model="formData.ivsa">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocParejas">Parejas</label>
          <input class="form-control form-control-lg" type="number" placeholder="Parejas" :disabled="disabled" id="gocParejas"
-               v-model="formDataCopy.parejas">
+               v-model="formData.parejas">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocMPF">MPF</label>
-         <select class="form-control form-control-lg" :disabled="disabled" id="gocMPF" v-model="formDataCopy.mpf">
+         <select class="form-control form-control-lg" :disabled="disabled" id="gocMPF" v-model="formData.mpf">
                <option>Actual</option>
                <option>Previo</option>
          </select>
@@ -62,62 +62,62 @@
       <div class="col-12 col-md-3 mb-25">
          <label for="gocGestas">Gestas</label>
          <input class="form-control form-control-lg" type="number" placeholder="Gestas" :disabled="disabled" id="gocGestas"
-               v-model="formDataCopy.gestas">
+               v-model="formData.gestas">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocCesareas">Cesareas</label>
          <input class="form-control form-control-lg" type="number" placeholder="Cantidad" :disabled="disabled" id="gocCesareas"
-               v-model="formDataCopy.cesareas">
+               v-model="formData.cesareas">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocPartos">Partos</label>
          <input class="form-control form-control-lg" type="number" placeholder="Cantidad" :disabled="disabled" id="gocPartos"
-               v-model="formDataCopy.partos">
+               v-model="formData.partos">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocAbortos">Abortos</label>
          <input class="form-control form-control-lg" type="number" placeholder="Cantidad" :disabled="disabled" id="gocAbortos"
-               v-model="formDataCopy.abortos">
+               v-model="formData.abortos">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocEctopicos">Ectópicos</label>
          <input class="form-control form-control-lg" type="number" placeholder="Cantidad" :disabled="disabled" id="gocEctopicos"
-               v-model="formDataCopy.ectopicos">
+               v-model="formData.ectopicos">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocCitologiaVertical">Citología cervical</label>
          <input class="form-control form-control-lg" type="date" placeholder="Fecha" :disabled="disabled" id="gocCitologiaVertical"
-               v-model="formDataCopy.citologiaVertical">
+               v-model="formData.citologiaVertical">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocDOCMA">DOCMA</label>
          <input class="form-control form-control-lg" type="date" placeholder="Fecha" :disabled="disabled" id="gocDOCMA"
-               v-model="formDataCopy.docma">
+               v-model="formData.docma">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocAutoexploracion">Autoexploración</label>
          <input class="form-control form-control-lg" type="number" placeholder="Autoexploración"
-               :disabled="disabled" id="gocAutoexploracion" v-model="formDataCopy.autoexploracion">
+               :disabled="disabled" id="gocAutoexploracion" v-model="formData.autoexploracion">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocUSG">USG</label>
          <input class="form-control form-control-lg" type="number" placeholder="USG" :disabled="disabled" id="gocUSG"
-               v-model="formDataCopy.usg">
+               v-model="formData.usg">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocMastografia">Mastografía</label>
          <input class="form-control form-control-lg" type="number" placeholder="Mastografía" :disabled="disabled" id="gocMastografia"
-               v-model="formDataCopy.mastografia">
+               v-model="formData.mastografia">
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocMenopausia">Menopausia</label>
          <input class="form-control form-control-lg" type="number" placeholder="Menopausia" :disabled="disabled" id="gocMenopausia"
-               v-model="formDataCopy.menopausia">
+               v-model="formData.menopausia">
       </div>
       <div class="col-12">
          <label for="gocAntecedentesInfertilidad">Antecedentes de infertilidad</label>
          <textarea class="form-control form-control-lg" type="number" placeholder="Antecedentes de infertilidad"
-               :disabled="disabled" id="gocAntecedentesInfertilidad" v-model="formDataCopy.antecedentesInfertilidad"
+               :disabled="disabled" id="gocAntecedentesInfertilidad" v-model="formData.antecedentesInfertilidad"
                ></textarea>
       </div>
    </div>
@@ -137,21 +137,21 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG1Anio">Año</label>
                            <input class="form-control form-control-lg" type="text" placeholder="Ejem: 1994"
-                              :disabled="disabled" id="gocG1Anio" v-model="formDataCopy.g1.anio">
+                              :disabled="disabled" id="gocG1Anio" v-model="formData.g1.anio">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG1Edad">Edad Maternal</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Edad" :disabled="disabled" id="gocG1Edad"
-                              v-model="formDataCopy.g1.edad">
+                              v-model="formData.g1.edad">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG1Duracion">Duración de embarazo</label>
                            <input class="form-control form-control-lg" type="number" placeholder="1 a 42 semanas"
-                              :disabled="disabled" id="gocG1Duracion" v-model="formDataCopy.g1.duracion">
+                              :disabled="disabled" id="gocG1Duracion" v-model="formData.g1.duracion">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="">Sexo</label>
-                           <select class="form-control form-control-lg" :disabled="disabled" id="gocG1Sexo" v-model="formDataCopy.g1.sexo">
+                           <select class="form-control form-control-lg" :disabled="disabled" id="gocG1Sexo" v-model="formData.g1.sexo">
                               <option value="Femenino">Femenino</option>
                               <option value="Masculino">Masculino</option>
                            </select>
@@ -159,12 +159,12 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG1Peso">Peso</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Eje: 300 gr"
-                              :disabled="disabled" id="gocG1Peso" v-model="formDataCopy.g1.peso">
+                              :disabled="disabled" id="gocG1Peso" v-model="formData.g1.peso">
                      </div>
                      <div class="col-12 col-md-4 mb-25 align-self-center">
                            <div class="custom-control custom-switch switch-primary switch-md m-auto">
                               <input type="checkbox" class="custom-control-input" :disabled="disabled" id="gocG1VivoSano"
-                                 :checked="formDataCopy.g1.vivoSano" v-model="formDataCopy.g1.vivoSano">
+                                 :checked="formData.g1.vivoSano" v-model="formData.g1.vivoSano">
                               <label class="custom-control-label" for="gocG1VivoSano">Vivo y
                                  sano</label>
                            </div>
@@ -172,7 +172,7 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG1Resol">Resol.</label>
                            <select class="form-control form-control-lg" :disabled="disabled" id="gocG1Resol"
-                              v-model="formDataCopy.g1.resol">
+                              v-model="formData.g1.resol">
                               <option value="Parto">Parto</option>
                               <option value="Cesarea">Cesarea</option>
                               <option value="Forceps">Forceps</option>
@@ -182,12 +182,12 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG1Comp">Comp</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Meses" :disabled="disabled" id="gocG1Comp"
-                              v-model="formDataCopy.g1.comp">
+                              v-model="formData.g1.comp">
                      </div>
                      <div class="col-12 col-md-4">
                            <label for="gocG1Lactancia">Lactancia</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Meses"
-                              :disabled="disabled" id="gocG1Lactancia" v-model="formDataCopy.g1.lactancia">
+                              :disabled="disabled" id="gocG1Lactancia" v-model="formData.g1.lactancia">
                      </div>
                   </div>
                </div>
@@ -208,21 +208,21 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG2Anio">Año</label>
                            <input class="form-control form-control-lg" type="text" placeholder="Ejem: 1994"
-                              :disabled="disabled" id="gocG2Anio" v-model="formDataCopy.g2.anio">
+                              :disabled="disabled" id="gocG2Anio" v-model="formData.g2.anio">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG2Edad">Edad Maternal</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Edad" :disabled="disabled" id="gocG2Edad"
-                              v-model="formDataCopy.g2.edad">
+                              v-model="formData.g2.edad">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG2Duracion">Duración de embarazo</label>
                            <input class="form-control form-control-lg" type="number" placeholder="1 a 42 semanas"
-                              :disabled="disabled" id="gocG2Duracion" v-model="formDataCopy.g2.duracion">
+                              :disabled="disabled" id="gocG2Duracion" v-model="formData.g2.duracion">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="">Sexo</label>
-                           <select class="form-control form-control-lg" :disabled="disabled" id="gocG2Sexo" v-model="formDataCopy.g2.sexo">
+                           <select class="form-control form-control-lg" :disabled="disabled" id="gocG2Sexo" v-model="formData.g2.sexo">
                               <option value="Femenino">Femenino</option>
                               <option value="Masculino">Masculino</option>
                            </select>
@@ -230,12 +230,12 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG2Peso">Peso</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Eje: 300 gr"
-                              :disabled="disabled" id="gocG2Peso" v-model="formDataCopy.g2.peso">
+                              :disabled="disabled" id="gocG2Peso" v-model="formData.g2.peso">
                      </div>
                      <div class="col-12 col-md-4 mb-25 align-self-center">
                            <div class="custom-control custom-switch switch-primary switch-md m-auto">
                               <input type="checkbox" class="custom-control-input" :disabled="disabled" id="gocG2VivoSano"
-                                 :checked="formDataCopy.g2.vivoSano" v-model="formDataCopy.g2.vivoSano">
+                                 :checked="formData.g2.vivoSano" v-model="formData.g2.vivoSano">
                               <label class="custom-control-label" for="gocG2VivoSano">Vivo y
                                  sano</label>
                            </div>
@@ -243,7 +243,7 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG2Resol">Resol.</label>
                            <select class="form-control form-control-lg" :disabled="disabled" id="gocG2Resol"
-                              v-model="formDataCopy.g2.resol">
+                              v-model="formData.g2.resol">
                               <option value="Parto">Parto</option>
                               <option value="Cesarea">Cesarea</option>
                               <option value="Forceps">Forceps</option>
@@ -253,12 +253,12 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG2Comp">Comp</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Meses" :disabled="disabled" id="gocG2Comp"
-                              v-model="formDataCopy.g2.comp">
+                              v-model="formData.g2.comp">
                      </div>
                      <div class="col-12 col-md-4">
                            <label for="gocG2Lactancia">Lactancia</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Meses"
-                              :disabled="disabled" id="gocG2Lactancia" v-model="formDataCopy.g2.lactancia">
+                              :disabled="disabled" id="gocG2Lactancia" v-model="formData.g2.lactancia">
                      </div>
                   </div>
                </div>
@@ -279,21 +279,21 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG3Anio">Año</label>
                            <input class="form-control form-control-lg" type="text" placeholder="Ejem: 1994"
-                              :disabled="disabled" id="gocG3Anio" v-model="formDataCopy.g3.anio">
+                              :disabled="disabled" id="gocG3Anio" v-model="formData.g3.anio">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG3Edad">Edad Maternal</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Edad" :disabled="disabled" id="gocG3Edad"
-                              v-model="formDataCopy.g3.edad">
+                              v-model="formData.g3.edad">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG3Duracion">Duración de embarazo</label>
                            <input class="form-control form-control-lg" type="number" placeholder="1 a 42 semanas"
-                              :disabled="disabled" id="gocG3Duracion" v-model="formDataCopy.g3.duracion">
+                              :disabled="disabled" id="gocG3Duracion" v-model="formData.g3.duracion">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="">Sexo</label>
-                           <select class="form-control form-control-lg" :disabled="disabled" id="gocG3Sexo" v-model="formDataCopy.g3.sexo">
+                           <select class="form-control form-control-lg" :disabled="disabled" id="gocG3Sexo" v-model="formData.g3.sexo">
                               <option value="Femenino">Femenino</option>
                               <option value="Masculino">Masculino</option>
                            </select>
@@ -301,12 +301,12 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG3Peso">Peso</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Eje: 300 gr"
-                              :disabled="disabled" id="gocG3Peso" v-model="formDataCopy.g3.peso">
+                              :disabled="disabled" id="gocG3Peso" v-model="formData.g3.peso">
                      </div>
                      <div class="col-12 col-md-4 mb-25 align-self-center">
                            <div class="custom-control custom-switch switch-primary switch-md m-auto">
                               <input type="checkbox" class="custom-control-input" :disabled="disabled" id="gocG3VivoSano"
-                                 :checked="formDataCopy.g3.vivoSano" v-model="formDataCopy.g3.vivoSano">
+                                 :checked="formData.g3.vivoSano" v-model="formData.g3.vivoSano">
                               <label class="custom-control-label" for="gocG3VivoSano">Vivo y
                                  sano</label>
                            </div>
@@ -314,7 +314,7 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG3Resol">Resol.</label>
                            <select class="form-control form-control-lg" :disabled="disabled" id="gocG3Resol"
-                              v-model="formDataCopy.g3.resol">
+                              v-model="formData.g3.resol">
                               <option value="Parto">Parto</option>
                               <option value="Cesarea">Cesarea</option>
                               <option value="Forceps">Forceps</option>
@@ -324,12 +324,12 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG3Comp">Comp</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Meses" :disabled="disabled" id="gocG3Comp"
-                              v-model="formDataCopy.g3.comp">
+                              v-model="formData.g3.comp">
                      </div>
                      <div class="col-12 col-md-4">
                            <label for="gocG3Lactancia">Lactancia</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Meses"
-                              :disabled="disabled" id="gocG3Lactancia" v-model="formDataCopy.g3.lactancia">
+                              :disabled="disabled" id="gocG3Lactancia" v-model="formData.g3.lactancia">
                      </div>
                   </div>
                </div>
@@ -350,21 +350,21 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG4Anio">Año</label>
                            <input class="form-control form-control-lg" type="text" placeholder="Ejem: 1994"
-                              :disabled="disabled" id="gocG4Anio" v-model="formDataCopy.g4.anio">
+                              :disabled="disabled" id="gocG4Anio" v-model="formData.g4.anio">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG4Edad">Edad Maternal</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Edad" :disabled="disabled" id="gocG4Edad"
-                              v-model="formDataCopy.g4.edad">
+                              v-model="formData.g4.edad">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG4Duracion">Duración de embarazo</label>
                            <input class="form-control form-control-lg" type="number" placeholder="1 a 42 semanas"
-                              :disabled="disabled" id="gocG4Duracion" v-model="formDataCopy.g4.duracion">
+                              :disabled="disabled" id="gocG4Duracion" v-model="formData.g4.duracion">
                      </div>
                      <div class="col-12 col-md-4 mb-25">
                            <label for="">Sexo</label>
-                           <select class="form-control form-control-lg" :disabled="disabled" id="gocG4Sexo" v-model="formDataCopy.g4.sexo">
+                           <select class="form-control form-control-lg" :disabled="disabled" id="gocG4Sexo" v-model="formData.g4.sexo">
                               <option value="Femenino">Femenino</option>
                               <option value="Masculino">Masculino</option>
                            </select>
@@ -372,12 +372,12 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG4Peso">Peso</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Eje: 300 gr"
-                              :disabled="disabled" id="gocG4Peso" v-model="formDataCopy.g4.peso">
+                              :disabled="disabled" id="gocG4Peso" v-model="formData.g4.peso">
                      </div>
                      <div class="col-12 col-md-4 mb-25 align-self-center">
                            <div class="custom-control custom-switch switch-primary switch-md m-auto">
                               <input type="checkbox" class="custom-control-input" :disabled="disabled" id="gocG4VivoSano"
-                                 :checked="formDataCopy.g4.vivoSano" v-model="formDataCopy.g4.vivoSano">
+                                 :checked="formData.g4.vivoSano" v-model="formData.g4.vivoSano">
                               <label class="custom-control-label" for="gocG4VivoSano">Vivo y
                                  sano</label>
                            </div>
@@ -385,7 +385,7 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG4Resol">Resol.</label>
                            <select class="form-control form-control-lg" :disabled="disabled" id="gocG4Resol"
-                              v-model="formDataCopy.g4.resol">
+                              v-model="formData.g4.resol">
                               <option value="Parto">Parto</option>
                               <option value="Cesarea">Cesarea</option>
                               <option value="Forceps">Forceps</option>
@@ -395,12 +395,12 @@
                      <div class="col-12 col-md-4 mb-25">
                            <label for="gocG4Comp">Comp</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Meses" :disabled="disabled" id="gocG4Comp"
-                              v-model="formDataCopy.g4.comp">
+                              v-model="formData.g4.comp">
                      </div>
                      <div class="col-12 col-md-4">
                            <label for="gocG4Lactancia">Lactancia</label>
                            <input class="form-control form-control-lg" type="number" placeholder="Meses"
-                              :disabled="disabled" id="gocG4Lactancia" v-model="formDataCopy.g4.lactancia">
+                              :disabled="disabled" id="gocG4Lactancia" v-model="formData.g4.lactancia">
                      </div>
                   </div>
                </div>

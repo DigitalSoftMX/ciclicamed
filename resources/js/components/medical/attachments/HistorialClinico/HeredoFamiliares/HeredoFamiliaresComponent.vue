@@ -1,6 +1,6 @@
 <template>
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md bg-white shadow-none">
             <div class="card-header">
                 <h6>Hipertensión</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -10,7 +10,7 @@
                     <label class="custom-control-label" for="hfcHipertension"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formData.hipertension.check">
+            <div class="card-body" v-show="formData.hipertension.check">
                 <div class="w-auto">
                     <select name="select-size-1" class="form-control form-control-lg"
                         v-model="formData.hipertension.description">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md bg-white shadow-none">
             <div class="card-header">
                 <h6>Cáncer</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -36,7 +36,7 @@
                     <label class="custom-control-label" for="hfcCancer"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formData.cancer.check">
+            <div class="card-body" v-show="formData.cancer.check">
                 <div class="col-12 p-0 mb-25">
                     <label>Ginecológico</label>
                     <div class="row mx-0">
@@ -71,7 +71,7 @@
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md bg-white shadow-none">
             <div class="card-header">
                 <h6>Diabetes mellitus</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -81,7 +81,7 @@
                     <label class="custom-control-label" for="hfcDiabetesMellitus"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formData.diabetesMellitus.check">
+            <div class="card-body" v-show="formData.diabetesMellitus.check">
                 <div class="w-auto">
                     <select name="select-size-1" class="form-control form-control-lg"
                         v-model="formData.diabetesMellitus.description">
@@ -97,7 +97,7 @@
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md bg-white shadow-none">
             <div class="card-header">
                 <h6>Patología tiroidea</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -107,7 +107,7 @@
                     <label class="custom-control-label" for="hfcPatologiaTiroidea"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formData.patologiaTiroidea.check">
+            <div class="card-body" v-show="formData.patologiaTiroidea.check">
                 <div class="w-auto">
                     <select name="select-size-1" class="form-control form-control-lg"
                         v-model="formData.patologiaTiroidea.description">
@@ -123,7 +123,7 @@
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md bg-white shadow-none">
             <div class="card-header">
                 <h6>Otros</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -133,7 +133,7 @@
                     <label class="custom-control-label" for="hfcOtros"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formData.otros.check">
+            <div class="card-body" v-show="formData.otros.check">
                 <div class="col-12 p-0">
                     <div class="row mx-0">
                         <textarea type="text" class="form-control" :disabled="disabled" id="hfcOtrosOtros"

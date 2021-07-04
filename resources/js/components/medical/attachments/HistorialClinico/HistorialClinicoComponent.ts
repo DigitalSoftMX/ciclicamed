@@ -6,7 +6,8 @@ import {
 } from '@vue/runtime-core';
 import {
     DefineComponent,
-    PropType
+    PropType,
+    watch
 } from 'vue';
 
 export default defineComponent({
@@ -18,18 +19,39 @@ export default defineComponent({
         GinecoObstetrosComponent: require('./GinecoObstetros/GinecoObstetrosComponent.vue').default,
         TratamientoComponent: require('./Tratamiento/TratamientoComponent.vue').default,
     },
+    emits: ['update:modelValue'],
     props:{
         disabled: {
             type: Boolean as PropType<Boolean>,
-            default: true
+            default: false
         },
-        formData: {
+        modelValue: {
             type: Object as PropType<HistorialClinico>,
             default: HistorialClinicoData
         }
     },
     data(){
         return {
+            formData: this.modelValue
+        }
+    },
+    watch:
+    {
+        modelValue:
+        {
+            handler()
+            {
+                this.formData = this.modelValue;
+            },
+            deep: true
+        },
+        formData:
+        {
+            handler()
+            {
+                this.$emit('update:modelValue', this.formData)
+            },
+            deep: true
         }
     },
     methods: {}

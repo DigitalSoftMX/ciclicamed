@@ -1,18 +1,18 @@
 <template>
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md shadow-none">
             <div class="card-header">
                 <h6>Tipo de Sangre</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="pnpcTipoSangre"
-                        :checked="formDataCopy.tipoSangre.check" v-model="formDataCopy.tipoSangre.check">
+                        :checked="formData.tipoSangre.check" v-model="formData.tipoSangre.check">
                     <label class="custom-control-label" for="pnpcTipoSangre"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formDataCopy.tipoSangre.check">
+            <div class="card-body" v-show="formData.tipoSangre.check">
                 <div class="d-flex">
                     <select name="select-size-1" class="form-control form-control-lg" :disabled="disabled" id="pnpcTipoSangreDescription"
-                        v-model="formDataCopy.tipoSangre.description">
+                        v-model="formData.tipoSangre.description">
                         <option value="O+">O+</option>
                         <option value="O-">O-</option>
                         <option value="A+">A+</option>
@@ -26,86 +26,86 @@
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md shadow-none">
             <div class="card-header">
                 <h6>Ejercicio</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="pnpcEjercicioCheck"
-                        :checked="formDataCopy.ejercicio.check" v-model="formDataCopy.ejercicio.check">
+                        :checked="formData.ejercicio.check" v-model="formData.ejercicio.check">
                     <label class="custom-control-label" for="pnpcEjercicioCheck"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formDataCopy.ejercicio.check">
+            <div class="card-body" v-show="formData.ejercicio.check">
                 <textarea type="text" class="form-control" :disabled="disabled" id="pnpcEjercicioDescription" placeholder="Ejercicio" rows="5"
-                    v-model="formDataCopy.ejercicio.description"></textarea>
+                    v-model="formData.ejercicio.description"></textarea>
             </div>
         </div>
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md shadow-none">
             <div class="card-header">
                 <h6>Tabaquismo</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="pnpcTabaquismoCheck"
-                        :checked="formDataCopy.tabaquismo.check" v-model="formDataCopy.tabaquismo.check">
+                        :checked="formData.tabaquismo.check" v-model="formData.tabaquismo.check">
                     <label class="custom-control-label" for="pnpcTabaquismoCheck"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formDataCopy.tabaquismo.check">
+            <div class="card-body" v-show="formData.tabaquismo.check">
                 <textarea type="text" class="form-control" :disabled="disabled" id="pnpcTabaquismoDescription" placeholder="Tabaquismo" rows="5"
-                    v-model="formDataCopy.tabaquismo.description"></textarea>
+                    v-model="formData.tabaquismo.description"></textarea>
             </div>
         </div>
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md shadow-none">
             <div class="card-header">
                 <h6>Alcoholismo</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="pnpcAlcoholismoCheck"
-                        :checked="formDataCopy.alcoholismo.check" v-model="formDataCopy.alcoholismo.check">
+                        :checked="formData.alcoholismo.check" v-model="formData.alcoholismo.check">
                     <label class="custom-control-label" for="pnpcAlcoholismoCheck"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formDataCopy.alcoholismo.check">
+            <div class="card-body" v-show="formData.alcoholismo.check">
                 <textarea type="text" class="form-control" :disabled="disabled" id="pnpcAlcoholismoDescription" placeholder="Alcoholismo" rows="5"
-                    v-model="formDataCopy.alcoholismo.description"></textarea>
+                    v-model="formData.alcoholismo.description"></textarea>
             </div>
         </div>
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md shadow-none">
             <div class="card-header">
                 <h6>Drogas</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="pnpcDrogasCheck"
-                        :checked="formDataCopy.drogas.check" v-model="formDataCopy.drogas.check">
+                        :checked="formData.drogas.check" v-model="formData.drogas.check">
                     <label class="custom-control-label" for="pnpcDrogasCheck"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formDataCopy.drogas.check">
+            <div class="card-body" v-show="formData.drogas.check">
                 <textarea type="text" class="form-control" :disabled="disabled" id="pnpcDrogasDescription" placeholder="Drogas" rows="5"
-                    v-model="formDataCopy.drogas.description"></textarea>
+                    v-model="formData.drogas.description"></textarea>
             </div>
         </div>
     </div>
 
     <div class="card-single mb-4">
-        <div class="card card-default card-md bg-white">
+        <div class="card card-md shadow-none">
             <div class="card-header">
                 <h6>Estreñimiento</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="pnpcEstreniminentoCheck"
-                        :checked="formDataCopy.estrenimiento.check" v-model="formDataCopy.estrenimiento.check">
+                        :checked="formData.estrenimiento.check" v-model="formData.estrenimiento.check">
                     <label class="custom-control-label" for="pnpcEstreniminentoCheck"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formDataCopy.estrenimiento.check">
+            <div class="card-body" v-show="formData.estrenimiento.check">
                 <textarea type="text" class="form-control" :disabled="disabled" id="pnpcEstreniminentoDescription" placeholder="Drogas" rows="5"
-                    v-model="formDataCopy.estrenimiento.description"></textarea>
+                    v-model="formData.estrenimiento.description"></textarea>
             </div>
         </div>
     </div>

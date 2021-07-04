@@ -56,7 +56,7 @@
                 <div class="projects-tab-content projects-tab-content--progress">
                     <div class="tab-content mt-25" id="mdc">
                         <div class="tab-pane fade active show" id="mccHistorialClinico" role="tabpanel">
-                            <historial-clinico-component :formData="historyData.data.form"></historial-clinico-component>
+                            <historial-clinico-component v-model="historyData.data.form"></historial-clinico-component>
                         </div>
                         <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel">
                             <record-component></record-component>

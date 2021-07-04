@@ -12692,9 +12692,6 @@ table.table-basic tr td.card .card-body,
   border-radius: 10px;
   content: "";
 }
-.atbd-tab .nav-item:not(:last-child) {
-  margin-right: 12px;
-}
 .atbd-tab .nav-link {
   position: relative;
   font-size: 14px;
