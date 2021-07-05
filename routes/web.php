@@ -68,8 +68,9 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}', [MedicalConsultController::class, 'getConsultInfo'])->name('consulta.informacion');
         Route::get('/{id}/historial', [MedicalConsultController::class, 'getHistory'])->name('consulta.historial');
         Route::get('/{id}/doctor', [MedicalConsultController::class, 'getDoctor'])->name('consulta.doctor');
-        Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.estudio.obtener');
-        Route::post('/{id}/estudios', [MedicalConsultController::class, 'createTest'])->name('consulta.estudio.crear');
+        Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.getEstudios');
+        Route::get('/{id}/anexo', [MedicalConsultController::class, 'getSpecialty'])->name('consulta.getAnexo');
+        Route::post('/{id}/estudios', [MedicalConsultController::class, 'createTest'])->name('consulta.createEstudio');
     });
 
     

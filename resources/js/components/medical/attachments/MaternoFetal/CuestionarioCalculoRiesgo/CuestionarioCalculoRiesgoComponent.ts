@@ -1,31 +1,42 @@
 import { MaternoFetalCuestionarioData } from '@data/Medical/Attachments/MaternoFetal/MaternoFetalCuestionario.data';
 import { MaternoFetalCuestionario } from '@interface/Medical/Attachtments/MaternoFetal/options/MaternoFetalCuestionario.interface';
-import {
-    defineComponent
-} from '@vue/runtime-core';
-import {
-    DefineComponent,
-    PropType
-} from 'vue';
+import { defineComponent } from '@vue/runtime-core';
+import { PropType } from 'vue';
 
 export default defineComponent({
     name: 'ColposcopiaComponent',
-    components: {
-    },
-    props:{
+    props: {
+        modelValue: {
+            type: Object as PropType<MaternoFetalCuestionario>,
+            default: MaternoFetalCuestionarioData
+        },
         disabled: {
             type: Boolean as PropType<Boolean>,
             default: true
         },
-        formData: {
-            type: Object as PropType<MaternoFetalCuestionario>,
-            default: MaternoFetalCuestionarioData
-        },
     },
     data(){
         return {
-            formDataCopy: Object.assign({}, this.$props.formData)
+            formData: this.modelValue,
         }
     },
-    methods: {}
+    methods: {},
+    watch: {
+        modelValue: 
+        {
+            handler()
+            {
+                this.formData = this.modelValue;
+            },
+            deep: true
+        },
+        formData:
+        {
+            handler()
+            {
+                this.$emit('update:modelValue', this.formData);
+            },
+            deep: true
+        }
+    }
 })

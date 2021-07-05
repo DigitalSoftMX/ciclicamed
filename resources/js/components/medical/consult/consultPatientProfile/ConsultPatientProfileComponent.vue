@@ -4,9 +4,8 @@
             <div class="card-body text-center pt-30 px-25 pb-0">
                 <div class="account-profile-cards  ">
                     <div class="ap-img d-flex justify-content-center">
-                        <!-- Profile picture image-->
                         <img class="ap-img__main bg-opacity-primary  wh-120 rounded-circle mb-3 "
-                            src="https://demo.jsnorm.com/laravel/strikingdash/img/tm1.png" alt="profile">
+                            :src="`/images/users/${patientData.photo}`" alt="profile" onerror="this.onerror=null;this.src='/svg/person.svg';">
                     </div>
                     <div class="ap-nameAddress">
                         <h4 class="ap-nameAddress__title mb-15">{{`${patientData.first_name} ${patientData.last_name}`}}</h4>
@@ -15,7 +14,7 @@
                         <img src="/svg/phone.svg" class="svg-backgroundColor" alt="Phone">
                         <p>{{patientData.cellphone}}</p>
                         <img src="/svg/email.svg" class="svg-backgroundColor" alt="Phone">
-                        <p>{{patientData.email}}</p>
+                        <p>{{patientData.user.email}}</p>
                     </div>
                     <div
                         class="ap-button account-profile-cards__button button-group d-flex justify-content-center flex-wrap pt-20">
@@ -25,10 +24,6 @@
                 </div>
                 <div class="card-footer mt-20 pt-20 pb-20 px-0">
                     <div class="row mx-0">
-                        <div class="col-12">
-                            <h4>Último diagnóstico</h4>
-                            <p>{{lastDiagnostic}}</p>
-                        </div>
                         <div class="col-12">
                             <h4>Notas</h4>
                             <p>{{consultNote}}</p>

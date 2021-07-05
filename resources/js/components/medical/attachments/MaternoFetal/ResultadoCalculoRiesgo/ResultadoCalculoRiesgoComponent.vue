@@ -4,12 +4,12 @@
             <div class="col-12 col-md-4">
                 <label for="rcrcNumeroFetos">Número de fetos</label>
                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcNumeroFetos"
-                    v-model="formDataCopy.numeroFetos">
+                    v-model="formData.numeroFetos">
             </div>
             <div class="col-12 col-md-8">
                 <label for="rcrcMultipleCorionicidad">Múltiple corionicidad</label>
                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcMultipleCorionicidad"
-                    v-model="formDataCopy.multipleCorionicidad">
+                    v-model="formData.multipleCorionicidad">
             </div>
         </div>
 
@@ -30,33 +30,33 @@
                             <div class="input-group-lg col-12 col-md-4 mb-15">
                                 <label for="">Localización</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto1Localizacion"
-                                    v-model="formDataCopy.feto1.localizacion">
+                                    v-model="formData.feto1.localizacion">
                             </div>
                             <div class="input-group-lg col-12 col-md-4 mb-15">
                                 <label for="">LCC</label>
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto1LCC"
-                                    v-model="formDataCopy.feto1.lcc">
+                                    v-model="formData.feto1.lcc">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Semanas</label>
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto1Semanas"
-                                    v-model="formDataCopy.feto1.semanas">
+                                    v-model="formData.feto1.semanas">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">FCF</label>
                                 <input class="form-control form-control-lg" type="number"
-                                    placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto1FCF" v-model="formDataCopy.feto1.fcf">
+                                    placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto1FCF" v-model="formData.feto1.fcf">
                             </div>
                             <div class="col-md-8 mb-15">
                                 <label for="">Translucencia nucal</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto1TranslucenciaNucal"
-                                    v-model="formDataCopy.feto1.translucenciaNucal">
+                                    v-model="formData.feto1.translucenciaNucal">
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
                                 <div class="custom-control custom-switch switch-primary">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto1IPDuctoVenoso"
-                                        v-model="formDataCopy.feto1.ipDuctoVenoso"
-                                        :checked="formDataCopy.feto1.ipDuctoVenoso">
+                                        v-model="formData.feto1.ipDuctoVenoso"
+                                        :checked="formData.feto1.ipDuctoVenoso">
                                     <label class="custom-control-label" for="rcrcFeto1IPDuctoVenoso">IP ducto
                                         venoso</label>
                                 </div>
@@ -64,21 +64,21 @@
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Onda "A"</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto1OndaA"
-                                    v-model="formDataCopy.feto1.ondaA">
+                                    v-model="formData.feto1.ondaA">
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
                                 <div class="custom-control custom-switch switch-primary">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto1HuesoNasal"
-                                        v-model="formDataCopy.feto1.huesoNasal"
-                                        :checked="formDataCopy.feto1.huesoNasal">
+                                        v-model="formData.feto1.huesoNasal"
+                                        :checked="formData.feto1.huesoNasal">
                                     <label class="custom-control-label" for="rcrcFeto1HuesoNasal">Hueso nasal</label>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
                                 <div class="custom-control custom-switch switch-primary">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto1Regurgitacion"
-                                        v-model="formDataCopy.feto1.regurgitacionTricuspidea"
-                                        :checked="formDataCopy.feto1.regurgitacionTricuspidea">
+                                        v-model="formData.feto1.regurgitacionTricuspidea"
+                                        :checked="formData.feto1.regurgitacionTricuspidea">
                                     <label class="custom-control-label" for="rcrcFeto1Regurgitacion">Regurgitacion
                                         Tricuspídea</label>
                                 </div>
@@ -88,12 +88,12 @@
                                 <label for="">Defectos
                                     mayores</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto1DefectosMayores"
-                                    v-model="formDataCopy.feto1.defectosMayores">
+                                    v-model="formData.feto1.defectosMayores">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Placenta</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto1Placenta"
-                                    v-model="formDataCopy.feto1.placenta">
+                                    v-model="formData.feto1.placenta">
                             </div>
                         </div>
 
@@ -110,7 +110,7 @@
                                             <span class="mr-5">1:</span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto1Tri21Edad"
-                                                v-model="formDataCopy.feto1.calculoFactorRiesgo.trisonomia21.riesgoBasal">
+                                                v-model="formData.feto1.calculoFactorRiesgo.trisonomia21.riesgoBasal">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -121,7 +121,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto1Tri21USG"
-                                                v-model="formDataCopy.feto1.calculoFactorRiesgo.trisonomia21.usg">
+                                                v-model="formData.feto1.calculoFactorRiesgo.trisonomia21.usg">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -132,7 +132,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto1Tri21DUOTEST"
-                                                v-model="formDataCopy.feto1.calculoFactorRiesgo.trisonomia21.duoTest">
+                                                v-model="formData.feto1.calculoFactorRiesgo.trisonomia21.duoTest">
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                                             <span class="mr-5">1:</span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto1Tri18Edad"
-                                                v-model="formDataCopy.feto1.calculoFactorRiesgo.trisonomia18.riesgoBasal">
+                                                v-model="formData.feto1.calculoFactorRiesgo.trisonomia18.riesgoBasal">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -157,7 +157,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto1Tri18USG"
-                                                v-model="formDataCopy.feto1.calculoFactorRiesgo.trisonomia18.usg">
+                                                v-model="formData.feto1.calculoFactorRiesgo.trisonomia18.usg">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -168,7 +168,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto1Tri18DUOTEST"
-                                                v-model="formDataCopy.feto1.calculoFactorRiesgo.trisonomia18.duoTest">
+                                                v-model="formData.feto1.calculoFactorRiesgo.trisonomia18.duoTest">
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                                             <span class="mr-5">1:</span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto1Tri13Edad"
-                                                v-model="formDataCopy.feto1.calculoFactorRiesgo.trisonomia13.riesgoBasal">
+                                                v-model="formData.feto1.calculoFactorRiesgo.trisonomia13.riesgoBasal">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -193,7 +193,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto1Tri13USG"
-                                                v-model="formDataCopy.feto1.calculoFactorRiesgo.trisonomia13.usg">
+                                                v-model="formData.feto1.calculoFactorRiesgo.trisonomia13.usg">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -204,7 +204,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto1Tri13DUOTEST"
-                                                v-model="formDataCopy.feto1.calculoFactorRiesgo.trisonomia13.duoTest">
+                                                v-model="formData.feto1.calculoFactorRiesgo.trisonomia13.duoTest">
                                         </div>
                                     </div>
                                 </div>
@@ -230,33 +230,33 @@
                             <div class="input-group-lg col-12 col-md-4 mb-15">
                                 <label for="">Localización</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto2Localizacion"
-                                    v-model="formDataCopy.feto2.localizacion">
+                                    v-model="formData.feto2.localizacion">
                             </div>
                             <div class="input-group-lg col-12 col-md-4 mb-15">
                                 <label for="">LCC</label>
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto2LCC"
-                                    v-model="formDataCopy.feto2.lcc">
+                                    v-model="formData.feto2.lcc">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Semanas</label>
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto2Semanas"
-                                    v-model="formDataCopy.feto2.semanas">
+                                    v-model="formData.feto2.semanas">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">FCF</label>
                                 <input class="form-control form-control-lg" type="number"
-                                    placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto2FCF" v-model="formDataCopy.feto2.fcf">
+                                    placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto2FCF" v-model="formData.feto2.fcf">
                             </div>
                             <div class="col-md-8 mb-15">
                                 <label for="">Translucencia nucal</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto2TranslucenciaNucal"
-                                    v-model="formDataCopy.feto2.translucenciaNucal">
+                                    v-model="formData.feto2.translucenciaNucal">
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
                                 <div class="custom-control custom-switch switch-primary">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto2IPDuctoVenoso"
-                                        v-model="formDataCopy.feto2.ipDuctoVenoso"
-                                        :checked="formDataCopy.feto2.ipDuctoVenoso">
+                                        v-model="formData.feto2.ipDuctoVenoso"
+                                        :checked="formData.feto2.ipDuctoVenoso">
                                     <label class="custom-control-label" for="rcrcFeto2IPDuctoVenoso">IP ducto
                                         venoso</label>
                                 </div>
@@ -264,21 +264,21 @@
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Onda "A"</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto2OndaA"
-                                    v-model="formDataCopy.feto2.ondaA">
+                                    v-model="formData.feto2.ondaA">
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
                                 <div class="custom-control custom-switch switch-primary">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto2HuesoNasal"
-                                        v-model="formDataCopy.feto2.huesoNasal"
-                                        :checked="formDataCopy.feto2.huesoNasal">
+                                        v-model="formData.feto2.huesoNasal"
+                                        :checked="formData.feto2.huesoNasal">
                                     <label class="custom-control-label" for="rcrcFeto2HuesoNasal">Hueso nasal</label>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
                                 <div class="custom-control custom-switch switch-primary">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto2Regurgitacion"
-                                        v-model="formDataCopy.feto2.regurgitacionTricuspidea"
-                                        :checked="formDataCopy.feto2.regurgitacionTricuspidea">
+                                        v-model="formData.feto2.regurgitacionTricuspidea"
+                                        :checked="formData.feto2.regurgitacionTricuspidea">
                                     <label class="custom-control-label" for="rcrcFeto2Regurgitacion">Regurgitacion
                                         Tricuspídea</label>
                                 </div>
@@ -288,12 +288,12 @@
                                 <label for="">Defectos
                                     mayores</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto2DefectosMayores"
-                                    v-model="formDataCopy.feto2.defectosMayores">
+                                    v-model="formData.feto2.defectosMayores">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Placenta</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto2Placenta"
-                                    v-model="formDataCopy.feto2.placenta">
+                                    v-model="formData.feto2.placenta">
                             </div>
                         </div>
 
@@ -310,7 +310,7 @@
                                             <span class="mr-5">1:</span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto2Tri21Edad"
-                                                v-model="formDataCopy.feto2.calculoFactorRiesgo.trisonomia21.riesgoBasal">
+                                                v-model="formData.feto2.calculoFactorRiesgo.trisonomia21.riesgoBasal">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -321,7 +321,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto2Tri21USG"
-                                                v-model="formDataCopy.feto2.calculoFactorRiesgo.trisonomia21.usg">
+                                                v-model="formData.feto2.calculoFactorRiesgo.trisonomia21.usg">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -332,7 +332,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto2Tri21DUOTEST"
-                                                v-model="formDataCopy.feto2.calculoFactorRiesgo.trisonomia21.duoTest">
+                                                v-model="formData.feto2.calculoFactorRiesgo.trisonomia21.duoTest">
                                         </div>
                                     </div>
                                 </div>
@@ -346,7 +346,7 @@
                                             <span class="mr-5">1:</span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto2Tri18Edad"
-                                                v-model="formDataCopy.feto2.calculoFactorRiesgo.trisonomia18.riesgoBasal">
+                                                v-model="formData.feto2.calculoFactorRiesgo.trisonomia18.riesgoBasal">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -357,7 +357,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto2Tri18USG"
-                                                v-model="formDataCopy.feto2.calculoFactorRiesgo.trisonomia18.usg">
+                                                v-model="formData.feto2.calculoFactorRiesgo.trisonomia18.usg">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -368,7 +368,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto2Tri18DUOTEST"
-                                                v-model="formDataCopy.feto2.calculoFactorRiesgo.trisonomia18.duoTest">
+                                                v-model="formData.feto2.calculoFactorRiesgo.trisonomia18.duoTest">
                                         </div>
                                     </div>
                                 </div>
@@ -382,7 +382,7 @@
                                             <span class="mr-5">1:</span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto2Tri13Edad"
-                                                v-model="formDataCopy.feto2.calculoFactorRiesgo.trisonomia13.riesgoBasal">
+                                                v-model="formData.feto2.calculoFactorRiesgo.trisonomia13.riesgoBasal">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -393,7 +393,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto2Tri13USG"
-                                                v-model="formDataCopy.feto2.calculoFactorRiesgo.trisonomia13.usg">
+                                                v-model="formData.feto2.calculoFactorRiesgo.trisonomia13.usg">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -404,7 +404,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto2Tri13DUOTEST"
-                                                v-model="formDataCopy.feto2.calculoFactorRiesgo.trisonomia13.duoTest">
+                                                v-model="formData.feto2.calculoFactorRiesgo.trisonomia13.duoTest">
                                         </div>
                                     </div>
                                 </div>
@@ -430,33 +430,33 @@
                             <div class="input-group-lg col-12 col-md-4 mb-15">
                                 <label for="">Localización</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto3Localizacion"
-                                    v-model="formDataCopy.feto3.localizacion">
+                                    v-model="formData.feto3.localizacion">
                             </div>
                             <div class="input-group-lg col-12 col-md-4 mb-15">
                                 <label for="">LCC</label>
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto3LCC"
-                                    v-model="formDataCopy.feto3.lcc">
+                                    v-model="formData.feto3.lcc">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Semanas</label>
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto3Semanas"
-                                    v-model="formDataCopy.feto3.semanas">
+                                    v-model="formData.feto3.semanas">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">FCF</label>
                                 <input class="form-control form-control-lg" type="number"
-                                    placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto3FCF" v-model="formDataCopy.feto3.fcf">
+                                    placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto3FCF" v-model="formData.feto3.fcf">
                             </div>
                             <div class="col-md-8 mb-15">
                                 <label for="">Translucencia nucal</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto3TranslucenciaNucal"
-                                    v-model="formDataCopy.feto3.translucenciaNucal">
+                                    v-model="formData.feto3.translucenciaNucal">
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
                                 <div class="custom-control custom-switch switch-primary">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto3IPDuctoVenoso"
-                                        v-model="formDataCopy.feto3.ipDuctoVenoso"
-                                        :checked="formDataCopy.feto3.ipDuctoVenoso">
+                                        v-model="formData.feto3.ipDuctoVenoso"
+                                        :checked="formData.feto3.ipDuctoVenoso">
                                     <label class="custom-control-label" for="rcrcFeto3IPDuctoVenoso">IP ducto
                                         venoso</label>
                                 </div>
@@ -464,21 +464,21 @@
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Onda "A"</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto3OndaA"
-                                    v-model="formDataCopy.feto3.ondaA">
+                                    v-model="formData.feto3.ondaA">
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
                                 <div class="custom-control custom-switch switch-primary">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto3HuesoNasal"
-                                        v-model="formDataCopy.feto3.huesoNasal"
-                                        :checked="formDataCopy.feto3.huesoNasal">
+                                        v-model="formData.feto3.huesoNasal"
+                                        :checked="formData.feto3.huesoNasal">
                                     <label class="custom-control-label" for="rcrcFeto3HuesoNasal">Hueso nasal</label>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
                                 <div class="custom-control custom-switch switch-primary">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto3Regurgitacion"
-                                        v-model="formDataCopy.feto3.regurgitacionTricuspidea"
-                                        :checked="formDataCopy.feto3.regurgitacionTricuspidea">
+                                        v-model="formData.feto3.regurgitacionTricuspidea"
+                                        :checked="formData.feto3.regurgitacionTricuspidea">
                                     <label class="custom-control-label" for="rcrcFeto3Regurgitacion">Regurgitacion
                                         Tricuspídea</label>
                                 </div>
@@ -488,12 +488,12 @@
                                 <label for="">Defectos
                                     mayores</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto3DefectosMayores"
-                                    v-model="formDataCopy.feto3.defectosMayores">
+                                    v-model="formData.feto3.defectosMayores">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Placenta</label>
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto3Placenta"
-                                    v-model="formDataCopy.feto3.placenta">
+                                    v-model="formData.feto3.placenta">
                             </div>
                         </div>
 
@@ -510,7 +510,7 @@
                                             <span class="mr-5">1:</span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto3Tri21Edad"
-                                                v-model="formDataCopy.feto3.calculoFactorRiesgo.trisonomia21.riesgoBasal">
+                                                v-model="formData.feto3.calculoFactorRiesgo.trisonomia21.riesgoBasal">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -521,7 +521,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto3Tri21USG"
-                                                v-model="formDataCopy.feto3.calculoFactorRiesgo.trisonomia21.usg">
+                                                v-model="formData.feto3.calculoFactorRiesgo.trisonomia21.usg">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -532,7 +532,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto3Tri21DUOTEST"
-                                                v-model="formDataCopy.feto3.calculoFactorRiesgo.trisonomia21.duoTest">
+                                                v-model="formData.feto3.calculoFactorRiesgo.trisonomia21.duoTest">
                                         </div>
                                     </div>
                                 </div>
@@ -546,7 +546,7 @@
                                             <span class="mr-5">1:</span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto3Tri18Edad"
-                                                v-model="formDataCopy.feto3.calculoFactorRiesgo.trisonomia18.riesgoBasal">
+                                                v-model="formData.feto3.calculoFactorRiesgo.trisonomia18.riesgoBasal">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -557,7 +557,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto3Tri18USG"
-                                                v-model="formDataCopy.feto3.calculoFactorRiesgo.trisonomia18.usg">
+                                                v-model="formData.feto3.calculoFactorRiesgo.trisonomia18.usg">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -568,7 +568,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto3Tri18DUOTEST"
-                                                v-model="formDataCopy.feto3.calculoFactorRiesgo.trisonomia18.duoTest">
+                                                v-model="formData.feto3.calculoFactorRiesgo.trisonomia18.duoTest">
                                         </div>
                                     </div>
                                 </div>
@@ -582,7 +582,7 @@
                                             <span class="mr-5">1:</span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto3Tri13Edad"
-                                                v-model="formDataCopy.feto3.calculoFactorRiesgo.trisonomia13.riesgoBasal">
+                                                v-model="formData.feto3.calculoFactorRiesgo.trisonomia13.riesgoBasal">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -593,7 +593,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto3Tri13USG"
-                                                v-model="formDataCopy.feto3.calculoFactorRiesgo.trisonomia13.usg">
+                                                v-model="formData.feto3.calculoFactorRiesgo.trisonomia13.usg">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mb-15">
@@ -604,7 +604,7 @@
                                             </span>
                                             <input class="form-control form-control-lg" type="number"
                                                 :disabled="disabled" id="rcrcFeto3Tri13DUOTEST"
-                                                v-model="formDataCopy.feto3.calculoFactorRiesgo.trisonomia13.duoTest">
+                                                v-model="formData.feto3.calculoFactorRiesgo.trisonomia13.duoTest">
                                         </div>
                                     </div>
                                 </div>
@@ -633,12 +633,12 @@
                         <div class="col-12 row align-items-center justify-content-between">
                             <div class="col-md-8">
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcIPArteriaDerecha"
-                                    v-model="formDataCopy.dopplerArteriasUterinas.ipArteriaDerecha.description">
+                                    v-model="formData.dopplerArteriasUterinas.ipArteriaDerecha.description">
                             </div>
                             <div class="col-12 col-md-4 tbd-switch-wrap">
                                 <div class="custom-control custom-switch switch-primary switch-lg ">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcIPArteriaDerechaNotch"
-                                        v-model="formDataCopy.dopplerArteriasUterinas.ipArteriaDerecha.notch">
+                                        v-model="formData.dopplerArteriasUterinas.ipArteriaDerecha.notch">
                                     <label class="custom-control-label" for="rcrcIPArteriaDerechaNotch">Notch</label>
                                 </div>
                             </div>
@@ -651,12 +651,12 @@
                         <div class="col-12 row align-items-center justify-content-between">
                             <div class="col-md-8">
                                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcIPArteriaIzquierda"
-                                    v-model="formDataCopy.dopplerArteriasUterinas.ipArteriaIzquierda.description">
+                                    v-model="formData.dopplerArteriasUterinas.ipArteriaIzquierda.description">
                             </div>
                             <div class="col-12 col-md-4 tbd-switch-wrap">
                                 <div class="custom-control custom-switch switch-primary switch-lg ">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcIPArteriaIzquierdaNotch"
-                                        v-model="formDataCopy.dopplerArteriasUterinas.ipArteriaDerecha.notch">
+                                        v-model="formData.dopplerArteriasUterinas.ipArteriaDerecha.notch">
                                     <label class="custom-control-label" for="rcrcIPArteriaIzquierdaNotch">Notch</label>
                                 </div>
                             </div>
@@ -666,7 +666,7 @@
                         <div class="col-12">
                             <label for="rcrcIPArteriaMedia">IP medio de arterias uterinas</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcIPArteriaMedia"
-                                v-model="formDataCopy.dopplerArteriasUterinas.ipMedioArterias">
+                                v-model="formData.dopplerArteriasUterinas.ipMedioArterias">
                         </div>
                     </div>
                 </div>
@@ -677,7 +677,7 @@
             <label for="rcrcLongitudCervical">Longitud cervical</label>
             <div class="input-group col-12 p-0">
                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcLongitudCervical"
-                    v-model="formDataCopy.longitudCervical">
+                    v-model="formData.longitudCervical">
                 <div class="input-group-append">
                     <span class="input-group-text" :disabled="disabled" id="">mm</span>
                 </div>
@@ -698,48 +698,48 @@
                         <div class="col-12 col-md-6 mb-10">
                             <label for="rcrcFechaToma">Fecha de la toma</label>
                             <input class="form-control form-control-lg" type="date" :disabled="disabled" id="rcrcFechaToma"
-                                v-model="formDataCopy.marcadoresSericos.fechaToma">
+                                v-model="formData.marcadoresSericos.fechaToma">
                         </div>
                         <div class="col-12 col-md-6 mb-10">
                             <label for="rcrcFechaProcesamiento">Fecha de procesamiento</label>
                             <input class="form-control form-control-lg" type="date" :disabled="disabled" id="rcrcFechaProcesamiento"
-                                v-model="formDataCopy.marcadoresSericos.fechaProcesamiento">
+                                v-model="formData.marcadoresSericos.fechaProcesamiento">
                         </div>
                     </div>
                     <div class="col-12 mb-10 row mx-0">
                         <div class="col-12 col-md-6 mb-10">
                             <label for="rcrcBHGC">B-HGC</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcBHGC"
-                                v-model="formDataCopy.marcadoresSericos.bhgc.bhgc">
+                                v-model="formData.marcadoresSericos.bhgc.bhgc">
                         </div>
                         <div class="col-12 col-md-6 mb-10">
                             <label for="rcrcBHGCmom">MoM</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcBHGCmom"
-                                v-model="formDataCopy.marcadoresSericos.bhgc.mom">
+                                v-model="formData.marcadoresSericos.bhgc.mom">
                         </div>
                     </div>
                     <div class="col-12 mb-10 row mx-0">
                         <div class="col-12 col-md-6 mb-10">
                             <label for="">PAPP-A</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcPAPPA"
-                                v-model="formDataCopy.marcadoresSericos.pappa.pappa">
+                                v-model="formData.marcadoresSericos.pappa.pappa">
                         </div>
                         <div class="col-12 col-md-6 mb-10">
                             <label for="">MoM</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcPAPPAmom"
-                                v-model="formDataCopy.marcadoresSericos.pappa.mom">
+                                v-model="formData.marcadoresSericos.pappa.mom">
                         </div>
                     </div>
                     <div class="col-12 mb-10 row mx-0">
                         <div class="col-12 col-md-6 mb-10">
                             <label for="">PIGF</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcPIGF"
-                                v-model="formDataCopy.marcadoresSericos.pigf.pigf">
+                                v-model="formData.marcadoresSericos.pigf.pigf">
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="">MoM</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcPAPPAmom"
-                                v-model="formDataCopy.marcadoresSericos.pigf.mom">
+                                v-model="formData.marcadoresSericos.pigf.mom">
                         </div>
                     </div>
                 </div>
@@ -760,18 +760,18 @@
                         <div class="col-12 col-md-6 mb-15">
                             <label for="rcrcPreclamsiaAntes">Para preclamsia antes de 34 semanas</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcPreclamsiaAntes"
-                                v-model="formDataCopy.calculoRiesgo.preclamsia">
+                                v-model="formData.calculoRiesgo.preclamsia">
                         </div>
                         <div class="col-12 col-md-6 mb-15">
                             <label for="rcrcRestriccionCrecimiento">Para restricción de crecimiento antes de 37
                                 semanas</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcRestriccionCrecimiento"
-                                v-model="formDataCopy.calculoRiesgo.restriccionCrecimiento">
+                                v-model="formData.calculoRiesgo.restriccionCrecimiento">
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="rcrcPartoPretermino">Para parto pretérmino antes de 34 semanas</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcPartoPretermino"
-                                v-model="formDataCopy.calculoRiesgo.partoPretermino">
+                                v-model="formData.calculoRiesgo.partoPretermino">
                         </div>
                     </div>
                 </div>

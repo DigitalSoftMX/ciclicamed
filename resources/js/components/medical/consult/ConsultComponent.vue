@@ -1,7 +1,8 @@
 <template>
     <div class="row">
         <div class="col-12 col-md-3 p-md-0 mb-25 mb-md-0">
-            <patient-profile-component :patientData="patientData" :clock="clock" :consultNote="consultData.consult_reason"></patient-profile-component>
+            <patient-profile-component :patientData="patientData" :clock="clock"
+                :consultNote="consultData.consult_reason"></patient-profile-component>
         </div>
         <div class="col-12 col-md-9 p-0">
             <div class="container-fluid">
@@ -22,7 +23,8 @@
                                         <li class="nav-item px-0">
                                             <a class="nav-link px-3 py-2 rounded" id="mccExpedienteClinico-tab"
                                                 data-toggle="pill" href="#mccExpedienteClinico" role="tab"
-                                                aria-controls="mccExpedienteClinico" aria-selected="false">Expediente</a>
+                                                aria-controls="mccExpedienteClinico"
+                                                aria-selected="false">Expediente</a>
                                         </li>
                                         <li class="nav-item px-0">
                                             <a class="nav-link px-3 py-2 rounded" id="mccEspecialidades-tab"
@@ -56,25 +58,41 @@
                 <div class="projects-tab-content projects-tab-content--progress">
                     <div class="tab-content mt-25" id="mdc">
                         <div class="tab-pane fade active show" id="mccHistorialClinico" role="tabpanel">
-                            <historial-clinico-component v-model="historyData.data.form"></historial-clinico-component>
+                            <historial-clinico-component v-model="historyData.data.form" :disabled="false">
+                            </historial-clinico-component>
                         </div>
                         <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel">
-                            <record-component></record-component>
+                            <record-component :patientID="this.consultData.patient_id" :specialtyID="this.consultData.medicalspecialty_id"></record-component>
                         </div>
                         <div class="tab-pane fade" id="mccEspecialidades" role="tabpanel"
                             aria-labelledby="mccEspecialidades-tab">
-                            <component :is="specialties"></component>
+                            <uroginecologia-component v-if="consultData.medicalspecialty_id === 1" v-model="attachmentForm.uroginecología"></uroginecologia-component>
+                            <nutricion-general-component v-else-if="consultData.medicalspecialty_id === 2" v-model="attachmentForm.nutricionGeneral"></nutricion-general-component>
+                            <!-- <climaterio-salud-osea-component v-else-if="consultData.medicalspecialty_id === 2" v-model="attachmentForm.climaterioSaludOsea"></climaterio-salud-osea-component> -->
+                            <materno-fetal-component v-else-if="consultData.medicalspecialty_id === 3" v-model="attachmentForm.maternoFetal"></materno-fetal-component>
+
+                            <nutricion-perinatal-component v-else-if="consultData.medicalspecialty_id === 4" v-model="attachmentForm.nutricionPerinatal"></nutricion-perinatal-component>
+                            <nutricion-general-component v-else-if="consultData.medicalspecialty_id === 5" v-model="attachmentForm.nutricionGeneral"></nutricion-general-component>
+
+                            <biologia-reproduccion-component v-else-if="consultData.medicalspecialty_id === 7" v-model="attachmentForm.biologiaReproduccion"></biologia-reproduccion-component>
+                            <cirugia-endoscopica-component v-else-if="consultData.medicalspecialty_id === 8" v-model="attachmentForm.cirugiaEndoscopica"></cirugia-endoscopica-component>
+                            <oncologia-component v-else-if="consultData.medicalspecialty_id === 9" v-model="attachmentForm.oncologia"></oncologia-component>
+                            <colposcopia-component v-else-if="consultData.medicalspecialty_id === 10" v-model="attachmentForm.colposcopia"></colposcopia-component>
+                            
+                            
                         </div>
                         <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
                             aria-labelledby="mccCitasSubsecuentes-tab">
-                            <citas-subsecuentes-component :formData="followUp.pivot.data.form"></citas-subsecuentes-component>
+                            <citas-subsecuentes-component v-model="followUp.follow_up.data.form" :disabled="false">
+                            </citas-subsecuentes-component>
                         </div>
                         <div class="tab-pane fade" id="mccReceta" role="tabpanel" aria-labelledby="mccReceta-tab">
-                            <prescription-component :prescriptionData="prescriptionData" :patientData="patientData" :doctorData="doctorData" :consultData="consultData"></prescription-component>
+                            <prescription-component v-model="prescriptionData" :disabled="false">
+                            </prescription-component>
                         </div>
                         <div class="tab-pane fade" id="mccOrdenMedica" role="tabpanel"
                             aria-labelledby="mccOrdenMedica-tab">
-                            <test-order-component :patientData="patientData" :doctorData="doctorData" :consultData="consultData" :orderData="testData"></test-order-component>
+                            <test-order-component v-model="testData" :disabled="false"></test-order-component>
                         </div>
                     </div>
                 </div>

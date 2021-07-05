@@ -188,14 +188,25 @@ class MedicalConsultController extends Controller
     public function getFollowUps($id)
     {
         $consult = MedicalConsult::findOrFail($id);
-        $consult->followUps->last()->pivot->data = json_decode($consult->followUps->last()->pivot->data);
-        return response()->json($consult->followUps->last());
+        if($consult->followUp->first())
+        {
+            $consult->followUp->first()->followUp->data = json_decode($consult->followUp->first()->followUp->data);
+            return response()->json($consult->followUp->first());
+        }
+        return response()->json(null, 404);
     }
 
     public function getPrescriptions($id)
     {
         $consult = MedicalConsult::findOrFail($id);
         return response()->json($consult->prescriptions->load('medicament'));
+    }
+
+    public function getSpecialty($id)
+    {
+        $consult = MedicalConsult::findOrFail($id);
+        $consult->attachments->first()->pivot->data = json_decode($consult->attachments->first()->pivot->data);
+        return response()->json($consult->attachments->first()->pivot);
     }
 
     public function createPrescription(Request $request, $id)

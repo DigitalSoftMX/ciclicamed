@@ -1,31 +1,42 @@
 import { ColposcopiaData } from '@data/Medical/Attachments/Colposcopia.data';
 import { Colposcopia } from '@interface/Medical/Attachtments/Colposcopia.interface';
-import {
-    defineComponent
-} from '@vue/runtime-core';
-import {
-    DefineComponent,
-    PropType
-} from 'vue';
+import { defineComponent } from '@vue/runtime-core';
+import { PropType } from 'vue';
 
 export default defineComponent({
     name: 'ColposcopiaComponent',
-    components: {
-    },
-    props:{
+    props: {
+        modelValue: {
+            type: Object as PropType<Colposcopia>,
+            default: ColposcopiaData
+        },
         disabled: {
             type: Boolean as PropType<Boolean>,
             default: true
         },
-        formData: {
-            type: Object as PropType<Colposcopia>,
-            default: ColposcopiaData
-        },
     },
     data(){
         return {
-            formDataCopy: Object.assign({}, this.$props.formData)
+            formData: this.modelValue,
         }
     },
-    methods: {}
+    methods: {},
+    watch: {
+        modelValue: 
+        {
+            handler()
+            {
+                this.formData = this.modelValue;
+            },
+            deep: true
+        },
+        formData:
+        {
+            handler()
+            {
+                this.$emit('update:modelValue', this.formData);
+            },
+            deep: true
+        }
+    }
 })

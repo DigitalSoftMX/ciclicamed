@@ -27,12 +27,12 @@ class MedicalSpecialty extends Model
         return $this->belongsToMany(Employee::class, 'employee_licenses', 'medicalspecialty_id', 'employee_id')->withPivot('degree_title', 'license_number');
     }
 
-    public function medicalAttachment()
+    public function attachment()
     {
         return $this->hasMany(MedicalAttachment::class);
     }
 
-    public function medicalFollowUp()
+    public function followUp()
     {
         return $this->hasMany(MedicalAttachmentFollowUp::class);
     }

@@ -16,7 +16,7 @@
                     <div class="col-12 col-md-6 mb-25">
                         <label for="cecPenetracion">Penetración</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecPenetracion"
-                            v-model="formDataCopy.cervix.penetracion" :value="formDataCopy.cervix.penetracion">
+                            v-model="formData.cervix.penetracion" :value="formData.cervix.penetracion">
                             <option value="Posterior">Posterior</option>
                             <option value="Central">Central</option>
                             <option value="Anterior">Anterior</option>
@@ -27,8 +27,8 @@
                     </div>
                     <div class="col-12 col-md-6 mb-25">
                         <label for="cecOCE">OCE</label>
-                        <select class="form-control form-control-lg" :disabled="disabled" id="cecOCE" v-model="formDataCopy.cervix.oce"
-                            :value="formDataCopy.cervix.oce">
+                        <select class="form-control form-control-lg" :disabled="disabled" id="cecOCE" v-model="formData.cervix.oce"
+                            :value="formData.cervix.oce">
                             <option value="Permeable">Permeable</option>
                             <option value="EstenoicoPermeabiliza">Estenóico (se permeabiliza)</option>
                             <option value="EstenoicoNoPermeabiliza">Estenótico (no se permeabiliza)</option>
@@ -37,8 +37,8 @@
                     <div class="col-12 col-md-6 mb-25">
                         <label for="cecCanalEndocervical">Canal endocervical</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecCanalEndocervical"
-                            v-model="formDataCopy.cervix.canalEndocervical"
-                            :value="formDataCopy.cervix.canalEndocervical">
+                            v-model="formData.cervix.canalEndocervical"
+                            :value="formData.cervix.canalEndocervical">
                             <option value="TubularPermeable">Tubular permeable</option>
                             <option value="EstenoicoPermeabiliza">Estenóico (se permeabiliza)</option>
                             <option value="EstenoicoNoPermeabiliza">Estenótico (no se permeabiliza)</option>
@@ -47,16 +47,16 @@
                     <div class="col-12 col-md-6 mb-25">
                         <label for="">Epitelio glandular</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecEpitelioGlandular"
-                            v-model="formDataCopy.cervix.epitelioGlandular"
-                            :value="formDataCopy.cervix.epitelioGlandular">
+                            v-model="formData.cervix.epitelioGlandular"
+                            :value="formData.cervix.epitelioGlandular">
                             <option value="Atrofico">Atrófico</option>
                             <option value="Adecuado">Adecuado</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="">OCI</label>
-                        <select class="form-control form-control-lg" :disabled="disabled" id="cecOCI" v-model="formDataCopy.cervix.oci"
-                            :value="formDataCopy.cervix.oci">
+                        <select class="form-control form-control-lg" :disabled="disabled" id="cecOCI" v-model="formData.cervix.oci"
+                            :value="formData.cervix.oci">
                             <option value="TubularPermeable">Tubular permeable</option>
                             <option value="EstenoicoPermeabiliza">Estenóico (se permeabiliza)</option>
                             <option value="EstenoicoNoPermeabiliza">Estenótico (no se permeabiliza)</option>
@@ -76,7 +76,7 @@
                     <div class="col-12 col-md-6 mb-25 mb-md-0">
                         <label for="cecPosicion">Posición</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecPosicion"
-                            v-model="formDataCopy.utero.posicion" :value="formDataCopy.utero.posicion">
+                            v-model="formData.utero.posicion" :value="formData.utero.posicion">
                             <option value="AVE">AVE</option>
                             <option value="Central">Central</option>
                             <option value="RVF">RVF</option>
@@ -96,7 +96,7 @@
                     <div class="col-12 col-md-6 mb-25">
                         <label for="cecDistension">Distensión</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecDistension"
-                            v-model="formDataCopy.cavidadUterina.distension">
+                            v-model="formData.cavidadUterina.distension">
                             <option value="AVE">AVE</option>
                             <option value="Central">Central</option>
                             <option value="RVF">RVF</option>
@@ -105,7 +105,7 @@
                     <div class="col-12 col-md-6 mb-25">
                         <label for="cecDefectos">Defectos</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecDefectos"
-                            v-model="formDataCopy.cavidadUterina.defectos">
+                            v-model="formData.cavidadUterina.defectos">
                             <option value="Proyecciones">Proyecciones</option>
                             <option value="Hundimiento">Hundimiento</option>
                         </select>
@@ -113,12 +113,12 @@
                     <div class="col-12 col-md-6">
                         <label for="cecTamanio">Tamaño</label>
                         <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecTamanio"
-                            v-model="formDataCopy.cavidadUterina.tamanio"></textarea>
+                            v-model="formData.cavidadUterina.tamanio"></textarea>
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="cecForma">Forma</label>
                         <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecForma"
-                            v-model="formDataCopy.cavidadUterina.forma"></textarea>
+                            v-model="formData.cavidadUterina.forma"></textarea>
                     </div>
                 </div>
             </div>
@@ -134,14 +134,14 @@
                     <div class="col-12 mb-25">
                         <div class="custom-control custom-switch switch-primary switch-md">
                             <input type="checkbox" class="custom-control-input" :disabled="disabled" id="cecAtrofico"
-                                v-model="formDataCopy.endometrio.atrofico" :checked="formDataCopy.endometrio.atrofico">
+                                v-model="formData.endometrio.atrofico" :checked="formData.endometrio.atrofico">
                             <label class="custom-control-label" for="cecAtrofico">Atrófico</label>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mb-25">
                         <label for="cecProliferativo">Proliferativo</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecProliferativo"
-                            v-model="formDataCopy.endometrio.proliferativo">
+                            v-model="formData.endometrio.proliferativo">
                             <option value="Temprano">Temprano</option>
                             <option value="Tardio">Tardío</option>
                         </select>
@@ -149,7 +149,7 @@
                     <div class="col-12 col-md-6 mb-25">
                         <label for="cecSecretor">Secretor</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecSecretor"
-                            v-model="formDataCopy.endometrio.secretor">
+                            v-model="formData.endometrio.secretor">
                             <option value="Temprano">Temprano</option>
                             <option value="Tardio">Tardío</option>
                         </select>
@@ -157,7 +157,7 @@
                     <div class="col-12">
                         <label for="">Anormal</label>
                         <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecAnormal"
-                            v-model="formDataCopy.endometrio.anormal"></textarea>
+                            v-model="formData.endometrio.anormal"></textarea>
                     </div>
                 </div>
             </div>
@@ -176,14 +176,14 @@
                                 <h6>Derecho</h6>
                                 <div class="custom-control custom-switch switch-primary switch-md ">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="cecDerechoChecked"
-                                        v-model="formDataCopy.ostium.derecho.checked"
-                                        :checked="formDataCopy.ostium.derecho.checked">
+                                        v-model="formData.ostium.derecho.checked"
+                                        :checked="formData.ostium.derecho.checked">
                                     <label class="custom-control-label" for="cecDerechoChecked"></label>
                                 </div>
                             </div>
-                            <div class="card-body bg-normal" v-show="formDataCopy.ostium.derecho.checked">
+                            <div class="card-body bg-normal" v-show="formData.ostium.derecho.checked">
                                 <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecDerechoDescription"
-                                    v-model="formDataCopy.ostium.derecho.description"></textarea>
+                                    v-model="formData.ostium.derecho.description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -193,14 +193,14 @@
                                 <h6>Izquierdo</h6>
                                 <div class="custom-control custom-switch switch-primary switch-md ">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="cecIzquierdoChecked"
-                                        v-model="formDataCopy.ostium.izquierdo.checked"
-                                        :checked="formDataCopy.ostium.izquierdo.checked">
+                                        v-model="formData.ostium.izquierdo.checked"
+                                        :checked="formData.ostium.izquierdo.checked">
                                     <label class="custom-control-label" for="cecIzquierdoChecked"></label>
                                 </div>
                             </div>
-                            <div class="card-body bg-normal" v-show="formDataCopy.ostium.izquierdo.checked">
+                            <div class="card-body bg-normal" v-show="formData.ostium.izquierdo.checked">
                                 <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecIzquierdoDescription"
-                                    v-model="formDataCopy.ostium.izquierdo.description"></textarea>
+                                    v-model="formData.ostium.izquierdo.description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -208,27 +208,27 @@
                         <div class="col-12 col-md-6">
                             <label for="cecVisible">Visible</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecVisible"
-                                v-model="formDataCopy.ostium.visible"></textarea>
+                                v-model="formData.ostium.visible"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="cecTomaBiopsia">Toma biopsia</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecTomaBiopsia"
-                                v-model="formDataCopy.ostium.tomaBiopsia"></textarea>
+                                v-model="formData.ostium.tomaBiopsia"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="cecColocacionDIU">Colocación DIU</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecColocacionDIU"
-                                v-model="formDataCopy.ostium.colocacionDiu"></textarea>
+                                v-model="formData.ostium.colocacionDiu"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="cecResultadoBiopsia">Resultado biopsia</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecResultadoBiopsia"
-                                v-model="formDataCopy.ostium.resultadoBiopsia"></textarea>
+                                v-model="formData.ostium.resultadoBiopsia"></textarea>
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="cecPlanQuirurgico">Plan quirúrgico</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecPlanQuirurgico"
-                                v-model="formDataCopy.ostium.planQuirurgico"></textarea>
+                                v-model="formData.ostium.planQuirurgico"></textarea>
                         </div>
                     </div>
                 </div>
@@ -244,7 +244,7 @@
                 </div>
                 <div :disabled="disabled" id="cecNotas" class="atbd-collapse-item__body collapse card-body row mx-0">
                     <textarea class="form-control form-control-lg" type="text" rows="4" :disabled="disabled" id="cecNotas"
-                        v-model="formDataCopy.notas"></textarea>
+                        v-model="formData.notas"></textarea>
                 </div>
             </div>
         </div>

@@ -80,10 +80,16 @@ class MedicalConsult extends Model
                     ->withPivot('data', 'updated_by', 'update_note');
     }
 
-    public function followups()
+    public function followUps()
     {
         return $this->belongsToMany(MedicalSpecialty::class, 'medical_attachment_follow_ups', 'medicalconsult_id', 'medicalspecialty_id')
+                    ->as('followUp')
                     ->withPivot('data', 'updated_by', 'update_note');
+    }
+
+    public function followUp()
+    {
+        return $this->followUps()->orderBy('created_at', 'desc');
     }
 
     public function histories()
@@ -147,8 +153,13 @@ class MedicalConsult extends Model
         return $this->belongsToMany(Product::class, 'product_payments', 'medicalconsult_id', 'product_id')->withPivot('payment_id');
     }
 
-    public function specialty()
+    public function specialties()
     {
         return $this->belongsTo(MedicalSpecialty::class, 'medicalspecialty_id');
+    }
+
+    public function specialty()
+    {
+        return $this->belongsTo(MedicalSpecialty::class, 'medicalspecialty_id')->orderBy('created_at', 'desc');
     }
 }

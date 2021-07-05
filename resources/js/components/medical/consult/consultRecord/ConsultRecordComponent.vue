@@ -36,7 +36,7 @@
                             v-for="consult in consultList" :key="consult.id" class="container-fluid">
                             <div class="row">
                                 <div class="col-12 col-md-4  mb-25" v-if="followUp.id !== -1" @click="showComponent(1)">
-                                    <div class="card h-100 card-shadow">
+                                    <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
                                                 <img src="/svg/followUp.svg" alt="FollowUp">
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col-12 col-md-4  mb-25" v-if="prescriptionList.length > 0"
                                     @click="showComponent(2)">
-                                    <div class="card h-100 card-shadow">
+                                    <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
                                                 <img src="/svg/followUp.svg" alt="FollowUp">
@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4 mb-25" v-for="test in testList" :key="test.id">
-                                    <div class="card h-100 card-shadow mb-25">
+                                    <div class="card h-100 shadow-none card-hover mb-25">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
                                                 <img src="/svg/medicalTest.svg" alt="FollowUp">
@@ -81,14 +81,14 @@
         </div>
     </div>
 
-    <citas-subsecuentes-component v-if="componentNumber === 1" :formData="followUp.pivot.data.form"
+    <citas-subsecuentes-component v-if="componentNumber === 1" v-model="followUp.follow_up.data.form"
         :title="`Información de cita del ${consultDateSelected}`"></citas-subsecuentes-component>
     <div class="card" v-if="componentNumber === 2">
         <div class="card-header">
             <h4>Receta</h4>
         </div>
         <div class="card-body">
-            <div class="col-12 mb-25 card p-0" v-for="prescription in prescriptionList"
+            <div class="col-12 mb-25 card p-0 shadow-none" v-for="prescription in prescriptionList"
                 :key="prescription.medicament_id">
                 <div class="card-header">
                     <h4>{{prescription.medicament?.name}}</h4>

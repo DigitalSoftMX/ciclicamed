@@ -12,7 +12,7 @@
                 <div class="col-12 p-0 mb-25">
                     <label for="">Origen Étnico</label>
                     <select class="form-control form-control-lg" :disabled="disabled" id="ccrcOrigenEtnico"
-                        v-model="formDataCopy.origenEtnico.etnia">
+                        v-model="formData.origenEtnico.etnia">
                         <option value="Latina">Latina(Mexicana, Centroamericana)</option>
                         <option value="Caucasico">Cáucasico(Europeo, Hispánico, Oriente Medio, África del
                             Norte)</option>
@@ -22,10 +22,10 @@
                         <option value="Ninguno">Ninguno de las anteriores</option>
                     </select>
                 </div>
-                <div class="col-12 p-0" v-show="formDataCopy.origenEtnico.etnia === 'Ninguno'">
+                <div class="col-12 p-0" v-show="formData.origenEtnico.etnia === 'Ninguno'">
                     <label for="ccrcOrigenEtnicoOtra">Otra</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcOrigenEtnicoOtra"
-                        v-model="formDataCopy.origenEtnico.otra">
+                        v-model="formData.origenEtnico.otra">
                 </div>
             </div>
         </div>
@@ -43,12 +43,12 @@
                     <div class="col-12 col-md-6 p-0">
                         <label for="ccrcFUM">FUM</label>
                         <input class="form-control form-control-lg" type="date" :disabled="disabled" id="ccrcFUM"
-                            v-model="formDataCopy.fum.fum">
+                            v-model="formData.fum.fum">
                     </div>
                     <div class="col-12 col-md-6 p-0">
                         <label for="ccrcConsideraMenstruacion">¿Cómo considera su menstruación</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="ccrcConsideraMenstruacion"
-                            v-model="formDataCopy.fum.consideraMenstruacion">
+                            v-model="formData.fum.consideraMenstruacion">
                             <option value="Desconoce">Desconoce</option>
                             <option value="RegularRegular">Regular (FUM segura)</option>
                             <option value="RegularIncierta">Regular (FUM incierta o no esta segura)</option>
@@ -64,26 +64,26 @@
                 <h6>¿Existe antecedente de algun hijo/feto previo con alguna cromosomopatia?</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcAntecedenteCromosomopatia"
-                        v-model="formDataCopy.existeAntecedenteComosomopatia.check"
-                        :checked="formDataCopy.existeAntecedenteComosomopatia.check">
+                        v-model="formData.existeAntecedenteComosomopatia.check"
+                        :checked="formData.existeAntecedenteComosomopatia.check">
                     <label class="custom-control-label" for="ccrcAntecedenteCromosomopatia"></label>
                 </div>
             </div>
-            <div class="card-body row mx-0 bg-normal" v-show="formDataCopy.existeAntecedenteComosomopatia.check">
+            <div class="card-body row mx-0 bg-normal" v-show="formData.existeAntecedenteComosomopatia.check">
                 <div class="col-12 col-md-4">
                     <label for="">Trisomia 21</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTrisomia21"
-                        v-model="formDataCopy.existeAntecedenteComosomopatia.trisomia21">
+                        v-model="formData.existeAntecedenteComosomopatia.trisomia21">
                 </div>
                 <div class="col-12 col-md-4">
                     <label for="">Trisomia 18</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTrisomia18"
-                        v-model="formDataCopy.existeAntecedenteComosomopatia.trisomia18">
+                        v-model="formData.existeAntecedenteComosomopatia.trisomia18">
                 </div>
                 <div class="col-12 col-md-4">
                     <label for="">Trisomia 13</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTrisomia13"
-                        v-model="formDataCopy.existeAntecedenteComosomopatia.trisomia13">
+                        v-model="formData.existeAntecedenteComosomopatia.trisomia13">
                 </div>
             </div>
         </div>
@@ -93,15 +93,15 @@
                 <h6>¿Existe antecedente de algun hijo/feto previo con algun efecto o malformacion?</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcAntecedenteMalformacion"
-                        v-model="formDataCopy.existeAntecedenteMalformacion.check"
-                        :checked="formDataCopy.existeAntecedenteMalformacion.check">
+                        v-model="formData.existeAntecedenteMalformacion.check"
+                        :checked="formData.existeAntecedenteMalformacion.check">
                     <label class="custom-control-label" for="ccrcAntecedenteMalformacion"></label>
                 </div>
             </div>
-            <div class="card-body bg-normal" v-show="formDataCopy.existeAntecedenteMalformacion.check">
+            <div class="card-body bg-normal" v-show="formData.existeAntecedenteMalformacion.check">
                 <label for="ccrcCual">¿Cúal?</label>
                 <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcCual"
-                    v-model="formDataCopy.existeAntecedenteMalformacion.description"></textarea>
+                    v-model="formData.existeAntecedenteMalformacion.description"></textarea>
             </div>
         </div>
 
@@ -117,32 +117,32 @@
                 <div class="col-12 col-md-3 mb-25">
                     <label for="ccrcTotalEmbarazos">Embarazos</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTotalEmbarazos"
-                        v-model="formDataCopy.total.embarazos">
+                        v-model="formData.total.embarazos">
                 </div>
                 <div class="col-12 col-md-3 mb-25">
                     <label for="ccrcTotalPartos">Partos</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTotalPartos"
-                        v-model="formDataCopy.total.partos">
+                        v-model="formData.total.partos">
                 </div>
                 <div class="col-12 col-md-3 mb-25">
                     <label for="">Cesareas</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTotalCesareas"
-                        v-model="formDataCopy.total.cesareas">
+                        v-model="formData.total.cesareas">
                 </div>
                 <div class="col-12 col-md-3 mb-25">
                     <label for="ccrcTotalAbortos">Abortos</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTotalAbortos"
-                        v-model="formDataCopy.total.abortos">
+                        v-model="formData.total.abortos">
                 </div>
                 <div class="col-12 col-md-3 mb-25">
                     <label for="ccrcTotalEctopicos">Ectópicos</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTotalEctopicos"
-                        v-model="formDataCopy.total.ectopicos">
+                        v-model="formData.total.ectopicos">
                 </div>
                 <div class="col-12 col-md-3 mb-25">
                     <label for="">Molas</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTotalMolas"
-                        v-model="formDataCopy.total.molas">
+                        v-model="formData.total.molas">
                 </div>
             </div>
         </div>
@@ -170,15 +170,15 @@
                         <h6>¿Muerte en útero después de las 16 semanas?</h6>
                         <div class="custom-control custom-switch switch-primary switch-md ">
                             <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcMuerteDespues"
-                                v-model="formDataCopy.muerteUtero.muerteDespues.check"
-                                :checked="formDataCopy.muerteUtero.muerteDespues.check">
+                                v-model="formData.muerteUtero.muerteDespues.check"
+                                :checked="formData.muerteUtero.muerteDespues.check">
                             <label class="custom-control-label" for="ccrcMuerteDespues"></label>
                         </div>
                     </div>
-                    <div class="card-body bg-normal" v-show="formDataCopy.muerteUtero.muerteDespues.check">
+                    <div class="card-body bg-normal" v-show="formData.muerteUtero.muerteDespues.check">
                         <label for="ccrcMuerteDespuesDescription">¿A las cuantas semanas?</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcMuerteDespuesDescription"
-                            v-model="formDataCopy.muerteUtero.muerteDespues.description">
+                            v-model="formData.muerteUtero.muerteDespues.description">
                     </div>
                 </div>
             </div>
@@ -197,12 +197,12 @@
                     <div class="col-12 col-md-6">
                         <label for="ccrcPeso">Peso</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcPeso"
-                            v-model="formDataCopy.enfermera.peso">
+                            v-model="formData.enfermera.peso">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="ccrcTalla">Talla</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTalla"
-                            v-model="formDataCopy.enfermera.talla">
+                            v-model="formData.enfermera.talla">
                     </div>
                 </div>
                 <div class="col-12 row mb-25 mx-0 p-0">
@@ -212,12 +212,12 @@
                     <div class="col-12 col-md-6 mb-25">
                         <label for="ccrcSistoleDerecho">Sistole</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcSistoleDerecho"
-                            v-model="formDataCopy.enfermera.brazoDerecho.sistole">
+                            v-model="formData.enfermera.brazoDerecho.sistole">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="ccrcDiastoleDerecho">Diastole</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcDiastoleDerecho"
-                            v-model="formDataCopy.enfermera.brazoDerecho.diastole">
+                            v-model="formData.enfermera.brazoDerecho.diastole">
                     </div>
                 </div>
                 <div class="col-12 row mb-25 mx-0 p-0">
@@ -227,12 +227,12 @@
                     <div class="col-12 col-md-6 mb-25">
                         <label for="ccrcSistoleIzquierdo">Sistole</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcSistoleIzquierdo"
-                            v-model="formDataCopy.enfermera.brazoIzquierdo.sistole">
+                            v-model="formData.enfermera.brazoIzquierdo.sistole">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="ccrcDiastoleIzquierdo">Diastole</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcDiastoleIzquierdo"
-                            v-model="formDataCopy.enfermera.brazoIzquierdo.diastole">
+                            v-model="formData.enfermera.brazoIzquierdo.diastole">
                     </div>
                 </div>
             </div>
@@ -252,21 +252,21 @@
                         <h6>¿Fuma?</h6>
                         <div class="custom-control custom-switch switch-primary switch-md ">
                             <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcFuma"
-                                v-model="formDataCopy.tabaquismo.fuma" :checked="formDataCopy.tabaquismo.fuma">
+                                v-model="formData.tabaquismo.fuma" :checked="formData.tabaquismo.fuma">
                             <label class="custom-control-label" for="ccrcFuma"></label>
                         </div>
                     </div>
-                    <div class="card-body bg-normal" v-show="formDataCopy.tabaquismo.fuma">
+                    <div class="card-body bg-normal" v-show="formData.tabaquismo.fuma">
                         <label for="ccrcFumaCuantosDia">¿Cuántos al día?</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcFumaCuantosDia"
-                            v-model="formDataCopy.tabaquismo.cantidad">
+                            v-model="formData.tabaquismo.cantidad">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcFumaEmbarazo"
-                            v-model="formDataCopy.tabaquismo.fumaEmbarazo"
-                            :checked="formDataCopy.tabaquismo.fumaEmbarazo">
+                            v-model="formData.tabaquismo.fumaEmbarazo"
+                            :checked="formData.tabaquismo.fumaEmbarazo">
                         <label class="custom-control-label" for="ccrcFumaEmbarazo">¿Fuma durante el embarazo?</label>
                     </div>
                 </div>
@@ -285,8 +285,8 @@
                 <div class="col-12 mb-15 tbd-switch-wrap align-items-center align-self-center">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcDiabetesMellitus"
-                            v-model="formDataCopy.antecedentesPatologicos.diabetesMellitus"
-                            :checked="formDataCopy.antecedentesPatologicos.diabetesMellitus">
+                            v-model="formData.antecedentesPatologicos.diabetesMellitus"
+                            :checked="formData.antecedentesPatologicos.diabetesMellitus">
                         <label class="custom-control-label" for="ccrcDiabetesMellitus">¿Padece diabetes mellitus
                             dependiente de insulina?</label>
                     </div>
@@ -294,8 +294,8 @@
                 <div class="col-12 mb-15 tbd-switch-wrap align-items-center align-self-center">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcHipertension"
-                            v-model="formDataCopy.antecedentesPatologicos.hipertension"
-                            :checked="formDataCopy.antecedentesPatologicos.hipertension">
+                            v-model="formData.antecedentesPatologicos.hipertension"
+                            :checked="formData.antecedentesPatologicos.hipertension">
                         <label class="custom-control-label" for="ccrcHipertension">¿Padece hipertensión
                             crónica?</label>
                     </div>
@@ -303,8 +303,8 @@
                 <div class="col-12 mb-15 tbd-switch-wrap align-items-center align-self-center">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcLupusEritematoso"
-                            v-model="formDataCopy.antecedentesPatologicos.lupusEritematoso"
-                            :checked="formDataCopy.antecedentesPatologicos.lupusEritematoso">
+                            v-model="formData.antecedentesPatologicos.lupusEritematoso"
+                            :checked="formData.antecedentesPatologicos.lupusEritematoso">
                         <label class="custom-control-label" for="ccrcLupusEritematoso">¿Padece lupus eritematoso
                             sistemémico?</label>
                     </div>
@@ -312,8 +312,8 @@
                 <div class="col-12 mb-15 tbd-switch-wrap align-items-center align-self-center">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcAnticuerposAntifofolipidos"
-                            v-model="formDataCopy.antecedentesPatologicos.anticuerposAntifofolipidos"
-                            :checked="formDataCopy.antecedentesPatologicos.anticuerposAntifofolipidos">
+                            v-model="formData.antecedentesPatologicos.anticuerposAntifofolipidos"
+                            :checked="formData.antecedentesPatologicos.anticuerposAntifofolipidos">
                         <label class="custom-control-label" for="ccrcAnticuerposAntifofolipidos">¿Padece síndrome de
                             anticuerpos
                             anti-fosfolípidos?</label>
@@ -322,8 +322,8 @@
                 <div class="col-12 mb-15 tbd-switch-wrap align-items-center align-self-center">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcPreeclamsia"
-                            v-model="formDataCopy.antecedentesPatologicos.preeclamsia"
-                            :checked="formDataCopy.antecedentesPatologicos.preeclamsia">
+                            v-model="formData.antecedentesPatologicos.preeclamsia"
+                            :checked="formData.antecedentesPatologicos.preeclamsia">
                         <label class="custom-control-label" for="ccrcPreeclamsia">¿Padeció preeclampsia en los
                             embarazos previos?</label>
                     </div>
@@ -331,8 +331,8 @@
                 <div class="col-12 mb-15 tbd-switch-wrap align-items-center align-self-center">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcMadrePreeclamsia"
-                            v-model="formDataCopy.antecedentesPatologicos.madrePreeclamsia"
-                            :checked="formDataCopy.antecedentesPatologicos.madrePreeclamsia">
+                            v-model="formData.antecedentesPatologicos.madrePreeclamsia"
+                            :checked="formData.antecedentesPatologicos.madrePreeclamsia">
                         <label class="custom-control-label" for="ccrcMadrePreeclamsia">¿Su madre padeció
                             preeclampsia en
                             algún embarazo?</label>
@@ -341,8 +341,8 @@
                 <div class="col-12 mb-15 tbd-switch-wrap align-items-center align-self-center">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcOtroAntecedente"
-                            v-model="formDataCopy.antecedentesPatologicos.otroAntecedentes"
-                            :checked="formDataCopy.antecedentesPatologicos.otroAntecedentes">
+                            v-model="formData.antecedentesPatologicos.otroAntecedentes"
+                            :checked="formData.antecedentesPatologicos.otroAntecedentes">
                         <label class="custom-control-label" for="ccrcOtroAntecedente">¿Tiene algún otro antecedente
                             personal o familiar que considere importante?</label>
                     </div>
@@ -350,8 +350,8 @@
                 <div class="col-12 mb-15 tbd-switch-wrap align-items-center align-self-center">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcEmbarazoTratamientoReproduccion"
-                            v-model="formDataCopy.antecedentesPatologicos.embarazoTratamientoReproduccion"
-                            :checked="formDataCopy.antecedentesPatologicos.embarazoTratamientoReproduccion">
+                            v-model="formData.antecedentesPatologicos.embarazoTratamientoReproduccion"
+                            :checked="formData.antecedentesPatologicos.embarazoTratamientoReproduccion">
                         <label class="custom-control-label" for="ccrcEmbarazoTratamientoReproduccion">¿Se logró el
                             embarazo con algún
                             tratamiento de reproducción asistida?</label>
@@ -360,8 +360,8 @@
                 <div class="col-12 mb-15 tbd-switch-wrap align-items-center align-self-center">
                     <div class="custom-control custom-switch switch-primary switch-lg align-items-center">
                         <input type="checkbox" class="custom-control-input" :disabled="disabled" id="ccrcInductoresOvulacion"
-                            v-model="formDataCopy.antecedentesPatologicos.inductoresOvulacion"
-                            :checked="formDataCopy.antecedentesPatologicos.inductoresOvulacion">
+                            v-model="formData.antecedentesPatologicos.inductoresOvulacion"
+                            :checked="formData.antecedentesPatologicos.inductoresOvulacion">
                         <label class="custom-control-label" for="ccrcInductoresOvulacion">¿Inductores de
                             ovulación?</label>
                     </div>
@@ -381,12 +381,12 @@
                 <div class="col-12 col-md-6 mb-15">
                     <label for="">Fecha de extracción de ovocitor</label>
                     <input class="form-control form-control-lg" type="date" :disabled="disabled" id="ccrcFechaExtraccion"
-                        v-model="formDataCopy.fertilizacionInvitro.fechaExtraccion">
+                        v-model="formData.fertilizacionInvitro.fechaExtraccion">
                 </div>
                 <div class="col-12 col-md-6 mb-15">
                     <label for="">Fecha de congelación</label>
                     <input class="form-control form-control-lg" type="date" :disabled="disabled" id="ccrcFechaCongelacion"
-                        v-model="formDataCopy.fertilizacionInvitro.fechaCongelacion">
+                        v-model="formData.fertilizacionInvitro.fechaCongelacion">
                 </div>
             </div>
         </div>
@@ -403,12 +403,12 @@
                 <div class="col-12 col-md-6 mb-15">
                     <label for="">Fecha de nacimiento</label>
                     <input class="form-control form-control-lg" type="date" :disabled="disabled" id="ccrcFechaNacimiento"
-                        v-model="formDataCopy.donanteOvocitos.fechaNacimiento">
+                        v-model="formData.donanteOvocitos.fechaNacimiento">
                 </div>
                 <div class="col-12 col-md-6">
                     <label for="">Edad aproximada</label>
                     <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcEdadAproximada"
-                        v-model="formDataCopy.donanteOvocitos.edadAproximada">
+                        v-model="formData.donanteOvocitos.edadAproximada">
                 </div>
             </div>
         </div>

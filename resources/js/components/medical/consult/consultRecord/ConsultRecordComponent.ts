@@ -5,6 +5,7 @@ import { Prescription } from '@interface/Medical/Prescription.interface';
 import { Test } from '@interface/Medical/Test.interface';
 import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
+import cloneDeep from 'lodash/cloneDeep';
 import moment from 'moment';
 import { defineAsyncComponent } from 'vue';
 
@@ -15,9 +16,15 @@ export default defineComponent({
         EmptyErrorComponent: defineAsyncComponent(() => import('@component/general/error/EmptyErrorComponent.vue')),
         NetworkErrorComponent: defineAsyncComponent(() => import('@component/general/error/NetworkErrorComponent.vue'))
     },
-    props: {},
-    mounted() {
-        this.getConsultData();
+    props: {
+        patientID: {
+            type: Number,
+            default: -1
+        },
+        specialtyID: {
+            type: Number,
+            default: -1
+        }
     },
     data() {
         return {
@@ -32,6 +39,10 @@ export default defineComponent({
         }
     },
     watch: {
+        patientID()
+        {
+            this.getConsultData();
+        },
         consultList(){
             if (this.consultList.length > 0)
             {
@@ -42,8 +53,9 @@ export default defineComponent({
     },
     methods: {
         getConsultData() {
-            axios.get < Consult[] > ('/pacientes/1/consultas/categoria/5')
+            axios.get<Consult[]> (`/pacientes/${this.patientID}/consultas/categoria/${this.specialtyID}`)
             .then(response => {
+                this.consultList = [];
                 this.consultList = Object.values(response.data);
             })
             .catch(error => {
@@ -61,12 +73,13 @@ export default defineComponent({
             this.getPrescriptions(id);
         },
         getFollowUps(id: number) {
+            console.log(id)
             axios.get<FollowUp>(`/consultas/${id}/seguimiento`)
             .then(response => {
                 this.followUp = response.data;
             })
             .catch(error => {
-                console.log(error)
+                this.followUp = FollowUpData;
             })
         },
         getTestOrders(id: number) {

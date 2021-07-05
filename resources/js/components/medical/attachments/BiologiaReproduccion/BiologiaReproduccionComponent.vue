@@ -17,19 +17,19 @@
                         <div class="col-12 col-md-6 mb-25 mb-md-0">
                             <label for="brcTiempoBusqueda">Tiempo de búsqueda del embarazo</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="brcTiempoBusqueda"
-                                v-model="formDataCopy.biologiaReproduccion.tiempoBusquedaEmbarazo">
+                                v-model="formData.biologiaReproduccion.tiempoBusquedaEmbarazo">
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="brcFrecuenciaCoital">Frecuencia coital</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="brcFrecuenciaCoital"
-                                v-model="formDataCopy.biologiaReproduccion.frecuenciaCoital">
+                                v-model="formData.biologiaReproduccion.frecuenciaCoital">
                         </div>
                     </div>
                     <div class="col-12 row mx-0">
                         <div class="col-12 mb-25">
                             <label for="brcPenetracion">Penetración</label>
                             <select name="select-size-1" class="form-control  form-control-lg" :disabled="disabled" id="brcPenetracion"
-                                v-model="formDataCopy.biologiaReproduccion.penetracion">
+                                v-model="formData.biologiaReproduccion.penetracion">
                                 <option value="Completa">Completa</option>
                                 <option value="Incompleta">Incompleta</option>
                             </select>
@@ -37,16 +37,16 @@
                         <div class="col-4 mb-25 m-auto">
                             <div class="custom-control custom-switch switch-primary switch-md ">
                                 <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcDispareunia"
-                                    v-model="formDataCopy.biologiaReproduccion.dispareunia"
-                                    :checked="formDataCopy.biologiaReproduccion.dispareunia">
+                                    v-model="formData.biologiaReproduccion.dispareunia"
+                                    :checked="formData.biologiaReproduccion.dispareunia">
                                 <label class="custom-control-label" for="brcDispareunia">Dispareunia</label>
                             </div>
                         </div>
                         <div class="col-4 mb-25 m-auto">
                             <div class="custom-control custom-switch switch-primary switch-md ">
                                 <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcEyaculacionVaginal"
-                                    v-model="formDataCopy.biologiaReproduccion.eyaculacionVaginal"
-                                    :checked="formDataCopy.biologiaReproduccion.eyaculacionVaginal">
+                                    v-model="formData.biologiaReproduccion.eyaculacionVaginal"
+                                    :checked="formData.biologiaReproduccion.eyaculacionVaginal">
                                 <label class="custom-control-label" for="brcEyaculacionVaginal">Eyaculación
                                     vaginal</label>
                             </div>
@@ -54,8 +54,8 @@
                         <div class="col-4 m-auto">
                             <div class="custom-control custom-switch switch-primary switch-md ">
                                 <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcDismenorrea"
-                                    v-model="formDataCopy.biologiaReproduccion.dismenorrea"
-                                    :checked="formDataCopy.biologiaReproduccion.dismenorrea">
+                                    v-model="formData.biologiaReproduccion.dismenorrea"
+                                    :checked="formData.biologiaReproduccion.dismenorrea">
                                 <label class="custom-control-label" for="brcDismenorrea">Dismenorrea</label>
                             </div>
                         </div>
@@ -75,13 +75,13 @@
                         <div class="col-12 col-md-6 mb-25">
                             <label for="">Edad</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="brcEdad"
-                                v-model="formDataCopy.factorMasculino.edad">
+                                v-model="formData.factorMasculino.edad">
                         </div>
                         <div class="col-12 col-md-6 mb-25 align-self-center m-center">
                             <div class="custom-control custom-switch switch-primary switch-md ">
                                 <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcPaternidadComprobada"
-                                    v-model="formDataCopy.factorMasculino.paternidadComrpobada"
-                                    :checked="formDataCopy.factorMasculino.paternidadComrpobada">
+                                    v-model="formData.factorMasculino.paternidadComrpobada"
+                                    :checked="formData.factorMasculino.paternidadComrpobada">
                                 <label class="custom-control-label" for="brcPaternidadComprobada">Paternidad
                                     comprobada</label>
                             </div>
@@ -89,23 +89,23 @@
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcOcupacion">Ocupación</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcOcupacion"
-                                v-model="formDataCopy.factorMasculino.ocupacion"></textarea>
+                                v-model="formData.factorMasculino.ocupacion"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcTraumatismoTesticular">Traumatismo o alteración testicular</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcTraumatismoTesticular"
-                                v-model="formDataCopy.factorMasculino.traumatismo"></textarea>
+                                v-model="formData.factorMasculino.traumatismo"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcAntecedentesParotiditis">Antecedentes de parotiditis, uso de anabólicos o
                                 medicamentos</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcAntecedentesParotiditis"
-                                v-model="formDataCopy.factorMasculino.antecedentesParotiditis"></textarea>
+                                v-model="formData.factorMasculino.antecedentesParotiditis"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcEBD">EBD previas</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcEBD"
-                                v-model="formDataCopy.factorMasculino.ebd"></textarea>
+                                v-model="formData.factorMasculino.ebd"></textarea>
                         </div>
                     </div>
                 </div>
@@ -123,12 +123,12 @@
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcCirugiasAbdominales">Cirugías abdominales</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcCirugiasAbdominales"
-                                v-model="formDataCopy.factorTuboperitoneal.cirugiasAbdominales"></textarea>
+                                v-model="formData.factorTuboperitoneal.cirugiasAbdominales"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcInfeccionesVaginales">Infecciones vaginales de repetición</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcInfeccionesVaginales"
-                                v-model="formDataCopy.factorTuboperitoneal.infeccionesVaginales"></textarea>
+                                v-model="formData.factorTuboperitoneal.infeccionesVaginales"></textarea>
                         </div>
                     </div>
                 </div>
@@ -146,12 +146,12 @@
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcCiclos">Ciclos</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcCiclos"
-                                v-model="formDataCopy.factorEndocrino.ciclos"></textarea>
+                                v-model="formData.factorEndocrino.ciclos"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25">
                             <label for="brcCantidad">Cantidad</label>
                             <select class="form-control form-control-lg" :disabled="disabled" id="brcCantidad"
-                                v-model="formDataCopy.factorEndocrino.cantidad">
+                                v-model="formData.factorEndocrino.cantidad">
                                 <option value="Escaso">Escaso</option>
                                 <option value="Normal">Normal</option>
                                 <option value="Abundante">Abundante</option>
@@ -173,8 +173,8 @@
                         <div class="col-12 col-md-6 mb-25 align-self-center m-center">
                             <div class="custom-control custom-switch switch-primary switch-md ">
                                 <input type="checkbox" class="custom-control-input" :disabled="disabled" id="brcInfeccionVaginalRepeticion"
-                                    v-model="formDataCopy.factorCervical.infeccionVaginal"
-                                    :checked="formDataCopy.factorCervical.infeccionVaginal">
+                                    v-model="formData.factorCervical.infeccionVaginal"
+                                    :checked="formData.factorCervical.infeccionVaginal">
                                 <label class="custom-control-label" for="brcInfeccionVaginalRepeticion">Infección
                                     vaginal de repetición</label>
                             </div>
@@ -182,17 +182,17 @@
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcUltimoPapanicolau">Último papanicolau</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="brcUltimoPapanicolau"
-                                v-model="formDataCopy.factorCervical.ultimoPapanicolau">
+                                v-model="formData.factorCervical.ultimoPapanicolau">
                         </div>
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcAnterioresLesiones">Anteriores lesiones cervicales</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcAnterioresLesiones"
-                                v-model="formDataCopy.factorCervical.anterioresLesiones"></textarea>
+                                v-model="formData.factorCervical.anterioresLesiones"></textarea>
                         </div>
                         <div class="col-12 col-md-6 mb-25 ">
                             <label for="brcAnterioresCirugias">Anteriores cirugías uterinas</label>
                             <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="brcAnterioresCirugias"
-                                v-model="formDataCopy.factorCervical.anterioresCirugias"></textarea>
+                                v-model="formData.factorCervical.anterioresCirugias"></textarea>
                         </div>
                     </div>
                 </div>
@@ -209,7 +209,7 @@
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="col-12">
                             <textarea class="form-control form-control-lg" type="text" rows="4" :disabled="disabled" id="brcNotas"
-                                v-model="formDataCopy.notas"></textarea>
+                                v-model="formData.notas"></textarea>
                         </div>
                     </div>
                 </div>

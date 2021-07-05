@@ -1,31 +1,45 @@
 import { NutricionGeneralData } from '@data/Medical/Attachments/Nutricion/NutricionGeneral.data';
 import { NutricionGeneral } from '@interface/Medical/Attachtments/Nutricion/NutricionGeneral.interface';
-import {
-    defineComponent
-} from '@vue/runtime-core';
-import {
-    DefineComponent,
-    PropType
-} from 'vue';
+import { defineComponent } from '@vue/runtime-core';
+import { PropType } from 'vue';
 
 export default defineComponent({
-    name: 'NutricionPerinatalComponent',
-    components: {
-    },
-    props:{
+    name: 'NutricionGeneralComponent',
+    props: {
+        modelValue: {
+            type: Object as PropType<NutricionGeneral>,
+            default: NutricionGeneralData
+        },
         disabled: {
             type: Boolean as PropType<Boolean>,
             default: true
         },
-        formData: {
-            type: Object as PropType<NutricionGeneral>,
-            default: NutricionGeneralData
-        },
     },
     data(){
         return {
-            formDataCopy: Object.assign({}, this.$props.formData)
+            formData: this.modelValue,
         }
     },
-    methods: {}
+    mounted() {
+    },
+    methods: {},
+    watch: {
+        modelValue: 
+        {
+            handler()
+            {
+                console.log(this.modelValue)
+                this.formData = this.modelValue;
+            },
+            deep: true
+        },
+        formData:
+        {
+            handler()
+            {
+                this.$emit('update:modelValue', this.formData);
+            },
+            deep: true
+        }
+    }
 })

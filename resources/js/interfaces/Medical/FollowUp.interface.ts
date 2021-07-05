@@ -4,7 +4,7 @@ export interface FollowUp
 {
     id: number;
     name: string;
-    pivot: {
+    follow_up: {
         medicalconsult_id: number,
         medicalspecialty_id: number,
         data: {

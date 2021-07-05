@@ -4,7 +4,7 @@ import { CitasSubsecuentesData } from "./Attachments/CitasSubsecuentes.data";
 export const FollowUpData: FollowUp = {
     id: -1,
     name: '',
-    pivot: {
+    follow_up: {
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         data: {

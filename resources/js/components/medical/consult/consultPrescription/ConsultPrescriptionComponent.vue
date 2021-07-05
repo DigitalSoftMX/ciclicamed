@@ -3,15 +3,15 @@
         <h4 class="text-capitalize breadcrumb-title"></h4>
         <div class="breadcrumb-action justify-content-center flex-wrap">
             <div class="action-btn">
-                <button class="btn btn-primary btn-default" @click="printPDF()"
-                    :disabled="prescriptionDataCopy.length === 0">
+                <button class="btn btn-primary btn-default"
+                    :disabled="prescriptionData.length === 0">
                     <img src="/svg/print.svg" class="mr-2 svg-white" alt="Print">
                     Imprimir
                 </button>
             </div>
             <div class="action-btn">
-                <button class="btn btn-primary btn-default" @click="downloadPDF()"
-                    :disabled="prescriptionDataCopy.length === 0">
+                <button class="btn btn-primary btn-default"
+                    :disabled="prescriptionData.length === 0">
                     <img src="/svg/download.svg" class="mr-2 svg-white" alt="Print">
                     Descargar
                 </button>
@@ -31,8 +31,8 @@
         </div>
     </div>
     <div class="atbd-collapse atbd-collapse-custom">
-        <medicament-component :id="index" :medicamentList="medicamentList" v-model="prescriptionDataCopy[index]"
-            v-for="(prescription, index) in prescriptionDataCopy" :key="`conpc${index}`" @onDelete="deletePrescription">
+        <medicament-component :id="index" :medicamentList="medicamentList" v-model="prescriptionData[index]"
+            v-for="(prescription, index) in prescriptionData" :key="`conpc${index}`" @onDelete="deletePrescription">
         </medicament-component>
     </div>
 </template>
