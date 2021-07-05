@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { createApp, defineAsyncComponent } from 'vue';
+import {asset} from '@codinglabs/laravel-asset'
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]')!.getAttribute('content'),
 	'_token' : document.querySelector('meta[name="csrf-token"]')!.getAttribute('content')
 };
-
+axios.defaults.baseURL = (document.head.querySelector('meta[name="api-base-url"]') as any)!.content;
 const app = createApp({
     components: {
 		LoginComponent: defineAsyncComponent(() => import('@component/login/LoginComponent.vue')),
@@ -47,5 +48,11 @@ const app = createApp({
 	}
 });
 
+app.config.globalProperties.window = window;
 app.config.performance = true;
+app.mixin({
+    methods: {
+        asset: asset
+    }
+})
 app.mount('#app');

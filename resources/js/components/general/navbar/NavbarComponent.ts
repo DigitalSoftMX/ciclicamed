@@ -4,9 +4,11 @@ import { Sidebar } from '@interface/General/Sidebar.interface';
 import { Patient } from '@interface/Patient/Patient.interface';
 import { defineComponent } from '@vue/runtime-core';
 import { defineAsyncComponent, DefineComponent, Prop, PropType } from 'vue';
+import {asset} from '@codinglabs/laravel-asset'
 
 export default defineComponent({
     emits: ['menuSelect'],
+    mixins: [asset],
     props: {
         title: {
             type: String,
@@ -31,6 +33,7 @@ export default defineComponent({
         };
     },
     mounted() {
+        console.log((window as any).path)
     },
     computed: {
         profilePhoto(): string

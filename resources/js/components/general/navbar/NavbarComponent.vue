@@ -3,7 +3,7 @@
         <nav class="navbar navbar-light">
             <div class="navbar-left">
                 <a class="sidebar-toggle" role="button" @click="menuSelected">
-                    <img src="/svg/menu.svg" alt="Menu">
+                    <img :src="asset('/svg/menu.svg')" alt="Menu">
                 </a>
                 <h6 class="navbar-brand">{{title}}</h6>
             </div>
