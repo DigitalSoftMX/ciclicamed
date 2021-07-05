@@ -53,6 +53,7 @@ export default defineComponent({
         ColposcopiaComponent: defineAsyncComponent(() => import('@component/medical/attachments/Colposcopia/ColposcopiaComponent.vue')),
         NutricionPerinatalComponent: defineAsyncComponent(() => import('@component/medical/attachments/NutricionPerinatal/NutricionPerinatalComponent.vue')),
         NutricionGeneralComponent: defineAsyncComponent(() => import('@component/medical/attachments/NutricionGeneral/NutricionGeneralComponent.vue')),
+        ScheduleComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleComponent.vue')),
     },
     emits: [],
     props: {
@@ -125,7 +126,7 @@ export default defineComponent({
                     this.patientData = response.data;
                 })
                 .catch(error => {
-                    // console.log(error)
+                // console.log(error)
                 })
         },
         getConsultInfo()

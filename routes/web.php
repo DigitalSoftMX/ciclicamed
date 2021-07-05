@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.getEstudios');
         Route::get('/{id}/anexo', [MedicalConsultController::class, 'getSpecialty'])->name('consulta.getAnexo');
         Route::post('/{id}/estudios', [MedicalConsultController::class, 'createTest'])->name('consulta.createEstudio');
+        Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.createEstudio');
     });
 
     
@@ -108,6 +109,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/agenda', [PatientController::class, 'getSchedules'])->name('pacientes.getAgenda');
         Route::get('/{id}/recetas', [PatientController::class, 'showMedicalPrescriptions'])->name('usuarios.medicalPrescription');
         Route::get('/{id}/estudios', [PatientController::class, 'showMedicalTests'])->name('usuarios.medicalTest');
+        Route::get('/{id}/preregistro', [PatientController::class, 'getPreregistration'])->name('pacientes.getPreregistro');
         Route::patch('/{id}/preregistro', [PreregistrationController::class, 'updatePreregistration'])->name('pacientes.updatePreregistro');
     });
 

@@ -13,7 +13,7 @@ export default defineComponent({
         ScheduleComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleComponent.vue')),
     },
     props: {
-        patient: {
+        doctor: {
             type: Object as PropType<Patient>,
             default: PatientData
         },

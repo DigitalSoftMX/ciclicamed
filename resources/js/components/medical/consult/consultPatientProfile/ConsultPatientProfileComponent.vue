@@ -18,7 +18,7 @@
                     </div>
                     <div
                         class="ap-button account-profile-cards__button button-group d-flex justify-content-center flex-wrap pt-20">
-                        <button type="button"
+                        <button type="button" @click="openPreregistration"
                             class="border text-capitalize px-25 color-white bg-primary shadow2 radius-md">Editar</button>
                     </div>
                 </div>
@@ -45,6 +45,8 @@
             </button>
         </div>
     </div>
+
+    <preregistration-component :patientData="patientData"></preregistration-component>
 </template>
 
 <script lang="ts" src="./ConsultPatientProfileComponent.ts"></script>

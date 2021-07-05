@@ -6,7 +6,7 @@
             <patient-dashboard-page :patient="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></patient-dashboard-page>
             @break
         @case('Doctor')
-            <doctor-dashboard-page :patient="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></doctor-dashboard-page>
+            <doctor-dashboard-page :doctor="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></doctor-dashboard-page>
             @break
         @case('Checkup')
             <checkup-dashboard-page :patient="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></checkup-dashboard-page>

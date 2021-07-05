@@ -3,7 +3,7 @@
     <sidebar-component title="Menú lateral" :items="sidebarItems"></sidebar-component>
     <div id="pdpContent" class="contents expanded">
         <div class="row mx-0">
-            <consult-page></consult-page>
+            <consult-page :roles="roles" userCategory="Doctor" :employeeID="patient.user.id"></consult-page>
         </div>
     </div>
 </template>

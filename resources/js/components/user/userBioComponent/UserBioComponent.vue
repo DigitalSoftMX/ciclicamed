@@ -8,7 +8,7 @@
                 </div>
                 <div class="ap-nameAddress pb-3 pt-1">
                     <h5 class="ap-nameAddress__title">{{fullName}}</h5>
-                    <p class="ap-nameAddress__subTitle fs-14 m-0">{{userData.email}}</p>
+                    <p class="ap-nameAddress__subTitle fs-14 m-0">{{userData.user.email}}</p>
                 </div>
             </div>
             <div class="card-footer pt-20 pb-20 px-0">

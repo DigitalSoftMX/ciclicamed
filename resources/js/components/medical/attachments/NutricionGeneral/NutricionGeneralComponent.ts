@@ -28,7 +28,6 @@ export default defineComponent({
         {
             handler()
             {
-                console.log(this.modelValue)
                 this.formData = this.modelValue;
             },
             deep: true

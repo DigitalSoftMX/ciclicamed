@@ -20,6 +20,9 @@ mix.js('resources/js/app.ts', 'public/js')
     .extract(['vue'])
     .browserSync('http://127.0.0.1:8000/')
     .webpackConfig({
+        output: {
+            publicPath: 'auto',
+        },
         module: {
             rules: [
                 {

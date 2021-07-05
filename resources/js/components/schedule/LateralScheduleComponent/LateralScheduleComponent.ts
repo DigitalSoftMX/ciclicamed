@@ -15,6 +15,7 @@ import { SelectData } from '@data/General/SelectSelected.data';
 import { Product } from '@interface/Product/Product.interface';
 import cloneDeep from 'lodash/cloneDeep';
 import { Role } from '@interface/User/Role.interface';
+require('bootstrap');
 
 export default defineComponent({
     name: 'LateralScheduleComponent',

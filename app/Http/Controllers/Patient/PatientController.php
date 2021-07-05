@@ -228,4 +228,11 @@ class PatientController extends Controller
 
         return response()->json($response);
     }
+
+    public function getPreregistration($id)
+    {
+        $patient = Patient::findOrFail($id);
+        $patient->preregistration->data = json_decode($patient->preregistration->data);
+        return response()->json($patient->preregistration);
+    }
 }

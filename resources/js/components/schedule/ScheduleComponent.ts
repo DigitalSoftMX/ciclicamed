@@ -3,6 +3,7 @@ import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { ScheduleFormData } from '@data/Schedule/ScheduleForm.data';
 import { Branch } from '@interface/Branch/Branch.interface';
 import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors.interface';
+import { EmployeeBranch } from '@interface/Employee/EmployeeBranch.interface';
 import { EmployeeBusinessHour } from '@interface/Employee/EmployeeBusinessHour';
 import { FullCalendarBusinessHour } from '@interface/General/FullCalendarBusinessHour.interface';
 import { Select } from '@interface/General/Select.interface';
@@ -36,7 +37,11 @@ export default defineComponent({
         roles: {
             type: Array as PropType<Role[]>,
             default: []
-        }
+        },
+        employeeID: {
+            type: Number,
+            default: -1
+        },
     },
     data() {
         return {
@@ -48,12 +53,18 @@ export default defineComponent({
             businessHours: [] as FullCalendarBusinessHour[],
             scheduleSelected: ScheduleData,
             hoursEnabled: [] as FullCalendarBusinessHour[],
+            employeeBranches: [] as EmployeeBranch[],
         }
     },
     mounted() {
+        console.log(this.employeeID)
         if(!this.userCategory.includes('Paciente' || 'Laboratorio' || 'Imagenología'))
         {
             this.getPatientsList();
+            if(this.employeeID > 0)
+            {
+                this.getDoctorBranches();
+            }
         }
         this.getBranchesList();
         this.getSchedulesCategories();
@@ -66,6 +77,27 @@ export default defineComponent({
         }
     },
     methods: {
+        getScheduleBranchList(branchID: number): void {
+            axios.get<Schedule[]>(`/sucursales/${branchID}/empleados/${this.employeeID}/agenda`)
+            .then(response => {
+                this.schedules = response.data;
+                this.getBusinessHours();
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        getDoctorBranches()
+        {
+            axios.get<EmployeeBranch[]>(`/empleados/${this.employeeID}/sucursales`)
+            .then(response => {
+                this.employeeBranches = response.data;
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         selectUserSchedule()
         {
             this.userCategory === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();

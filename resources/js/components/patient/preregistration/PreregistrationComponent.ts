@@ -5,6 +5,8 @@ import moment from 'moment';
 import $ from 'jquery';
 import { Patient } from '@interface/Patient/Patient.interface';
 import { PatientData } from '@data/Patient/Patient.data';
+import { PreregistrationData } from '@data/Patient/Preregistration.data';
+import { Preregistration } from '@interface/Patient/Preregistration.interface';
 // require('../../../../../public/vendor_assets/js/jquery.mCustomScrollbar.min');
 
 export default defineComponent({
@@ -29,7 +31,7 @@ export default defineComponent({
     },
     data() {
         return {
-            formDataCopy: Object.assign({}, this.patientData.preregistration),
+            preregistrationData: PreregistrationData,
             patientDataCopy: Object.assign({}, this.patientData),
             success: {
                 title: '',
@@ -42,9 +44,13 @@ export default defineComponent({
     mounted() {
     },
     watch: {
-        patientData() {
-            this.formDataCopy = Object.assign({}, this.patientData.preregistration);
-            this.patientDataCopy = Object.assign({}, this.patientData);
+        patientData: {
+            handler()
+            {
+                this.patientDataCopy = Object.assign({}, this.patientData);
+                this.getPreregistration();
+            },
+            deep: true
         }
     },
     methods: {
@@ -52,11 +58,21 @@ export default defineComponent({
         {
             return moment().diff(moment(this.patientDataCopy.birthday), 'years');
         },
+        getPreregistration()
+        {
+            axios.get<Preregistration>(`/pacientes/${this.patientData.id}/preregistro`)
+            .then(response => {
+                this.preregistrationData = response.data;
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         updatePreregistration()
         {
             axios.patch(`/pacientes/${this.patientDataCopy.id}/preregistro`, {
                 data: {
-                    ...this.formDataCopy
+                    ...this.preregistrationData
                 }
             })
             .then(response => {

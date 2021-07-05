@@ -8,7 +8,6 @@ import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { AlertError } from '@interface/General/Alert/Error/AlertError.interface';
 import $ from 'jquery';
 import { Role } from '@interface/User/Role.interface';
-require('bootstrap');
 
 export default defineComponent({
     components: {
@@ -35,9 +34,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
     },
     watch: {
         schedule:

@@ -103,7 +103,6 @@ class MedicalConsultController extends Controller
 
     public function cancelConsult(Request $request, $id)
     {
-
         $user = User::findOrFail(Auth::user()->id)->hasRole(['Paciente', 'Laboratorio', 'Imagenología']);
         if(!$user)
         {
@@ -253,5 +252,10 @@ class MedicalConsultController extends Controller
     {
         $consult = MedicalConsult::findOrFail($id)->doctor->load('specialties');
         return response()->json($consult);
+    }
+
+    public function startSchedule($id)
+    {
+        return response()->json([], 200)->withCookie('consult', $id);
     }
 }

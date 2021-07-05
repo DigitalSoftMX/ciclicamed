@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row mx-0">
         <div class="col-12 col-md-3 p-md-0 mb-25 mb-md-0">
             <patient-profile-component :patientData="patientData" :clock="clock"
                 :consultNote="consultData.consult_reason"></patient-profile-component>

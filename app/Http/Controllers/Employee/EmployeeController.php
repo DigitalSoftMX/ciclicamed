@@ -110,7 +110,7 @@ class EmployeeController extends Controller
     public function getEmployeeBranches($id)
     {
         $user = User::findOrFail(Auth::user()->id);
-        if(($id === Auth::user()->id && !$user->hasRole('Paciente')) || $user->hasRole('Administrador'))
+        if((intval($id) === Auth::user()->id && !$user->hasRole('Paciente')) || $user->hasRole('Administrador'))
         {
             DB::statement("SET SQL_MODE=''");
             $employee = EmployeeSchedule::where('employee_id', $id)->groupBy('branch_id', 'employee_id')->get()->load('branch');

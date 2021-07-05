@@ -4,7 +4,11 @@
             <h1>Mi agenda</h1>
         </div>
         <div class="card-body">
-            <button class="btn btn-primary btn-lg btn-squared btn-block" @click="selectUserSchedule">Ver mi agenda</button>
+            <div class="mb-25" v-if="employeeBranches.length > 0">
+                <label>Sucursal</label>
+                <v-select :options="employeeBranches" :getOptionLabel="item => item.branch?.name" :reduce="item => item.branch.id" v-model="employeeBranchSelected"/>
+            </div>
+            <button class="btn btn-primary btn-lg btn-squared btn-block" @click="selectSchedule">Ver mi agenda</button>
         </div>
     </div>
 

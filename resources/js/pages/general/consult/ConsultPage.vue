@@ -25,11 +25,12 @@
         <!-- Tab Menu End -->
         <div class="projects-tab-content projects-tab-content--progress">
             <div class="tab-content mt-25" id="ap-tabContent">
-                <div class="tab-pane fade px-3 active show" id="ap-overview" role="tabpanel">
+                <div class="tab-pane fade active show" id="ap-overview" role="tabpanel">
                     <consult-component></consult-component>
                 </div>
-                <div class="tab-pane fade px-3" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
-                    b
+                <div class="tab-pane fade" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
+                    <schedule-component :userCategory="userCategory" :roles="roles" v-if="isPatient"></schedule-component>
+                    <schedule-component :userCategory="userCategory" :roles="roles" :employeeID="employeeID" v-else></schedule-component>
                 </div>
             </div>
         </div>
