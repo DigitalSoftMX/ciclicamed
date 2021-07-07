@@ -8,14 +8,14 @@
             </a>
             <div class="px-3">
                 <button class="btn btn-icon btn-danger btn-circle button-size" @click="deleteThisComponent()">
-                    <img src="/svg/delete.svg" alt="Delete logo" class="svg-white">
+                    <img-component url="/svg/delete.svg" alt="Borrar" cssClass="svg-white"></img-component>
                 </button>
             </div>
         </div>
         <div :id="`oc${id}`" class="card-body row mx-0 collapse atbd-collapse-item__body bg-white show border-top">
             <div class="col-12 mb-25">
                 <label for="">Orden de estudio</label>
-                <v-select :options="orderList" label="name" :reduce="item => item.id" v-model="order.order.product_id"/>
+                <v-select :options="orderList" label="name" :reduce="item => item.id" v-model="order.order.product_id" :disabled="disabled"/>
             </div>
             <div class="col-12" v-if="isUpdate">
                 <label for="">Nota de actualización</label>

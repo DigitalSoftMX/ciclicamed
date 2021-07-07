@@ -8,11 +8,11 @@ import { defineAsyncComponent, DefineComponent, PropType } from 'vue';
 
 export default defineComponent({
     components: {
-        NavbarComponent: defineAsyncComponent(() => import('@component/general/navbar/NavbarComponent.vue')),
-        SidebarComponent: defineAsyncComponent(() => import('@component/general/sidebar/SidebarComponent.vue')),
-        UserProfileComponent: defineAsyncComponent(() => import('@component/user/userProfile/UserProfileComponent.vue')),
-        UserPasswordComponent: defineAsyncComponent(() => import('@component/user/userPassword/UserPasswordComponent.vue')),
-        UserProfileInfoComponent: defineAsyncComponent(() => import('@component/user/userProfileInfo/UserProfileInfoComponent.vue')),
+        NavbarComponent: require('@component/general/navbar/NavbarComponent.vue').default,
+        SidebarComponent: require('@component/general/sidebar/SidebarComponent.vue').default,
+        UserProfileComponent: require('@component/user/userProfile/UserProfileComponent.vue').default,
+        UserPasswordComponent: require('@component/user/userPassword/UserPasswordComponent.vue').default,
+        UserProfileInfoComponent: require('@component/user/userProfileInfo/UserProfileInfoComponent.vue').default,
     },
     props: {
         patient: {

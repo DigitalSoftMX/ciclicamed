@@ -12,7 +12,7 @@ class MedicalAttachment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'medicalconsult_id',
+        'patient_id',
         'data',
         'medicalspecialty_id',
         'updated_by',

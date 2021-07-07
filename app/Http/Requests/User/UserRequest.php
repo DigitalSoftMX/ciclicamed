@@ -24,8 +24,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email:rfc,dns'],
-            'confirmEmail' => ['required', 'email:rfc,dns', 'same:email'],
+            'email' => ['required', 'email'],
+            'confirmEmail' => ['required', 'email', 'same:email'],
             'password' => ['required', 'min:8', 'max:24'],
             'confirmPassword' => ['required',  'min:8', 'max:24', 'same:password'],
             'first_name' => ['required', 'max:100'],

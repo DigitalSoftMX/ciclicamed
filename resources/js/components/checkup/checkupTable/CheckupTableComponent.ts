@@ -23,11 +23,11 @@ require('bootstrap');
 
 export default defineComponent({
     components: {
-        CheckupInfoComponent: defineAsyncComponent(() => import('@component/checkup/checkupInfo/CheckupInfoComponent.vue')),
-        SuccessAlertComponent: defineAsyncComponent(() => import('@component/general/alert/SuccessAlertComponent.vue')),
-        ConfirmationAlertComponent: defineAsyncComponent(() => import('@component/general/alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue')),
-        EmptyErrorComponent: defineAsyncComponent(() => import('@component/general/error/EmptyErrorComponent.vue')),
-        CheckupSheduleComponent: defineAsyncComponent(() => import('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue'))
+        CheckupInfoComponent: require('@component/checkup/checkupInfo/CheckupInfoComponent.vue').default,
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
+        ConfirmationAlertComponent: require('@component/general/alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue').default,
+        EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
+        CheckupSheduleComponent: require('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue').default
     },
     emits: [],
     props: {

@@ -27,6 +27,10 @@ export default defineComponent({
             type: Number as PropType<Number>,
             default: 0
         },
+        disabled: {
+            type: Boolean as PropType<Boolean>,
+            default: true
+        },
     },
     watch: {
         modelValue: {

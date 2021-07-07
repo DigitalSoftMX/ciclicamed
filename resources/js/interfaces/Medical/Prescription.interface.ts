@@ -4,7 +4,7 @@ export interface Prescription
 {
     medicalconsult_id?: number;
     medicament_id: number;
-    administation_type: string;
+    administration_type: string;
     rate: string;
     duration: string;
     medicament?: Medicament;

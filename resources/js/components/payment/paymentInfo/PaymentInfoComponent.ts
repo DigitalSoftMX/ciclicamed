@@ -5,7 +5,7 @@ import { defineAsyncComponent } from 'vue';
 
 export default defineComponent({
     components: {
-        SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue')),
+        SelectComponent: require('@component/general/select/SelectComponent.vue').default,
     },
     emits: [],
     props: {

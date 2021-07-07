@@ -8,7 +8,7 @@
             </a>
             <div class="px-3">
                 <button class="btn btn-icon btn-danger btn-circle button-size" @click="deleteThisComponent">
-                    <img src="/svg/delete.svg" alt="Delete logo" class="svg-white">
+                    <img-component url="/svg/delete.svg" cssClass="svg-white" alt="Borrar"></img-component>
                 </button>
             </div>
         </div>
@@ -25,7 +25,7 @@
 
             <div class="col-12 col-md-6 mb-25">
                 <label for="">Vía de administración</label>
-                <input class="form-control form-control-lg" type="text" placeholder="Dosis" v-model="medicament.administation_type">
+                <input class="form-control form-control-lg" type="text" placeholder="Dosis" v-model="medicament.administration_type">
             </div>
 
             <div class="col-12 col-md-6">

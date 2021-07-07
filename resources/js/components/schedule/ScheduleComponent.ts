@@ -19,11 +19,11 @@ import { DefineComponent, PropType } from 'vue';
 export default defineComponent({
     name: 'ScheduleComponent',
     components: {
-        CalendarComponet: defineAsyncComponent(() => import('@component/schedule/CalendarComponent/CalendarComponent.vue')),
-        ScheduleSelectComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleSelectComponent/ScheduleSelectComponent.vue')),
-        ScheduleActionComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleActionComponent/ScheduleActionComponent.vue')),
-        LateralScheduleComponent: defineAsyncComponent(() => import('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue')),
-        CheckupScheduleComponent: defineAsyncComponent(() => import('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue')),
+        CalendarComponet: require('@component/schedule/CalendarComponent/CalendarComponent.vue').default,
+        ScheduleSelectComponent: require('@component/schedule/ScheduleSelectComponent/ScheduleSelectComponent.vue').default,
+        ScheduleActionComponent: require('@component/schedule/ScheduleActionComponent/ScheduleActionComponent.vue').default,
+        LateralScheduleComponent: require('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue').default,
+        CheckupScheduleComponent: require('@component/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue').default,
     },
     props: {
         userID: {

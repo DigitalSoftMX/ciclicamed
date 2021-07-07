@@ -10,9 +10,9 @@ import { defineAsyncComponent, DefineComponent, PropType } from 'vue';
 
 export default defineComponent({
     components: {
-        NavbarComponent: defineAsyncComponent(() => import('@component/general/navbar/NavbarComponent.vue')),
-        SidebarComponent: defineAsyncComponent(() => import('@component/general/sidebar/SidebarComponent.vue')),
-        ProductPage: defineAsyncComponent(() => import('@page/general/product/ProductPage.vue')),
+        NavbarComponent: require('@component/general/navbar/NavbarComponent.vue').default,
+        SidebarComponent: require('@component/general/sidebar/SidebarComponent.vue').default,
+        ProductPage: require('@page/general/product/ProductPage.vue').default,
     },
     props: {
         patient: {

@@ -6,8 +6,8 @@ import { defineAsyncComponent, DefineComponent, PropType } from 'vue';
 
 export default defineComponent({
     components: {
-        ConsultComponent: defineAsyncComponent(() => import('@component/medical/consult/ConsultComponent.vue')),
-        ScheduleComponent: defineAsyncComponent(() => import('@component/schedule/ScheduleComponent.vue')),
+        ConsultComponent: require('@component/medical/consult/ConsultComponent.vue').default,
+        ScheduleComponent: require('@component/schedule/ScheduleComponent.vue').default,
     },
     emits: [],
     props: {
@@ -31,12 +31,7 @@ export default defineComponent({
     mounted() {
     },
     computed: {
-        isPatient(): boolean
-        {
-            return this.userCategory.includes('Paciente') ? true : false;
-        }
     },
     methods: {
-       
     },
 })

@@ -17,8 +17,8 @@ class CreatePaymentsTable extends Migration
             $table->unsignedInteger('id', true);
             $table->unsignedMediumInteger('created_by', false);
             $table->unsignedMediumInteger('updated_by', false)->nullable();
-            $table->unsignedMediumInteger('charged_by', false);
-            $table->unsignedTinyInteger('paymentmethod_id', false);
+            $table->unsignedMediumInteger('charged_by', false)->nullable();
+            $table->unsignedTinyInteger('paymentmethod_id', false)->nullable();
             $table->unsignedSmallInteger('branch_id', false);
             $table->decimal('discount', 5, 2)->nullable();
             $table->decimal('total', 7, 2);

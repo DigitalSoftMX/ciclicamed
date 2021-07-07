@@ -10,41 +10,41 @@ axios.defaults.headers.common = {
 axios.defaults.baseURL = (document.head.querySelector('meta[name="api-base-url"]') as any)!.content;
 const app = createApp({
     components: {
-		LoginComponent: defineAsyncComponent(() => import('@component/login/LoginComponent.vue')),
-		SignupComponent: defineAsyncComponent(() => import('@component/signUp/SignupComponent.vue')),
-		PatientDashboardPage: defineAsyncComponent(() => import('@page/patient/patientDashboardPage/PatientDashboardPage.vue')),
-		PatientPrescriptionPage: defineAsyncComponent(() => import('@page/patient/patientPrescriptionPage/PatientPrescriptionPage.vue')),
-		PatientTestPage: defineAsyncComponent(() => import('@page/patient/patientTestPage/PatientTestPage.vue')),
-		PatientProfilePage: defineAsyncComponent(() => import('@page/patient/patientProfilePage/PatientProfilePage.vue')),
+		LoginComponent: require('@component/login/LoginComponent.vue').default,
+		SignupComponent: require('@component/signUp/SignupComponent.vue').default,
+		PatientDashboardPage: require('@page/patient/patientDashboardPage/PatientDashboardPage.vue').default,
+		PatientPrescriptionPage: require('@page/patient/patientPrescriptionPage/PatientPrescriptionPage.vue').default,
+		PatientTestPage: require('@page/patient/patientTestPage/PatientTestPage.vue').default,
+		PatientProfilePage: require('@page/patient/patientProfilePage/PatientProfilePage.vue').default,
 
-		DoctorDashboardPage: defineAsyncComponent(() => import('@page/doctor/doctorDashboardPage/DoctorDashboardPage.vue')),
-		DoctorConsultPage: defineAsyncComponent(() => import('@page/doctor/doctorConsultPage/DoctorConsultPage.vue')),
-		DoctorProfilePage: defineAsyncComponent(() => import('@page/doctor/doctorProfilePage/DoctorProfilePage.vue')),
+		DoctorDashboardPage: require('@page/doctor/doctorDashboardPage/DoctorDashboardPage.vue').default,
+		DoctorConsultPage: require('@page/doctor/doctorConsultPage/DoctorConsultPage.vue').default,
+		DoctorProfilePage: require('@page/doctor/doctorProfilePage/DoctorProfilePage.vue').default,
 
-		CheckupDashboardPage: defineAsyncComponent(() => import('@page/checkup/checkupDashboardPage/CheckupDashboardPage.vue')),
-		CheckupCheckupPage: defineAsyncComponent(() => import('@page/checkup/checkupCheckupPage/CheckupCheckupPage.vue')),
-		CheckupProfilePage: defineAsyncComponent(() => import('@page/checkup/checkupProfilePage/CheckupProfilePage')),
+		CheckupDashboardPage: require('@page/checkup/checkupDashboardPage/CheckupDashboardPage.vue').default,
+		CheckupCheckupPage: require('@page/checkup/checkupCheckupPage/CheckupCheckupPage.vue').default,
+		CheckupProfilePage: require('@page/checkup/checkupProfilePage/CheckupProfilePage.vue').default,
 
-		AsistenteDashboardPage: defineAsyncComponent(() => import('@page/asistente/AsistenteDashboardPage/AsistenteDashboardPage.vue')),
-		AsistenteProductPage: defineAsyncComponent(() => import('@page/asistente/AsistenteProductPage/AsistenteProductPage.vue')),
-		AsistenteProfilePage: defineAsyncComponent(() => import('@page/asistente/AsistenteProfilePage/AsistenteProfilePage.vue')),
-		// ScheduleComponent: defineAsyncComponent(() => import('./components/schedule/ScheduleComponent.vue')),
+		AsistenteDashboardPage: require('@page/asistente/AsistenteDashboardPage/AsistenteDashboardPage.vue').default,
+		AsistenteProductPage: require('@page/asistente/AsistenteProductPage/AsistenteProductPage.vue').default,
+		AsistenteProfilePage: require('@page/asistente/AsistenteProfilePage/AsistenteProfilePage.vue').default,
+		// ScheduleComponent: require('./components/schedule/ScheduleComponent.vue').default,
 		// MedicalConsultPage: MedicalConsultPage,
 		// UsersPage: UsersPage,
-		// UploadFileComponent: defineAsyncComponent(() => ('@component/general/uploadFile/UploadFileComponent.vue')),
-		// ProductPage: defineAsyncComponent(() => ('./pages/product/ProductPage.vue')),
-		// PatientsDataTable: defineAsyncComponent(() => ('@component/dataTable/patientsTable/PatientsTableComponent.vue')),
-		// EmployeesDataTable: defineAsyncComponent(() => ('@component/dataTable/employeesTable/EmployeesTableComponent.vue')),
-		// CuestionarioMastografia: defineAsyncComponent(() => ('@component/medical/test/Imagenologia/CuestionarioMastografia/CuestionarioMastografiaComponent.vue')),
-		// InterpretacionResultados: defineAsyncComponent(() => ('@component/medical/test/Imagenologia/InterpretacionUltrasonidos/InterpretacionUltrasonidosComponent.vue')),
-		// ConsultProduct: defineAsyncComponent(() => import('./components/payment/chargePayment/ChargePaymentComponent.vue')),
-		// PatientDebtTable: defineAsyncComponent(() => import('./components/payment/patientDebtTable/PatientDebtTableComponent.vue')),
-		// DebtsTable: defineAsyncComponent(() => import('./components/payment/paymentDebtTable/PaymentDebtTableComponent.vue')),
-		// DebtsData: defineAsyncComponent(() => import('./components/payment/debtsTable/DebtsTableComponent.vue')),
-		// TestTable: defineAsyncComponent(() => import('./components/medical/test/testTable/TestTableComponent.vue')),
-		// TestUpload: defineAsyncComponent(() => import('./components/medical/test/testUpload/TestUploadComponent.vue')),
-		// CheckupSchedule: defineAsyncComponent(() => import('./components/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue')),
-		// CheckupTable: defineAsyncComponent(() => import('./components/checkup/checkupTable/CheckupTableComponent.vue'))
+		// UploadFileComponent: defineAsyncComponent(() => ('@component/general/uploadFile/UploadFileComponent.vue').default,
+		// ProductPage: defineAsyncComponent(() => ('./pages/product/ProductPage.vue').default,
+		// PatientsDataTable: defineAsyncComponent(() => ('@component/dataTable/patientsTable/PatientsTableComponent.vue').default,
+		// EmployeesDataTable: defineAsyncComponent(() => ('@component/dataTable/employeesTable/EmployeesTableComponent.vue').default,
+		// CuestionarioMastografia: defineAsyncComponent(() => ('@component/medical/test/Imagenologia/CuestionarioMastografia/CuestionarioMastografiaComponent.vue').default,
+		// InterpretacionResultados: defineAsyncComponent(() => ('@component/medical/test/Imagenologia/InterpretacionUltrasonidos/InterpretacionUltrasonidosComponent.vue').default,
+		// ConsultProduct: require('./components/payment/chargePayment/ChargePaymentComponent.vue').default,
+		// PatientDebtTable: require('./components/payment/patientDebtTable/PatientDebtTableComponent.vue').default,
+		// DebtsTable: require('./components/payment/paymentDebtTable/PaymentDebtTableComponent.vue').default,
+		// DebtsData: require('./components/payment/debtsTable/DebtsTableComponent.vue').default,
+		// TestTable: require('./components/medical/test/testTable/TestTableComponent.vue').default,
+		// TestUpload: require('./components/medical/test/testUpload/TestUploadComponent.vue').default,
+		// CheckupSchedule: require('./components/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue').default,
+		// CheckupTable: require('./components/checkup/checkupTable/CheckupTableComponent.vue').default
 	}
 });
 
@@ -55,4 +55,5 @@ app.mixin({
         asset: asset
     }
 })
+app.component('ImgComponent', require('@component/general/img/ImgComponent.vue').default,)
 app.mount('#app');

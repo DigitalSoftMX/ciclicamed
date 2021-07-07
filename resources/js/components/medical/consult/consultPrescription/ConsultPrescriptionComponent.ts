@@ -11,7 +11,7 @@ import { PrescriptionData } from '@data/Medical/Prescription.data';
 
 export default defineComponent({
     components: {
-        MedicamentComponent: defineAsyncComponent(() => import('@component/medical/consult/consultPrescription/medicament/ConsultMedicamentComponent.vue'))
+        MedicamentComponent: require('@component/medical/consult/consultPrescription/medicament/ConsultMedicamentComponent.vue').default
     },
     emits: ['update:modelValue'],
     props: {
@@ -38,12 +38,15 @@ export default defineComponent({
         {
             handler()
             {
-                this.modelValue.map(medicament => this.addPrescription(medicament));
+                if(this.modelValue.length !== this.prescriptionData.length)
+                {
+                    this.modelValue.map(medicament => this.addPrescription(medicament));
+                }
                 this.prescriptionData = this.modelValue;
             },
             deep: true
         },
-        orderData:
+        prescriptionData:
         {
             handler()
             {
@@ -74,18 +77,6 @@ export default defineComponent({
                     console.log(error)
                 })
         },
-        createPrescription()
-        {
-            axios.post(`/consultas/1/receta`, {
-                data: this.prescriptionData
-            })
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
         // async createPDF()
         // {
         //     const doctorLicence = this.doctorData.specialties?.filter(specialty => specialty.pivot.medicalspecialty_id === this.consultData.medicalspecialty_id)[0];
@@ -109,7 +100,7 @@ export default defineComponent({
         //     pdf.getForm().getTextField('doctorLicenseNumber').setText( doctorLicence?.pivot.license_number );
         //     pdf.getForm().getTextField('doctorSchool').setText( doctorLicence?.pivot.school_name );
         //     pdf.getForm().getTextField('name').setText( filterPrescriptionList.map((medicament: Prescription) => 
-        //         `Nombre: ${this.medicamentList[medicament.medicament_id].name}\tNombre genérico: ${this.medicamentList[medicament.medicament_id].generic_name}\nPresentación: ${this.medicamentList[medicament.medicament_id].presentation}\tVía de administración: ${medicament.administation_type}\tDuración: ${medicament.duration}\n\n`
+        //         `Nombre: ${this.medicamentList[medicament.medicament_id].name}\tNombre genérico: ${this.medicamentList[medicament.medicament_id].generic_name}\nPresentación: ${this.medicamentList[medicament.medicament_id].presentation}\tVía de administración: ${medicament.administration_type}\tDuración: ${medicament.duration}\n\n`
         //     ).toString() );
         //     pdf.getForm().flatten();
         //     return await pdf.save()

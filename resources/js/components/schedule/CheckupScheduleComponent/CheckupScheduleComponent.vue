@@ -10,7 +10,7 @@
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3"
                             data-dismiss="modal" aria-label="Close">
-                            <img src="/svg/close.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
+                            <img :src="asset('/svg/close.svg')" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
                                 data-placement="bottom" title="Cerrar">
                         </button>
                     </div>

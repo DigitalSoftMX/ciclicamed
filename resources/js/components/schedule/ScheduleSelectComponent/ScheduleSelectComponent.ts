@@ -9,7 +9,7 @@ export default defineComponent({
     name: 'ScheduleSelectComponent',
     components: {
         vSelect,
-        SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue'))
+        SelectComponent: require('@component/general/select/SelectComponent.vue').default
     },
     emits: ['onBranchSelected', 'onDoctorSelected', 'onUserSchedule', 'onEmployeeScheduleSelect'],
     props: {

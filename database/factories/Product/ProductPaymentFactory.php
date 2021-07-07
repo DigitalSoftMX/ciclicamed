@@ -22,7 +22,9 @@ class ProductPaymentFactory extends Factory
     public function definition()
     {
         return [
-            'medicalconsult_id' => $this->faker->numberBetween(1, 50),
+            'consult_created' => $this->faker->numberBetween(1, 50),
+            'consult_scheduled' => $this->faker->numberBetween(1, 50),
+            'checkup_id' => $this->faker->numberBetween(1, 50),
             'payment_id' => $this->faker->numberBetween(1, 50),
             'product_id' => $this->faker->numberBetween(1, 969),
         ];

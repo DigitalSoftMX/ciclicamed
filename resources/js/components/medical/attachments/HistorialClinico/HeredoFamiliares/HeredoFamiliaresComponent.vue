@@ -58,7 +58,7 @@
                         <div class="col-12 col-md-7 mb-25 mb-md-0">
                             <textarea type="text" class="form-control" :disabled="disabled" id="hfcCancerOtros"
                                 v-model="formData.cancer.otros.description"
-                                placeholder="Ginecológico"></textarea>
+                                placeholder="Otros"></textarea>
                         </div>
                         <div class="col-12 col-md-5">
                             <input type="number" class="form-control" :disabled="disabled" id="hfcCancerOtrosEdad"
@@ -137,8 +137,8 @@
                 <div class="col-12 p-0">
                     <div class="row mx-0">
                         <textarea type="text" class="form-control" :disabled="disabled" id="hfcOtrosOtros"
-                            v-model="formData.cancer.otros.description"
-                            placeholder="Ginecológico"></textarea>
+                            v-model="formData.otros.description"
+                            placeholder="Otros"></textarea>
                     </div>
                 </div>
             </div>

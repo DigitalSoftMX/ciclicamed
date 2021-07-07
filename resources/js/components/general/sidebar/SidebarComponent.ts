@@ -18,6 +18,7 @@ export default defineComponent({
     },
     data() {
         return {
+            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
         };
     },
     mounted() {

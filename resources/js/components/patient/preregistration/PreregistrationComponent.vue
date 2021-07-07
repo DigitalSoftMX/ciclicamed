@@ -10,8 +10,7 @@
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3"
                             data-dismiss="modal" aria-label="Close">
-                            <img src="/svg/close.svg" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
-                                data-placement="bottom" title="Cerrar">
+                            <img-component url="/svg/close.svg" alt="Perfil" cssClass="rounded-circle" styleData="filter: invert(1);"></img-component>
                         </button>
                     </div>
                 </div>
@@ -20,12 +19,12 @@
 
                     <div class="col-12 col-md-4 mb-25">
                         <label for="pcNombre">Nombre</label>
-                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                        <input class="form-control form-control-lg" type="text" disabled
                             id="pcNombre" v-model="patientDataCopy.first_name">
                     </div>
                     <div class="col-12 col-md-4 mb-25">
                         <label for="pcApellidos">Apellidos</label>
-                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                        <input class="form-control form-control-lg" type="text" disabled
                             id="pcApellidos" v-model="patientDataCopy.last_name">
                     </div>
                     <div class="col-12 col-md-4 mb-25">
@@ -35,22 +34,22 @@
                     </div>
                     <div class="col-12 col-md-4 mb-25">
                         <label for="pcFechaNacimiento">Fecha de nacimiento</label>
-                        <input class="form-control form-control-lg" type="date" :disabled="disabled"
+                        <input class="form-control form-control-lg" type="date" disabled
                             id="pcFechaNacimiento" v-model="patientDataCopy.birthday">
                     </div>
                     <div class="col-12 col-md-4 mb-25">
                         <label for="pcTelefono">Teléfono de casa</label>
-                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                        <input class="form-control form-control-lg" type="text" disabled
                             id="pcTelefono" v-model="patientDataCopy.phone">
                     </div>
                     <div class="col-12 col-md-4 mb-25">
                         <label for="pcCelular">Celular</label>
-                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                        <input class="form-control form-control-lg" type="text" disabled
                             id="pcCelular" v-model="patientDataCopy.cellphone">
                     </div>
                     <div class="col-12 col-md-4 mb-25">
                         <label for="pcCorreoElectronico">Correo electrónico</label>
-                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                        <input class="form-control form-control-lg" type="text" disabled
                             id="pcCorreoElectronico" v-model="patientDataCopy.user.email">
                     </div>
                     <div class="col-12 col-md-4 mb-25">
@@ -83,7 +82,7 @@
 
                     <div class="col-12 mb-25">
                         <label for="pcDireccion">Dirección</label>
-                        <textarea class="form-control form-control-lg" rows="3" :disabled="disabled"
+                        <textarea class="form-control form-control-lg" rows="3" disabled
                             id="pcDireccion" v-model="patientDataCopy.address"></textarea>
                     </div>
 
@@ -286,11 +285,9 @@
                     </div>
                 </div>
 
-                <div class="modal-footer">
+                <div class="modal-footer bg-white">
                     <button class="btn btn-primary btn-default btn-squared" @click="updatePreregistration">{{buttonTitle}}</button>
                 </div>
-
-
             </div>
         </div>
     </div>

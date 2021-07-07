@@ -96,39 +96,6 @@
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/ensure chunk */
-/******/ 	(() => {
-/******/ 		__webpack_require__.f = {};
-/******/ 		// This file contains only the entry chunk.
-/******/ 		// The chunk loading function for additional chunks
-/******/ 		__webpack_require__.e = (chunkId) => {
-/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
-/******/ 				__webpack_require__.f[key](chunkId, promises);
-/******/ 				return promises;
-/******/ 			}, []));
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/get javascript chunk filename */
-/******/ 	(() => {
-/******/ 		// This function allow to reference async chunks
-/******/ 		__webpack_require__.u = (chunkId) => {
-/******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_login_LoginComponent_vue":1,"resources_js_components_signUp_SignupComponent_vue":1,"resources_js_pages_patient_patientDashboardPage_PatientDashboardPage_vue":1,"resources_js_pages_patient_patientPrescriptionPage_PatientPrescriptionPage_vue":1,"resources_js_pages_patient_patientTestPage_PatientTestPage_vue":1,"resources_js_pages_patient_patientProfilePage_PatientProfilePage_vue":1,"resources_js_pages_doctor_doctorDashboardPage_DoctorDashboardPage_vue":1,"resources_js_pages_doctor_doctorConsultPage_DoctorConsultPage_vue":1,"resources_js_pages_doctor_doctorProfilePage_DoctorProfilePage_vue":1,"resources_js_pages_checkup_checkupDashboardPage_CheckupDashboardPage_vue":1,"resources_js_pages_checkup_checkupCheckupPage_CheckupCheckupPage_vue":1,"resources_js_pages_checkup_checkupProfilePage_CheckupProfilePage_vue":1,"resources_js_pages_asistente_AsistenteDashboardPage_AsistenteDashboardPage_vue":1,"resources_js_pages_asistente_AsistenteProductPage_AsistenteProductPage_vue":1,"resources_js_pages_asistente_AsistenteProfilePage_AsistenteProfilePage_vue":1,"resources_js_components_general_alert_SuccessAlertComponent_vue":1,"resources_js_components_general_alert_ErrorAlertComponent_vue":1,"resources_js_components_general_navbar_NavbarComponent_vue":1,"resources_js_components_general_sidebar_SidebarComponent_vue":1,"resources_js_components_schedule_ScheduleComponent_vue-_3c5f0":1,"resources_js_components_patient_prescription_PrescriptionComponent_vue":1,"resources_js_components_patient_test_PatientTestComponent_vue":1,"resources_js_components_user_userProfile_UserProfileComponent_vue":1,"resources_js_components_user_userPassword_UserPasswordComponent_vue":1,"resources_js_components_user_userProfileInfo_UserProfileInfoComponent_vue":1,"resources_js_pages_general_consult_ConsultPage_vue":1,"resources_js_components_checkup_checkupTable_CheckupTableComponent_vue":1,"resources_js_pages_general_product_ProductPage_vue":1,"resources_js_components_schedule_CalendarComponent_CalendarComponent_vue":1,"resources_js_components_schedule_ScheduleSelectComponent_ScheduleSelectComponent_vue":1,"resources_js_components_schedule_ScheduleActionComponent_ScheduleActionComponent_vue":1,"resources_js_components_schedule_LateralScheduleComponent_LateralScheduleComponent_vue-_2c8c0":1,"resources_js_components_schedule_CheckupScheduleComponent_CheckupScheduleComponent_vue-_9ff70":1,"resources_js_components_patient_prescription_prescriptionModal_PrescriptionModalComponent_vue":1,"resources_js_components_patient_test_testFileModal_PatientTestFileModalComponent_vue":1,"resources_js_components_medical_consult_ConsultComponent_vue":1,"resources_js_components_checkup_checkupInfo_CheckupInfoComponent_vue":1,"resources_js_components_general_alert_ConfirmationAlertComponent_ConfirmationAlertComponent_vue":1,"resources_js_components_general_error_EmptyErrorComponent_vue":1,"resources_js_components_schedule_CheckupScheduleComponent_CheckupScheduleComponent_vue-_9ff71":1,"resources_js_components_general_select_SelectComponent_vue-_a71d0":1,"resources_js_components_schedule_LateralScheduleComponent_LateralScheduleComponent_vue-_2c8c1":1,"resources_js_components_general_timePicker_TimePickerComponent_vue":1,"resources_js_components_general_select_SelectComponent_vue-_a71d2":1,"resources_js_components_general_select_SelectComponent_vue-_a71d1":1,"resources_js_components_schedule_ScheduleComponent_vue-_3c5f1":1,"resources_js_components_patient_preregistration_PreregistrationComponent_vue":1,"resources_js_components_medical_consult_consultPrescription_medicament_ConsultMedicamentCompo-b4a57d":1,"resources_js_components_general_error_NetworkErrorComponent_vue":1,"resources_js_components_payment_chargePayment_productModalList_ProductModalListComponent_vue":1,"resources_js_components_payment_paymentInfo_PaymentInfoComponent_vue":1,"resources_js_components_general_select_SelectComponent_vue-_a71d3":1}[chunkId]) return "js/" + chunkId + ".js";
-/******/ 			// return url for filenames based on template
-/******/ 			return undefined;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/get mini-css chunk filename */
-/******/ 	(() => {
-/******/ 		// This function allow to reference all chunks
-/******/ 		__webpack_require__.miniCssF = (chunkId) => {
-/******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + ".css";
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -144,52 +111,6 @@
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/load script */
-/******/ 	(() => {
-/******/ 		var inProgress = {};
-/******/ 		// data-webpack is not used as build has no uniqueName
-/******/ 		// loadScript function to load a script via script tag
-/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
-/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
-/******/ 			var script, needAttach;
-/******/ 			if(key !== undefined) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				for(var i = 0; i < scripts.length; i++) {
-/******/ 					var s = scripts[i];
-/******/ 					if(s.getAttribute("src") == url) { script = s; break; }
-/******/ 				}
-/******/ 			}
-/******/ 			if(!script) {
-/******/ 				needAttach = true;
-/******/ 				script = document.createElement('script');
-/******/ 		
-/******/ 				script.charset = 'utf-8';
-/******/ 				script.timeout = 120;
-/******/ 				if (__webpack_require__.nc) {
-/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
-/******/ 				}
-/******/ 		
-/******/ 				script.src = url;
-/******/ 			}
-/******/ 			inProgress[url] = [done];
-/******/ 			var onScriptComplete = (prev, event) => {
-/******/ 				// avoid mem leaks in IE.
-/******/ 				script.onerror = script.onload = null;
-/******/ 				clearTimeout(timeout);
-/******/ 				var doneFns = inProgress[url];
-/******/ 				delete inProgress[url];
-/******/ 				script.parentNode && script.parentNode.removeChild(script);
-/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
-/******/ 				if(prev) return prev(event);
-/******/ 			}
-/******/ 			;
-/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
-/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
-/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
-/******/ 			needAttach && document.head.appendChild(script);
-/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -244,44 +165,7 @@
 /******/ 			"css/style": 0
 /******/ 		};
 /******/ 		
-/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
-/******/ 				// JSONP chunk loading for javascript
-/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
-/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
-/******/ 		
-/******/ 					// a Promise means "currently loading".
-/******/ 					if(installedChunkData) {
-/******/ 						promises.push(installedChunkData[2]);
-/******/ 					} else {
-/******/ 						if(!/^(\/js\/manifest|css\/style)$/.test(chunkId)) {
-/******/ 							// setup Promise in chunk cache
-/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
-/******/ 							promises.push(installedChunkData[2] = promise);
-/******/ 		
-/******/ 							// start chunk loading
-/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
-/******/ 							// create error before stack unwound to get useful stacktrace later
-/******/ 							var error = new Error();
-/******/ 							var loadingEnded = (event) => {
-/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
-/******/ 									installedChunkData = installedChunks[chunkId];
-/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
-/******/ 									if(installedChunkData) {
-/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
-/******/ 										var realSrc = event && event.target && event.target.src;
-/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
-/******/ 										error.name = 'ChunkLoadError';
-/******/ 										error.type = errorType;
-/******/ 										error.request = realSrc;
-/******/ 										installedChunkData[1](error);
-/******/ 									}
-/******/ 								}
-/******/ 							};
-/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
-/******/ 						} else installedChunks[chunkId] = 0;
-/******/ 					}
-/******/ 				}
-/******/ 		};
+/******/ 		// no chunk on demand loading
 /******/ 		
 /******/ 		// no prefetching
 /******/ 		

@@ -28,7 +28,7 @@
                         <!-- Start: error page -->
                         <div class="min-vh-100 content-center">
                             <div class="error-page text-center">
-                                <img src="{{ asset('/svg/401.svg') }}" alt="404" class="svg w-50">
+                                <img :src="asset("{{ asset('/svg/401.svg') }}" alt="404" class="svg w-50">
                                 <h5 class="fw-500 display-3 mt-5">Lo sentimos, no tiene los permisos necesarios para ver esta página.</h5>
                                 <div class="content-center mt-30">
                                     <a href="{{ route('login.login') }}" class="btn btn-primary btn-default btn-squared px-50 py-10">Regresar</a>

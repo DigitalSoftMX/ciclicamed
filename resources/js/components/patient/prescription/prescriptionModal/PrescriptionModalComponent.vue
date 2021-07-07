@@ -6,7 +6,7 @@
                     <h6 class="modal-title e-info-title text-white">Medicamentos</h6>
                     <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0" data-dismiss="modal"
                         aria-label="Close">
-                        <img src="/svg/close.svg" alt="Alert logo" style="filter: invert(1);">
+                        <img :src="asset('/svg/close.svg')" alt="Alert logo" style="filter: invert(1);">
                     </button>
                 </div>
                 <div class="card-body p-0 rounded-bottom">
@@ -23,7 +23,7 @@
                             <tbody>
                                 <tr v-for="prescription in prescriptions" :key="prescription.medicament?.code">
                                     <td>{{prescription.medicament?.name}}</td>
-                                    <td>{{prescription.administation_type}}</td>
+                                    <td>{{prescription.administration_type}}</td>
                                     <td>{{prescription.rate}}</td>
                                     <td>{{prescription.duration}}</td>
                                 </tr>

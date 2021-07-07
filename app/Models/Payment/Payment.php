@@ -64,6 +64,6 @@ class Payment extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_payments', 'payment_id', 'product_id')->withPivot('medicalconsult_id');
+        return $this->belongsToMany(Product::class, 'product_payments', 'payment_id', 'product_id')->withPivot('consult_created', 'consult_scheduled', 'checkup_id')->as('payment');
     }
 }

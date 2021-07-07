@@ -29,7 +29,8 @@ export default defineComponent({
     },
     data() {
         return {
-            token: document.querySelector('meta[name="csrf-token"]')!.getAttribute('content')
+            token: document.querySelector('meta[name="csrf-token"]')!.getAttribute('content'),
+            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
         };
     },
     mounted() {

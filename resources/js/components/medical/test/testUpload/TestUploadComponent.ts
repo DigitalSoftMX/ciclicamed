@@ -5,14 +5,14 @@ import { defineAsyncComponent } from 'vue';
 
 export default defineComponent({
     components: {
-        UserBioComponent: defineAsyncComponent(() => import('@component/user/userBioComponent/UserBioComponent.vue')),
-        UploadFileComponent: defineAsyncComponent(() => import('@component/general/uploadFile/UploadFileComponent.vue')),
-        MastografiaComponent: defineAsyncComponent(() => import('@component/medical/test/Imagenologia/InterpretacionUltrasonidos/InterpretacionUltrasonidosComponent.vue')),
-        EspermatobioscopiaDirectaComponent: defineAsyncComponent(() => import('@component/medical/test/Andrologia/EspermatobioscopiaDirecta/EspermatobioscopiaDirectaComponent.vue')),
-        InseminacionArtificialComponent: defineAsyncComponent(() => import('@component/medical/test/Andrologia/InseminacionArtificial/InseminacionArtificialComponent.vue')),
-        OrinaPostEyaculadoComponent: defineAsyncComponent(() => import('@component/medical/test/Andrologia/OrinaPostEyaculado/OrinaPostEyaculadoComponent.vue')),
-        PruebaCapacitacionComponent: defineAsyncComponent(() => import('@component/medical/test/Andrologia/PruebaCapacitacion/PruebaCapacitacionComponent.vue')),
-        PruebaHostComponent: defineAsyncComponent(() => import('@component/medical/test/Andrologia/PruebaHost/PruebaHostComponent.vue')),
+        UserBioComponent: require('@component/user/userBioComponent/UserBioComponent.vue').default,
+        UploadFileComponent: require('@component/general/uploadFile/UploadFileComponent.vue').default,
+        MastografiaComponent: require('@component/medical/test/Imagenologia/InterpretacionUltrasonidos/InterpretacionUltrasonidosComponent.vue').default,
+        EspermatobioscopiaDirectaComponent: require('@component/medical/test/Andrologia/EspermatobioscopiaDirecta/EspermatobioscopiaDirectaComponent.vue').default,
+        InseminacionArtificialComponent: require('@component/medical/test/Andrologia/InseminacionArtificial/InseminacionArtificialComponent.vue').default,
+        OrinaPostEyaculadoComponent: require('@component/medical/test/Andrologia/OrinaPostEyaculado/OrinaPostEyaculadoComponent.vue').default,
+        PruebaCapacitacionComponent: require('@component/medical/test/Andrologia/PruebaCapacitacion/PruebaCapacitacionComponent.vue').default,
+        PruebaHostComponent: require('@component/medical/test/Andrologia/PruebaHost/PruebaHostComponent.vue').default,
     },
     emits: [],
     props: {

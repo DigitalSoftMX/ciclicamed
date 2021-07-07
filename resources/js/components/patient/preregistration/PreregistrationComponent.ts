@@ -27,6 +27,10 @@ export default defineComponent({
         patientData: {
             type: Object as PropType<Patient>,
             default: PatientData
+        },
+        role: {
+            type: String,
+            default: ''
         }
     },
     data() {
@@ -76,20 +80,6 @@ export default defineComponent({
                 }
             })
             .then(response => {
-                this.updatePatientData();
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
-        updatePatientData()
-        {
-            axios.patch(`/pacientes/${this.patientDataCopy.id}`, {
-                data: {
-                    ...this.patientDataCopy
-                }
-            })
-            .then(response => {
                 this.success.title = 'Información actualizada';
                 this.success.message = 'Se ha actualizado la información correctamente';
                 $('#preregistrationSuccess').modal('show');
@@ -97,6 +87,6 @@ export default defineComponent({
             .catch(error => {
                 console.log(error)
             })
-        }
+        },
     },
 })

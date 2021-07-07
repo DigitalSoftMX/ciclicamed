@@ -12,7 +12,7 @@ require('bootstrap');
 
 export default defineComponent({
     components: {
-        PatientTestFileModalComponent: defineAsyncComponent(() => import('@component/patient/test/testFileModal/PatientTestFileModalComponent.vue'))
+        PatientTestFileModalComponent: require('@component/patient/test/testFileModal/PatientTestFileModalComponent.vue').default
     },
     props: {
         patientID: {

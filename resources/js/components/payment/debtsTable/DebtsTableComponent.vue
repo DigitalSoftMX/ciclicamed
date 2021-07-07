@@ -9,7 +9,7 @@
                 <div class="card-body text-center pt-sm-30 pb-sm-0 px-25 pb-0">
                     <div class="account-profile">
                         <div class="ap-img w-100 d-flex justify-content-center">
-                            <img class="wh-120" src="/svg/caja.svg" alt="Caja">
+                            <img class="wh-120" src="/svg/caja.svg')" alt="Caja">
                         </div>
                     </div>
                     <div class="card-footer mt-20 pt-20 pb-20 px-0">

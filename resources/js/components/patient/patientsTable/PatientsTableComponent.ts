@@ -10,7 +10,7 @@ import { defineAsyncComponent } from 'vue';
 
 export default defineComponent({
     components: {
-        PreregistrationComponent: defineAsyncComponent(() => import('@component/patient/preregistration/PreregistrationComponent.vue'))
+        PreregistrationComponent: require('@component/patient/preregistration/PreregistrationComponent.vue').default
     },
     emits: [],
     props: {

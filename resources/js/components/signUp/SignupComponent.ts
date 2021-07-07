@@ -5,8 +5,8 @@ import 'bootstrap';
 
 export default defineComponent({
     components: {
-        SuccessAlertComponent: defineAsyncComponent(() => import('@component/general/alert/SuccessAlertComponent.vue')),
-        ErrorAlertComponent: defineAsyncComponent(() => import('@component/general/alert/ErrorAlertComponent.vue'))
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
+        ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default
     },
     data() {
         return {

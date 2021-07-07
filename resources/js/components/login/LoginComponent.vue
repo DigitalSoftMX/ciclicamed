@@ -6,7 +6,7 @@
                 <div class="card border-0 shadow-none">
                     <div class="card-body">
                         <div class="text-center mb-25">
-                            <img src="/img/login/logo.png" alt="Ciclica logo" class="login-logo mb-25">
+                            <img :src="asset('/img/login/logo.png')" alt="Ciclica logo" class="login-logo mb-25">
                             <h2>Iniciar sesión</h2>
                         </div>
                         <div>

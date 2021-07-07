@@ -11,9 +11,9 @@ import { Role } from '@interface/User/Role.interface';
 
 export default defineComponent({
     components: {
-        'LateralScheduleComponent': defineAsyncComponent(() => import('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue')),
-        'SuccessAlertComponent': defineAsyncComponent(() => import('@component/general/alert/SuccessAlertComponent.vue')),
-        'ErrorAlertComponent': defineAsyncComponent(() => import('@component/general/alert/ErrorAlertComponent.vue'))
+        'LateralScheduleComponent': require('@component/schedule/LateralScheduleComponent/LateralScheduleComponent.vue').default,
+        'SuccessAlertComponent': require('@component/general/alert/SuccessAlertComponent.vue').default,
+        'ErrorAlertComponent': require('@component/general/alert/ErrorAlertComponent.vue').default
     },
     emits: ['scheduleCanceled', ''],
     props: {

@@ -17,5 +17,5 @@ export const PaymentData: Payment = {
     created_at: '',
     updated_at: '',
     last_debt_payment: DebtData,
-    products: [ProductData]
+    products: []
 }

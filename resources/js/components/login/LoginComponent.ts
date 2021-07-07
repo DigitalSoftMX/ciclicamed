@@ -5,12 +5,13 @@ import 'bootstrap';
 
 export default defineComponent({
     components: {
-        SuccessAlertComponent: defineAsyncComponent(() => import('@component/general/alert/SuccessAlertComponent.vue')),
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
     },
     data() {
         return {
             email: '',
-            password: ''
+            password: '',
+            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
         };
     },
     mounted() {
@@ -31,7 +32,7 @@ export default defineComponent({
             .then(response => {
                 $('#logcSuccessAlert').modal('show');
                 setInterval(() => {
-                    window.location.replace(`/app/inicio`);
+                    window.location.replace(`${this.url}/app/inicio`);
                 }, 2000)
             })
             .catch(error => {
@@ -40,7 +41,7 @@ export default defineComponent({
         },
         redirectToSignup()
         {
-            window.location.replace(`/register`);
+            window.location.replace(`${this.url}/register`);
         }
     },
 })

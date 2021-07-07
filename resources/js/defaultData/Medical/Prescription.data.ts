@@ -4,7 +4,7 @@ import { MedicamentData } from "./Medicament.data";
 export const PrescriptionData: Prescription = {
     medicalconsult_id: -1,
     medicament_id: 0,
-    administation_type: '',
+    administration_type: '',
     rate: '',
     duration: '',
     medicament: MedicamentData,

@@ -6,7 +6,7 @@
                 <div class="ap-img w-100 d-flex justify-content-center">
                     <img class="ap-img__main rounded-circle mb-3 wh-120 d-flex bg-opacity-primary"
                         :src="`/images/users/${userData.photo}`" alt="profile" id="upasscPhoto"
-                        onerror="this.onerror=null;this.src='/svg/person.svg';">
+                        onerror="this.onerror=null;this.src='../svg/person.svg';">
                 </div>
 
                 <div class="ap-nameAddress pb-3 pt-1">

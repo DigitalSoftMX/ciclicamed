@@ -4,13 +4,18 @@ namespace App\Http\Controllers\Medical\Consult;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Medical\Consult\MedicalConsultRequest;
+use App\Models\Medical\Attachment\MedicalAttachment;
+use App\Models\Medical\Attachment\MedicalAttachmentFollowUp;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\Consult\MedicalConsultStatus;
 use App\Models\Medical\Consult\MedicalConsultCategory;
+use App\Models\Medical\History\MedicalHistory;
 use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\Medical\Test\MedicalTest;
 use App\Models\Medical\Test\MedicalTestOrder;
 use App\Models\Medical\Test\MedicalTestStatus;
+use App\Models\Payment\Payment;
+use App\Models\Product\ProductPayment;
 use App\Models\User\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -19,6 +24,162 @@ use PhpParser\Node\Expr\Cast\Object_;
 
 class MedicalConsultController extends Controller
 {
+    public function createPayment(Request $request, $id)
+    {
+        $consult = MedicalConsult::findOrFail($id);
+        $user = User::findOrFail(Auth::user()->id);
+        if((intval($consult['medicalconsultstatus_id'] < 4) && $user->hasRole('Doctor')) || $user->hasRole('Administrador'))
+        {
+            if(count($request->input('data.products')) > 0)
+            {
+                $product = ProductPayment::where('consult_created', $id)->first();
+                $discount = array_sum(array_column($request->input('data.products'), 'discount'));
+                $price = array_sum(array_column($request->input('data.products'), 'price'));
+                $paymentID = 0;
+
+                if(isset($product))
+                {
+                    $paymentID = $product->payment['id'];
+                    Payment::findOrFail($paymentID)->update([
+                        'updated_by' => Auth::user()->id,
+                        'discount' => $discount,
+                        'total' => $price - $discount,
+                    ]);
+                }
+                else
+                {
+                    $paymentID = Payment::create([
+                        'created_by' => Auth::user()->id,
+                        'branch_id' => $request->input('data.branch_id'),
+                        'discount' => $discount,
+                        'total' => $price - $discount,
+                        'paymentstatus_id' => 1,
+                        'patient_id' => $request->input('data.patient_id')
+                    ])->id;
+                }
+
+                $productsID = array_column($request->input('data.products'), 'id');
+                ProductPayment::where('payment_id', $paymentID)->whereNotIn('product_id', $productsID)->delete();
+
+                foreach($request->input('data.products') as $value){
+                    $productPayment = ProductPayment::where('payment_id', $paymentID)->where('product_id', $value['id'])->first();
+                    if(!isset($productPayment))
+                    {
+                        ProductPayment::create([
+                            'payment_id' => $paymentID,
+                            'product_id' => $value['id']
+                        ]);
+                    }
+                }
+
+                $consult->update([
+                    'medicalconsultstatus_id' => 5
+                ]); 
+                return response()->json(true, 200);
+            }
+
+            return response()->json(true, 200);
+        }
+
+        return response()->json(['errors' => [
+            'permisos' => ['Esta consulta ya no se puede modificar']
+        ]], 401);
+    }
+
+    public function getConsultPayment($id)
+    {
+        $payment = Payment::where('branch_id', $id)->where('paymentstatus_id', '<>', 4)->orderBy('created_at', 'desc')->first()->load('products');
+        return response()->json($payment); 
+    }
+
+    public function createConsultData(Request $request, $id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        $consult = MedicalConsult::findOrFail($id);
+        if(intval($consult['medicalconsultstatus_id'] > 4) && $user->hasRole('Doctor'))
+        {
+            return response()->json(['errors' => [
+                'permisos' => ['Esta consulta ya no se puede modificar']
+            ]], 401);
+        }
+
+        if(intval($consult['medicalconsultcategory_id'] === 1) || $user->hasRole('Administrador'))
+        {
+            MedicalHistory::create([
+                'medicalconsult_id' => $id,
+                'data' => json_encode($request->input('data.historial.data')),
+                'updated_by' => Auth::user()->id
+            ]);
+    
+            MedicalAttachment::create([
+                'patient_id' => $consult['patient_id'],
+                'data' => json_encode($request->input('data.especialidad')),
+                'medicalspecialty_id' => $consult['medicalspecialty_id'],
+                'updated_by' => Auth::user()->id
+            ]);  
+            
+        }
+
+        MedicalAttachmentFollowUp::create([
+            'medicalconsult_id' => $id,
+            'data' => json_encode($request->input('data.cita.data')),
+            'medicalspecialty_id' => $consult->medicalspecialty_id,
+            'updated_by' => Auth::user()->id
+        ]);
+
+        
+        if(count($request->input('data.receta')) > 0)
+        {
+            MedicalPrescription::where('medicalconsult_id', $id)->delete();
+            foreach($request->input('data.receta') as $prescription)
+            {
+                if(intval($prescription['medicament_id']) > 0)
+                {
+                    MedicalPrescription::create([
+                        'medicalconsult_id' => $consult['id'],
+                        'medicament_id' => $prescription['medicament_id'],
+                        'administration_type' => $prescription['administration_type'],
+                        'rate' => $prescription['rate'],
+                        'duration' => $prescription['duration'],
+                    ]);
+                }
+            }
+        }
+
+        if(count($request->input('data.examen')) > 0)
+        {
+            foreach($request->input('data.examen') as $test)
+            {
+                if(intval($test['id'] > 0))
+                {
+                    $testEdited = MedicalTest::findOrFail($test['id'])->update([
+                        'medicalteststatus_id' => $test['medicalteststatus_id']
+                    ]);
+                    if($testEdited && intval($test['medicalteststatus_id']) !== 5 )
+                    {
+                        MedicalTestOrder::create([
+                            'medicaltest_id' => $test['id'],
+                            'product_id' => $test['order']['product_id']
+                        ]);
+                    }
+                }
+                else
+                {
+                    $testCreated = MedicalTest::create([
+                        'created_in' => $id,
+                        'medicalteststatus_id' => 1
+                    ])->id;
+                    MedicalTestOrder::create([
+                        'medicaltest_id' => $testCreated,
+                        'product_id' => $test['order']['product_id']
+                    ]);
+                }
+            }
+        }
+
+        return response()->json(true, 200);
+    }
+
     public function store(Request $request)
     {
         $consultExist = false;
@@ -147,10 +308,8 @@ class MedicalConsultController extends Controller
 
     public function getTests($id)
     {
-        $consult = MedicalConsult::findOrFail($id);
-        $testCancelStatus = MedicalTestStatus::where('name', 'Estudio cancelado')->first()->id;
-        $consultOrder = $consult->testsCreated->load('order.product:id,name,product_code', 'results', 'samples')->where('medicalteststatus_id', '<>', $testCancelStatus)->all();
-        return response()->json($consultOrder);
+        $test = MedicalTest::where('created_in', $id)->where('medicalteststatus_id', '<>', 5)->get()->load('order.product:id,name,product_code', 'results', 'samples');
+        return response()->json($test);
     }
 
     public function createTest(Request $request, $id)
@@ -204,8 +363,9 @@ class MedicalConsultController extends Controller
     public function getSpecialty($id)
     {
         $consult = MedicalConsult::findOrFail($id);
-        $consult->attachments->first()->pivot->data = json_decode($consult->attachments->first()->pivot->data);
-        return response()->json($consult->attachments->first()->pivot);
+        $attachment = MedicalAttachment::where('medicalspecialty_id', $consult['medicalspecialty_id'])->orderBy('created_at', 'desc')->first();
+        $attachment['data'] = json_decode($attachment['data']);
+        return response()->json($attachment);
     }
 
     public function createPrescription(Request $request, $id)
@@ -258,4 +418,5 @@ class MedicalConsultController extends Controller
     {
         return response()->json([], 200)->withCookie('consult', $id);
     }
+    
 }

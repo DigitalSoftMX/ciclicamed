@@ -9,7 +9,7 @@
                     <div class="col-6 mb-25">
                         <div class="card shadow-none border p-2" @click="openProductListModal('cirugia', 'Cirugías')">
                             <div class="card-body text-center p-0">
-                                <img class="mb-10 w-25" src="/svg/cirugia.svg" alt="Cirugía">
+                                <img-component url="/svg/cirugia.svg" alt="Cirugía" cssClass="mb-10 w-25"></img-component>
                                 <p class="m-0">Cirugías</p>
                             </div>
                         </div>
@@ -18,7 +18,7 @@
                         <div class="card shadow-none border p-2"
                             @click="openProductListModal('histeroscopia', 'Histeroscopía')">
                             <div class="card-body text-center p-0">
-                                <img class="mb-10 w-25" src="/svg/histeroscopia.svg" alt="Histeroscopía">
+                                <img-component url="/svg/histeroscopia.svg" alt="Histeroscopía" cssClass="mb-10 w-25"></img-component>
                                 <p class="m-0">Histeroscopía</p>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                     <div class="col-6 mb-25">
                         <div class="card shadow-none border p-2" @click="openProductListModal('ciclica', 'Cíclica')">
                             <div class="card-body text-center p-0">
-                                <img class="mb-10 w-25" src="/svg/ciclica.svg" alt="Cíclica">
+                                <img-component url="/svg/ciclica.svg" alt="Cíclica" cssClass="mb-10 w-25"></img-component>
                                 <p class="m-0">Cíclica</p>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="card shadow-none border p-2"
                             @click="openProductListModal('imagenologia', 'Imagenología')">
                             <div class="card-body text-center p-0">
-                                <img class="mb-10 w-25" src="/svg/imagenologia.svg" alt="Imagenología">
+                                <img-component url="/svg/imagenologia.svg" alt="Imagenología" cssClass="mb-10 w-25"></img-component>
                                 <p class="m-0">Imagenología</p>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                         <div class="card shadow-none border p-2"
                             @click="openProductListModal('laboratorio', 'Laboratorio')">
                             <div class="card-body text-center p-0">
-                                <img class="mb-10 w-25" src="/svg/laboratorio.svg" alt="Laboratorio">
+                                <img-component url="/svg/laboratorio.svg" alt="Laboratorio" cssClass="mb-10 w-25"></img-component>
                                 <p class="m-0">Laboratorio</p>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                     <div class="col-6">
                         <div class="card shadow-none border p-2" @click="openProductListModal('farmacia', 'Farmacia')">
                             <div class="card-body text-center p-0">
-                                <img class="mb-10 w-25" src="/svg/farmacia.svg" alt="Farmacia">
+                                <img-component url="/svg/farmacia.svg" alt="Farmacia" cssClass="mb-10 w-25"></img-component>
                                 <p class="m-0">Farmacia</p>
                             </div>
                         </div>
@@ -87,8 +87,8 @@
                                         <td class="align-middle">${{product.price}}</td>
                                         <td class="align-middle">
                                             <button
-                                                class="btn btn-icon btn-circle btn-outline-danger border-0 button-img m-0">
-                                                <img class="m-0" src="/svg/delete.svg" @click="deleteProduct(product)">
+                                                class="btn btn-icon btn-circle btn-outline-danger border-0 button-img m-0" @click="deleteProduct(product)">
+                                                <img-component url="/svg/delete.svg" cssClass="m-0"></img-component>
                                             </button>
                                         </td>
                                     </tr>
@@ -99,13 +99,13 @@
                                 <h6 class="col-5 text-right">${{getTotalPrice()}}</h6>
                             </div>
                         </div>
-                        <div>
+                        <div v-if="activePayment">
                             <payment-info-component></payment-info-component>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary btn-default btn-squared float-right">Guardar y terminar</button>
+                    <button class="btn btn-primary btn-default btn-squared float-right" @click="createConsultPayment">Guardar y terminar</button>
                 </div>
             </div>
         </div>

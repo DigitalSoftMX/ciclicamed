@@ -6,7 +6,7 @@
                 <div class="card border-0 shadow-none">
                     <div class="card-body">
                         <div class="text-center mb-25">
-                            <img src="/img/login/logo.png" alt="Ciclica logo" class="login-logo mb-25">
+                            <img :src="asset('/img/login/logo.png')" alt="Ciclica logo" class="login-logo mb-25">
                             <h2>Registrarse</h2>
                         </div>
                         <div>
@@ -123,13 +123,13 @@
                                                     <polyline points="17 8 12 3 7 8"></polyline>
                                                     <line x1="12" y1="3" x2="12" y2="15"></line>
                                                 </svg>Examinar</a>
-                                            <input type="file" name="sucPhoto" class="upload-one" id="sucPhoto" accept=".jpg, .jpeg, .png, .bmp, .svg" @change="selectFile($event)">
+                                            <input type="file" name="sucPhoto" class="upload-one" id="sucPhoto" accept=".jpg, .jpeg, .png, .bmp, .svg')" @change="selectFile($event)">
                                         </div>
                                         <div class="atbd-upload__file" v-if="patient.photo.name">
                                             <ul>
                                                 <li>
                                                     <span class="name-text">{{patient.photo.name}}</span>
-                                                    <img src="/svg/delete.svg" alt="Archivo" @click="cleanPhotoSelected" class="delete-icon">
+                                                    <img :src="asset('/svg/delete.svg')" alt="Archivo" @click="cleanPhotoSelected" class="delete-icon">
                                                 </li>
                                             </ul>
                                         </div>

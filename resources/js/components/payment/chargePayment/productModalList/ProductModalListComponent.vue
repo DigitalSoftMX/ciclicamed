@@ -5,14 +5,14 @@
                 <div class="modal-header ">
                     <h6 class="modal-title">{{ title }}</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <img src="/svg/close.svg" alt="CLose">
+                        <img :src="asset('/svg/close.svg')" alt="CLose">
                     </button>
                 </div>
                 <div class="modal-body mb-3">
                     <div class="form-group p-0 m-0">
                         <div class="with-icon">
                             <span class="mr-5">
-                                <img src="/svg/search.svg" alt="Search">
+                                <img :src="asset('/svg/search.svg')" alt="Search">
                             </span>
                             <input type="text" class="form-control form-control-lg bg-white" v-model="query"
                                 @keyup="getProductDataQuery()" placeholder="Buscar">

@@ -15,7 +15,7 @@ export default defineComponent({
             default: HeredoFamiliaresData
         },
         disabled: {
-            type: Boolean as PropType<Boolean>,
+            type: Boolean,
             default: true
         },
     },

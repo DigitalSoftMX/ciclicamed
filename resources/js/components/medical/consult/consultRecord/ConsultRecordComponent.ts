@@ -12,9 +12,9 @@ import { defineAsyncComponent } from 'vue';
 export default defineComponent({
     name: 'RecordComponent',
     components: {
-        CitasSubsecuentesComponent: defineAsyncComponent(() => import('@component/medical/attachments/CitasSubsecuentes/CitasSubsecuentesComponent.vue')),
-        EmptyErrorComponent: defineAsyncComponent(() => import('@component/general/error/EmptyErrorComponent.vue')),
-        NetworkErrorComponent: defineAsyncComponent(() => import('@component/general/error/NetworkErrorComponent.vue'))
+        CitasSubsecuentesComponent: require('@component/medical/attachments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
+        EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
+        NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default
     },
     props: {
         patientID: {

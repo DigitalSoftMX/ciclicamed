@@ -19,6 +19,7 @@ use App\Models\Medical\Test\MedicalTestOrder;
 use App\Models\Medical\Test\MedicalTestResult;
 use App\Models\Medical\Test\MedicalTestSample;
 use App\Models\Patient\Patient;
+use App\Models\Payment\Payment;
 use App\Models\Product\Product;
 use App\Models\Product\ProductPayment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -74,12 +75,6 @@ class MedicalConsult extends Model
         return $this->belongsTo(Branch::class, 'branch_id');
     }
 
-    public function attachments()
-    {
-        return $this->belongsToMany(MedicalSpecialty::class, 'medical_attachments', 'medicalconsult_id', 'medicalspecialty_id')
-                    ->withPivot('data', 'updated_by', 'update_note');
-    }
-
     public function followUps()
     {
         return $this->belongsToMany(MedicalSpecialty::class, 'medical_attachment_follow_ups', 'medicalconsult_id', 'medicalspecialty_id')
@@ -99,7 +94,7 @@ class MedicalConsult extends Model
 
     public function getLastHistory()
     {
-        return $this->hasOne(MedicalHistory::class, 'medicalconsult_id')->orderBy('created_at', 'asc');
+        return $this->hasOne(MedicalHistory::class, 'medicalconsult_id')->orderBy('created_at', 'desc');
     }
 
     public function prescriptions()
@@ -161,5 +156,10 @@ class MedicalConsult extends Model
     public function specialty()
     {
         return $this->belongsTo(MedicalSpecialty::class, 'medicalspecialty_id')->orderBy('created_at', 'desc');
+    }
+
+    public function paymentCreated()
+    {
+        return $this->hasOne(ProductPayment::class, 'consult_created');
     }
 }

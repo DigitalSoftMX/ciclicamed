@@ -36,10 +36,10 @@ class MedicalAttachmentFactory extends Factory
         ];
 
         return [
-            'medicalconsult_id' => $this->faker->numberBetween(1, 50),
+            'patient_id' => $this->faker->numberBetween(1, 20),
             'data' => json_encode($specialties[$medicalSpecialty - 1]),
             'medicalspecialty_id' => $medicalSpecialty,
-            'updated_by' => $this->faker->numberBetween(1, 5),
+            'updated_by' => $this->faker->numberBetween(24, 50),
             'update_note' => $this->faker->text(200),
         ];
     }

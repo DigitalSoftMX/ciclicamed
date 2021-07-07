@@ -8,7 +8,7 @@
                 <h6 class="drawer-title align-self-center">{{ getLateralScheduleTitle() }} </h6>
                 <button type="button" class="btn btn-icon btn-circle p-0" data-dismiss="modal"
                     @click="closeLateralSchedule()" aria-label="Close">
-                    <img src="/svg/close-alternative.svg" alt="Alert logo" data-toggle="tooltip" data-placement="bottom"
+                    <img :src="asset('/svg/close-alternative.svg')" alt="Alert logo" data-toggle="tooltip" data-placement="bottom"
                         title="Cerrar">
                 </button>
             </div>
@@ -59,7 +59,7 @@
                         <label for="name2">Motivo de cita</label>
                         <div class="with-icon">
                             <span class="mr-5">
-                                <img src="/svg/text.svg" alt="Text logo">
+                                <img :src="asset('/svg/text.svg')" alt="Text logo">
                             </span>
                             <textarea type="text" class="form-control" id="address" placeholder="Motivo de cita"
                                 v-model="scheduleSelectedCopy.consult_reason" maxlength="255"
@@ -75,7 +75,7 @@
                         <label>Fecha de cita</label>
                         <div class="with-icon">
                             <span class="mr-5">
-                                <img src="/svg/calendar.svg" alt="Clock logo">
+                                <img :src="asset('/svg/calendar.svg')" alt="Clock logo">
                             </span>
                             <input type="text" class="form-control form-control-lg bg-white" :id="`scheduleDate${id}`"
                                 placeholder="dd/mm/aaaa" maxlength="10" readonly>

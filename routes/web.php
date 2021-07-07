@@ -72,9 +72,11 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/anexo', [MedicalConsultController::class, 'getSpecialty'])->name('consulta.getAnexo');
         Route::post('/{id}/estudios', [MedicalConsultController::class, 'createTest'])->name('consulta.createEstudio');
         Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.createEstudio');
+        Route::post('/{id}/resultados', [MedicalConsultController::class, 'createConsultData'])->name('consulta.setResultados');
+        Route::get('/{id}/pago', [MedicalConsultController::class, 'getConsultPayment'])->name('consulta.getPago');
+        Route::post('/{id}/pago', [MedicalConsultController::class, 'createPayment'])->name('consulta.setPago');
     });
 
-    
     //Imagenes
     Route::get('/images/users/{id}', function ($id) {
         $storage = storage_path('app/user/'.$id.'');
@@ -86,7 +88,6 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         $storage = storage_path('app/test/results/'.$id.'');
         return file_exists($storage) ? response()->file($storage) : response()->view('errors.404',[], 404);
     });
-
 
     //Sucursales
     Route::group(['prefix' => 'sucursales'], function() {
@@ -131,7 +132,6 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/imagenologia', [ProductController::class, 'getImagenologia'])->name('productos.imagenologia');
         Route::get('/laboratorio', [ProductController::class, 'getLaboratorio'])->name('productos.laboratorio');
         Route::get('/farmacia', [ProductController::class, 'getFarmacia'])->name('productos.farmacia');
-
         Route::post('/', [ProductController::class, 'createProduct'])->name('productos.nuevo');
         Route::patch('/{id}', [ProductController::class, 'updateProduct'])->name('productos.actualizar');
         Route::delete('/{id}', [ProductController::class, 'deleteProduct'])->name('productos.eliminar');
@@ -142,14 +142,11 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/laboratorio/creados', [LaboratorioTestController::class, 'getCreatedTests'])->name('estudios.getLaboratorioCreados');
         Route::get('/laboratorio/muestras', [LaboratorioTestController::class, 'getSampleTests'])->name('estudios.getLaboratorioMuestra');
         Route::get('/laboratorio/completados', [LaboratorioTestController::class, 'getCompletedTest'])->name('estudios.getLaboratorioMuestra');
-
         Route::get('/imagenologia/creados', [ImagenologiaTestController::class, 'getCreatedTests'])->name('estudios.getImagenologiaCreados');
         Route::get('/imagenologia/muestras', [ImagenologiaTestController::class, 'getSampleTests'])->name('estudios.getImagenologiaMuestra');
         Route::get('/imagenologia/completados', [ImagenologiaTestController::class, 'getCompletedTest'])->name('estudios.getImagenologiaMuestra');
-
         Route::get('/resultados/{id}', [MedicalTestResultController::class, 'getResultFile'])->name('estudios.getResultado');
         Route::get('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.getResultados');
-        
         Route::post('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.setResultados');
         
     });
@@ -157,6 +154,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     //Pagos
     Route::group(['prefix' => 'pagos'], function() {
         Route::get('/{id}', [PaymentController::class, 'getPayment'])->name('pagos.getPago');
+        Route::get('/{id}/productos', [PaymentController::class, 'getPaymentProductsByID'])->name('pagos.getProductos');
         Route::get('/{id}/deudas', [PaymentController::class, 'getAllDebtsByPaymentID'])->name('pagos.getDeudas');
     });
 
@@ -165,7 +163,6 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/categorias', [CheckupCategoryController::class, 'getAllCategories'])->name('checkup.getTodos');
         Route::get('/pendientes', [CheckupCategoryController::class, 'getPendings'])->name('checkup.getTodos');
         Route::get('/{id}', [CheckupCategoryController::class, 'getCheckupByID'])->name('checkup.getCheckup');
-
         Route::post('/', [CheckupCategoryController::class, 'createCheckups'])->name('checkup.setNuevo');
         Route::patch('/', [CheckupCategoryController::class, 'updateCheckups'])->name('checkup.update');
         Route::delete('/{id}', [CheckupCategoryController::class, 'cancelCheckup'])->name('checkup.cancel');

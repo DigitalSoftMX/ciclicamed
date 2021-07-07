@@ -5,8 +5,8 @@ import { defineAsyncComponent, DefineComponent, PropType } from 'vue';
 
 export default defineComponent({
     components: {
-        PatientsTableComponent: defineAsyncComponent(() => import('@component/patient/patientsTable/PatientsTableComponent.vue')),
-        EmployeesTableComponent: defineAsyncComponent(() => import('@component/employee/employeesTable/EmployeesTableComponent.vue'))    },
+        PatientsTableComponent: require('@component/patient/patientsTable/PatientsTableComponent.vue').default,
+        EmployeesTableComponent: require('@component/employee/employeesTable/EmployeesTableComponent.vue').default    },
     emits: [],
     props: {
     },

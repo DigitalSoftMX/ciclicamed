@@ -39,7 +39,7 @@
                                     <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
-                                                <img src="/svg/followUp.svg" alt="FollowUp">
+                                                <img-component url="/svg/followUp.svg" alt="Seguimiento"></img-component>
                                             </div>
                                             <div class="col-8 align-self-center">
                                                 <h5>{{followUp.name}}</h5>
@@ -53,7 +53,7 @@
                                     <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
-                                                <img src="/svg/followUp.svg" alt="FollowUp">
+                                                <img-component url="/svg/followUp.svg" alt="Seguimiento"></img-component>
                                             </div>
                                             <div class="col-8 align-self-center">
                                                 <h5>Receta</h5>
@@ -65,7 +65,7 @@
                                     <div class="card h-100 shadow-none card-hover mb-25">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
-                                                <img src="/svg/medicalTest.svg" alt="FollowUp">
+                                                <img-component url="/svg/medicalTest.svg" alt="Examen"></img-component>
                                             </div>
                                             <div class="col-8 align-self-center">
                                                 <h5>{{test.order.product.name}}</h5>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-12 col-md-4 mb-25 banner-feature--15">
                         <label>Vía de administración</label>
-                        <h5>{{prescription.administation_type}}</h5>
+                        <h5>{{prescription.administration_type}}</h5>
                     </div>
                     <div class="col-12 col-md-4 mb-25 banner-feature--15">
                         <label>Frecuencia</label>

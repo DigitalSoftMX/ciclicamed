@@ -4,7 +4,7 @@
         <div class="form-group p-0">
             <div class="with-icon">
                 <span class="mr-5">
-                    <img src="/svg/search.svg" alt="Search">
+                    <img :src="asset('/svg/search.svg')" alt="Search">
                 </span>
                 <input type="text" class="form-control form-control-lg bg-white" v-model="query"
                     @keyup="getUserDataQuery()" placeholder="Buscar">
@@ -94,19 +94,19 @@
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img src="/svg/show.svg" alt="Ver">
+                                                <img :src="asset('/svg/show.svg')" alt="Ver">
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img src="/svg/edit.svg" alt="Editar">
+                                                <img :src="asset('/svg/edit.svg')" alt="Editar">
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img src="/svg/upload.svg" alt="Subir">
+                                                <img :src="asset('/svg/upload.svg')" alt="Subir">
                                             </button>
                                         </li>
                                     </ul>

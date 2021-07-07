@@ -21,8 +21,8 @@ export default defineComponent({
     name: 'LateralScheduleComponent',
     components: {
         DatePicker,
-        TimePickerComponent: defineAsyncComponent(() => import('@component/general/timePicker/TimePickerComponent.vue')),
-        SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue')),
+        TimePickerComponent: require('@component/general/timePicker/TimePickerComponent.vue').default,
+        SelectComponent: require('@component/general/select/SelectComponent.vue').default,
         ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default
     },

@@ -4,26 +4,20 @@
         <div class="breadcrumb-action justify-content-center flex-wrap">
             <div class="action-btn">
                 <button class="btn btn-primary btn-default" :disabled="orderData.length === 0">
-                    <img src="/svg/print.svg" class="mr-2 svg-white" alt="Print">
+                    <img-component url="/svg/print.svg" cssClass="mr-2 svg-white" alt="Imprimir"></img-component>
                     Imprimir
                 </button>
             </div>
             <div class="action-btn">
                 <button class="btn btn-primary btn-default"
                     :disabled="orderData.length === 0">
-                    <img src="/svg/download.svg" class="mr-2 svg-white" alt="Print">
+                    <img-component url="/svg/download.svg" cssClass="mr-2 svg-white" alt="Descargar"></img-component>
                     Descargar
                 </button>
             </div>
-            <div class="action-btn">
-                <button class="btn btn-primary btn-default" @click="createTestOrder()">
-                    <img src="/svg/save.svg" class="mr-2 svg-white" alt="Print">
-                    Guardar
-                </button>
-            </div>
-            <div class="action-btn">
-                <button class="btn btn-primary btn-default" @click="addTestOrder()">
-                    <img src="/svg/newTestOrder.svg" class="mr-2 svg-white" alt="New test order">
+            <div class="action-btn" v-if="!disabled">
+                <button class="btn btn-primary btn-default" @click="addTestOrder()" :disabled="disabled">
+                    <img-component url="/svg/newMedicament.svg" cssClass="mr-2 svg-white" alt="Nuevo"></img-component>
                     Agregar estudio
                 </button>
             </div>

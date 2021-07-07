@@ -7,8 +7,8 @@
                 <div class="sidebar__menu-group">
                     <ul class="sidebar_nav">
                         <li v-for="(item, index) in items" :key="index" class="mb-30 active">
-                            <a :href="item.url">
-                                <img :src="item.icon" :alt="item.name" class="nav-icon">
+                            <a :href="url + item.url">
+                                <img-component :url="item.icon" :alt="item.name" cssClass="nav-icon"></img-component>
                                 <span class="menu-text">{{item.name}}</span>
                             </a>
                         </li>

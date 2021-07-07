@@ -19,9 +19,9 @@ export default defineComponent({
     name: 'CheckupScheduleComponent',
     components: {
         vSelect,
-        SuccessAlertComponent: defineAsyncComponent(() => import('@component/general/alert/SuccessAlertComponent.vue')),
-        SelectComponent: defineAsyncComponent(() => import('@component/general/select/SelectComponent.vue')),
-        Timepicker: defineAsyncComponent(() => import('@component/general/timePicker/TimePickerComponent.vue'))
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
+        SelectComponent: require('@component/general/select/SelectComponent.vue').default,
+        Timepicker: require('@component/general/timePicker/TimePickerComponent.vue').default
     },
     props: {
         branches: {

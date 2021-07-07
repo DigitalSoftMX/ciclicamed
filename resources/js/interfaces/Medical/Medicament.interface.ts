@@ -1,6 +1,6 @@
 export interface Medicament
 {
-    medicament_id: number;
+    id: number;
     code: string;
     name: string;
     generic_name: string;

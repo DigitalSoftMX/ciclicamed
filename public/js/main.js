@@ -56,7 +56,7 @@
     // }
 
     // /* Replace all SVG images with inline SVG */
-    // $("img.svg").each(function() {
+    // $("img.svg")).each(function() {
     //     var $img = $(this);
     //     var imgID = $img.attr("id");
     //     var imgClass = $img.attr("class");

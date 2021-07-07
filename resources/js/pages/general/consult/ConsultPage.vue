@@ -29,8 +29,7 @@
                     <consult-component></consult-component>
                 </div>
                 <div class="tab-pane fade" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
-                    <schedule-component :userCategory="userCategory" :roles="roles" v-if="isPatient"></schedule-component>
-                    <schedule-component :userCategory="userCategory" :roles="roles" :employeeID="employeeID" v-else></schedule-component>
+                    <schedule-component :userCategory="userCategory" :roles="roles" :employeeID="employeeID"></schedule-component>
                 </div>
             </div>
         </div>

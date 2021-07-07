@@ -12,7 +12,7 @@ require('bootstrap');
 
 export default defineComponent({
     components: {
-        PrescriptionModalComponent: defineAsyncComponent(() => import('@component/patient/prescription/prescriptionModal/PrescriptionModalComponent.vue'))
+        PrescriptionModalComponent: require('@component/patient/prescription/prescriptionModal/PrescriptionModalComponent.vue').default
     },
     props: {
         patientID: {

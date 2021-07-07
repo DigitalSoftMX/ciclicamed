@@ -24,7 +24,7 @@ class MedicalPrescriptionFactory extends Factory
         return [
             'medicalconsult_id' => $this->faker->numberBetween(1, 50),
             'medicament_id' => $this->faker->numberBetween(1, 50),
-            'administation_type' => $this->faker->text(100),
+            'administration_type' => $this->faker->text(100),
             'rate' => $this->faker->text(100),
             'duration' => $this->faker->text(100),
             'updated_by' => $this->faker->numberBetween(1, 5),

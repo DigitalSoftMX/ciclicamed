@@ -33,13 +33,13 @@
                                 <div class="card border-0">
                                     <div class="card-body ">
                                         <div class="fileM-img">
-                                            <img class="" src="/svg/pdf.svg" alt="PDF logo">
+                                            <img class="" src="/svg/pdf.svg')" alt="PDF logo">
                                         </div>
                                         <p class="fileM-excerpt">{{file.name}}</p>
                                         <div class="fileM-action">
                                             <div class="fileM-action__right ">
                                                 <div class="dropdown dropleft position-absolute">
-                                                    <img class="" src="/svg/delete.svg" alt="PDF logo"
+                                                    <img class="" src="/svg/delete.svg')" alt="PDF logo"
                                                         @click="deleteFileSelected(index)">
                                                 </div>
                                             </div>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div v-if="fileList.length === 0" class="col-12 text-center">
-                        <img src="/svg/empty.svg" alt="Empty" class="w-25">
+                        <img :src="asset('/svg/empty.svg')" alt="Empty" class="w-25">
                         <p>Ningún archivo seleccionado</p>
                     </div>
                 </div>

@@ -25,7 +25,7 @@ export default defineComponent({
     },
     data() {
         return {
-            orderData: [...this.modelValue],
+            orderData: this.modelValue,
             orderList: [] as {
                 id: number;
                 name: string;
@@ -45,7 +45,10 @@ export default defineComponent({
         {
             handler()
             {
-                this.modelValue.map(order => this.addTestOrder(order));
+                if(this.modelValue.length !== this.orderData.length)
+                {
+                    this.modelValue.map(order => this.addTestOrder(order));
+                }
                 this.orderData = this.modelValue;
             },
             deep: true

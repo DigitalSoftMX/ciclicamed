@@ -3,11 +3,11 @@
         <div class="card-body">
             <div class="account-profile d-flex align-items-center mb-4 justify-content-center">
                 <div class="ap-img pro_img_wrapper">
-                    <input id="file-upload" type="file" name="fileUpload" accept=".jpg, .jpeg, .png, .bmp, .svg" class="d-none" @change="selectFile($event)">
+                    <input id="file-upload" type="file" name="fileUpload" accept=".jpg, .jpeg, .png, .bmp, .svg')" class="d-none" @change="selectFile($event)">
                     <label for="file-upload">
                         <img class="ap-img__main rounded-circle wh-120 d-flex bg-opacity-primary" id="upcImage"
                             :src="`/images/users/${userForm.photo}`" alt="profile"
-                            onerror="this.onerror=null;this.src='/svg/person.svg';">
+                            onerror="this.onerror=null;this.src='../svg/person.svg';">
                         <span class="cross" id="remove_pro_pic">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -30,7 +30,7 @@
                     <label for="firstName">Nombre(s)</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img src="/svg/person.svg" alt="Person logo">
+                            <img :src="asset('/svg/person.svg')" alt="Person logo">
                         </span>
                         <input type="text" class="form-control form-control-lg" id="firstName" placeholder="Nombre(s)"
                             maxlength="100" v-model="userForm.first_name"
@@ -45,7 +45,7 @@
                     <label for="lastName">Apellidos</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img src="/svg/person.svg" alt="Person logo">
+                            <img :src="asset('/svg/person.svg')" alt="Person logo">
                         </span>
                         <input type="text" class="form-control form-control-lg" id="lastName" placeholder="Apellidos"
                             maxlength="100" v-model="userForm.last_name"
@@ -60,7 +60,7 @@
                     <label for="email">Correo electrónico</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img src="/svg/email.svg" alt="Email logo">
+                            <img :src="asset('/svg/email.svg')" alt="Email logo">
                         </span>
                         <input type="email" class="form-control form-control-lg" id="name3"
                             placeholder="ejemplo@correo.com" maxlength="100" v-model="userForm.user.email"
@@ -75,7 +75,7 @@
                     <label for="phoneNumber5">Teléfono de Casa</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img src="/svg/phone.svg" alt="Phone logo">
+                            <img :src="asset('/svg/phone.svg')" alt="Phone logo">
                         </span>
                         <input type="tel" class="form-control form-control-lg" id="phone" placeholder="1234567890"
                             maxlength="10" v-model="userForm.phone"
@@ -90,7 +90,7 @@
                     <label for="phoneNumber5">Celular</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img src="/svg/cellphone.svg" alt="Cellphone logo">
+                            <img :src="asset('/svg/cellphone.svg')" alt="Cellphone logo">
                         </span>
                         <input type="tel" class="form-control form-control-lg" id="cellphone" placeholder="1234567890"
                             maxlength="10" v-model="userForm.cellphone"
@@ -105,7 +105,7 @@
                     <label for="name2">Dirección</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img src="/svg/address.svg" alt="Address logo">
+                            <img :src="asset('/svg/address.svg')" alt="Address logo">
                         </span>
                         <textarea type="text" class="form-control form-control-lg" id="address" placeholder="Dirección"
                             v-model="userForm.address" @keyup="checkProfileData(); updateCharacter('address')"
@@ -120,7 +120,7 @@
                     <label for="name2">Sexo</label>
                     <div class="radio-horizontal-list d-flex">
                         <div class="input-group-prepend r-3 rounded px-2 ">
-                            <img src="/svg/gender.svg" alt="Calendar logo">
+                            <img :src="asset('/svg/gender.svg')" alt="Calendar logo">
                         </div>
                         <div class="d-flex px-4">
                             <div class="radio-theme-default custom-radio ">
@@ -145,7 +145,7 @@
                     <label>Fecha de nacimiento</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img src="/svg/calendar.svg" alt="Birthday logo">
+                            <img :src="asset('/svg/calendar.svg')" alt="Birthday logo">
                         </span>
                         <input type="text" class="form-control form-control-lg form-control form-control-lg-lg "
                             id="birthday" placeholder="dd/mm/aaaa" :value="birthday" maxlength="10" readonly>

@@ -120,15 +120,15 @@
                             <div class="row mx-0">
                                 <button class="btn btn-icon btn-circle btn-outline-primary rounded-button"
                                     @click="undoCanvasData">
-                                    <img src="/svg/undo.svg" alt="Undo">
+                                    <img :src="asset('/svg/undo.svg')" alt="Undo">
                                 </button>
                                 <button class="btn btn-icon btn-circle btn-outline-primary rounded-button"
                                     @click="redoCanvasData">
-                                    <img src="/svg/redo.svg" alt="Redo">
+                                    <img :src="asset('/svg/redo.svg')" alt="Redo">
                                 </button>
                                 <button class="btn btn-icon btn-circle btn-outline-primary rounded-button"
                                     @click="deleteCanvasData">
-                                    <img src="/svg/delete.svg" alt="Undo">
+                                    <img :src="asset('/svg/delete.svg')" alt="Undo">
                                 </button>
                             </div>
                         </div>

@@ -5,7 +5,7 @@
                 <div class="modal-header bg-danger">
                     <h6 class="modal-title text-white">Confirmar acción</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <img src="/svg/close.svg" alt="Alert logo" style="filter: invert(1);">
+                        <img :src="asset('/svg/close.svg')" alt="Alert logo" style="filter: invert(1);">
                     </button>
                 </div>
                 <div class="modal-body">

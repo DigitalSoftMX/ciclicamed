@@ -9,9 +9,9 @@ require('bootstrap');
 
 export default defineComponent({
     components: {
-        PreregistrationComponent: defineAsyncComponent(() => import('@component/patient/preregistration/PreregistrationComponent.vue'))
+        PreregistrationComponent: require('@component/patient/preregistration/PreregistrationComponent.vue').default
     },
-    emits: [],
+    emits: ['onFinish'],
     props: {
         lastDiagnostic: {
             type: String,
@@ -45,6 +45,10 @@ export default defineComponent({
         },
         openPreregistration() {
             $('#preregistration-modal').modal('show');
+        },
+        finishConsult()
+        {
+            this.$emit('onFinish');
         }
     },
 })

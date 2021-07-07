@@ -65,7 +65,7 @@ class UserController extends Controller
 
     public function createPatient(UserRequest $request)
     {
-        $request->validate($request->input());
+        $request->validated();
         $user = User::create([
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),

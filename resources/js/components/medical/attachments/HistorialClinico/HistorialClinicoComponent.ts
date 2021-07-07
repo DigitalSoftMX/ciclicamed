@@ -23,7 +23,7 @@ export default defineComponent({
     props:{
         disabled: {
             type: Boolean as PropType<Boolean>,
-            default: false
+            default: true
         },
         modelValue: {
             type: Object as PropType<HistorialClinico>,

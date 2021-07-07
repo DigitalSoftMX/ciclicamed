@@ -10,15 +10,15 @@
                 <div class="card-body pt-md-1 pt-0">
                     <div class="user-content-info">
                         <p class="user-content-info__item">
-                            <img :src="'/svg/email.svg'" alt="Profile" class="mr-2">
+                            <img :src="asset('svg/email.svg')" alt="Profile" class="mr-2">
                             {{userData.user?.email}}
                         </p>
                         <p class="user-content-info__item">
-                            <img :src="'/svg/phone.svg'" alt="Phone Logo" class="mr-2">
+                            <img :src="asset('svg/phone.svg')" alt="Phone Logo" class="mr-2">
                             {{userData.phone}}
                         </p>
                         <p class="user-content-info__item">
-                            <img :src="'/svg/cellphone.svg'" alt="Cellphone Logo" class="mr-2">
+                            <img :src="asset('svg/cellphone.svg')" alt="Cellphone Logo" class="mr-2">
                             {{userData.cellphone}}
                         </p>
                     </div>
@@ -34,15 +34,15 @@
                 <div class="card-body pt-md-1 pt-0">
                     <div class="user-content-info">
                         <p class="user-content-info__item">
-                            <img :src="'/svg/gender.svg'" alt="Phone Logo" class="mr-2">
+                            <img :src="asset('svg/gender.svg')" alt="Phone Logo" class="mr-2">
                             <span>{{gender}}</span>
                         </p>
                         <p class="user-content-info__item">
-                            <img :src="'/svg/birthday.svg'" alt="Phone Logo" class="mr-2">
+                            <img :src="asset('svg/birthday.svg')" alt="Phone Logo" class="mr-2">
                             {{birthday}}
                         </p>
                         <p class="user-content-info__item">
-                            <img :src="'/svg/address.svg'" alt="Cellphone Logo" class="mr-2">
+                            <img :src="asset('svg/address.svg')" alt="Cellphone Logo" class="mr-2">
                             {{userData.address}}
                         </p>
                     </div>

@@ -15,6 +15,11 @@
 <link rel="stylesheet" href="{{ asset('vendor_assets/css/star-rating-svg.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor_assets/css/trumbowyg.min.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor_assets/css/wickedpicker.min.css') }}"> -->
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('public/css/style.css') }}"> -->
 <!-- <link rel="stylesheet" href="{{ asset('css/login/login.css') }}">
 <link rel="stylesheet" href="{{ asset('css/register/register.css') }}"> -->
+
+
+<!-- <link rel="stylesheet" href="{{ asset('public/css/style.css') }}"> -->
+
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
