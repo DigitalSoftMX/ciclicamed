@@ -20,15 +20,38 @@ use App\Models\User\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use PhpParser\Node\Expr\Cast\Object_;
 
 class MedicalConsultController extends Controller
 {
+    public function startSchedule($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        $consult = MedicalConsult::findOrFail($id);
+        if($user->hasRole('Doctor') && intval($consult['medicalconsultstatus_id'] <= 4) && intval(Auth::user()->id) === intval($user['id']) || $user->hasRole('Administrador'))
+        {
+            if(!isset($consult['consult_start_at']))
+            {
+                $consult->update([
+                    'consult_start_at' => Carbon::now()->setTimezone('America/Mexico_City'),
+                    'medicalconsultstatus_id' => 4
+                ]);
+            }
+            
+            return response()->json([], 200)->withCookie('consult', $id);
+        }
+
+        return response()->json(['errors' => [
+            'permisos' => ['Esta consulta ya no se puede modificar']
+        ]], 401);
+    }
+
     public function createPayment(Request $request, $id)
     {
         $consult = MedicalConsult::findOrFail($id);
         $user = User::findOrFail(Auth::user()->id);
-        if((intval($consult['medicalconsultstatus_id'] < 4) && $user->hasRole('Doctor')) || $user->hasRole('Administrador'))
+        if((intval($consult['medicalconsultstatus_id'] <= 4) && $user->hasRole('Doctor')) && intval($consult['doctor_id'] === intval($user['employee']['id']))|| $user->hasRole('Administrador'))
         {
             if(count($request->input('data.products')) > 0)
             {
@@ -73,8 +96,10 @@ class MedicalConsultController extends Controller
                 }
 
                 $consult->update([
+                    'consult_finish_at' => Carbon::now()->setTimezone('America/Mexico_City'),
                     'medicalconsultstatus_id' => 5
-                ]); 
+                ]);
+                Cookie::queue(Cookie::forget('consult'));
                 return response()->json(true, 200);
             }
 
@@ -88,8 +113,26 @@ class MedicalConsultController extends Controller
 
     public function getConsultPayment($id)
     {
-        $payment = Payment::where('branch_id', $id)->where('paymentstatus_id', '<>', 4)->orderBy('created_at', 'desc')->first()->load('products');
-        return response()->json($payment); 
+        $user = User::findOrFail(Auth::user()->id);
+        $consult = MedicalConsult::findOrFail($id);
+        if(($user->hasRole('Doctor') && intval($consult['id']) === intval($id)) || $user->hasRole(['Caja', 'Administrador']))
+        {
+            $product = ProductPayment::where('consult_created', 2);
+            if(isset($product))
+            {
+                $payment = Payment::findOrFail($product->first()->consult_created)->where('paymentstatus_id', '<>', 4)->orderBy('created_at', 'desc');
+                if(isset($payment))
+                {
+                    return response()->json($payment->first()->load('products')); 
+                }
+                return response()->json([], 204);
+            }
+            return response()->json([], 204);
+        }
+        
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para ver esta información']
+        ]], 401);
     }
 
     public function createConsultData(Request $request, $id)
@@ -182,7 +225,6 @@ class MedicalConsultController extends Controller
 
     public function store(Request $request)
     {
-        $consultExist = false;
         // $consulType = MedicalConsultCategory::find($request->input('data.scheduleCategory'));
 
 
@@ -204,17 +246,70 @@ class MedicalConsultController extends Controller
         //                 ->where('consult_schedule_start', '<=', $start)->where('consult_schedule_finish', '>=', $start)->get();
         // }
 
-        $user = User::findOrFail(Auth::user()->id)->hasRole(['Paciente', 'Laboratorio', 'Imagenología']);
-        if(!$user)
+        $user = User::findOrFail(Auth::user()->id);
+
+        $firstConsult = MedicalConsult::where('patient_id', $user['patient']['id'])->where('medicalconsultcategory_id', 1);
+        $medicalspecialty_id = intval($request->input('data.doctor_id'));
+        $medicalconsultcategory_id = 0;
+        
+        switch($medicalspecialty_id)
+        {
+            case 1:
+                $medicalspecialty_id = 11;
+                $medicalconsultcategory_id = 4;
+                break;
+            case 2:
+                $medicalspecialty_id = 12;
+                $medicalconsultcategory_id = 3;
+                break;
+            default:
+                $medicalspecialty_id = intval($request->input('data.doctor_id'));
+                $medicalconsultcategory_id = isset($firstConsult) ? 2 : 1;
+                break;
+        }
+
+        
+
+        if($user->hasRole('Paciente'))
+        {
+            $finishTime = Carbon::parse($request->input('data.consult_schedule_start'));
+            switch($medicalconsultcategory_id)
+            {
+                case 1:
+                    $finishTime = $finishTime->addMinute(60);
+                    break;
+                case 2:
+                    $finishTime = $finishTime->addMinute(30);
+                    break;
+                default:
+                    $finishTime = $finishTime->addMinute(30);
+                    break;
+            }
+
+            $consult = MedicalConsult::create([
+                'patient_id' => $user['patient']['id'],
+                'doctor_id' => $request->input('data.doctor_id'),
+                'medicalconsultcategory_id' => $medicalconsultcategory_id,
+                'consult_reason' => $request->input('data.consult_reason'),
+                'consult_schedule_start' => Carbon::parse($request->input('data.consult_schedule_start')),
+                'consult_schedule_finish' => $finishTime,
+                'medicalspecialty_id' => $medicalspecialty_id,
+                'branch_id' => $request->input('data.branch_id'),
+                'medicalconsultstatus_id' => 1,
+            ]);
+            $consult->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+            return  response()->json($consult);
+        }
+        if($user->hasRole(['Doctor', 'Asistente', 'Enfermera', 'Administrador']))
         {
             $consult = MedicalConsult::create([
                 'patient_id' => $request->input('data.patient_id'),
                 'doctor_id' => $request->input('data.doctor_id'),
-                'medicalconsultcategory_id' => $request->input('data.medicalconsultcategory_id'),
+                'medicalconsultcategory_id' => $medicalconsultcategory_id,
                 'consult_reason' => $request->input('data.consult_reason'),
                 'consult_schedule_start' => Carbon::parse($request->input('data.consult_schedule_start')),
                 'consult_schedule_finish' => Carbon::parse($request->input('data.consult_schedule_finish')),
-                'medicalspecialty_id' => $request->input('data.medicalspecialty_id'),
+                'medicalspecialty_id' => $medicalspecialty_id,
                 'branch_id' => $request->input('data.branch_id'),
                 'medicalconsultstatus_id' => 1,
             ]);
@@ -228,7 +323,6 @@ class MedicalConsultController extends Controller
         //Todo
         // Revisar si existe una cita ya creada con anterioridad que coincida con la hora ocupada
         // Agregar verificaciones de request
-        // Revisar el envio de tiempo y conversion de Carbon
     }
 
     public function updateSchedule(Request $request, $id)
@@ -308,8 +402,12 @@ class MedicalConsultController extends Controller
 
     public function getTests($id)
     {
-        $test = MedicalTest::where('created_in', $id)->where('medicalteststatus_id', '<>', 5)->get()->load('order.product:id,name,product_code', 'results', 'samples');
-        return response()->json($test);
+        if(intval($id) > 0)
+        {
+            $test = MedicalTest::where('created_in', $id)->where('medicalteststatus_id', '<>', 5)->get()->load('order.product:id,name,product_code', 'results', 'samples');
+            return response()->json($test);
+        }
+        return response()->json([], 404);
     }
 
     public function createTest(Request $request, $id)
@@ -403,9 +501,13 @@ class MedicalConsultController extends Controller
 
     public function getHistory($id)
     {
-        $consult = MedicalConsult::findOrFail($id)->getLastHistory;
-        $consult->data = json_decode($consult->data);
-        return response()->json($consult);
+        $consult = MedicalConsult::findOrFail($id);
+        if(isset($consult->history))
+        {
+            $consult->data = json_decode($consult->data);
+            return response()->json($consult->history);
+        }
+        return response()->json([], 204);
     }
 
     public function getDoctor($id)
@@ -414,9 +516,6 @@ class MedicalConsultController extends Controller
         return response()->json($consult);
     }
 
-    public function startSchedule($id)
-    {
-        return response()->json([], 200)->withCookie('consult', $id);
-    }
+    
     
 }

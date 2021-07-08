@@ -21,9 +21,13 @@ export default defineComponent({
             type: Object as PropType<Schedule>,
             default: ScheduleData
         },
-        roles: {
-            type: Array as PropType<Role[]>,
-            default: []
+        role: {
+            type: String as PropType<String>,
+            default: ''
+        },
+        employeeID: {
+            type: Number as PropType<Number>,
+            default: -1
         }
     },
     data() {
@@ -33,27 +37,64 @@ export default defineComponent({
             isEditOptionEnabled: false as boolean
         };
     },
-    mounted() {
+    computed: {
+        isStartScheduleEnabled(): boolean
+        {
+            switch(this.role)
+            {
+                case 'Doctor':
+                    return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
+                case 'Administrador':
+                    return true;
+                default:
+                    return false;
+            }
+        },
+        isConfirmScheduleEnabled(): boolean
+        {
+            if(this.role.includes('Asistente' || 'Administrador'))
+            {
+                return true;
+            }
+            return false;
+        }
     },
     watch: {
         schedule:
         {
             handler()
             {
-                if(this.roles.filter(item => item.name === 'Paciente' || item.name === 'Laboratorio' || item.name === 'Imagenología').length === 0)
+                switch(this.role)
                 {
-                    this.isCancelOptionEnabled = false;
-                    this.isEditOptionEnabled = false;
-                    
-                } else {
-                    this.showCancelOption();
-                    this.showEditOption();
+                    case 'Administrador':
+                        break;
+                    case 'Asistente':
+                        break;
+                    case 'Enfermera':
+                        break;
+                    case 'Doctor':
+                        break;
+                    default: 
+                        this.isCancelOptionEnabled = false;
+                        this.isEditOptionEnabled = false;
+                        break;
                 }
             },
             deep: true,
         }
     },
     methods: {
+        startSchedule()
+        {
+            axios.post(`/consultas/${this.schedule.id}/iniciar`)
+            .then(response => {
+                const url = (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
+                window.location.href = `${url}/app/consulta`;
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         formatScheduleTime(datetime: string): string {
             return moment(datetime).format('hh:mm');
         },

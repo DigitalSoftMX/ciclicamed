@@ -19,5 +19,6 @@ export const ScheduleData:Schedule = {
     doctor: DoctorData,
     status: ScheduleStatusData,
     type: ScheduleTypeData,
-    branch: BranchData
+    branch: BranchData,
+    product_id: -1
 }

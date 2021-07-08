@@ -3,11 +3,9 @@ import { Prescription } from '@interface/Medical/Prescription.interface';
 import { defineComponent } from '@vue/runtime-core';
 import cloneDeep from 'lodash/cloneDeep';
 import { PropType } from 'vue';
-import vSelect from "vue-select-3/src";
 
 export default defineComponent({
     components: {
-        vSelect,
     },
     emits: ['update:modelValue', 'onDelete'],
     props: {

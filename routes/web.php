@@ -75,6 +75,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::post('/{id}/resultados', [MedicalConsultController::class, 'createConsultData'])->name('consulta.setResultados');
         Route::get('/{id}/pago', [MedicalConsultController::class, 'getConsultPayment'])->name('consulta.getPago');
         Route::post('/{id}/pago', [MedicalConsultController::class, 'createPayment'])->name('consulta.setPago');
+        Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.startConsulta');
     });
 
     //Imagenes
@@ -119,6 +120,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/', [EmployeeController::class, 'getAllEmployees'])->name('empleados.todos');
         Route::patch('/{id}', [EmployeeController::class, 'updateEmployee'])->name('empleados.updateEmpleado');
         Route::get('/{id}/sucursales', [EmployeeController::class, 'getEmployeeBranches'])->name('empleados.todos');
+        Route::get('/{id}/agenda', [EmployeeController::class, 'getEmployeeSchedules'])->name('empleados.todos');
     });
 
     //Productos

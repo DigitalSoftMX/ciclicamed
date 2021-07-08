@@ -5,7 +5,7 @@
                 <button class="btn btn-primary btn-default btn-squared float-right" @click="showPaymentComponent = false">Regresar</button>
             </div>
             <div class="col-12 p-0">
-                <charge-payment-component :products="paymentProducts.products" :consult="consultData" :patient="patientData"></charge-payment-component>
+                <charge-payment-component :products="paymentProducts.products" :consult="consultData" :patient="patientData" :role="role"></charge-payment-component>
             </div>
         </div>
     </div>
@@ -109,12 +109,12 @@
                                 </citas-subsecuentes-component>
                             </div>
                             <div class="tab-pane fade" id="mccReceta" role="tabpanel" aria-labelledby="mccReceta-tab">
-                                <prescription-component v-model="prescriptionData" :disabled="disableData">
+                                <prescription-component v-model="prescriptionData" :disabled="disableConsult">
                                 </prescription-component>
                             </div>
                             <div class="tab-pane fade" id="mccOrdenMedica" role="tabpanel"
                                 aria-labelledby="mccOrdenMedica-tab">
-                                <test-order-component v-model="testData" :disabled="disableData"></test-order-component>
+                                <test-order-component v-model="testData" :disabled="disableConsult"></test-order-component>
                             </div>
                         </div>
                     </div>

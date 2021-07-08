@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary btn-default btn-squared float-right" @click="createConsultPayment">Guardar y terminar</button>
+                    <button class="btn btn-primary btn-default btn-squared float-right" @click="confirmConsultFinish" v-if="role === 'Doctor'">Guardar y terminar</button>
                 </div>
             </div>
         </div>
@@ -114,6 +114,8 @@
     <consult-product-list-component id="cpcProductList" :title="titleSelected" :productCategory="categorySelected"
         @productSelected="editProducSelectedList" :productSelectedList="productSelectedList">
     </consult-product-list-component>
+    <confirmation-alert-component id="chpcConsult" title="¿Está seguro de finalizar la consulta? Esta acción no puede deshacerse" @confirmAction="createConsultPayment"></confirmation-alert-component>
+    <success-alert-component id="chpcSuccess" title="Guardado exitoso" message="La información se ha guardado correctamente"></success-alert-component>
 </template>
 
 <script lang="ts" src="./ChargePaymentComponent.ts"></script>

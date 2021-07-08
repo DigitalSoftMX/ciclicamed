@@ -12877,6 +12877,18 @@ select.select-arrow-none::-ms-expand,
   padding: 0 15px;
 }
 
+.select2-selection__arrow {
+  top: 50% !important;
+}
+
+.select2-selection {
+  height: 3.25rem !important;
+}
+
+.select2-selection__rendered {
+  transform: translateY(40%) !important;
+}
+
 .tooltip .arrow {
   position: relative;
   width: 12px;
@@ -22677,4 +22689,31 @@ table.table-rounded tbody tr td:last-child {
   .chat-box {
     padding: 19px 0;
   }
+}
+.el-select__popper {
+  z-index: 10000 !important;
+}
+
+.el-input__inner {
+  height: 3.25rem !important;
+}
+
+.el-select__caret {
+  height: 3.25rem !important;
+}
+
+.el-input__inner {
+  padding-left: 50px !important;
+  font-size: 15px !important;
+}
+
+.el-input__icon {
+  color: #000 !important;
+  font-size: 25px !important;
+  font-weight: 900 !important;
+  width: 35px !important;
+}
+
+.vs__dropdown-toggle {
+  background-color: #fff;
 }

@@ -9,53 +9,65 @@
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0" @click="openLateralSchedule" v-if="isEditOptionEnabled"
                             data-dismiss="modal" aria-label="Close">
-                            <img :src="asset('/svg/edit.svg')" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
-                                data-placement="bottom" title="Modificar cita">
+                            <img-component url="/svg/edit.svg" alt="Editar" styleData="filter: invert(1);"></img-component>
                         </button>
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3" @click="deleteSchedule()" v-if="isCancelOptionEnabled"
                             data-dismiss="modal" aria-label="Close">
-                            <img :src="asset('/svg/delete.svg')" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
-                                data-placement="bottom" title="Cancelar cita">
+                            <img-component url="/svg/delete.svg" alt="Borrar" styleData="filter: invert(1);"></img-component>
                         </button>
                         <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0 ml-3"
                             data-dismiss="modal" aria-label="Close">
-                            <img :src="asset('/svg/close.svg')" alt="Alert logo" style="filter: invert(1);" data-toggle="tooltip"
-                                data-placement="bottom" title="Cerrar">
+                            <img-component url="/svg/close.svg" alt="Cerrar" styleData="filter: invert(1);"></img-component>
                         </button>
                     </div>
                 </div>
                 <div class="modal-body">
                     <ul class="e-info-list">
                         <li>
-                            <img :src="asset('/svg/calendar.svg')" alt="Calendar logo">
+                            <img-component url="/svg/calendar.svg" alt="Calendario"></img-component>
                             <span class="list-line">
-                                <span class="list-label">Fecha de cita :</span>
+                                <span class="list-label">Fecha de cita: </span>
                                 <span
                                     class="list-meta">{{ `${formatScheduleDate(schedule.consult_schedule_start)}` }}</span>
                             </span>
                         </li>
                         <li>
-                            <img :src="asset('/svg/clock.svg')" alt="Clock logo">
+                            <img-component url="/svg/clock.svg" alt="Reloj"></img-component>
                             <span class="list-line">
-                                <span class="list-label">Hora de cita :</span>
+                                <span class="list-label">Hora de cita: </span>
                                 <span class="list-meta">
                                     {{ `${formatScheduleTime(schedule.consult_schedule_start)} - ${formatScheduleTime(schedule.consult_schedule_finish)}` }}</span>
                             </span>
                         </li>
                         <li>
-                            <img :src="asset('/svg/branch.svg')" alt="Branch logo">
+                            <img-component url="/svg/branch.svg" alt="Sucursal"></img-component>
                             <span class="list-line">
-                                <span class="list-label">Sucursal :</span>
+                                <span class="list-label">Sucursal: </span>
                                 <span class="list-meta"> {{ schedule.branch?.name }}</span>
                             </span>
                         </li>
-                        <li>
-                            <img :src="asset('/svg/text.svg')" alt="Text logo" v-if="schedule.consult_reason">
+                        <li v-if="schedule.status">
+                            <img-component url="/svg/alert.svg" alt="Sucursal"></img-component>
+                            <span class="list-line">
+                                <span class="list-label">Estado: </span>
+                                <span class="list-meta"> {{ schedule.status?.name }}</span>
+                            </span>
+                        </li>
+                        <li v-if="schedule.consult_reason">
+                            <img-component url="/svg/text.svg" alt="Motivo"></img-component>
                             <span class="list-line">
                                 <span class="list-text">{{ schedule.consult_reason }}</span>
                             </span>
                         </li>
                     </ul>
+                </div>
+                <div class="modal-footer bg-white" v-if="this.schedule.status?.name !== 'Finalizado' && (isStartScheduleEnabled || isConfirmScheduleEnabled)">
+                    <div v-if="isConfirmScheduleEnabled">
+                        <button class="btn btn-primary btn-lg btn-squared">Confirmar cita</button>
+                    </div>
+                    <div v-if="isStartScheduleEnabled">
+                        <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Inicar cita</button>
+                    </div>
                 </div>
             </div>
         </div>

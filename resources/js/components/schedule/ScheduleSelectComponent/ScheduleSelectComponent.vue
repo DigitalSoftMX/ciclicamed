@@ -6,9 +6,13 @@
         <div class="card-body">
             <div class="mb-25" v-if="employeeBranches.length > 0">
                 <label>Sucursal</label>
-                <v-select :options="employeeBranches" :getOptionLabel="item => item.branch?.name" :reduce="item => item.branch.id" v-model="employeeBranchSelected"/>
+                <v-select :options="employeeBranches" :getOptionLabel="item => item.branch?.name"
+                    :reduce="item => item.branch.id" v-model="employeeBranchSelected"
+                    placeholder="Seleccione una sucursal" />
             </div>
-            <button class="btn btn-primary btn-lg btn-squared btn-block" @click="selectSchedule">Ver mi agenda</button>
+            <button class="btn btn-primary btn-lg btn-squared btn-block mb-25" @click="selectSchedule" v-if="role === 'Paciente'">Ver mi agenda</button>
+            <button class="btn btn-primary btn-lg btn-squared btn-block mb-25" @click="selectSchedule" v-if="role !== 'Paciente'">Ver mi agenda por sucursal</button>
+            <button class="btn btn-primary btn-lg btn-squared btn-block" @click="selectAllSchedule" v-if="role !== 'Paciente'">Ver toda mi agenda</button>
         </div>
     </div>
 
@@ -38,7 +42,8 @@
             <h4>Agendar checkup</h4>
         </div>
         <div class="card-body">
-            <button class="btn btn-primary btn-lg btn-squared btn-block" @click="openCheckupComponent">Nuevo checkup</button>
+            <button class="btn btn-primary btn-lg btn-squared btn-block" @click="openCheckupComponent">Nuevo
+                checkup</button>
         </div>
     </div>
 </template>

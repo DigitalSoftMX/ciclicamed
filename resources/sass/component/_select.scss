@@ -137,3 +137,18 @@ select.select-arrow-none,
         padding: 0 15px;
     }
 }
+
+.select2-selection__arrow
+{
+    top:50% !important;
+}
+
+.select2-selection
+{
+    height: 3.25rem !important;
+}
+
+.select2-selection__rendered
+{
+    transform: translateY(40%) !important;
+}

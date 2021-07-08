@@ -26,7 +26,7 @@
     <div class="atbd-collapse atbd-collapse-custom">
         <div v-for="(order, index) in orderData" :key="`ctoc${index}`">
             <order-component v-if="orderData.length > 0 && (orderData[index].medicalteststatus_id !== 5 ?? true)" :id="index" :orderList="orderList"
-                v-model="orderData[index]" @onDelete="deleteTestOrder">
+                v-model="orderData[index]" @onDelete="deleteTestOrder" :disabled="disabled">
             </order-component>
         </div>
     </div>

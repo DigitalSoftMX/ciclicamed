@@ -30,13 +30,9 @@ export default defineComponent({
             type: Number,
             default: -1
         },
-        userCategory: {
-            type: String,
+        role: {
+            type: String as PropType<String>,
             default: ''
-        },
-        roles: {
-            type: Array as PropType<Role[]>,
-            default: []
         },
         employeeID: {
             type: Number,
@@ -57,8 +53,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        console.log(this.employeeID)
-        if(!this.userCategory.includes('Paciente' || 'Laboratorio' || 'Imagenología'))
+        if(!this.role.includes('Paciente' || 'Laboratorio' || 'Imagenología'))
         {
             this.getPatientsList();
             if(this.employeeID > 0)
@@ -67,13 +62,12 @@ export default defineComponent({
             }
         }
         this.getBranchesList();
-        this.getSchedulesCategories();
-        this.userCategory === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
+        this.role === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
     },
     watch: {
-        userCategory()
+        role()
         {
-            this.userCategory === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
+            this.role === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
         }
     },
     methods: {
@@ -92,7 +86,6 @@ export default defineComponent({
             axios.get<EmployeeBranch[]>(`/empleados/${this.employeeID}/sucursales`)
             .then(response => {
                 this.employeeBranches = response.data;
-                console.log(response.data)
             })
             .catch(error => {
                 console.log(error)
@@ -100,7 +93,7 @@ export default defineComponent({
         },
         selectUserSchedule()
         {
-            this.userCategory === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
+            this.role === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
         },
         getPatientScheduleList()
         {
@@ -115,7 +108,7 @@ export default defineComponent({
         },
         getDoctorScheduleList()
         {
-            axios.get<Schedule[]>(`/pacientes/${this.userID}/agenda`)
+            axios.get<Schedule[]>(`/empleados/${this.employeeID}/agenda`)
             .then(response => {
                 this.schedules = response.data;
                 this.getBusinessHours();
@@ -216,22 +209,6 @@ export default defineComponent({
                 console.log(error)
             })
         },
-        getSchedulesCategories(): void
-        {
-            axios.get<ScheduleType[]>(`/consultas/categorias`)
-            .then(response => {
-                this.scheduleCategoryList = response.data.map((category, index) => {
-                    return {
-                        id: index,
-                        childID: category.id,
-                        text: category.name
-                    }
-                });
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
         copyScheduleData(date: string)
         {
             const dayOfWeek = moment(date).day();
@@ -239,6 +216,7 @@ export default defineComponent({
             if(moment().isSameOrBefore(date, 'days') && this.hoursEnabled.length > 0)
             // if(moment().isSameOrBefore(date, 'days'))
             {
+                this.scheduleSelected = ScheduleData;
                 const startHour = Number(this.hoursEnabled[0].startTime.split(':')[0]);
                 const startMinute = Number(this.hoursEnabled[0].startTime.split(':')[1]);
                 this.scheduleSelected.consult_schedule_start = this.scheduleSelected.consult_schedule_finish = moment(date)

@@ -13,12 +13,9 @@ import { defineAsyncComponent, defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import moment from 'moment';
 import { PropType } from 'vue';
-import vSelect from "vue-select-3/src";
-
 export default defineComponent({
     name: 'CheckupScheduleComponent',
     components: {
-        vSelect,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
         SelectComponent: require('@component/general/select/SelectComponent.vue').default,
         Timepicker: require('@component/general/timePicker/TimePickerComponent.vue').default

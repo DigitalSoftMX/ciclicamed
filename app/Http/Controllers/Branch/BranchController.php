@@ -36,8 +36,8 @@ class BranchController extends Controller
 
     public function getSchedules($id, $employeeID)
     {
-        $user = User::findOrFail(Auth::user()->id)->hasRole('Paciente');
-        if($user)
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Paciente') || ($user->hasRole('Doctor') && intval($employeeID) !== intval($user['employee']['id'])))
         {
             $schedules = MedicalConsult::where('doctor_id', $employeeID)->where('branch_id', $id)
                                 ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id'])

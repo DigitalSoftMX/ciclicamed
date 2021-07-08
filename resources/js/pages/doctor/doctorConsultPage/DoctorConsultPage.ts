@@ -1,12 +1,10 @@
 import { DoctorSidebarConfig } from '@config/DoctorSidebar.config';
-import { PatientSidebarConfig } from '@config/PatientSidebar.config';
-import { PatientData } from '@data/Patient/Patient.data';
+import { EmployeeData } from '@data/Employee/Employee.data';
 import { Employee } from '@interface/Employee/Employee.interface';
-import { Patient } from '@interface/Patient/Patient.interface';
 import { Role } from '@interface/User/Role.interface';
 import { defineComponent } from '@vue/runtime-core';
 import cloneDeep from 'lodash/cloneDeep';
-import { defineAsyncComponent, DefineComponent, PropType } from 'vue';
+import { PropType } from 'vue';
 
 export default defineComponent({
     components: {
@@ -15,20 +13,24 @@ export default defineComponent({
         ConsultPage: require('@page/general/consult/ConsultPage.vue').default,
     },
     props: {
-        patient: {
+        doctor: {
             type: Object as PropType<Employee>,
-            default: PatientData
+            default: EmployeeData
         },
-        roles: {
-            type: Object as PropType<Role[]>,
-            default: []
-        }
+        role: {
+            type: String,
+            default: ''
+        },
+        consult: {
+            type: Number,
+            default: -1
+        },
     },
     data() {
         return {
-            employeeCopy: cloneDeep(this.patient),
+            employeeCopy: cloneDeep(this.doctor),
             sidebarItems: DoctorSidebarConfig,
-            isSidebarOpen: false
+            isSidebarOpen: false,
         };
     },
     mounted() {
@@ -51,14 +53,5 @@ export default defineComponent({
        {
            this.isSidebarOpen = !this.isSidebarOpen;
        },
-       updatePatientInfo(employee: Employee)
-       {
-           this.employeeCopy = cloneDeep(employee);
-       },
-       updatePhoto(file: string)
-       {
-           const input = (document.getElementById('upasscPhoto') as HTMLImageElement);
-           input.src = file;
-       }
     },
 })

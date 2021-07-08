@@ -11,15 +11,20 @@ export default defineComponent({
     },
     emits: [],
     props: {
-        userCategory: {
+        consultID:
+        {
+            type: Number,
+            default: -1
+        },
+        role: {
             type: String,
             default: ''
         },
-        roles: {
-            type: Object as PropType<Role[]>,
-            default: []
-        },
         employeeID: {
+            type: Number,
+            default: -1
+        },
+        patientID: {
             type: Number,
             default: -1
         }

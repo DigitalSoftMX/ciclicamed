@@ -8,8 +8,7 @@
                 <h6 class="drawer-title align-self-center">{{ getLateralScheduleTitle() }} </h6>
                 <button type="button" class="btn btn-icon btn-circle p-0" data-dismiss="modal"
                     @click="closeLateralSchedule()" aria-label="Close">
-                    <img :src="asset('/svg/close-alternative.svg')" alt="Alert logo" data-toggle="tooltip" data-placement="bottom"
-                        title="Cerrar">
+                    <img-component url="/svg/close-alternative.svg" alt="Cerrar"></img-component>
                 </button>
             </div>
 
@@ -18,39 +17,30 @@
                 <div class="drawer-content">
 
                     <!-- Paciente -->
-                    <div class="form-group" v-show="schedule.id < 1 && patientID < 1">
+                    <div class="form-group" v-show="scheduleSelectedCopy.id < 1 && patientID < 1">
                         <label for="lscPacientes">Pacientes</label>
-                        <select-component id="lscPacientes" :data="patientsList" v-model="patientSelect" :disabled="isPatientDisabled"
-                            firstText='Seleccione un paciente'></select-component>
-                    </div>
-
-                    <!-- Tipo de cita -->
-                    <div class="form-group">
-                        <label for="lscCategoria">Tipo de cita</label>
-                        <select-component id="lscCategoria" :data="categoryListCopy" :disabled="isScheduleCategoryDisabled"
-                            v-model="categorySelect" firstText='Seleccione un tipo de cita'>
-                        </select-component>
+                        <v-select :options="patientsList" label="text" :reduce="item => item.childID"
+                            placeholder="Seleccione un paciente" v-model="scheduleSelectedCopy.patient_id"/>
                     </div>
 
                     <!-- Lista de estudios (solo si es imagenologia o laboratorio) -->
-                    <div class="form-group" v-if="!isTestDisabled">
+                    <div class="form-group" v-if="scheduleSelectedCopy.doctor_id === 1 || scheduleSelectedCopy.doctor_id === 2">
                         <label for="lscEstudios">Estudio clínico</label>
-                        <select-component id="lscEstudios" :data="testList" :disabled="isTestDisabled"
-                            v-model="testSelect" firstText='Seleccione un estudio'>
-                        </select-component>
+                        <v-select :options="testList" label="text" :reduce="item => item.childID"
+                            placeholder="Seleccione un estudio" v-model="scheduleSelectedCopy.product_id" />
                     </div>
 
                     <!-- Sucursal -->
                     <div class="form-group mb-25">
                         <label for="lscSucursal">Sucursal</label>
-                        <select-component id="lscSucursal" :data="branchesList" v-model="branchSelect" :disabled="isBranchDisabled"
-                            firstText='Seleccione una sucursal'></select-component>
+                        <v-select :options="branchesList" label="text" :reduce="item => item.childID"
+                            placeholder="Seleccione una sucursal" v-model="scheduleSelectedCopy.branch_id" />
                     </div>
 
                     <!-- Doctor -->
                     <div class="form-group mb-25">
                         <label for="lscDoctor">Doctor</label>
-                        <select-component id="lscDoctor" :data="doctorListCopy" v-model="doctorSelect" :disabled="isDoctorDisabled" firstText='Seleccione un doctor'>
+                        <select-component id="lscDoctor" :data="doctorListCopy" v-model="doctorSelect" firstText='Seleccione un doctor'>
                         </select-component>
                     </div>
 
@@ -59,14 +49,13 @@
                         <label for="name2">Motivo de cita</label>
                         <div class="with-icon">
                             <span class="mr-5">
-                                <img :src="asset('/svg/text.svg')" alt="Text logo">
+                                <img-component url="/svg/text.svg" alt="Texto"></img-component>
                             </span>
                             <textarea type="text" class="form-control" id="address" placeholder="Motivo de cita"
-                                v-model="scheduleSelectedCopy.consult_reason" maxlength="255"
-                                @keyup="updateConsultReasonCharLength()"></textarea>
+                                v-model="scheduleSelectedCopy.consult_reason" maxlength="255"></textarea>
                         </div>
                         <div class="float-right">
-                            {{ `${getConsultReasonCharLength()}/255` }}
+                            {{ `${consultReasonLength}/255` }}
                         </div>
                     </div>
 
@@ -75,27 +64,23 @@
                         <label>Fecha de cita</label>
                         <div class="with-icon">
                             <span class="mr-5">
-                                <img :src="asset('/svg/calendar.svg')" alt="Clock logo">
+                                <img-component url="/svg/calendar.svg" alt="Calendario"></img-component>
                             </span>
-                            <input type="text" class="form-control form-control-lg bg-white" :id="`scheduleDate${id}`"
-                                placeholder="dd/mm/aaaa" maxlength="10" readonly>
+                            <input type="date" class="form-control form-control-lg bg-white" :id="`scheduleDate${id}`"
+                                placeholder="dd/mm/aaaa" v-model="dateSelected">
                         </div>
                     </div>
 
                     <!-- Cita -->
                     <div class="form-group mb-25 time-select">
-                        <label>Hora de inicio</label>
-                        <time-picker-component :hourRange="startHoursEnabled" :minuteRange="startMinutesEnabled"
-                            v-model="scheduleSelectedCopy.consult_schedule_start" @onChange="updateStartMinute">
-                        </time-picker-component>
+                        <label>Hora inicial</label>
+                        <el-time-select :start='startHour.startTime' step='00:15' :end='startHour.endTime' v-model="startTime" placeholder="Hora inicial"></el-time-select>
                     </div>
 
                     <!-- Cita -->
-                    <div class="form-group mb-25 time-select">
-                        <label>Hora de conclusión</label>
-                        <time-picker-component :hourRange="finishHoursEnabled" :minuteRange="finishMinutesEnabled"
-                            v-model="scheduleSelectedCopy.consult_schedule_finish" @onChange="updateFinishMinute">
-                        </time-picker-component>
+                    <div class="form-group mb-25 time-select" v-if="role !== 'Paciente'">
+                        <label>Hora final</label>
+                        <el-time-select :start='startHour.startTime' step='00:15' :end='startHour.endTime' v-model="finishTime" :minTime="startTime" placeholder="Hora final"></el-time-select>
                     </div>
 
                     <!-- Botones de Cancelar y guardar -->
@@ -111,7 +96,8 @@
                     </div>
 
                     <!-- Tarjeta de cita -->
-                    <div class="card rounded-0 lateralCardColor mt-25 shadow-none" v-if="schedule.id > 0 && isScheduleCardEnabled">
+                    <div class="card rounded-0 lateralCardColor mt-25 shadow-none"
+                        v-if="schedule.id > 0 && role !== 'Paciente'">
                         <div class="card-body py-2 px-3">
                             <h6 class="text-primary mb-1">
                                 {{ patientsList[scheduleSelectedCopy.patient_id ?? 0].text ?? '' }}

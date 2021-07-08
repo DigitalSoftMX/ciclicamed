@@ -1,10 +1,18 @@
 @extends('layouts.app')
 @section('content')
 <div id="app">
-    @switch($roles[0]->name)
-        @case('Doctor')
-            <doctor-consult-page :patient="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></doctor-dashboard-page>
-            @break
-    @endswitch
+    @if (Cookie::get('consult') !== null)
+        @switch($roles[0]->name)
+            @case('Doctor')
+                <doctor-consult-page :doctor="{{ json_encode($user) }}" role="Doctor" :consult="{{ Cookie::get('consult') }}"></doctor-dashboard-page>
+                @break
+        @endswitch
+    @else
+        @switch($roles[0]->name)
+            @case('Doctor')
+                <doctor-consult-page></doctor-dashboard-page>
+                @break
+        @endswitch
+    @endif
 </div>
 @endsection

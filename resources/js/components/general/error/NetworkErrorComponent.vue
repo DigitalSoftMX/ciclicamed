@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="banner-feature__shape d-flex justify-content-center p-2 p-md-5">
                 <div class="content-center">
-                    <img :src="asset('/svg/networkError.svg')" alt="Network error" class="w-50">
+                    <img-component url="/svg/networkError.svg" cssClass="w-50" alt="Error"></img-component>
                 </div>
             </div>
             <div class="text-center">
@@ -14,10 +14,7 @@
 </template>
 
 <script lang="ts">
-import {
-    defineComponent
-} from '@vue/runtime-core';
-import { DefineComponent, PropType } from 'vue';
+import { defineComponent } from '@vue/runtime-core';
 
 export default defineComponent({
     components: {

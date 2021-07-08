@@ -18,16 +18,16 @@ use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
+    public function getEmployeeSchedules($id)
+    {
+        $employee = MedicalConsult::where('doctor_id', $id)
+        ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
+        ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+        return response()->json($employee);
+    }
+
     public function getDoctors()
     {
-//        $branches = EmployeeSchedule::select('branch_id', 'branches.name as branchName', 'employee_id', 'employees.first_name', 'employees.last_name', 'employee_categories.name')
-//            ->join('branches', 'branches.id', '=', 'employee_schedules.branch_id')
-//            ->join('employees', 'employees.id', '=', 'employee_schedules.employee_id')
-//            ->join('employee_categories', 'employee_categories.id', '=', 'employees.employeecategory_id')
-//            ->where('employee_categories.name', 'Doctor')
-//            ->groupBy('branch_id', 'employee_id')
-//            ->orderBy('branch_id', 'ASC')
-//            ->get();
         $status = EmployeeStatus::where('name', 'Empleado')->id;
         $branches =  Branch::with(['employees' => function($query) use($status){
             $query->where('employeestatus_id', $status)
@@ -110,7 +110,8 @@ class EmployeeController extends Controller
     public function getEmployeeBranches($id)
     {
         $user = User::findOrFail(Auth::user()->id);
-        if((intval($id) === Auth::user()->id && !$user->hasRole('Paciente')) || $user->hasRole('Administrador'))
+        
+        if((intval($id) === intval($user['employee']['id']) && !$user->hasRole('Paciente')) || $user->hasRole('Administrador'))
         {
             DB::statement("SET SQL_MODE=''");
             $employee = EmployeeSchedule::where('employee_id', $id)->groupBy('branch_id', 'employee_id')->get()->load('branch');

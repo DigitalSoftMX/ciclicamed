@@ -3,15 +3,13 @@ import { EmployeeBranch } from '@interface/Employee/EmployeeBranch.interface';
 import { Select } from '@interface/General/Select.interface';
 import { defineAsyncComponent, defineComponent } from '@vue/runtime-core';
 import { PropType } from 'vue';
-import vSelect from 'vue-select-3/src';
 
 export default defineComponent({
     name: 'ScheduleSelectComponent',
     components: {
-        vSelect,
         SelectComponent: require('@component/general/select/SelectComponent.vue').default
     },
-    emits: ['onBranchSelected', 'onDoctorSelected', 'onUserSchedule', 'onEmployeeScheduleSelect'],
+    emits: ['onBranchSelected', 'onDoctorSelected', 'onUserSchedule', 'onEmployeeScheduleSelect', 'onEmployeeAllSchedule'],
     props: {
         branchesList: {
             type: Array as PropType<Select[]>,
@@ -24,7 +22,11 @@ export default defineComponent({
         employeeBranches: {
             type: Array as PropType<EmployeeBranch[]>,
             default: []
-        }
+        },
+        role: {
+            type: String as PropType<String>,
+            default: ''
+        },
     },
     data() {
         return {
@@ -53,6 +55,10 @@ export default defineComponent({
         selectSchedule()
         {
             this.employeeBranchSelected > 0 ? this.$emit('onEmployeeScheduleSelect', this.employeeBranchSelected) : this.$emit('onUserSchedule');
+        },
+        selectAllSchedule()
+        {
+            this.$emit('onEmployeeAllSchedule');
         }
     },
 })

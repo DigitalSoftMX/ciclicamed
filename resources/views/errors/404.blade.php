@@ -28,7 +28,7 @@
                         <!-- Start: error page -->
                         <div class="min-vh-100 content-center w-100">
                             <div class="error-page text-center">
-                                <img :src="asset("{{ asset('/svg/404.svg') }}" alt="404" class="svg w-50">
+                                <img src="{{ asset('/svg/404.svg') }}" alt="404" class="svg w-50">
                                 <h5 class="fw-500 display-3 mt-5">Lo sentimos, la página que intenta ver no existe.</h5>
                                 <div class="content-center mt-25">
                                     <a href="{{ url()->previous() }}" class="btn btn-primary btn-default btn-lg btn-squared px-30">Regresar</a>

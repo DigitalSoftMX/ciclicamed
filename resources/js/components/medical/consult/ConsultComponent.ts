@@ -60,11 +60,7 @@ export default defineComponent({
     props: {
         consultID: {
             type: Number,
-            default: 1
-        },
-        sendToServer: {
-            type: Boolean,
-            default: false
+            default: -1
         },
         role: {
             type: String,
@@ -116,12 +112,13 @@ export default defineComponent({
         },
         disableConsult(): boolean
         {
+            console.log(this.role)
             switch(this.role)
             {
                 case 'Administrador':
                     return false;
                 case 'Doctor':
-                    return this.consultData.medicalconsultstatus_id > 4 ? false : true;
+                    return this.consultData.medicalconsultstatus_id > 4 ? true : false;
                 default:
                     return true;
             }
@@ -146,7 +143,7 @@ export default defineComponent({
     methods: {
         getPayment()
         {
-            axios.get<Payment>(`/consultas/2/pago`)
+            axios.get<Payment>(`/consultas/${this.consultID}/pago`)
             .then(response => {
                 console.log(response.data, 'as')
                 this.paymentProducts = response.data;
@@ -236,8 +233,10 @@ export default defineComponent({
         {
             axios.get<History>(`/consultas/${this.consultID}/historial`)
             .then(response => {
-                console.log(response.data)
-                this.historyData = response.data;
+                if(response.status === 200)
+                {
+                    this.historyData = response.data;
+                }
             })
             .catch(error => {
                 console.log(error)
@@ -280,7 +279,6 @@ export default defineComponent({
             axios.get<Test[]>(`/consultas/${this.consultID}/estudios`)
             .then(response => {
                 const data = Object.values(response.data);
-                console.log(response.data)
                 this.testData = data.map((test: Test) => {
                     return {
                         ...test,

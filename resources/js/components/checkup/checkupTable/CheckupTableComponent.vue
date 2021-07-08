@@ -4,7 +4,7 @@
         <div class="form-group p-0">
             <div class="with-icon">
                 <span class="mr-5">
-                    <img :src="asset('/svg/search.svg')" alt="Search">
+                    <img-component url="/svg/search.svg"  alt="Buscar"></img-component>
                 </span>
                 <input type="text" class="form-control form-control-lg bg-white" v-model="query"
                     @keyup="getCheckupDataQuery" placeholder="Buscar">
@@ -86,20 +86,20 @@
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                 @click="getCheckupDataByID(checkup.id, 'show')">
-                                                <img :src="asset('/svg/show.svg')" alt="Ver">
+                                                <img-component url="/svg/show.svg" cssClass="w-50" alt="Ver"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                 @click="getCheckupDataByID(checkup.id, 'edit')">
-                                                <img :src="asset('/svg/edit.svg')" alt="Editar">
+                                                <img-component url="/svg/edit.svg" cssClass="w-50" alt="Editar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img :src="asset('/svg/cancel.svg')" alt="Subir" @click="showCancelConfirm(checkup.id)">
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img" @click="showCancelConfirm(checkup.id)">
+                                                <img-component url="/svg/cancel.svg" alt="Subir"></img-component>
                                             </button>
                                         </li>
                                     </ul>

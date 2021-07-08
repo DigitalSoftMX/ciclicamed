@@ -31,10 +31,10 @@ export default defineComponent({
             type: Array as PropType<Select[]>,
             default: []
         },
-        roles: {
-            type: Array as PropType<Role[]>,
-            default: []
-        }
+        role: {
+            type: String as PropType<String>,
+            default: ''
+        },
     },
     data() {
         return {
@@ -123,8 +123,9 @@ export default defineComponent({
             var title = 'Consulta';
             var borderColor = '#60269E';
             var backgroundColor = '#60269E';
-            if(this.roles.filter(item => item.name === 'Paciente').length === 0) {
-                title = this.getScheduleTitle(schedule.type!.name, name);
+            if(this.role.includes('Paciente' || 'Doctor' || 'Laboratorio' || 'Imagenología'))
+            {
+                title = this.getScheduleTitle(schedule.type?.name ?? '', name);
                 borderColor = schedule.status?.color!;
                 backgroundColor = schedule.status?.color!;
             }

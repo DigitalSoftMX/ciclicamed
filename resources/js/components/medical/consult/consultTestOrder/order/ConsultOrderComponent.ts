@@ -3,11 +3,9 @@ import { PropType } from 'vue';
 import { Test } from '@interface/Medical/Test.interface';
 import { OrderData } from '@data/Medical/Order.data';
 import { TestOrder } from '@interface/Medical/TestOrder.interface';
-import vSelect from "vue-select-3/src";
 
 export default defineComponent({
     components: {
-        vSelect
     },
     emits: ['update:modelValue', 'onDelete'],
     props: {

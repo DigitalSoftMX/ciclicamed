@@ -1,10 +1,8 @@
 import { DoctorSidebarConfig } from '@config/DoctorSidebar.config';
-import { PatientSidebarConfig } from '@config/PatientSidebar.config';
 import { PatientData } from '@data/Patient/Patient.data';
 import { Patient } from '@interface/Patient/Patient.interface';
-import { Role } from '@interface/User/Role.interface';
 import { defineComponent } from '@vue/runtime-core';
-import { defineAsyncComponent, DefineComponent, PropType } from 'vue';
+import { PropType } from 'vue';
 
 export default defineComponent({
     components: {
@@ -17,9 +15,9 @@ export default defineComponent({
             type: Object as PropType<Patient>,
             default: PatientData
         },
-        roles: {
-            type: Object as PropType<Role[]>,
-            default: []
+        role: {
+            type: String as PropType<String>,
+            default: ''
         }
     },
     data() {

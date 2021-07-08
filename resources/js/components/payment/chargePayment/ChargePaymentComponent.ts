@@ -15,6 +15,8 @@ export default defineComponent({
         EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
         ConsultProductListComponent: require('@component/payment/chargePayment/productModalList/ProductModalListComponent.vue').default,
         PaymentInfoComponent: require('@component/payment/paymentInfo/PaymentInfoComponent.vue').default,
+        ConfirmationAlertComponent: require('@component/general/alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue').default,
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
     },
     emits: [],
     props: {
@@ -42,6 +44,7 @@ export default defineComponent({
             productCategoryLoaded: [] as String[],
             categorySelected: '',
             titleSelected: '',
+            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
         };
     },
     mounted()
@@ -73,6 +76,10 @@ export default defineComponent({
         }
     },
     methods: {
+        confirmConsultFinish()
+        {
+            $('#chpcConsult').modal('show');
+        },
         createConsultPayment()
         {
             axios.post(`/consultas/${this.consult.id}/pago`, {
@@ -84,7 +91,10 @@ export default defineComponent({
                 }
             })
             .then(response => {
-                console.log()
+                $('#chpcSuccess').modal('show');
+                setInterval(() => {
+                    window.location.replace(`${this.url}/app/inicio`);
+                }, 2000)
             })
             .catch(error => {
                 console.log(error)

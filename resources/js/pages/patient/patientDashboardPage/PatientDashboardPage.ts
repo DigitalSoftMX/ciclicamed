@@ -16,10 +16,10 @@ export default defineComponent({
             type: Object as PropType<Patient>,
             default: PatientData
         },
-        roles: {
-            type: Object as PropType<Role[]>,
-            default: []
-        }
+        role: {
+            type: String,
+            default: ''
+        },
     },
     data() {
         return {

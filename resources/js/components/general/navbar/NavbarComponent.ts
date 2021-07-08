@@ -34,7 +34,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log((window as any).path)
     },
     computed: {
         profilePhoto(): string

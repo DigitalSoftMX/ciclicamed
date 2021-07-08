@@ -21,4 +21,5 @@ export interface Schedule
     status?: ScheduleStatus;
     type?: ScheduleType;
     branch?: Branch;
+    product_id: number;
 }

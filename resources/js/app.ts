@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { createApp, defineAsyncComponent } from 'vue';
 import {asset} from '@codinglabs/laravel-asset'
+import vSelect from "vue-select-3/src";
+import 'element-plus/lib/theme-chalk/index.css';
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -56,4 +58,7 @@ app.mixin({
     }
 })
 app.component('ImgComponent', require('@component/general/img/ImgComponent.vue').default,)
+app.component('NoConsultComponent', require('@component/general/error/NoConsultComponent.vue').default,)
+app.component('vSelect', vSelect)
+
 app.mount('#app');

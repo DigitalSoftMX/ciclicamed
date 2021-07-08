@@ -26,10 +26,10 @@
         <div class="projects-tab-content projects-tab-content--progress">
             <div class="tab-content mt-25" id="ap-tabContent">
                 <div class="tab-pane fade active show" id="ap-overview" role="tabpanel">
-                    <consult-component></consult-component>
+                    <consult-component :consultID="consultID" :role="role"></consult-component>
                 </div>
                 <div class="tab-pane fade" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
-                    <schedule-component :userCategory="userCategory" :roles="roles" :employeeID="employeeID"></schedule-component>
+                    <schedule-component :role="role" :employeeID="employeeID" :userID="patientID"></schedule-component>
                 </div>
             </div>
         </div>

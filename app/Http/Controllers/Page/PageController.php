@@ -8,6 +8,7 @@ use App\Models\User\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class PageController extends Controller
 {
@@ -112,44 +113,42 @@ class PageController extends Controller
 
     public function showConsulta()
     {
-        // return response()->view('errors.404', [], 404)->withCookie('consult', 1);
-
+        $cookie = request()->cookie('consult');
         $user = User::findOrFail(Auth::user()->id);
-        return response()->view('pages.consult', [
-            'user' => $user->employee->load('user'),
-            'roles' => $user->roles,
-            'consultID' => 1
-        ], 200)->withCookie('consult', 1);
-
-        // $cookie = request()->cookie('consult');
-        // $consult= MedicalConsult::findOrFail($cookie);
-        // if($cookie && $consult)
-        // {
-            
-        //     $user = User::findOrFail(Auth::user()->id);
-        //     $start = $consult['consult_schedule_start'];
-        //     //Modificar < por >
-        //     if($user->hasRole('Doctor') && $consult['medicalconsultstatus_id'] > 3 && Carbon::now()->gte(Carbon::parse($start)))
-        //     {
-        //         return response()->view('pages.consult', [
-        //             'user' => $user->employee->load('user'),
-        //             'roles' => $user->roles,
-        //             'consultID' => $cookie
-        //         ], 200);
-        //     }
-        //     else if($user->hasRole('Administrador'))
-        //     {
-        //         return response()->view('pages.consult', [
-        //             'user' => $user->employee->load('user'),
-        //             'roles' => $user->roles,
-        //             'consultID' => $cookie
-        //         ], 200);
-        //     }
-        //     else
-        //     {
-        //         return response()->view('errors.404', [], 404);
-        //     }
-        // }
-        // return response()->view('errors.404', [], 404);
+        if($user->hasRole(['Doctor', 'Administrador']))
+        {
+            if(isset($cookie))
+            {
+                $consult = MedicalConsult::findOrFail($cookie);
+                if($cookie && $consult)
+                {
+                    $start = $consult['consult_schedule_start'];
+                    if($user->hasRole('Doctor') && $consult['medicalconsultstatus_id'] > 3 && Carbon::now()->gte(Carbon::parse($start)))
+                    {
+                        return response()->view('pages.consult', [
+                        'user' => $user->employee->load('user'),
+                        'roles' => $user->roles,
+                        'consultID' => $cookie
+                        ], 200);
+                    }
+                    if($user->hasRole('Administrador'))
+                    {
+                        return response()->view('pages.consult', [
+                        'user' => $user->employee->load('user'),
+                        'roles' => $user->roles,
+                        'consultID' => $cookie
+                        ], 200);
+                    }
+                    return response()->view('pages.consult', [
+                        'roles' => $user->roles,
+                    ], 200);
+                }
+            }
+            return response()->view('pages.consult', [
+                'roles' => $user->roles,
+            ], 200);
+        }
+        
+        return response()->view('errors.404', [], 404);
     }
 }
