@@ -18,12 +18,33 @@ use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
+    public function getAllSchedules()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Asistente') || $user->hasRole('Administrador'))
+        {
+            $schedules = MedicalConsult::all(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id',  'medicalspecialty_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
+            ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+            return response()->json($schedules);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function getEmployeeSchedules($id)
     {
-        $employee = MedicalConsult::where('doctor_id', $id)
-        ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
-        ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
-        return response()->json($employee);
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Asistente') || $user->hasRole('Administrador'))
+        {
+            $schedules = MedicalConsult::where('doctor_id', $id)
+            ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
+            ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+            return response()->json($schedules);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function getDoctors()

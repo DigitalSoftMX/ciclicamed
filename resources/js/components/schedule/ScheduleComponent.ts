@@ -53,24 +53,75 @@ export default defineComponent({
         }
     },
     mounted() {
-        if(!this.role.includes('Paciente' || 'Laboratorio' || 'Imagenología'))
-        {
-            this.getPatientsList();
-            if(this.employeeID > 0)
-            {
-                this.getDoctorBranches();
-            }
-        }
+        this.selectUserSchedule();
         this.getBranchesList();
-        this.role === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
     },
     watch: {
         role()
         {
-            this.role === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
+            this.selectUserSchedule();
         }
     },
     methods: {
+        selectEmployeeAllSchedule()
+        {
+            this.selectUserSchedule();
+        },
+        //Schedules List
+        getAllScheduleList(): void {
+            axios.get<Schedule[]>(`/empleados/agenda`)
+            .then(response => {
+                this.schedules = response.data;
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        getScheduleList(doctorSelected: Select): void {
+            this.scheduleSelected.doctor_id = doctorSelected.childID;
+            this.scheduleSelected.medicalspecialty_id = doctorSelected.parentID!;
+            axios.get<Schedule[]>(`/sucursales/${this.scheduleSelected.branch_id}/empleados/${this.scheduleSelected.doctor_id}/agenda`)
+            .then(response => {
+                this.schedules = response.data;
+                this.getBusinessHours();
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        getCheckupScheduleList()
+        {
+            axios.get<Schedule[]>(`/checkup/agenda`)
+            .then(response => {
+                this.schedules = response.data;
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        getDoctorScheduleList()
+        {
+            axios.get<Schedule[]>(`/empleados/${this.employeeID}/agenda`)
+            .then(response => {
+                this.schedules = response.data;
+                this.getBusinessHours();
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        getPatientScheduleList()
+        {
+            axios.get<Schedule[]>(`/pacientes/${this.userID}/agenda`)
+            .then(response => {
+                this.schedules = response.data;
+                this.businessHours = []
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        // Branches
         getScheduleBranchList(branchID: number): void {
             axios.get<Schedule[]>(`/sucursales/${branchID}/empleados/${this.employeeID}/agenda`)
             .then(response => {
@@ -91,43 +142,39 @@ export default defineComponent({
                 console.log(error)
             })
         },
+        getBranchesList(): void
+        {
+            axios.get<Branch[]>(`/sucursales`)
+            .then(response => {
+                this.branchesList = response.data.map((branch, index) => {
+                    return {
+                        id: index,
+                        childID: branch.id, 
+                        text: branch.name,
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         selectUserSchedule()
         {
-            this.role === 'Paciente' ? this.getPatientScheduleList() : this.getDoctorScheduleList();
-        },
-        getPatientScheduleList()
-        {
-            axios.get<Schedule[]>(`/pacientes/${this.userID}/agenda`)
-            .then(response => {
-                this.schedules = response.data;
-                this.businessHours = []
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
-        getDoctorScheduleList()
-        {
-            axios.get<Schedule[]>(`/empleados/${this.employeeID}/agenda`)
-            .then(response => {
-                this.schedules = response.data;
-                this.getBusinessHours();
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
-        getScheduleList(doctorSelected: Select): void {
-            this.scheduleSelected.doctor_id = doctorSelected.childID;
-            this.scheduleSelected.medicalspecialty_id = doctorSelected.parentID!;
-            axios.get<Schedule[]>(`/sucursales/${this.scheduleSelected.branch_id}/empleados/${this.scheduleSelected.doctor_id}/agenda`)
-            .then(response => {
-                this.schedules = response.data;
-                this.getBusinessHours();
-            })
-            .catch(error => {
-                console.log(error)
-            })
+            switch(this.role)
+            {
+                case 'Paciente':
+                    this.getPatientScheduleList();
+                    break;
+                case 'Checkup':
+                    this.getCheckupScheduleList();
+                    break;
+                case 'Asistente':
+                    this.getAllScheduleList();
+                    break;
+                default:
+                    this.getDoctorScheduleList();
+                    break;
+            }
         },
         getBusinessHours(): void {
             axios.get<EmployeeBusinessHour[]>(`/sucursales/${this.scheduleSelected.branch_id}/empleados/${this.scheduleSelected.doctor_id}/horarios`)
@@ -142,22 +189,6 @@ export default defineComponent({
                         daysOfWeek: days,
                         startTime: hour.start_time,
                         endTime: hour.finish_time
-                    }
-                });
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
-        getBranchesList(): void
-        {
-            axios.get<Branch[]>(`/sucursales`)
-            .then(response => {
-                this.branchesList = response.data.map((branch, index) => {
-                    return {
-                        id: index,
-                        childID: branch.id, 
-                        text: branch.name,
                     }
                 });
             })
@@ -193,22 +224,6 @@ export default defineComponent({
                 console.log(error)
             })
         },
-        getPatientsList(): void
-        {
-            axios.get <Patient[]> (`/pacientes`)
-            .then(response => {
-                this.patientsList = response.data.map((patient, index) => {
-                    return {
-                        id: index,
-                        childID: patient.id,
-                        text: `${patient.patient_code} ${patient.first_name} ${patient.last_name}`
-                    }
-                });
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
         copyScheduleData(date: string)
         {
             const dayOfWeek = moment(date).day();
@@ -223,6 +238,11 @@ export default defineComponent({
                     .set('hours', startHour)
                     .set('minutes', startMinute)
                     .format('YYYY-MM-DD HH:mm:00');
+                const lateral = this.$refs.openLateralSchedule as DefineComponent;
+                lateral.openLateralSchedule();
+            }
+            if(this.role.includes('Asistente' || 'Administrador'))
+            {
                 const lateral = this.$refs.openLateralSchedule as DefineComponent;
                 lateral.openLateralSchedule();
             }

@@ -11,7 +11,7 @@
                     placeholder="Seleccione una sucursal" />
             </div>
             <button class="btn btn-primary btn-lg btn-squared btn-block mb-25" @click="selectSchedule" v-if="role === 'Paciente'">Ver mi agenda</button>
-            <button class="btn btn-primary btn-lg btn-squared btn-block mb-25" @click="selectSchedule" v-if="role !== 'Paciente'">Ver mi agenda por sucursal</button>
+            <button class="btn btn-primary btn-lg btn-squared btn-block mb-25" @click="selectSchedule" v-if="role !== 'Paciente' && role !== 'Checkup' && role !== 'Asistente'">Ver mi agenda por sucursal</button>
             <button class="btn btn-primary btn-lg btn-squared btn-block" @click="selectAllSchedule" v-if="role !== 'Paciente'">Ver toda mi agenda</button>
         </div>
     </div>

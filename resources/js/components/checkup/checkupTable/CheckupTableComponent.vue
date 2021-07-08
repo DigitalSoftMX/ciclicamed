@@ -86,14 +86,14 @@
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                 @click="getCheckupDataByID(checkup.id, 'show')">
-                                                <img-component url="/svg/show.svg" cssClass="w-50" alt="Ver"></img-component>
+                                                <img-component url="/svg/show.svg" cssClass="w-100" alt="Ver"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                 @click="getCheckupDataByID(checkup.id, 'edit')">
-                                                <img-component url="/svg/edit.svg" cssClass="w-50" alt="Editar"></img-component>
+                                                <img-component url="/svg/edit.svg" cssClass="w-100" alt="Editar"></img-component>
                                             </button>
                                         </li>
                                         <li>

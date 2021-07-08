@@ -15,7 +15,7 @@ export default defineComponent({
         'SuccessAlertComponent': require('@component/general/alert/SuccessAlertComponent.vue').default,
         'ErrorAlertComponent': require('@component/general/alert/ErrorAlertComponent.vue').default
     },
-    emits: ['scheduleCanceled', ''],
+    emits: ['scheduleCanceled', 'scheduleUpdated'],
     props: {
         schedule: {
             type: Object as PropType<Schedule>,
@@ -33,11 +33,35 @@ export default defineComponent({
     data() {
         return {
             errors: {} as AlertError,
-            isCancelOptionEnabled: false as boolean,
-            isEditOptionEnabled: false as boolean
+            successAlert: {
+                title: '',
+                message: ''
+            }
         };
     },
     computed: {
+        isCancelOptionEnabled(): boolean
+        {
+            return this.schedule.status!.name.includes('Agendado' || 'Confirmado' || 'Ausente' || 'Cancelado');
+        },
+        isEditOptionEnabled(): boolean
+        {
+            return this.schedule.status!.name.includes('Agendado' || 'Ausente' || 'Cancelado');
+        },
+        showScheduleOption(): boolean
+        {
+            switch(this.role)
+            {
+                case 'Doctor':
+                    return this.isStartScheduleEnabled;
+                case 'Asistente' :
+                    return this.isConfirmScheduleEnabled;
+                case 'Administrador':
+                    return true;
+                default:
+                    return false;
+            }
+        },
         isStartScheduleEnabled(): boolean
         {
             switch(this.role)
@@ -52,11 +76,7 @@ export default defineComponent({
         },
         isConfirmScheduleEnabled(): boolean
         {
-            if(this.role.includes('Asistente' || 'Administrador'))
-            {
-                return true;
-            }
-            return false;
+            return (this.role === 'Asistente' && this.schedule.status!.name === 'Agendado') || this.role === 'Administrador' ? true : false;
         }
     },
     watch: {
@@ -84,6 +104,20 @@ export default defineComponent({
         }
     },
     methods: {
+        confirmSchedule()
+        {
+            axios.post(`/consultas/${this.schedule.id}/confirmar`)
+            .then(response => {
+                this.$emit('scheduleUpdated');
+                this.successAlert.message = 'Se confirmado la cita correctamente';
+                this.successAlert.title = 'Datos de la consulta actualizados';
+                $('#schedule-action').modal('hide');
+                $('#actionConsultSuccess').modal('show');
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         startSchedule()
         {
             axios.post(`/consultas/${this.schedule.id}/iniciar`)
@@ -103,13 +137,15 @@ export default defineComponent({
         },
         openLateralSchedule()
         {
-            const child = this.$parent?.$parent?.$refs.openLateralSchedule as DefineComponent;
+            const child = this.$parent?.$refs.openLateralSchedule as DefineComponent;
             child.openLateralSchedule()
         },
         deleteSchedule()
         {
             axios.delete<Schedule>(`/consultas/${this.schedule.id}`,)
             .then(response => {
+                this.successAlert.message = 'Se ha cancelado la cita correctamente';
+                this.successAlert.title = 'Datos de la consulta actualizados';
                 this.$emit('scheduleCanceled', response.data);
                 $('#actionConsultSuccess').modal('show');
             })

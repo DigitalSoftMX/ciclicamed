@@ -46,6 +46,13 @@
                                 <span class="list-meta"> {{ schedule.branch?.name }}</span>
                             </span>
                         </li>
+                        <li>
+                            <img-component url="/svg/branch.svg" alt="Sucursal"></img-component>
+                            <span class="list-line">
+                                <span class="list-label">Doctor: </span>
+                                <span class="list-meta"> {{ schedule.doctor?.first_name }} {{schedule.doctor?.last_name}}</span>
+                            </span>
+                        </li>
                         <li v-if="schedule.status">
                             <img-component url="/svg/alert.svg" alt="Sucursal"></img-component>
                             <span class="list-line">
@@ -61,9 +68,9 @@
                         </li>
                     </ul>
                 </div>
-                <div class="modal-footer bg-white" v-if="this.schedule.status?.name !== 'Finalizado' && (isStartScheduleEnabled || isConfirmScheduleEnabled)">
+                <div class="modal-footer bg-white" v-if="showScheduleOption">
                     <div v-if="isConfirmScheduleEnabled">
-                        <button class="btn btn-primary btn-lg btn-squared">Confirmar cita</button>
+                        <button class="btn btn-primary btn-lg btn-squared" @click="confirmSchedule">Confirmar cita</button>
                     </div>
                     <div v-if="isStartScheduleEnabled">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Inicar cita</button>
@@ -73,7 +80,7 @@
         </div>
     </div>
 
-    <success-alert-component :id="'actionConsultSuccess'" :message="'Se ha cancelado la cita correctamente'" :title="'Datos del perfil actualizados'">
+    <success-alert-component :id="'actionConsultSuccess'" :message="successAlert.message" :title="successAlert.title">
     </success-alert-component>
     <error-alert-component :id="'actionConsultError'" :errors="errors" :title="'Error al cancelar la cita'">
     </error-alert-component>

@@ -25,6 +25,24 @@ use PhpParser\Node\Expr\Cast\Object_;
 
 class MedicalConsultController extends Controller
 {
+    public function confirmSchedule($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        $consult = MedicalConsult::findOrFail($id);
+        if($user->hasRole('Asistente') && intval($consult['medicalconsultstatus_id'] <= 4) && intval(Auth::user()->id) === intval($user['id']) || $user->hasRole('Administrador'))
+        {
+            $consult->update([
+                'medicalconsultstatus_id' => 2
+            ]);
+            
+            return response()->json([], 200)->withCookie('consult', $id);
+        }
+
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para modificar esta información']
+        ]], 401);
+    }
+
     public function startSchedule($id)
     {
         $user = User::findOrFail(Auth::user()->id);
@@ -246,9 +264,20 @@ class MedicalConsultController extends Controller
         //                 ->where('consult_schedule_start', '<=', $start)->where('consult_schedule_finish', '>=', $start)->get();
         // }
 
-        $user = User::findOrFail(Auth::user()->id);
+        
 
-        $firstConsult = MedicalConsult::where('patient_id', $user['patient']['id'])->where('medicalconsultcategory_id', 1);
+        $user = User::findOrFail(Auth::user()->id);
+        $firstConsult = null;
+        if($user->hasRole('Paciente'))
+        {
+            $firstConsult = MedicalConsult::where('patient_id', $user['patient']['id'])->where('medicalconsultcategory_id', 1);
+        }
+        else
+        {
+            $firstConsult = MedicalConsult::where('patient_id', $request->input('data.patient_id'))->where('medicalconsultcategory_id', 1);
+        }
+        
+        
         $medicalspecialty_id = intval($request->input('data.doctor_id'));
         $medicalconsultcategory_id = 0;
         
@@ -300,6 +329,7 @@ class MedicalConsultController extends Controller
             $consult->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
             return  response()->json($consult);
         }
+        
         if($user->hasRole(['Doctor', 'Asistente', 'Enfermera', 'Administrador']))
         {
             $consult = MedicalConsult::create([

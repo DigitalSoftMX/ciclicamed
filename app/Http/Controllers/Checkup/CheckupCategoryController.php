@@ -10,11 +10,28 @@ use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\Test\MedicalTest;
 use App\Models\Medical\Test\MedicalTestOrder;
 use App\Models\Product\Product;
+use App\Models\User\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckupCategoryController extends Controller
 {
+    public function getSchedules()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Checkup') || $user->hasRole('Administrador'))
+        {
+            $schedules = MedicalConsult::whereNotNull('checkup_id')
+            ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
+            ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+            return response()->json($schedules);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function getAllCategories()
     {
         $categories = CheckupCategory::all();

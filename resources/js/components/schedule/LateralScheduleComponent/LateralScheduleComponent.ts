@@ -14,6 +14,7 @@ import { Product } from '@interface/Product/Product.interface';
 import cloneDeep from 'lodash/cloneDeep';
 import { ElTimeSelect } from 'element-plus';
 import _ from 'lodash';
+import { Patient } from '@interface/Patient/Patient.interface';
 
 
 export default defineComponent({
@@ -41,10 +42,6 @@ export default defineComponent({
             type: Array as PropType<Select[]>,
             default: []
         },
-        patientsList: {
-            type: Array as PropType<Select[]>,
-            default: []
-        },
         businessHours: {
             type: Object as PropType<FullCalendarBusinessHour[]>,
             default: []
@@ -64,14 +61,15 @@ export default defineComponent({
             id: Math.floor(Math.random() * 5) + 1,
             scheduleSelectedCopy: cloneDeep(this.schedule),
             scheduleTypeList: [] as Select[],
-            doctorListCopy: this.doctorsList,
+            doctorListCopy: [...this.doctorsList],
             testList: [] as Select[],
             errors: [],
             doctorSelect: SelectData,
             dateSelected: moment().format('YYYY-MM-DD'),
             startTime: '08:00',
             finishTime: '20:00',
-            pruea: 0
+            patientsList: [] as Select[],
+            startHourUpdated: false
         };
     },
     computed: {
@@ -81,16 +79,15 @@ export default defineComponent({
         },
         startHour(): FullCalendarBusinessHour
         {
-            if(this.businessHours.length > 0)
+            if(this.businessHours.length > 0 && !this.startHourUpdated)
             {
+                this.startHourUpdated = true;
                 const time = this.businessHours.find(item => item.daysOfWeek.includes(moment(this.dateSelected).day()))!;
                 this.startTime = time.startTime;
                 this.finishTime = time.endTime;
                 this.updateScheduleTimes();
                 return time;
             }
-            this.startTime = '08:00';
-            this.finishTime = '20:00';
             this.updateScheduleTimes();
             return {
                 daysOfWeek: [],
@@ -105,6 +102,14 @@ export default defineComponent({
     },
     watch:
     {
+        startTime()
+        {
+            this.updateScheduleTimes();
+        },
+        finishTime()
+        {
+            this.updateScheduleTimes();
+        },
         patientID()
         {
             this.scheduleSelectedCopy.patient_id = this.patientID;
@@ -116,11 +121,26 @@ export default defineComponent({
         schedule: {
             handler()
             {
+                this.getDoctorList();
+                this.startHourUpdated = false;
                 this.scheduleSelectedCopy = cloneDeep(this.schedule);
-                this.doctorListCopy = this.doctorsList;
                 this.dateSelected = moment(this.scheduleSelectedCopy.consult_schedule_start).format('YYYY-MM-DD');
-                this.scheduleSelectedCopy.patient_id = this.patientID;
-                this.doctorSelect = getDoctorPosition(this.doctorListCopy, this.schedule.doctor_id, this.schedule.medicalspecialty_id!);
+                if(this.patientID > 0)
+                {
+                    this.scheduleSelectedCopy.patient_id = this.patientID;
+                }
+                this.doctorsList.length > 0 ? this.doctorListCopy = [...this.doctorsList] : this.getDoctorList();
+                this.doctorSelect = getDoctorPosition(this.doctorListCopy, this.scheduleSelectedCopy.doctor_id, this.scheduleSelectedCopy.medicalspecialty_id!);
+            },
+            deep: true,
+        },
+        doctorListCopy: {
+            handler()
+            {
+                if(this.doctorListCopy.length > 0)
+                {
+                    this.doctorSelect = getDoctorPosition(this.doctorListCopy, this.schedule.doctor_id, this.schedule.medicalspecialty_id!);
+                }
             },
             deep: true,
         },
@@ -139,7 +159,7 @@ export default defineComponent({
         'scheduleSelectedCopy.doctor_id': {
             handler()
             {
-                if(this.role !== 'Paciente')
+                if(!this.role.includes('Paciente' && 'Checkup'))
                 {
                     switch(this.scheduleSelectedCopy.doctor_id)
                     {
@@ -167,6 +187,30 @@ export default defineComponent({
         }
     },
     methods: {
+        loadPatientList()
+        {
+            this.role.includes('Asistente' || 'Administrador')
+            {
+                this.getPatientsList();
+            }
+        },
+        getPatientsList(): void
+        {
+            axios.get <Patient[]> (`/pacientes`)
+            .then(response => {
+                console.log(response.data)
+                this.patientsList = response.data.map((patient, index) => {
+                    return {
+                        id: index,
+                        childID: patient.id,
+                        text: `${patient.patient_code} ${patient.first_name} ${patient.last_name}`
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         formatScheduleTime(datetime: string): string {
             return moment(datetime).format('hh:mm');
         },
@@ -241,7 +285,8 @@ export default defineComponent({
         getDoctorList(): void
         {
             axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${this.scheduleSelectedCopy.branch_id}/especialidades/doctores`)
-            .then(response => {
+            .then( response => {
+                
                 var index = 0;
                 const doctorFilter = response.data.filter((list: BranchSpecialtyDoctors) => list.doctors.length > 0);
                 this.doctorListCopy = doctorFilter.map(specialty => {
@@ -290,6 +335,7 @@ export default defineComponent({
         const self = this;
         const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
         overlay.addEventListener('click', () => self.closeLateralSchedule());
+        this.loadPatientList();
     },
 })
 

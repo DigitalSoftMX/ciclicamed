@@ -24,7 +24,7 @@
                     </div>
 
                     <!-- Lista de estudios (solo si es imagenologia o laboratorio) -->
-                    <div class="form-group" v-if="scheduleSelectedCopy.doctor_id === 1 || scheduleSelectedCopy.doctor_id === 2">
+                    <div class="form-group" v-if="(scheduleSelectedCopy.doctor_id === 1 || scheduleSelectedCopy.doctor_id === 2) && scheduleSelectedCopy.product_id">
                         <label for="lscEstudios">Estudio clínico</label>
                         <v-select :options="testList" label="text" :reduce="item => item.childID"
                             placeholder="Seleccione un estudio" v-model="scheduleSelectedCopy.product_id" />
@@ -97,10 +97,10 @@
 
                     <!-- Tarjeta de cita -->
                     <div class="card rounded-0 lateralCardColor mt-25 shadow-none"
-                        v-if="schedule.id > 0 && role !== 'Paciente'">
+                        v-if="schedule.id > 0 && (role === 'Asistente' || role === 'Administrador')">
                         <div class="card-body py-2 px-3">
                             <h6 class="text-primary mb-1">
-                                {{ patientsList[scheduleSelectedCopy.patient_id ?? 0].text ?? '' }}
+                                {{ patientsList[schedule.patient_id ?? 0].text ?? '' }}
                             </h6>
                             <p class="m-0 text-primary">
                                 {{ `${formatScheduleTime(this.scheduleSelectedCopy.consult_schedule_start)} - ${formatScheduleTime(this.scheduleSelectedCopy.consult_schedule_finish)}` }}

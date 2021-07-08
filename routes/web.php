@@ -76,6 +76,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/pago', [MedicalConsultController::class, 'getConsultPayment'])->name('consulta.getPago');
         Route::post('/{id}/pago', [MedicalConsultController::class, 'createPayment'])->name('consulta.setPago');
         Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.startConsulta');
+        Route::post('/{id}/confirmar', [MedicalConsultController::class, 'confirmSchedule'])->name('consulta.confirmConsulta');
     });
 
     //Imagenes
@@ -120,7 +121,8 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/', [EmployeeController::class, 'getAllEmployees'])->name('empleados.todos');
         Route::patch('/{id}', [EmployeeController::class, 'updateEmployee'])->name('empleados.updateEmpleado');
         Route::get('/{id}/sucursales', [EmployeeController::class, 'getEmployeeBranches'])->name('empleados.todos');
-        Route::get('/{id}/agenda', [EmployeeController::class, 'getEmployeeSchedules'])->name('empleados.todos');
+        Route::get('/{id}/agenda', [EmployeeController::class, 'getEmployeeSchedules'])->name('empleados.getIDAgenda');
+        Route::get('/agenda', [EmployeeController::class, 'getAllSchedules'])->name('empleados.getAgendas');
     });
 
     //Productos
@@ -162,6 +164,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
 
     //Checkup
     Route::group(['prefix' => 'checkup'], function() {
+        Route::get('/agenda', [CheckupCategoryController::class, 'getSchedules'])->name('checkup.getAgenda');
         Route::get('/categorias', [CheckupCategoryController::class, 'getAllCategories'])->name('checkup.getTodos');
         Route::get('/pendientes', [CheckupCategoryController::class, 'getPendings'])->name('checkup.getTodos');
         Route::get('/{id}', [CheckupCategoryController::class, 'getCheckupByID'])->name('checkup.getCheckup');
