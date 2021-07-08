@@ -21,7 +21,7 @@ class EmployeeController extends Controller
     public function getAllSchedules()
     {
         $user = User::findOrFail(Auth::user()->id);
-        if($user->hasRole('Asistente') || $user->hasRole('Administrador'))
+        if($user->hasRole(['Asistente', 'Enfermera', 'Administrador']))
         {
             $schedules = MedicalConsult::all(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id',  'medicalspecialty_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
             ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
@@ -35,7 +35,7 @@ class EmployeeController extends Controller
     public function getEmployeeSchedules($id)
     {
         $user = User::findOrFail(Auth::user()->id);
-        if($user->hasRole('Asistente') || $user->hasRole('Administrador'))
+        if($user->hasRole(['Asistente', 'Doctor', 'Administrador']))
         {
             $schedules = MedicalConsult::where('doctor_id', $id)
             ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])

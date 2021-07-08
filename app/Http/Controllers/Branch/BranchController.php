@@ -15,6 +15,21 @@ use Illuminate\Support\Facades\DB;
 
 class BranchController extends Controller
 {
+    public function getBranchSchedules($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole(['Enfermera', 'Administrador']))
+        {
+            $schedules = MedicalConsult::where('branch_id', $id)
+                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id'])
+                                ->load('doctor:id,first_name,last_name', 'branch:id,name');
+            return response()->json($schedules);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function getAllBranches()
     {
         $branches = Branch::all();

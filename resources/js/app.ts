@@ -30,6 +30,10 @@ const app = createApp({
 		AsistenteDashboardPage: require('@page/asistente/AsistenteDashboardPage/AsistenteDashboardPage.vue').default,
 		AsistenteProductPage: require('@page/asistente/AsistenteProductPage/AsistenteProductPage.vue').default,
 		AsistenteProfilePage: require('@page/asistente/AsistenteProfilePage/AsistenteProfilePage.vue').default,
+
+		NurseDashboardPage: require('@page/enfermera/nurseDashboardPage/NurseDashboardPage.vue').default,
+		NurseConsultPage: require('@page/enfermera/nurseConsultPage/NurseConsultPage.vue').default,
+		NurseProfilePage: require('@page/enfermera/nurseProfilePage/NurseProfilePage.vue').default,
 		// ScheduleComponent: require('./components/schedule/ScheduleComponent.vue').default,
 		// MedicalConsultPage: MedicalConsultPage,
 		// UsersPage: UsersPage,

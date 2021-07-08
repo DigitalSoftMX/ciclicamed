@@ -47,7 +47,22 @@ class MedicalConsultController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
         $consult = MedicalConsult::findOrFail($id);
-        if($user->hasRole('Doctor') && intval($consult['medicalconsultstatus_id'] <= 4) && intval(Auth::user()->id) === intval($user['id']) || $user->hasRole('Administrador'))
+        if($user->hasRole('Enfermera') && intval($consult['medicalconsultstatus_id'] <= 4)  || $user->hasRole('Administrador'))
+        {
+            if(!isset($consult['nurse_start_at']))
+            {
+                $time = Carbon::now()->setTimezone('America/Mexico_City');
+                $consult->update([
+                    'assistant_finish_at' =>$time,
+                    'nurse_start_at' => $time,
+                    'medicalconsultstatus_id' => 4
+                ]);
+            }
+            
+            return response()->json([], 200)->withCookie('consult', $id);
+        }
+
+        if($user->hasRole('Doctor') && intval($consult['medicalconsultstatus_id'] <= 4)  || $user->hasRole('Administrador'))
         {
             if(!isset($consult['consult_start_at']))
             {

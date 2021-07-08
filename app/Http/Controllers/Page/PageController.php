@@ -115,7 +115,7 @@ class PageController extends Controller
     {
         $cookie = request()->cookie('consult');
         $user = User::findOrFail(Auth::user()->id);
-        if($user->hasRole(['Doctor', 'Administrador']))
+        if($user->hasRole(['Doctor', 'Enfermera', 'Administrador']))
         {
             if(isset($cookie))
             {
@@ -123,7 +123,7 @@ class PageController extends Controller
                 if($cookie && $consult)
                 {
                     $start = $consult['consult_schedule_start'];
-                    if($user->hasRole('Doctor') && $consult['medicalconsultstatus_id'] > 3 && Carbon::now()->gte(Carbon::parse($start)))
+                    if($user->hasRole(['Doctor', 'Enfermera']) && $consult['medicalconsultstatus_id'] > 3 && Carbon::now()->gte(Carbon::parse($start)))
                     {
                         return response()->view('pages.consult', [
                         'user' => $user->employee->load('user'),

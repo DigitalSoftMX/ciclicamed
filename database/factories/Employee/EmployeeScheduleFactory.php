@@ -60,7 +60,7 @@ class EmployeeScheduleFactory extends Factory
         $hourStart = '0'.$this->faker->numberBetween(8, 9).':'.$this->faker->numberBetween(0, 5).$this->faker->numberBetween(0, 9).':00';
         $hourFinish = $this->faker->numberBetween(12, 20).':'.$this->faker->numberBetween(0, 5).$this->faker->numberBetween(0, 9).':00';
         return [
-            'employee_id' => $this->faker->numberBetween(3, 5),
+            'employee_id' => $this->faker->numberBetween(1, 25),
             'start_day' => $dateStart,
             'start_time' => $hourStart,
             'finish_day' => $dateFinish,

@@ -48,7 +48,7 @@ class EmployeeLicenseFactory extends Factory
         }
 
         return [
-            'employee_id' => $this->faker->numberBetween(3, 5),
+            'employee_id' => $this->faker->numberBetween(3, 25),
             'degree_title' => $this->faker->text(100),
             'license_number' => $this->faker->regexify('[0-9]{8}'),
             'school_name' => $this->faker->text(100),

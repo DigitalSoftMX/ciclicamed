@@ -26,6 +26,10 @@ class CreateMedicalConsultsTable extends Migration
             $table->dateTime('consult_schedule_finish')->nullable();
             $table->dateTime('consult_start_at')->nullable();
             $table->dateTime('consult_finish_at')->nullable();
+            $table->dateTime('nurse_start_at')->nullable();
+            $table->dateTime('nurse_finish_at')->nullable();
+            $table->dateTime('assistant_start_at')->nullable();
+            $table->dateTime('assistant_finish_at')->nullable();
             $table->unsignedSmallInteger('branch_id', false);
             $table->unsignedTinyInteger('medicalconsultstatus_id', false);
             $table->unsignedSmallInteger('medicalspecialty_id', false);

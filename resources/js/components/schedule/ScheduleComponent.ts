@@ -53,6 +53,7 @@ export default defineComponent({
         }
     },
     mounted() {
+        console.log(this.employeeID)
         this.selectUserSchedule();
         this.getBranchesList();
     },
@@ -63,11 +64,25 @@ export default defineComponent({
         }
     },
     methods: {
+        getDoctorBranch(branchID: number)
+        {
+            this.scheduleSelected.branch_id = branchID;
+            this.getBusinessHours();
+        },
         selectEmployeeAllSchedule()
         {
             this.selectUserSchedule();
         },
         //Schedules List
+        getAllScheduleBranchList(id: number): void {
+            axios.get<Schedule[]>(`/sucursales/${id}/agenda`)
+            .then(response => {
+                this.schedules = response.data;
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         getAllScheduleList(): void {
             axios.get<Schedule[]>(`/empleados/agenda`)
             .then(response => {
@@ -101,9 +116,11 @@ export default defineComponent({
         },
         getDoctorScheduleList()
         {
+            console.log(this.employeeID)
             axios.get<Schedule[]>(`/empleados/${this.employeeID}/agenda`)
             .then(response => {
                 this.schedules = response.data;
+                this.getDoctorBranches();
                 this.getBusinessHours();
             })
             .catch(error => {
@@ -171,12 +188,17 @@ export default defineComponent({
                 case 'Asistente':
                     this.getAllScheduleList();
                     break;
+                case 'Enfermera':
+                    this.getAllScheduleList();
+                    this.getBranchesList();
+                    break;
                 default:
                     this.getDoctorScheduleList();
                     break;
             }
         },
         getBusinessHours(): void {
+            console.log(this.scheduleSelected.branch_id)
             axios.get<EmployeeBusinessHour[]>(`/sucursales/${this.scheduleSelected.branch_id}/empleados/${this.scheduleSelected.doctor_id}/horarios`)
             .then(response => {
                 this.businessHours = response.data.map(hour => {
@@ -241,7 +263,7 @@ export default defineComponent({
                 const lateral = this.$refs.openLateralSchedule as DefineComponent;
                 lateral.openLateralSchedule();
             }
-            if(this.role.includes('Asistente' || 'Administrador'))
+            if(moment().isSameOrBefore(date, 'days'))
             {
                 const lateral = this.$refs.openLateralSchedule as DefineComponent;
                 lateral.openLateralSchedule();

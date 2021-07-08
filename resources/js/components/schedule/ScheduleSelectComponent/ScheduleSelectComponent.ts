@@ -9,7 +9,16 @@ export default defineComponent({
     components: {
         SelectComponent: require('@component/general/select/SelectComponent.vue').default
     },
-    emits: ['onBranchSelected', 'onDoctorSelected', 'onUserSchedule', 'onEmployeeScheduleSelect', 'onEmployeeAllSchedule'],
+    emits: [
+        'onBranchSelected',
+        'onDoctorSelected',
+        'onUserSchedule',
+        'onEmployeeScheduleSelect',
+        'onEmployeeAllSchedule',
+        'onDoctorBranchSelected',
+        'onNurseBranchSelected',
+        'onAllNurseBranchSelected'
+    ],
     props: {
         branchesList: {
             type: Array as PropType<Select[]>,
@@ -36,8 +45,19 @@ export default defineComponent({
         }
     },
     mounted() {
+        console.log(this.employeeBranches)
     },
     watch: {
+        employeeBranchSelected()
+        {
+            switch(this.role)
+            {
+                case 'Doctor':
+                    this.$emit('onDoctorBranchSelected', this.employeeBranchSelected);
+                    break;                    
+            }
+           
+        },
         branchSelected()
         {
             this.$emit('onBranchSelected', this.branchSelected);
@@ -54,11 +74,34 @@ export default defineComponent({
         },
         selectSchedule()
         {
-            this.employeeBranchSelected > 0 ? this.$emit('onEmployeeScheduleSelect', this.employeeBranchSelected) : this.$emit('onUserSchedule');
+            switch(this.role)
+            {
+                case 'Paciente':
+                    this.$emit('onUserSchedule');
+                    break;
+                case 'Enfermera':
+                    this.$emit('onNurseBranchSelected', this.employeeBranchSelected);
+                    break;
+                default:
+                    this.$emit('onEmployeeScheduleSelect', this.employeeBranchSelected)
+            }
         },
         selectAllSchedule()
         {
-            this.$emit('onEmployeeAllSchedule');
+            switch(this.role)
+            {
+                case 'Paciente':
+                    break;
+                case 'Enfermera':
+                    this.$emit('onAllNurseBranchSelected');
+                    break;
+                default:
+                    this.$emit('onEmployeeAllSchedule');
+            }
+        },
+        selectNurseBranch()
+        {
+            this.$emit('onNurseBranchSelected', this.employeeBranchSelected);
         }
     },
 })

@@ -1,5 +1,5 @@
 <template>
-    <div class="card mb-25 rounded">
+    <div class="card mb-25 rounded" v-if="role !== 'Enfermera'">
         <div class="card-header">
             <h1>Mi agenda</h1>
         </div>
@@ -16,7 +16,23 @@
         </div>
     </div>
 
-    <div class="card mb-25">
+    <div class="card mb-25 rounded" v-if="role === 'Enfermera'">
+        <div class="card-header">
+            <h1>Mi agenda</h1>
+        </div>
+        <div class="card-body">
+            <div class="mb-25">
+                <label>Sucursal</label>
+                <v-select :options="branchesList" label="text"
+                    :reduce="item => item.childID" v-model="employeeBranchSelected"
+                    placeholder="Seleccione una sucursal" />
+            </div>
+            <button class="btn btn-primary btn-lg btn-squared btn-block mb-25" @click="selectSchedule">Ver agenda por sucursal</button>
+            <button class="btn btn-primary btn-lg btn-squared btn-block" @click="selectAllSchedule">Ver todas las agendas</button>
+        </div>
+    </div>
+
+    <div class="card mb-25" v-if="role !== 'Enfermera'">
         <div class="card-header">
             <h4>Otras agendas</h4>
         </div>

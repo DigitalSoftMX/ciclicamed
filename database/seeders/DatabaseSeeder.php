@@ -68,32 +68,32 @@ class DatabaseSeeder extends Seeder
         UserStatus::factory(5)->create();
         UserCategory::factory(2)->create();
         User::factory(150)->create()->each(function ($user, $key){
-            if($key < 24)
+            if($key >= 1 && $key<= 26)
             {
                 $user->assignRole('Paciente');
             }
-            else if($key < 34) {
+            else if($key >= 27 && $key <= 38) {
                 $user->assignRole('Doctor');
             }
-            else if($key < 44) {
+            else if($key >= 39 && $key<= 50) {
                 $user->assignRole('Enfermera');
             }
-            else if($key < 54) {
+            else if($key >= 51 && $key<= 62) {
                 $user->assignRole('Checkup');
             }
-            else if($key < 64) {
+            else if($key >= 63 && $key<= 74) {
                 $user->assignRole('Caja');
             }
-            else if($key < 74) {
+            else if($key >= 75 && $key<= 86) {
                 $user->assignRole('Laboratorio');
             }
-            else if($key < 84) {
+            else if($key >= 87 && $key<= 98) {
                 $user->assignRole('Imagenologia');
             }
-            else if($key < 94) {
+            else if($key >= 99 && $key<= 110) {
                 $user->assignRole('Asistente');
             }
-            else if($key < 104) {
+            else if($key >= 111) {
                 $user->assignRole('Administrador');
             }
             

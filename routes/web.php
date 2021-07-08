@@ -97,6 +97,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/especialidades/doctores', [BranchController::class, 'getDoctorsAllSpecialties'])->name('sucursal.getEspecialidades');
         Route::get('/{id}/empleados/{employeeID}/agenda', [BranchController::class, 'getSchedules'])->name('sucursales.getAgendaEmpleado');
         Route::get('/{id}/empleados/{employeeID}/horarios', [BranchController::class, 'getBusinessHours'])->name('sucursales.getHorarioEmpleado');
+        Route::get('/{id}/agenda', [BranchController::class, 'getBranchSchedules'])->name('sucursales.getAgendaSucursales');
     });
 
 
