@@ -121,7 +121,7 @@ class DatabaseSeeder extends Seeder
         Medicament::factory(50)->create();
         MedicalPrescription::factory(50)->create();
         MedicalTestStatus::factory(5)->create();
-        MedicalTest::factory(25)->create();
+        MedicalTest::factory(862)->create();
         MedicalTestSample::factory(25)->create();
         MedicalTestResult::factory(25)->create();
         PaymentStatus::factory(4)->create();
@@ -133,6 +133,6 @@ class DatabaseSeeder extends Seeder
         Product::factory(969)->create();
         ProductPayment::factory(100)->create();
         MedicalTestOrderAnnotation::factory(863)->create();
-        MedicalTestOrder::factory(100)->create();
+        MedicalTestOrder::factory(862)->create();
     }
 }

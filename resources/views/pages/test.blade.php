@@ -8,6 +8,9 @@
     @case('Enfermera')
         <nurse-test-page :nurse="{{ json_encode($user) }}" role="Enfermera"></nurse-test-page>
         @break
+    @case('Imagenologia')
+        <imagenologia-test-page :imagenologia="{{ json_encode($user) }}" role="Imagenologia"></imagenologia-test-page>
+        @break
     @endswitch
 </div>
 @endsection

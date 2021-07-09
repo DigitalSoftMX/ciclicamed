@@ -19,7 +19,7 @@
                         <img-component url="/svg/email.svg" alt="Email" cssClass="svg-backgroundColor"></img-component>
                         <p>{{patientData.user.email}}</p>
                     </div>
-                    <div v-if="role !== 'Enfermera'"
+                    <div v-if="role !== ('Enfermera' && 'Laboratorio' && 'Imagenologia')"
                         class="ap-button account-profile-cards__button button-group d-flex justify-content-center flex-wrap pt-20">
                         <button type="button" @click="openPreregistration"
                             class="btn btn-primary btn-lg btn-squared btn-block bg-primary">Editar</button>
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 card p-0 mb-25">
+        <div class="col-12 card p-0 mb-25" v-if="role !== ('Laboratorio' && 'Imagenologia')">
             <div class="card-header">
                 <h4>Tiempo de consulta</h4>
             </div>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="col-12 p-0">
-            <button class="btn btn-danger btn-lg btn-squared w-100" @click="finishConsult">Terminar cita
+            <button class="btn btn-danger btn-lg btn-squared w-100" @click="finishConsult">Finalizar
             </button>
         </div>
     </div>

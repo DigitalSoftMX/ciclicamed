@@ -36,6 +36,15 @@ const app = createApp({
 		NursePrescriptionPage: require('@page/enfermera/nursePrescriptionPage/NursePrescriptionPage.vue').default,
 		NurseTestPage: require('@page/enfermera//nurseTestPage/NurseTestPage.vue').default,
 		NurseProfilePage: require('@page/enfermera/nurseProfilePage/NurseProfilePage.vue').default,
+
+		ImagenologiaDashboardPage: require('@page/imagenologia/imagenologiaDashboardPage/ImagenologiaDashboardPage.vue').default,
+		ImagenologiaConsultPage: require('@page/imagenologia/imagenologiaConsultPage/ImagenologiaConsultPage.vue').default,
+		ImagenologiaTestPage: require('@page/imagenologia/imagenologiaTestPage/ImagenologiaTestPage.vue').default,
+		ImagenologiaProfilePage: require('@page/imagenologia/imagenologiaProfilePage/ImagenologiaProfilePage.vue').default,
+
+		// LaboratorioDashboardPage: require('@page/laboratorio/laboratorioDashboardPage/LaboratorioDashboardPage.vue').default,
+		// LaboratorioConsultPage: require('@page/laboratorio/laboratorioConsultPage/LaboratorioConsultPage.vue').default,
+		// LaboratorioProfilePage: require('@page/laboratorio/laboratorioProfilePage/LaboratorioProfilePage.vue').default,
 		// ScheduleComponent: require('./components/schedule/ScheduleComponent.vue').default,
 		// MedicalConsultPage: MedicalConsultPage,
 		// UsersPage: UsersPage,

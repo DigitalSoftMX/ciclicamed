@@ -43,12 +43,22 @@ class MedicalTestController extends Controller
         if($request->has('query'))
         {
             $query = $request->input('query');
-            $test = $testData->whereHas('products', function($items) use($query) {
-                $filter = $items->where('productcategory_id', $this->testCategory());
-                $filter->where('name', 'like', '%'.$query.'%')
-                      ->orWhere('product_code', 'like', '%'.$query.'%')
-                      ->orWhere('supplier_code', 'like', '%'.$query.'%');
-            })->paginate();
+            $test = $testData
+            ->where(function ($item) use ($query){
+                $item->whereHas('products', function($items) use($query) {
+                    $items->where('productcategory_id', $this->testCategory());
+                })
+                ->where('test_code', 'like', '%'.$query.'%')
+                ->orWhereHas('products', function($items) use($query) {
+                    $filter = $items->where('productcategory_id', $this->testCategory());
+                    $filter->where(function($item) use($query){
+                        $item->where('name', 'like', '%'.$query.'%')
+                        ->orWhere('product_code', 'like', '%'.$query.'%')
+                        ->orWhere('supplier_code', 'like', '%'.$query.'%');
+                    });
+                });
+            })
+            ->paginate();
         } else {
             $test = $testData->whereHas('products', function($items){
                 $items->where('productcategory_id', $this->testCategory());
@@ -64,7 +74,7 @@ class MedicalTestController extends Controller
                 'from' => $test->firstItem(),
                 'to' => $test->lastItem()
             ],
-            'data' => $test->load('order.product:id,name,product_code,supplier_code', 'patient')
+            'data' => $test->load('order.product:id,name,product_code,supplier_code', 'order.product.orderAnnotations', 'patient', 'patient.user:email', 'consultScheduled:id,consult_reason')
         ];
 
         return response()->json($response);

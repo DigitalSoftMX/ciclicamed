@@ -2,27 +2,46 @@ import {
     defineComponent
 } from '@vue/runtime-core';
 import axios from 'axios';
+import { PropType } from 'vue';
 
 export default defineComponent({
     components: {
     },
-    emits: [],
+    emits: ['update:modelValue'],
     props: {
         disabled: {
             type: Boolean,
             default: true
+        },
+        modelValue: {
+            type: Array as PropType<File[]>,
+            default: []
         }
     },
     data() {
         return {
             isFileOver: false,
-            fileList: [] as File[]
+            fileList: this.modelValue
         };
     },
     mounted() {
     },
     watch: {
-
+        modelValue: {
+            handler()
+            {
+                this.fileList = this.modelValue;
+            },
+            deep: true
+        },
+        fileList: {
+            
+            handler()
+            {
+                this.$emit('update:modelValue', this.fileList);
+            },
+            deep: true
+        }
     },
     methods: {
         click()
@@ -50,7 +69,10 @@ export default defineComponent({
         },
         onChange(event: Event) {
             const files = (event.target as HTMLInputElement).files || [];
-            this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
+            if(files.length > 0)
+            {
+                this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
+            }
         },
         uploadFile()
         {

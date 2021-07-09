@@ -1,32 +1,33 @@
 import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
-import { EmployeePagination } from '@interface/Employee/EmployeePagination.interface';
 import { TestPaginationData } from '@data/Medical/TestPagination.data';
 import { TestPagination } from '@interface/Medical/TestPagination.interface';
 import moment from 'moment';
-import { Patient } from '@interface/Patient/Patient.interface';
 import { Test } from '@interface/Medical/Test.interface';
+import { OrderData } from '@data/Medical/Order.data';
+import { TestData } from '@data/Medical/Test.data';
 
 export default defineComponent({
     components: {
+        TestTableModalComponent: require('@component/medical/test/testTable/testTableModal/TestTableModalComponent.vue').default
     },
-    emits: [],
+    emits: ['onTestEdited', 'onTestUpload'],
     props: {
         testCategory: {
             type: String,
-            default: 'laboratorio'
+            default: ''
         },
         testStatus: {
             type: String,
-            default: 'completados'
+            default: ''
         },
         title: {
             type: String,
-            default: 'Estudios pendientes'
+            default: ''
         },
         role: {
             type: String,
-            default: 'Administrador'
+            default: ''
         }
     },
     data() {
@@ -36,16 +37,30 @@ export default defineComponent({
             paginationActive: 0,
             query: '',
             activateSearch: true,
-            loading: true
+            loading: true,
+            testSelected: TestData,
+            isUploadComponentEnabled: false,
         };
     },
     mounted() {
         this.getUserData(1);
     },
-    watch: {
-
+    computed: {
+        showSupplierCode(): boolean
+        {
+            return this.testData.data.filter(item => item.order!.product.supplier_code).length > 0;
+        }
     },
     methods: {
+        showTestOrderAnnotations(test: Test)
+        {
+            this.testSelected = test;
+            $('#testTableModal').modal('show');
+        },
+        showUploadComponent(test: Test)
+        {
+            this.$emit('onTestUpload', test);
+        },
         formatDate(date: string)
         {
             return moment(date).format('DD-MM-YYYY');

@@ -69,7 +69,7 @@ class PageController extends Controller
             ], 200);
         }
 
-        if($user['usercategory_id'] === 2 && $user->hasRole('Enfermera') || $user->hasRole('Administrador'))
+        if($user['usercategory_id'] === 2 && $user->hasRole(['Enfermera', 'Laboratorio', 'Imagenologia']) || $user->hasRole('Administrador'))
         {
             return response()->view('pages.test', [
                 'user' => $user->employee->load('user'),

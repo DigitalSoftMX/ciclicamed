@@ -35,7 +35,7 @@ class EmployeeController extends Controller
     public function getEmployeeSchedules($id)
     {
         $user = User::findOrFail(Auth::user()->id);
-        if($user->hasRole(['Asistente', 'Doctor', 'Administrador']))
+        if(!$user->hasRole(['Paciente', 'Caja']))
         {
             $schedules = MedicalConsult::where('doctor_id', $id)
             ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'assistant_start_at' , 'assistant_finish_at', 'nurse_start_at' , 'nurse_finish_at', 'branch_id', 'doctor_id',  'medicalspecialty_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
@@ -132,7 +132,7 @@ class EmployeeController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
         
-        if((intval($id) === intval($user['employee']['id']) && !$user->hasRole('Paciente')) || $user->hasRole('Administrador'))
+        if(!$user->hasRole('Paciente', 'Caja'))
         {
             DB::statement("SET SQL_MODE=''");
             $employee = EmployeeSchedule::where('employee_id', $id)->groupBy('branch_id', 'employee_id')->get()->load('branch');

@@ -159,7 +159,7 @@ export default defineComponent({
         'scheduleSelectedCopy.doctor_id': {
             handler()
             {
-                if(!this.role.includes('Paciente' && 'Checkup'))
+                if(!this.role.match(/Paciente|Checkup|Laboratorio|Imagenologia/))
                 {
                     switch(this.scheduleSelectedCopy.doctor_id)
                     {
@@ -189,7 +189,7 @@ export default defineComponent({
     methods: {
         loadPatientList()
         {
-            this.role.includes('Asistente' || 'Administrador')
+            if(this.role.match(/Asistente|Administrador/))
             {
                 this.getPatientsList();
             }

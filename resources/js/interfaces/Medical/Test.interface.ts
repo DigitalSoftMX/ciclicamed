@@ -1,5 +1,6 @@
 import { Patient } from "@interface/Patient/Patient.interface";
 import { Product } from "@interface/Product/Product.interface";
+import { Consult } from "./Consult.interface";
 import { Order } from "./Order.interface";
 import { TestStatus } from "./TestStatus.interface";
 
@@ -29,4 +30,5 @@ export interface Test
     },
     patient?: Patient
     status?: TestStatus,
+    consult_scheduled?: Consult
 }

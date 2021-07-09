@@ -1,39 +1,27 @@
 <template>
-    <div class="breadcrumb-main px-3">
-        <h4 class="breadcrumb-title mb-25 mb-md-0">Subir resultados</h4>
+    <div class="mb-25" v-if="componentEnabled === 'cuestionarioMastografia'">
+        <cuestionario-mastografia-component v-model="cuestionarioMastografia"></cuestionario-mastografia-component>
     </div>
-
-    <div class="row mx-0">
-        <div class="col-12 col-lg-3 mb-25 mb-lg-0">
-            <div class="mb-25">
-                <user-bio-component></user-bio-component>
-            </div>
-            <button class="btn btn-danger btn-lg btn-squared w-100">Guardar resultados</button>
-        </div>
-
-        <div class="col-12 col-lg-9">
-            <div class="mb-25">
-                <mastografia-component v-model="interpretacionUltrasonidos" :disabled="false"></mastografia-component>
-            </div>
-            <div class="mb-25">
-                <espermatobioscopia-directa-component :disabled="false"></espermatobioscopia-directa-component>
-            </div>
-            <div class="mb-25">
-                <inseminacion-artificial-component :disabled="false"></inseminacion-artificial-component>
-            </div>
-            <div class="mb-25">
-                <orina-post-eyaculado-component :disabled="false"></orina-post-eyaculado-component>
-            </div>
-            <div class="mb-25">
-                <prueba-capacitacion-component :disabled="false"></prueba-capacitacion-component>
-            </div>
-            <div class="mb-25">
-                <prueba-host-component :disabled="false"></prueba-host-component>
-            </div>
-            <div>
-                <upload-file-component></upload-file-component>
-            </div>
-        </div>
+    <div class="mb-25" v-if="componentEnabled === 'cuestionarioMastografia' || componentEnabled === 'interpretacionUltrasonidos'">
+        <interpretacion-ultrasonidos-component v-model="interpretacionUltrasonidos"></interpretacion-ultrasonidos-component>
+    </div>
+    <div class="mb-25" v-if="componentEnabled === 'espermatobioscopiaDirecta'">
+        <espermatobioscopia-directa-component v-model="espermatobioscopiaDirecta"></espermatobioscopia-directa-component>
+    </div>
+    <div class="mb-25" v-if="componentEnabled === 'inseminacionArtificialHumana'">
+        <inseminacion-artificial-component v-model="inseminacionArtificialHumana"></inseminacion-artificial-component>
+    </div>
+    <div class="mb-25" v-if="componentEnabled === 'orinaPostEyaculado'">
+        <orina-post-eyaculado-component v-model="orinaPostEyaculado"></orina-post-eyaculado-component>
+    </div>
+    <div class="mb-25" v-if="componentEnabled === 'capacitacionEspermatica'">
+        <prueba-capacitacion-component v-model="capacitacionEspermatica"></prueba-capacitacion-component>
+    </div>
+    <div class="mb-25" v-if="componentEnabled === 'host'">
+        <prueba-host-component v-model="host"></prueba-host-component>
+    </div>
+    <div>
+        <upload-file-component v-model="files"></upload-file-component>
     </div>
 </template>
 

@@ -251,25 +251,28 @@ export default defineComponent({
         },
         copyScheduleData(date: string)
         {
-            const dayOfWeek = moment(date).day();
-            this.hoursEnabled = this.businessHours.filter(hours => hours.daysOfWeek.includes(dayOfWeek));
-            if(moment().isSameOrBefore(date, 'days') && this.hoursEnabled.length > 0)
-            // if(moment().isSameOrBefore(date, 'days'))
+            if(!this.role.match(/Imagenologia|Laboratorio/))
             {
-                this.scheduleSelected = ScheduleData;
-                const startHour = Number(this.hoursEnabled[0].startTime.split(':')[0]);
-                const startMinute = Number(this.hoursEnabled[0].startTime.split(':')[1]);
-                this.scheduleSelected.consult_schedule_start = this.scheduleSelected.consult_schedule_finish = moment(date)
-                    .set('hours', startHour)
-                    .set('minutes', startMinute)
-                    .format('YYYY-MM-DD HH:mm:00');
-                const lateral = this.$refs.openLateralSchedule as DefineComponent;
-                lateral.openLateralSchedule();
-            }
-            if(moment().isSameOrBefore(date, 'days'))
-            {
-                const lateral = this.$refs.openLateralSchedule as DefineComponent;
-                lateral.openLateralSchedule();
+                const dayOfWeek = moment(date).day();
+                this.hoursEnabled = this.businessHours.filter(hours => hours.daysOfWeek.includes(dayOfWeek));
+                if(moment().isSameOrBefore(date, 'days') && this.hoursEnabled.length > 0)
+                // if(moment().isSameOrBefore(date, 'days'))
+                {
+                    this.scheduleSelected = ScheduleData;
+                    const startHour = Number(this.hoursEnabled[0].startTime.split(':')[0]);
+                    const startMinute = Number(this.hoursEnabled[0].startTime.split(':')[1]);
+                    this.scheduleSelected.consult_schedule_start = this.scheduleSelected.consult_schedule_finish = moment(date)
+                        .set('hours', startHour)
+                        .set('minutes', startMinute)
+                        .format('YYYY-MM-DD HH:mm:00');
+                    const lateral = this.$refs.openLateralSchedule as DefineComponent;
+                    lateral.openLateralSchedule();
+                }
+                if(moment().isSameOrBefore(date, 'days'))
+                {
+                    const lateral = this.$refs.openLateralSchedule as DefineComponent;
+                    lateral.openLateralSchedule();
+                }
             }
         },
         getScheduleSelected(schedule: Schedule)

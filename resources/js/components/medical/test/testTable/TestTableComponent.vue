@@ -4,7 +4,7 @@
         <div class="form-group p-0">
             <div class="with-icon">
                 <span class="mr-5">
-                    <img :src="asset('/svg/search.svg')" alt="Search">
+                    <img-component url="/svg/search.svg" alt="Buscar"></img-component>
                 </span>
                 <input type="text" class="form-control form-control-lg bg-white" v-model="query"
                     @keyup="getUserDataQuery()" placeholder="Buscar">
@@ -22,20 +22,20 @@
                         style="">
                         <thead>
                             <tr class="userDatatable-header footable-header">
+                                <th class="footable-sortable" style="display: table-cell;">
+                                    <span class="userDatatable-title">Fecha</span>
+                                    <span class="fooicon fooicon-sort"></span></th>
+
                                 <th class="footable-sortable footable-first-visible" style="display: table-cell;">
-                                    <span class="userDatatable-title">ID</span>
+                                    <span class="userDatatable-title">Muestra</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable footable-first-visible" style="display: table-cell;">
                                     <span class="userDatatable-title">Código estudio</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
-                                <th class="footable-sortable footable-first-visible" style="display: table-cell;">
+                                <th class="footable-sortable footable-first-visible" style="display: table-cell;" v-if="showSupplierCode">
                                     <span class="userDatatable-title">Código proveedor</span>
-                                    <span class="fooicon fooicon-sort"></span></th>
-
-                                <th class="footable-sortable" style="display: table-cell;">
-                                    <span class="userDatatable-title">Fecha</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable" style="display: table-cell;">
@@ -55,58 +55,61 @@
 
                         <tbody>
                             <tr v-for="test in testData.data" :key="test.id">
-                                <td class="footable-first-visible border-primary border-bottom"
-                                    style="display: table-cell;">
-                                    <div class="userDatatable-content">{{test.id}}</div>
-                                </td>
-
-                                <td class="footable-first-visible border-primary border-bottom"
-                                    style="display: table-cell;">
-                                    <div class="userDatatable-content">{{test.order.product.product_code}}</div>
-                                </td>
-
-                                <td class="footable-first-visible border-primary border-bottom"
-                                    style="display: table-cell;">
-                                    <div class="userDatatable-content">{{test.order.product.supplier_code}}</div>
-                                </td>
-
-                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                <td style="display: table-cell; white-space: nowrap;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
                                         {{formatDate(test.created_at)}}
                                     </div>
                                 </td>
 
-                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                <td class="footable-first-visible border-primary border-bottom"
+                                    style="display: table-cell; white-space: nowrap;">
+                                    <div class="userDatatable-content">{{test.test_code}}</div>
+                                </td>
+
+                                <td class="footable-first-visible border-primary border-bottom" v-if="showSupplierCode"
+                                    style="display: table-cell; white-space: nowrap;">
+                                    <div class="userDatatable-content">{{test.order.product.supplier_code}}</div>
+                                </td>
+
+                                <td class="footable-first-visible border-primary border-bottom"
+                                    style="display: table-cell; white-space: nowrap;">
+                                    <div class="userDatatable-content">{{test.order.product.product_code}}</div>
+                                </td>
+                                
+                                <td style="display: table-cell; white-space: nowrap;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
                                         {{formatPatientName(test)}}
                                     </div>
                                 </td>
 
-                                <td style="display: table-cell;" class="border-primary border-bottom">
+                                <td style="display: table-cell; white-space: nowrap;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
                                         {{test.order.product.name}}
                                     </div>
                                 </td>
 
-                                <td class="footable-last-visible border-primary border-bottom"
-                                    style="display: table-cell;">
-                                    <ul class="orderDatatable_actions mb-0 d-flex flex-wrap justify-content-end">
+                                <td class="footable-last-visible border-primary border-bottom px-0"
+                                    style="display: table-cell; white-space: nowrap;">
+                                    <ul class="orderDatatable_actions mb-0 d-flex flex-wrap justify-content-center">
                                         <li>
                                             <button
+                                                @click="showTestOrderAnnotations(test)"
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img :src="asset('/svg/show.svg')" alt="Ver">
+                                                <img-component url="/svg/show.svg" alt="Ver"></img-component>
+                                            </button>
+                                        </li>
+                                        <li v-if="role === 'Administrador'">
+                                            <button
+                                                
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
+                                                <img-component url="/svg/edit.svg" alt="Editar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
+                                                @click="showUploadComponent(test)"
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img :src="asset('/svg/edit.svg')" alt="Editar">
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img :src="asset('/svg/upload.svg')" alt="Subir">
+                                                <img-component url="/svg/upload.svg" alt="Subir"></img-component>
                                             </button>
                                         </li>
                                     </ul>
@@ -136,7 +139,6 @@
                                                 <a class="footable-page-link">{{pagination}}</a>
                                             </li>
 
-
                                             <li class="footable-page-nav"
                                                 v-bind:class="{'disabled': paginationActive === testData.pagination.last_page}"
                                                 @click="getUserData(paginationActive + 1)" data-page="next"><a
@@ -158,7 +160,7 @@
             <div class="spinner-border text-primary"></div>
         </div>
     </div>
-
+    <test-table-modal-component :test="testSelected"></test-table-modal-component>
 </template>
 
 <script lang="ts" src="./TestTableComponent.ts"></script>

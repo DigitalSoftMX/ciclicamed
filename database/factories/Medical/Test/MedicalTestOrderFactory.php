@@ -21,9 +21,13 @@ class MedicalTestOrderFactory extends Factory
      */
     public function definition()
     {
+        static $row = 0;
+        static $product = 107;
+        $row++;
+        $product++;
         return [
-            'medicaltest_id' => $this->faker->numberBetween(1, 25),
-            'product_id' => $this->faker->numberBetween(1, 100),
+            'medicaltest_id' => $row,
+            'product_id' => $product,
             'updated_by' => $this->faker->numberBetween(1, 5),
         ];
     }

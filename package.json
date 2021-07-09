@@ -59,6 +59,7 @@
         "jquery-ui-bundle": "^1.12.1-migrate",
         "luxon": "^1.27.0",
         "moment": "^2.29.1",
+        "object-to-formdata": "^4.1.0",
         "pdf-lib": "^1.16.0",
         "pdfobject": "^2.2.5",
         "print-js": "^1.6.0",

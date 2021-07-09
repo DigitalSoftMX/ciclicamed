@@ -42,11 +42,11 @@ export default defineComponent({
     computed: {
         isCancelOptionEnabled(): boolean
         {
-            return this.schedule.status!.name.includes('Agendado' || 'Confirmado' || 'Ausente' || 'Cancelado') && this.role.includes('Asistente' || 'Administrador');
+            return this.schedule.status!.name.includes('Agendado' || 'Confirmado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
         },
         isEditOptionEnabled(): boolean
         {
-            return this.schedule.status!.name.includes('Agendado' || 'Ausente' || 'Cancelado') && this.role.includes('Asistente' || 'Administrador');
+            return this.schedule.status!.name.includes('Agendado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
         },
         showScheduleOption(): boolean
         {
@@ -58,6 +58,10 @@ export default defineComponent({
                     return this.isConfirmScheduleEnabled;
                 case 'Enfermera':
                     return this.isStartScheduleEnabled && !this.schedule.nurse_finish_at;
+                case 'Imagenologia':
+                    return this.isStartScheduleEnabled;
+                case 'Laboratorio':
+                    return this.isStartScheduleEnabled;
                 case 'Administrador':
                     return true;
                 default:
@@ -72,6 +76,10 @@ export default defineComponent({
                     return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
                 case 'Enfermera':
                     return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
+                case 'Imagenologia':
+                    return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
+                case 'Laboratorio':
+                    return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
                 case 'Administrador':
                     return true;
                 default:
@@ -84,28 +92,6 @@ export default defineComponent({
         }
     },
     watch: {
-        schedule:
-        {
-            handler()
-            {
-                switch(this.role)
-                {
-                    case 'Administrador':
-                        break;
-                    case 'Asistente':
-                        break;
-                    case 'Enfermera':
-                        break;
-                    case 'Doctor':
-                        break;
-                    default: 
-                        this.isCancelOptionEnabled = false;
-                        this.isEditOptionEnabled = false;
-                        break;
-                }
-            },
-            deep: true,
-        }
     },
     methods: {
         confirmSchedule()
@@ -159,15 +145,5 @@ export default defineComponent({
                 $('#actionConsultError').modal('show');
             })
         },
-        showCancelOption()
-        {
-            const estados: string[] = ['Agendado', 'Confirmado', 'Ausente'];
-            this.isCancelOptionEnabled = moment(this.schedule.consult_schedule_start).diff(moment()) > 0 && estados.includes(this.schedule.status!.name);
-        },
-        showEditOption()
-        {
-            const estados: string[] = ['Agendado', 'Confirmado', 'Ausente', 'Cancelado'];
-            this.isEditOptionEnabled = moment(this.schedule.consult_schedule_start).diff(moment()) > 0 && estados.includes(this.schedule.status!.name);
-        }
     },
 })
