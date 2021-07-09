@@ -47,18 +47,10 @@ class MedicalConsultController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
         $consult = MedicalConsult::findOrFail($id);
-        if($user->hasRole('Enfermera') && intval($consult['medicalconsultstatus_id'] <= 4)  || $user->hasRole('Administrador'))
+        $time = Carbon::now()->setTimezone('America/Mexico_City');
+
+        if(intval($consult['medicalconsultstatus_id'] >= 5) || $user->hasRole('Administrador'))
         {
-            if(!isset($consult['nurse_start_at']))
-            {
-                $time = Carbon::now()->setTimezone('America/Mexico_City');
-                $consult->update([
-                    'assistant_finish_at' =>$time,
-                    'nurse_start_at' => $time,
-                    'medicalconsultstatus_id' => 4
-                ]);
-            }
-            
             return response()->json([], 200)->withCookie('consult', $id);
         }
 
@@ -67,13 +59,28 @@ class MedicalConsultController extends Controller
             if(!isset($consult['consult_start_at']))
             {
                 $consult->update([
-                    'consult_start_at' => Carbon::now()->setTimezone('America/Mexico_City'),
+                    'consult_start_at' => $time,
                     'medicalconsultstatus_id' => 4
                 ]);
             }
             
             return response()->json([], 200)->withCookie('consult', $id);
         }
+
+        if($user->hasRole('Enfermera') && intval($consult['medicalconsultstatus_id'] <= 4 && !isset($consult['nurse_finish_at']))  || $user->hasRole('Administrador'))
+        {
+            if(!isset($consult['nurse_start_at']))
+            {
+                $consult->update([
+                    'assistant_finish_at' =>$time,
+                    'assistant_finish_at' => $time,
+                    'nurse_start_at' => $time,
+                    'medicalconsultstatus_id' => 4
+                ]);
+            }
+            
+            return response()->json([], 200)->withCookie('consult', $id);
+        }    
 
         return response()->json(['errors' => [
             'permisos' => ['Esta consulta ya no se puede modificar']
@@ -172,88 +179,126 @@ class MedicalConsultController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
         $consult = MedicalConsult::findOrFail($id);
-        if(intval($consult['medicalconsultstatus_id'] > 4) && $user->hasRole('Doctor'))
+        $time = Carbon::now()->setTimezone('America/Mexico_City');
+
+        if(intval($consult['medicalconsultstatus_id'] > 4) && $user->hasRole(['Doctor', 'Enfermera']))
         {
             return response()->json(['errors' => [
                 'permisos' => ['Esta consulta ya no se puede modificar']
             ]], 401);
         }
 
-        if(intval($consult['medicalconsultcategory_id'] === 1) || $user->hasRole('Administrador'))
+        if($user->hasRole(['Enfermera']) && !isset($consult['nurse_finish_at']))
         {
-            MedicalHistory::create([
+            $data = MedicalAttachmentFollowUp::where('medicalconsult_id', $id)->orderBy('created_at', 'desc');
+            if(isset($data) && isset($consult['nurse_start_at']))
+            {
+                $data->update([
+                    'medicalconsult_id' => $id,
+                    'data' => json_encode($request->input('data.cita')),
+                    'medicalspecialty_id' => $consult->medicalspecialty_id,
+                    'updated_by' => Auth::user()->id
+                ]);
+                $consult->update([
+                    'nurse_finish_at' => $time
+                ]);
+                Cookie::queue(Cookie::forget('consult'));
+                return response()->json(true, 200);
+            }
+            MedicalAttachmentFollowUp::create([
                 'medicalconsult_id' => $id,
-                'data' => json_encode($request->input('data.historial.data')),
+                'data' => json_encode($request->input('data.cita')),
+                'medicalspecialty_id' => $consult->medicalspecialty_id,
                 'updated_by' => Auth::user()->id
             ]);
-    
-            MedicalAttachment::create([
-                'patient_id' => $consult['patient_id'],
-                'data' => json_encode($request->input('data.especialidad')),
-                'medicalspecialty_id' => $consult['medicalspecialty_id'],
-                'updated_by' => Auth::user()->id
-            ]);  
-            
+            $consult->update([
+                'nurse_finish_at' => $time
+            ]);
+            Cookie::queue(Cookie::forget('consult'));
+            return response()->json(true, 200);
         }
 
-        MedicalAttachmentFollowUp::create([
-            'medicalconsult_id' => $id,
-            'data' => json_encode($request->input('data.cita.data')),
-            'medicalspecialty_id' => $consult->medicalspecialty_id,
-            'updated_by' => Auth::user()->id
-        ]);
-
-        
-        if(count($request->input('data.receta')) > 0)
+        if($user->hasRole(['Administrador', 'Doctor']))
         {
-            MedicalPrescription::where('medicalconsult_id', $id)->delete();
-            foreach($request->input('data.receta') as $prescription)
+            if(intval($consult['medicalconsultcategory_id'] === 1) || $user->hasRole('Administrador'))
             {
-                if(intval($prescription['medicament_id']) > 0)
+                MedicalHistory::create([
+                    'medicalconsult_id' => $id,
+                    'data' => json_encode($request->input('data.historial.data')),
+                    'updated_by' => Auth::user()->id
+                ]);
+        
+                MedicalAttachment::create([
+                    'patient_id' => $consult['patient_id'],
+                    'data' => json_encode($request->input('data.especialidad')),
+                    'medicalspecialty_id' => $consult['medicalspecialty_id'],
+                    'updated_by' => Auth::user()->id
+                ]);  
+                
+            }
+
+            MedicalAttachmentFollowUp::create([
+                'medicalconsult_id' => $id,
+                'data' => json_encode($request->input('data.cita.data')),
+                'medicalspecialty_id' => $consult->medicalspecialty_id,
+                'updated_by' => Auth::user()->id,
+                'consult_finish_at' => $time = Carbon::now()->setTimezone('America/Mexico_City')
+            ]);
+
+            
+            if(count($request->input('data.receta')) > 0)
+            {
+                MedicalPrescription::where('medicalconsult_id', $id)->delete();
+                foreach($request->input('data.receta') as $prescription)
                 {
-                    MedicalPrescription::create([
-                        'medicalconsult_id' => $consult['id'],
-                        'medicament_id' => $prescription['medicament_id'],
-                        'administration_type' => $prescription['administration_type'],
-                        'rate' => $prescription['rate'],
-                        'duration' => $prescription['duration'],
-                    ]);
+                    if(intval($prescription['medicament_id']) > 0)
+                    {
+                        MedicalPrescription::create([
+                            'medicalconsult_id' => $consult['id'],
+                            'medicament_id' => $prescription['medicament_id'],
+                            'administration_type' => $prescription['administration_type'],
+                            'rate' => $prescription['rate'],
+                            'duration' => $prescription['duration'],
+                        ]);
+                    }
                 }
             }
-        }
 
-        if(count($request->input('data.examen')) > 0)
-        {
-            foreach($request->input('data.examen') as $test)
+            if(count($request->input('data.examen')) > 0)
             {
-                if(intval($test['id'] > 0))
+                foreach($request->input('data.examen') as $test)
                 {
-                    $testEdited = MedicalTest::findOrFail($test['id'])->update([
-                        'medicalteststatus_id' => $test['medicalteststatus_id']
-                    ]);
-                    if($testEdited && intval($test['medicalteststatus_id']) !== 5 )
+                    if(intval($test['id'] > 0))
                     {
+                        $testEdited = MedicalTest::findOrFail($test['id'])->update([
+                            'medicalteststatus_id' => $test['medicalteststatus_id']
+                        ]);
+                        if($testEdited && intval($test['medicalteststatus_id']) !== 5 )
+                        {
+                            MedicalTestOrder::create([
+                                'medicaltest_id' => $test['id'],
+                                'product_id' => $test['order']['product_id']
+                            ]);
+                        }
+                    }
+                    else
+                    {
+                        $testCreated = MedicalTest::create([
+                            'created_in' => $id,
+                            'medicalteststatus_id' => 1
+                        ])->id;
                         MedicalTestOrder::create([
-                            'medicaltest_id' => $test['id'],
+                            'medicaltest_id' => $testCreated,
                             'product_id' => $test['order']['product_id']
                         ]);
                     }
                 }
-                else
-                {
-                    $testCreated = MedicalTest::create([
-                        'created_in' => $id,
-                        'medicalteststatus_id' => 1
-                    ])->id;
-                    MedicalTestOrder::create([
-                        'medicaltest_id' => $testCreated,
-                        'product_id' => $test['order']['product_id']
-                    ]);
-                }
             }
         }
-
-        return response()->json(true, 200);
+        // Cookie::queue(Cookie::forget('consult'));
+        return response()->json(['errors' => [
+            'permisos' => ['Esta consulta ya no se puede modificar']
+        ]], 401);
     }
 
     public function store(Request $request)
@@ -537,7 +582,7 @@ class MedicalConsultController extends Controller
         $consult = MedicalConsult::findOrFail($id);
         if($user)
         {
-            $data = $consult->get(['id', 'consult_schedule_start', 'consult_schedule_finish']);
+            $data = $consult->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'nurse_schedule_start', 'nurse_schedule_finish']);
             return response()->json($data);
         }
         

@@ -52,7 +52,10 @@ export default defineComponent({
             handler()
             {
                 this.patientDataCopy = Object.assign({}, this.patientData);
-                this.getPreregistration();
+                if(this.role !== 'Enfermera')
+                {
+                    this.getPreregistration();
+                }
             },
             deep: true
         }

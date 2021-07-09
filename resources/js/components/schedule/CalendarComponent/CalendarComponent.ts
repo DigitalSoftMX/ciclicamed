@@ -52,6 +52,7 @@ export default defineComponent({
         }
     },
     mounted() {
+        console.log(this.schedules)
     },
     watch: {
         businessHours()
@@ -142,7 +143,14 @@ export default defineComponent({
         },
         fullcalendarDateClick(data: any)
         {
-            this.$emit('onNewSchedule', data.date);
+            switch(this.role)
+            {
+                case 'Enfermera':
+                    break;
+                default:
+                    this.$emit('onNewSchedule', data.date);
+                    break
+            }
         },
         fullcalendarEventClick(data: any)
         {

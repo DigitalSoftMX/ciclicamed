@@ -21,8 +21,8 @@ class BranchController extends Controller
         if($user->hasRole(['Enfermera', 'Administrador']))
         {
             $schedules = MedicalConsult::where('branch_id', $id)
-                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id'])
-                                ->load('doctor:id,first_name,last_name', 'branch:id,name');
+            ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'assistant_start_at' , 'assistant_finish_at', 'nurse_start_at' , 'nurse_finish_at', 'branch_id', 'doctor_id',  'medicalspecialty_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
+            ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
             return response()->json($schedules);
         }
         return response()->json(['errors' => [
@@ -55,13 +55,13 @@ class BranchController extends Controller
         if($user->hasRole('Paciente') || ($user->hasRole('Doctor') && intval($employeeID) !== intval($user['employee']['id'])))
         {
             $schedules = MedicalConsult::where('doctor_id', $employeeID)->where('branch_id', $id)
-                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id'])
+                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'assistant_start_at', 'assistant_finish_at', 'nurse_start_at', 'nurse_finish_at', 'branch_id', 'doctor_id'])
                                 ->load('doctor:id,first_name,last_name', 'branch:id,name');
             return response()->json($schedules);
         }
         $schedules = MedicalConsult::where('doctor_id', $employeeID)->where('branch_id', $id)
-                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
-                                ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'assistant_start_at', 'assistant_finish_at', 'nurse_start_at', 'nurse_finish_at', 'branch_id', 'doctor_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
+                                ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name', 'status');
         //broadcast(new ScheduleEvent($patient));
         return response()->json($schedules);
     }

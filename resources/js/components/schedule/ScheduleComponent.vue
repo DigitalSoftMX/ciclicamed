@@ -19,5 +19,7 @@
     <lateral-schedule-component ref="openLateralSchedule" :schedule="scheduleSelected" :branchesList="branchesList"
         :doctorsList="doctorList" :businessHours="businessHours" :patientID="userID" :role="role" v-if="role !== 'Enfermera'"></lateral-schedule-component>
     <div class="overlay-dark"></div>
+    <error-alert-component :id="'schecError'" :errors="errors" :title="'Error al procesar la información'">
+    </error-alert-component>
 </template>
 <script lang="ts" src="./ScheduleComponent.ts"></script>

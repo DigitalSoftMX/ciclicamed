@@ -61,21 +61,21 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     Route::group(['prefix' => 'consultas'], function() {
         Route::post('/', [MedicalConsultController::class, 'store'])->name('consulta.nueva');
         Route::get('/categorias', [MedicalConsultController::class, 'getConsultTypes'])->name('consulta.categorias');
+        Route::get('/{id}', [MedicalConsultController::class, 'getConsultInfo'])->name('consulta.informacion');
         Route::delete('/{id}', [MedicalConsultController::class, 'cancelConsult'])->name('consulta.eliminar');
         Route::patch('/{id}', [MedicalConsultController::class, 'updateSchedule'])->name('consulta.actualizar');
         Route::get('/{id}/seguimiento', [MedicalConsultController::class, 'getFollowUps'])->name('consulta.seguimiento');
         Route::get('/{id}/receta', [MedicalConsultController::class, 'getPrescriptions'])->name('consulta.receta');
-        Route::get('/{id}', [MedicalConsultController::class, 'getConsultInfo'])->name('consulta.informacion');
         Route::get('/{id}/historial', [MedicalConsultController::class, 'getHistory'])->name('consulta.historial');
         Route::get('/{id}/doctor', [MedicalConsultController::class, 'getDoctor'])->name('consulta.doctor');
-        Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.getEstudios');
         Route::get('/{id}/anexo', [MedicalConsultController::class, 'getSpecialty'])->name('consulta.getAnexo');
+        Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.getEstudios');
         Route::post('/{id}/estudios', [MedicalConsultController::class, 'createTest'])->name('consulta.createEstudio');
-        Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.createEstudio');
         Route::post('/{id}/resultados', [MedicalConsultController::class, 'createConsultData'])->name('consulta.setResultados');
         Route::get('/{id}/pago', [MedicalConsultController::class, 'getConsultPayment'])->name('consulta.getPago');
         Route::post('/{id}/pago', [MedicalConsultController::class, 'createPayment'])->name('consulta.setPago');
         Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.startConsulta');
+        // Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.createEstudio');
         Route::post('/{id}/confirmar', [MedicalConsultController::class, 'confirmSchedule'])->name('consulta.confirmConsulta');
     });
 

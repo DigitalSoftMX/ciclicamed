@@ -50,6 +50,7 @@ export default defineComponent({
             scheduleSelected: ScheduleData,
             hoursEnabled: [] as FullCalendarBusinessHour[],
             employeeBranches: [] as EmployeeBranch[],
+            errors: []
         }
     },
     mounted() {
@@ -77,6 +78,7 @@ export default defineComponent({
         getAllScheduleBranchList(id: number): void {
             axios.get<Schedule[]>(`/sucursales/${id}/agenda`)
             .then(response => {
+                console.log(response.data)
                 this.schedules = response.data;
             })
             .catch(error => {
@@ -86,6 +88,7 @@ export default defineComponent({
         getAllScheduleList(): void {
             axios.get<Schedule[]>(`/empleados/agenda`)
             .then(response => {
+                console.log(response.data)
                 this.schedules = response.data;
             })
             .catch(error => {

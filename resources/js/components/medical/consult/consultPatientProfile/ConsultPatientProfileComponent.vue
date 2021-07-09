@@ -19,7 +19,7 @@
                         <img-component url="/svg/email.svg" alt="Email" cssClass="svg-backgroundColor"></img-component>
                         <p>{{patientData.user.email}}</p>
                     </div>
-                    <div
+                    <div v-if="role !== 'Enfermera'"
                         class="ap-button account-profile-cards__button button-group d-flex justify-content-center flex-wrap pt-20">
                         <button type="button" @click="openPreregistration"
                             class="btn btn-primary btn-lg btn-squared btn-block bg-primary">Editar</button>
@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <preregistration-component :patientData="patientData" :isNew="false" role="Doctor"></preregistration-component>
+    <preregistration-component :patientData="patientData" :isNew="false" role="Doctor" v-if="role !== 'Enfermera'"></preregistration-component>
 </template>
 
 <script lang="ts" src="./ConsultPatientProfileComponent.ts"></script>

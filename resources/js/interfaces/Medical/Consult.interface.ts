@@ -16,7 +16,11 @@ export interface Consult
     consult_schedule_start: string;
     consult_schedule_finish: string;
     consult_start_at: string;
-    consult_finish_at: string;
+    consult_finish_at?: string;
+    nurse_start_at?: string;
+    nurse_finish_at?: string;
+    assistant_start_at?: string;
+    assistant_finish_at?: string;
     branch_id: number;
     medicalconsultstatus_id: number;
     medicalspecialty_id: number;

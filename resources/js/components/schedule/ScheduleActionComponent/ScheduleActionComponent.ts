@@ -57,7 +57,7 @@ export default defineComponent({
                 case 'Asistente' :
                     return this.isConfirmScheduleEnabled;
                 case 'Enfermera':
-                    return this.isStartScheduleEnabled;
+                    return this.isStartScheduleEnabled && !this.schedule.nurse_finish_at;
                 case 'Administrador':
                     return true;
                 default:
@@ -130,7 +130,8 @@ export default defineComponent({
                 window.location.href = `${url}/app/consulta`;
             })
             .catch(error => {
-                console.log(error)
+                this.errors = error.response.data.errors;
+                $('#actionConsultError').modal('show');
             })
         },
         formatScheduleTime(datetime: string): string {

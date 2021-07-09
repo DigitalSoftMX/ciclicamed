@@ -28,6 +28,10 @@ export default defineComponent({
         clock: {
             type: Object as PropType<Clock>,
             default: ClockData
+        },
+        role: {
+            type: String,
+            default: ''
         }
     },
     data() {

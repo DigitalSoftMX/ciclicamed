@@ -61,8 +61,10 @@ app.mixin({
         asset: asset
     }
 })
-app.component('ImgComponent', require('@component/general/img/ImgComponent.vue').default,)
-app.component('NoConsultComponent', require('@component/general/error/NoConsultComponent.vue').default,)
-app.component('vSelect', vSelect)
-
+app.component('ImgComponent', require('@component/general/img/ImgComponent.vue').default);
+app.component('NoConsultComponent', require('@component/general/error/NoConsultComponent.vue').default);
+app.component('vSelect', vSelect);
+app.component('ConfirmationAlertComponent', require('@component/general/alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue').default);
+app.component('SuccessAlertComponent', require('@component/general/alert/SuccessAlertComponent.vue').default);
+app.component('ErrorAlertComponent', require('@component/general/alert/ErrorAlertComponent.vue').default);
 app.mount('#app');

@@ -7,13 +7,16 @@
                 <doctor-consult-page :doctor="{{ json_encode($user) }}" role="Doctor" :consult="{{ Cookie::get('consult') }}"></doctor-dashboard-page>
                 @break
             @case('Enfermera')
-                <nurse-consult-page :doctor="{{ json_encode($user) }}" role="Enfermera" :consult="{{ Cookie::get('consult') }}"></doctor-dashboard-page>
+                <nurse-consult-page :nurse="{{ json_encode($user) }}" :consult="{{ Cookie::get('consult') }}"></doctor-dashboard-page>
                 @break
         @endswitch
     @else
         @switch($roles[0]->name)
             @case('Doctor')
                 <doctor-consult-page></doctor-dashboard-page>
+                @break
+            @case('Enfermera')
+                <nurse-consult-page></doctor-dashboard-page>
                 @break
         @endswitch
     @endif
