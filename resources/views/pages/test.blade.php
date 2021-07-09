@@ -1,8 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <div id="app">
-    @if($roles[0]->name === 'Paciente')
+    @switch($roles[0]->name)
+    @case('Paciente')
         <patient-test-page :patient="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></patient-test-page>
-    @endif
+        @break
+    @case('Enfermera')
+        <nurse-test-page :nurse="{{ json_encode($user) }}" role="Enfermera"></nurse-test-page>
+        @break
+    @endswitch
 </div>
 @endsection

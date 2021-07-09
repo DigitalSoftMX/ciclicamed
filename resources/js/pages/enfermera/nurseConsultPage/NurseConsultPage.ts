@@ -13,6 +13,8 @@ import { Patient } from '@interface/Patient/Patient.interface';
 import moment from 'moment';
 import { HistoryData } from '@data/Medical/History.data';
 import { History } from '@interface/Medical/History.interface';
+import { NurseSidebarConfig } from '@config/NurseSidebar.config';
+import { TestOrder } from '@interface/Medical/TestOrder.interface';
 
 export default defineComponent({
     components: {
@@ -21,6 +23,7 @@ export default defineComponent({
         ConsultPage: require('@page/general/consult/ConsultPage.vue').default,
         PatientProfileComponent: require('@component/medical/consult/consultPatientProfile/ConsultPatientProfileComponent.vue').default,
         HistorialClinicoComponent: require('@component/medical/attachments/HistorialClinico/HistorialClinicoComponent.vue').default,
+        ConsultOrderComponent: require('@component/medical/consult/consultTestOrder/order/ConsultOrderComponent.vue').default
     },
     props: {
         nurse: {
@@ -35,7 +38,7 @@ export default defineComponent({
     data() {
         return {
             employeeCopy: cloneDeep(this.doctor),
-            sidebarItems: DoctorSidebarConfig,
+            sidebarItems: NurseSidebarConfig,
             isSidebarOpen: false,
             formData: CitasSubsecuentesData,
             patientData: PatientData,
@@ -47,13 +50,21 @@ export default defineComponent({
                 seconds: 0
             },
             url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content,
-            errors: []
+            errors: [],
+            fum: ''
         };
     },
     mounted() {
         if(this.consult > 0)
         {
             this.getConsultInfo();
+        }
+    },
+    computed:
+    {
+        testOrders(): any[]
+        {
+            return this.consultData!.test_scheduled!.order!.product!.order_annotations!;
         }
     },
     watch: {
@@ -82,6 +93,7 @@ export default defineComponent({
         {
             axios.post(`/consultas/${this.consult}/resultados`, {
                 data: {
+                    fum: this.fum,
                     cita: this.formData
                 }
             })

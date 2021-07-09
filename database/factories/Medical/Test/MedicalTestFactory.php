@@ -21,7 +21,11 @@ class MedicalTestFactory extends Factory
      */
     public function definition()
     {
+        static $number = 0;
+        $number++;
+        $testCode ="MUE-" . str_pad((int) $number, 3, "0", STR_PAD_LEFT);
         return [
+            'test_code' => $testCode,
             'created_in' => $this->faker->numberBetween(1, 5),
             'scheduled_in' => $this->faker->unique()->numberBetween(1, 50),
             'finished_at' => $this->faker->dateTimeThisYear(),

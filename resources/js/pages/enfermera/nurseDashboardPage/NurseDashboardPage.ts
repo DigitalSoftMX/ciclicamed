@@ -1,4 +1,5 @@
 import { DoctorSidebarConfig } from '@config/DoctorSidebar.config';
+import { NurseSidebarConfig } from '@config/NurseSidebar.config';
 import { PatientData } from '@data/Patient/Patient.data';
 import { Patient } from '@interface/Patient/Patient.interface';
 import { defineComponent } from '@vue/runtime-core';
@@ -22,7 +23,7 @@ export default defineComponent({
     },
     data() {
         return {
-            sidebarItems: DoctorSidebarConfig,
+            sidebarItems: NurseSidebarConfig,
             isSidebarOpen: false
         };
     },

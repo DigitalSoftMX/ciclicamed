@@ -33,6 +33,8 @@ const app = createApp({
 
 		NurseDashboardPage: require('@page/enfermera/nurseDashboardPage/NurseDashboardPage.vue').default,
 		NurseConsultPage: require('@page/enfermera/nurseConsultPage/NurseConsultPage.vue').default,
+		NursePrescriptionPage: require('@page/enfermera/nursePrescriptionPage/NursePrescriptionPage.vue').default,
+		NurseTestPage: require('@page/enfermera//nurseTestPage/NurseTestPage.vue').default,
 		NurseProfilePage: require('@page/enfermera/nurseProfilePage/NurseProfilePage.vue').default,
 		// ScheduleComponent: require('./components/schedule/ScheduleComponent.vue').default,
 		// MedicalConsultPage: MedicalConsultPage,

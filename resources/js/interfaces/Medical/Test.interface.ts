@@ -1,10 +1,12 @@
 import { Patient } from "@interface/Patient/Patient.interface";
+import { Product } from "@interface/Product/Product.interface";
 import { Order } from "./Order.interface";
 import { TestStatus } from "./TestStatus.interface";
 
 export interface Test
 {
     id: number;
+    test_code: string;
     created_in: number;
     scheduled_in: number;
     finished_at: string;
@@ -26,5 +28,5 @@ export interface Test
         updated_at: string;
     },
     patient?: Patient
-    status?: TestStatus
+    status?: TestStatus,
 }

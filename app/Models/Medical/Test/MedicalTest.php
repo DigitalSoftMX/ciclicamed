@@ -16,6 +16,7 @@ class MedicalTest extends Model
     use \Znck\Eloquent\Traits\BelongsToThrough;
 
     protected $fillable = [
+        'test_code',
         'created_in',
         'scheduled_in',
         'finished_at',
@@ -57,6 +58,11 @@ class MedicalTest extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class, 'medical_test_orders', 'medicaltest_id', 'product_id');
+    }
+
+    public function product()
+    {
+        return $this->products()->orderBy('created_at', 'desc');
     }
 
     public function order()

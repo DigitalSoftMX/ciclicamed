@@ -15,6 +15,7 @@ class CreateMedicalTestsTable extends Migration
     {
         Schema::create('medical_tests', function (Blueprint $table) {
             $table->unsignedInteger('id', true);
+            $table->string('test_code', 25);
             $table->unsignedInteger('created_in', false)->nullable();
             $table->unsignedInteger('scheduled_in', false)->nullable();
             $table->dateTime('finished_at')->nullable();

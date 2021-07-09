@@ -10,7 +10,13 @@ export interface Order
         id: number,
         name: string,
         product_code?: string,
-        supplier_code?: string
+        supplier_code?: string,
+        order_annotations?: {
+            product_id: number,
+            annotations: string,
+            created_at: string,
+            updated_at: string,
+        }[]
     },
     status?: number
 }

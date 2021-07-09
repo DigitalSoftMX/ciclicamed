@@ -45,6 +45,15 @@ class PageController extends Controller
                 'roles' => $user->roles
             ], 200);
         }
+
+        if($user['usercategory_id'] === 2 && $user->hasRole('Enfermera') || $user->hasRole('Administrador'))
+        {
+            return response()->view('pages.prescriptions', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+
         return response()->view('errors.404', [], 404);
     }
 
@@ -59,6 +68,15 @@ class PageController extends Controller
                 'roles' => $user->roles
             ], 200);
         }
+
+        if($user['usercategory_id'] === 2 && $user->hasRole('Enfermera') || $user->hasRole('Administrador'))
+        {
+            return response()->view('pages.test', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+
         return response()->view('errors.404', [], 404);
     }
 
@@ -123,7 +141,7 @@ class PageController extends Controller
                 if($cookie && $consult)
                 {
                     $start = $consult['consult_schedule_start'];
-                    if($user->hasRole(['Doctor', 'Enfermera']) && $consult['medicalconsultstatus_id'] > 3 && Carbon::now()->gte(Carbon::parse($start)))
+                    if($user->hasRole(['Doctor', 'Enfermera']) && $consult['medicalconsultstatus_id'] <= 4 && Carbon::now()->gte(Carbon::parse($start)))
                     {
                         return response()->view('pages.consult', [
                         'user' => $user->employee->load('user'),

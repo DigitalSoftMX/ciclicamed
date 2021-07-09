@@ -4,6 +4,7 @@ import { OrderData } from "./Order.data";
 
 export const TestData: Test = {
     id: -1,
+    test_code: '',
     created_in: -1,
     scheduled_in: -1,
     finished_at: '',

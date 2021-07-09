@@ -1,4 +1,5 @@
 import { Status } from "@interface/General/Status.interface";
+import { Patient } from "@interface/Patient/Patient.interface";
 import { Order } from "./Order.interface";
 import { Prescription } from "./Prescription.interface";
 import { Test } from "./Test.interface";
@@ -29,5 +30,6 @@ export interface Consult
     checkup_id: number;
     test_scheduled?: Test,
     status?: Status,
-    prescriptions?: Prescription[]
+    prescriptions?: Prescription[],
+    patient?: Patient
 }

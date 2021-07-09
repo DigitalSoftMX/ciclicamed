@@ -1,4 +1,5 @@
 import { DoctorSidebarConfig } from '@config/DoctorSidebar.config';
+import { NurseSidebarConfig } from '@config/NurseSidebar.config';
 import { PatientSidebarConfig } from '@config/PatientSidebar.config';
 import { PatientData } from '@data/Patient/Patient.data';
 import { Employee } from '@interface/Employee/Employee.interface';
@@ -29,7 +30,7 @@ export default defineComponent({
     data() {
         return {
             employeeCopy: cloneDeep(this.patient),
-            sidebarItems: DoctorSidebarConfig,
+            sidebarItems: NurseSidebarConfig,
             isSidebarOpen: false
         };
     },

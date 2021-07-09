@@ -13,6 +13,7 @@ use App\Models\Medical\History\MedicalHistory;
 use App\Models\Medical\Prescription\MedicalPrescription;
 use App\Models\Medical\Test\MedicalTest;
 use App\Models\Medical\Test\MedicalTestOrder;
+use App\Models\Medical\Test\MedicalTestSample;
 use App\Models\Medical\Test\MedicalTestStatus;
 use App\Models\Payment\Payment;
 use App\Models\Product\ProductPayment;
@@ -25,6 +26,81 @@ use PhpParser\Node\Expr\Cast\Object_;
 
 class MedicalConsultController extends Controller
 {
+    public function getAllTest(Request $request)
+    {
+        $prescriptions = [];
+        if($request->has('query'))
+        {
+            $query = $request->input('query');
+            $prescriptions = MedicalConsult::has('testScheduled')
+            ->where(function($item) use($query) {
+                $item->whereHas('patient', function($item) use($query) {
+                    $item->where('first_name', 'like', '%'.$query.'%')
+                          ->orWhere('last_name', 'like', '%'.$query.'%');
+                })
+                ->orWhereHas('testScheduled', function($item) use($query) {
+                    $item->where('test_code', 'like', '%'.$query.'%');
+                })
+                ->orWhereHas('testScheduled.status', function($item) use($query) {
+                    $item->where('name', 'like', '%'.$query.'%');
+                })
+                ->orWhereHas('testScheduled.product', function($item) use($query) {
+                    $item->where('product_code', 'like', '%'.$query.'%')
+                         ->orWhere('supplier_code', 'like', '%'.$query.'%');
+                });
+                
+            })->orderBy('consult_schedule_start', 'desc')->select('id', 'consult_schedule_start', 'consult_schedule_finish', 'patient_id')->paginate();
+        } else {
+            $prescriptions = MedicalConsult::has('testScheduled')
+            ->orderBy('consult_schedule_start', 'desc')
+            ->select('id', 'consult_schedule_start', 'consult_schedule_finish', 'patient_id')
+            ->paginate();
+        }
+        
+        $response = [
+            'pagination' => [
+                'total' => $prescriptions->total(),
+                'per_page' => $prescriptions->perPage(),
+                'current_page' => $prescriptions->currentPage(),
+                'last_page' => $prescriptions->lastPage(),
+                'from' => $prescriptions->firstItem(),
+                'to' => $prescriptions->lastItem()
+            ],
+            'data' => $prescriptions->load('patient:id,first_name,last_name', 'testScheduled.status', 'testScheduled.order.product')
+        ];
+        return response()->json($response);
+    }
+
+    public function getAllPrescriptions(Request $request)
+    {
+        $prescriptions = [];
+        if($request->has('query'))
+        {
+            $query = $request->input('query');
+            $prescriptions = MedicalConsult::where(function($item) use($query) {
+                $item->whereHas('patient', function($item) use($query) {
+                    $item->where('first_name', 'like', '%'.$query.'%')
+                          ->orWhere('last_name', 'like', '%'.$query.'%');
+                })->orWhere('id', $query);
+            })->orderBy('consult_schedule_start', 'desc')->select('id', 'consult_schedule_start', 'consult_schedule_finish', 'patient_id')->paginate();
+        } else {
+            $prescriptions = MedicalConsult::has('prescriptions')->orderBy('consult_schedule_start', 'desc')->select('id', 'consult_schedule_start', 'consult_schedule_finish', 'patient_id')->paginate();
+        }
+        
+        $response = [
+            'pagination' => [
+                'total' => $prescriptions->total(),
+                'per_page' => $prescriptions->perPage(),
+                'current_page' => $prescriptions->currentPage(),
+                'last_page' => $prescriptions->lastPage(),
+                'from' => $prescriptions->firstItem(),
+                'to' => $prescriptions->lastItem()
+            ],
+            'data' => $prescriptions->load('prescriptions', 'prescriptions.medicament', 'patient:id,first_name,last_name')
+        ];
+        return response()->json($response);
+    }
+
     public function confirmSchedule($id)
     {
         $user = User::findOrFail(Auth::user()->id);
@@ -188,11 +264,53 @@ class MedicalConsultController extends Controller
             ]], 401);
         }
 
-        if($user->hasRole(['Enfermera']) && !isset($consult['nurse_finish_at']))
+        //Ingresa los datos por parte de enfermera
+        if($user->hasRole(['Enfermera', 'Administrador']) && !isset($consult['nurse_finish_at']))
         {
+            //Checa si es estudio o consulta
+            if(intval($consult['medicalspecialty_id']) === 11 || intval($consult['medicalspecialty_id']) === 12)
+            {
+                $test = MedicalTest::where('scheduled_in', $id)->first();
+                $data = MedicalTestSample::where('medicaltest_id', $test['id'])->orderBy('created_at', 'desc');
+                if(isset($data) && isset($consult['nurse_start_at']))
+                {
+                    $data->update([
+                        'fum' => $request->input('data.fum'),
+                        'collected_by' => Auth::user()->id,
+                        'finish_at' => $time,
+                        'updated_by' => Auth::user()->id
+                    ]);
+                    $consult->update([
+                        'nurse_finish_at' => $time,
+                        'medicalconsultstatus_id' => 5
+                    ]);
+                    Cookie::queue(Cookie::forget('consult'));
+                    return response()->json(true, 200);
+                }
+                MedicalTestSample::create([
+                    'medicaltest_id' => $id,
+                    'fum' => $request->input('data.fum'),
+                    'finish_at' => $time,
+                    'collected_by' => Auth::user()->id,
+                    'updated_by' => Auth::user()->id
+                ]);
+                $test->update([
+                    'medicalteststatus_id' => 2,
+                    'medicalconsultstatus_id' => 5
+                ]);
+                $consult->update([
+                    'nurse_finish_at' => $time,
+                    'medicalconsultstatus_id' => 5
+                ]);
+                Cookie::queue(Cookie::forget('consult'));
+                return response()->json(true, 200);
+            }
+
+            //Si es consulta normal verifica si ya no se ha ingresado informacion previa
             $data = MedicalAttachmentFollowUp::where('medicalconsult_id', $id)->orderBy('created_at', 'desc');
             if(isset($data) && isset($consult['nurse_start_at']))
             {
+                //Si detecta que se ha ingresado informacion previa pero por alguna razon no concluyo la enfermera, actualiza
                 $data->update([
                     'medicalconsult_id' => $id,
                     'data' => json_encode($request->input('data.cita')),
@@ -583,6 +701,11 @@ class MedicalConsultController extends Controller
         if($user)
         {
             $data = $consult->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'nurse_schedule_start', 'nurse_schedule_finish']);
+            return response()->json($data);
+        }
+        if(intval($consult['medicalspecialty_id']) === 11 || intval($consult['medicalspecialty_id']) === 11)
+        {
+            $data = $consult->load('testScheduled.order.product.orderAnnotations');
             return response()->json($data);
         }
         
