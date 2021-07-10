@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
                                     aria-labelledby="mccCitasSubsecuentes-tab">
-                                    <test-upload-component :productCode="productCode"></test-upload-component>
+                                    <test-upload-component :productCode="productCode" :uploadFile="sendToServer" @afterSendData="resetSendToServer" :testID="testSelected.id"></test-upload-component>
                                 </div>
                             </div>
                         </div>
@@ -79,13 +79,9 @@
         </div>
     </div>
 
-    <confirmation-alert-component id="nurcpConfirmation"
+    <confirmation-alert-component id="itpConfirmation"
         title="¿Está seguro de enviar los signos vitales? Esta acción no puede deshacerse"
         @confirmAction="sendToServerData"></confirmation-alert-component>
-    <success-alert-component :id="'nurcpSuccess'" :message="'Información enviada correctamente'"
-        :title="'Envío exitoso'"></success-alert-component>
-    <error-alert-component :id="'nurcpError'" :errors="errors" :title="'Error al enviar la información'">
-    </error-alert-component>
 </template>
 
 <script lang="ts" src="./ImagenologiaTestPage.ts"></script>

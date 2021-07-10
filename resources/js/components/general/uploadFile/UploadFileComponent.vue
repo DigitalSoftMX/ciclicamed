@@ -54,11 +54,6 @@
                     </div>
                 </div>
             </div>
-
-            <div>
-                <label for="cscDiagnosticos">Notas adicionales</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscDiagnosticos"></textarea>
-            </div>
         </div>
     </div>
 </template>

@@ -48,6 +48,7 @@ export default defineComponent({
                 minutes: 0,
                 seconds: 0
             },
+            sendToServer: false
         };
     },
     mounted() {
@@ -83,13 +84,12 @@ export default defineComponent({
         },
         showUploadComponent(test: Test)
         {
-            console.log(test)
             this.testSelected = test;
             this.isTestUploadEnabled = true;
         },
         showConfirmationAlert()
         {
-            $('#nurcpConfirmation').modal('show');
+            $('#itpConfirmation').modal('show');
         },
         changeSidebarStatus()
         {
@@ -97,20 +97,11 @@ export default defineComponent({
         },
         sendToServerData()
         {
-            axios.post(`/consultas/${this.consult}/resultados`, {
-                data: {
-                }
-            })
-            .then(response => {
-                $('#nurcpSuccess').modal('show');
-                setInterval(() => {
-                    window.location.replace(`${this.url}/app/inicio`);
-                }, 2000)
-            })
-            .catch(error => {
-                this.errors = error.response.data.errors;
-                $('#nurcpError').modal('show');
-            })
+            this.sendToServer = true;
         },
+        resetSendToServer()
+        {
+            this.sendToServer = false;
+        }
     },
 })

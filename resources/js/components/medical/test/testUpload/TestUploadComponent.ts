@@ -6,8 +6,11 @@ import { PruebaHOSTData } from '@data/Medical/Test/Andrologia/PruebaHOST.data';
 import { CuestionarioMastografiaData } from '@data/Medical/Test/Imagenologia/CuestionarioMastografia.data';
 import { InterpretacionUltrasonidosData } from '@data/Medical/Test/Imagenologia/InterpretacionUltrasonidos.data';
 import { defineComponent } from '@vue/runtime-core';
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, PropType } from 'vue';
 import CuestionarioMastografiaComponent from '../Imagenologia/CuestionarioMastografia/CuestionarioMastografiaComponent';
+import { serialize } from 'object-to-formdata';
+import axios from 'axios';
+import { TestUploadData } from '@data/Medical/Test/TestUpload.data';
 
 
 export default defineComponent({
@@ -22,7 +25,7 @@ export default defineComponent({
         PruebaCapacitacionComponent: require('@component/medical/test/Andrologia/PruebaCapacitacion/PruebaCapacitacionComponent.vue').default,
         PruebaHostComponent: require('@component/medical/test/Andrologia/PruebaHost/PruebaHostComponent.vue').default,
     },
-    emits: [],
+    emits: ['afterSendData'],
     props: {
         productCode: {
             type: String,
@@ -31,6 +34,14 @@ export default defineComponent({
         role: {
             type: String,
             default: ''
+        },
+        uploadFile: {
+            type: Boolean as PropType<Boolean>,
+            default: false
+        },
+        testID: {
+            type: Number as PropType<Number>,
+            default: -1
         }
     },
     data() {
@@ -43,11 +54,7 @@ export default defineComponent({
             capacitacionEspermatica: PruebaCapacitacionEspermaticaData,
             host: PruebaHOSTData,
             componentEnabled: '',
-            form: {
-                type: 'form',
-                form: InterpretacionUltrasonidosData,
-                files: []
-            } as any,
+            form: TestUploadData,
             files: [] as File[]
         };
     },
@@ -57,8 +64,15 @@ export default defineComponent({
     watch: {
         productCode()
         {
-            console.log(this.productCode)
             this.enableForm();
+        },
+        uploadFile()
+        {
+            console.log(this.form.notes)
+            if(this.uploadFile)
+            {
+                this.sendToServer();
+            }
         }
     },
     methods: {
@@ -93,8 +107,8 @@ export default defineComponent({
                     this.form.form = {
                         cuestionario: this.cuestionarioMastografia,
                         resultados: this.interpretacionUltrasonidos,
-                        files: this.files
-                    };
+                    },
+                    this.form.files = this.files
                     break;
                 case 'LAB-0011':
                     this.form.form = this.inseminacionArtificialHumana;
@@ -122,6 +136,23 @@ export default defineComponent({
                         this.form.files = this.files
                     }
             }
-        }
+        },
+        sendToServer()
+        {
+            this.setFormData();
+            const formData = serialize(this.form);
+            const config = {
+                headers: { 'content-type': 'multipart/form-data' }
+            }
+            axios.post(`/estudios/${this.testID}/resultados`, formData, config)
+            .then(response => {
+                console.log(response)
+                this.$emit('afterSendData');
+            })
+            .catch(error => {
+                console.log(error)
+                this.$emit('afterSendData');
+            })
+        },
     },
 })

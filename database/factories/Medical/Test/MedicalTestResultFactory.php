@@ -50,7 +50,7 @@ class MedicalTestResultFactory extends Factory
             'medicaltest_id' => $this->faker->numberBetween(1, 25),
             'created_by' => $this->faker->numberBetween(1, 5),
             'results' => $this->faker->randomElement([$jsonFiles, $jsonForm]),
-            'result_note' => $this->faker->text(200),
+            'notes' => $this->faker->text(200),
             'updated_by' => $this->faker->numberBetween(1, 5),
             'update_note' => $this->faker->text(200),
         ];

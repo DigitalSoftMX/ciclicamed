@@ -14,6 +14,7 @@ use App\Models\User\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CheckupCategoryController extends Controller
 {
@@ -173,7 +174,11 @@ class CheckupCategoryController extends Controller
         
         if($medicalconsultcategory_id !== 2)
         {
+            $id = intval(MedicalTest::orderBy('id', 'desc')->take(1)->first()->id);
+            $id++;
+            $code = "MUE-" . str_pad((int) $id, 3, "0", STR_PAD_LEFT);
             $test = MedicalTest::create([
+                'test_code' => $code,
                 'scheduled_in' => $consult->id,
                 'medicalteststatus_id' => 1
             ]);

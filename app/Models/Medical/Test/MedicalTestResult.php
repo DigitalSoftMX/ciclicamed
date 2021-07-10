@@ -13,7 +13,7 @@ class MedicalTestResult extends Model
         'medicaltest_id',
         'created_by',
         'results',
-        'result_note',
+        'notes',
         'updated_by',
         'update_note',
     ];

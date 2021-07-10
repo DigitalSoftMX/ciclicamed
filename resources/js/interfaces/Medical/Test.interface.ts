@@ -21,7 +21,7 @@ export interface Test
         results: {
 
         },
-        result_note: string,
+        notes: string,
         updated_by: number,
         update_note: string,
         medicalteststatus_id: number,

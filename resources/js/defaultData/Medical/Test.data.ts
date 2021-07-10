@@ -18,7 +18,7 @@ export const TestData: Test = {
         results: {
 
         },
-        result_note: '',
+        notes: '',
         updated_by: -1,
         update_note: '',
         medicalteststatus_id: -1,
