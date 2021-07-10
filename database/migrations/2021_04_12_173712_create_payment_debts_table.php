@@ -14,13 +14,13 @@ class CreatePaymentDebtsTable extends Migration
     public function up()
     {
         Schema::create('payment_debts', function (Blueprint $table) {
+            $table->unsignedInteger('id', true);
             $table->unsignedInteger('payment_id', false);
             $table->string('description', 255);
             $table->decimal('total', 7, 2);
-            $table->decimal('missing_payment', 7, 2);
             $table->unsignedTinyInteger('paymentmethod_id', false);
             $table->unsignedMediumInteger('charged_by', false);
-            $table->string('credit_card', 4);
+            $table->string('credit_card', 4)->nullable();
             $table->timestamps();
 
             //Relaciones

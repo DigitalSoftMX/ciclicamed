@@ -204,7 +204,7 @@ class PatientController extends Controller
                 'from' => $prescriptions->firstItem(),
                 'to' => $prescriptions->lastItem()
             ],
-            'data' => $prescriptions->getCollection()
+            'data' => $prescriptions->getCollection()->load('user:email')
         ];
 
         return response()->json($response);
@@ -223,7 +223,7 @@ class PatientController extends Controller
                 'from' => $debts->firstItem(),
                 'to' => $debts->lastItem()
             ],
-            'data' => $debts->load('lastDebtPayment', 'products')
+            'data' => $debts->load('debts', 'products')
         ];
 
         return response()->json($response);

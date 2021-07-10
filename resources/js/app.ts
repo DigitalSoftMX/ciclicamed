@@ -46,6 +46,9 @@ const app = createApp({
 		LaboratorioTestPage: require('@page/laboratorio/laboratorioTestPage/LaboratorioTestPage.vue').default,
 		LaboratorioProfilePage: require('@page/laboratorio/laboratorioProfilePage/LaboratorioProfilePage').default,
 
+		CajaDashboardPage: require('@page/caja/cajaDashboardPage/CajaDashboardPage.vue').default,
+		CajaProfilePage: require('@page/caja/cajaProfilePage/CajaProfilePage.vue').default,
+
 		// LaboratorioDashboardPage: require('@page/laboratorio/laboratorioDashboardPage/LaboratorioDashboardPage.vue').default,
 		// LaboratorioConsultPage: require('@page/laboratorio/laboratorioConsultPage/LaboratorioConsultPage.vue').default,
 		// LaboratorioProfilePage: require('@page/laboratorio/laboratorioProfilePage/LaboratorioProfilePage.vue').default,

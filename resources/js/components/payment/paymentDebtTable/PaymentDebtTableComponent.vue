@@ -1,6 +1,7 @@
 <template>
     <div class="breadcrumb-main px-3">
         <h4 class="text-capitalize breadcrumb-title mb-25 mb-md-0">Deudas</h4>
+        <button class="btn btn-primary btn-default btn-squared" @click="returnBack">Regresar</button>
     </div>
 
     <div class="row mx-0">
@@ -9,36 +10,35 @@
                 <div class="card-body text-center pt-sm-30 pb-sm-0  px-25 pb-0">
                     <div class="account-profile">
                         <div class="ap-img w-100 d-flex justify-content-center">
-                            <img class="ap-img__main rounded-circle mb-3  wh-120 d-flex bg-opacity-primary"
-                                src="https://demo.jsnorm.com/laravel/strikingdash/img/author/profile.png" alt="profile">
+                            <img :src="patient.photo" :alt="fullName" class="ap-img__main rounded-circle mb-3  wh-120 d-flex bg-opacity-primary" :onerror="`this.src='/svg/person.svg';`">
                         </div>
                         <div class="ap-nameAddress pb-3 pt-1">
                             <h5 class="ap-nameAddress__title">{{fullName}}</h5>
-                            <p class="ap-nameAddress__subTitle fs-14 m-0">{{patientData.user.email}}</p>
+                            <p class="ap-nameAddress__subTitle fs-14 m-0">{{patient.user.email}}</p>
                         </div>
                     </div>
                     <div class="card-footer pt-20 pb-20 px-0">
                         <div class="profile-overview d-flex justify-content-center flex-wrap">
                             <p class="user-content-info__item mx-3">
-                                <img :src="asset('svg/gender.svg')" alt="Phone" class="mr-2">
-                                <span v-if="patientData.gender === 0">Hombre</span>
+                                <img-component url="/svg/gender.svg" cssClass="mr-2" alt="Sexo"></img-component>
+                                <span v-if="patient.gender === 0">Hombre</span>
                                 <span v-else>Mujer</span>
                             </p>
                             <p class="user-content-info__item mx-3">
-                                <img :src="asset('svg/birthday.svg')" alt="Phone" class="mr-2">
+                                <img-component url="/svg/birthday.svg" cssClass="mr-2" alt="Fecha nacimiento"></img-component>
                                 {{birthday}}
                             </p>
                             <p class="user-content-info__item mx-3">
-                                <img :src="asset('svg/phone.svg')" alt="Cellphone" class="mr-2">
-                                {{patientData.phone}}
+                                <img-component url="/svg/phone.svg" cssClass="mr-2" alt="Teléfono"></img-component>
+                                {{patient.phone}}
                             </p>
                             <p class="user-content-info__item mx-3">
-                                <img :src="asset('svg/cellphone.svg')" alt="Cellphone" class="mr-2">
-                                {{patientData.cellphone}}
+                                <img-component url="/svg/cellphone.svg" cssClass="mr-2" alt="Celular"></img-component>
+                                {{patient.cellphone}}
                             </p>
                             <p class="user-content-info__item mx-3 mt-3 mt-lg-0">
-                                <img :src="asset('svg/address.svg')" alt="Cellphone" class="mr-2">
-                                {{patientData.address}}
+                                <img-component url="/svg/address.svg" cssClass="mr-2" alt="Dirección"></img-component>
+                                {{patient.address}}
                             </p>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                                         </td>
                                         <td style="display: table-cell;" class="border-primary border-bottom">
                                             <div class="paymentDatatable-content">
-                                                ${{payment.last_debt_payment?.missing_payment}}
+                                                ${{missingPayment(payment)}}
                                             </div>
                                         </td>
 
@@ -112,15 +112,16 @@
                                             <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
                                                 <li>
                                                     <button
-                                                        class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                        <img :src="asset('/svg/cash.svg')">
+                                                        class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
+                                                        @click="showModal(payment)">
+                                                        <img-component url="/svg/cash.svg" alt="Dinero"></img-component>
                                                     </button>
                                                 </li>
                                                 <li>
                                                     <button
                                                         class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                         @click="redirectToDebtInfo(payment)">
-                                                        <img :src="asset('/svg/show.svg')">
+                                                        <img-component url="/svg/show.svg" alt="Mostrar"></img-component>
                                                     </button>
                                                 </li>
                                             </ul>
@@ -172,6 +173,8 @@
             </div>
         </div>
     </div>
+
+    <payment-debt-table-modal :paymentID="paymentID"></payment-debt-table-modal>
 </template>
 
 <script lang="ts" src="./PaymentDebtTableComponent.ts"></script>

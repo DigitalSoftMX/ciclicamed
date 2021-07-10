@@ -16,6 +16,6 @@ export const PaymentData: Payment = {
     patient_id: -1,
     created_at: '',
     updated_at: '',
-    last_debt_payment: DebtData,
+    debts: [],
     products: []
 }

@@ -7,38 +7,51 @@ import { PaymentPagination } from '@interface/Payment/PaymentPagination.interfac
 import { Payment } from '@interface/Payment/Payment.interface';
 import { PatientData } from '@data/Patient/Patient.data';
 import { Product } from '@interface/Product/Product.interface';
+import { PropType } from 'vue';
+import { DebtData } from '@data/Payment/Debt.data';
+import PaymentDebtTableModal from './paymentDebtTableModal/PaymentDebtTableModal';
 
 export default defineComponent({
     components: {
+        PaymentDebtTableModal,
     },
-    emits: [],
+    emits: ['onDebtSelected', 'onReturn'],
     props: {
-        patientID: {
-            type: Number,
-            default: 1
+        patient: {
+            type: Object as PropType<Patient>,
+            default: PatientData
         }
     },
     data() {
         return {
             paymentData: PaymentPaginationData,
-            patientData: PatientData,
             paginationPages: 0,
             paginationActive: 0,
-            loading: true
+            loading: true,
+            paymentID: 0
         };
     },
     mounted() {
         this.getPaymentData(1);
-        this.getPatientData();
+    },
+    watch: {
+        patient:
+        {
+            handler()
+            {
+                this.getPaymentData(1);
+            },
+            deep: true
+        }
     },
     computed: {
         fullName(): string
         {
-            return `${this.patientData.first_name} ${this.patientData.last_name}`;
+            return `${this.patient.first_name} ${this.patient.last_name}`;
         },
         birthday(): string
         {
-            return moment(this.patientData.birthday).format('DD-MM-YYYY');
+            return moment(this.patient.birthday).format('DD-MM-YYYY');
         }
     },
     methods: {
@@ -52,8 +65,9 @@ export default defineComponent({
             if(page >= 1 && page <= this.paymentData.pagination.last_page && page !== this.paginationActive)
             {
                 this.paginationActive = page;
-                axios.get<PaymentPagination>(`/pacientes/${this.patientID}/deudas?page=${this.paginationActive}`)
+                axios.get<PaymentPagination>(`/pacientes/${this.patient.id}/deudas?page=${this.paginationActive}`)
                 .then(response => {
+                    console.log(response.data)
                     this.paymentData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
@@ -64,23 +78,28 @@ export default defineComponent({
                 })
             }
         },
-        getPatientData()
-        {
-            axios.get<Patient>(`/pacientes/${this.patientID}`)
-            .then(response => {
-                this.patientData = response.data;
-            })
-            .catch(error => {
-                console.log(error);
-            })
-        },
         redirectToDebtInfo(payment: Payment)
         {
-            window.location.href = '/test3'
+            this.$emit('onDebtSelected', payment);
         },
         safeNullProduct(payment: Payment): Product[]
         {
             return payment.products!;
+        },
+        returnBack()
+        {
+            this.$emit('onReturn', 'patientsDebts');
+        },
+        missingPayment(payment: Payment)
+        {
+            const debt = payment.debts!.reduce((a, b) => ({...a, total: Number(a.total) + Number(b.total)}), DebtData).total;
+            return (payment.total - debt).toFixed();
+        },
+        showModal(payment: Payment)
+        {
+            console.log(payment)
+            this.paymentID = payment.id;
+            $('#pdtmPaymentModal').modal('show');
         }
     },
 })

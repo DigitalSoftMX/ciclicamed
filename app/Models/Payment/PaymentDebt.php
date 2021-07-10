@@ -10,6 +10,7 @@ class PaymentDebt extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'payment_id',
         'description',
         'total',

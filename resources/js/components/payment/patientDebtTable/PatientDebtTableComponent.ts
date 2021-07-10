@@ -13,7 +13,7 @@ import { Patient } from '@interface/Patient/Patient.interface';
 export default defineComponent({
     components: {
     },
-    emits: [],
+    emits: ['onPatientSelect'],
     props: {
     },
     data() {
@@ -46,6 +46,7 @@ export default defineComponent({
                 this.paginationActive = page;
                 axios.get<UserPagination>(`/pacientes/deudas?page=${this.paginationActive}`)
                 .then(response => {
+                    console.log(response.data)
                     this.userData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
@@ -60,7 +61,7 @@ export default defineComponent({
         {
             this.loading = true;
             const queryPagination = this.query === '' ? this.paginationActive : 0;
-            if(this.activateSearch || this.query.length > 0)
+            if(this.activateSearch || this.query === '')
             {
                 axios.get<UserPagination>(`/pacientes/deudas`, {
                     params: {
@@ -82,7 +83,7 @@ export default defineComponent({
         },
         redirectToDebtData(patient: Patient)
         {
-            window.location.href = '/test2'
+            this.$emit('onPatientSelect', patient);
         }
     },
 })

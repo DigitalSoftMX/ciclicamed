@@ -2,6 +2,7 @@ import { PaymentMethod } from "./PaymentMethod.interface";
 
 export interface Debt
 {
+    id: number;
     payment_id: number;
     description: string;
     total: number;

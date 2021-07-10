@@ -2,6 +2,7 @@ import { Debt } from "@interface/Payment/Debt.interface";
 import { PaymentMethodData } from "./PaymenMethod.data";
 
 export const DebtData: Debt = {
+    id: -1,
     payment_id: -1,
     description: '',
     total: -1,

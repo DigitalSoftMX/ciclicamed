@@ -35,7 +35,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 Auth::routes();
 Route::get('/', [LoginController::class, 'loginForm'])->name('login.login');
-Route::post('/register', [UserController::class, 'createPatient'])->name('usuarios.createUser');
+Route::post('/register', [UserController::class, 'createPatient'])->name('registrar');
 
 Route::group(['middleware' => 'auth', 'verified'], function() {
 
@@ -123,7 +123,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     Route::group(['prefix' => 'empleados'], function() {
         Route::get('/', [EmployeeController::class, 'getAllEmployees'])->name('empleados.todos');
         Route::patch('/{id}', [EmployeeController::class, 'updateEmployee'])->name('empleados.updateEmpleado');
-        Route::get('/{id}/sucursales', [EmployeeController::class, 'getEmployeeBranches'])->name('empleados.todos');
+        Route::get('/{id}/sucursales', [EmployeeController::class, 'getEmployeeBranches'])->name('empleados.sucursales');
         Route::get('/{id}/agenda', [EmployeeController::class, 'getEmployeeSchedules'])->name('empleados.getIDAgenda');
         Route::get('/agenda', [EmployeeController::class, 'getAllSchedules'])->name('empleados.getAgendas');
     });
@@ -148,10 +148,10 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     Route::group(['prefix' => 'estudios'], function() {
         Route::get('/laboratorio/creados', [LaboratorioTestController::class, 'getCreatedTests'])->name('estudios.getLaboratorioCreados');
         Route::get('/laboratorio/muestras', [LaboratorioTestController::class, 'getSampleTests'])->name('estudios.getLaboratorioMuestra');
-        Route::get('/laboratorio/completados', [LaboratorioTestController::class, 'getCompletedTest'])->name('estudios.getLaboratorioMuestra');
+        Route::get('/laboratorio/completados', [LaboratorioTestController::class, 'getCompletedTest'])->name('estudios.getLaboratorioCompletados');
         Route::get('/imagenologia/creados', [ImagenologiaTestController::class, 'getCreatedTests'])->name('estudios.getImagenologiaCreados');
         Route::get('/imagenologia/muestras', [ImagenologiaTestController::class, 'getSampleTests'])->name('estudios.getImagenologiaMuestra');
-        Route::get('/imagenologia/completados', [ImagenologiaTestController::class, 'getCompletedTest'])->name('estudios.getImagenologiaMuestra');
+        Route::get('/imagenologia/completados', [ImagenologiaTestController::class, 'getCompletedTest'])->name('estudios.getImagenologiaCompletados');
         Route::get('/resultados/{id}', [MedicalTestResultController::class, 'getResultFile'])->name('estudios.getResultado');
         Route::get('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.getResultados');
         Route::post('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.setResultados');
@@ -160,16 +160,18 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
 
     //Pagos
     Route::group(['prefix' => 'pagos'], function() {
+        Route::get('/faltantes', [PaymentController::class, 'getAllMissingPayments'])->name('pagos.getFaltantes');
         Route::get('/{id}', [PaymentController::class, 'getPayment'])->name('pagos.getPago');
         Route::get('/{id}/productos', [PaymentController::class, 'getPaymentProductsByID'])->name('pagos.getProductos');
         Route::get('/{id}/deudas', [PaymentController::class, 'getAllDebtsByPaymentID'])->name('pagos.getDeudas');
+        Route::post('/{id}/deudas', [PaymentController::class, 'setDebtPayment'])->name('pagos.setDeuda'); 
     });
 
     //Checkup
     Route::group(['prefix' => 'checkup'], function() {
         Route::get('/agenda', [CheckupCategoryController::class, 'getSchedules'])->name('checkup.getAgenda');
-        Route::get('/categorias', [CheckupCategoryController::class, 'getAllCategories'])->name('checkup.getTodos');
-        Route::get('/pendientes', [CheckupCategoryController::class, 'getPendings'])->name('checkup.getTodos');
+        Route::get('/categorias', [CheckupCategoryController::class, 'getAllCategories'])->name('checkup.getCategorias');
+        Route::get('/pendientes', [CheckupCategoryController::class, 'getPendings'])->name('checkup.getPendientes');
         Route::get('/{id}', [CheckupCategoryController::class, 'getCheckupByID'])->name('checkup.getCheckup');
         Route::post('/', [CheckupCategoryController::class, 'createCheckups'])->name('checkup.setNuevo');
         Route::patch('/', [CheckupCategoryController::class, 'updateCheckups'])->name('checkup.update');

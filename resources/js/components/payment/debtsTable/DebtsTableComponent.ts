@@ -10,31 +10,30 @@ import { PropType } from 'vue';
 export default defineComponent({
     components: {
     },
-    emits: [],
+    emits: ['onReturn'],
     props: {
-        paymentID: {
-            type: Number,
-            default: 1
+        payment: {
+            type: Object as PropType<Payment>,
+            default: PaymentData
         }
     },
     data() {
         return {
-            debtData: [] as Debt[],
-            paymentData: PaymentData,
-            loading: true
         };
     },
     mounted() {
-        this.getDebtData();
-        this.getPaymentData();
     },
     computed: {
-        sumDebtPayments(): number {
-            return this.debtData.reduce((a, b) => ({...a, total: Number(a.total) + Number(b.total)}), DebtData).total;
-        },
-        missingPayment(): number
+        debts(): Debt[]
         {
-            return this.paymentData.total - this.sumDebtPayments;
+            return this.payment.debts!;
+        },
+        sumDebtPayments(): number {
+            return this.payment.debts!.reduce((a, b) => ({...a, total: Number(a.total) + Number(b.total)}), DebtData).total;
+        },
+        missingPayment(): string
+        {
+            return (this.payment.total - this.sumDebtPayments).toFixed();
         }
     },
     methods: {
@@ -42,28 +41,9 @@ export default defineComponent({
         {
             return moment(birthday).format('DD-MM-YYYY');
         },
-        getDebtData()
+        returnBack()
         {
-            this.loading = true;
-            axios.get<Debt[]>(`/pagos/${this.paymentID}/deudas`)
-            .then(response => {
-                this.debtData = response.data;
-                this.loading = false;
-            })
-            .catch(error => {
-                console.log(error);
-                this.loading = false;
-            })
-        },
-        getPaymentData()
-        {
-            axios.get<Payment>(`/pagos/${this.paymentID}`)
-            .then(response => {
-                this.paymentData = response.data;
-            })
-            .catch(error => {
-                console.log(error);
-            })
+            this.$emit('onReturn', 'paymentDebt');
         }
     },
 })

@@ -1,6 +1,7 @@
 <template>
     <div class="breadcrumb-main px-3">
         <h4 class="breadcrumb-title mb-25 mb-md-0">Lista de pagos de deudas</h4>
+        <button class="btn btn-primary btn-default btn-squared" @click="returnBack">Regresar</button>
     </div>
 
     <div class="row mx-0">
@@ -9,14 +10,14 @@
                 <div class="card-body text-center pt-sm-30 pb-sm-0 px-25 pb-0">
                     <div class="account-profile">
                         <div class="ap-img w-100 d-flex justify-content-center">
-                            <img class="wh-120" src="/svg/caja.svg')" alt="Caja">
+                            <img-component url="/svg/caja.svg"  alt="Caja" cssClass="wh-120"></img-component>
                         </div>
                     </div>
                     <div class="card-footer mt-20 pt-20 pb-20 px-0">
                         <div class="profile-overview d-flex justify-content-between justify-content-lg-center flex-wrap  px-5 px-lg-2">
                             <div class="po-details mx-3">
                                 <span class="po-details__sTitle">Deuda a pagar</span>
-                                <h6 class="po-details__title pb-1">{{paymentData.total}}</h6>
+                                <h6 class="po-details__title pb-1">{{payment.total}}</h6>
                                 
                             </div>
                             <div class="po-details mx-3">
@@ -35,7 +36,7 @@
         </div>
 
         <div class="col-12 col-lg-9">
-            <div class="card spin-embadded" v-bind:class="{'spin-active': loading}">
+            <div class="card spin-embadded">
                 <div class="card-body">
                     <div
                         class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
@@ -70,7 +71,7 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr v-for="(debt, index) in debtData" :key="index">
+                                    <tr v-for="(debt, index) in debts" :key="index">
 
                                         <td class="footable-first-visible border-primary border-bottom"
                                             style="display: table-cell;">

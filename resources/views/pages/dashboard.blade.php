@@ -23,6 +23,9 @@
         @case('Laboratorio')
             <laboratorio-dashboard-page :laboratorio="{{ json_encode($user) }}" role="Laboratorio"></laboratorio-dashboard-page>
             @break
+        @case('Caja')
+            <caja-dashboard-page :caja="{{ json_encode($user) }}" role="Caja"></caja-dashboard-page>
+            @break
     @endswitch
 </div>
 @endsection
