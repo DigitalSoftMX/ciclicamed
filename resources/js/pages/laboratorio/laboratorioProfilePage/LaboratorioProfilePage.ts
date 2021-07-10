@@ -1,4 +1,5 @@
 import { DoctorSidebarConfig } from '@config/DoctorSidebar.config';
+import { LaboratorioSidebarConfig } from '@config/LaboratorioSidebar.config';
 import { NurseSidebarConfig } from '@config/NurseSidebar.config';
 import { PatientSidebarConfig } from '@config/PatientSidebar.config';
 import { PatientData } from '@data/Patient/Patient.data';
@@ -18,7 +19,7 @@ export default defineComponent({
         UserProfileInfoComponent: require('@component/user/userProfileInfo/UserProfileInfoComponent.vue').default,
     },
     props: {
-        patient: {
+        laboratorio: {
             type: Object as PropType<Employee>,
             default: PatientData
         },
@@ -29,13 +30,13 @@ export default defineComponent({
     },
     data() {
         return {
-            employeeCopy: cloneDeep(this.patient),
-            sidebarItems: NurseSidebarConfig,
+            employeeCopy: cloneDeep(this.laboratorio),
+            sidebarItems: LaboratorioSidebarConfig,
             isSidebarOpen: false
         };
     },
     mounted() {
-        console.log(this.patient)
+        console.log(this.laboratorio)
     },
     watch: {
         isSidebarOpen()

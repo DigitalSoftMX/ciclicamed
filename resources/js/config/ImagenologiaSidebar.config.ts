@@ -1,11 +1,11 @@
 import { Sidebar } from "@interface/General/Sidebar.interface";
 
 export const ImagenologiaSidebarConfig: Sidebar[] = [
-    {
-        icon: '/svg/followUp.svg',
-        name: 'Consulta',
-        url: '/app/consulta'
-    },
+    // {
+    //     icon: '/svg/followUp.svg',
+    //     name: 'Consulta',
+    //     url: '/app/consulta'
+    // },
     {
         icon: '/svg/schedule.svg',
         name: 'Agenda',

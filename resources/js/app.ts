@@ -42,6 +42,10 @@ const app = createApp({
 		ImagenologiaTestPage: require('@page/imagenologia/imagenologiaTestPage/ImagenologiaTestPage.vue').default,
 		ImagenologiaProfilePage: require('@page/imagenologia/imagenologiaProfilePage/ImagenologiaProfilePage.vue').default,
 
+		LaboratorioDashboardPage: require('@page/laboratorio/laboratorioDashboardPage/LaboratorioDashboardPage.vue').default,
+		LaboratorioTestPage: require('@page/laboratorio/laboratorioTestPage/LaboratorioTestPage.vue').default,
+		LaboratorioProfilePage: require('@page/laboratorio/laboratorioProfilePage/LaboratorioProfilePage').default,
+
 		// LaboratorioDashboardPage: require('@page/laboratorio/laboratorioDashboardPage/LaboratorioDashboardPage.vue').default,
 		// LaboratorioConsultPage: require('@page/laboratorio/laboratorioConsultPage/LaboratorioConsultPage.vue').default,
 		// LaboratorioProfilePage: require('@page/laboratorio/laboratorioProfilePage/LaboratorioProfilePage.vue').default,

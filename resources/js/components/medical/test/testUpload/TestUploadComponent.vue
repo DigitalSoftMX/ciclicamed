@@ -21,7 +21,7 @@
         <prueba-host-component :disabled="false" v-model="host"></prueba-host-component>
     </div>
     <div>
-        <upload-file-component :disabled="false" v-model="files"></upload-file-component>
+        <upload-file-component :disabled="false" v-model="files" :role="role"></upload-file-component>
     </div>
     <div>
         <div class="card">

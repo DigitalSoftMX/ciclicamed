@@ -2,7 +2,7 @@ import {
     defineComponent
 } from '@vue/runtime-core';
 import axios from 'axios';
-import { PropType } from 'vue';
+import { Prop, PropType } from 'vue';
 
 export default defineComponent({
     components: {
@@ -16,17 +16,43 @@ export default defineComponent({
         modelValue: {
             type: Array as PropType<File[]>,
             default: []
+        },
+        role: {
+            type: String as PropType<String>,
+            default: ''
         }
     },
     data() {
         return {
             isFileOver: false,
-            fileList: this.modelValue
+            fileList: this.modelValue,
+            acceptFiles: ''
         };
     },
     mounted() {
+        switch(this.role)
+        {
+            case 'Laboratorio':
+                this.acceptFiles = '.pdf';
+                break;
+            case 'Imagenología':
+                this.acceptFiles = '.jpg,.jpeg,.png,.bmp';
+                break;
+        }
     },
     watch: {
+        role()
+        {
+            switch(this.role)
+            {
+                case 'Laboratorio':
+                    this.acceptFiles = '.pdf';
+                    break;
+                case 'Imagenología':
+                    this.acceptFiles = 'image/jpg,image/jpeg,image/png,image/bmp';
+                    break;
+            }
+        },
         modelValue: {
             handler()
             {
@@ -60,7 +86,16 @@ export default defineComponent({
         dropFile(event: DragEvent)
         {
             event.preventDefault();
-            this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf').slice(0,3);
+            switch(this.role)
+            {
+                case 'Laboratorio':
+                    this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf').slice(0,3);
+                    break;
+                case 'Imagenología':
+                    this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
+                    break;
+            }
+            
             this.isFileOver = false;
         },
         deleteFileSelected(index: number)
@@ -71,7 +106,15 @@ export default defineComponent({
             const files = (event.target as HTMLInputElement).files || [];
             if(files.length > 0)
             {
-                this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
+                switch(this.role)
+                {
+                    case 'Laboratorio':
+                        this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
+                        break;
+                    case 'Imagenología':
+                        this.fileList = Object.values<File>(files).filter(file => file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
+                        break;
+                }
             }
         },
         uploadFile()

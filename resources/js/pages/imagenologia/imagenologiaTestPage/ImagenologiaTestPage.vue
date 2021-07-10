@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
                                     aria-labelledby="mccCitasSubsecuentes-tab">
-                                    <test-upload-component :productCode="productCode" :uploadFile="sendToServer" @afterSendData="resetSendToServer" :testID="testSelected.id"></test-upload-component>
+                                    <test-upload-component :productCode="productCode" :uploadFile="sendToServer" @afterSendData="resetSendToServer" :testID="testSelected.id" :role="role"></test-upload-component>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
     </div>
 
     <confirmation-alert-component id="itpConfirmation"
-        title="¿Está seguro de enviar los signos vitales? Esta acción no puede deshacerse"
+        title="¿Está seguro de enviar los resultados de este estudio? Esta acción no puede deshacerse"
         @confirmAction="sendToServerData"></confirmation-alert-component>
 </template>
 

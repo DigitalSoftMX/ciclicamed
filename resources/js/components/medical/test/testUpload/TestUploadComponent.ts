@@ -55,7 +55,8 @@ export default defineComponent({
             host: PruebaHOSTData,
             componentEnabled: '',
             form: TestUploadData,
-            files: [] as File[]
+            files: [] as File[],
+            errors: []
         };
     },
     mounted() {
@@ -64,11 +65,11 @@ export default defineComponent({
     watch: {
         productCode()
         {
+            this.form = TestUploadData;
             this.enableForm();
         },
         uploadFile()
         {
-            console.log(this.form.notes)
             if(this.uploadFile)
             {
                 this.sendToServer();
@@ -91,6 +92,7 @@ export default defineComponent({
                     break;
                 case 'LAB-0038':
                     this.componentEnabled = 'orinaPostEyaculado';
+                    break;
                 case 'LAB-0068':
                     this.componentEnabled = 'capacitacionEspermatica';
                     break;
@@ -140,18 +142,30 @@ export default defineComponent({
         sendToServer()
         {
             this.setFormData();
-            const formData = serialize(this.form);
+            var formData = serialize(this.form);
             const config = {
                 headers: { 'content-type': 'multipart/form-data' }
             }
+            this.files.map(file => formData.append(`file[]`, file))
             axios.post(`/estudios/${this.testID}/resultados`, formData, config)
             .then(response => {
-                console.log(response)
                 this.$emit('afterSendData');
+                this.cuestionarioMastografia = CuestionarioMastografiaData,
+                this.interpretacionUltrasonidos = InterpretacionUltrasonidosData,
+                this.espermatobioscopiaDirecta = EspermatobioscopiaDirectaData,
+                this.inseminacionArtificialHumana = InseminacionArtificialData,
+                this.orinaPostEyaculado = OrinaPostEyaculadoData,
+                this.capacitacionEspermatica = PruebaCapacitacionEspermaticaData,
+                this.host = PruebaHOSTData,
+                this.componentEnabled = '',
+                this.form = TestUploadData,
+                this.files = [] as File[],
+                $('#testucSuccess').modal('show');
             })
             .catch(error => {
-                console.log(error)
-                this.$emit('afterSendData');
+                this.errors = error.response.data.errors;
+                $('#testucError').modal('show');
+                this.$emit('afterSendData', error.response.data.errors);
             })
         },
     },

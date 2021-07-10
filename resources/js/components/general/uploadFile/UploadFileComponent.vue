@@ -16,7 +16,7 @@
                         </div>
                         <div class="avatar-up">
                             <input id='ufcUpload' type="file" name="upload-avatar-input" class="upload-avatar-input"
-                                multiple accept=".pdf" @change='onChange'>
+                                multiple :accept="acceptFiles" @change='onChange'>
                         </div>
                     </div>
                 </div>

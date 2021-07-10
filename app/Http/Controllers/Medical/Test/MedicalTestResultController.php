@@ -21,14 +21,29 @@ class MedicalTestResultController extends Controller
     public function testResult(MedicalTestResultRequest $request, $id)
     {
         $request->validated();
+        // return response()->json([$request->has('form'), $request->hasFile('file')]);
+        if(!$request->has('form') && !$request->hasFile('file'))
+        {
+            return response()->json(['errors' => [
+                'archivos' => ['No puede enviar resultados vacíos, seleccione por lo menos un archivo']
+            ]], 401);
+        }
         $employee = User::findOrFail(Auth::user()->id);
         $time = Carbon::now()->setTimezone('America/Mexico_City');
+        
         if($employee->hasRole(['Laboratorio', 'Imagenologia', 'Administrador']))
         {
-            if($request->file('files'))
+            $test = MedicalTest::findOrFail($id);
+            if(intval($test['medicalteststatus_id'] === 4 && $employee->hasRole(['Laboratorio', 'Imagenologia'])))
+            {
+                return response()->json(['errors' => [
+                    'permisos' => ['No cuenta con los permisos necesarios para modificar este resultado']
+                ]], 401);
+            }
+            if($request->hasFile('file'))
             {
                 $filePath = [];
-                $files = $request->file('files');
+                $files = $request->file('file');
                 foreach ($files as $file) {
                     $successfulFile = basename($file->store('test/results'));
                     array_push($filePath, $successfulFile);

@@ -25,8 +25,7 @@ class MedicalTestResultRequest extends FormRequest
     {
         return [
             'type' => ['required', 'max:10'],
-            'form' => ['required'],
-            'files.*' => ['nullable', 'mimetypes:image/jpg,image/jpeg,image/png,image/bmp,application/pdf', 'max:10240'],
+            'file.*' => ['required', 'mimetypes:image/jpg,image/jpeg,image/png,image/bmp,application/pdf', 'max:10240'],
             'notes' => ['nullable', 'max:500'],
         ];
     }
@@ -36,7 +35,6 @@ class MedicalTestResultRequest extends FormRequest
         return [
             'type.required' => 'Debe de existir un tipo de formulario',
             'type.email' => 'El tipo de formulario no debe de exceder de los 10 caracteres',
-            'form.required' => 'El formulario de resultados debe de existir',
             'files.*.mimetypes' => 'Los archivos subidos deben tener un formato válido',
             'files.*.max' => 'Cada uno de los archivos no debe de exceder los 10MB',
             'notes.max' => 'La nota no debe de exceder los 500 caracteres',

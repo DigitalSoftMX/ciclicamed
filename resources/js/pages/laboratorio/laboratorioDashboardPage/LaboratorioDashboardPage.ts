@@ -1,4 +1,5 @@
 import { DoctorSidebarConfig } from '@config/DoctorSidebar.config';
+import { LaboratorioSidebarConfig } from '@config/LaboratorioSidebar.config';
 import { NurseSidebarConfig } from '@config/NurseSidebar.config';
 import { PatientData } from '@data/Patient/Patient.data';
 import { Patient } from '@interface/Patient/Patient.interface';
@@ -12,7 +13,7 @@ export default defineComponent({
         ScheduleComponent: require('@component/schedule/ScheduleComponent.vue').default,
     },
     props: {
-        nurse: {
+        laboratorio: {
             type: Object as PropType<Patient>,
             default: PatientData
         },
@@ -23,7 +24,7 @@ export default defineComponent({
     },
     data() {
         return {
-            sidebarItems: NurseSidebarConfig,
+            sidebarItems: LaboratorioSidebarConfig,
             isSidebarOpen: false
         };
     },

@@ -17,6 +17,12 @@
         @case('Enfermera')
             <nurse-profile-page :patient="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></nurse-profile-page>
             @break
+        @case('Imagenologia')
+            <imagenologia-profile-page :imagenologia="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></imagenologia-profile-page>
+            @break
+        @case('Laboratorio')
+            <laboratorio-profile-page :laboratorio="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></laboratorio-profile-page>
+            @break
     @endswitch
 </div>
 @endsection

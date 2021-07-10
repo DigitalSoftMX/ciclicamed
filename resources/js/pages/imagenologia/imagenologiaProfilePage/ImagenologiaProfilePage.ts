@@ -19,7 +19,7 @@ export default defineComponent({
         UserProfileInfoComponent: require('@component/user/userProfileInfo/UserProfileInfoComponent.vue').default,
     },
     props: {
-        patient: {
+        imagenologia: {
             type: Object as PropType<Employee>,
             default: PatientData
         },
@@ -30,13 +30,13 @@ export default defineComponent({
     },
     data() {
         return {
-            employeeCopy: cloneDeep(this.patient),
+            employeeCopy: cloneDeep(this.imagenologia),
             sidebarItems: ImagenologiaSidebarConfig,
             isSidebarOpen: false
         };
     },
     mounted() {
-        console.log(this.patient)
+        console.log(this.imagenologia)
     },
     watch: {
         isSidebarOpen()

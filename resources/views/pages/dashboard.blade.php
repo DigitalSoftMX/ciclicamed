@@ -20,6 +20,9 @@
         @case('Imagenologia')
             <imagenologia-dashboard-page :imagenologia="{{ json_encode($user) }}" role="Imagenologia"></imagenologia-dashboard-page>
             @break
+        @case('Laboratorio')
+            <laboratorio-dashboard-page :laboratorio="{{ json_encode($user) }}" role="Laboratorio"></laboratorio-dashboard-page>
+            @break
     @endswitch
 </div>
 @endsection

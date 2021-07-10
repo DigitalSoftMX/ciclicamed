@@ -1,9 +1,9 @@
 <template>
-    <navbar-component @menuSelect="changeSidebarStatus" title="Agenda" :userData="nurse" :photo="nurse.photo"></navbar-component>
+    <navbar-component @menuSelect="changeSidebarStatus" title="Agenda" :userData="laboratorio" :photo="laboratorio.photo"></navbar-component>
     <sidebar-component title="Menú lateral" :items="sidebarItems"></sidebar-component>
     <div id="pdpContent" class="contents expanded">
-        <schedule-component :role="role" :employeeID="nurse.id"></schedule-component>
+        <schedule-component :role="role" :employeeID="1"></schedule-component>
     </div>
 </template>
 
-<script lang="ts" src="./NurseDashboardPage.ts"></script>
+<script lang="ts" src="./LaboratorioDashboardPage.ts"></script>
