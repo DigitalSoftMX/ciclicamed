@@ -3,7 +3,7 @@
         <div class="form-group p-0 m-0">
             <div class="with-icon">
                 <span class="mr-5">
-                    <img :src="asset('/svg/search.svg')" alt="Search">
+                    <img-component url="/svg/search.svg" alt="Buscar"></img-component>
                 </span>
                 <input type="text" class="form-control form-control-lg bg-white" v-model="query"
                     @keyup="getProductDataQuery()" placeholder="Buscar">
@@ -93,14 +93,14 @@
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                 @click="editProduct(product)">
-                                                <img :src="asset('/svg/edit.svg')">
+                                                <img-component url="/svg/edit.svg" alt="Editar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-danger border-0 button-img"
                                                 @click="openDeleteConfirmation(product)">
-                                                <img :src="asset('/svg/delete.svg')">
+                                                <img-component url="/svg/delete.svg" alt="Borrar"></img-component>
                                             </button>
                                         </li>
                                     </ul>

@@ -17,4 +17,5 @@ export const ProductData: Product = {
     updated_at: '',
     status: ProductStatusData,
     category: ProductCategoryData,
+    order_annotations: []
 }

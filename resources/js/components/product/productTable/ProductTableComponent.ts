@@ -5,11 +5,11 @@ import { ProductPagination } from '@interface/Product/ProductPagination.interfac
 import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import $ from 'jquery';
+import { cloneDeep } from 'lodash';
 require('bootstrap');
 
 export default defineComponent({
     components: {
-        PreregistrationComponent: require('@component/patient/preregistration/PreregistrationComponent.vue').default,
         ProductComponent: require('@component/product/ProductComponent.vue').default,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
         ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
@@ -44,7 +44,7 @@ export default defineComponent({
             productData: ProductData,
             loading: true,
             isNewProduct: true,
-            errors: []
+            errors: [],
         };
     },
     mounted() {
@@ -73,6 +73,7 @@ export default defineComponent({
                 this.paginationActive = page;
                 axios.get<ProductPagination>(`/productos/${this.productCategory}?page=${this.paginationActive}`)
                 .then(response => {
+                    console.log(response.data)
                     this.paginationData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
@@ -114,7 +115,7 @@ export default defineComponent({
         },
         editProduct(productData: Product)
         {
-            this.productData = productData;
+            this.productData = {...productData};
             this.isNewProduct = false;
             $(`#productModal${this.id}`).modal('show');
         },

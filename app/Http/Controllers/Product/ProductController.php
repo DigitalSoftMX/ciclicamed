@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductRequest;
 use App\Models\Medical\Prescription\Medicament;
+use App\Models\Medical\Test\MedicalTestOrderAnnotation;
 use App\Models\Product\Product;
 use App\Models\Product\ProductCategory;
 use App\Models\Product\ProductStatus;
@@ -34,6 +35,20 @@ class ProductController extends Controller
                 'productcategory_id' => $category,
                 'productstatus_id' => $status,
             ]);
+
+            if(count($request['orders']) > 0)
+            {
+                MedicalTestOrderAnnotation::where('product_id', $product->id)->delete();
+
+                foreach($request['orders'] as $annotation)
+                {
+                    MedicalTestOrderAnnotation::create([
+                        'product_id' => $product->id,
+                        'annotation' => $annotation
+                    ]);
+                }
+            }
+
             return response()->json($product);
         }
         return response()->json(['errors' => [
@@ -59,6 +74,18 @@ class ProductController extends Controller
                 'productcategory_id' => $request->input('data.productcategory_id'),
                 'productstatus_id' => $request->input('data.productstatus_id'),
             ]);
+            if(count($request['orders']) > 0)
+            {
+                MedicalTestOrderAnnotation::where('product_id', $product->id)->delete();
+                
+                foreach($request['orders'] as $annotation)
+                {
+                    MedicalTestOrderAnnotation::create([
+                        'product_id' => $product->id,
+                        'annotation' => $annotation
+                    ]);
+                }
+            }
             return response()->json($product);
         }
         return response()->json(['errors' => [
@@ -177,7 +204,7 @@ class ProductController extends Controller
                         'from' => $productCiclica->firstItem(),
                         'to' => $productCiclica->lastItem()
                     ],
-                    'data' => $productCiclica->load('status', 'category')
+                    'data' => $productCiclica->load('status', 'category', 'orderAnnotations')
                 ];
 
                 return response()->json($response);

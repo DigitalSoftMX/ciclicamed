@@ -1,3 +1,4 @@
+import { TestOrder } from "@interface/Medical/TestOrder.interface";
 import { ProductCategory } from "./ProductCategory.interface";
 import { ProductStatus } from "./ProductStatus.interface";
 export interface Product
@@ -16,4 +17,8 @@ export interface Product
     updated_at: string;
     status: ProductStatus;
     category: ProductCategory;
+    order_annotations?: {
+        product_id: number,
+        annotation: string
+    }[]
 }
