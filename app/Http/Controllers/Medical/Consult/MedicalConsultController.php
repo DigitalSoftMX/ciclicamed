@@ -276,9 +276,9 @@ class MedicalConsultController extends Controller
                 {
                     $data->update([
                         'fum' => $request->input('data.fum'),
-                        'collected_by' => Auth::user()->id,
+                        'collected_by' => $user['employee']['id'],
                         'finish_at' => $time,
-                        'updated_by' => Auth::user()->id
+                        'updated_by' => $user['employee']['id']
                     ]);
                     $consult->update([
                         'nurse_finish_at' => $time,
@@ -291,8 +291,8 @@ class MedicalConsultController extends Controller
                     'medicaltest_id' => $id,
                     'fum' => $request->input('data.fum'),
                     'finish_at' => $time,
-                    'collected_by' => Auth::user()->id,
-                    'updated_by' => Auth::user()->id
+                    'collected_by' => $user['employee']['id'],
+                    'updated_by' => $user['employee']['id']
                 ]);
                 $test->update([
                     'medicalteststatus_id' => 2,
@@ -315,7 +315,7 @@ class MedicalConsultController extends Controller
                     'medicalconsult_id' => $id,
                     'data' => json_encode($request->input('data.cita')),
                     'medicalspecialty_id' => $consult->medicalspecialty_id,
-                    'updated_by' => Auth::user()->id
+                    'updated_by' => $user['employee']['id']
                 ]);
                 $consult->update([
                     'nurse_finish_at' => $time
@@ -327,7 +327,7 @@ class MedicalConsultController extends Controller
                 'medicalconsult_id' => $id,
                 'data' => json_encode($request->input('data.cita')),
                 'medicalspecialty_id' => $consult->medicalspecialty_id,
-                'updated_by' => Auth::user()->id
+                'updated_by' => $user['employee']['id']
             ]);
             $consult->update([
                 'nurse_finish_at' => $time
@@ -343,14 +343,14 @@ class MedicalConsultController extends Controller
                 MedicalHistory::create([
                     'medicalconsult_id' => $id,
                     'data' => json_encode($request->input('data.historial.data')),
-                    'updated_by' => Auth::user()->id
+                    'updated_by' => $user['employee']['id']
                 ]);
         
                 MedicalAttachment::create([
                     'patient_id' => $consult['patient_id'],
                     'data' => json_encode($request->input('data.especialidad')),
                     'medicalspecialty_id' => $consult['medicalspecialty_id'],
-                    'updated_by' => Auth::user()->id
+                    'updated_by' => $user['employee']['id']
                 ]);  
                 
             }
@@ -359,7 +359,7 @@ class MedicalConsultController extends Controller
                 'medicalconsult_id' => $id,
                 'data' => json_encode($request->input('data.cita.data')),
                 'medicalspecialty_id' => $consult->medicalspecialty_id,
-                'updated_by' => Auth::user()->id,
+                'updated_by' => $user['employee']['id'],
                 'consult_finish_at' => $time = Carbon::now()->setTimezone('America/Mexico_City')
             ]);
 

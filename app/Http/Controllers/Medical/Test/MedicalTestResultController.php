@@ -58,7 +58,7 @@ class MedicalTestResultController extends Controller
                 MedicalTestResult::where('medicaltest_id', $id)->delete();
                 MedicalTestResult::create([
                     'medicaltest_id' => $id,
-                    'created_by' => $employee['id'],
+                    'created_by' => $employee['employee']['id'],
                     'results' =>  $result,
                     'notes' => $request['notes']
                 ]);

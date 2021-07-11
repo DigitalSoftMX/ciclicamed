@@ -3,6 +3,14 @@ import { createApp, defineAsyncComponent } from 'vue';
 import {asset} from '@codinglabs/laravel-asset'
 import vSelect from "vue-select-3/src";
 import 'element-plus/lib/theme-chalk/index.css';
+import AdministradorDashboardPage from '@page/administrador/AdministradorDashboardPage/AdministradorDashboardPage';
+import AdministradorConsultPage from '@page/administrador/AdministradorConsultPage/AdministradorConsultPage';
+import AdministradorCobrosPage from '@page/administrador/administradorCobrosPage/AdministradorCobrosPage';
+import AdministradorImagenologiaPage from '@page/administrador/AdministradorImagenologiaPage/AdministradorImagenologiaPage';
+import AdministradorLaboratorioPage from '@page/administrador/AdministradorLaboratorioPage/AdministradorLaboratorioPage';
+import AdministradorCheckupPage from '@page/administrador/AdministradorCheckupPage/AdministradorCheckupPage';
+import AdministradorPrescriptionPage from '@page/administrador/AdministradorPrescriptionPage/AdministradorPrescriptionPage';
+import AdministradorProfilePage from '@page/administrador/AdministradorProfilePage/AdministradorProfilePage';
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -49,6 +57,14 @@ const app = createApp({
 		CajaDashboardPage: require('@page/caja/cajaDashboardPage/CajaDashboardPage.vue').default,
 		CajaProfilePage: require('@page/caja/cajaProfilePage/CajaProfilePage.vue').default,
 
+		AdministradorDashboardPage,
+		AdministradorConsultPage,
+		AdministradorCobrosPage,
+		AdministradorImagenologiaPage,
+		AdministradorLaboratorioPage,
+		AdministradorCheckupPage,
+		AdministradorPrescriptionPage,
+		AdministradorProfilePage,
 		AdministradorProductPage: require('@page/administrador/AdministradorProductPage/AdministradorProductPage.vue').default,
 		AdministradorUserPage: require('@page/administrador/AdministradorUserPage/AdministradorUserPage.vue').default
 

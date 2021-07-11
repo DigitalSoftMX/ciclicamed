@@ -165,7 +165,7 @@ class PaymentController extends Controller
                 if($request['data']['debt']['check'] && intval($request['data']['debt']['description']) > 0)
                 {
                     $payment->update([
-                        'updated_by' => Auth::user()->id,
+                        'updated_by' => $user['employee']['id'],
                         'discount' => $discount,
                         'total' => $price - $discount,
                         'paymentstatus_id' => 2,
@@ -185,7 +185,7 @@ class PaymentController extends Controller
                 //Si no se cumple la condicion anterior solo se actualiza el pago
                 else {
                     $payment->update([
-                        'updated_by' => Auth::user()->id,
+                        'updated_by' => $user['employee']['id'],
                         'discount' => $discount,
                         'total' => $price - $discount,
                         'paymentstatus_id' => 3,

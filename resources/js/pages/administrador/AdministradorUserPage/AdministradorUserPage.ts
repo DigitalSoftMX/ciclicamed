@@ -5,6 +5,7 @@ import { EmployeeData } from '@data/Employee/Employee.data';
 import { Employee } from '@interface/Employee/Employee.interface';
 import { defineComponent } from '@vue/runtime-core';
 import { PropType } from 'vue';
+import { AdministradorSidebarConfig } from '@config/AdministradorSidebar.config';
 
 export default defineComponent({
     components: {
@@ -25,7 +26,7 @@ export default defineComponent({
     },
     data() {
         return {
-            sidebarItems: AsistenteSidebarConfig,
+            sidebarItems: AdministradorSidebarConfig,
             isSidebarOpen: false
         };
     },

@@ -10,6 +10,7 @@ import UploadFileComponent from '@component/general/uploadFile/UploadFileCompone
 import { Test } from '@interface/Medical/Test.interface';
 import ConsultPatientProfileComponent from '@component/medical/consult/consultPatientProfile/ConsultPatientProfileComponent';
 import TestUploadComponent from '@component/medical/test/testUpload/TestUploadComponent';
+import { Employee } from '@interface/Employee/Employee.interface';
 
 export default defineComponent({
     components: {
@@ -22,7 +23,7 @@ export default defineComponent({
     },
     props: {
         imagenologia: {
-            type: Object as PropType<Patient>,
+            type: Object as PropType<Employee>,
             default: PatientData
         },
         role: {

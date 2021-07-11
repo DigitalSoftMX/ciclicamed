@@ -52,6 +52,9 @@ export default defineComponent({
         {
             switch(this.role)
             {
+                case 'Administrador':
+                    this.$emit('onDoctorBranchSelected', this.employeeBranchSelected);
+                    break;  
                 case 'Doctor':
                     this.$emit('onDoctorBranchSelected', this.employeeBranchSelected);
                     break;                    
@@ -76,6 +79,9 @@ export default defineComponent({
         {
             switch(this.role)
             {
+                case 'Administrador':
+                    this.$emit('onNurseBranchSelected', this.employeeBranchSelected);
+                    break;
                 case 'Paciente':
                     this.$emit('onUserSchedule');
                     break;
@@ -90,6 +96,9 @@ export default defineComponent({
         {
             switch(this.role)
             {
+                case 'Administrador':
+                    this.$emit('onAllNurseBranchSelected');
+                    break;
                 case 'Paciente':
                     break;
                 case 'Enfermera':

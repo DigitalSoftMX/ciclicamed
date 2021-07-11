@@ -2,6 +2,9 @@
 @section('content')
 <div id="app">
     @switch($roles[0]->name)
+        @case('Administrador')
+            <administrador-dashboard-page :patient="{{ json_encode($user) }}" role="Administrador"></administrador-dashboard-page>
+            @break
         @case('Paciente')
             <patient-dashboard-page :patient="{{ json_encode($user) }}" role="Paciente"></patient-dashboard-page>
             @break
