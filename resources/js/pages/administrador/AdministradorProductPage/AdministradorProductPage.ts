@@ -1,3 +1,4 @@
+import { AdministradorSidebarConfig } from '@config/AdministradorSidebar.config';
 import { AsistenteSidebarConfig } from '@config/AsistenteSidebar.config';
 import { EmployeeData } from '@data/Employee/Employee.data';
 import { Employee } from '@interface/Employee/Employee.interface';
@@ -23,7 +24,7 @@ export default defineComponent({
     },
     data() {
         return {
-            sidebarItems: AsistenteSidebarConfig,
+            sidebarItems: AdministradorSidebarConfig,
             isSidebarOpen: false
         };
     },

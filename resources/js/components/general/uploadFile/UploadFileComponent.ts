@@ -32,6 +32,9 @@ export default defineComponent({
     mounted() {
         switch(this.role)
         {
+            case 'Administrador':
+                this.acceptFiles = '.pdf,.jpg,.jpeg,.png,.bmp';
+                break;
             case 'Laboratorio':
                 this.acceptFiles = '.pdf';
                 break;
@@ -45,6 +48,9 @@ export default defineComponent({
         {
             switch(this.role)
             {
+                case 'Administrador':
+                    this.acceptFiles = '.pdf,image/jpg,image/jpeg,image/png,image/bmp';
+                    break;
                 case 'Laboratorio':
                     this.acceptFiles = '.pdf';
                     break;
@@ -88,6 +94,9 @@ export default defineComponent({
             event.preventDefault();
             switch(this.role)
             {
+                case 'Administrador':
+                    this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
+                    break;
                 case 'Laboratorio':
                     this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf').slice(0,3);
                     break;
@@ -108,6 +117,9 @@ export default defineComponent({
             {
                 switch(this.role)
                 {
+                    case 'Administrador':
+                        this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
+                        break;
                     case 'Laboratorio':
                         this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
                         break;

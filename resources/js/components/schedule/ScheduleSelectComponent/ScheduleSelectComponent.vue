@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="card mb-25 rounded" v-if="role === 'Enfermera'">
+    <div class="card mb-25 rounded" v-if="role === 'Enfermera' || role === 'Administrador'">
         <div class="card-header">
             <h1>Mi agenda</h1>
         </div>

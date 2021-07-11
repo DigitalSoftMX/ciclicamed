@@ -12,6 +12,48 @@ use Illuminate\Support\Facades\Cookie;
 
 class PageController extends Controller
 {
+    public function showLaboratorio()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user->hasRole('Administrador'))
+        {
+            return response()->view('pages.laboratorio', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+        return response()->view('errors.404', [], 404);
+    }
+
+    public function showImagenologia()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user->hasRole('Administrador'))
+        {
+            return response()->view('pages.imagenologia', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+        return response()->view('errors.404', [], 404);
+    }
+
+    public function showCobro()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user->hasRole('Administrador'))
+        {
+            return response()->view('pages.cobros', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+        return response()->view('errors.404', [], 404);
+    }
+
     public function showUsers()
     {
         $user = User::findOrFail(Auth::user()->id);

@@ -50,6 +50,9 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/consulta', [PageController::class, 'showConsulta'])->name('app.consulta');
         Route::get('/productos', [PageController::class, 'showProductos'])->name('app.productos');
         Route::get('/usuarios', [PageController::class, 'showUsers'])->name('app.usuarios');
+        Route::get('/cobros', [PageController::class, 'showCobro'])->name('app.cobros');
+        Route::get('/imagenologia', [PageController::class, 'showImagenologia'])->name('app.imagenologia');
+        Route::get('/laboratorio', [PageController::class, 'showLaboratorio'])->name('app.laboratorio');
     });
 
     // Usuarios
