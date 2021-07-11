@@ -212,17 +212,30 @@ class PaymentController extends Controller
         $request->validated();
         $payment = Payment::findOrFail($id);
         $user = User::findOrFail(Auth::user()->id);
+        if(intval($request['paymentMethod']['check']) > 1 && !is_numeric($request['paymentMethod']['description']))
+        {
+            return response()->json(['errors' => [
+                'tarjeta' => ['Verifique que haya ingresado correctamente los dígitos de la tarjeta']
+            ]], 401);
+        }
+
         if($user->hasRole(['Caja', 'Caja administrador', 'Administrador']))
         {
             if(intval($payment['paymentstatus_id']) === 2)
             {
+                $creditCard = null;
+                if(intval($request['paymentMethod']['check']) === 1 && is_numeric($request['paymentMethod']['description']))
+                {
+                    $creditCard = $request['data']['paymentMethod']['description'];
+                }
+
                 PaymentDebt::create([
                     'payment_id' => $id,
                     'description' => $request['descripcion'],
                     'total' => $request['cantidad'],
-                    'paymentmethod_id' => $request['formaPago'],
+                    'paymentmethod_id' => $request['paymentMethod']['check'],
                     'charged_by' => $user['employee']['id'],
-                    'credit_card' => $request['tarjeta'],
+                    'credit_card' => $creditCard,
                 ]);
 
                 //Verifica si el pago de la deuda esta completa, si esta entonces lo marca como completado

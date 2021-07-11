@@ -18,18 +18,34 @@ export default defineComponent({
     },
     emits: ['updateUser', 'updatePhoto'],
     props: {
+        id: {
+            type: String as PropType<String>,
+            default: 'uspc'
+        },
         userID: {
             type: Number,
-            default: 1
+            default: 0
         },
         userCategory: {
             type: String,
-            default: 'pacientes'
+            default: ''
         },
         userData: {
             type: Object as PropType<Patient | Employee>,
             default: {}
-        }
+        },
+        disabled: {
+            type: Boolean as PropType<Boolean>,
+            default: false
+        },
+        roles: {
+            type: Array as PropType<String[]>,
+            default: []
+        },
+        isNew: {
+            type: Boolean as PropType<Boolean>,
+            default: false
+        },
     },
     data() {
         return {
@@ -40,6 +56,16 @@ export default defineComponent({
             isButtonDisabled: true,
             formCharacters: [] as any
         };
+    },
+    watch:
+    {
+        userData: {
+            handler()
+            {
+                this.userForm = cloneDeep(this.userData);
+            },
+            deep: true
+        }
     },
     mounted() {
         const self = this;
@@ -69,6 +95,42 @@ export default defineComponent({
         {
             return moment(birthday).format('DD-MM-YYYY');
         },
+        createUser() {
+            console.log('POST')
+            var formData = new FormData();
+            this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
+            
+            formData.append('email', this.userForm.user.email);
+            formData.append('first_name', this.userForm.first_name);
+            formData.append('last_name', this.userForm.last_name);
+            formData.append('gender', this.userForm.gender!.toString());
+            formData.append('birthday', this.userForm.birthday!);
+            formData.append('address', this.userForm.address!);
+            formData.append('phone', this.userForm.phone!);
+            formData.append('cellphone', this.userForm.cellphone!);
+            formData.append('roles', JSON.stringify(this.roles));
+            formData.append('_method', 'POST')
+
+            if(this.photo.size > 0)
+            {
+                formData.append('photo', this.photo);
+            }
+
+            axios.post(`/${this.userCategory}`, formData, {headers: { "Content-Type": "multipart/form-data"}})
+            .then(response => {
+                console.log(response.data)
+                this.successMessage = 'El usuario se ha creado correctamente';
+                $(`#${this.id}profileSuccess`).modal('show');
+                this.cleanPhotoSelected();
+            })
+            .catch(error => {
+                console.log(error)
+                this.errors = error.response.data.errors;
+                $(`#${this.id}profileError`).modal('show');
+                this.userForm = cloneDeep(this.userData);
+            })
+            this.isButtonDisabled = true;
+        },
         updateProfile() {
             var formData = new FormData();
             this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
@@ -91,14 +153,14 @@ export default defineComponent({
             axios.post(`/${this.userCategory}/${this.userForm.id}`, formData, {headers: { "Content-Type": "multipart/form-data"}})
             .then(response => {
                 this.successMessage = 'Los datos del perfil se han actualizado correctamente';
-                $('#profileSuccess').modal('show');
+                $(`#${this.id}profileSuccess`).modal('show');
                 this.cleanPhotoSelected();
                 this.$emit('updateUser', this.userForm);
             })
             .catch(error => {
                 console.log(error)
                 this.errors = error.response.data.errors;
-                $('#profileError').modal('show');
+                $(`#${this.id}profileError`).modal('show');
                 this.userForm = cloneDeep(this.userData);
             })
             this.isButtonDisabled = true;
@@ -130,12 +192,15 @@ export default defineComponent({
             return this.formCharacters[key] === undefined ? Object.keys(this.userForm).find(item => item === key)?.length : this.formCharacters[key];
         },
         selectFile(event: Event) {
-            const file = (event.target as HTMLInputElement).files![0] || [];
-            this.photo= file;
-            const input = (document.getElementById('upcImage') as HTMLImageElement);
-            input.src = URL.createObjectURL(file);
-            this.isButtonDisabled = false;
-            this.$emit('updatePhoto', URL.createObjectURL(file));
+            if(!this.disabled)
+            {
+                const file = (event.target as HTMLInputElement).files![0] || [];
+                this.photo= file;
+                const input = (document.getElementById(`${this.id}upcImage`) as HTMLImageElement);
+                input.src = URL.createObjectURL(file);
+                this.isButtonDisabled = false;
+                this.$emit('updatePhoto', URL.createObjectURL(file));
+            }
         },
         cleanPhotoSelected()
         {

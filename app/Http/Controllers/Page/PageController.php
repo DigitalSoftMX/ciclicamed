@@ -12,10 +12,37 @@ use Illuminate\Support\Facades\Cookie;
 
 class PageController extends Controller
 {
-    public function showDashboard()
+    public function showUsers()
     {
         $user = User::findOrFail(Auth::user()->id);
 
+        if($user->hasRole('Administrador'))
+        {
+            return response()->view('pages.users', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+        return response()->view('errors.404', [], 404);
+    }
+
+    public function showProductos()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user->hasRole('Administrador'))
+        {
+            return response()->view('pages.products', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+        return response()->view('errors.404', [], 404);
+    }
+
+    public function showDashboard()
+    {
+        $user = User::findOrFail(Auth::user()->id);
 
         if($user['usercategory_id'] === 1 && $user->hasRole('Paciente'))
         {

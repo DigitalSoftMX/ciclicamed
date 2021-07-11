@@ -3,9 +3,9 @@
         <div class="card-body">
             <div class="account-profile d-flex align-items-center mb-4 justify-content-center">
                 <div class="ap-img pro_img_wrapper">
-                    <input id="file-upload" type="file" name="fileUpload" accept=".jpg, .jpeg, .png, .bmp, .svg')" class="d-none" @change="selectFile($event)">
-                    <label for="file-upload">
-                        <img class="ap-img__main rounded-circle wh-120 d-flex bg-opacity-primary" id="upcImage"
+                    <input :id="id + 'file-upload'" type="file" name="fileUpload" accept=".jpg, .jpeg, .png, .bmp, .svg')" class="d-none" @change="selectFile($event)" :disabled="disabled">
+                    <label :for="id + 'file-upload'">
+                        <img class="ap-img__main rounded-circle wh-120 d-flex bg-opacity-primary" :id="id + 'upcImage'"
                             :src="`/images/users/${userForm.photo}`" alt="profile"
                             onerror="this.onerror=null;this.src='../svg/person.svg';">
                         <span class="cross" id="remove_pro_pic">
@@ -30,9 +30,9 @@
                     <label for="firstName">Nombre(s)</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img :src="asset('/svg/person.svg')" alt="Person logo">
+                            <img-component url="/svg/person.svg"  alt="Nombres"></img-component>
                         </span>
-                        <input type="text" class="form-control form-control-lg" id="firstName" placeholder="Nombre(s)"
+                        <input type="text" class="form-control form-control-lg" :id="id + 'firstName'" placeholder="Nombre(s)" :disabled="disabled"
                             maxlength="100" v-model="userForm.first_name"
                             @keyup="checkProfileData(); updateCharacter('first_name')">
                     </div>
@@ -45,9 +45,9 @@
                     <label for="lastName">Apellidos</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img :src="asset('/svg/person.svg')" alt="Person logo">
+                            <img-component url="/svg/person.svg"  alt="Apellidos"></img-component>
                         </span>
-                        <input type="text" class="form-control form-control-lg" id="lastName" placeholder="Apellidos"
+                        <input type="text" class="form-control form-control-lg" :id="id + 'lastName'" placeholder="Apellidos" :disabled="disabled"
                             maxlength="100" v-model="userForm.last_name"
                             @keyup="checkProfileData(); updateCharacter('last_name')">
                     </div>
@@ -60,10 +60,10 @@
                     <label for="email">Correo electrónico</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img :src="asset('/svg/email.svg')" alt="Email logo">
+                            <img-component url="/svg/email.svg"  alt="Correo"></img-component>
                         </span>
-                        <input type="email" class="form-control form-control-lg" id="name3"
-                            placeholder="ejemplo@correo.com" maxlength="100" v-model="userForm.user.email"
+                        <input type="email" class="form-control form-control-lg" :id="id + 'name3'"
+                            placeholder="ejemplo@correo.com" maxlength="100" v-model="userForm.user.email" :disabled="disabled"
                             @keyup="checkProfileData(); updateCharacter('email')">
                     </div>
                     <div class="float-right">
@@ -75,9 +75,9 @@
                     <label for="phoneNumber5">Teléfono de Casa</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img :src="asset('/svg/phone.svg')" alt="Phone logo">
+                            <img-component url="/svg/phone.svg"  alt="Telefono"></img-component>
                         </span>
-                        <input type="tel" class="form-control form-control-lg" id="phone" placeholder="1234567890"
+                        <input type="tel" class="form-control form-control-lg" :id="id + 'phone'" placeholder="1234567890" :disabled="disabled"
                             maxlength="10" v-model="userForm.phone"
                             @keyup="checkProfileData(); updateCharacter('phone')">
                     </div>
@@ -90,9 +90,9 @@
                     <label for="phoneNumber5">Celular</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img :src="asset('/svg/cellphone.svg')" alt="Cellphone logo">
+                            <img-component url="/svg/cellphone.svg"  alt="Celular"></img-component>
                         </span>
-                        <input type="tel" class="form-control form-control-lg" id="cellphone" placeholder="1234567890"
+                        <input type="tel" class="form-control form-control-lg" :id="id + 'cellphone'" placeholder="1234567890" :disabled="disabled"
                             maxlength="10" v-model="userForm.cellphone"
                             @keyup="checkProfileData(); updateCharacter('cellphone')">
                     </div>
@@ -105,9 +105,9 @@
                     <label for="name2">Dirección</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img :src="asset('/svg/address.svg')" alt="Address logo">
+                            <img-component url="/svg/address.svg"  alt="Direccion"></img-component>
                         </span>
-                        <textarea type="text" class="form-control form-control-lg" id="address" placeholder="Dirección"
+                        <textarea type="text" class="form-control form-control-lg" :id="id + 'address'" placeholder="Dirección" :disabled="disabled"
                             v-model="userForm.address" @keyup="checkProfileData(); updateCharacter('address')"
                             maxlength="255"></textarea>
                     </div>
@@ -120,18 +120,18 @@
                     <label for="name2">Sexo</label>
                     <div class="radio-horizontal-list d-flex">
                         <div class="input-group-prepend r-3 rounded px-2 ">
-                            <img :src="asset('/svg/gender.svg')" alt="Calendar logo">
+                            <img-component url="/svg/gender.svg"  alt="Sexo"></img-component>
                         </div>
                         <div class="d-flex px-4">
                             <div class="radio-theme-default custom-radio ">
-                                <input class="radio" type="radio" name="gender" value="0" id="radio-vl1"
+                                <input class="radio" type="radio" name="gender" value="0" :id="id + 'radio-vl1'" :disabled="disabled"
                                     v-model="userForm.gender" @change="checkProfileData('gender')">
                                 <label for="radio-vl1">
                                     <span class="radio-text">Hombre</span>
                                 </label>
                             </div>
                             <div class="radio-theme-default custom-radio ">
-                                <input class="radio" type="radio" name="gender" value="1" id="radio-vl2"
+                                <input class="radio" type="radio" name="gender" value="1" :id="id + 'radio-vl2'" :disabled="disabled"
                                     v-model="userForm.gender" @change="checkProfileData('gender')">
                                 <label for="radio-vl2">
                                     <span class="radio-text">Mujer</span>
@@ -145,16 +145,20 @@
                     <label>Fecha de nacimiento</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img :src="asset('/svg/calendar.svg')" alt="Birthday logo">
+                            <img-component url="/svg/calendar.svg"  alt="Calendario"></img-component>
                         </span>
-                        <input type="text" class="form-control form-control-lg form-control form-control-lg-lg "
-                            id="birthday" placeholder="dd/mm/aaaa" :value="birthday" maxlength="10" readonly>
+                        <input type="text" class="form-control form-control-lg form-control form-control-lg-lg " :disabled="disabled"
+                            :id="id + 'birthday'" placeholder="dd/mm/aaaa" :value="birthday" maxlength="10" readonly>
                     </div>
                 </div>
 
-                <div class="button-group d-flex pt-25 justify-content-end">
+                <div class="button-group d-flex pt-25 justify-content-end" v-if="!disabled">
                     <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
-                        v-on:click="updateProfile()" :disabled="isButtonDisabled">
+                        v-on:click="createUser()" v-if="isNew">
+                        Crear datos
+                    </button>
+                    <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
+                        v-on:click="updateProfile()" :disabled="isButtonDisabled" v-else>
                         Actualizar datos
                     </button>
                 </div>
@@ -162,10 +166,10 @@
         </div>
     </div>
     <!--Modal de error-->
-    <error-alert-component :id="'profileError'" :errors="errors" :title="'Error al actualizar los datos del perfil'">
+    <error-alert-component :id="id + 'profileError'" :errors="errors" :title="'Error al actualizar los datos del perfil'">
     </error-alert-component>
     <!--Modal de exito-->
-    <success-alert-component :id="'profileSuccess'" :message="successMessage" :title="'Datos del perfil actualizados'">
+    <success-alert-component :id="id + 'profileSuccess'" :message="successMessage" :title="'Datos del perfil actualizados'">
     </success-alert-component>
 </template>
 

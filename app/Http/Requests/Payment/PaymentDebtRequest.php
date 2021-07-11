@@ -25,8 +25,8 @@ class PaymentDebtRequest extends FormRequest
     {
         return [
             'cantidad' => ['required', 'numeric', 'between:0.50,999999.99'],
-            'formaPago' => ['required', 'numeric'],
-            'tarjeta' => ['nullable', 'digits:4', 'numeric'],
+            'paymentMethod.check' => ['required', 'numeric'],
+            'paymentMethod.description' => ['nullable', 'digits:4', 'numeric'],
             'descripcion' => ['required', 'max:255'],
         ];
     }
@@ -38,10 +38,10 @@ class PaymentDebtRequest extends FormRequest
             'cantidad.required' => 'Ingrese una cantidad',
             'cantidad.numeric' => 'La cantidad debe ser numerica',
             'cantidad.between' => 'La cantidad del pago debe estar entre $0.50 y $999,999.99',
-            'formaPago.required' => 'Ingrese una cantidad',
-            'formaPago.numeric' => 'La forma de pago debe existir en el sistema',
-            'tarjeta.digits' => 'Debe ingresar los últimos 4 dígitos de la tarjeta',
-            'tarjeta.numeric' => 'Solo puede ingresar números',
+            'paymentMethod.check.required' => 'Ingrese una cantidad',
+            'paymentMethod.check.numeric' => 'La forma de pago debe existir en el sistema',
+            'paymentMethod.description.digits' => 'Debe ingresar los últimos 4 dígitos de la tarjeta',
+            'paymentMethod.description.numeric' => 'Solo puede ingresar números',
             'descripcion.required' => 'Ingrese una descripción del pago',
             'descripcion.max' => 'La descripción del pago no debe de sobrepasar los 255 caracteres',
         ];

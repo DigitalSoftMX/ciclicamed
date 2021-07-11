@@ -3,7 +3,6 @@
 namespace App\Models\Branch;
 
 use App\Models\Employee\Employee;
-use App\Models\Employee\EmployeeCategory;
 use App\Models\Medical\Consult\MedicalConsult;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\employee\employeeUpdateRequest;
+use App\Http\Requests\Employee\NewEmployeeRequest;
+use App\Http\Requests\Employee\RoleRequest;
 use App\Http\Requests\Patient\PatientUpdateRequest;
 use App\Models\Branch\Branch;
 use App\Models\Employee\Employee;
@@ -12,12 +14,144 @@ use App\Models\Employee\EmployeeStatus;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Medical\MedicalSpecialty;
 use App\Models\User\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class EmployeeController extends Controller
 {
+    public function createEmployee(NewEmployeeRequest $request)
+    {        
+        $request->validated();
+        $roles = json_decode($request->input('roles'));
+        if(count($roles) === 0)
+        {
+            return response()->json(['errors' => [
+                'roles' => ['Debe de seleccionar al menos un rol']
+            ]], 401);
+        }
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $file = $request->file('photo');
+            $photo = basename($file->store('user'));
+            $user = User::create([
+                'email' => $request->input('email'),
+                'email_verified_at' => Carbon::now(),
+                'password' => Hash::make($request->input('empleado')),
+                'userstatus_id' => 1,
+                'usercategory_id' => 2,
+            ]);
+
+            
+            $user->assignRole($roles);
+
+            $employee = Employee::create([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'gender' => $request->input('gender'),
+                'birthday' => $request->input('birthday'),
+                'address' => $request->input('address'),
+                'phone' => $request->input('phone'),
+                'cellphone' => $request->input('cellphone'),
+                'photo' => $photo,
+                'employeestatus_id' => 1,
+                'user_id' => $user->id
+            ]);
+            return response()->json($employee);
+        }
+        
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function setEmployeeRoles(RoleRequest $request, $id)
+    {
+        $request->validated();
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $employee = Employee::findOrFail($id);
+            $employeeID = $employee['user']['id'];
+            $userEmployee = User::findOrFail($employeeID);
+            $roles = $userEmployee->getRoleNames();
+            foreach($roles as $role)
+            {
+                $userEmployee->removeRole($role);
+            }
+            $userEmployee->assignRole($request['roles']);
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+
+        return response()->json($request['roles']);
+    }
+
+    public function getEmployeeRoles($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $employee = Employee::findOrFail($id);
+            $userEmployee = $employee['user']['id'];
+            $roles = User::findOrFail($userEmployee)->getRoleNames();
+            return response()->json($roles);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function getAllRoles()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            return response()->json(Role::all());
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function enableEmployee($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            Employee::findOrFail($id)->update([
+                'employeestatus_id' => 1
+            ]);
+
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function disableEmployee($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            Employee::findOrFail($id)->update([
+                'employeestatus_id' => 2
+            ]);
+
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function getAllSchedules()
     {
         $user = User::findOrFail(Auth::user()->id);
@@ -47,46 +181,64 @@ class EmployeeController extends Controller
         ]], 401);
     }
 
-    public function getDoctors()
+    public function getDoctors() //Arreglar doctores
     {
         $status = EmployeeStatus::where('name', 'Empleado')->id;
         $branches =  Branch::with(['employees' => function($query) use($status){
             $query->where('employeestatus_id', $status)
-            ->whereHas('category', function ($query) {
-                $query->where('name', 'Doctor');
-            })->groupBy('branch_id', 'employee_id')->without(['pivot'])->get(['employees.id', 'employees.first_name', 'employees.last_name']);
+            ->with(['user' => function($query) use($status){
+                $query->where('role', function($query) {
+                    return $query->name === 'Doctor';
+                 });
+                // ->whereHas('category', function ($query) {
+                //     $query->where('name', 'Doctor');
+                // })->groupBy('branch_id', 'employee_id')->without(['pivot'])->get(['employees.id', 'employees.first_name', 'employees.last_name']);
+            }]);
+            // ->whereHas('category', function ($query) {
+            //     $query->where('name', 'Doctor');
+            // })->groupBy('branch_id', 'employee_id')->without(['pivot'])->get(['employees.id', 'employees.first_name', 'employees.last_name']);
         }])
-            ->get(['branches.id', 'branches.name']);
+        ->get(['branches.id', 'branches.name']);
         return response()->json($branches);
     }
 
     public function getAllEmployees(Request $request)
     {
-        $employee = [];
-        if($request->has('query'))
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
         {
-            $query = $request->input('query');
-            $employee = Employee::where('id', 'like', '%'.$query.'%')
-                    ->orWhere('first_name', 'like', '%'.$query.'%')
-                    ->orWhere('last_name', 'like', '%'.$query.'%')
-                    ->orWhere('cellphone', 'like', '%'.$query.'%')
-                    ->paginate();
-        } else {
-            $employee = Employee::paginate();
+            $employee = [];
+            if($request->has('query'))
+            {
+                $query = $request->input('query');
+                $employee = Employee::where('id' , '!=', 1)->where('id', '!=', 2)
+                ->where(function($item) use($query){
+                        $item->where('id', 'like', '%'.$query.'%')
+                        ->orWhere('first_name', 'like', '%'.$query.'%')
+                        ->orWhere('last_name', 'like', '%'.$query.'%')
+                        ->orWhere('cellphone', 'like', '%'.$query.'%');
+                })
+                ->paginate();
+            } else {
+                $employee = Employee::where('id' , '!=', 1)->where('id', '!=', 2)->paginate();
+            }
+            
+            $response = [
+                'pagination' => [
+                    'total' => $employee->total(),
+                    'per_page' => $employee->perPage(),
+                    'current_page' => $employee->currentPage(),
+                    'last_page' => $employee->lastPage(),
+                    'from' => $employee->firstItem(),
+                    'to' => $employee->lastItem()
+                ],
+                'data' => $employee->load('user', 'status', 'specialties', 'user.status')
+            ];
+            return response()->json($response);
         }
-        
-        $response = [
-            'pagination' => [
-                'total' => $employee->total(),
-                'per_page' => $employee->perPage(),
-                'current_page' => $employee->currentPage(),
-                'last_page' => $employee->lastPage(),
-                'from' => $employee->firstItem(),
-                'to' => $employee->lastItem()
-            ],
-            'data' => $employee->load('user', 'category', 'status', 'specialties', 'user.status')
-        ];
-        return response()->json($response);
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function updateEmployee(PatientUpdateRequest $request, $id)

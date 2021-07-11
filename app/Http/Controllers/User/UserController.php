@@ -136,7 +136,7 @@ class UserController extends Controller
                 'from' => $patient->firstItem(),
                 'to' => $patient->lastItem()
             ],
-            'data' => $patient->load('preregistration')
+            'data' => $patient->load('preregistration', 'user')
         ];
         foreach($patient as $patientData)
         {

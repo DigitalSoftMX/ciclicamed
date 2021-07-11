@@ -36,7 +36,6 @@ class EmployeeFactory extends Factory
                 'cellphone' => null,
                 'email' => null,
                 'photo' => null,
-                'employeecategory_id' => 1,
                 'employeestatus_id' => 1,
                 'user_id' => null
             ]);
@@ -55,7 +54,6 @@ class EmployeeFactory extends Factory
                 'cellphone' => null,
                 'email' => null,
                 'photo' => null,
-                'employeecategory_id' => 1,
                 'employeestatus_id' => 1,
                 'user_id' => null
             ]);
@@ -71,7 +69,6 @@ class EmployeeFactory extends Factory
             'cellphone' => $this->faker->regexify('[0-9]{10}'),
             'email' => $this->faker->unique()->safeEmail(),
             'photo' => $this->faker->regexify('[A-Za-z0-9]{25}'),
-            'employeecategory_id' => $this->faker->numberBetween(1, 6),
             // 'employeestatus_id' => $this->faker->numberBetween(1, 2),
             'employeestatus_id' => 1,
             'user_id' => $employeeUser++

@@ -1,21 +1,23 @@
 <template>
     <div class="breadcrumb-main">
-        <h4 class="text-capitalize breadcrumb-title mb-25 mb-md-0">Pacientes</h4>
         <div class="form-group p-0">
             <div class="with-icon">
                 <span class="mr-5">
-                    <img :src="asset('/svg/search.svg')" alt="Search">
+                    <img-component url="/svg/search.svg"  alt="Buscar"></img-component>
                 </span>
                 <input type="text" class="form-control form-control-lg bg-white" v-model="query"
                     @keyup="getUserDataQuery()" placeholder="Buscar">
             </div>
         </div>
+        <h4 class="text-capitalize breadcrumb-title mb-25 mb-md-0">
+            <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2" @click="createEmployee"> Crear empleado </button>
+        </h4>
     </div>
-
     <div class="card mt-30 spin-embadded" v-bind:class="{'spin-active': loading}">
         <div class="card-body">
-            <div class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
-                <div class="table-responsive  hide-y-overflow">
+            <div
+                class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
+                <div class="table-responsive hide-y-overflow">
                     <table
                         class="table mb-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
                         data-sorting="true" data-paging-current="1" data-paging-position="right" data-paging-size="10"
@@ -63,8 +65,7 @@
 
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <img class="ap-img__main bg-opacity-primary wh-50 rounded-circle"
-                                        src="https://demo.jsnorm.com/laravel/strikingdash/img/tm1.png" alt="profile">
+                                    <img :src="`/images/users/${user.photo}`" :alt="user.first_name" class="ap-img__main bg-opacity-primary wh-50 rounded-circle" :onerror="`this.src='/svg/person.svg';`">
                                 </td>
 
 
@@ -91,24 +92,27 @@
 
                                 <td class="footable-last-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
+                                    <ul class="orderDatatable_actions mb-0 d-flex flex-wrap justify-content-end">
                                         <li>
                                             <button
+                                                @click="showEmployeeModal(user)"
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img :src="asset('/svg/show.svg')">
+                                                <img-component url="/svg/show.svg"  alt="Mostrar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
-                                                @click="openPreregistration(user)">
-                                                <img :src="asset('/svg/edit.svg')">
+                                                @click="showEditModal(user)"
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
+                                                <img-component url="/svg/edit.svg"  alt="Editar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
+                                                @click="showConfirmationAlert(user)"
                                                 class="btn btn-icon btn-circle btn-outline-danger border-0 button-img">
-                                                <img :src="asset('/svg/delete.svg')">
+                                                <img-component url="/svg/userDisable.svg" alt="Borrar" v-if="user.employeestatus_id === 1"></img-component>
+                                                <img-component url="/svg/userEnable.svg" alt="Borrar" v-else></img-component>
                                             </button>
                                         </li>
                                     </ul>
@@ -160,12 +164,13 @@
             <div class="spinner-border text-primary"></div>
         </div>
     </div>
-
-    <preregistration-component :patientData="patientData" :isNew="false"></preregistration-component>
+    <success-alert-component id="patcSuccess" :title="successAlert.title" :message="successAlert.message"></success-alert-component>
+    <patients-table-modal-component :patient="patientSelected" :disabled="disableEditEmployee" :isNew="isNew"></patients-table-modal-component>
+    <confirmation-alert-component id="patcConfirmation" :title="confirmationAlert.message" @confirmAction="deletePatient"></confirmation-alert-component>
 </template>
 
 <script lang="ts" src="./PatientsTableComponent.ts"></script>
 
-<style lang="scss" scoped>
+<style>
     @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
 </style>

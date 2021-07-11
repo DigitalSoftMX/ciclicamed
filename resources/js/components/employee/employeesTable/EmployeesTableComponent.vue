@@ -1,15 +1,17 @@
 <template>
     <div class="breadcrumb-main">
-        <h4 class="text-capitalize breadcrumb-title mb-25 mb-md-0">Empleados</h4>
         <div class="form-group p-0">
             <div class="with-icon">
                 <span class="mr-5">
-                    <img :src="asset('/svg/search.svg')" alt="Search">
+                    <img-component url="/svg/search.svg"  alt="Buscar"></img-component>
                 </span>
                 <input type="text" class="form-control form-control-lg bg-white" v-model="query"
                     @keyup="getUserDataQuery()" placeholder="Buscar">
             </div>
         </div>
+        <h4 class="text-capitalize breadcrumb-title mb-25 mb-md-0">
+            <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2" @click="createEmployee"> Crear empleado </button>
+        </h4>
     </div>
     <div class="card mt-30 spin-embadded" v-bind:class="{'spin-active': loading}">
         <div class="card-body">
@@ -63,10 +65,8 @@
 
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <img class="ap-img__main bg-opacity-primary wh-50 rounded-circle"
-                                        src="https://demo.jsnorm.com/laravel/strikingdash/img/tm1.png" alt="profile">
+                                    <img :src="`/images/users/${user.photo}`" :alt="user.first_name" class="ap-img__main bg-opacity-primary wh-50 rounded-circle" :onerror="`this.src='/svg/person.svg';`">
                                 </td>
-
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
@@ -98,20 +98,24 @@
                                     <ul class="orderDatatable_actions mb-0 d-flex flex-wrap justify-content-end">
                                         <li>
                                             <button
+                                                @click="showEmployeeModal(user)"
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img :src="asset('/svg/show.svg')">
+                                                <img-component url="/svg/show.svg"  alt="Mostrar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
+                                                @click="showEditModal(user)"
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img :src="asset('/svg/edit.svg')">
+                                                <img-component url="/svg/edit.svg"  alt="Editar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
+                                                @click="showConfirmationAlert(user)"
                                                 class="btn btn-icon btn-circle btn-outline-danger border-0 button-img">
-                                                <img :src="asset('/svg/delete.svg')">
+                                                <img-component url="/svg/userDisable.svg" alt="Borrar" v-if="user.employeestatus_id === 1"></img-component>
+                                                <img-component url="/svg/userEnable.svg" alt="Borrar" v-else></img-component>
                                             </button>
                                         </li>
                                     </ul>
@@ -163,7 +167,9 @@
             <div class="spinner-border text-primary"></div>
         </div>
     </div>
-
+    <success-alert-component id="etmcSuccess" :title="successAlert.title" :message="successAlert.message"></success-alert-component>
+    <employee-table-modal-component :employee="employeeSelected" :disabled="disableEditEmployee" :isNew="isNew"></employee-table-modal-component>
+    <confirmation-alert-component id="etmcConfirmation" :title="confirmationAlert.message" @confirmAction="chooseEmployeeStatus"></confirmation-alert-component>
 </template>
 
 <script lang="ts" src="./EmployeesTableComponent.ts"></script>

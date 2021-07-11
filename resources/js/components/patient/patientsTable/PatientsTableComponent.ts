@@ -1,15 +1,16 @@
 import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
-import $ from 'jquery';
-import moment from 'moment';
+import { EmployeeData } from '@data/Employee/Employee.data';
+import { Employee } from '@interface/Employee/Employee.interface';
+import { UserPagination } from '@interface/User/UserPagination.interface';
 import { UserPaginationData } from '@data/User/UserPagination.data';
 import { PatientData } from '@data/Patient/Patient.data';
-import { UserPagination } from '@interface/User/UserPagination.interface';
-import { Patient } from '@interface/Patient/Patient.interface';
-import { defineAsyncComponent } from 'vue';
+import PatientsTableModalComponent from './patientsTableModal/PatientsTableModalComponent';
+import moment from 'moment';
 
 export default defineComponent({
     components: {
+        PatientsTableModalComponent,
         PreregistrationComponent: require('@component/patient/preregistration/PreregistrationComponent.vue').default
     },
     emits: [],
@@ -23,7 +24,19 @@ export default defineComponent({
             query: '',
             activateSearch: true,
             patientData: PatientData,
-            loading: true
+            loading: true,
+            patientSelected: PatientData,
+            disableEditEmployee: true,
+            successAlert: {
+                title: '',
+                message: ''
+            },
+            confirmationAlert: {
+                title: '',
+                message: ''
+            },
+            isNew: false,
+            rolesSelected: [] as String[],
         };
     },
     mounted() {
@@ -36,6 +49,49 @@ export default defineComponent({
         formatBirthday(birthday: string)
         {
             return moment(birthday).format('DD-MM-YYYY');
+        },
+        updateRole(roles: String[])
+        {
+            this.rolesSelected = roles;
+        },
+        createEmployee()
+        {
+            this.isNew = true;
+            this.patientSelected = EmployeeData;
+            this.disableEditEmployee = false;
+            $('#patcPatient').modal('show');
+        },
+        showConfirmationAlert(employee: Employee)
+        {
+            this.patientSelected = employee;
+            this.confirmationAlert.message = '¿Desea eliminar a este usuario? Esta acción no puede deshacerse'
+            $('#patcConfirmation').modal('show');
+        },
+        deletePatient()
+        {
+            axios.post(`/empleados/${this.patientSelected.id}/deshabilitar`)
+            .then(response => {
+                this.successAlert.title = 'Empleado cesado';
+                this.successAlert.message = 'Empleado cesado correctamente';
+                $('#patcSuccess').modal('show');
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        showEmployeeModal(employee: Employee)
+        {
+            this.isNew = false;
+            this.disableEditEmployee = true;
+            this.patientSelected = employee;
+            $('#patcPatient').modal('show');
+        },
+        showEditModal(employee: Employee)
+        {
+            this.isNew = false;
+            this.disableEditEmployee = false;
+            this.patientSelected = employee;
+            $('#patcPatient').modal('show');
         },
         getUserData(page: number)
         {
@@ -79,10 +135,5 @@ export default defineComponent({
             }
             this.activateSearch = this.query === '' ? false : true;
         },
-        openPreregistration(userData: Patient)
-        {
-            this.patientData = userData;
-            $('#preregistration-modal').modal('show');
-        }
     },
 })

@@ -7,7 +7,6 @@ use App\Models\Checkup\Checkup;
 use App\Models\Checkup\CheckupCategory;
 use App\Models\Checkup\CheckupStatus;
 use App\Models\Employee\Employee;
-use App\Models\Employee\EmployeeCategory;
 use App\Models\Employee\EmployeeDayOff;
 use App\Models\Employee\EmployeeLicense;
 use App\Models\Employee\EmployeeSchedule;
@@ -101,7 +100,6 @@ class DatabaseSeeder extends Seeder
         Preregistration::factory(25)->create();
         Patient::factory(25)->create();
         InvoiceData::factory(5)->create();
-        EmployeeCategory::factory(6)->create();
         EmployeeStatus::factory(2)->create();
         Employee::factory(100)->create();
         MedicalSpecialty::factory(13)->create();

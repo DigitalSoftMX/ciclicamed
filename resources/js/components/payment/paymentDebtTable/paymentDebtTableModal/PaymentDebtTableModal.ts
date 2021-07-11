@@ -20,8 +20,10 @@ export default defineComponent({
     data() {
         return {
             cantidad: 0,
-            formaPago: 1,
-            tarjeta: null,
+            paymentMethod: {
+                check: 1,
+                description: ''
+            },
             descripcion: null,
             errors: []
         };
@@ -29,8 +31,8 @@ export default defineComponent({
     computed: {
         showCredit(): boolean
         {
-            console.log(this.formaPago)
-            return Number(this.formaPago) !== 1 ? true : false;
+            console.log(this.paymentMethod.check)
+            return Number(this.paymentMethod.check) !== 1 ? true : false;
         }
     },
     watch: {
@@ -44,14 +46,13 @@ export default defineComponent({
         {
             axios.post(`/pagos/${this.paymentID}/deudas`, {
                 cantidad: this.cantidad,
-                formaPago: this.formaPago,
-                tarjeta: this.tarjeta,
+                paymentMethod: this.paymentMethod,
                 descripcion: this.descripcion
             })
             .then(response => {
                 this.cantidad = 0,
-                this.formaPago = 1,
-                this.tarjeta = null,
+                this.paymentMethod.check = 1;
+                this.paymentMethod.description = '';
                 this.descripcion = null,
                 $('#pdtmPaymentModal').modal('hide');
                 $('#pdtmSuccess').modal('show');

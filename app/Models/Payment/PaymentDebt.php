@@ -14,7 +14,6 @@ class PaymentDebt extends Model
         'payment_id',
         'description',
         'total',
-        'missing_payment',
         'paymentmethod_id',
         'charged_by',
         'credit_card',

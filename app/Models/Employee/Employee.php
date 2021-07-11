@@ -26,21 +26,17 @@ class Employee extends Model
         'cellphone',
         'email',
         'photo',
-        'employeecategory_id',
         'employeestatus_id',
         'user_id',
     ];
+
+    protected $perPage = 10;
 
     protected $hidden= ['pivot'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(EmployeeCategory::class, 'employeecategory_id');
     }
 
     public function status()

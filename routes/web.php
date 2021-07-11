@@ -48,6 +48,8 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/checkup', [PageController::class, 'showCheckup'])->name('app.checkup');
         Route::get('/productos', [PageController::class, 'showProducts'])->name('app.productos');
         Route::get('/consulta', [PageController::class, 'showConsulta'])->name('app.consulta');
+        Route::get('/productos', [PageController::class, 'showProductos'])->name('app.productos');
+        Route::get('/usuarios', [PageController::class, 'showUsers'])->name('app.usuarios');
     });
 
     // Usuarios
@@ -122,10 +124,16 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     //Empleados
     Route::group(['prefix' => 'empleados'], function() {
         Route::get('/', [EmployeeController::class, 'getAllEmployees'])->name('empleados.todos');
+        Route::post('/', [EmployeeController::class, 'createEmployee'])->name('empleados.createEmpleado');
         Route::patch('/{id}', [EmployeeController::class, 'updateEmployee'])->name('empleados.updateEmpleado');
         Route::get('/{id}/sucursales', [EmployeeController::class, 'getEmployeeBranches'])->name('empleados.sucursales');
         Route::get('/{id}/agenda', [EmployeeController::class, 'getEmployeeSchedules'])->name('empleados.getIDAgenda');
         Route::get('/agenda', [EmployeeController::class, 'getAllSchedules'])->name('empleados.getAgendas');
+        Route::post('/{id}/deshabilitar', [EmployeeController::class, 'disableEmployee'])->name('empleados.disableEmpleado');
+        Route::post('/{id}/habilitar', [EmployeeController::class, 'enableEmployee'])->name('empleados.enableEmpleado');
+        Route::get('/roles', [EmployeeController::class, 'getAllRoles'])->name('empleados.getAllRoles');
+        Route::get('{id}/roles', [EmployeeController::class, 'getEmployeeRoles'])->name('empleados.getrolesEmpleado');
+        Route::post('{id}/roles', [EmployeeController::class, 'setEmployeeRoles'])->name('empleados.setrolesEmpleado');
     });
 
     //Productos

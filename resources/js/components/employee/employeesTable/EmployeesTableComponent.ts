@@ -4,9 +4,12 @@ import { EmployeePaginationData } from '@data/Employee/EmployeePagination.data';
 import { EmployeeData } from '@data/Employee/Employee.data';
 import { EmployeePagination } from '@interface/Employee/EmployeePagination.interface';
 import { defineAsyncComponent } from 'vue';
+import { Employee } from '@interface/Employee/Employee.interface';
+import EmployeeTableModalComponent from './employeeTableModal/EmployeeTableModalComponent';
 
 export default defineComponent({
     components: {
+        EmployeeTableModalComponent
     },
     emits: [],
     props: {
@@ -19,7 +22,19 @@ export default defineComponent({
             query: '',
             activateSearch: true,
             employeeData: EmployeeData,
-            loading: true
+            loading: true,
+            employeeSelected: EmployeeData,
+            disableEditEmployee: true,
+            successAlert: {
+                title: '',
+                message: ''
+            },
+            confirmationAlert: {
+                title: '',
+                message: ''
+            },
+            isNew: false,
+            rolesSelected: [] as String[],
         };
     },
     mounted() {
@@ -29,6 +44,65 @@ export default defineComponent({
 
     },
     methods: {
+        updateRole(roles: String[])
+        {
+            this.rolesSelected = roles;
+        },
+        createEmployee()
+        {
+            this.isNew = true;
+            this.employeeSelected = EmployeeData;
+            this.disableEditEmployee = false;
+            $('#etmcEmployee').modal('show');
+        },
+        showConfirmationAlert(employee: Employee)
+        {
+            this.employeeSelected = employee;
+            this.confirmationAlert.message  = this.employeeSelected.employeestatus_id === 1 ? '¿Desea cesar a este empleado?' : '¿Desea habilitar este empleado?'
+            $('#etmcConfirmation').modal('show');
+        },
+        chooseEmployeeStatus()
+        {
+            this.employeeSelected.employeestatus_id === 1 ? this.disableEmployee() : this.enableEmployee();
+        },
+        disableEmployee()
+        {
+            axios.post(`/empleados/${this.employeeSelected.id}/deshabilitar`)
+            .then(response => {
+                this.successAlert.title = 'Empleado cesado';
+                this.successAlert.message = 'Empleado cesado correctamente';
+                $('#etmcSuccess').modal('show');
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        enableEmployee()
+        {
+            axios.post(`/empleados/${this.employeeSelected.id}/habilitar`)
+            .then(response => {
+                this.successAlert.title = 'Empleado habilitado';
+                this.successAlert.message = 'Empleado habilitado correctamente';
+                $('#etmcSuccess').modal('show');
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        showEmployeeModal(employee: Employee)
+        {
+            this.isNew = false;
+            this.disableEditEmployee = true;
+            this.employeeSelected = employee;
+            $('#etmcEmployee').modal('show');
+        },
+        showEditModal(employee: Employee)
+        {
+            this.isNew = false;
+            this.disableEditEmployee = false;
+            this.employeeSelected = employee;
+            $('#etmcEmployee').modal('show');
+        },
         getUserData(page: number)
         {
             this.loading = true;

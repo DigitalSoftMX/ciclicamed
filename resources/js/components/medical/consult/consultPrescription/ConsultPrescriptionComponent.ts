@@ -67,15 +67,15 @@ export default defineComponent({
        getMedicamentList(): void
         {
             axios.get(`/productos/medicamentos`)
-                .then(response => {
-                    this.medicamentList = [{
-                        id: 0,
-                        name: 'Seleccione un medicamento',
-                    }, ...response.data];
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+            .then(response => {
+                this.medicamentList = [{
+                    id: 0,
+                    name: 'Seleccione un medicamento',
+                }, ...response.data];
+            })
+            .catch(error => {
+                console.log(error)
+            })
         },
         // async createPDF()
         // {
