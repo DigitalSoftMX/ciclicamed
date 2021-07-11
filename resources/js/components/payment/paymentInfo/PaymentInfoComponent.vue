@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="card shadow-none border mb-4">
+    <!-- <div class="card shadow-none border mb-4">
         <div class="card-header">
             <h4 class="mb-25 mb-md-0">Factura</h4>
             <div class="custom-control custom-switch switch-primary switch-md ">
@@ -62,7 +62,7 @@
                 <select-component id="pycPais" :data="countryList" firstText="Seleccione un país"></select-component>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="card shadow-none border mb-4">
         <div class="card-header">

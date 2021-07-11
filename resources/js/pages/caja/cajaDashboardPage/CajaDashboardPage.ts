@@ -2,12 +2,14 @@ import { CajaSidebarConfig } from '@config/CajaSidebar.config';
 import { PatientData } from '@data/Patient/Patient.data';
 import { Patient } from '@interface/Patient/Patient.interface';
 import DebtPage from '@page/general/debt/DebtPage';
+import PaymentPage from '@page/general/payment/PaymentPage';
 import { defineComponent } from '@vue/runtime-core';
 import { PropType } from 'vue';
 
 export default defineComponent({
     components: {
         DebtPage,
+        PaymentPage,
         NavbarComponent: require('@component/general/navbar/NavbarComponent.vue').default,
         SidebarComponent: require('@component/general/sidebar/SidebarComponent.vue').default,
     },

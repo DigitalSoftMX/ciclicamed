@@ -187,10 +187,13 @@ class PatientController extends Controller
         if($request->has('query'))
         {
             $query = $request->input('query');
-            $prescriptions = $payment->where('first_name', 'like', '%'.$query.'%')
-                    ->orWhere('last_name', 'like', '%'.$query.'%')
-                    ->orWhere('patient_code', 'like', '%'.$query.'%')
-                    ->paginate();
+            $prescriptions = $payment
+            ->where(function ($item) use ($query){
+                $item->where('first_name', 'like', '%'.$query.'%')
+                ->orWhere('last_name', 'like', '%'.$query.'%')
+                ->orWhere('patient_code', 'like', '%'.$query.'%');
+            })
+            ->paginate();
         } else {
             $prescriptions = $payment->paginate();
         }

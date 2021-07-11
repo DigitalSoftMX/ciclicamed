@@ -23,7 +23,7 @@
         @case('Laboratorio')
             <laboratorio-profile-page :laboratorio="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></laboratorio-profile-page>
             @break
-        @case('Laboratorio')
+        @case('Caja')
             <caja-profile-page :caja="{{ json_encode($user) }}" :roles="{{ json_encode($roles) }}"></caja-profile-page>
             @break
     @endswitch

@@ -160,11 +160,13 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
 
     //Pagos
     Route::group(['prefix' => 'pagos'], function() {
+        Route::post('/', [PaymentController::class, 'createPayment'])->name('pagos.createPayment'); 
         Route::get('/faltantes', [PaymentController::class, 'getAllMissingPayments'])->name('pagos.getFaltantes');
         Route::get('/{id}', [PaymentController::class, 'getPayment'])->name('pagos.getPago');
         Route::get('/{id}/productos', [PaymentController::class, 'getPaymentProductsByID'])->name('pagos.getProductos');
         Route::get('/{id}/deudas', [PaymentController::class, 'getAllDebtsByPaymentID'])->name('pagos.getDeudas');
-        Route::post('/{id}/deudas', [PaymentController::class, 'setDebtPayment'])->name('pagos.setDeuda'); 
+        Route::post('/{id}/deudas', [PaymentController::class, 'setDebtPayment'])->name('pagos.setDeuda');
+        Route::post('/{id}/pago', [PaymentController::class, 'createPaymentByID'])->name('pagos.createPayment'); 
     });
 
     //Checkup

@@ -9,9 +9,13 @@ import { Consult } from '@interface/Medical/Consult.interface';
 import { ConsultData } from '@data/Medical/Consult.data';
 import { Patient } from '@interface/Patient/Patient.interface';
 import { PatientData } from '@data/Patient/Patient.data';
+import vSelect from "vue-select-3/src";
+import { Select } from '@interface/General/Select.interface';
+import { Branch } from '@interface/Branch/Branch.interface';
 
 export default defineComponent({
     components: {
+        vSelect,
         EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
         ConsultProductListComponent: require('@component/payment/chargePayment/productModalList/ProductModalListComponent.vue').default,
         PaymentInfoComponent: require('@component/payment/paymentInfo/PaymentInfoComponent.vue').default,
@@ -35,6 +39,14 @@ export default defineComponent({
         patient: {
             type: Object as PropType<Patient>,
             default: PatientData
+        },
+        paymentID: {
+            type: Number as PropType<Number>,
+            default: 0
+        },
+        isNew: {
+            type: Boolean as PropType<Boolean>,
+            default: false
         }
     },
     data() {
@@ -44,16 +56,34 @@ export default defineComponent({
             productCategoryLoaded: [] as String[],
             categorySelected: '',
             titleSelected: '',
-            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
+            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content,
+            debtData: {
+                check: false,
+                description: 0
+            },
+            paymentMethod: {
+                check: 1,
+                description: ''
+            },
+            branchesList: [] as Select[],
+            patientsList: [] as Select[],
+            patientID : 0,
+            branchID : 0,
+            errors: []
         };
     },
     mounted()
     {
+        if(this.isNew)
+        {
+            this.getPatientsList();
+            this.getBranchesList();
+        }
     },
     computed: {
         activePayment(): boolean
         {
-            return this.role === 'Administrador' || this.role === 'Caja';
+            return this.role === 'Administrador' || this.role === 'Caja' || this.role === 'Caja administrador';
         },
         price(): number
         {
@@ -62,6 +92,11 @@ export default defineComponent({
         discount(): number
         {
             return this.productSelectedList.reduce((a, b) => ({...a, discount: Number(a.discount) + Number(b.discount)}), ProductData).discount;
+        },
+        showCredit(): boolean
+        {
+            console.log(this.paymentMethod.check)
+            return Number(this.paymentMethod.check) !== 1 ? true : false;
         }
     },
     watch: {
@@ -73,12 +108,95 @@ export default defineComponent({
 
             },
             deep: true
+        },
+        isNew()
+        {
+            this.getPatientsList();
+            this.getBranchesList();
         }
     },
     methods: {
+        getBranchesList(): void
+        {
+            axios.get<Branch[]>(`/sucursales`)
+            .then(response => {
+                this.branchesList = response.data.map((branch, index) => {
+                    return {
+                        id: index,
+                        childID: branch.id, 
+                        text: branch.name,
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        getPatientsList(): void
+        {
+            axios.get <Patient[]> (`/pacientes`)
+            .then(response => {
+                console.log(response.data)
+                this.patientsList = response.data.map((patient, index) => {
+                    return {
+                        id: index,
+                        childID: patient.id,
+                        text: `${patient.patient_code} ${patient.first_name} ${patient.last_name}`
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         confirmConsultFinish()
         {
             $('#chpcConsult').modal('show');
+        },
+        selectPaymentURL()
+        {
+            if(this.role === 'Administrador' || this.role === 'Caja' || this.role === 'Caja administrador')
+            {
+                this.isNew ? this.createNewPayment() : this.setPayment();
+            } else {
+                this.createConsultPayment();
+            }
+        },
+        createNewPayment()
+        {
+            axios.post(`/pagos`, {
+                data: {
+                    patientID: this.patientID,
+                    branchID: this.branchID,
+                    products: this.productSelectedList,
+                    debt: this.debtData,
+                    paymentMethod: this.paymentMethod
+                }
+            })
+            .then(response => {
+                $('#chpcSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors
+                $('#chpcError').modal('show');
+            })
+        },
+        setPayment()
+        {
+            axios.post(`/pagos/${this.paymentID}/pago`, {
+                data: {
+                    products: this.productSelectedList,
+                    debt: this.debtData,
+                    paymentMethod: this.paymentMethod
+                }
+            })
+            .then(response => {
+                $('#chpcSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors
+                $('#chpcError').modal('show');
+            })
         },
         createConsultPayment()
         {
@@ -97,7 +215,8 @@ export default defineComponent({
                 }, 2000)
             })
             .catch(error => {
-                console.log(error)
+                this.errors = error.response.data.errors
+                $('#chpcError').modal('show');
             })
         },
         openProductListModal(category: string, title: string)
