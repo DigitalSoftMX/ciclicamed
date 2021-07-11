@@ -1,6 +1,7 @@
 import UserProfileComponent from '@component/user/userProfile/UserProfileComponent';
 import { EmployeeData } from '@data/Employee/Employee.data';
 import { PatientData } from '@data/Patient/Patient.data';
+import { PreregistrationData } from '@data/Patient/Preregistration.data';
 import { Employee } from '@interface/Employee/Employee.interface';
 import { Prescription } from '@interface/Medical/Prescription.interface';
 import { Patient } from '@interface/Patient/Patient.interface';
@@ -41,7 +42,8 @@ export default defineComponent({
     },
     data() {
         return {
-            errors: []
+            errors: [],
+            preregistrationData: PreregistrationData
         };
     },
     mounted() {

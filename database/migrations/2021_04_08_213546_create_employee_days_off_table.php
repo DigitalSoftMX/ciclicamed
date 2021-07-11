@@ -22,8 +22,8 @@ class CreateEmployeeDaysOffTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('branch_id')->references('id')->on('branches');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
         });
     }
 

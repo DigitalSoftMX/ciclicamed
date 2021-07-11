@@ -24,9 +24,9 @@ class CreateMedicalPrescriptionsTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('medicalconsult_id')->references('id')->on('medical_consults');
-            $table->foreign('medicament_id')->references('id')->on('medicaments');
-            $table->foreign('updated_by')->references('id')->on('employees');
+            $table->foreign('medicalconsult_id')->references('id')->on('medical_consults')->onDelete('cascade');
+            $table->foreign('medicament_id')->references('id')->on('medicaments')->onDelete('cascade');
+            $table->foreign('updated_by')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 

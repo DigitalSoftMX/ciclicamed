@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Patient\NewPatientFromAdminRequest;
 use App\Http\Requests\Patient\PatientUpdateRequest;
 use App\Http\Requests\User\UserUpdatePasswordRequest;
 use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Patient\Patient;
+use App\Models\Patient\Preregistration;
 use App\Models\Payment\Payment;
 use App\Models\Payment\PaymentStatus;
 use App\Models\User\User;
@@ -17,6 +19,54 @@ use Illuminate\Support\Facades\Storage;
 
 class PatientController extends Controller
 {
+    public function deletePatient($id)
+    {
+        $user = Patient::destroy($id);
+        return response()->json($user);
+    }
+
+    public function createPatient(NewPatientFromAdminRequest $request)
+    {
+        $request->validated();
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $user = User::create([
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('first_name')),
+                'userstatus_id' => 1,
+                'usercategory_id' => 1
+            ]);
+    
+            $user->assignRole('Paciente');
+    
+            $preregistration = Preregistration::create([
+                'data' => null,
+                'user_id' => $user->id
+            ]);
+    
+            $file = $request->file('photo');
+            $photo = basename($file->store('user'));
+    
+            $patient = Patient::create([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'gender' => $request->input('gender'),
+                'birthday' => $request->input('birthday'),
+                'address' => $request->input('address'),
+                'phone' => $request->input('phone'),
+                'cellphone' => $request->input('cellphone'),
+                'photo' => $photo,
+                'preregistration_id' => $preregistration->id
+            ]);
+
+            return response()->json($patient);
+            
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
 
     public function getAllPatients()
     {
@@ -36,7 +86,7 @@ class PatientController extends Controller
         $request->validated();
         $patient = Patient::findOrFail($id)->load('user');
         $user = User::findOrFail(Auth::user()->id);
-        if($patient->user->id === Auth::user()->id && ($user->hasRole('Paciente') || $user->hasRole('Administrador')))
+        if(($patient->user->id === Auth::user()->id && $user->hasRole('Paciente')) || $user->hasRole('Administrador'))
         {
             $file = $request->file('photo');
             if($file)

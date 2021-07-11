@@ -1,5 +1,6 @@
 <template>
-    <div class="modal-info-confirmed modal fade show w-100" id="patcPatient" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="modal-info-confirmed modal fade show w-100" id="patcPatient" tabindex="-1" role="dialog"
+        aria-modal="true">
         <div class="modal-dialog modal-dialog-centered rounded-bottom" role="document">
             <div class="modal-content rounded-bottom">
                 <div class="modal-header e-info-header bg-primary text-center py-2">
@@ -10,13 +11,15 @@
                     </button>
                 </div>
                 <div class="modal-body p-1">
-                    <user-profile-component userCategory="pacientes" :userData="patient" :disabled="disabled" :isNew="isNew" id="ptmc"></user-profile-component>
+                    <user-profile-component userCategory="pacientes" :userData="patient" :disabled="disabled"
+                        :isNew="isNew" id="ptmc"></user-profile-component>
                 </div>
             </div>
         </div>
     </div>
 
-    <success-alert-component id="emtmcSuccess" title="Rol(es) actualizado(s)" message="Rol(es) actualizado(s) correctamente"></success-alert-component>
+    <success-alert-component id="emtmcSuccess" title="Rol(es) actualizado(s)"
+        message="Rol(es) actualizado(s) correctamente"></success-alert-component>
     <error-alert-component :id="'emtmcError'" :errors="errors" :title="'Error al modificar los roles'">
     </error-alert-component>
 </template>

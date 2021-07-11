@@ -22,9 +22,9 @@ class CreateMedicalAttachmentsTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties');
-            $table->foreign('updated_by')->references('id')->on('employees');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties')->onDelete('cascade');
+            $table->foreign('updated_by')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 

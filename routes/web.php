@@ -108,6 +108,8 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     //Pacientes
     Route::group(['prefix' => 'pacientes'], function() {
         Route::get('/', [PatientController::class, 'getAllPatients'])->name('pacientes.getPacientes');
+        Route::post('/', [PatientController::class, 'createPatient'])->name('pacientes.createPaciente');
+        Route::delete('/{id}', [PatientController::class, 'deletePatient'])->name('pacientes.deletePatient');
         Route::patch('/{id}', [PatientController::class, 'updatePatient'])->name('pacientes.updatePaciente');
         Route::get('/deudas', [PatientController::class, 'getPatientsWithDebts'])->name('pacientes.getPacientesDeudas');
         Route::get('/{id}', [PatientController::class, 'getPatientByID'])->name('pacientes.getPaciente');

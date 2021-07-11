@@ -21,7 +21,7 @@ class CreateMedicalHistoriesTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('medicalconsult_id')->references('id')->on('medical_consults');
+            $table->foreign('medicalconsult_id')->references('id')->on('medical_consults')->onDelete('cascade');
         });
     }
 

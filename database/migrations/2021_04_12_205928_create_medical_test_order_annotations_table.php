@@ -19,7 +19,7 @@ class CreateMedicalTestOrderAnnotationsTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

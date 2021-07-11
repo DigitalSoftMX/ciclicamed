@@ -21,11 +21,11 @@ class CreateProductPaymentsTable extends Migration
             $table->unsignedMediumInteger('product_id', false);
 
             //Relaciones
-            $table->foreign('consult_created')->references('id')->on('medical_consults');
-            $table->foreign('consult_scheduled')->references('id')->on('medical_consults');
-            $table->foreign('checkup_id')->references('id')->on('checkups');
-            $table->foreign('payment_id')->references('id')->on('payments');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('consult_created')->references('id')->on('medical_consults')->onDelete('cascade');
+            $table->foreign('consult_scheduled')->references('id')->on('medical_consults')->onDelete('cascade');
+            $table->foreign('checkup_id')->references('id')->on('checkups')->onDelete('cascade');
+            $table->foreign('payment_id')->references('id')->on('payments')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

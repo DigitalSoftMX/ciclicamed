@@ -44,6 +44,10 @@ export default defineComponent({
 
     },
     methods: {
+        fullName(employee: Employee)
+        {
+            return `${employee.first_name} ${employee.last_name}`;
+        },
         updateRole(roles: String[])
         {
             this.rolesSelected = roles;
@@ -111,6 +115,7 @@ export default defineComponent({
                 this.paginationActive = page;
                 axios.get<EmployeePagination>(`/empleados?page=${this.paginationActive}`)
                 .then(response => {
+                    console.log(response.data)
                     this.userData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;

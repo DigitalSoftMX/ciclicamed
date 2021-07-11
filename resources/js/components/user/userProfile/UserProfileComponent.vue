@@ -126,14 +126,14 @@
                             <div class="radio-theme-default custom-radio ">
                                 <input class="radio" type="radio" name="gender" value="0" :id="id + 'radio-vl1'" :disabled="disabled"
                                     v-model="userForm.gender" @change="checkProfileData('gender')">
-                                <label for="radio-vl1">
+                                <label :for="id + 'radio-vl1'">
                                     <span class="radio-text">Hombre</span>
                                 </label>
                             </div>
                             <div class="radio-theme-default custom-radio ">
                                 <input class="radio" type="radio" name="gender" value="1" :id="id + 'radio-vl2'" :disabled="disabled"
                                     v-model="userForm.gender" @change="checkProfileData('gender')">
-                                <label for="radio-vl2">
+                                <label :for="id + 'radio-vl2'">
                                     <span class="radio-text">Mujer</span>
                                 </label>
                             </div>

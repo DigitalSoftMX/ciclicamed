@@ -22,8 +22,8 @@ class CreateEmployeeLicensesTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties')->onDelete('cascade');
         });
     }
 

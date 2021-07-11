@@ -10,7 +10,7 @@
             </div>
         </div>
         <h4 class="text-capitalize breadcrumb-title mb-25 mb-md-0">
-            <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2" @click="createEmployee"> Crear empleado </button>
+            <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2" @click="createPatient"> Crear paciente</button>
         </h4>
     </div>
     <div class="card mt-30 spin-embadded" v-bind:class="{'spin-active': loading}">
@@ -33,11 +33,7 @@
                                     <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable" style="display: table-cell;">
-                                    <span class="userDatatable-title">Nombres</span>
-                                    <span class="fooicon fooicon-sort"></span></th>
-
-                                <th class="footable-sortable" style="display: table-cell;">
-                                    <span class="userDatatable-title">Apellidos</span>
+                                    <span class="userDatatable-title">Paciente</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable" style="display: table-cell;">
@@ -71,14 +67,10 @@
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
-                                        {{user.first_name}}
+                                        {{fullName(user)}}
                                     </div>
                                 </td>
-                                <td style="display: table-cell;" class="border-primary border-bottom">
-                                    <div class="userDatatable-content">
-                                        {{user.last_name}}
-                                    </div>
-                                </td>
+
                                 <td style="display: table-cell;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
                                         {{formatBirthday(user.birthday)}}
@@ -95,7 +87,7 @@
                                     <ul class="orderDatatable_actions mb-0 d-flex flex-wrap justify-content-end">
                                         <li>
                                             <button
-                                                @click="showEmployeeModal(user)"
+                                                @click="showPatientModal(user)"
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
                                                 <img-component url="/svg/show.svg"  alt="Mostrar"></img-component>
                                             </button>
@@ -165,7 +157,7 @@
         </div>
     </div>
     <success-alert-component id="patcSuccess" :title="successAlert.title" :message="successAlert.message"></success-alert-component>
-    <patients-table-modal-component :patient="patientSelected" :disabled="disableEditEmployee" :isNew="isNew"></patients-table-modal-component>
+    <patients-table-modal-component :patient="patientSelected" :disabled="disabledPatientEdit" :isNew="isNew"></patients-table-modal-component>
     <confirmation-alert-component id="patcConfirmation" :title="confirmationAlert.message" @confirmAction="deletePatient"></confirmation-alert-component>
 </template>
 

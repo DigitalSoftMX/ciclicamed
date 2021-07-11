@@ -29,8 +29,8 @@ class CreateEmployeesTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('employeestatus_id')->references('id')->on('employee_statuses');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('employeestatus_id')->references('id')->on('employee_statuses')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

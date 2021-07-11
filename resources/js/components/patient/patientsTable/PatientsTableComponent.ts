@@ -7,6 +7,7 @@ import { UserPaginationData } from '@data/User/UserPagination.data';
 import { PatientData } from '@data/Patient/Patient.data';
 import PatientsTableModalComponent from './patientsTableModal/PatientsTableModalComponent';
 import moment from 'moment';
+import { Patient } from '@interface/Patient/Patient.interface';
 
 export default defineComponent({
     components: {
@@ -26,7 +27,7 @@ export default defineComponent({
             patientData: PatientData,
             loading: true,
             patientSelected: PatientData,
-            disableEditEmployee: true,
+            disabledPatientEdit: true,
             successAlert: {
                 title: '',
                 message: ''
@@ -43,22 +44,34 @@ export default defineComponent({
         this.getUserData(1);
     },
     watch: {
-
+        
     },
     methods: {
+        deletePatient()
+        {
+            axios.delete(`/pacientes/${this.patientSelected.id}`)
+            .then(response => {
+                this.successAlert.title = 'Paciente eliminado';
+                this.successAlert.message = 'Paciente eliminado correctamente';
+                $('#patcSuccess').modal('show');
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        fullName(user: Patient)
+        {
+            return `${user.first_name} ${user.last_name}`;
+        },
         formatBirthday(birthday: string)
         {
             return moment(birthday).format('DD-MM-YYYY');
         },
-        updateRole(roles: String[])
-        {
-            this.rolesSelected = roles;
-        },
-        createEmployee()
+        createPatient()
         {
             this.isNew = true;
-            this.patientSelected = EmployeeData;
-            this.disableEditEmployee = false;
+            this.patientSelected = PatientData;
+            this.disabledPatientEdit = false;
             $('#patcPatient').modal('show');
         },
         showConfirmationAlert(employee: Employee)
@@ -67,29 +80,17 @@ export default defineComponent({
             this.confirmationAlert.message = '¿Desea eliminar a este usuario? Esta acción no puede deshacerse'
             $('#patcConfirmation').modal('show');
         },
-        deletePatient()
-        {
-            axios.post(`/empleados/${this.patientSelected.id}/deshabilitar`)
-            .then(response => {
-                this.successAlert.title = 'Empleado cesado';
-                this.successAlert.message = 'Empleado cesado correctamente';
-                $('#patcSuccess').modal('show');
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        },
-        showEmployeeModal(employee: Employee)
+        showPatientModal(employee: Employee)
         {
             this.isNew = false;
-            this.disableEditEmployee = true;
+            this.disabledPatientEdit = true;
             this.patientSelected = employee;
             $('#patcPatient').modal('show');
         },
         showEditModal(employee: Employee)
         {
             this.isNew = false;
-            this.disableEditEmployee = false;
+            this.disabledPatientEdit = false;
             this.patientSelected = employee;
             $('#patcPatient').modal('show');
         },

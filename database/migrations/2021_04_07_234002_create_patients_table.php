@@ -28,7 +28,7 @@ class CreatePatientsTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('preregistration_id')->references('id')->on('preregistrations');
+            $table->foreign('preregistration_id')->references('id')->on('preregistrations')->onDelete('cascade');
         });
     }
 

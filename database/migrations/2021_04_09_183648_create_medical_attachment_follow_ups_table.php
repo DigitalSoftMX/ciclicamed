@@ -22,8 +22,8 @@ class CreateMedicalAttachmentFollowUpsTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('medicalconsult_id')->references('id')->on('medical_consults');
-            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties');
+            $table->foreign('medicalconsult_id')->references('id')->on('medical_consults')->onDelete('cascade');
+            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties')->onDelete('cascade');
         });
     }
 

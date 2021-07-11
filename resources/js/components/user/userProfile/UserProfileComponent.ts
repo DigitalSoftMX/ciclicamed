@@ -69,7 +69,7 @@ export default defineComponent({
     },
     mounted() {
         const self = this;
-        $("#birthday").datepicker({
+        $(`#${this.id}birthday`).datepicker({
             changeMonth: true,
             changeYear: true,
             // container: "#container",
@@ -127,7 +127,6 @@ export default defineComponent({
                 console.log(error)
                 this.errors = error.response.data.errors;
                 $(`#${this.id}profileError`).modal('show');
-                this.userForm = cloneDeep(this.userData);
             })
             this.isButtonDisabled = true;
         },
@@ -161,7 +160,6 @@ export default defineComponent({
                 console.log(error)
                 this.errors = error.response.data.errors;
                 $(`#${this.id}profileError`).modal('show');
-                this.userForm = cloneDeep(this.userData);
             })
             this.isButtonDisabled = true;
         },

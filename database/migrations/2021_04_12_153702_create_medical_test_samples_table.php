@@ -25,10 +25,10 @@ class CreateMedicalTestSamplesTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('medicaltest_id')->references('id')->on('medical_tests');
-            $table->foreign('collected_by')->references('id')->on('employees');
-            $table->foreign('sent_by')->references('id')->on('employees');
-            $table->foreign('updated_by')->references('id')->on('employees');
+            $table->foreign('medicaltest_id')->references('id')->on('medical_tests')->onDelete('cascade');
+            $table->foreign('collected_by')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('sent_by')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('updated_by')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 

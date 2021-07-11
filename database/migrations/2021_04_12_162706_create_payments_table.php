@@ -28,13 +28,13 @@ class CreatePaymentsTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('created_by')->references('id')->on('employees');
-            $table->foreign('updated_by')->references('id')->on('employees');
-            $table->foreign('charged_by')->references('id')->on('employees');
-            $table->foreign('paymentmethod_id')->references('id')->on('payment_methods');
-            $table->foreign('branch_id')->references('id')->on('branches');
-            $table->foreign('paymentstatus_id')->references('id')->on('payment_statuses');
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('created_by')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('updated_by')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('charged_by')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('paymentmethod_id')->references('id')->on('payment_methods')->onDelete('cascade');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->foreign('paymentstatus_id')->references('id')->on('payment_statuses')->onDelete('cascade');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
         });
     }
 

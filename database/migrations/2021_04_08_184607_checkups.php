@@ -21,9 +21,9 @@ class Checkups extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('checkupcategory_id')->references('id')->on('checkup_categories');
-            $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('checkupstatus_id')->references('id')->on('checkup_statuses');
+            $table->foreign('checkupcategory_id')->references('id')->on('checkup_categories')->onDelete('cascade');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreign('checkupstatus_id')->references('id')->on('checkup_statuses')->onDelete('cascade');
         });
     }
 

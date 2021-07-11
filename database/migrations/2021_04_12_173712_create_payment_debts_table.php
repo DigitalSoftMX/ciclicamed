@@ -24,9 +24,9 @@ class CreatePaymentDebtsTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('payment_id')->references('id')->on('payments');
-            $table->foreign('paymentmethod_id')->references('id')->on('payment_methods');
-            $table->foreign('charged_by')->references('id')->on('employees');
+            $table->foreign('payment_id')->references('id')->on('payments')->onDelete('cascade');
+            $table->foreign('paymentmethod_id')->references('id')->on('payment_methods')->onDelete('cascade');
+            $table->foreign('charged_by')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 

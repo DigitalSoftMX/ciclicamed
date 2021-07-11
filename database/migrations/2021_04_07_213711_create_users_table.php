@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('userstatus_id')->references('id')->on('user_statuses');
-            $table->foreign('usercategory_id')->references('id')->on('user_categories');
+            $table->foreign('userstatus_id')->references('id')->on('user_statuses')->onDelete('cascade');
+            $table->foreign('usercategory_id')->references('id')->on('user_categories')->onDelete('cascade');
         });
     }
 

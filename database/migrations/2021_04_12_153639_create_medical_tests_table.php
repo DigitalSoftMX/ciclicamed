@@ -23,9 +23,9 @@ class CreateMedicalTestsTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('created_in')->references('id')->on('medical_consults');
-            $table->foreign('scheduled_in')->references('id')->on('medical_consults');
-            $table->foreign('medicalteststatus_id')->references('id')->on('medical_test_statuses');
+            $table->foreign('created_in')->references('id')->on('medical_consults')->onDelete('cascade');
+            $table->foreign('scheduled_in')->references('id')->on('medical_consults')->onDelete('cascade');
+            $table->foreign('medicalteststatus_id')->references('id')->on('medical_test_statuses')->onDelete('cascade');
         });
     }
 

@@ -33,11 +33,7 @@
                                     <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable" style="display: table-cell;">
-                                    <span class="userDatatable-title">Nombres</span>
-                                    <span class="fooicon fooicon-sort"></span></th>
-
-                                <th class="footable-sortable" style="display: table-cell;">
-                                    <span class="userDatatable-title">Apellidos</span>
+                                    <span class="userDatatable-title">Empleado</span>
                                     <span class="fooicon fooicon-sort"></span></th>
 
                                 <th class="footable-sortable" style="display: table-cell;">
@@ -70,13 +66,7 @@
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
-                                        {{user.first_name}}
-                                    </div>
-                                </td>
-
-                                <td style="display: table-cell;" class="border-primary border-bottom">
-                                    <div class="userDatatable-content">
-                                        {{user.last_name}}
+                                        {{fullName(user)}}
                                     </div>
                                 </td>
 

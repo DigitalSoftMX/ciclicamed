@@ -37,15 +37,15 @@ class CreateMedicalConsultsTable extends Migration
             $table->timestamps();
 
             //Relaciones
-            $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('doctor_id')->references('id')->on('employees');
-            $table->foreign('created_by')->references('id')->on('employees');
-            $table->foreign('medicalconsultcategory_id')->references('id')->on('medical_consult_categories');
-            $table->foreign('updated_by')->references('id')->on('employees');
-            $table->foreign('branch_id')->references('id')->on('branches');
-            $table->foreign('medicalconsultstatus_id')->references('id')->on('medical_consult_statuses');
-            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties');
-            $table->foreign('checkup_id')->references('id')->on('checkups');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreign('doctor_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('created_by')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('medicalconsultcategory_id')->references('id')->on('medical_consult_categories')->onDelete('cascade');
+            $table->foreign('updated_by')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->foreign('medicalconsultstatus_id')->references('id')->on('medical_consult_statuses')->onDelete('cascade');
+            $table->foreign('medicalspecialty_id')->references('id')->on('medical_specialties')->onDelete('cascade');
+            $table->foreign('checkup_id')->references('id')->on('checkups')->onDelete('cascade');
         });
     }
 
