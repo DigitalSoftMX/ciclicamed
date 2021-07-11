@@ -31,6 +31,6 @@ class CreatePreregistrationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('preregistration');
+        Schema::dropIfExists('preregistrations');
     }
 }
