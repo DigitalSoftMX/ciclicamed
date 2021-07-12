@@ -7,6 +7,7 @@ use App\Http\Requests\Patient\NewPatientFromAdminRequest;
 use App\Http\Requests\Patient\PatientUpdateRequest;
 use App\Http\Requests\User\UserUpdatePasswordRequest;
 use App\Models\Medical\Consult\MedicalConsult;
+use App\Models\Medical\History\MedicalHistory;
 use App\Models\Patient\Patient;
 use App\Models\Patient\Preregistration;
 use App\Models\Payment\Payment;
@@ -19,6 +20,25 @@ use Illuminate\Support\Facades\Storage;
 
 class PatientController extends Controller
 {
+    public function getHistory($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole(['Doctor', 'Enfermera', 'Administrador']))
+        {
+            $patient = MedicalHistory::where('patient_id', $id)->orderBy('id', 'desc')->first();
+            if(isset($patient))
+            {
+                $patient['data'] = json_decode($patient['data']);
+                return response()->json($patient);
+            }
+            return response()->json([], 200);
+        }
+
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function deletePatient($id)
     {
         $user = Patient::destroy($id);

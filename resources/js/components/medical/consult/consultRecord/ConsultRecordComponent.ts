@@ -55,6 +55,7 @@ export default defineComponent({
         getConsultData() {
             axios.get<Consult[]> (`/pacientes/${this.patientID}/consultas/categoria/${this.specialtyID}`)
             .then(response => {
+                console.log(response.data)
                 this.consultList = [];
                 this.consultList = Object.values(response.data);
             })
@@ -67,6 +68,7 @@ export default defineComponent({
         },
         getInfoConsult(id: number, date: string) {
             this.consultDateSelected = date;
+            console.log(this.consultDateSelected)
             this.componentNumber = -1;
             this.getFollowUps(id);
             this.getTestOrders(id);
@@ -102,6 +104,7 @@ export default defineComponent({
         },
         showComponent(component: number)
         {
+            console.log(this.followUp)
             this.componentNumber = component;
         }
     }

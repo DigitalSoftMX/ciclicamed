@@ -13,7 +13,7 @@
             <div class="card-body" v-show="formData.hipertension.check">
                 <div class="w-auto">
                     <select name="select-size-1" class="form-control form-control-lg"
-                        v-model="formData.hipertension.description">
+                        v-model="formData.hipertension.description" :disabled="disabled">
                         <option value="Familiar">Familiar</option>
                         <option value="Padre">Padre</option>
                         <option value="Madre">Madre</option>
@@ -83,7 +83,7 @@
             </div>
             <div class="card-body" v-show="formData.diabetesMellitus.check">
                 <div class="w-auto">
-                    <select name="select-size-1" class="form-control form-control-lg"
+                    <select name="select-size-1" class="form-control form-control-lg" :disabled="disabled"
                         v-model="formData.diabetesMellitus.description">
                         <option value="Familiar">Familiar</option>
                         <option value="Padre">Padre</option>
@@ -109,7 +109,7 @@
             </div>
             <div class="card-body" v-show="formData.patologiaTiroidea.check">
                 <div class="w-auto">
-                    <select name="select-size-1" class="form-control form-control-lg"
+                    <select name="select-size-1" class="form-control form-control-lg" :disabled="disabled"
                         v-model="formData.patologiaTiroidea.description">
                         <option value="Familiar">Familiar</option>
                         <option value="Padre">Padre</option>

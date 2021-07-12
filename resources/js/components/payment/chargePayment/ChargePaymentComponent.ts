@@ -155,11 +155,26 @@ export default defineComponent({
         },
         selectPaymentURL()
         {
-            if(this.role === 'Administrador' || this.role === 'Caja' || this.role === 'Caja administrador')
+            switch(this.role)
             {
-                this.isNew ? this.createNewPayment() : this.setPayment();
-            } else {
-                this.createConsultPayment();
+                case 'Administrador':
+                    if(this.consult.id > 0)
+                    {
+                        this.createConsultPayment();
+                    }
+                    else {
+                        this.isNew ? this.createNewPayment() : this.setPayment();
+                    }
+                    break;
+                case 'Caja':
+                    this.isNew ? this.createNewPayment() : this.setPayment();
+                    break;
+                case 'Caja administrador':
+                    this.isNew ? this.createNewPayment() : this.setPayment();
+                    break;
+                case 'Doctor':
+                    this.createConsultPayment();
+                    break;
             }
         },
         createNewPayment()

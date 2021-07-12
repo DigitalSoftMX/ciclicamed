@@ -54,7 +54,8 @@ export default defineComponent({
             successMessage: '',
             errors: [],
             isButtonDisabled: true,
-            formCharacters: [] as any
+            formCharacters: [] as any,
+            path: ((document.head.querySelector('meta[name="api-base-url"]') as any)!.content as string)
         };
     },
     watch:

@@ -95,9 +95,24 @@ export default defineComponent({
                 minutes: 0,
                 seconds: 0
             },
+            enableAttachmentData: false
         };
     },
     computed: {
+        disableHistory(): boolean
+        {
+            switch(this.role)
+            {
+                case 'Administrador':
+                    return false;
+                case 'Doctor':
+                    console.log(this.consultData.medicalconsultcategory_id);
+                    return this.consultData.medicalconsultcategory_id > 1 ? true : false;
+                default:
+                    return true;
+            }
+        },
+
         disableData(): boolean
         {
             switch(this.role)
@@ -132,13 +147,24 @@ export default defineComponent({
         }
     },
     mounted() {
-        this.getConsultInfo();
-        this.getHistory();
-        this.getAttachment();
-        this.getFollowUp();
-        this.getPrescription();
-        this.getTest();
-        this.getPayment();
+        
+        switch(this.role)
+        {
+            case 'Administrador':
+                this.getConsultInfo();
+                this.getPrescription();
+                this.getTest();
+                this.getFollowUp();
+                this.getPayment();
+                break;
+            case 'Doctor':
+                this.getConsultInfo();
+                this.getPrescription();
+                this.getTest();
+                this.getFollowUp();
+                this.getPayment();
+                break;
+        }
     },
     methods: {
         getPayment()
@@ -163,7 +189,7 @@ export default defineComponent({
                         type: 'form',
                         form: this.selectSpecialty()
                     },
-                    cita: this.followUp.follow_up
+                    cita: this.followUp
                 }
             })
             .then(response => {
@@ -224,6 +250,9 @@ export default defineComponent({
                 this.consultData = response.data;
                 this.getPatientData();
                 this.updateClock();
+                this.getHistory();
+                this.getAttachment();
+                
             })
             .catch(error => {
                 // console.log(error)
@@ -231,12 +260,9 @@ export default defineComponent({
         },
         getHistory()
         {
-            axios.get<History>(`/consultas/${this.consultID}/historial`)
+            axios.get<History>(`/pacientes/${this.consultData.patient_id}/historial`)
             .then(response => {
-                if(response.status === 200)
-                {
-                    this.historyData = response.data;
-                }
+                this.historyData = Array.isArray(response.data) ? HistoryData : response.data;
             })
             .catch(error => {
                 console.log(error)
@@ -250,13 +276,14 @@ export default defineComponent({
                 this.setAttachmentData();
             })
             .catch(error => {
-                console.log(error)
+                this.enableAttachmentData = false;
             })
         },
         getFollowUp()
         {
             axios.get<FollowUp>(`/consultas/${this.consultID}/seguimiento`)
             .then(response => {
+                console.log(response.data)
                 this.followUp = response.data;
             })
             .catch(error => {
@@ -337,6 +364,19 @@ export default defineComponent({
         },
         setAttachmentData()
         {
+            switch(this.role)
+            {
+                case 'Administrador':
+                    this.enableAttachmentData = false;
+                    break;
+                case 'Doctor':
+                    this.enableAttachmentData = true;
+                    break;
+                default:
+                    this.enableAttachmentData = true;
+                    break;
+            }
+
             switch(this.consultData.medicalspecialty_id)
             {
                 case 1:

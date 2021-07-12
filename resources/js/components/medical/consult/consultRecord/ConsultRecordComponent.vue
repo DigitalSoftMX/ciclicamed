@@ -35,14 +35,14 @@
                         <li :data-date="formatConsultDateTime(consult.consult_schedule_start)"
                             v-for="consult in consultList" :key="consult.id" class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-md-4  mb-25" v-if="followUp.id !== -1" @click="showComponent(1)">
+                                <div class="col-12 col-md-4  mb-25" v-if="followUp.medicalconsult_id !== -1" @click="showComponent(1)">
                                     <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
                                                 <img-component url="/svg/followUp.svg" alt="Seguimiento"></img-component>
                                             </div>
                                             <div class="col-8 align-self-center">
-                                                <h5>{{followUp.name}}</h5>
+                                                <!-- <h5>{{followUp.name}}</h5> -->
                                                 <h6 class="h6 font-weight-light">Cita subsecuente</h6>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <citas-subsecuentes-component v-if="componentNumber === 1" v-model="followUp.follow_up.data.form"
+    <citas-subsecuentes-component v-if="componentNumber === 1" v-model="followUp.data.form"
         :title="`Información de cita del ${consultDateSelected}`"></citas-subsecuentes-component>
     <div class="card" v-if="componentNumber === 2">
         <div class="card-header">

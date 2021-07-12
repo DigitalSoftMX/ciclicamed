@@ -190,6 +190,7 @@ class MedicalHistoryFactory extends Factory
 
 
         return [
+            'patient_id' => $this->faker->numberBetween(1, 25),
             'medicalconsult_id' => $this->faker->numberBetween(1, 50),
             'data' => $jsonForm,
             'updated_by' => $this->faker->numberBetween(1, 5),

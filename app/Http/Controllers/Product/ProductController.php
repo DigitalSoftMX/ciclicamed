@@ -175,45 +175,39 @@ class ProductController extends Controller
     private function getPaginateData(Request $request, string $category)
     {
         $user = User::findOrFail(Auth::user()->id);
-        if($user->hasRole('Administrador') || $user->hasRole('Doctor') || $user->hasRole('Caja') || $user->hasRole('Asistente'))
+        $status = ProductStatus::where('name', 'Activo')->first()->id;
+        $ciclica = ProductCategory::where('name', $category)->first()->id;
+        $product = Product::where('productcategory_id', $ciclica)->where('productstatus_id', $status);
+
+        if(!$request->has('all'))
         {
-            $status = ProductStatus::where('name', 'Activo')->first()->id;
-            $ciclica = ProductCategory::where('name', $category)->first()->id;
-            $product = Product::where('productcategory_id', $ciclica)->where('productstatus_id', $status);
-
-            if(!$request->has('all'))
+            $productCiclica = [];
+            if($request->has('query'))
             {
-                $productCiclica = [];
-                if($request->has('query'))
-                {
-                    $query = $request->input('query');
-                    $productCiclica = $product->where('product_code', 'like', '%'.$query.'%')
-                            ->orWhere('supplier_code', 'like', '%'.$query.'%')
-                            ->orWhere('name', 'like', '%'.$query.'%')
-                            ->paginate();
-                } else {
-                    $productCiclica = $product->paginate();
-                }
-                
-                $response = [
-                    'pagination' => [
-                        'total' => $productCiclica->total(),
-                        'per_page' => $productCiclica->perPage(),
-                        'current_page' => $productCiclica->currentPage(),
-                        'last_page' => $productCiclica->lastPage(),
-                        'from' => $productCiclica->firstItem(),
-                        'to' => $productCiclica->lastItem()
-                    ],
-                    'data' => $productCiclica->load('status', 'category', 'orderAnnotations')
-                ];
-
-                return response()->json($response);
+                $query = $request->input('query');
+                $productCiclica = $product->where('product_code', 'like', '%'.$query.'%')
+                        ->orWhere('supplier_code', 'like', '%'.$query.'%')
+                        ->orWhere('name', 'like', '%'.$query.'%')
+                        ->paginate();
+            } else {
+                $productCiclica = $product->paginate();
             }
+            
+            $response = [
+                'pagination' => [
+                    'total' => $productCiclica->total(),
+                    'per_page' => $productCiclica->perPage(),
+                    'current_page' => $productCiclica->currentPage(),
+                    'last_page' => $productCiclica->lastPage(),
+                    'from' => $productCiclica->firstItem(),
+                    'to' => $productCiclica->lastItem()
+                ],
+                'data' => $productCiclica->load('status', 'category', 'orderAnnotations')
+            ];
 
-            return response()->json($product->get()->load('status', 'category'));
+            return response()->json($response);
         }
-        return response()->json(['errors' => [
-            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
-        ]], 401);
+
+        return response()->json($product->get()->load('status', 'category'));
     }
 }

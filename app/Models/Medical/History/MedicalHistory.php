@@ -12,6 +12,7 @@ class MedicalHistory extends Model
     use HasFactory;
 
     protected $fillable = [
+        'patient_id',
         'medicalconsult_id',
         'data',
         'updated_by',

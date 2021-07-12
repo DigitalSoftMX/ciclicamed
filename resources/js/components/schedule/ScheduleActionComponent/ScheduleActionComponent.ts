@@ -42,11 +42,27 @@ export default defineComponent({
     computed: {
         isCancelOptionEnabled(): boolean
         {
-            return this.schedule.status!.name.includes('Agendado' || 'Confirmado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
+            switch(this.role)
+            {
+                case 'Doctor':
+                    return false;
+                case 'Paciente':
+                    return false;
+                default:
+                    return this.schedule.status!.name.includes('Agendado' || 'Confirmado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
+            }
         },
         isEditOptionEnabled(): boolean
         {
-            return this.schedule.status!.name.includes('Agendado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
+            switch(this.role)
+            {
+                case 'Doctor':
+                    return false;
+                case 'Paciente':
+                    return false;
+                default:
+                    return this.schedule.status!.name?.includes('Agendado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
+            }
         },
         showScheduleOption(): boolean
         {
@@ -88,7 +104,15 @@ export default defineComponent({
         },
         isConfirmScheduleEnabled(): boolean
         {
-            return (this.role === 'Asistente' && this.schedule.status!.name === 'Agendado') || this.role === 'Administrador' ? true : false;
+            switch(this.role)
+            {
+                case 'Asistente':
+                    return this.schedule.status!.name === 'Agendado' ? true : false;
+                case 'Administrador':
+                    return true;
+                default:
+                    return false;
+            }
         }
     },
     watch: {

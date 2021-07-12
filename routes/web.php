@@ -73,7 +73,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::patch('/{id}', [MedicalConsultController::class, 'updateSchedule'])->name('consulta.actualizar');
         Route::get('/{id}/seguimiento', [MedicalConsultController::class, 'getFollowUps'])->name('consulta.seguimiento');
         Route::get('/{id}/receta', [MedicalConsultController::class, 'getPrescriptions'])->name('consulta.receta');
-        Route::get('/{id}/historial', [MedicalConsultController::class, 'getHistory'])->name('consulta.historial');
+        
         Route::get('/{id}/doctor', [MedicalConsultController::class, 'getDoctor'])->name('consulta.doctor');
         Route::get('/{id}/anexo', [MedicalConsultController::class, 'getSpecialty'])->name('consulta.getAnexo');
         Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.getEstudiosID');
@@ -124,6 +124,8 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/estudios', [PatientController::class, 'showMedicalTests'])->name('usuarios.medicalTest');
         Route::get('/{id}/preregistro', [PatientController::class, 'getPreregistration'])->name('pacientes.getPreregistro');
         Route::patch('/{id}/preregistro', [PreregistrationController::class, 'updatePreregistration'])->name('pacientes.updatePreregistro');
+
+        Route::get('/{id}/historial', [PatientController::class, 'getHistory'])->name('pacientes.historial');
     });
 
     //Empleados

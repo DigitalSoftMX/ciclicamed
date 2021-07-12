@@ -5,8 +5,10 @@
                 <div class="ap-img pro_img_wrapper">
                     <input :id="id + 'file-upload'" type="file" name="fileUpload" accept=".jpg, .jpeg, .png, .bmp, .svg')" class="d-none" @change="selectFile($event)" :disabled="disabled">
                     <label :for="id + 'file-upload'">
+                        <!-- <img :src="`/images/users/${userForm.photo}`" :alt="userForm.first_name" class="ap-img__main rounded-circle wh-120 d-flex bg-opacity-primary" :onerror="`this.src='/svg/person.svg';`"> -->
+
                         <img class="ap-img__main rounded-circle wh-120 d-flex bg-opacity-primary" :id="id + 'upcImage'"
-                            :src="`/images/users/${userForm.photo}`" alt="profile"
+                            :src="`${path}/images/users/${userForm.photo}`" alt="profile"
                             onerror="this.onerror=null;this.src='../svg/person.svg';">
                         <span class="cross" id="remove_pro_pic">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

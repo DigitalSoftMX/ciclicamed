@@ -72,7 +72,7 @@
                     <div class="projects-tab-content projects-tab-content--progress">
                         <div class="tab-content mt-25" id="mdc">
                             <div class="tab-pane fade active show" id="mccHistorialClinico" role="tabpanel">
-                                <historial-clinico-component v-model="historyData.data.form" :disabled="disableData">
+                                <historial-clinico-component v-model="historyData.data.form" :disabled="disableHistory">
                                 </historial-clinico-component>
                             </div>
                             <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel">
@@ -81,31 +81,31 @@
                             </div>
                             <div class="tab-pane fade" id="mccEspecialidades" role="tabpanel"
                                 aria-labelledby="mccEspecialidades-tab">
-                                <uroginecologia-component v-if="consultData.medicalspecialty_id === 1" :disabled="disableData"
+                                <uroginecologia-component v-if="consultData.medicalspecialty_id === 1" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.uroginecología"></uroginecologia-component>
-                                <nutricion-general-component v-else-if="consultData.medicalspecialty_id === 2" :disabled="disableData"
+                                <nutricion-general-component v-else-if="consultData.medicalspecialty_id === 2" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.nutricionGeneral"></nutricion-general-component>
                                 <!-- <climaterio-salud-osea-component v-else-if="consultData.medicalspecialty_id === 2" v-model="attachmentForm.climaterioSaludOsea"></climaterio-salud-osea-component> -->
-                                <materno-fetal-component v-else-if="consultData.medicalspecialty_id === 3" :disabled="disableData"
+                                <materno-fetal-component v-else-if="consultData.medicalspecialty_id === 3" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.maternoFetal"></materno-fetal-component>
 
-                                <nutricion-perinatal-component v-else-if="consultData.medicalspecialty_id === 4" :disabled="disableData"
+                                <nutricion-perinatal-component v-else-if="consultData.medicalspecialty_id === 4" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.nutricionPerinatal"></nutricion-perinatal-component>
-                                <nutricion-general-component v-else-if="consultData.medicalspecialty_id === 5" :disabled="disableData"
+                                <nutricion-general-component v-else-if="consultData.medicalspecialty_id === 5" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.nutricionGeneral"></nutricion-general-component>
 
-                                <biologia-reproduccion-component v-else-if="consultData.medicalspecialty_id === 7" :disabled="disableData"
+                                <biologia-reproduccion-component v-else-if="consultData.medicalspecialty_id === 7" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.biologiaReproduccion"></biologia-reproduccion-component>
-                                <cirugia-endoscopica-component v-else-if="consultData.medicalspecialty_id === 8" :disabled="disableData"
+                                <cirugia-endoscopica-component v-else-if="consultData.medicalspecialty_id === 8" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.cirugiaEndoscopica"></cirugia-endoscopica-component>
-                                <oncologia-component v-else-if="consultData.medicalspecialty_id === 9" :disabled="disableData"
+                                <oncologia-component v-else-if="consultData.medicalspecialty_id === 9" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.oncologia"></oncologia-component>
-                                <colposcopia-component v-else-if="consultData.medicalspecialty_id === 10" :disabled="disableData"
+                                <colposcopia-component v-else-if="consultData.medicalspecialty_id === 10" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.colposcopia"></colposcopia-component>
                             </div>
                             <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
                                 aria-labelledby="mccCitasSubsecuentes-tab">
-                                <citas-subsecuentes-component v-model="followUp.follow_up.data.form" :disabled="disableConsult">
+                                <citas-subsecuentes-component v-model="followUp.data.form" :disabled="disableConsult">
                                 </citas-subsecuentes-component>
                             </div>
                             <div class="tab-pane fade" id="mccReceta" role="tabpanel" aria-labelledby="mccReceta-tab">

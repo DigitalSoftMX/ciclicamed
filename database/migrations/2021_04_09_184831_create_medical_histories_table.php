@@ -14,6 +14,8 @@ class CreateMedicalHistoriesTable extends Migration
     public function up()
     {
         Schema::create('medical_histories', function (Blueprint $table) {
+            $table->unsignedInteger('id', true);
+            $table->unsignedMediumInteger('patient_id', false);
             $table->unsignedInteger('medicalconsult_id', false);
             $table->json('data');
             $table->unsignedSmallInteger('updated_by', false);
