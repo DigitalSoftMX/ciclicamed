@@ -65,9 +65,7 @@
 
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <img :src="payment.patient?.photo" :alt="payment.patient?.first_name"
-                                        class="ap-img__main bg-opacity-primary wh-50 rounded-circle"
-                                        :onerror="`this.src='/svg/person.svg';`">
+                                    <img-component :url="payment.patient?.photo" cssClass="ap-img__main bg-opacity-primary wh-50 rounded-circle" :alt="payment.patient?.first_name" errorImg="/svg/person.svg"></img-component>
                                 </td>
 
 
@@ -91,6 +89,13 @@
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                 @click="redirectToChargeComponent(payment)">
                                                 <img src="/svg/cash.svg" alt="Pagar">
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
+                                                @click="showModalConfirmation(payment)">
+                                                <img src="/svg/delete.svg" alt="Mostrar">
                                             </button>
                                         </li>
                                     </ul>
@@ -142,6 +147,10 @@
             <div class="spinner-border text-primary"></div>
         </div>
     </div>
+    <confirmation-alert-component id="paytcConfirmation" title="¿Está seguro de eliminar este pago? Esta acción no se puede deshacerse" @confirmAction="deletePayment"></confirmation-alert-component>
+    <success-alert-component id="paytcSuccess" title="Pago eliminado" message="Pago eliminado correctamente"></success-alert-component>
+    <error-alert-component :id="'paytcError'" :errors="errors" :title="'Error al modificar los roles'">
+    </error-alert-component>
 </template>
 
 <script lang="ts" src="./PaymentsTableComponent.ts"></script>

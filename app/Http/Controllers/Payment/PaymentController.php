@@ -16,6 +16,24 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
+    public function deletePaymentByID($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user->hasRole(['Administrador', 'Caja', 'Caja administrador']))
+        {
+            Payment::findOrFail($id)->update([
+                'paymentstatus_id' => 4
+            ]);
+
+            return response()->json(true, 200);
+        }
+        
+        return response()->json(['errors' => [
+            'tarjeta' => ['Ingrese una cantidad en deuda para continuar, o en su defecto no seleccione la opción']
+        ]], 401);
+    }
+
     public function createPayment(NewPaymentRequest $request)
     {
         $request->validated();
@@ -33,6 +51,22 @@ class PaymentController extends Controller
                 'tarjeta' => ['Ingrese una cantidad en deuda para continuar, o en su defecto no seleccione la opción']
             ]], 401);
         }
+
+        $messages = [
+            'data.branchID.required' => 'Debe de seleccionar una sucursal',
+            'data.branchID.numeric' => 'Debe de seleccionar una sucursal',
+            'data.branchID.min' => 'Debe de seleccionar una sucursal',
+            'data.patientID.required' => 'Debe de seleccionar un paciente',
+            'data.patientID.numeric' => 'Debe de seleccionar un paciente',
+            'data.patientID.min' => 'Debe de seleccionar un paciente',
+        ];
+
+        $rules =[
+            'data.branchID' => 'required|numeric|min:1',
+            'data.patientID' => 'required|numeric|min:1',
+        ];
+
+        request()->validate($rules, $messages);
 
         if($user->hasRole(['Administrador', 'Caja', 'Caja administrador']))
         {
@@ -66,7 +100,7 @@ class PaymentController extends Controller
                     PaymentDebt::create([
                         'payment_id' => $payment,
                         'description' => 'Primer pago de deuda',
-                        'total' => $request['data']['paymentMethod']['description'],
+                        'total' => $request['data']['debt']['description'],
                         'paymentmethod_id' => $request['data']['paymentMethod']['check'],
                         'credit_card' => $creditCard,
                         'charged_by' => $user['employee']['id'],

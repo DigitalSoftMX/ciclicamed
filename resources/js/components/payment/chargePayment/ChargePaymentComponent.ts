@@ -81,6 +81,16 @@ export default defineComponent({
         }
     },
     computed: {
+        totalPrice(): string
+        {
+            const price: number = this.productSelectedList.reduce((a, b) => ({...a, price: Number(a.price) + Number(b.price)}), ProductData).price;
+            const discount: number = this.productSelectedList.reduce((a, b) => ({...a, discount: Number(a.discount) + Number(b.discount)}), ProductData).discount;
+            return (price - discount).toFixed(2);
+        },
+        totalDebt(): string
+        {
+            return (Number(this.totalPrice) - this.debtData.description).toFixed(2);
+        },
         activePayment(): boolean
         {
             return this.role === 'Administrador' || this.role === 'Caja' || this.role === 'Caja administrador';

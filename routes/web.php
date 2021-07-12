@@ -181,7 +181,8 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/productos', [PaymentController::class, 'getPaymentProductsByID'])->name('pagos.getProductos');
         Route::get('/{id}/deudas', [PaymentController::class, 'getAllDebtsByPaymentID'])->name('pagos.getDeudas');
         Route::post('/{id}/deudas', [PaymentController::class, 'setDebtPayment'])->name('pagos.setDeuda');
-        Route::post('/{id}/pago', [PaymentController::class, 'createPaymentByID'])->name('pagos.createPayment'); 
+        Route::post('/{id}/pago', [PaymentController::class, 'createPaymentByID'])->name('pagos.createPayment');
+        Route::delete('/{id}', [PaymentController::class, 'deletePaymentByID'])->name('pagos.deletePayment'); 
     });
 
     //Checkup

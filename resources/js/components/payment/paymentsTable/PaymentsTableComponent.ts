@@ -12,6 +12,7 @@ import { Patient } from '@interface/Patient/Patient.interface';
 import { PaymentPagination } from '@interface/Payment/PaymentPagination.interface';
 import { PaymentPaginationData } from '@data/Payment/PaymentPagination.data';
 import { Payment } from '@interface/Payment/Payment.interface';
+import { PaymentData } from '@data/Payment/Payment.data';
 
 export default defineComponent({
     components: {
@@ -27,7 +28,9 @@ export default defineComponent({
             query: '',
             activateSearch: true,
             patientData: PatientData,
-            loading: true
+            loading: true,
+            errors: [],
+            paymentSelected: PaymentData
         };
     },
     mounted() {
@@ -36,6 +39,21 @@ export default defineComponent({
     watch: {
     },
     methods: {
+        showModalConfirmation(payment: Payment)
+        {
+            this.paymentSelected = payment;
+            $('#paytcConfirmation').modal('show');
+        },
+        deletePayment()
+        {
+            axios.delete(`/pagos/${this.paymentSelected.id}`)
+            .then(response => {
+                $('#paytcSuccess').modal('show');
+            })
+            .catch(error => {
+                $('#paytcError').modal('show');
+            })
+        },
         formatBirthday(birthday: string)
         {
             return moment(birthday).format('DD-MM-YYYY');

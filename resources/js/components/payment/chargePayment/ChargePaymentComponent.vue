@@ -124,7 +124,7 @@
                             </table>
                             <div class="col-12 row mx-0 border-top pt-3 px-0">
                                 <h6 class="col-7">Total</h6>
-                                <h6 class="col-5 text-right">${{getTotalPrice()}}</h6>
+                                <h6 class="col-5 text-right">${{totalPrice}}</h6>
                             </div>
                         </div>
                         <div v-if="activePayment">
@@ -178,7 +178,7 @@
                                 <div class="card-body row mx-0" v-if="debtData.check">
                                     <div class="col-12 row mx-0 mb-25 px-0">
                                         <h6 class="col-7">Pago total</h6>
-                                        <h6 class="col-5 text-right">${{}}</h6>
+                                        <h6 class="col-5 text-right">${{totalPrice}}</h6>
                                     </div>
                                     <div class="col-12 mb-25 row px-0 mx-0 align-items-center">
                                         <h6 class="col-8">Pago inicial</h6>
@@ -187,7 +187,7 @@
                                     </div>
                                     <div class="col-12 row mx-0 border-top pt-3 px-0">
                                         <h6 class="col-7">Pago restante</h6>
-                                        <h6 class="col-5 text-right">${{}}</h6>
+                                        <h6 class="col-5 text-right">${{totalDebt}}</h6>
                                     </div>
                                 </div>
                             </div>

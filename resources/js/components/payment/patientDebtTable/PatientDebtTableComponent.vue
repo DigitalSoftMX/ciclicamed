@@ -4,7 +4,7 @@
         <div class="form-group p-0">
             <div class="with-icon">
                 <span class="mr-5">
-                    <img :src="asset('/svg/search.svg')" alt="Search">
+                    <img src="/svg/show.svg" alt="Buscar">
                 </span>
                 <input type="text" class="form-control form-control-lg bg-white" v-model="query"
                     @keyup="getUserDataQuery()" placeholder="Buscar">
@@ -14,7 +14,8 @@
 
     <div class="card mt-30 spin-embadded" v-bind:class="{'spin-active': loading}">
         <div class="card-body">
-            <div class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
+            <div
+                class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
                 <div class="table-responsive  hide-y-overflow">
                     <table
                         class="table mb-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"
@@ -63,10 +64,8 @@
 
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <img class="ap-img__main bg-opacity-primary wh-50 rounded-circle"
-                                        src="https://demo.jsnorm.com/laravel/strikingdash/img/tm1.png" alt="profile">
+                                    <img-component :url="user.photo" cssClass="ap-img__main bg-opacity-primary wh-50 rounded-circle" :alt="user.first_name" errorImg="/svg/person.svg"></img-component>
                                 </td>
-
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
@@ -94,8 +93,9 @@
                                     <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
                                         <li>
                                             <button
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img" @click="redirectToDebtData(user)">
-                                                <img :src="asset('/svg/show.svg')">
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
+                                                @click="redirectToDebtData(user)">
+                                                <img src="/svg/show.svg" alt="Mostrar">
                                             </button>
                                         </li>
                                     </ul>
@@ -153,4 +153,5 @@
 
 <style scoped>
     @import '../../../../../public/vendor_assets/css/footable.standalone.min.css';
+
 </style>

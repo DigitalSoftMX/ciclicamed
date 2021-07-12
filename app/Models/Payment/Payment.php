@@ -27,6 +27,8 @@ class Payment extends Model
         'patient_id'
     ];
 
+    protected $perPage = 10;
+
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'patient_id');
