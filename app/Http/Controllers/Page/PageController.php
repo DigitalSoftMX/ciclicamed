@@ -72,7 +72,7 @@ class PageController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
 
-        if($user->hasRole('Administrador'))
+        if($user->hasRole(['Administrador', 'Asistente']))
         {
             return response()->view('pages.products', [
                 'user' => $user->employee->load('user'),

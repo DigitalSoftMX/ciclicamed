@@ -54,7 +54,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        console.log(this.employeeID)
+        this.getPatientsList();
         this.selectUserSchedule();
         this.getBranchesList();
     },
@@ -65,6 +65,23 @@ export default defineComponent({
         }
     },
     methods: {
+        getPatientsList(): void
+        {
+            axios.get <Patient[]> (`/pacientes`)
+            .then(response => {
+                console.log(response.data)
+                this.patientsList = response.data.map((patient, index) => {
+                    return {
+                        id: index,
+                        childID: patient.id,
+                        text: `${patient.patient_code} ${patient.first_name} ${patient.last_name}`
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         getDoctorBranch(branchID: number)
         {
             this.scheduleSelected.branch_id = branchID;

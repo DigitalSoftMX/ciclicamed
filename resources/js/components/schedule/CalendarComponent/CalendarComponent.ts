@@ -147,6 +147,14 @@ export default defineComponent({
             {
                 case 'Enfermera':
                     break;
+                case 'Checkup':
+                    break;
+                case 'Caja':
+                    break;
+                case 'Laboratorio':
+                    break;
+                case 'Imagenologia':
+                    break;
                 default:
                     this.$emit('onNewSchedule', data.date);
                     break

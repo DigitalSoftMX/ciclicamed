@@ -169,6 +169,7 @@ export default defineComponent({
 
 export function setCheckupData(checkup: Checkup, checkupSelected: CheckupList, checkupID: number): CheckupList
 {
+    console.log(checkup)
     checkupSelected.patient_id = checkup.patient_id;
     checkupSelected.name = checkup.category!.name;
     checkupSelected.checkupcategory_id = checkup.category!.id;

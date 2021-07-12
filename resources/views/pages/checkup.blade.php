@@ -5,7 +5,7 @@
             @case('Administrador')
                 <administrador-checkup-page :administrador="{{ json_encode($user) }}" role="Administrador"></doctor-dashboard-page>
                 @break
-            @case('Doctor')
+            @case('Checkup')
                 <checkup-checkup-page :patient="{{ json_encode($user) }}" role="Checkup"></checkup-checkup-page>
                 @break
         @endswitch
