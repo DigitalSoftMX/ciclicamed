@@ -6,7 +6,7 @@
                 <div class="card border-0 shadow-none">
                     <div class="card-body">
                         <div class="text-center mb-25">
-                            <img :src="asset('/img/login/logo.png')" alt="Ciclica logo" class="login-logo mb-25">
+                            <img-component url="/img/login/logo.png"  alt="Ciclica" cssClass="login-logo mb-25"></img-component>
                             <h2>Registrarse</h2>
                         </div>
                         <div>
@@ -56,7 +56,7 @@
                                 <label for="password-field">Dirección</label>
                                 <div class="position-relative">
                                     <textarea class="form-control form-control-lg"
-                                        v-model="patient.address" placeholder="Dirección"></textarea>
+                                        v-model="patient.address" placeholder="Dirección" maxlength="255"></textarea>
                                 </div>
                             </div>
 
@@ -64,14 +64,14 @@
                                 <label for="password-field">Teléfono de casa</label>
                                 <div class="position-relative">
                                     <input type="text" class="form-control form-control-lg"
-                                        v-model="patient.phone" placeholder="Teléfono de casa">
+                                        v-model="patient.phone" placeholder="Teléfono de casa" maxlength="10">
                                 </div>
                             </div>
                             <div class="form-group mb-20">
                                 <label for="password-field">Celular</label>
                                 <div class="position-relative">
                                     <input type="text" class="form-control form-control-lg"
-                                        v-model="patient.cellphone" placeholder="Celular">
+                                        v-model="patient.cellphone" placeholder="Celular" maxlength="10">
                                 </div>
                             </div>
 
@@ -129,7 +129,7 @@
                                             <ul>
                                                 <li>
                                                     <span class="name-text">{{patient.photo.name}}</span>
-                                                    <img :src="asset('/svg/delete.svg')" alt="Archivo" @click="cleanPhotoSelected" class="delete-icon">
+                                                    <img-component url="/svg/delete.svg"  alt="Eliminar" @click="cleanPhotoSelected"></img-component>
                                                 </li>
                                             </ul>
                                         </div>

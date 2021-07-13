@@ -24,6 +24,10 @@ export default defineComponent({
             formData: this.modelValue,
         };
     },
+    mounted()
+    {
+        this.formData = this.modelValue;
+    },
     computed: {
         indicePreMovilidad(): number {
             return Number(this.formData.analisisPreCapacitacion.movilidad.a) + Number(this.formData.analisisPreCapacitacion.movilidad.b);

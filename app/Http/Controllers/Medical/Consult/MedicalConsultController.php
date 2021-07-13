@@ -276,8 +276,44 @@ class MedicalConsultController extends Controller
         if(intval($consult['medicalconsultstatus_id'] > 4) && $user->hasRole(['Doctor', 'Enfermera']))
         {
             return response()->json(['errors' => [
-                'permisos' => ['Error 1']
+                'permisos' => ['No tiene los permisos necesarios para realizar esta acción']
             ]], 401);
+        }
+
+        if((intval($consult['medicalspecialty_id'] === 11 || intval($consult['medicalspecialty_id']) === 12 ) && $user->hasRole('Administrador')))
+        {
+            $test = MedicalTest::where('scheduled_in', $id)->first();
+            $data = MedicalTestSample::where('medicaltest_id', $test['id'])->orderBy('created_at', 'desc');
+            if(isset($data) && isset($consult['nurse_start_at']))
+            {
+                $data->update([
+                    'fum' => $request->input('data.fum'),
+                    'collected_by' => $user['employee']['id'],
+                    'finish_at' => $time,
+                    'updated_by' => $user['employee']['id']
+                ]);
+                $consult->update([
+                    'nurse_finish_at' => $time,
+                    'medicalconsultstatus_id' => 5
+                ]);
+            }
+            MedicalTestSample::create([
+                'medicaltest_id' => $test['id'],
+                'fum' => $request->input('data.fum'),
+                'finish_at' => $time,
+                'collected_by' => $user['employee']['id'],
+                'updated_by' => $user['employee']['id']
+            ]);
+            $test->update([
+                'medicalteststatus_id' => 2,
+                'medicalconsultstatus_id' => 5
+            ]);
+            $consult->update([
+                'nurse_finish_at' => $time,
+                'medicalconsultstatus_id' => 5
+            ]);
+            Cookie::queue(Cookie::forget('consult'));
+            return response()->json(true, 200);
         }
 
         //Ingresa los datos por parte de enfermera
@@ -300,8 +336,6 @@ class MedicalConsultController extends Controller
                         'nurse_finish_at' => $time,
                         'medicalconsultstatus_id' => 5
                     ]);
-                    Cookie::queue(Cookie::forget('consult'));
-                    return response()->json(true, 200);
                 }
                 MedicalTestSample::create([
                     'medicaltest_id' => $id,
@@ -318,6 +352,7 @@ class MedicalConsultController extends Controller
                     'nurse_finish_at' => $time,
                     'medicalconsultstatus_id' => 5
                 ]);
+                Cookie::queue(Cookie::forget('consult'));
                 return response()->json(true, 200);
             }
 
@@ -445,7 +480,7 @@ class MedicalConsultController extends Controller
         }
         // Cookie::queue(Cookie::forget('consult'));
         return response()->json(['errors' => [
-            'permisos' => ['Error2']
+            'permisos' => ['No tiene los permisos necesarios para realizar esta acción']
         ]], 401);
     }
 
@@ -485,16 +520,26 @@ class MedicalConsultController extends Controller
                 'data.branch_id' => 'required|min:1'
             ]);
 
+            $messageTest = [
+                'data.product_id.min' => 'Debe de seleccionar un estudio',
+            ];
+
+            $ruleTest =[
+                'data.product_id' => 'required|numeric|min:1',
+            ];
+
             $medicalspecialty_id = intval($request->input('data.doctor_id'));
             $medicalconsultcategory_id = 0;
             $firstConsult = MedicalConsult::where('patient_id', $user['patient']['id'])->where('medicalconsultcategory_id', 1)->get();
             switch($medicalspecialty_id)
             {
                 case 1:
+                    request()->validate($ruleTest, $messageTest);
                     $medicalspecialty_id = 11;
                     $medicalconsultcategory_id = 4;
                     break;
                 case 2:
+                    request()->validate($ruleTest, $messageTest);
                     $medicalspecialty_id = 12;
                     $medicalconsultcategory_id = 3;
                     break;
@@ -529,6 +574,24 @@ class MedicalConsultController extends Controller
                 'branch_id' => $request->input('data.branch_id'),
                 'medicalconsultstatus_id' => 1,
             ]);
+            
+
+            if($medicalconsultcategory_id === 3 || $medicalconsultcategory_id === 4)
+            {
+                $lastTest = MedicalTest::orderBy('id', 'desc')->first()->id;
+                $testCode ="MUE-" . str_pad((int) $lastTest++, 3, "0", STR_PAD_LEFT);
+                $newTest = MedicalTest::create([
+                    'test_code' => $testCode,
+                    'scheduled_in' => $consult['id'],
+                    'medicalteststatus_id' => 1
+                ]);
+
+                MedicalTestOrder::create([
+                    'medicaltest_id' => $newTest->id,
+                    'product_id' => $request['data.product_id']
+                ]);
+            }
+
             $consult->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
             return  response()->json($consult);
         }
@@ -606,10 +669,15 @@ class MedicalConsultController extends Controller
             {
                 $lastTest = MedicalTest::orderBy('id', 'desc')->first()->id;
                 $testCode ="MUE-" . str_pad((int) $lastTest++, 3, "0", STR_PAD_LEFT);
-                MedicalTest::create([
+                $newTest = MedicalTest::create([
                     'test_code' => $testCode,
                     'scheduled_in' => $consult['id'],
                     'medicalteststatus_id' => 1
+                ]);
+
+                MedicalTestOrder::create([
+                    'medicaltest_id' => $newTest->id,
+                    'product_id' => $request['data.product_id']
                 ]);
             }
 

@@ -223,7 +223,8 @@ class PageController extends Controller
                         return response()->view('pages.consult', [
                         'user' => $user->employee->load('user'),
                         'roles' => $user->roles,
-                        'consultID' => $cookie
+                        'consultID' => $cookie,
+                        'consultSpecialty' => $consult['medicalspecialty_id']
                         ], 200);
                     }
                     return response()->view('pages.consult', [

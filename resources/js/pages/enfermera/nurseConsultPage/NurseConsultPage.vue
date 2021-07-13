@@ -11,7 +11,7 @@
                     </patient-profile-component>
                 </div>
                 <div class="col-12 col-md-9 p-0">
-                    <div v-if="consultData.test_scheduled" class="container-fluid">
+                    <div v-if="consultData.medicalspecialty_id === 11 || consultData.medicalspecialty_id === 12" class="container-fluid">
                         <div class="card">
                             <div class="card-header">
                                 <h4>FUM</h4>
@@ -69,58 +69,52 @@
                             <!-- Tab Menu End -->
                             <div class="projects-tab-content projects-tab-content--progress">
                                 <div class="tab-content mt-25" id="mdc">
-                                    <div>
-
+                                    <div class="tab-pane fade active show" id="mccHistorialClinico" role="tabpanel">
+                                        <historial-clinico-component v-model="historyData.data.form" :disabled="true">
+                                        </historial-clinico-component>
                                     </div>
-                                    <div>
-                                        <div class="tab-pane fade active show" id="mccHistorialClinico" role="tabpanel">
-                                            <historial-clinico-component v-model="historyData.data.form"
-                                                :disabled="true">
-                                            </historial-clinico-component>
-                                        </div>
-                                        <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
-                                            aria-labelledby="mccCitasSubsecuentes-tab">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h1>Toma de signos vitales</h1>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="row mx-0">
-                                                        <div class="col-12 col-md-6 mb-25 ">
-                                                            <label for="cscFUM">FUM</label>
-                                                            <input class="form-control form-control-lg" type="date"
-                                                                id="cscFUM" v-model="formData.fum">
-                                                        </div>
-                                                        <div class="col-12 col-md-3 mb-25 ">
-                                                            <label for="cscIMC">IMC</label>
-                                                            <input class="form-control form-control-lg" type="text"
-                                                                id="cscIMC" v-model="formData.imc">
-                                                        </div>
-                                                        <div class="col-12 col-md-3 mb-25 ">
-                                                            <label for="cscPeso">Peso</label>
-                                                            <input class="form-control form-control-lg" type="text"
-                                                                id="cscPeso" v-model="formData.peso">
-                                                        </div>
-                                                        <div class="col-12 col-md-3 mb-25 ">
-                                                            <label for="cscTA">TA</label>
-                                                            <input class="form-control form-control-lg" type="text"
-                                                                id="cscTA" v-model="formData.ta">
-                                                        </div>
-                                                        <div class="col-12 col-md-3 mb-25 ">
-                                                            <label for="cscFC">FC</label>
-                                                            <input class="form-control form-control-lg" type="text"
-                                                                id="cscFC" v-model="formData.fc">
-                                                        </div>
-                                                        <div class="col-12 col-md-3 mb-25 ">
-                                                            <label for="cscFR">FR</label>
-                                                            <input class="form-control form-control-lg" type="text"
-                                                                id="cscFR" v-model="formData.fr">
-                                                        </div>
-                                                        <div class="col-12 col-md-3 mb-25 ">
-                                                            <label for="cscTemperatura">Temperatura</label>
-                                                            <input class="form-control form-control-lg" type="text"
-                                                                id="cscTemperatura" v-model="formData.temperatura">
-                                                        </div>
+                                    <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
+                                        aria-labelledby="mccCitasSubsecuentes-tab">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h1>Toma de signos vitales</h1>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row mx-0">
+                                                    <div class="col-12 col-md-6 mb-25 ">
+                                                        <label for="cscFUM">FUM</label>
+                                                        <input class="form-control form-control-lg" type="date"
+                                                            id="cscFUM" v-model="formData.fum">
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-25 ">
+                                                        <label for="cscIMC">IMC</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            id="cscIMC" v-model="formData.imc">
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-25 ">
+                                                        <label for="cscPeso">Peso</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            id="cscPeso" v-model="formData.peso">
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-25 ">
+                                                        <label for="cscTA">TA</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            id="cscTA" v-model="formData.ta">
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-25 ">
+                                                        <label for="cscFC">FC</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            id="cscFC" v-model="formData.fc">
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-25 ">
+                                                        <label for="cscFR">FR</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            id="cscFR" v-model="formData.fr">
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-25 ">
+                                                        <label for="cscTemperatura">Temperatura</label>
+                                                        <input class="form-control form-control-lg" type="text"
+                                                            id="cscTemperatura" v-model="formData.temperatura">
                                                     </div>
                                                 </div>
                                             </div>

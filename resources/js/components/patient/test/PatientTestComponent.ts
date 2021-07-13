@@ -30,7 +30,8 @@ export default defineComponent({
             query: '',
             activateSearch: true,
             loading: true,
-            results: {}
+            results: {},
+            productSelected: ''
         };
     },
     mounted() {
@@ -64,6 +65,7 @@ export default defineComponent({
             return moment(date).format('D MMMM YYYY');
         },
         showFileResults(consult: Consult) {
+            this.productSelected = consult.test_scheduled?.order.product.product_code!;
             this.results = consult.test_scheduled!.result!.results;
             $('#pattcFileTest').modal('show');
         },
@@ -77,6 +79,7 @@ export default defineComponent({
                 .then(response => {
                     console.log(response.data)
                     this.prescriptionsData = response.data;
+                    this.prescriptionsData.data = response.data.data.filter(item => item.test_scheduled?.order);
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
                 })
@@ -100,6 +103,7 @@ export default defineComponent({
                 })
                 .then(response => {
                     this.prescriptionsData = response.data;
+                    this.prescriptionsData.data = response.data.data.filter(item => item.test_scheduled?.order);
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
                 })

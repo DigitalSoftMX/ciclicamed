@@ -64,7 +64,7 @@ export default defineComponent({
     {
         testOrders(): any[]
         {
-            return this.consultData!.test_scheduled!.order!.product!.order_annotations!;
+            return this.consultData!.test_scheduled?.order?.product?.order_annotations!;
         }
     },
     watch: {

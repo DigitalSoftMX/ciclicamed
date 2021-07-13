@@ -214,6 +214,11 @@ class PatientController extends Controller
                     {
                         $result->testScheduled->result['results'] = json_decode($result->testScheduled->result->results);
                     }
+                    if(isset($result->testScheduled->result->results->form))
+                    {
+                        $data = json_decode($result->testScheduled->result->results->form);
+                        $result->testScheduled->result->results->form = $data;
+                    }
                 }
             }
 

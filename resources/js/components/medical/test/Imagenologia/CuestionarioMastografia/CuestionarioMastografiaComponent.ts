@@ -26,12 +26,14 @@ export default defineComponent({
     mounted() {
         (this.$refs.editor as any).setBackgroundImage('/img/estudios/cuestionarioMastografia.png');
         (this.$refs.editor as any).set('freeDrawing');
+        this.formData = this.modelValue;
     },
     watch: {
         modelValue:
         {
             handler()
             {
+                console.log(this.modelValue)
                 this.formData = this.modelValue;
             },
             deep: true

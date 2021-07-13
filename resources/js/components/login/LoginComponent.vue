@@ -6,7 +6,7 @@
                 <div class="card border-0 shadow-none">
                     <div class="card-body">
                         <div class="text-center mb-25">
-                            <img :src="asset('/img/login/logo.png')" alt="Ciclica logo" class="login-logo mb-25">
+                            <img-component url="/img/login/logo.png"  alt="Ciclica" cssClass="login-logo mb-25"></img-component>
                             <h2>Iniciar sesión</h2>
                         </div>
                         <div>
@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="signUp-condition signIn-condition">
-                                <a href="{{ route('password.request') }}">¿Olvidó su
+                                <a href="">¿Olvidó su
                                     contraseña?</a>
                             </div>
 
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <success-alert-component id="logcSuccessAlert" title="Login correcto" message="Ingreso correcto. Bienvedido(a)"></success-alert-component>
+    <success-alert-component id="logcSuccessAlert" title="Login correcto" message="Bienvedido(a)"></success-alert-component>
 </template>
 
 <script lang="ts" src="./LoginComponent.ts"></script>

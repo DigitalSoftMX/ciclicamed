@@ -2,5 +2,6 @@ import { TestFileResult } from "@interface/Medical/Result/TestFileResult.interfa
 
 export const TestFileResultData: TestFileResult = {
     type: 'files',
-    files: []
+    files: [],
+    form: {}
 }

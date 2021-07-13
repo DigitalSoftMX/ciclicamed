@@ -24,7 +24,7 @@
                     </div>
 
                     <!-- Lista de estudios (solo si es imagenologia o laboratorio) -->
-                    <div class="form-group" v-if="(scheduleSelectedCopy.doctor_id === 1 || scheduleSelectedCopy.doctor_id === 2) && scheduleSelectedCopy.product_id">
+                    <div class="form-group" v-if="(scheduleSelectedCopy.doctor_id === 1 || scheduleSelectedCopy.doctor_id === 2)">
                         <label for="lscEstudios">Estudio clínico</label>
                         <v-select :options="testList" label="text" :reduce="item => item.childID"
                             placeholder="Seleccione un estudio" v-model="scheduleSelectedCopy.product_id" />

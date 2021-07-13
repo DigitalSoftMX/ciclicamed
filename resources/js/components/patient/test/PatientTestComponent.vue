@@ -36,7 +36,7 @@
                     </div>
                     <div class="content-center mt-25">
                         <button class="btn btn-white btn-sm btn-squared rounded-pill" v-if="prescription.test_scheduled?.status?.name === 'Resultados creados'"
-                            v-on:click="showFileResults(prescription.test_scheduled?.result)">Ver resultados</button>
+                            v-on:click="showFileResults(prescription)">Ver resultados</button>
                         <button class="btn btn-white btn-sm btn-squared rounded-pill" v-if="prescription.test_scheduled?.status?.name === 'Estudio creado'"
                             v-on:click="showFileResults(prescription)">Ver orden</button>
                     </div>
@@ -88,7 +88,7 @@
     </div>
 
     <!-- Modal -->
-    <patient-test-file-modal-component :id="'pattcFileTest'" :results="results">
+    <patient-test-file-modal-component :id="'pattcFileTest'" :results="results" :productCode="productSelected">
     </patient-test-file-modal-component>
 </template>
 

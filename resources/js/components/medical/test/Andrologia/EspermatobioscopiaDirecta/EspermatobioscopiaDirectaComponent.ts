@@ -19,6 +19,10 @@ export default defineComponent({
             default: EspermatobioscopiaDirectaData
         }
     },
+    mounted()
+    {
+        this.formData = this.modelValue;
+    },
     data() {
         return {
             formData: this.modelValue,

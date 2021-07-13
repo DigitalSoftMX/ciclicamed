@@ -4,7 +4,7 @@
     @if (Cookie::get('consult') !== null)
         @switch($roles[0]->name)
             @case('Administrador')
-                <administrador-consult-page :doctor="{{ json_encode($user) }}" role="Administrador" :consult="{{ Cookie::get('consult') }}"></doctor-dashboard-page>
+                <administrador-consult-page :doctor="{{ json_encode($user) }}" role="Administrador" :consult="{{ Cookie::get('consult') }}" :specialty="{{ $consultSpecialty }}"></doctor-dashboard-page>
                 @break
             @case('Doctor')
                 <doctor-consult-page :doctor="{{ json_encode($user) }}" role="Doctor" :consult="{{ Cookie::get('consult') }}"></doctor-dashboard-page>

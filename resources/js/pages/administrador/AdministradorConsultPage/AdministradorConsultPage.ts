@@ -3,12 +3,14 @@ import { DoctorSidebarConfig } from '@config/DoctorSidebar.config';
 import { EmployeeData } from '@data/Employee/Employee.data';
 import { Employee } from '@interface/Employee/Employee.interface';
 import { Role } from '@interface/User/Role.interface';
+import NurseConsultPage from '@page/enfermera/nurseConsultPage/NurseConsultPage';
 import { defineComponent } from '@vue/runtime-core';
 import cloneDeep from 'lodash/cloneDeep';
 import { PropType } from 'vue';
 
 export default defineComponent({
     components: {
+        NurseConsultPage,
         NavbarComponent: require('@component/general/navbar/NavbarComponent.vue').default,
         SidebarComponent: require('@component/general/sidebar/SidebarComponent.vue').default,
         ConsultPage: require('@page/general/consult/ConsultPage.vue').default,
@@ -26,6 +28,10 @@ export default defineComponent({
             type: Number,
             default: -1
         },
+        specialty: {
+            type: Number,
+            default: -1
+        },
     },
     data() {
         return {
@@ -35,8 +41,13 @@ export default defineComponent({
         };
     },
     mounted() {
+        console.log(this.specialty)
     },
     watch: {
+        consultSpecialty()
+        {
+            console.log(this.specialty)
+        },
         isSidebarOpen()
         {
             if(this.isSidebarOpen )

@@ -25,6 +25,7 @@ export default defineComponent({
         };
     },
     mounted() {
+        this.formData = this.modelValue;
     },
     watch: {
         modelValue: {
