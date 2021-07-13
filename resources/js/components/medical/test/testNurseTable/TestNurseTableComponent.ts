@@ -37,7 +37,7 @@ export default defineComponent({
     computed: {
         showSupplierCode(): boolean
         {
-            return this.consultData.data.filter(item => item.test_scheduled!.order!.product.supplier_code).length > 0;
+            return this.consultData.data.filter(item => item.test_scheduled!.order?.product?.supplier_code).length > 0;
         }
     },
     watch: {

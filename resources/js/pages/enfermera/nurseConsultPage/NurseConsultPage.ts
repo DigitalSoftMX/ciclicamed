@@ -116,8 +116,20 @@ export default defineComponent({
                 this.consultData = response.data;
                 this.getPatientData();
                 this.updateClock();
+                this.getHistory();
             })
             .catch(error => {
+            })
+        },
+        getHistory()
+        {
+            axios.get<History>(`/pacientes/${this.consultData.patient_id}/historial`)
+            .then(response => {
+                console.log(response.data)
+                this.historyData = Array.isArray(response.data) ? HistoryData : response.data;
+            })
+            .catch(error => {
+                console.log(error)
             })
         },
         updateClock()
@@ -137,18 +149,6 @@ export default defineComponent({
             })
             .catch(error => {
             })
-        },
-        getHistory()
-        {
-            axios.get<History>(`/consultas/${this.consult}/historial`)
-            .then(response => {
-                if(response.status === 200)
-                {
-                    this.historyData = response.data;
-                }
-            })
-            .catch(error => {
-            })
-        },
+        }
     },
 })
