@@ -100,7 +100,6 @@
                                         </li>
                                         <li v-if="role === 'Administrador'">
                                             <button
-                                                
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
                                                 <img-component url="/svg/edit.svg" alt="Editar"></img-component>
                                             </button>

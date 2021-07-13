@@ -38,8 +38,8 @@ export default defineComponent({
             case 'Laboratorio':
                 this.acceptFiles = '.pdf';
                 break;
-            case 'Imagenología':
-                this.acceptFiles = '.jpg,.jpeg,.png,.bmp';
+            case 'Imagenologia':
+                this.acceptFiles = '.pdf,.jpg,.jpeg,.png,.bmp';
                 break;
         }
     },
@@ -100,8 +100,8 @@ export default defineComponent({
                 case 'Laboratorio':
                     this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf').slice(0,3);
                     break;
-                case 'Imagenología':
-                    this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
+                case 'Imagenologia':
+                    this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
                     break;
             }
             
@@ -123,8 +123,8 @@ export default defineComponent({
                     case 'Laboratorio':
                         this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
                         break;
-                    case 'Imagenología':
-                        this.fileList = Object.values<File>(files).filter(file => file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
+                    case 'Imagenologia':
+                        this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
                         break;
                 }
             }

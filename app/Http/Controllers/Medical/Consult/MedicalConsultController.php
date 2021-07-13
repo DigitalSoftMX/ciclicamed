@@ -658,33 +658,36 @@ class MedicalConsultController extends Controller
 
     public function cancelConsult(Request $request, $id)
     {
-        $user = User::findOrFail(Auth::user()->id)->hasRole(['Paciente', 'Laboratorio', 'Imagenología']);
-        if(!$user)
+        $user = User::findOrFail(Auth::user()->id);
+        if(!$user->hasRole(['Paciente', 'Laboratorio', 'Imagenología']))
         {
             $consultType = MedicalConsultStatus::where('name', 'Cancelado')->firstOrFail()->id;
             $consult = MedicalConsult::findOrFail($id);
             $today = Carbon::now()->startOfDay();
             $consultDate = Carbon::parse($consult->consult_schedule_start)->startOfDay();
             $dayDifference = $today->diffInDays($consultDate, false);
-            if ($dayDifference < 0)
+            if(!$user->hasRole('Administrador'))
             {
-                return response()->json([
-                    'errors' => [
-                        'date' => [
-                            "Solo se pueden cancelar citas del día de hoy o posteriores"
+                if ($dayDifference < 0)
+                {
+                    return response()->json([
+                        'errors' => [
+                            'date' => [
+                                "Solo se pueden cancelar citas del día de hoy o posteriores"
+                            ]
                         ]
-                    ]
-                ], 422);
-            }
-            if(in_array($consult->status->name, ['En consulta', 'Finalizado', 'Cancelado']))
-            {
-                return response()->json([
-                    'errors' => [
-                        'consult' => [
-                            "No se puede cancelar esta cita por que está {$consult->status->name}"
+                    ], 422);
+                }
+                if(in_array($consult->status->name, ['En consulta', 'Finalizado', 'Cancelado']))
+                {
+                    return response()->json([
+                        'errors' => [
+                            'consult' => [
+                                "No se puede cancelar esta cita por que está {$consult->status->name}"
+                            ]
                         ]
-                    ]
-                ], 422);
+                    ], 422);
+                }
             }
 
             $consult->update([

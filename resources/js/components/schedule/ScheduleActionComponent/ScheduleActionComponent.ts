@@ -48,6 +48,8 @@ export default defineComponent({
                     return false;
                 case 'Paciente':
                     return false;
+                case 'Administrador':
+                    return true;
                 default:
                     return this.schedule.status!.name.includes('Agendado' || 'Confirmado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
             }
@@ -60,6 +62,8 @@ export default defineComponent({
                     return false;
                 case 'Paciente':
                     return false;
+                case 'Administrador':
+                    return true;
                 default:
                     return this.schedule.status!.name?.includes('Agendado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
             }

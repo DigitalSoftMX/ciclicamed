@@ -82,6 +82,7 @@
     <confirmation-alert-component id="itpConfirmation"
         title="¿Está seguro de enviar los resultados de este estudio? Esta acción no puede deshacerse"
         @confirmAction="sendToServerData"></confirmation-alert-component>
+    <success-alert-component id="testucSuccess" title="Estudios subidos correctamente" message="Los estudios se han guardado correctamente"></success-alert-component>
 </template>
 
 <script lang="ts" src="./ImagenologiaTestPage.ts"></script>
