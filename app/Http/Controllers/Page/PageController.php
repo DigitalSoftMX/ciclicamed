@@ -12,6 +12,21 @@ use Illuminate\Support\Facades\Cookie;
 
 class PageController extends Controller
 {
+
+    public function showScheduleHours()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user->hasRole(['Doctor', 'Administrador']))
+        {
+            return response()->view('pages.horarios', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+        return response()->view('errors.404', [], 404);
+    }
+
     public function showLaboratorio()
     {
         $user = User::findOrFail(Auth::user()->id);

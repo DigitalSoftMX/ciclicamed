@@ -64,7 +64,7 @@
 
                                 <td class="footable-first-visible border-primary border-bottom"
                                     style="display: table-cell;">
-                                    <img-component :url="user.photo" cssClass="ap-img__main bg-opacity-primary wh-50 rounded-circle" :alt="user.first_name" errorImg="/svg/person.svg"></img-component>
+                                    <img-component :url="`/images/users/${user.photo}`" cssClass="ap-img__main bg-opacity-primary wh-50 rounded-circle" errorImg="/svg/person.svg"></img-component>
                                 </td>
 
                                 <td style="display: table-cell;" class="border-primary border-bottom">

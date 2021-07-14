@@ -10,6 +10,7 @@ use App\Http\Requests\Patient\NewPatientFromAdminRequest;
 use App\Http\Requests\Patient\PatientUpdateRequest;
 use App\Models\Branch\Branch;
 use App\Models\Employee\Employee;
+use App\Models\Employee\EmployeeLicense;
 use App\Models\Employee\EmployeeSchedule;
 use App\Models\Employee\EmployeeStatus;
 use App\Models\Medical\Consult\MedicalConsult;
@@ -26,6 +27,24 @@ use Spatie\Permission\Models\Role;
 
 class EmployeeController extends Controller
 {
+    public function getHours($id)
+    {
+        $hours = EmployeeSchedule::where('employee_id', $id)->get()->load('branch');
+        return response()->json($hours);
+    }
+
+    public function getTitles($id)
+    {
+        $titles = EmployeeLicense::where('employee_id', $id)->get();
+        return response()->json($titles);
+    }
+
+    public function getSpecialties()
+    {
+        $specialties = MedicalSpecialty::all();
+        return response()->json($specialties);
+    }
+
     public function createEmployee(NewEmployeeRequest $request)
     {        
         $request->validated();

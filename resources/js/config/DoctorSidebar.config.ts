@@ -12,6 +12,11 @@ export const DoctorSidebarConfig: Sidebar[] = [
         url: '/app/inicio'
     },
     {
+        icon: '/svg/configuracion.svg',
+        name: 'Horarios',
+        url: '/app/horarios'
+    },
+    {
         icon: '/svg/profile.svg',
         name: 'Perfil',
         url: '/app/perfil'

@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/cobros', [PageController::class, 'showCobro'])->name('app.cobros');
         Route::get('/imagenologia', [PageController::class, 'showImagenologia'])->name('app.imagenologia');
         Route::get('/laboratorio', [PageController::class, 'showLaboratorio'])->name('app.laboratorio');
+        Route::get('/horarios', [PageController::class, 'showScheduleHours'])->name('app.horarios');
     });
 
     // Usuarios
@@ -141,6 +142,9 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/roles', [EmployeeController::class, 'getAllRoles'])->name('empleados.getAllRoles');
         Route::get('{id}/roles', [EmployeeController::class, 'getEmployeeRoles'])->name('empleados.getrolesEmpleado');
         Route::post('{id}/roles', [EmployeeController::class, 'setEmployeeRoles'])->name('empleados.setrolesEmpleado');
+        Route::get('/especialidades', [EmployeeController::class, 'getSpecialties'])->name('empleados.getSpecialties');
+        Route::get('/{id}/titulos', [EmployeeController::class, 'getTitles'])->name('empleados.getTitles');
+        Route::get('/{id}/horarios', [EmployeeController::class, 'getHours'])->name('empleados.getHours');
     });
 
     //Productos
@@ -181,7 +185,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/productos', [PaymentController::class, 'getPaymentProductsByID'])->name('pagos.getProductos');
         Route::get('/{id}/deudas', [PaymentController::class, 'getAllDebtsByPaymentID'])->name('pagos.getDeudas');
         Route::post('/{id}/deudas', [PaymentController::class, 'setDebtPayment'])->name('pagos.setDeuda');
-        Route::post('/{id}/pago', [PaymentController::class, 'createPaymentByID'])->name('pagos.createPayment');
+        Route::post('/{id}/pago', [PaymentController::class, 'createPaymentByID'])->name('pagos.createPaymentByID');
         Route::delete('/{id}', [PaymentController::class, 'deletePaymentByID'])->name('pagos.deletePayment'); 
     });
 

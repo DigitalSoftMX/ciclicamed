@@ -30,6 +30,7 @@ const app = createApp({
 		DoctorDashboardPage: require('@page/doctor/doctorDashboardPage/DoctorDashboardPage.vue').default,
 		DoctorConsultPage: require('@page/doctor/doctorConsultPage/DoctorConsultPage.vue').default,
 		DoctorProfilePage: require('@page/doctor/doctorProfilePage/DoctorProfilePage.vue').default,
+		DoctorSchedulePage: require('@page/doctor/doctorSchedulePage/DoctorSchedulePage.vue').default,
 
 		CheckupDashboardPage: require('@page/checkup/checkupDashboardPage/CheckupDashboardPage.vue').default,
 		CheckupCheckupPage: require('@page/checkup/checkupCheckupPage/CheckupCheckupPage.vue').default,
