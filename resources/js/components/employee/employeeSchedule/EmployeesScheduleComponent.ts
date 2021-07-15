@@ -1,3 +1,5 @@
+import { EmployeeDegreeData } from '@data/Employee/EmployeeDegree.data';
+import { EmployeeHourData } from '@data/Employee/EmployeeHour.data';
 import { Branch } from '@interface/Branch/Branch.interface';
 import { EmployeeDegree } from '@interface/Employee/EmployeeDegree.interface';
 import { EmployeeHours } from '@interface/Employee/EmployeeHours.interface';
@@ -30,14 +32,34 @@ export default defineComponent({
             hours: [] as EmployeeHours[],
             branches: [] as Branch[],
             week: [
-                'Domingo',
-                'Lunes',
-                'Martes',
-                'Miércoles',
-                'Jueves',
-                'Viernes',
-                'Sábado',
-                'Domingo'
+                {
+                    id: 0,
+                    name: 'Domingo'
+                },
+                {
+                    id: 1,
+                    name: 'Lunes'
+                },
+                {
+                    id: 2,
+                    name: 'Martes'
+                },
+                {
+                    id: 3,
+                    name: 'Miércoles'
+                },
+                {
+                    id: 4,
+                    name: 'Jueves'
+                },
+                {
+                    id: 5,
+                    name: 'Viernes'
+                },
+                {
+                    id: 6,
+                    name: 'Sábado'
+                },
             ]
         };
     },
@@ -50,6 +72,44 @@ export default defineComponent({
     watch: {
     },
     methods: {
+        setEmployeeHours()
+        {
+            axios.post(`/empleados/${this.id}/horarios`, {
+                hours: this.hours
+            })
+            .then(response => {
+                this.successAlert.title = 'Horario modificados';
+                this.successAlert.message = 'El horario se ha modificado correctamente';
+                $('#emshecSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                $('#emshecError').modal('show');
+            })
+        },
+        setEmployeeTitles()
+        {
+            axios.post(`/empleados/${this.id}/titulos`, {
+                degrees: this.degrees
+            })
+            .then(response => {
+                this.successAlert.title = 'Títulos modificados';
+                this.successAlert.message = 'Los títulos se han modificado correctamente';
+                $('#emshecSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                $('#emshecError').modal('show');
+            })
+        },
+        addData(category: string)
+        {
+            category === 'Licencia' ? this.degrees.unshift({...EmployeeDegreeData}) : this.hours.unshift({...EmployeeHourData});
+        },
+        deleteData(index: number, category: string)
+        {
+            category === 'Licencia' ? this.degrees.splice(index, 1) : this.hours.splice(index, 1);
+        },
         getMedicalSpecialties()
         {
             axios.get<MedicalSpecialty[]>(`/empleados/especialidades`)

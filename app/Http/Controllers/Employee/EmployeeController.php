@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Employee\EmployeeDegreeRequest;
+use App\Http\Requests\Employee\EmployeeHoursRequest;
 use App\Http\Requests\employee\employeeUpdateRequest;
 use App\Http\Requests\Employee\NewEmployeeRequest;
 use App\Http\Requests\Employee\RoleRequest;
@@ -27,6 +29,57 @@ use Spatie\Permission\Models\Role;
 
 class EmployeeController extends Controller
 {
+    public function setHours(EmployeeHoursRequest $request, $id)
+    {
+        $request->validated();
+        $user = User::findOrFail(Auth::user()->id);
+        if(intval($user['employee']['id']) === intval($id) || $user->hasRole('Administrador'))
+        {
+            EmployeeSchedule::where('employee_id', $id)->delete();
+
+            foreach($request['hours'] as $hour)
+            {
+                EmployeeSchedule::create([
+                    'employee_id' => $id,
+                    'start_day' => $hour['start_day'],
+                    'start_time' => $hour['start_time'],
+                    'finish_day' => $hour['finish_day'],
+                    'finish_time' => $hour['finish_time'],
+                    'branch_id' => $hour['branch_id'],
+                ]);
+            }
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function setTitles(EmployeeDegreeRequest $request, $id)
+    {
+        $request->validated();
+        $user = User::findOrFail(Auth::user()->id);
+        if(intval($user['employee']['id']) === intval($id) || $user->hasRole('Administrador'))
+        {
+            EmployeeLicense::where('employee_id', $id)->delete();
+
+            foreach($request['degrees'] as $degree)
+            {
+                EmployeeLicense::create([
+                    'employee_id' => $id,
+                    'degree_title' => $degree['degree_title'],
+                    'license_number' => $degree['license_number'],
+                    'school_name' => $degree['school_name'],
+                    'medicalspecialty_id' => $degree['medicalspecialty_id'],
+                ]);
+            }
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function getHours($id)
     {
         $hours = EmployeeSchedule::where('employee_id', $id)->get()->load('branch');

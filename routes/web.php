@@ -145,6 +145,9 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/especialidades', [EmployeeController::class, 'getSpecialties'])->name('empleados.getSpecialties');
         Route::get('/{id}/titulos', [EmployeeController::class, 'getTitles'])->name('empleados.getTitles');
         Route::get('/{id}/horarios', [EmployeeController::class, 'getHours'])->name('empleados.getHours');
+
+        Route::post('/{id}/titulos', [EmployeeController::class, 'setTitles'])->name('empleados.setTitles');
+        Route::post('/{id}/horarios', [EmployeeController::class, 'setHours'])->name('empleados.setHours');
     });
 
     //Productos

@@ -2,8 +2,11 @@
     <div class="row mx-0">
         <div class="col-12 mb-25">
             <div class="card">
-                <div class="card-header">
-                    <h4>Licencias médicas</h4>
+                <div class="card-header d-flex justify-items-between atbd-collapse-item__header active active bg-white">
+                    <h4>Licencias</h4>
+                    <button class="btn btn-primary my-3" @click="addData('Licencia')">
+                        Agregar licencias
+                    </button>
                 </div>
                 <div class="card-body">
                     <div class="row mx-0">
@@ -12,7 +15,7 @@
                                 <div
                                     class="card-header d-flex justify-items-between atbd-collapse-item__header active active bg-white">
                                     <h4>{{degree.degree_title}}</h4>
-                                    <button class="btn btn-icon btn-danger btn-circle button-size">
+                                    <button class="btn btn-icon btn-danger btn-circle button-size" @click="deleteData(index, 'Licencia')">
                                         <img-component url="/svg/delete.svg" alt="Borrar" cssClass="svg-white">
                                         </img-component>
                                     </button>
@@ -43,13 +46,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary float-right" @click="setEmployeeTitles">
+                        Guardar licencias
+                    </button>
+                </div>
             </div>
         </div>
 
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-items-between atbd-collapse-item__header active active bg-white">
                     <h4>Horarios</h4>
+                    <button class="btn btn-primary my-3" @click="addData('Horario')">
+                        Agregar horario
+                    </button>
                 </div>
                 <div class="card-body">
                     <div class="row mx-0">
@@ -57,8 +68,8 @@
                             <div class="card shadow-none">
                                 <div
                                     class="card-header d-flex justify-items-between atbd-collapse-item__header active active bg-white">
-                                    <h4>{{hour.branch.name}}</h4>
-                                    <button class="btn btn-icon btn-danger btn-circle button-size">
+                                    <h4>{{hour.branch?.name}}</h4>
+                                    <button class="btn btn-icon btn-danger btn-circle button-size" @click="deleteData(index, 'Horario')">
                                         <img-component url="/svg/delete.svg" alt="Borrar" cssClass="svg-white">
                                         </img-component>
                                     </button>
@@ -71,11 +82,13 @@
                                     </div>
                                     <div class="mb-25">
                                         <label>Día inicial</label>
-                                        <v-select :options="week" label="name" v-model="hours[index].start_day" />
+                                        <v-select :options="week" label="name" :reduce="item => item.id"
+                                            v-model="hours[index].start_day" />
                                     </div>
                                     <div class="mb-25">
                                         <label>Día final</label>
-                                        <v-select :options="week" label="name" v-model="hours[index].finish_day" />
+                                        <v-select :options="week" label="name" :reduce="item => item.id"
+                                            v-model="hours[index].finish_day" />
                                     </div>
                                     <div class="mb-25 row mx-0">
                                         <label class="col-12 p-0">Hora inicial</label>
@@ -94,12 +107,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary float-right" @click="setEmployeeHours">
+                        Guardar horarios
+                    </button>
+                </div>
             </div>
         </div>
 
     </div>
-    <success-alert-component id="etmcSuccess" :title="successAlert.title" :message="successAlert.message">
+    <success-alert-component id="emshecSuccess" :title="successAlert.title" :message="successAlert.message">
     </success-alert-component>
+    <error-alert-component :id="'emshecError'" :errors="errors" :title="'Error modificar los datos'">
+    </error-alert-component>
 </template>
 
 <script lang="ts" src="./EmployeesScheduleComponent.ts"></script>

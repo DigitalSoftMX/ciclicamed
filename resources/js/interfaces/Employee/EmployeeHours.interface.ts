@@ -10,5 +10,5 @@ export interface EmployeeHours
     branch_id: number;
     created_at: string;
     updated_at: string;
-    branch: Branch;
+    branch?: Branch;
 }
