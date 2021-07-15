@@ -8,6 +8,12 @@ import printJS from 'print-js'
 import { Prescription } from '@interface/Medical/Prescription.interface';
 import { Medicament } from '@interface/Medical/Medicament.interface';
 import { PrescriptionData } from '@data/Medical/Prescription.data';
+import { Patient } from '@interface/Patient/Patient.interface';
+import { PatientData } from '@data/Patient/Patient.data';
+import { Employee } from '@interface/Employee/Employee.interface';
+import { EmployeeData } from '@data/Employee/Employee.data';
+import { Consult } from '@interface/Medical/Consult.interface';
+import { ConsultData } from '@data/Medical/Consult.data';
 
 export default defineComponent({
     components: {
@@ -23,6 +29,18 @@ export default defineComponent({
             type: Boolean as PropType<Boolean>,
             default: true
         },
+        patientData: {
+            type: Object as PropType<Patient>,
+            default: PatientData
+        },
+        doctorData: {
+            type: Object as PropType<Employee>,
+            default: EmployeeData
+        },
+        consultData: {
+            type: Object as PropType<Consult>,
+            default: ConsultData
+        }
     },
     data() {
         return {
@@ -77,44 +95,44 @@ export default defineComponent({
                 console.log(error)
             })
         },
-        // async createPDF()
-        // {
-        //     const doctorLicence = this.doctorData.specialties?.filter(specialty => specialty.pivot.medicalspecialty_id === this.consultData.medicalspecialty_id)[0];
-        //     const prescriptionDoc = '../../../../files/prescription.pdf';
-        //     const buffer: ArrayBuffer = await fetch(prescriptionDoc, {
-        //         headers: new Headers({'content-type': 'application/pdf'}),
-        //     }).then(res => res.arrayBuffer());
-        //     const pdf: PDFDocument = await PDFDocument.load(buffer);
-        //     const filterPrescriptionList = this.prescriptionData.filter((medicament: Prescription) => medicament.medicament_id !== -1);
+        async createPDF()
+        {
+            const doctorLicence = this.doctorData.specialties!.filter(specialty => specialty.pivot.medicalspecialty_id === this.consultData.medicalspecialty_id)[0];
+            const prescriptionDoc = '../../../../files/prescription.pdf';
+            const buffer: ArrayBuffer = await fetch(prescriptionDoc, {
+                headers: new Headers({'content-type': 'application/pdf'}),
+            }).then(res => res.arrayBuffer());
+            const pdf: PDFDocument = await PDFDocument.load(buffer);
+            const filterPrescriptionList = this.prescriptionData.filter((medicament: Prescription) => medicament.medicament_id !== -1);
 
-        //     pdf.getForm().getTextField('patient').setText(`${this.patientData.first_name} ${this.patientData.last_name}`);
-        //     pdf.getForm().getTextField('birthday').setText(moment(this.patientData.birthday).format('DD/MM/YYYY'));
-        //     pdf.getForm().getTextField('age').setText( moment().diff(this.patientData.birthday, 'years').toString() );
-        //     pdf.getForm().getTextField('date').setText( moment().format('DD/MM/YYYY') );
+            pdf.getForm().getTextField('patient').setText(`${this.patientData.first_name} ${this.patientData.last_name}`);
+            pdf.getForm().getTextField('birthday').setText(moment(this.patientData.birthday).format('DD/MM/YYYY'));
+            pdf.getForm().getTextField('age').setText( moment().diff(this.patientData.birthday, 'years').toString() );
+            pdf.getForm().getTextField('date').setText( moment().format('DD/MM/YYYY') );
 
-        //     pdf.getForm().getTextField('doctorName').setText( `${this.doctorData.first_name} ${this.doctorData.last_name}` );
-        //     pdf.getForm().getTextField('doctorPhone').setText( this.doctorData.cellphone );
-        //     pdf.getForm().getTextField('doctorEmail').setText( this.doctorData.email );
+            pdf.getForm().getTextField('doctorName').setText( `${this.doctorData.first_name} ${this.doctorData.last_name}` );
+            pdf.getForm().getTextField('doctorPhone').setText( this.doctorData.cellphone );
+            pdf.getForm().getTextField('doctorEmail').setText( this.doctorData.user.email );
 
-        //     pdf.getForm().getTextField('doctorDegree').setText( doctorLicence?.pivot.degree_title );
-        //     pdf.getForm().getTextField('doctorLicenseNumber').setText( doctorLicence?.pivot.license_number );
-        //     pdf.getForm().getTextField('doctorSchool').setText( doctorLicence?.pivot.school_name );
-        //     pdf.getForm().getTextField('name').setText( filterPrescriptionList.map((medicament: Prescription) => 
-        //         `Nombre: ${this.medicamentList[medicament.medicament_id].name}\tNombre genérico: ${this.medicamentList[medicament.medicament_id].generic_name}\nPresentación: ${this.medicamentList[medicament.medicament_id].presentation}\tVía de administración: ${medicament.administration_type}\tDuración: ${medicament.duration}\n\n`
-        //     ).toString() );
-        //     pdf.getForm().flatten();
-        //     return await pdf.save()
-        // },
-        // async downloadPDF()
-        // {
-        //     const pdf = await this.createPDF();
-        //     download(pdf, `Receta_${this.patientData.first_name}_${this.patientData.last_name}_${moment().format('DD-MM-YYYY')}.pdf`, 'application/pdf');
-        // },
-        // async printPDF()
-        // {
-        //     const pdfBlob = new Blob([await this.createPDF()], { type: "application/pdf" });
-        //     const url = URL.createObjectURL(pdfBlob);
-        //     printJS(url);
-        // }
+            pdf.getForm().getTextField('doctorDegree').setText( doctorLicence?.pivot.degree_title );
+            pdf.getForm().getTextField('doctorLicenseNumber').setText( doctorLicence?.pivot.license_number );
+            pdf.getForm().getTextField('doctorSchool').setText( doctorLicence?.pivot.school_name );
+            pdf.getForm().getTextField('name').setText( filterPrescriptionList.map((medicament: Prescription) => 
+                `Nombre: ${this.medicamentList[medicament.medicament_id].name}\tNombre genérico: ${this.medicamentList[medicament.medicament_id].generic_name}\nPresentación: ${this.medicamentList[medicament.medicament_id].presentation}\tVía de administración: ${medicament.administration_type}\tDuración: ${medicament.duration}\n\n`
+            ).toString() );
+            pdf.getForm().flatten();
+            return await pdf.save()
+        },
+        async downloadPDF()
+        {
+            const pdf = await this.createPDF();
+            download(pdf, `Receta_${this.patientData.first_name}_${this.patientData.last_name}_${moment().format('DD-MM-YYYY')}.pdf`, 'application/pdf');
+        },
+        async printPDF()
+        {
+            const pdfBlob = new Blob([await this.createPDF()], { type: "application/pdf" });
+            const url = URL.createObjectURL(pdfBlob);
+            printJS(url);
+        }
     },
 })

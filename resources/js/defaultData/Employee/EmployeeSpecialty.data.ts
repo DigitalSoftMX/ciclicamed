@@ -8,5 +8,6 @@ export const EmployeeSpecialtyData: EmployeeSpecialty = {
         medicalspecialty_id: -1,
         degree_title: '',
         license_number: '',
+        school_name: ''
     }
 }

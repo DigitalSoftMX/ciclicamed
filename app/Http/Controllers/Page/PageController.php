@@ -225,21 +225,25 @@ class PageController extends Controller
                 if($cookie && $consult)
                 {
                     $start = $consult['consult_schedule_start'];
-                    if($user->hasRole(['Doctor', 'Enfermera']) && $consult['medicalconsultstatus_id'] <= 4 && Carbon::now()->gte(Carbon::parse($start)))
-                    {
-                        return response()->view('pages.consult', [
-                        'user' => $user->employee->load('user'),
-                        'roles' => $user->roles,
-                        'consultID' => $cookie
-                        ], 200);
-                    }
                     if($user->hasRole('Administrador'))
                     {
+                        $specialties = $user->employee->specialties;
+                        $user->employee['specialties'] = $specialties;
                         return response()->view('pages.consult', [
                         'user' => $user->employee->load('user'),
                         'roles' => $user->roles,
                         'consultID' => $cookie,
                         'consultSpecialty' => $consult['medicalspecialty_id']
+                        ], 200);
+                    }
+                    if($user->hasRole(['Doctor', 'Enfermera']) && $consult['medicalconsultstatus_id'] <= 4 && Carbon::now()->gte(Carbon::parse($start)))
+                    {
+                        $specialties = $user->employee->specialties;
+                        $user->employee['specialties'] = $specialties;
+                        return response()->view('pages.consult', [
+                        'user' => $user->employee->load('user'),
+                        'roles' => $user->roles,
+                        'consultID' => $cookie
                         ], 200);
                     }
                     return response()->view('pages.consult', [

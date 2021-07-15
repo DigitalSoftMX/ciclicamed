@@ -46,7 +46,7 @@ class Employee extends Model
 
     public function specialties()
     {
-        return $this->belongsToMany(MedicalSpecialty::class, 'employee_licenses', 'employee_id', 'medicalspecialty_id')->withPivot('degree_title', 'license_number');
+        return $this->belongsToMany(MedicalSpecialty::class, 'employee_licenses', 'employee_id', 'medicalspecialty_id')->withPivot('degree_title', 'license_number', 'school_name');
     }
 
     public function schedules()

@@ -7,7 +7,7 @@ export const CheckupSidebarConfig: Sidebar[] = [
         url: '/app/inicio'
     },
     {
-        icon: '/svg/users.svg',
+        icon: '/svg/checkup.svg',
         name: 'Checkups',
         url: '/app/checkup'
     },

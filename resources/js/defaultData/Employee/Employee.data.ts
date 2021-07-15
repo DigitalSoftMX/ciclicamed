@@ -22,7 +22,5 @@ export const EmployeeData: Employee = {
     user: UserData,
     category: EmployeeCategoryData,
     status: EmployeeStatusData,
-    specialties: [
-        EmployeeSpecialtyData
-    ]
+    specialties: []
 }

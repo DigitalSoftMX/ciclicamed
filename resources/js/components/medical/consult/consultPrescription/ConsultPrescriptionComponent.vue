@@ -4,14 +4,14 @@
         <div class="breadcrumb-action justify-content-center flex-wrap">
             <div class="action-btn">
                 <button class="btn btn-primary btn-default"
-                    :disabled="prescriptionData.length === 0">
+                    :disabled="prescriptionData.length === 0" @click="printPDF">
                     <img-component url="/svg/print.svg" cssClass="mr-2 svg-white" alt="Imprimir"></img-component>
                     Imprimir
                 </button>
             </div>
             <div class="action-btn">
                 <button class="btn btn-primary btn-default"
-                    :disabled="prescriptionData.length === 0">
+                    :disabled="prescriptionData.length === 0"  @click="downloadPDF">
                     <img-component url="/svg/download.svg" cssClass="mr-2 svg-white" alt="Descargar"></img-component>
                     Descargar
                 </button>

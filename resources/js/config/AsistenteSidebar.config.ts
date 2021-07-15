@@ -7,7 +7,7 @@ export const AsistenteSidebarConfig: Sidebar[] = [
         url: '/app/inicio'
     },
     {
-        icon: '/svg/users.svg',
+        icon: '/svg/productos.svg',
         name: 'Productos',
         url: '/app/productos'
     },

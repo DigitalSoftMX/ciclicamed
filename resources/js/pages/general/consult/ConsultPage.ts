@@ -1,3 +1,5 @@
+import { EmployeeData } from '@data/Employee/Employee.data';
+import { Employee } from '@interface/Employee/Employee.interface';
 import { Role } from '@interface/User/Role.interface';
 import {
     defineComponent
@@ -27,7 +29,11 @@ export default defineComponent({
         patientID: {
             type: Number,
             default: -1
-        }
+        },
+        doctorData: {
+            type: Object as PropType<Employee>,
+            default: EmployeeData
+        },
     },
     data() {
         return {

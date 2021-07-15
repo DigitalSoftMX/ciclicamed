@@ -109,12 +109,12 @@
                                 </citas-subsecuentes-component>
                             </div>
                             <div class="tab-pane fade" id="mccReceta" role="tabpanel" aria-labelledby="mccReceta-tab">
-                                <prescription-component v-model="prescriptionData" :disabled="disableConsult">
+                                <prescription-component v-model="prescriptionData" :disabled="disableConsult" :patientData="patientData" :consultData="consultData" :doctorData="doctorData">
                                 </prescription-component>
                             </div>
                             <div class="tab-pane fade" id="mccOrdenMedica" role="tabpanel"
                                 aria-labelledby="mccOrdenMedica-tab">
-                                <test-order-component v-model="testData" :disabled="disableConsult"></test-order-component>
+                                <test-order-component v-model="testData" :disabled="disableConsult" :patientData="patientData" :consultData="consultData" :doctorData="doctorData"></test-order-component>
                             </div>
                         </div>
                     </div>

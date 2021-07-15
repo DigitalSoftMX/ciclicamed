@@ -7,5 +7,6 @@ export interface EmployeeSpecialty
         medicalspecialty_id: number,
         degree_title: string,
         license_number: string,
+        school_name: string
     }
 }

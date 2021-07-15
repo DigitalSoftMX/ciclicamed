@@ -33,6 +33,9 @@ import { AttachtmentData } from '@data/Medical/Attachments/Attachment.data';
 import { Attachtment } from '@interface/Medical/Attachtments/Attachment.interface';
 import { Payment } from '@interface/Payment/Payment.interface';
 import { PaymentData } from '@data/Payment/Payment.data';
+import { PropType } from 'vue';
+import { Employee } from '@interface/Employee/Employee.interface';
+import { EmployeeData } from '@data/Employee/Employee.data';
 
 export default defineComponent({
     components: {
@@ -65,6 +68,10 @@ export default defineComponent({
         role: {
             type: String,
             default: ''
+        },
+        doctorData: {
+            type: Object as PropType<Employee>,
+            default: EmployeeData
         }
     },
     data() {

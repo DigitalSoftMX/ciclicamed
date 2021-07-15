@@ -3,14 +3,14 @@
         <h4 class="text-capitalize breadcrumb-title"></h4>
         <div class="breadcrumb-action justify-content-center flex-wrap">
             <div class="action-btn">
-                <button class="btn btn-primary btn-default" :disabled="orderData.length === 0">
+                <button class="btn btn-primary btn-default" :disabled="orderData.length === 0" @click="printPDF">
                     <img-component url="/svg/print.svg" cssClass="mr-2 svg-white" alt="Imprimir"></img-component>
                     Imprimir
                 </button>
             </div>
             <div class="action-btn">
                 <button class="btn btn-primary btn-default"
-                    :disabled="orderData.length === 0">
+                    :disabled="orderData.length === 0" @click="downloadPDF">
                     <img-component url="/svg/download.svg" cssClass="mr-2 svg-white" alt="Descargar"></img-component>
                     Descargar
                 </button>
