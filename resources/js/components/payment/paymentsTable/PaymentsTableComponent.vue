@@ -88,14 +88,14 @@
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                 @click="redirectToChargeComponent(payment)">
-                                                <img src="/svg/cash.svg" alt="Pagar">
+                                                <img-component url="/svg/cash.svg" alt="Pagar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                 @click="showModalConfirmation(payment)">
-                                                <img src="/svg/delete.svg" alt="Mostrar">
+                                                <img-component url="/svg/delete.svg" alt="Borrar"></img-component>
                                             </button>
                                         </li>
                                     </ul>

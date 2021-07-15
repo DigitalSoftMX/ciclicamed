@@ -13,9 +13,12 @@ import { defineAsyncComponent, defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import moment from 'moment';
 import { PropType } from 'vue';
+import { ElTimeSelect } from 'element-plus';
+
 export default defineComponent({
     name: 'CheckupScheduleComponent',
     components: {
+        ElTimeSelect,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
         SelectComponent: require('@component/general/select/SelectComponent.vue').default,
         Timepicker: require('@component/general/timePicker/TimePickerComponent.vue').default
@@ -54,7 +57,9 @@ export default defineComponent({
                 title: '',
                 message: ''
             },
-            isCheckupNew: true
+            isCheckupNew: true,
+            startTime: [] as String[],
+            finishTime: [] as String[]
         }
     },
     computed: {
@@ -68,6 +73,29 @@ export default defineComponent({
         this.checkupDataCopy.patient_id = this.patientID;
     },
     watch: {
+        startTime:
+        {
+            handler()
+            {
+                this.startTime.map((time, index) => {
+                    const startTime = moment((time as string),'HH:mm');
+                    this.checkupDataCopy.checkupList[index].consult_schedule_start = moment(this.checkupDataCopy.checkupList[index].consult_schedule_start).set('hours', startTime.hours()).set('minutes', startTime.minutes()).format('YYYY-MM-DD HH:mm:00');
+                })
+                
+            },
+            deep: true
+        },
+        finishTime:
+        {
+            handler()
+            {
+                this.finishTime.map((time, index) => {
+                    const finishTime = moment((time as string), 'HH:mm');
+                    this.checkupDataCopy.checkupList[index].consult_schedule_finish = moment(this.checkupDataCopy.checkupList[index].consult_schedule_finish).set('hours', finishTime.hours()).set('minutes', finishTime.minutes()).format('YYYY-MM-DD HH:mm:00');
+                })
+            },
+            deep: true
+        },
         patientID()
         {
             this.checkupDataCopy.patient_id = this.patientID;

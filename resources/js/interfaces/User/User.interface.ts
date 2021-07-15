@@ -1,3 +1,5 @@
+import { Employee } from "@interface/Employee/Employee.interface";
+import { Role } from "./Role.interface";
 import { UserStatus } from "./UserStatus.interface";
 export interface User
 {
@@ -8,5 +10,7 @@ export interface User
     usercategory_id: number;
     created_at: string;
     updated_at: string;
-    status: UserStatus
+    status: UserStatus,
+    employee?: Employee,
+    roles?: Role[]
 }

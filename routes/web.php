@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::post('/', [UserController::class, 'createPatient'])->name('usuarios.createUser');
         Route::patch('/{id}/password', [UserController::class, 'updatePassword'])->name('usuarios.password');
         Route::get('/pacientes', [UserController::class, 'getPatientsTable'])->name('usuarios.pacientes'); //NOTA PASAR A GRUPO PACIENTES
+        Route::get('/doctores', [UserController::class, 'getDoctors'])->name('usuarios.doctores');
     });
 
     // Consultas

@@ -79,7 +79,7 @@
                                 <td style="display: table-cell;" class="border-primary border-bottom">
                                     <div class="userDatatable-content">
                                         <span class="bg-opacity-success rounded-pill userDatatable-content-status pill-table" v-bind:style="{'background-color': user.status.color}"
-                                        >{{user.status.name}}</span>
+                                        >{{role(user.user)}}</span>
                                     </div>
                                 </td>
 

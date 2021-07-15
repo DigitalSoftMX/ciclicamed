@@ -95,7 +95,7 @@
                                             <button
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
                                                 @click="redirectToDebtData(user)">
-                                                <img src="/svg/show.svg" alt="Mostrar">
+                                                <img-component url="/svg/show.svg" alt="Mostrar"></img-component>
                                             </button>
                                         </li>
                                     </ul>

@@ -1,3 +1,4 @@
+import { EmployeeData } from "@data/Employee/Employee.data";
 import { User } from "@interface/User/User.interface";
 import { UserStatusData } from "./UserStatus.data";
 
@@ -9,5 +10,6 @@ export const UserData: User = {
     usercategory_id: -1,
     created_at: '',
     updated_at: '',
-    status: UserStatusData
+    status: UserStatusData,
+    roles: []
 }

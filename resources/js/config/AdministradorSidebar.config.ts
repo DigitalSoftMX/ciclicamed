@@ -17,7 +17,7 @@ export const AdministradorSidebarConfig: Sidebar[] = [
         url: '/app/cobros'
     },
     {
-        icon: '/svg/users.svg',
+        icon: '/svg/checkup.svg',
         name: 'Checkups',
         url: '/app/checkup'
     },
@@ -37,7 +37,7 @@ export const AdministradorSidebarConfig: Sidebar[] = [
         url: '/app/recetas'
     },
     {
-        icon: '/svg/users.svg',
+        icon: '/svg/productos.svg',
         name: 'Productos',
         url: '/app/productos'
     },
@@ -45,6 +45,11 @@ export const AdministradorSidebarConfig: Sidebar[] = [
         icon: '/svg/users.svg',
         name: 'Usuarios',
         url: '/app/usuarios'
+    },
+    {
+        icon: '/svg/configuracion.svg',
+        name: 'Horarios',
+        url: '/app/horarios'
     },
     {
         icon: '/svg/profile.svg',

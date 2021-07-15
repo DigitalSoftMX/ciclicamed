@@ -50,11 +50,15 @@
                                     </div>
                                     <div class="mb-25">
                                         <label>Hora de inicio</label>
-                                        <timepicker :hourRange="['08-20']" v-model="checkup.consult_schedule_start"></timepicker>
+                                        <el-time-select start="08:00" step='00:15' end="20:00"
+                                            v-model="startTime[index]" placeholder="Hora inicial">
+                                        </el-time-select>
                                     </div>
-                                    <div>
+                                    <div v-if="patientID <= 0">
                                         <label>Hora de conclusión</label>
-                                        <timepicker :hourRange="['08-20']" v-model="checkup.consult_schedule_finish"></timepicker>
+                                        <el-time-select start="08:00" step='00:15' end="20:00" :minTime="startTime[index]"
+                                            v-model="finishTime[index]" placeholder="Hora inicial">
+                                        </el-time-select>
                                     </div>
                                 </div>
                             </div>

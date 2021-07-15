@@ -17,6 +17,24 @@ use Spatie\Permission\Traits\HasRoles;
 class UserController extends Controller
 {
     use HasRoles;
+
+    public function getDoctors()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $doctors = User::whereHas("roles", function($q) {
+                $q->where("name", "Doctor");
+            })->whereHas('employee', function($item) {
+                $item->where('employeestatus_id', 1);
+            })->get()->load('employee');
+            return response()->json($doctors);
+        }
+
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
     /**
      * Display the specified resource.
      *

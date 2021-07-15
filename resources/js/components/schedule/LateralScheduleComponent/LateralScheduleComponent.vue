@@ -86,7 +86,7 @@
                     <!-- Botones de Cancelar y guardar -->
                     <div class="button-group d-flex justify-content-end">
                         <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
-                            v-if="schedule.id < 1" @click="createNewSchedule()">
+                            v-if="schedule.id <= 0" @click="createNewSchedule()">
                             Crear cita
                         </button>
                         <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2" v-else

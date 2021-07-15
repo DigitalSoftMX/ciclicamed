@@ -6,6 +6,7 @@ import { EmployeePagination } from '@interface/Employee/EmployeePagination.inter
 import { defineAsyncComponent } from 'vue';
 import { Employee } from '@interface/Employee/Employee.interface';
 import EmployeeTableModalComponent from './employeeTableModal/EmployeeTableModalComponent';
+import { User } from '@interface/User/User.interface';
 
 export default defineComponent({
     components: {
@@ -44,6 +45,10 @@ export default defineComponent({
 
     },
     methods: {
+        role(user: User)
+        {
+            return user.roles!.length > 0 ? user.roles![0].name : '';
+        },
         fullName(employee: Employee)
         {
             return `${employee.first_name} ${employee.last_name}`;

@@ -70,6 +70,12 @@ export default defineComponent({
         this.getBranches();
     },
     watch: {
+        id()
+        {
+            this.getEmployeeTitles();
+            this.getEmployeeHours();
+            this.getBranches();
+        }
     },
     methods: {
         setEmployeeHours()

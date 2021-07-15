@@ -73,7 +73,7 @@
                         <button class="btn btn-primary btn-lg btn-squared" @click="confirmSchedule">Confirmar cita</button>
                     </div>
                     <div v-if="isStartScheduleEnabled">
-                        <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Inicar cita</button>
+                        <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Iniciar cita</button>
                     </div>
                 </div>
             </div>

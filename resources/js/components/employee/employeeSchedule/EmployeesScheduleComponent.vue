@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="row mx-0">
                                         <label class="col-12 p-0">Hora final</label>
-                                        <el-time-select class="col-12 p-0 w-100" start="08:00" step='00:15' end="20:00"
+                                        <el-time-select class="col-12 p-0 w-100" start="08:00" step='00:15' end="20:00" :minTime="hours[index].start_time"
                                             v-model="hours[index].finish_time" placeholder="Hora final">
                                         </el-time-select>
                                     </div>

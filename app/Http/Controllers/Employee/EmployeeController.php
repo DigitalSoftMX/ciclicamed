@@ -31,6 +31,13 @@ class EmployeeController extends Controller
 {
     public function setHours(EmployeeHoursRequest $request, $id)
     {
+        if(intval($id) <= 0)
+        {
+            return response()->json(['errors' => [
+                'doctor' => ['Debe de seleccionar un doctor']
+            ]], 401);
+        }
+
         $request->validated();
         $user = User::findOrFail(Auth::user()->id);
         if(intval($user['employee']['id']) === intval($id) || $user->hasRole('Administrador'))
@@ -57,6 +64,13 @@ class EmployeeController extends Controller
 
     public function setTitles(EmployeeDegreeRequest $request, $id)
     {
+        if(intval($id) <= 0)
+        {
+            return response()->json(['errors' => [
+                'doctor' => ['Debe de seleccionar un doctor']
+            ]], 401);
+        }
+        
         $request->validated();
         $user = User::findOrFail(Auth::user()->id);
         if(intval($user['employee']['id']) === intval($id) || $user->hasRole('Administrador'))
@@ -307,7 +321,7 @@ class EmployeeController extends Controller
                     'from' => $employee->firstItem(),
                     'to' => $employee->lastItem()
                 ],
-                'data' => $employee->load('user', 'status', 'specialties', 'user.status')
+                'data' => $employee->load('user', 'status', 'specialties', 'user.status', 'user.roles:id,name')
             ];
             return response()->json($response);
         }
