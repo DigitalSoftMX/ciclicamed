@@ -203,7 +203,7 @@ class PatientController extends Controller
                     'from' => $prescriptions->firstItem(),
                     'to' => $prescriptions->lastItem()
                 ],
-                'data' => $prescriptions->load('status', 'testScheduled.order', 'testScheduled.result', 'testScheduled.order.product', 'testScheduled.status')
+                'data' => $prescriptions->load('status', 'testScheduled.order', 'testScheduled.result', 'testScheduled.order.product', 'testScheduled.status', 'testScheduled.order.product.orderAnnotations')
             ];
 
             foreach($prescriptions as $result)

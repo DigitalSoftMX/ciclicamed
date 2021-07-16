@@ -21,7 +21,7 @@
     </div>
     <div class="row mx-0" v-bind:class="{'justify-content-center': prescriptionsData.data.length === 0 }">
         <div class="text-center" v-if="prescriptionsData.data.length === 0">
-            <img :src="asset('/svg/empty.svg')" alt="View prescription" class="ml-4 w-25">
+            <img-component url="/svg/empty.svg" alt="Vacío" cssClass="ml-4 w-25"></img-component>
             <h5 class="fw-500 mt-5 display-4">No se encontraron recetas</h5>
         </div>
 
@@ -38,7 +38,7 @@
                         <button class="btn btn-white btn-sm btn-squared rounded-pill" v-if="prescription.test_scheduled?.status?.name === 'Resultados creados'"
                             v-on:click="showFileResults(prescription)">Ver resultados</button>
                         <button class="btn btn-white btn-sm btn-squared rounded-pill" v-if="prescription.test_scheduled?.status?.name === 'Estudio creado'"
-                            v-on:click="showFileResults(prescription)">Ver orden</button>
+                            v-on:click="getTestOrders(prescription)">Ver orden</button>
                     </div>
                 </div>
             </div>
@@ -88,6 +88,7 @@
     </div>
 
     <!-- Modal -->
+    <test-table-modal-component :test="testSelected"></test-table-modal-component>
     <patient-test-file-modal-component :id="'pattcFileTest'" :results="results" :productCode="productSelected">
     </patient-test-file-modal-component>
 </template>

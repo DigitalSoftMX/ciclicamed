@@ -7,11 +7,14 @@ import { ConsultPagination } from '@interface/Medical/ConsultPagination.interfac
 import axios from 'axios';
 import { ConsultPaginationData } from '@data/Medical/ConsultPagination.data';
 import { Prescription } from '@interface/Medical/Prescription.interface';
+import TestTableModalComponent from '@component/medical/test/testTable/testTableModal/TestTableModalComponent';
+import { TestData } from '@data/Medical/Test.data';
 require('daterangepicker'); 
 require('bootstrap');
 
 export default defineComponent({
     components: {
+        TestTableModalComponent,
         PatientTestFileModalComponent: require('@component/patient/test/testFileModal/PatientTestFileModalComponent.vue').default
     },
     props: {
@@ -31,7 +34,8 @@ export default defineComponent({
             activateSearch: true,
             loading: true,
             results: {},
-            productSelected: ''
+            productSelected: '',
+            testSelected: TestData
         };
     },
     mounted() {
@@ -68,6 +72,11 @@ export default defineComponent({
             this.productSelected = consult.test_scheduled?.order.product.product_code!;
             this.results = consult.test_scheduled!.result!.results;
             $('#pattcFileTest').modal('show');
+        },
+        getTestOrders(consult: Consult)
+        {
+            this.testSelected = consult.test_scheduled!;
+            $('#testTableModal').modal('show');
         },
         getPrescriptionsData(page: number)
         {

@@ -51,6 +51,7 @@ export default defineComponent({
             orinaPostEyaculado: OrinaPostEyaculadoData,
             capacitacionEspermatica: PruebaCapacitacionEspermaticaData,
             host: PruebaHOSTData,
+            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content,
         };
     },
     watch:
@@ -96,7 +97,7 @@ export default defineComponent({
     methods: {
         selectPDF(file: any)
         {
-            embed(`/estudio/archivo/${file}`, '#example1')
+            embed(`${this.url}/estudio/archivo/${file}`, '#example1')
         }
     }
 })
