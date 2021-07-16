@@ -1,6 +1,6 @@
 <template>
-    <aside id="sbcSidebar" class="sidebar mCustomScrollbar _mCS_1 mCS-autoHide collapsed" style="overflow: visible;">
-        <div id="mCSB_1" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" style="max-height: none;"
+    <aside id="sbcSidebar" class="sidebar mCustomScrollbar _mCS_1 mCS-autoHide collapsed">
+        <div id="mCSB_1" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside"
             tabindex="0">
             <div id="mCSB_1_container" class="mCSB_container" style="position: relative; left: 0px; top: 0px;"
                 dir="ltr">

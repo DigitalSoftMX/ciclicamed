@@ -54,6 +54,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/imagenologia', [PageController::class, 'showImagenologia'])->name('app.imagenologia');
         Route::get('/laboratorio', [PageController::class, 'showLaboratorio'])->name('app.laboratorio');
         Route::get('/horarios', [PageController::class, 'showScheduleHours'])->name('app.horarios');
+        Route::get('/sucursales', [PageController::class, 'showBranches'])->name('app.sucursales');
     });
 
     // Usuarios
@@ -107,6 +108,10 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/{id}/empleados/{employeeID}/agenda', [BranchController::class, 'getSchedules'])->name('sucursales.getAgendaEmpleado');
         Route::get('/{id}/empleados/{employeeID}/horarios', [BranchController::class, 'getBusinessHours'])->name('sucursales.getHorarioEmpleado');
         Route::get('/{id}/agenda', [BranchController::class, 'getBranchSchedules'])->name('sucursales.getAgendaSucursales');
+        Route::get('/admin', [BranchController::class, 'getBranchesAdmin'])->name('sucursal.getSucursalesAdmin');
+        Route::post('/{id}/deshabilitar', [BranchController::class, 'disableBranch'])->name('sucursal.disableBranch');
+        Route::post('/{id}/habilitar', [BranchController::class, 'enableBranch'])->name('sucursal.enableBranch');
+        Route::post('/', [BranchController::class, 'createBranch'])->name('sucursal.createBranch');
     });
 
 

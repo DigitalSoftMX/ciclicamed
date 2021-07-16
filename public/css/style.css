@@ -5253,10 +5253,11 @@ ul {
   padding: 0px;
   transition: all 0.3s ease;
   z-index: 999;
+  max-height: calc(100vh - 74px) !important;
 }
 @media only screen and (max-width: 767px) {
   .sidebar {
-    top: 56px;
+    top: 74px;
   }
 }
 .sidebar .menu-text {

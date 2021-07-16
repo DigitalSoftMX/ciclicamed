@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Branch\Branch;
+use App\Models\Branch\BranchStatus;
 use App\Models\Checkup\Checkup;
 use App\Models\Checkup\CheckupCategory;
 use App\Models\Checkup\CheckupStatus;
@@ -107,6 +108,7 @@ class DatabaseSeeder extends Seeder
         CheckupCategory::factory(6)->create();
         Checkup::factory(200)->create();
         EmployeeLicense::factory(50)->create();
+        BranchStatus::factory(2)->create();
         Branch::factory(5)->create();
         EmployeeSchedule::factory(100)->create();
         EmployeeDayOff::factory(20)->create();

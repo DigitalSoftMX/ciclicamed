@@ -16,8 +16,13 @@ class Branch extends Model
         'name',
         'address',
         'phone',
-        'opening_hours'
+        'branchstatus_id'
     ];
+
+    public function status()
+    {
+        return $this->belongsTo(BranchStatus::class, 'branchstatus_id');
+    }
 
     public function employeesSchedules()
     {

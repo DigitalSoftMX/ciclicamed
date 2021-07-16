@@ -10,8 +10,9 @@
   padding: 0px;
   transition: $transition-base;
   z-index: 999;
+  max-height: calc(100vh - 74px) !important;
   @include sm{
-    top: 56px;
+    top: 74px;
   }
 
   .menu-text {

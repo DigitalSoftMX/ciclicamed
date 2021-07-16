@@ -25,7 +25,7 @@ class BranchFactory extends Factory
             'name' => $this->faker->company,
             'address' => $this->faker->address,
             'phone' => $this->faker->regexify('[0-9]{10}'),
-            'opening_hours' => $this->faker->time('H:i').' - '.$this->faker->time('H:i')
+            'branchstatus_id' => $this->faker->numberBetween(1, 2),
         ];
     }
 }

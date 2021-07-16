@@ -18,8 +18,10 @@ class CreateBranchesTable extends Migration
             $table->string('name', '100');
             $table->string('address', 255);
             $table->string('phone', 10);
-            $table->string('opening_hours', 50);
+            $table->unsignedSmallInteger('branchstatus_id', false);
             $table->timestamps();
+
+            $table->foreign('branchstatus_id')->references('id')->on('branch_statuses')->onDelete('cascade');
         });
     }
 

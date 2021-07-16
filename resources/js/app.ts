@@ -12,6 +12,7 @@ import AdministradorCheckupPage from '@page/administrador/AdministradorCheckupPa
 import AdministradorPrescriptionPage from '@page/administrador/AdministradorPrescriptionPage/AdministradorPrescriptionPage';
 import AdministradorProfilePage from '@page/administrador/AdministradorProfilePage/AdministradorProfilePage';
 import AdministradorSchedulePage from '@page/administrador/AdministradorSchedulePage/AdministradorSchedulePage';
+import AdministradorBranchPage from '@page/administrador/administradorBranchPage/AdministradorBranchPage';
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -68,6 +69,7 @@ const app = createApp({
 		AdministradorPrescriptionPage,
 		AdministradorProfilePage,
 		AdministradorSchedulePage,
+		AdministradorBranchPage,
 		AdministradorProductPage: require('@page/administrador/AdministradorProductPage/AdministradorProductPage.vue').default,
 		AdministradorUserPage: require('@page/administrador/AdministradorUserPage/AdministradorUserPage.vue').default
 

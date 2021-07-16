@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Cookie;
 class PageController extends Controller
 {
 
+    public function showBranches()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user->hasRole('Administrador'))
+        {
+            return response()->view('pages.sucursales', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+        return response()->view('errors.404', [], 404);
+    }
+
     public function showScheduleHours()
     {
         $user = User::findOrFail(Auth::user()->id);

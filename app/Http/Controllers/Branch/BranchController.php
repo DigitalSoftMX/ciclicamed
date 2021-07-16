@@ -15,6 +15,77 @@ use Illuminate\Support\Facades\DB;
 
 class BranchController extends Controller
 {
+    public function createBranch(Request $request)
+    {
+
+    }
+
+    public function enableBranch($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $data = Branch::findOrFail($id)->update([
+                'branchstatus_id' => 1
+            ]);
+
+            return response()->json($data, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function disableBranch($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $data = Branch::findOrFail($id)->update([
+                'branchstatus_id' => 2
+            ]);
+
+            return response()->json($data, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function getBranchesAdmin(Request $request)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $branches = [];
+            if($request->has('query'))
+            {
+                $query = $request->input('query');
+                $branches = Branch::where('name', 'like', '%'.$query.'%')->orWhere('address', 'like', '%'.$query.'%')->orWhere('phone', 'like', '%'.$query.'%')->paginate();
+            } else {
+                $branches = Branch::paginate();
+            }
+            
+            $response = [
+                'pagination' => [
+                    'total' => $branches->total(),
+                    'per_page' => $branches->perPage(),
+                    'current_page' => $branches->currentPage(),
+                    'last_page' => $branches->lastPage(),
+                    'from' => $branches->firstItem(),
+                    'to' => $branches->lastItem()
+                ],
+                'data' => $branches->getCollection()->load('status')
+            ];
+
+            return response()->json($response);
+        }
+
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function getBranchSchedules($id)
     {
         $user = User::findOrFail(Auth::user()->id);
@@ -32,7 +103,7 @@ class BranchController extends Controller
 
     public function getAllBranches()
     {
-        $branches = Branch::all();
+        $branches = Branch::where('branchstatus_id', 1)->get();
         return response()->json($branches);
     }
 
