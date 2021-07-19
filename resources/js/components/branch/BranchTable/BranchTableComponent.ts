@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BranchPaginationData } from '@data/Branch/BranchPagination.data';
 import { BranchPagination } from '@interface/Branch/BranchPagination.interface';
 import { Branch } from '@interface/Branch/Branch.interface';
-import BranchTableModalComponent from './patientsTableModal/BranchTableModalComponent';
+import BranchTableModalComponent from './BranchTableModal/BranchTableModalComponent';
 import { BranchData } from '@data/Branch/Branch.data';
 
 export default defineComponent({

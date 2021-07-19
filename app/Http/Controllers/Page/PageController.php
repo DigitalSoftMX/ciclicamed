@@ -12,6 +12,19 @@ use Illuminate\Support\Facades\Cookie;
 
 class PageController extends Controller
 {
+    public function showMedicaments()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        if($user->hasRole('Administrador'))
+        {
+            return response()->view('pages.medicament', [
+                'user' => $user->employee->load('user'),
+                'roles' => $user->roles
+            ], 200);
+        }
+        return response()->view('errors.404', [], 404);
+    }
 
     public function showBranches()
     {

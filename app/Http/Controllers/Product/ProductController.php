@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\MedicamentRequest;
 use App\Http\Requests\Product\ProductRequest;
 use App\Models\Medical\Prescription\Medicament;
 use App\Models\Medical\Test\MedicalTestOrderAnnotation;
@@ -15,6 +16,84 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+    public function updateMedicament(MedicamentRequest $request, $id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            Medicament::findOrFail($id)->update([
+                'code' => $request->input('medicament.code'),
+                'name' => $request->input('medicament.name'),
+                'generic_name' => $request->input('medicament.generic_name'),
+                'presentation' => $request->input('medicament.presentation'),
+            ]);
+
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function createMedicament(MedicamentRequest $request)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            Medicament::create([
+                'code' => $request->input('medicament.code'),
+                'name' => $request->input('medicament.name'),
+                'generic_name' => $request->input('medicament.generic_name'),
+                'presentation' => $request->input('medicament.presentation'),
+            ]);
+
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function getAllMedicaments(Request $request)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            if(!$request->has('all'))
+            {
+                $medicament = [];
+                if($request->has('query'))
+                {
+                    $query = $request->input('query');
+                    $medicament = Medicament::where('code', 'like', '%'.$query.'%')
+                            ->orWhere('name', 'like', '%'.$query.'%')
+                            ->orWhere('generic_name', 'like', '%'.$query.'%')
+                            ->orWhere('presentation', 'like', '%'.$query.'%')
+                            ->paginate();
+                } else {
+                    $medicament = Medicament::paginate();
+                }
+                
+                $response = [
+                    'pagination' => [
+                        'total' => $medicament->total(),
+                        'per_page' => $medicament->perPage(),
+                        'current_page' => $medicament->currentPage(),
+                        'last_page' => $medicament->lastPage(),
+                        'from' => $medicament->firstItem(),
+                        'to' => $medicament->lastItem()
+                    ],
+                    'data' => $medicament->getCollection()
+                ];
+
+                return response()->json($response);
+            }
+        }
+
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
 
     public function createProduct(ProductRequest $request)
     {

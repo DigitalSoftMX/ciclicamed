@@ -42,6 +42,11 @@ export const AdministradorSidebarConfig: Sidebar[] = [
         url: '/app/productos'
     },
     {
+        icon: '/svg/productos.svg',
+        name: 'Medicamentos',
+        url: '/app/medicamentos'
+    },
+    {
         icon: '/svg/users.svg',
         name: 'Usuarios',
         url: '/app/usuarios'

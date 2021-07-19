@@ -22,6 +22,7 @@ class Medicament extends Model
         'updated_at'
     ];
 
+    protected $perPage = 10;
 
     public function medicalconsults()
     {

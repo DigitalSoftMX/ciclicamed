@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/laboratorio', [PageController::class, 'showLaboratorio'])->name('app.laboratorio');
         Route::get('/horarios', [PageController::class, 'showScheduleHours'])->name('app.horarios');
         Route::get('/sucursales', [PageController::class, 'showBranches'])->name('app.sucursales');
+        Route::get('/medicamentos', [PageController::class, 'showMedicaments'])->name('app.medicamentos');
     });
 
     // Usuarios
@@ -172,6 +173,9 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::post('/', [ProductController::class, 'createProduct'])->name('productos.nuevo');
         Route::patch('/{id}', [ProductController::class, 'updateProduct'])->name('productos.actualizar');
         Route::delete('/{id}', [ProductController::class, 'deleteProduct'])->name('productos.eliminar');
+        Route::get('/medicamentos/admin', [ProductController::class, 'getAllMedicaments'])->name('productos.allMedicamentos');
+        Route::post('/medicamentos/{id}', [ProductController::class, 'updateMedicament'])->name('productos.updateMedicament');
+        Route::post('/medicamentos', [ProductController::class, 'createMedicament'])->name('productos.createMedicament');
     });
 
     //Estudios
