@@ -26,10 +26,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary border-0 float-right" v-if="isNew">
+                    <button class="btn btn-primary border-0 float-right" v-if="isNew" @click="createBranch">
                         Crear sucursal
                     </button>
-                    <button class="btn btn-primary border-0 float-right" v-else>
+                    <button class="btn btn-primary border-0 float-right" v-else @click="updateBranch">
                         Editar sucursal
                     </button>
                 </div>
@@ -37,9 +37,9 @@
         </div>
     </div>
 
-    <success-alert-component id="emtmcSuccess" title="Rol(es) actualizado(s)"
-        message="Sucursal modificado correctamente"></success-alert-component>
-    <error-alert-component :id="'emtmcError'" :errors="errors" :title="'Error al modificar los roles'">
+    <success-alert-component id="emtmcSuccess" :title="successAlert.title"
+        :message="successAlert.message"></success-alert-component>
+    <error-alert-component :id="'emtmcError'" :errors="errors" :title="'Error al modificar la sucursal'">
     </error-alert-component>
 </template>
 

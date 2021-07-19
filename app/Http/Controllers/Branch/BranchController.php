@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Branch;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Branch\BranchRequest;
 use App\Models\Branch\Branch;
 use App\Models\Employee\EmployeeSchedule;
 use App\Models\Employee\EmployeeStatus;
@@ -15,9 +16,43 @@ use Illuminate\Support\Facades\DB;
 
 class BranchController extends Controller
 {
-    public function createBranch(Request $request)
+    public function updateBranch(BranchRequest $request, $id)
     {
+        $request->validated();
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            Branch::findOrFail($id)->update([
+                'name' => $request['branch.name'],
+                'address' => $request['branch.address'],
+                'phone' => $request['branch.phone']
+            ]);
 
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function createBranch(BranchRequest $request)
+    {
+        $request->validated();
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            Branch::create([
+                'name' => $request['branch.name'],
+                'address' => $request['branch.address'],
+                'phone' => $request['branch.phone'],
+                'branchstatus_id' => 1
+            ]);
+
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
     }
 
     public function enableBranch($id)

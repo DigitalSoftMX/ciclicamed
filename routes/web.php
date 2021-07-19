@@ -112,6 +112,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::post('/{id}/deshabilitar', [BranchController::class, 'disableBranch'])->name('sucursal.disableBranch');
         Route::post('/{id}/habilitar', [BranchController::class, 'enableBranch'])->name('sucursal.enableBranch');
         Route::post('/', [BranchController::class, 'createBranch'])->name('sucursal.createBranch');
+        Route::post('/{id}', [BranchController::class, 'updateBranch'])->name('sucursal.updateBranch');
     });
 
 
