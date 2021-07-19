@@ -87,6 +87,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.startConsulta');
         // Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.createEstudio');
         Route::post('/{id}/confirmar', [MedicalConsultController::class, 'confirmSchedule'])->name('consulta.confirmConsulta');
+        Route::post('/{id}/asistencia', [MedicalConsultController::class, 'startAssitance'])->name('consulta.startAssitance');
     });
 
     //Imagenes

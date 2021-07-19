@@ -275,7 +275,7 @@ export default defineComponent({
                 if(moment().isSameOrBefore(date, 'days') && this.hoursEnabled.length > 0)
                 // if(moment().isSameOrBefore(date, 'days'))
                 {
-                    this.scheduleSelected = ScheduleData;
+                    this.scheduleSelected = {...ScheduleData};
                     const startHour = Number(this.hoursEnabled[0].startTime.split(':')[0]);
                     const startMinute = Number(this.hoursEnabled[0].startTime.split(':')[1]);
                     this.scheduleSelected.consult_schedule_start = this.scheduleSelected.consult_schedule_finish = moment(date)
@@ -287,6 +287,9 @@ export default defineComponent({
                 }
                 if(moment().isSameOrBefore(date, 'days'))
                 {
+                    this.scheduleSelected = {...ScheduleData};
+                    this.scheduleSelected.consult_schedule_start = this.scheduleSelected.consult_schedule_finish = moment(date)
+                        .format('YYYY-MM-DD HH:mm:00');
                     const lateral = this.$refs.openLateralSchedule as DefineComponent;
                     lateral.openLateralSchedule();
                 }

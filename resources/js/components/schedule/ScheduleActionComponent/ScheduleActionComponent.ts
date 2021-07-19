@@ -40,6 +40,18 @@ export default defineComponent({
         };
     },
     computed: {
+        isAssistantOptionEnabled(): boolean
+        {
+            switch(this.role)
+            {
+                case 'Asistente':
+                    return moment().isSame(moment(this.schedule.consult_schedule_start), 'day') && !this.schedule.nurse_start_at;
+                case 'Administrador':
+                    return true;
+                default:
+                    return false;
+            }
+        },
         isCancelOptionEnabled(): boolean
         {
             switch(this.role)
@@ -122,6 +134,20 @@ export default defineComponent({
     watch: {
     },
     methods: {
+        startAssistance()
+        {
+            axios.post(`/consultas/${this.schedule.id}/asistencia`)
+            .then(response => {
+                this.successAlert.message = 'Se ha iniciado la asistencia';
+                this.successAlert.title = 'Asistencia iniciada';
+                $('#schedule-action').modal('hide');
+                $('#actionConsultSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                $('#actionConsultError').modal('show');
+            })
+        },
         confirmSchedule()
         {
             axios.post(`/consultas/${this.schedule.id}/confirmar`)

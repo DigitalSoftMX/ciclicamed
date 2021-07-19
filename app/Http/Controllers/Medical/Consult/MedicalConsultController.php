@@ -28,6 +28,22 @@ use Illuminate\Validation\Validator;
 
 class MedicalConsultController extends Controller
 {
+    public function startAssitance($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole(['Asistente', 'Administrador']))
+        {
+            MedicalConsult::findOrFail($id)->update([
+                'assistant_start_at' => Carbon::now()->setTimezone('America/Mexico_City')
+            ]);
+
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para modificar esta información']
+        ]], 401);
+    }
+
     public function getAllTest(Request $request)
     {
         $prescriptions = [];
@@ -150,7 +166,6 @@ class MedicalConsultController extends Controller
             if(!isset($consult['nurse_start_at']))
             {
                 $consult->update([
-                    'assistant_finish_at' =>$time,
                     'assistant_finish_at' => $time,
                     'nurse_start_at' => $time,
                     'medicalconsultstatus_id' => 4

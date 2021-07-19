@@ -69,6 +69,9 @@
                     </ul>
                 </div>
                 <div class="modal-footer bg-white" v-if="showScheduleOption">
+                    <div v-if="isAssistantOptionEnabled">
+                        <button class="btn btn-primary btn-lg btn-squared" @click="startAssistance">Marca asistencia</button>
+                    </div>
                     <div v-if="isConfirmScheduleEnabled">
                         <button class="btn btn-primary btn-lg btn-squared" @click="confirmSchedule">Confirmar cita</button>
                     </div>
