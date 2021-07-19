@@ -568,13 +568,13 @@ class MedicalConsultController extends Controller
             switch($medicalconsultcategory_id)
             {
                 case 1:
-                    $finishTime = $finishTime->addMinute(60);
+                    $finishTime = $finishTime->addMinutes(60);
                     break;
                 case 2:
-                    $finishTime = $finishTime->addMinute(30);
+                    $finishTime = $finishTime->addMinutes(30);
                     break;
                 default:
-                    $finishTime = $finishTime->addMinute(30);
+                    $finishTime = $finishTime->addMinutes(30);
                     break;
             }
 

@@ -159,18 +159,39 @@ class CheckupCategoryController extends Controller
     {
         $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;
         $consult_reason = str_contains($item['code'], 'CON') ? $item['name'].' de checkup '.$request['data.name'] : 'Estudio '.$item['name'].' de checkup '.$request['data.name'];
-        $consult = MedicalConsult::create([
-            'patient_id' => $request['data.patient_id'],
-            'doctor_id' => $doctor_id,
-            'consult_reason' => $consult_reason,
-            'consult_schedule_start' => Carbon::parse($item['consult_schedule_start']),
-            'consult_schedule_finish' => Carbon::parse($item['consult_schedule_finish']),
-            'medicalspecialty_id' => $medicalspecialty_id,
-            'medicalconsultcategory_id' => $medicalconsultcategory_id,
-            'branch_id' => $item['branch_id'],
-            'medicalconsultstatus_id' => 1,
-            'checkup_id' => $checkup
-        ]);
+        
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Paciente'))
+        {
+            $consult = MedicalConsult::create([
+                'patient_id' => $user['patient']['id'],
+                'doctor_id' => $doctor_id,
+                'consult_reason' => $consult_reason,
+                'consult_schedule_start' => Carbon::parse($item['consult_schedule_start']),
+                'consult_schedule_finish' => Carbon::parse($item['consult_schedule_start'])->addMinutes(30),
+                'medicalspecialty_id' => $medicalspecialty_id,
+                'medicalconsultcategory_id' => $medicalconsultcategory_id,
+                'branch_id' => $item['branch_id'],
+                'medicalconsultstatus_id' => 1,
+                'checkup_id' => $checkup
+            ]);
+        }
+        else
+        {
+            $consult = MedicalConsult::create([
+                'patient_id' => $request['data.patient_id'],
+                'doctor_id' => $doctor_id,
+                'consult_reason' => $consult_reason,
+                'consult_schedule_start' => Carbon::parse($item['consult_schedule_start']),
+                'consult_schedule_finish' => Carbon::parse($item['consult_schedule_finish']),
+                'medicalspecialty_id' => $medicalspecialty_id,
+                'medicalconsultcategory_id' => $medicalconsultcategory_id,
+                'branch_id' => $item['branch_id'],
+                'medicalconsultstatus_id' => 1,
+                'checkup_id' => $checkup
+            ]);
+        }
+        
         
         if($medicalconsultcategory_id !== 2)
         {
