@@ -53,17 +53,22 @@ export default defineComponent({
             photo: {} as File,
             successMessage: '',
             errors: [],
-            isButtonDisabled: true,
             formCharacters: [] as any,
-            path: ((document.head.querySelector('meta[name="api-base-url"]') as any)!.content as string)
+            path: ((document.head.querySelector('meta[name="api-base-url"]') as any)!.content as string),
+            patientCode: ''
         };
     },
     watch:
     {
+        patientCode()
+        {
+            (this.userForm as Patient).patient_code = this.patientCode;
+        },
         userData: {
             handler()
             {
                 this.userForm = cloneDeep(this.userData);
+                this.patientCode = (this.userForm as Patient).patient_code;
             },
             deep: true
         }
@@ -101,6 +106,7 @@ export default defineComponent({
             var formData = new FormData();
             this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
             
+            formData.append('patient_code', this.patientCode);
             formData.append('email', this.userForm.user.email);
             formData.append('first_name', this.userForm.first_name);
             formData.append('last_name', this.userForm.last_name);
@@ -129,12 +135,12 @@ export default defineComponent({
                 this.errors = error.response.data.errors;
                 $(`#${this.id}profileError`).modal('show');
             })
-            this.isButtonDisabled = true;
         },
         updateProfile() {
             var formData = new FormData();
             this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
             
+            formData.append('patient_code', this.patientCode);
             formData.append('email', this.userForm.user.email);
             formData.append('first_name', this.userForm.first_name);
             formData.append('last_name', this.userForm.last_name);
@@ -162,7 +168,6 @@ export default defineComponent({
                 this.errors = error.response.data.errors;
                 $(`#${this.id}profileError`).modal('show');
             })
-            this.isButtonDisabled = true;
         },
         checkProfileData(data: string = '') {
             switch (data) {
@@ -173,8 +178,6 @@ export default defineComponent({
                     this.userForm.gender = Number(this.userForm.gender);
                     break;
             }
-            const isDataEqual = JSON.stringify(this.userData) === JSON.stringify(this.userForm);
-            this.isButtonDisabled = isDataEqual;
         },
         updateCharacter(key: string) {
             if(key === 'email')
@@ -197,7 +200,6 @@ export default defineComponent({
                 this.photo= file;
                 const input = (document.getElementById(`${this.id}upcImage`) as HTMLImageElement);
                 input.src = URL.createObjectURL(file);
-                this.isButtonDisabled = false;
                 this.$emit('updatePhoto', URL.createObjectURL(file));
             }
         },

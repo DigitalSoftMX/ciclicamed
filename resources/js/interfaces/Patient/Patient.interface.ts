@@ -3,7 +3,7 @@ import { Preregistration } from "./Preregistration.interface";
 export interface Patient
 {
     id: number;
-    patient_code?: string;
+    patient_code: string;
     first_name: string;
     last_name: string;
     gender?: number;

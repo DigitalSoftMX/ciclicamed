@@ -69,6 +69,7 @@ class PatientController extends Controller
             $photo = basename($file->store('user'));
     
             $patient = Patient::create([
+                'patient_code' => $request->input('patient_code'),
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'gender' => $request->input('gender'),
@@ -120,6 +121,7 @@ class PatientController extends Controller
                 $photo = $patient->photo;
             }
             $patient->update([
+                'patient_code' => $request->input('patient_code'),
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'gender' => $request->input('gender'),

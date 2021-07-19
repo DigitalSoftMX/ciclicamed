@@ -16,7 +16,7 @@
     <div class="card mt-30 spin-embadded" v-bind:class="{'spin-active': loading}">
         <div class="card-body">
             <div
-                class="branchDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
+                class="userDatatable adv-table-table global-shadow border-0 bg-white w-100 adv-table alert-content p-0">
                 <div class="table-responsive hide-y-overflow">
                     <table
                         class="table mb-0 table-borderless adv-table footable footable-1 footable-filtering footable-filtering-right footable-paging footable-paging-right breakpoint-md container default-skin"

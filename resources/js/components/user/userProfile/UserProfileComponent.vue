@@ -28,6 +28,17 @@
             </div>
 
             <div class=" Vertical-form">
+                <div class="form-group mb-25" v-if="userCategory === 'pacientes'">
+                    <label for="firstName">Código de paciente</label>
+                    <div class="with-icon">
+                        <span class="mr-5">
+                            <img-component url="/svg/barcode.svg" alt="Código"></img-component>
+                        </span>
+                        <input type="text" class="form-control form-control-lg" :id="id + 'patientCode'" placeholder="Código paciente" :disabled="disabled"
+                            maxlength="25" v-model="patientCode">
+                    </div>
+                </div>
+
                 <div class="form-group mb-25">
                     <label for="firstName">Nombre(s)</label>
                     <div class="with-icon">
@@ -156,11 +167,11 @@
 
                 <div class="button-group d-flex pt-25 justify-content-end" v-if="!disabled">
                     <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
-                        v-on:click="createUser()" v-if="isNew">
+                        @click="createUser()" v-if="isNew">
                         Crear datos
                     </button>
                     <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
-                        v-on:click="updateProfile()" :disabled="isButtonDisabled" v-else>
+                        @click="updateProfile()" v-else>
                         Actualizar datos
                     </button>
                 </div>
