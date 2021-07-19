@@ -21,9 +21,9 @@ class EmployeeFactory extends Factory
      */
     public function definition()
     {
-        static $employeeUser = 25;
+        static $employeeUser = 1;
 
-        if($employeeUser === 26)
+        if($employeeUser === 1)
         {
             $employeeUser++;
             Employee::create([
@@ -41,7 +41,7 @@ class EmployeeFactory extends Factory
             ]);
         }
 
-        if($employeeUser === 27)
+        if($employeeUser === 2)
         {
             $employeeUser++;
             Employee::create([
@@ -69,9 +69,9 @@ class EmployeeFactory extends Factory
             'cellphone' => $this->faker->regexify('[0-9]{10}'),
             'email' => $this->faker->unique()->safeEmail(),
             'photo' => $this->faker->regexify('[A-Za-z0-9]{25}'),
-            // 'employeestatus_id' => $this->faker->numberBetween(1, 2),
             'employeestatus_id' => 1,
             'user_id' => $employeeUser++
+            //desde 0 'user_id' => 1
         ];
     }
 }

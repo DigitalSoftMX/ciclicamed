@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
 
         UserStatus::factory(5)->create();
         UserCategory::factory(2)->create();
-        User::factory(150)->create()->each(function ($user, $key){
+        User::factory(1)->create()->each(function ($user, $key){
             if($key >= 1 && $key<= 26)
             {
                 $user->assignRole('Paciente');
@@ -96,13 +96,12 @@ class DatabaseSeeder extends Seeder
             else if($key >= 111) {
                 $user->assignRole('Administrador');
             }
-            
         });;
         Preregistration::factory(25)->create();
         Patient::factory(25)->create();
         InvoiceData::factory(5)->create();
         EmployeeStatus::factory(2)->create();
-        Employee::factory(100)->create();
+        Employee::factory(3)->create();
         MedicalSpecialty::factory(13)->create();
         CheckupStatus::factory(5)->create();
         CheckupCategory::factory(6)->create();
@@ -134,5 +133,38 @@ class DatabaseSeeder extends Seeder
         ProductPayment::factory(100)->create();
         MedicalTestOrderAnnotation::factory(863)->create();
         MedicalTestOrder::factory(862)->create();
+
+
+
+        //Desde 0
+        // static $row = 0;
+        // $roles = ['Administrador', 'Doctor', 'Enfermera', 'Checkup', 'Caja', 'Laboratorio', 'Imagenologia', 'Asistente', 'Paciente'];
+
+        // for($i = 0; $i < 9; $i++)
+        // {
+        //     DB::table('roles')->insert([
+        //         'name' => $roles[$i]
+        //     ]);
+        // }
+        // UserStatus::factory(5)->create();
+        // UserCategory::factory(2)->create();
+        // User::factory(1)->create()->each(function ($user, $key){
+        //     $user->assignRole('Administrador');
+        // });;
+        // EmployeeStatus::factory(2)->create();
+        // Employee::factory(3)->create();
+        // MedicalSpecialty::factory(13)->create();
+        // CheckupStatus::factory(5)->create();
+        // CheckupCategory::factory(6)->create();
+        // BranchStatus::factory(2)->create();
+        // MedicalConsultCategory::factory(4)->create();
+        // MedicalConsultStatus::factory(6)->create();
+        // MedicalTestStatus::factory(5)->create();
+        // PaymentStatus::factory(4)->create();
+        // PaymentMethod::factory(3)->create();
+        // ProductStatus::factory(2)->create();
+        // ProductCategory::factory(7)->create();
+        // Product::factory(969)->create();
+
     }
 }
