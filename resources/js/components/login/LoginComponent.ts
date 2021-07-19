@@ -11,7 +11,8 @@ export default defineComponent({
         return {
             email: '',
             password: '',
-            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
+            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content,
+            errors: []
         };
     },
     mounted() {
@@ -36,7 +37,8 @@ export default defineComponent({
                 }, 2000)
             })
             .catch(error => {
-                console.log(error)
+                this.errors = error.response.data.errors;
+                $('#logcErrorAlert').modal('show');
             })
         },
         redirectToSignup()

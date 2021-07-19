@@ -55,6 +55,8 @@
     </div>
 
     <success-alert-component id="logcSuccessAlert" title="Login correcto" message="Bienvedido(a)"></success-alert-component>
+    <error-alert-component id="logcErrorAlert" :errors="errors" :title="'Error al iniciar sesión'">
+    </error-alert-component>
 </template>
 
 <script lang="ts" src="./LoginComponent.ts"></script>

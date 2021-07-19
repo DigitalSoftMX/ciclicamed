@@ -247,7 +247,7 @@ class EmployeeController extends Controller
         if($user->hasRole(['Asistente', 'Enfermera', 'Administrador']))
         {
             $schedules = MedicalConsult::all(['id', 'consult_schedule_start', 'consult_schedule_finish', 'assistant_start_at' , 'assistant_finish_at', 'nurse_start_at' , 'nurse_finish_at', 'branch_id', 'doctor_id',  'medicalspecialty_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
-            ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+            ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name', 'patient');
             return response()->json($schedules);
         }
         return response()->json(['errors' => [
@@ -262,7 +262,7 @@ class EmployeeController extends Controller
         {
             $schedules = MedicalConsult::where('doctor_id', $id)
             ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'assistant_start_at' , 'assistant_finish_at', 'nurse_start_at' , 'nurse_finish_at', 'branch_id', 'doctor_id',  'medicalspecialty_id', 'medicalconsultcategory_id', 'medicalconsultstatus_id', 'patient_id', 'consult_reason'])
-            ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name');
+            ->load('doctor:id,first_name,last_name', 'status', 'type', 'branch:id,name', 'patient');
             return response()->json($schedules);
         }
         return response()->json(['errors' => [

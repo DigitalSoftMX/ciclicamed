@@ -53,6 +53,13 @@
                                 <span class="list-meta"> {{ schedule.doctor?.first_name }} {{schedule.doctor?.last_name}}</span>
                             </span>
                         </li>
+                        <li v-if="role !== 'Paciente'">
+                            <img-component url="/svg/person.svg" alt="Sucursal"></img-component>
+                            <span class="list-line">
+                                <span class="list-label">Paciente: </span>
+                                <span class="list-meta"> {{ schedule.patient?.first_name }} {{ schedule.patient?.last_name }}</span>
+                            </span>
+                        </li>
                         <li v-if="schedule.status">
                             <img-component url="/svg/alert.svg" alt="Sucursal"></img-component>
                             <span class="list-line">

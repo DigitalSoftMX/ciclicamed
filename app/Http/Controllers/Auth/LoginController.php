@@ -58,10 +58,18 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         return $request;
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        $messages = [
+            'email.required' => 'Debe de ingresar un correo',
+            'email.email' => 'El correo debe tener un formato válido (ejemplo: ejemplo@correo.com)',
+            'password.required' => 'Debe de ingresar una contraseña',
+        ];
+
+        $rules = [
+            'email' => 'required|email',
+            'password' => 'required'
+        ];
+
+        $credentials = $request->validate($rules, $messages);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -70,7 +78,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Verifique su usuario y/o contraseña',
         ]);
     }
 }
