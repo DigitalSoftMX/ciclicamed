@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
 
         UserStatus::factory(5)->create();
         UserCategory::factory(2)->create();
-        User::factory(1)->create()->each(function ($user, $key){
+        User::factory(200)->create()->each(function ($user, $key){
             if($key >= 1 && $key<= 26)
             {
                 $user->assignRole('Paciente');
@@ -101,7 +101,7 @@ class DatabaseSeeder extends Seeder
         Patient::factory(25)->create();
         InvoiceData::factory(5)->create();
         EmployeeStatus::factory(2)->create();
-        Employee::factory(3)->create();
+        Employee::factory(150)->create();
         MedicalSpecialty::factory(13)->create();
         CheckupStatus::factory(5)->create();
         CheckupCategory::factory(6)->create();

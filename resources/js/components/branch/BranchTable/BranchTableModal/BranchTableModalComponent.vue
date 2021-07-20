@@ -17,12 +17,12 @@
                     </div>
                     <div class="form-group mb-25">
                         <label for="lastName">Dirección</label>
-                        <textarea class="form-control form-control-lg" placeholder="Dirección" maxlength="100" v-model="form.address"
+                        <textarea class="form-control form-control-lg" placeholder="Dirección" maxlength="255" v-model="form.address"
                             rows="3"></textarea>
                     </div>
                     <div class="form-group mb-25">
                         <label for="lastName">Teléfono</label>
-                        <input type="text" class="form-control form-control-lg" placeholder="Teléfono" maxlength="100"  v-model="form.phone">
+                        <input type="text" class="form-control form-control-lg" placeholder="Teléfono" maxlength="10"  v-model="form.phone">
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -31,6 +31,10 @@ export default defineComponent({
         },
     },
     watch: {
+        roleSelected()
+        {
+            this.rolesSelected = [this.roleSelected];
+        },
         employee:
         {
             handler()
@@ -52,7 +56,8 @@ export default defineComponent({
         return {
             roles: [] as String[],
             rolesSelected: [] as String[],
-            errors: []
+            errors: [],
+            roleSelected: ''
         };
     },
     mounted() {
@@ -71,9 +76,10 @@ export default defineComponent({
         },
         getEmployeeRoles()
         {
-            axios.get<String[]>(`/empleados/${this.employee.id}/roles`)
+            axios.get<string[]>(`/empleados/${this.employee.id}/roles`)
             .then(response => {
                 this.rolesSelected = response.data;
+                this.roleSelected = response.data[0];
             })
             .catch(error => {
                 console.log(error)

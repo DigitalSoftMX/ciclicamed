@@ -17,7 +17,7 @@
                             <h4>Seleccionar roles</h4>
                         </div>
                         <div class="card-body">
-                            <v-select multiple :options="roles" label="name" v-model="rolesSelected" :disabled="disabled"/>
+                            <v-select :options="roles" label="name" v-model="roleSelected" :disabled="disabled"/>
                         </div>
                         <div class="card-footer" v-if="!disabled && !isNew">
                             <button class="btn btn-primary btn-default btn-squared float-right" @click="setEmployeeRoles" :disabled="disabled">Actualizar</button>
@@ -28,8 +28,8 @@
         </div>
     </div>
 
-    <success-alert-component id="emtmcSuccess" title="Rol(es) actualizado(s)" message="Rol(es) actualizado(s) correctamente"></success-alert-component>
-    <error-alert-component :id="'emtmcError'" :errors="errors" :title="'Error al modificar los roles'">
+    <success-alert-component id="emtmcSuccess" title="Rol actualizado" message="Rol actualizado correctamente"></success-alert-component>
+    <error-alert-component :id="'emtmcError'" :errors="errors" :title="'Error al modificar el rol'">
     </error-alert-component>
 </template>
 

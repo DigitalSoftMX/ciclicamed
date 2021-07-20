@@ -130,7 +130,7 @@ class EmployeeController extends Controller
             $user = User::create([
                 'email' => $request->input('email'),
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make($request->input('empleado')),
+                'password' => Hash::make('empleado'),
                 'userstatus_id' => 1,
                 'usercategory_id' => 2,
             ]);
@@ -202,7 +202,7 @@ class EmployeeController extends Controller
         $user = User::findOrFail(Auth::user()->id);
         if($user->hasRole('Administrador'))
         {
-            return response()->json(Role::all());
+            return response()->json(Role::where('name', '!=', 'Paciente')->get());
         }
         return response()->json(['errors' => [
             'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
@@ -335,7 +335,7 @@ class EmployeeController extends Controller
         $request->validated();
         $employee = Employee::findOrFail($id)->load('user');
         $user = User::findOrFail(Auth::user()->id);
-        if(($employee->user->id === Auth::user()->id && !$user->hasRole('Paciente')) || $user->hasRole('Administrador'))
+        if((intval(Auth::user()->id) === intval($id) && !$user->hasRole('Paciente')) || $user->hasRole('Administrador'))
         {
             $file = $request->file('photo');
             if($file)
@@ -358,7 +358,7 @@ class EmployeeController extends Controller
                 'cellphone' => $request->input('cellphone'),
                 'photo' => $photo,
             ]);
-            User::findOrFail($id)->update([
+            User::findOrFail($employee['user']['id'])->update([
                 'email' => $request->input('email')
             ]);
             return response()->json($employee->load('user'));

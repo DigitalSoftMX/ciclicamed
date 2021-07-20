@@ -4,7 +4,7 @@
     </div>
     <div v-else>
         <navbar-component @menuSelect="changeSidebarStatus" title="Perfil de usuario" :userData="doctor"
-            :photo="doctor.photo"></navbar-component>
+            :photo="doctor.photo" role="Administrador"></navbar-component>
         <sidebar-component title="Menú lateral" :items="sidebarItems"></sidebar-component>
         <div id="pdpContent" class="contents expanded">
             <div class="row mx-0" v-if="consult > 0">

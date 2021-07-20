@@ -1,5 +1,5 @@
 <template>
-    <navbar-component @menuSelect="changeSidebarStatus" title="Horarios y títulos profesionales"
+    <navbar-component @menuSelect="changeSidebarStatus" title="Horarios y títulos profesionales" role="Administrador"
         :userData="administrador" :photo="administrador.photo"></navbar-component>
     <sidebar-component title="Menú lateral" :items="sidebarItems"></sidebar-component>
     <div id="pdpContent" class="contents expanded">

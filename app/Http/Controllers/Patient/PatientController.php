@@ -53,7 +53,7 @@ class PatientController extends Controller
         {
             $user = User::create([
                 'email' => $request->input('email'),
-                'password' => Hash::make($request->input('first_name')),
+                'password' => Hash::make('paciente'),
                 'userstatus_id' => 1,
                 'usercategory_id' => 1
             ]);

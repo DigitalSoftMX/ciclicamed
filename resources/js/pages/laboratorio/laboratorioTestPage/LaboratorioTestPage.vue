@@ -1,5 +1,5 @@
 <template>
-    <navbar-component @menuSelect="changeSidebarStatus" title="Subir resultados" :userData="laboratorio"
+    <navbar-component @menuSelect="changeSidebarStatus" title="Subir resultados" :userData="laboratorio" role="Laboratorio"
         :photo="laboratorio.photo"></navbar-component>
     <sidebar-component title="Menú lateral" :items="sidebarItems"></sidebar-component>
     <div id="pdpContent" class="contents expanded">

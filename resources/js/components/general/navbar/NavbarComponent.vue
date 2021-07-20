@@ -21,7 +21,7 @@
                                     </div>
                                     <div>
                                         <h6>{{fullName}}</h6>
-                                        <span>{{userCategory}}</span>
+                                        <span>{{role}}</span>
                                     </div>
                                 </div>
                                 <div class="nav-author__options">

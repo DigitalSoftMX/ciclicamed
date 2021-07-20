@@ -1,5 +1,5 @@
 <template>
-    <navbar-component @menuSelect="changeSidebarStatus" title="Perfil de usuario" :userData="doctor" :photo="doctor.photo"></navbar-component>
+    <navbar-component @menuSelect="changeSidebarStatus" title="Perfil de usuario" :userData="doctor" :photo="doctor.photo" role="Doctor"></navbar-component>
     <sidebar-component title="Menú lateral" :items="sidebarItems"></sidebar-component>
     <div id="pdpContent" class="contents expanded">
         <div class="row mx-0" v-if="consult > 0">

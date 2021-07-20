@@ -74,24 +74,24 @@ export default defineComponent({
             this.disabledPatientEdit = false;
             $('#patcPatient').modal('show');
         },
-        showConfirmationAlert(employee: Employee)
+        showConfirmationAlert(patient: Patient)
         {
-            this.patientSelected = employee;
+            this.patientSelected = patient;
             this.confirmationAlert.message = '¿Desea eliminar a este usuario? Esta acción no puede deshacerse'
             $('#patcConfirmation').modal('show');
         },
-        showPatientModal(employee: Employee)
+        showPatientModal(patient: Patient)
         {
             this.isNew = false;
             this.disabledPatientEdit = true;
-            this.patientSelected = employee;
+            this.patientSelected = patient;
             $('#patcPatient').modal('show');
         },
-        showEditModal(employee: Employee)
+        showEditModal(patient: Patient)
         {
             this.isNew = false;
             this.disabledPatientEdit = false;
-            this.patientSelected = employee;
+            this.patientSelected = patient;
             $('#patcPatient').modal('show');
         },
         getUserData(page: number)

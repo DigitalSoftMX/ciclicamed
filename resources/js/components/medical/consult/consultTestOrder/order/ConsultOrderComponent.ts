@@ -3,9 +3,12 @@ import { PropType } from 'vue';
 import { Test } from '@interface/Medical/Test.interface';
 import { OrderData } from '@data/Medical/Order.data';
 import { TestOrder } from '@interface/Medical/TestOrder.interface';
+import { Branch } from '@interface/Branch/Branch.interface';
+import { ElTimeSelect } from 'element-plus';
 
 export default defineComponent({
     components: {
+        ElTimeSelect
     },
     emits: ['update:modelValue', 'onDelete'],
     props: {
@@ -29,6 +32,10 @@ export default defineComponent({
             type: Boolean as PropType<Boolean>,
             default: true
         },
+        branches: {
+            type: Array as PropType<Branch[]>,
+            default: []
+        }
     },
     watch: {
         modelValue: {
@@ -48,7 +55,11 @@ export default defineComponent({
     },
     data() {
         return {
-            order: this.modelValue
+            order: this.modelValue,
+            startTime: '07:00',
+            finishTime: '21:00',
+            startHour: '',
+            finishHour: ''
         };
     },
     mounted() {

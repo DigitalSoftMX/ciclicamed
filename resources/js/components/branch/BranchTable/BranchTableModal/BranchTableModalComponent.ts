@@ -45,7 +45,7 @@ export default defineComponent({
     methods: {
         createBranch()
         {
-            axios.post(`/sucursales/`, {
+            axios.post(`/sucursales`, {
                 branch: this.form
             })
             .then(response => {

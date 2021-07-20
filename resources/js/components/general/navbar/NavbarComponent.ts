@@ -25,7 +25,11 @@ export default defineComponent({
         userData: {
             type: Object as PropType<Patient | Employee>,
             default: {}
-        }
+        },
+        role: {
+            type: String,
+            default: ''
+        },
     },
     data() {
         return {
