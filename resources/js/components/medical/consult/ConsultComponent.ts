@@ -36,6 +36,8 @@ import { PaymentData } from '@data/Payment/Payment.data';
 import { PropType } from 'vue';
 import { Employee } from '@interface/Employee/Employee.interface';
 import { EmployeeData } from '@data/Employee/Employee.data';
+import { Branch } from '@interface/Branch/Branch.interface';
+import { Select } from '@interface/General/Select.interface';
 
 export default defineComponent({
     components: {
@@ -102,7 +104,8 @@ export default defineComponent({
                 minutes: 0,
                 seconds: 0
             },
-            enableAttachmentData: false
+            enableAttachmentData: false,
+            branchesList: [] as Select[],
         };
     },
     computed: {
@@ -163,6 +166,7 @@ export default defineComponent({
                 this.getTest();
                 this.getFollowUp();
                 this.getPayment();
+                this.getBranchesList();
                 break;
             case 'Doctor':
                 this.getConsultInfo();
@@ -170,10 +174,27 @@ export default defineComponent({
                 this.getTest();
                 this.getFollowUp();
                 this.getPayment();
+                this.getBranchesList();
                 break;
         }
     },
     methods: {
+        getBranchesList(): void
+        {
+            axios.get<Branch[]>(`/sucursales`)
+            .then(response => {
+                this.branchesList = response.data.map((branch, index) => {
+                    return {
+                        id: index,
+                        childID: branch.id, 
+                        text: branch.name,
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
         getPayment()
         {
             axios.get<Payment>(`/consultas/${this.consultID}/pago`)

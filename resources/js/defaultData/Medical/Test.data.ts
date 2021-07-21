@@ -1,5 +1,6 @@
 import { PatientData } from "@data/Patient/Patient.data";
 import { Test } from "../../interfaces/Medical/Test.interface";
+import { ConsultData } from "./Consult.data";
 import { OrderData } from "./Order.data";
 
 export const TestData: Test = {
@@ -25,5 +26,5 @@ export const TestData: Test = {
         created_at: '',
         updated_at: '',
     },
-    patient: PatientData
+    patient: PatientData,
 }

@@ -17,6 +17,7 @@ use App\Models\Medical\Test\MedicalTestSample;
 use App\Models\Medical\Test\MedicalTestStatus;
 use App\Models\Patient\Patient;
 use App\Models\Payment\Payment;
+use App\Models\Product\Product;
 use App\Models\Product\ProductPayment;
 use App\Models\User\User;
 use Carbon\Carbon;
@@ -459,6 +460,22 @@ class MedicalConsultController extends Controller
                 {
                     if(intval($test['id'] > 0))
                     {
+                        //Verifica si el estudio clinico fue agendado correctamente para actualizar la cita
+                        if(intval($test['consult_scheduled']['branch_id']) >= 1 && (bool)strtotime($test['consult_scheduled']['consult_schedule_start']) && (bool)strtotime($test['consult_scheduled']['consult_schedule_finish']))
+                        {
+                            $product = Product::findOrFail($test['order']['product_id'])->product_code;
+                            $medicalconsultcategory_id = str_contains($product, 'IMA') ? 3 : 4;
+                            $medicalspecialty_id = str_contains($product, 'IMA') ? 12 : 11;
+                            $doctor_id = str_contains($product, 'IMA') ? 2 : 1;
+                            MedicalConsult::findOrFail($test['consult_scheduled']['id'])->update([
+                                'doctor_id' => $doctor_id,
+                                'medicalconsultcategory_id' => $medicalconsultcategory_id,
+                                'consult_schedule_start' => $test['consult_scheduled']['consult_schedule_start'],
+                                'consult_schedule_finish' => $test['consult_scheduled']['consult_schedule_finish'],
+                                'branch_id' => $test['consult_scheduled']['branch_id'],
+                                'medicalspecialty_id' => $medicalspecialty_id
+                            ]);
+                        }
                         $testEdited = MedicalTest::findOrFail($test['id'])->update([
                             'medicalteststatus_id' => $test['medicalteststatus_id']
                         ]);
@@ -473,13 +490,48 @@ class MedicalConsultController extends Controller
                     }
                     else
                     {
+                        $scheduleID = -1;
+                        //Verifica si el estudio clinico fue agendado o no para ingresar la informacion de la cita
+                        if(intval($test['consult_scheduled']['branch_id']) >= 1 && (bool)strtotime($test['consult_scheduled']['consult_schedule_start']) && (bool)strtotime($test['consult_scheduled']['consult_schedule_finish']))
+                        {
+                            $product = Product::findOrFail($test['order']['product_id'])->product_code;
+                            $medicalconsultcategory_id = str_contains($product, 'IMA') ? 3 : 4;
+                            $medicalspecialty_id = str_contains($product, 'IMA') ? 12 : 11;
+                            $doctor_id = str_contains($product, 'IMA') ? 2 : 1;
+
+                            $scheduleID = MedicalConsult::create([
+                                'patient_id' => $presentConsult['patient_id'],
+                                'doctor_id' => $doctor_id,
+                                'created_by' => $user['employee']['id'],
+                                'medicalconsultcategory_id' => $medicalconsultcategory_id,
+                                'consult_reason' => 'Cita para estudio clínico',
+                                'consult_schedule_start' => $test['consult_scheduled']['consult_schedule_start'],
+                                'consult_schedule_finish' => $test['consult_scheduled']['consult_schedule_finish'],
+                                'branch_id' => $test['consult_scheduled']['branch_id'],
+                                'medicalconsultstatus_id' => 1,
+                                'medicalspecialty_id' => $medicalspecialty_id
+                            ])->id;
+                        }
                         $lastTest = MedicalTest::orderBy('id', 'desc')->first()->id;
                         $testCode ="MUE-" . str_pad((int) $lastTest++, 3, "0", STR_PAD_LEFT);
-                        $testCreated = MedicalTest::create([
-                            'test_code' => $testCode,
-                            'created_in' => $id,
-                            'medicalteststatus_id' => 1,
-                        ])->id;
+                        //Si la cita fue creada entonces crea un estudio clinico con la fecha de la cita para tal estudio
+                        if($scheduleID >= 1)
+                        {
+                            $testCreated = MedicalTest::create([
+                                'test_code' => $testCode,
+                                'created_in' => $id,
+                                'scheduled_in' => $scheduleID,
+                                'medicalteststatus_id' => 1,
+                            ])->id;
+                        }
+                        //Caso contrario solo crea el estudio sin la cita
+                        else{
+                            $testCreated = MedicalTest::create([
+                                'test_code' => $testCode,
+                                'created_in' => $id,
+                                'medicalteststatus_id' => 1,
+                            ])->id;
+                        }
                         MedicalTestOrder::create([
                             'medicaltest_id' => $testCreated,
                             'product_id' => $test['order']['product_id'],
@@ -500,29 +552,7 @@ class MedicalConsultController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // $consulType = MedicalConsultCategory::find($request->input('data.scheduleCategory'));
-
-
-        // switch($consulType->id)
-        // {
-        //     case 1
-        // }
-
-        // if($request->input('data.doctor_id'))
-        // {
-        //     $consultExist = MedicalConsult::where('patient_id', $request->input('data.patient_id'))        
-        //                 ->where('created_by', )
-        //                 ->where('consult_schedule_start', '<=', $start)->where('consult_schedule_finish', '>=', $start)->get();
-        // }
-        // else
-        // {
-        //     $consultExist = MedicalConsult::where('patient_id', $request->input('data.patient_id'))        
-        //                 ->where('created_by', )
-        //                 ->where('consult_schedule_start', '<=', $start)->where('consult_schedule_finish', '>=', $start)->get();
-        // }
-
-        
+    {        
         $firstConsult = null;
         $user = User::findOrFail(Auth::user()->id);
 
@@ -703,9 +733,6 @@ class MedicalConsultController extends Controller
         return response()->json(['errors' => [
             'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
         ]], 401);
-        //Todo
-        // Revisar si existe una cita ya creada con anterioridad que coincida con la hora ocupada
-        // Agregar verificaciones de request
     }
 
     public function updateSchedule(Request $request, $id)
@@ -790,7 +817,7 @@ class MedicalConsultController extends Controller
     {
         if(intval($id) > 0)
         {
-            $test = MedicalTest::where('created_in', $id)->where('medicalteststatus_id', '<>', 5)->get()->load('order.product:id,name,product_code', 'results', 'samples');
+            $test = MedicalTest::where('created_in', $id)->where('medicalteststatus_id', '<>', 5)->get()->load('order.product:id,name,product_code', 'results', 'samples', 'consultScheduled');
             return response()->json($test);
         }
         return response()->json([], 404);

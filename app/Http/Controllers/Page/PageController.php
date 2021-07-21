@@ -249,7 +249,7 @@ class PageController extends Controller
             if(isset($cookie))
             {
                 $consult = MedicalConsult::findOrFail($cookie);
-                if($cookie && $consult)
+                if($consult)
                 {
                     $start = $consult['consult_schedule_start'];
                     if($user->hasRole('Administrador'))
@@ -277,6 +277,10 @@ class PageController extends Controller
                         'roles' => $user->roles,
                     ], 200);
                 }
+                
+                return response()->view('pages.consult', [
+                    'roles' => $user->roles,
+                ], 200);
             }
             return response()->view('pages.consult', [
                 'roles' => $user->roles,

@@ -25,19 +25,23 @@
                     </div>
                     <div class="card-body  bg-white">
                         <div class="row mx-0">
-                            <div class="col-12 mb-25">
-                                <label for="">Orden de estudio</label>
-                                <v-select :options="orderList" label="name" :reduce="item => item.id"
-                                    v-model="order.order.product_id" :disabled="disabled" />
+                            <div class="col-12 col-md-6 mb-25">
+                                <label for="">Sucursal</label>
+                                <v-select :options="branches" label="text" :reduce="item => item.childID"
+                                    placeholder="Seleccione una sucursal" v-model="branchSelected" />
+                            </div>
+                            <div class=" col-12 col-md-6 form-group mb-25">
+                                <label>Fecha</label>
+                                <input class="form-control form-control-lg" type="date" v-model="dateSelected" :disabled="disabledData">
                             </div>
                             <div class=" col-12 col-md-6 form-group mb-25 time-select">
                                 <label>Hora inicial</label>
-                                <el-time-select :start='startTime' step='00:15' :end='finishTime' v-model="startHour"
+                                <el-time-select :start='startTime' step='00:15' :end='finishTime' v-model="startHour" :disabled="disabledData"
                                     placeholder="Hora inicial"></el-time-select>
                             </div>
                             <div class=" col-12 col-md-6 form-group mb-25 time-select">
                                 <label>Hora final</label>
-                                <el-time-select :start='startTime' step='00:15' :end='finishTime' v-model="finishHour"
+                                <el-time-select :start='startTime' step='00:15' :end='finishTime' v-model="finishHour" :disabled="disabledData"
                                     :minTime="startHour" placeholder="Hora final"></el-time-select>
                             </div>
                         </div>

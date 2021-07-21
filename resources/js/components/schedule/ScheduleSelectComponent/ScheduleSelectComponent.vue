@@ -1,5 +1,5 @@
 <template>
-    <div class="card mb-25 rounded" v-if="role !== 'Enfermera'">
+    <div class="card mb-25 rounded" v-if="role !== 'Enfermera' && role !== 'Administrador'">
         <div class="card-header">
             <h1>Mi agenda</h1>
         </div>
@@ -18,7 +18,7 @@
 
     <div class="card mb-25 rounded" v-if="role === 'Enfermera' || role === 'Administrador'">
         <div class="card-header">
-            <h1>Mi agenda</h1>
+            <h1>Todas las agendas</h1>
         </div>
         <div class="card-body">
             <div class="mb-25">

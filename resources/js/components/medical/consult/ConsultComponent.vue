@@ -114,7 +114,7 @@
                             </div>
                             <div class="tab-pane fade" id="mccOrdenMedica" role="tabpanel"
                                 aria-labelledby="mccOrdenMedica-tab">
-                                <test-order-component v-model="testData" :disabled="disableConsult" :patientData="patientData" :consultData="consultData" :doctorData="doctorData"></test-order-component>
+                                <test-order-component v-model="testData" :disabled="disableConsult" :patientData="patientData" :consultData="consultData" :doctorData="doctorData" :branches="branchesList"></test-order-component>
                             </div>
                         </div>
                     </div>

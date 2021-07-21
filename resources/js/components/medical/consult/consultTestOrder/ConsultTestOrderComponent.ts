@@ -14,6 +14,7 @@ import { Employee } from '@interface/Employee/Employee.interface';
 import { EmployeeData } from '@data/Employee/Employee.data';
 import { ConsultData } from '@data/Medical/Consult.data';
 import { Consult } from '@interface/Medical/Consult.interface';
+import { Select } from '@interface/General/Select.interface';
 export default defineComponent({
     components: {
         OrderComponent: require('./order/ConsultOrderComponent.vue').default
@@ -39,6 +40,10 @@ export default defineComponent({
         consultData: {
             type: Object as PropType<Consult>,
             default: ConsultData
+        },
+        branches: {
+            type: Array as PropType<Select[]>,
+            default: []
         }
     },
     data() {
@@ -84,7 +89,8 @@ export default defineComponent({
     methods: {
        addTestOrder(data: Test = TestData)
        {
-           this.orderData.unshift(cloneDeep(data));
+           const newArray = [cloneDeep(data)].concat(this.orderData)
+           this.orderData = newArray;
        },
        deleteTestOrder(index: number)
        {
