@@ -467,14 +467,26 @@ class MedicalConsultController extends Controller
                             $medicalconsultcategory_id = str_contains($product, 'IMA') ? 3 : 4;
                             $medicalspecialty_id = str_contains($product, 'IMA') ? 12 : 11;
                             $doctor_id = str_contains($product, 'IMA') ? 2 : 1;
-                            MedicalConsult::findOrFail($test['consult_scheduled']['id'])->update([
-                                'doctor_id' => $doctor_id,
-                                'medicalconsultcategory_id' => $medicalconsultcategory_id,
-                                'consult_schedule_start' => $test['consult_scheduled']['consult_schedule_start'],
-                                'consult_schedule_finish' => $test['consult_scheduled']['consult_schedule_finish'],
-                                'branch_id' => $test['consult_scheduled']['branch_id'],
-                                'medicalspecialty_id' => $medicalspecialty_id
-                            ]);
+                            //Verifica si no se ha cancelado el estudio clinico, si se cancela entonces tambien se cancela la cita
+                            if( intval($test['medicalteststatus_id']) === 5)
+                            {
+                                MedicalConsult::findOrFail($test['consult_scheduled']['id'])->update([
+                                    'medicalconsultstatus_id' => 6
+                                ]);
+                            }
+                            //Si no se ha cancelado la cita, entonces se actualizan los datos de la consulta
+                            else
+                            {
+                                MedicalConsult::findOrFail($test['consult_scheduled']['id'])->update([
+                                    'doctor_id' => $doctor_id,
+                                    'medicalconsultcategory_id' => $medicalconsultcategory_id,
+                                    'consult_schedule_start' => $test['consult_scheduled']['consult_schedule_start'],
+                                    'consult_schedule_finish' => $test['consult_scheduled']['consult_schedule_finish'],
+                                    'branch_id' => $test['consult_scheduled']['branch_id'],
+                                    'medicalspecialty_id' => $medicalspecialty_id
+                                ]);
+                            }
+                            
                         }
                         $testEdited = MedicalTest::findOrFail($test['id'])->update([
                             'medicalteststatus_id' => $test['medicalteststatus_id']
