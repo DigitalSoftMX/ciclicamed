@@ -106,7 +106,7 @@ class CheckupCategoryController extends Controller
             if($item['branch_id'] > 0)
             {
                 $medicalconsultcategory_id = str_contains($item['code'], 'IMA') ? 3 : 4;
-                $medicalspecialty_id = str_contains($item['code'], 'IMA') ? 11 : 12;
+                $medicalspecialty_id = str_contains($item['code'], 'IMA') ? 12 : 11;
                 array_push($checkups, $this->createCheckupData($request, $item, $checkup, $medicalconsultcategory_id, $medicalspecialty_id));
             }
         }

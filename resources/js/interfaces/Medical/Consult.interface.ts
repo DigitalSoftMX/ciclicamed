@@ -1,3 +1,4 @@
+import { Employee } from "@interface/Employee/Employee.interface";
 import { Status } from "@interface/General/Status.interface";
 import { Patient } from "@interface/Patient/Patient.interface";
 import { Order } from "./Order.interface";
@@ -32,4 +33,5 @@ export interface Consult
     status?: Status,
     prescriptions?: Prescription[],
     patient?: Patient
+    doctor?: Employee
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models\Product;
 
+use App\Models\Medical\Consult\MedicalConsult;
 use App\Models\Payment\Payment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,5 +24,10 @@ class ProductPayment extends Model
     public function payment()
     {
         return $this->belongsTo(Payment::class, 'payment_id');
+    }
+
+    public function consultCreated()
+    {
+        return $this->belongsTo(MedicalConsult::class, 'consult_created');
     }
 }

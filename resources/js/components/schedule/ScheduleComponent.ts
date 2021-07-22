@@ -241,7 +241,7 @@ export default defineComponent({
         getDoctorList(branchSelected: Select): void
         {
             this.scheduleSelected.branch_id = branchSelected.childID;
-            this.scheduleSelected.doctor_id = -1;
+            this.scheduleSelected.doctor_id = 0;
             axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${this.scheduleSelected.branch_id}/especialidades/doctores`)
             .then(response => {
                 var index = 0;

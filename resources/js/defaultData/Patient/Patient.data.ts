@@ -3,7 +3,7 @@ import { Patient } from "../../interfaces/Patient/Patient.interface";
 import { PreregistrationData } from "./Preregistration.data";
 
 export const PatientData: Patient = {
-    id: -1,
+    id: 0,
     patient_code: '',
     first_name: '',
     last_name: '',
@@ -13,7 +13,7 @@ export const PatientData: Patient = {
     phone: '',
     cellphone: '',
     photo: '',
-    preregistration_id: -1,
+    preregistration_id: 0,
     preregistration: PreregistrationData,
     user: UserData
 }

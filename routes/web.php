@@ -202,6 +202,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::post('/{id}/deudas', [PaymentController::class, 'setDebtPayment'])->name('pagos.setDeuda');
         Route::post('/{id}/pago', [PaymentController::class, 'createPaymentByID'])->name('pagos.createPaymentByID');
         Route::delete('/{id}', [PaymentController::class, 'deletePaymentByID'])->name('pagos.deletePayment'); 
+        Route::get('/ultimo', [PaymentController::class, 'getLastID'])->name('pagos.getLastID'); 
     });
 
     //Checkup

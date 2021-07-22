@@ -296,6 +296,7 @@ class MedicalConsultController extends Controller
             ]], 401);
         }
 
+        //Verifica si la consulta pertenece a un estudio medico y si es administrador, si es asi guarda la informacion relacionada con el estudio medico
         if((intval($consult['medicalspecialty_id'] === 11 || intval($consult['medicalspecialty_id']) === 12 ) && $user->hasRole('Administrador')))
         {
             $test = MedicalTest::where('scheduled_in', $id)->first();
@@ -332,7 +333,7 @@ class MedicalConsultController extends Controller
             return response()->json(true, 200);
         }
 
-        //Ingresa los datos por parte de enfermera
+        //Ingresa los datos por parte de enfermera para estudios medicos
         if($user->hasRole('Enfermera') && !isset($consult['nurse_finish_at']))
         {
             //Checa si es estudio o consulta
@@ -401,9 +402,11 @@ class MedicalConsultController extends Controller
             return response()->json(true, 200);
         }
 
+        //Verifica si es una consulta normal
         if($user->hasRole(['Administrador', 'Doctor']))
         {
             $presentConsult = MedicalConsult::findOrFail($id);
+            //Si es la primer consulta o si es un administrador, guarda historial medico
             if(intval($consult['medicalconsultcategory_id'] === 1) || $user->hasRole('Administrador'))
             {
                 MedicalHistory::create([
@@ -414,7 +417,8 @@ class MedicalConsultController extends Controller
                 ]);
             }
 
-            if(intval($consult['medicalconsultcategory_id'] === 1) || $user->hasRole('Administrador'))
+            $attachment = MedicalAttachment::where('patient_id', $presentConsult['patient_id'])->where('medicalspecialty_id', $presentConsult['medicalspecialty_id'])->get();
+            if($attachment->isEmpty() || $user->hasRole('Administrador'))
             {
                 MedicalAttachment::create([
                     'patient_id' => $presentConsult['patient_id'],
@@ -424,17 +428,21 @@ class MedicalConsultController extends Controller
                 ]);  
             }
 
-            MedicalAttachmentFollowUp::create([
-                'medicalconsult_id' => $id,
-                'data' => json_encode($request->input('data.cita.data')),
-                'medicalspecialty_id' => $presentConsult['medicalspecialty_id'],
-                'updated_by' => $user['employee']['id'],
-            ]);
+            //Si es cita de seguimiento, se guarda la informacion de la cita de seguimiento
+            if(intval($consult['medicalconsultcategory_id'] === 2))
+            {
+                MedicalAttachmentFollowUp::create([
+                    'medicalconsult_id' => $id,
+                    'data' => json_encode($request->input('data.cita.data')),
+                    'medicalspecialty_id' => $presentConsult['medicalspecialty_id'],
+                    'updated_by' => $user['employee']['id'],
+                ]);
+            }
             
+            //Elimina la informacion de la receta que se haya ingresado previamente, para guardar la nueva receta
             MedicalPrescription::where('medicalconsult_id', $id)->delete();
             if(count($request->input('data.receta')) > 0)
             {
-                
                 foreach($request->input('data.receta') as $prescription)
                 {
                     if(intval($prescription['medicament_id']) > 0)
@@ -450,7 +458,7 @@ class MedicalConsultController extends Controller
                 }
             }
 
-            
+            //Se cancelan todos los estudios clinicos para guardar los nuevos estudios clinicos
             MedicalTest::where('created_in', $id)->update([
                 'medicalteststatus_id' => 5
             ]);
@@ -552,6 +560,7 @@ class MedicalConsultController extends Controller
                     }
                 }
             }
+            //Se ingresa la hora en que termina la consulta
             $presentConsult->update([
                 'consult_finish_at' => $time = Carbon::now()->setTimezone('America/Mexico_City')
             ]);
@@ -840,7 +849,7 @@ class MedicalConsultController extends Controller
         $testStatus = MedicalTestStatus::where('name', 'Estudio creado')->first()->id;
         foreach($request->input('data') as $order)
         {
-            if($order['order']['medicaltest_id'] === -1)
+            if($order['order']['medicaltest_id'] <= 0)
             {
                 $test = MedicalTest::create([
                 'created_in' => $id,

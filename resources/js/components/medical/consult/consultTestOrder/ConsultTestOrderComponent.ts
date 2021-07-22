@@ -99,33 +99,12 @@ export default defineComponent({
        getTestList(): void
         {
             axios.get(`/productos/estudios`)
-                .then(response => {
-                    this.orderList = [{
-                        id: 0,
-                        name: 'Seleccione un estudio',
-                        order_annotations: []
-                    }, ...response.data];
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        },
-        createTestOrder()
-        {
-            axios.post<Test[]>(`/consultas/1/estudios`, {
-                data: this.orderData
-            })
             .then(response => {
-                const data = Object.values(response.data);
-                this.orderData = data.map((test: Test) => {
-                    return {
-                        ...test,
-                        order: {
-                            ...test.order,
-                            status: test.medicalteststatus_id
-                        }
-                    }
-                });
+                this.orderList = [{
+                    id: 0,
+                    name: 'Seleccione un estudio',
+                    order_annotations: []
+                }, ...response.data];
             })
             .catch(error => {
                 console.log(error)
@@ -138,7 +117,7 @@ export default defineComponent({
             const buffer: ArrayBuffer = await fetch(prescriptionDoc, {
                 headers: new Headers({'content-type': 'application/pdf'}),
             }).then(res => res.arrayBuffer());
-            const filterOrderList = this.orderData.filter(item => item.order.product_id !== -1);
+            const filterOrderList = this.orderData.filter(item => item.order.product_id >= 1);
 
             const pdfDoc = await PDFDocument.create();
             for await(let order of filterOrderList)

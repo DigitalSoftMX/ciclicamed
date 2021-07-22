@@ -6,19 +6,19 @@ import { ScheduleStatusData } from "./ScheduleStatus.data";
 import { ScheduleTypeData } from "./ScheduleType.data";
 
 export const ScheduleData:Schedule = {
-    id: -1,
+    id: 0,
     consult_schedule_start: moment().format('YYYY-MM-DD HH:mm:00'),
     consult_schedule_finish: moment().format('YYYY-MM-DD HH:mm:00'),
-    branch_id: -1,
-    doctor_id: -1,
+    branch_id: 0,
+    doctor_id: 0,
     consult_reason: '',
-    medicalconsultcategory_id: -1,
-    medicalconsultstatus_id: -1,
-    medicalspecialty_id: -1,
-    patient_id: -1,
+    medicalconsultcategory_id: 0,
+    medicalconsultstatus_id: 0,
+    medicalspecialty_id: 0,
+    patient_id: 0,
     doctor: DoctorData,
     status: ScheduleStatusData,
     type: ScheduleTypeData,
     branch: BranchData,
-    product_id: -1
+    product_id: 0
 }

@@ -1,8 +1,8 @@
 import { Select } from "@interface/General/Select.interface";
 
 export const SelectData: Select = {
-    id: -1,
-    childID: -1,
-    parentID: -1,
+    id: 0,
+    childID: 0,
+    parentID: 0,
     text: ''
 }

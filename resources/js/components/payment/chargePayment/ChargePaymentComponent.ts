@@ -12,6 +12,13 @@ import { PatientData } from '@data/Patient/Patient.data';
 import vSelect from "vue-select-3/src";
 import { Select } from '@interface/General/Select.interface';
 import { Branch } from '@interface/Branch/Branch.interface';
+import * as download from 'downloadjs';
+import printJS from 'print-js';
+import { PDFDocument } from 'pdf-lib';
+import moment from 'moment';
+import { PagoPDF } from '@data/Files/Pago.file';
+import { PaymentData } from '@data/Payment/Payment.data';
+import { Payment } from '@interface/Payment/Payment.interface';
 
 export default defineComponent({
     components: {
@@ -69,7 +76,9 @@ export default defineComponent({
             patientsList: [] as Select[],
             patientID : 0,
             branchID : 0,
-            errors: []
+            errors: [],
+            paymentData: PaymentData,
+            newPaymentID: 0
         };
     },
     mounted()
@@ -78,6 +87,10 @@ export default defineComponent({
         {
             this.getPatientsList();
             this.getBranchesList();
+        }
+        else
+        {
+            this.getPaymentData();
         }
     },
     computed: {
@@ -115,7 +128,6 @@ export default defineComponent({
             handler()
             {
                 this.productSelectedList = this.products;
-
             },
             deep: true
         },
@@ -199,6 +211,7 @@ export default defineComponent({
                 }
             })
             .then(response => {
+                this.newPaymentID = response.data;
                 $('#chpcSuccess').modal('show');
             })
             .catch(error => {
@@ -244,6 +257,15 @@ export default defineComponent({
                 $('#chpcError').modal('show');
             })
         },
+        getPaymentData()
+        {
+            axios.get<Payment>(`/pagos/${this.paymentID}`)
+            .then(response => {
+                this.paymentData = response.data;
+            })
+            .catch(error => {
+            })
+        },
         openProductListModal(category: string, title: string)
         {
             this.categorySelected = category;
@@ -263,6 +285,52 @@ export default defineComponent({
         deleteProduct(product: Product)
         {
            this.productSelectedList = this.productSelectedList.filter(item => item.id !== product.id);
+        },
+        async createPDF()
+        {
+            const pdf: PDFDocument = await PDFDocument.load(PagoPDF);
+            
+            this.productSelectedList.map((item, index) => {
+                pdf.getForm().getTextField(`clave${index + 1}`).setText(item.product_code);
+                pdf.getForm().getTextField(`descripcion${index + 1}`).setText(item.name);
+                pdf.getForm().getTextField(`cantidad${index + 1}`).setText('1');
+                pdf.getForm().getTextField(`costo${index + 1}`).setText(`$${(Number(item.price) - Number(item.discount)).toFixed(2)}`);
+            });
+            
+            console.log(this.patient)
+            if(this.isNew)
+            {
+                const patientSel = this.patientsList.filter(item => item.childID === this.patientID)[0].text;
+                pdf.getForm().getTextField(`patient`).setText(`${patientSel.split(' ')[1]} ${patientSel.split(' ')[2]}`);
+                const fol = '00000'
+                const folio = fol.substring(0, fol.length - this.newPaymentID.toString().length) + this.newPaymentID;
+                pdf.getForm().getTextField(`folio`).setText(`FOL-${folio}`);
+            }
+            else
+            {
+                const fol = '00000'
+                const folio = fol.substring(0, fol.length - this.paymentID.toString().length) + this.paymentID;
+                pdf.getForm().getTextField(`folio`).setText(`FOL-${folio}`);
+                pdf.getForm().getTextField(`patient`).setText(`${this.paymentData.patient!.first_name} ${this.paymentData.patient!.last_name}`);
+                pdf.getForm().getTextField(`doctor`).setText(`${this.paymentData.medical_consult!.consult_created.doctor!.first_name} ${this.paymentData.medical_consult!.consult_created.doctor!.last_name}`);
+            }
+            
+            pdf.getForm().getTextField(`fecha`).setText(moment().format('DD-MM-YYYY'));
+            pdf.getForm().getTextField(`total`).setText(`$${this.totalPrice}`);
+            pdf.getForm().flatten();
+            
+            return await pdf.save()
+        },
+        async downloadPDF()
+        {
+            const pdf = await this.createPDF();
+            download(pdf, `Pago${this.patient.first_name}_${this.patient.last_name}_${moment().format('DD-MM-YYYY')}.pdf`, 'application/pdf');
+        },
+        async printPDF()
+        {
+            const pdfBlob = new Blob([await this.createPDF()], { type: "application/pdf" });
+            const url = URL.createObjectURL(pdfBlob);
+            printJS(url);
         }
     },
 })

@@ -59,9 +59,9 @@ class Payment extends Model
         return $this->hasOne(PaymentDebt::class, 'payment_id')->orderBy('created_at', 'asc');
     }
 
-    public function medicalConsults()
+    public function medicalConsult()
     {
-        return $this->belongsToMany(MedicalConsult::class, ProductPayment::class, 'payment_id', 'medicalconsult_id');
+        return $this->hasOne(ProductPayment::class, 'consult_created')->orderBy('consult_created', 'desc');
     }
 
     public function products()

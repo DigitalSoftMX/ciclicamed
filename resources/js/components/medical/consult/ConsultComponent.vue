@@ -33,30 +33,30 @@
                                                     aria-controls="mccHistorialClinico" aria-selected="true">Historial
                                                 </a>
                                             </li>
-                                            <li class="nav-item px-0">
+                                            <li class="nav-item px-0" v-if="consultData.medicalconsultcategory_id !== 1">
                                                 <a class="nav-link px-3 py-2 rounded" id="mccExpedienteClinico-tab"
                                                     data-toggle="pill" href="#mccExpedienteClinico" role="tab"
                                                     aria-controls="mccExpedienteClinico"
                                                     aria-selected="false">Expediente</a>
                                             </li>
-                                            <li class="nav-item px-0">
+                                            <li class="nav-item px-0" v-if="consultData.medicalconsultcategory_id !== 1">
                                                 <a class="nav-link px-3 py-2 rounded" id="mccEspecialidades-tab"
                                                     data-toggle="pill" href="#mccEspecialidades" role="tab"
                                                     aria-controls="mccEspecialidades"
                                                     aria-selected="false">Especialidades</a>
                                             </li>
-                                            <li class="nav-item px-0">
+                                            <li class="nav-item px-0" v-if="consultData.medicalconsultcategory_id !== 1">
                                                 <a class="nav-link px-3 py-2 rounded" id="mccCitasSubsecuentes-tab"
                                                     data-toggle="pill" href="#mccCitasSubsecuentes" role="tab"
                                                     aria-controls="mccCitasSubsecuentes" aria-selected="false">Cita
                                                     actual</a>
                                             </li>
-                                            <li class="nav-item px-0">
+                                            <li class="nav-item px-0" v-if="consultData.medicalconsultcategory_id !== 1">
                                                 <a class="nav-link px-3 py-2 rounded" id="mccReceta-tab"
                                                     data-toggle="pill" href="#mccReceta" role="tab"
                                                     aria-controls="mccReceta" aria-selected="false">Receta</a>
                                             </li>
-                                            <li class="nav-item px-0">
+                                            <li class="nav-item px-0" v-if="consultData.medicalconsultcategory_id !== 1">
                                                 <a class="nav-link px-3 py-2 rounded" id="mccOrdenMedica-tab"
                                                     data-toggle="pill" href="#mccOrdenMedica" role="tab"
                                                     aria-controls="mccOrdenMedica" aria-selected="false">Orden
@@ -75,11 +75,11 @@
                                 <historial-clinico-component v-model="historyData.data.form" :disabled="disableHistory">
                                 </historial-clinico-component>
                             </div>
-                            <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel">
+                            <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel" v-if="consultData.medicalconsultcategory_id !== 1">
                                 <record-component :patientID="this.consultData.patient_id"
                                     :specialtyID="this.consultData.medicalspecialty_id"></record-component>
                             </div>
-                            <div class="tab-pane fade" id="mccEspecialidades" role="tabpanel"
+                            <div class="tab-pane fade" id="mccEspecialidades" role="tabpanel" v-if="consultData.medicalconsultcategory_id !== 1"
                                 aria-labelledby="mccEspecialidades-tab">
                                 <uroginecologia-component v-if="consultData.medicalspecialty_id === 1" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.uroginecología"></uroginecologia-component>
@@ -103,16 +103,16 @@
                                 <colposcopia-component v-else-if="consultData.medicalspecialty_id === 10" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.colposcopia"></colposcopia-component>
                             </div>
-                            <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
+                            <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel" v-if="consultData.medicalconsultcategory_id !== 1"
                                 aria-labelledby="mccCitasSubsecuentes-tab">
                                 <citas-subsecuentes-component v-model="followUp.data.form" :disabled="disableConsult">
                                 </citas-subsecuentes-component>
                             </div>
-                            <div class="tab-pane fade" id="mccReceta" role="tabpanel" aria-labelledby="mccReceta-tab">
+                            <div class="tab-pane fade" id="mccReceta" role="tabpanel" aria-labelledby="mccReceta-tab" v-if="consultData.medicalconsultcategory_id !== 1">
                                 <prescription-component v-model="prescriptionData" :disabled="disableConsult" :patientData="patientData" :consultData="consultData" :doctorData="doctorData">
                                 </prescription-component>
                             </div>
-                            <div class="tab-pane fade" id="mccOrdenMedica" role="tabpanel"
+                            <div class="tab-pane fade" id="mccOrdenMedica" role="tabpanel" v-if="consultData.medicalconsultcategory_id !== 1"
                                 aria-labelledby="mccOrdenMedica-tab">
                                 <test-order-component v-model="testData" :disabled="disableConsult" :patientData="patientData" :consultData="consultData" :doctorData="doctorData" :branches="branchesList"></test-order-component>
                             </div>

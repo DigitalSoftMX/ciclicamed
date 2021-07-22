@@ -157,7 +157,6 @@ export default defineComponent({
         }
     },
     mounted() {
-        
         switch(this.role)
         {
             case 'Administrador':

@@ -48,7 +48,7 @@ export default defineComponent({
         },
         patientID: {
             type: Number,
-            default: -1
+            default: 0
         },
         role: {
             type: String,
@@ -333,6 +333,7 @@ export default defineComponent({
         }
     },
     mounted() {
+        console.log(this.branchesList)
         const self = this;
         const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
         overlay.addEventListener('click', () => self.closeLateralSchedule());

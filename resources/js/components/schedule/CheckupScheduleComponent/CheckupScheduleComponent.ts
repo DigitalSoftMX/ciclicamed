@@ -43,7 +43,7 @@ export default defineComponent({
         },
         patientID: {
             type: Number,
-            default: -1
+            default: 0
         }
     },
     data() {
@@ -153,7 +153,7 @@ export default defineComponent({
         {
             handler()
             {
-                const incorrectScheduled = this.checkupDataCopy.checkupList.filter(item => item.branch_id === -1 && !item.name.includes('opcional') && !item.name.includes('50 años')).length;
+                const incorrectScheduled = this.checkupDataCopy.checkupList.filter(item => item.branch_id <= 0 && !item.name.includes('opcional') && !item.name.includes('50 años')).length;
                 this.isButtonDisabled = this.checkupDataCopy.checkupList.length > 0 && this.checkupDataCopy.patient_id > 0 && incorrectScheduled === 0 ? false : true;
             },
             deep: true

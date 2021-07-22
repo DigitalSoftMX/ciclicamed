@@ -103,7 +103,7 @@ export default defineComponent({
                 headers: new Headers({'content-type': 'application/pdf'}),
             }).then(res => res.arrayBuffer());
             const pdf: PDFDocument = await PDFDocument.load(buffer);
-            const filterPrescriptionList = this.prescriptionData.filter((medicament: Prescription) => medicament.medicament_id !== -1);
+            const filterPrescriptionList = this.prescriptionData.filter((medicament: Prescription) => medicament.medicament_id >= 1);
 
             pdf.getForm().getTextField('patient').setText(`${this.patientData.first_name} ${this.patientData.last_name}`);
             pdf.getForm().getTextField('birthday').setText(moment(this.patientData.birthday).format('DD/MM/YYYY'));

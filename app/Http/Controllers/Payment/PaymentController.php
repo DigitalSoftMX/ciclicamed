@@ -129,7 +129,7 @@ class PaymentController extends Controller
                     ]);
                 }
 
-                return response()->json(true, 200);
+                return response()->json($payment, 200);
             }
 
             return response()->json(['errors' => [
@@ -343,7 +343,7 @@ class PaymentController extends Controller
 
     public function getPayment($id)
     {
-        $payment = Payment::findOrFail($id);
+        $payment = Payment::findOrFail($id)->load('medicalConsult.consultCreated.doctor', 'paymentMethod', 'patient');
         return response()->json($payment);
     }
 
@@ -357,5 +357,11 @@ class PaymentController extends Controller
     {
         $products = Payment::findOrFail($id)->products;
         return response()->json($products);
+    }
+
+    public function getLastID()
+    {
+        $id = Payment::all()->orderBy('id', 'desc');
+        return response()->json($id);
     }
 }

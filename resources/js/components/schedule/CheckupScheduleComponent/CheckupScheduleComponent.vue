@@ -23,11 +23,11 @@
                             <div class="card-body row mx-0 px-0">
                                 <div class="col-12 col-md-6 mb-25 mb-md-0">
                                     <label>Checkup</label>
-                                    <v-select :options="categoryList" label="name" :reduce="item => item.id" v-model="categorySelected"/>
+                                    <v-select :options="categoryList" label="name" :reduce="item => item.id" v-model="categorySelected" placeholder="Seleccione un checkup"/>
                                 </div>
                                 <div class="col-12 col-md-6" v-if="patientID < 1">
                                     <label>Paciente</label>
-                                    <v-select :options="patients" label="text" :reduce="item => item.childID" v-model="checkupDataCopy.patient_id"/>
+                                    <v-select :options="patients" label="text" :reduce="item => item.childID" v-model="checkupDataCopy.patient_id" placeholder="Seleccione un paciente"/>
                                 </div>
                             </div>
                         </div>

@@ -1,3 +1,4 @@
+import { Consult } from "@interface/Medical/Consult.interface";
 import { Patient } from "@interface/Patient/Patient.interface";
 import { Product } from "@interface/Product/Product.interface";
 import { Debt } from "./Debt.interface";
@@ -19,5 +20,8 @@ export interface Payment
     updated_at: string;
     debts?: Debt[],
     products?: Product[]
-    patient?: Patient
+    patient?: Patient,
+    medical_consult?: {
+        consult_created: Consult
+    }
 }

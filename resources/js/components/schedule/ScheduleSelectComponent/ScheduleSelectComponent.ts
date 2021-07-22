@@ -41,7 +41,7 @@ export default defineComponent({
         return {
             branchSelected: SelectData,
             userSelected: SelectData,
-            employeeBranchSelected: -1
+            employeeBranchSelected: 0
         }
     },
     mounted() {

@@ -91,6 +91,22 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Detalles del cobro</h4>
+                    <div class="d-flex justify-content-between" v-if="role === 'Caja' || role == 'Administrador'">
+                        <div class="action-btn mr-3">
+                            <button class="btn btn-primary btn-default" @click="printPDF">
+                                <img-component url="/svg/print.svg" cssClass="mr-2 svg-white" alt="Imprimir">
+                                </img-component>
+                                Imprimir
+                            </button>
+                        </div>
+                        <div class="action-btn">
+                            <button class="btn btn-primary btn-default" @click="downloadPDF">
+                                <img-component url="/svg/download.svg" cssClass="mr-2 svg-white" alt="Descargar">
+                                </img-component>
+                                Descargar
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body row mx-0">
                     <empty-error-component v-if="productSelectedList.length === 0"></empty-error-component>
