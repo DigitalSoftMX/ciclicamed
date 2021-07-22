@@ -19,7 +19,11 @@ export interface Test
         medicaltest_id: number,
         created_by: number,
         results: {
-
+            type: string;
+            files: {
+                [x: string]: string;
+            }[];
+            form: any;
         },
         notes: string,
         updated_by: number,

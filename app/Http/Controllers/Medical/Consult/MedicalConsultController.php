@@ -838,8 +838,16 @@ class MedicalConsultController extends Controller
     {
         if(intval($id) > 0)
         {
-            $test = MedicalTest::where('created_in', $id)->where('medicalteststatus_id', '<>', 5)->get()->load('order.product:id,name,product_code', 'results', 'samples', 'consultScheduled');
-            return response()->json($test);
+            $tests = MedicalTest::where('created_in', $id)->where('medicalteststatus_id', '<>', 5)->get()->load('order.product:id,name,product_code', 'result', 'samples', 'consultScheduled');
+            foreach($tests as $test)
+            {
+                if(isset($test['result']['results']))
+                {
+                    $test['result']['results'] = json_decode($test['result']['results']);
+                }
+                
+            }
+            return response()->json($tests);
         }
         return response()->json([], 404);
     }

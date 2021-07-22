@@ -35,11 +35,13 @@
                         <li :data-date="formatConsultDateTime(consult.consult_schedule_start)"
                             v-for="consult in consultList" :key="consult.id" class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-md-4  mb-25" v-if="followUp.medicalconsult_id !== -1" @click="showComponent(1)">
+                                <div class="col-12 col-md-4  mb-25" v-if="followUp.medicalconsult_id !== -1"
+                                    @click="showComponent(1)">
                                     <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
-                                                <img-component url="/svg/followUp.svg" alt="Seguimiento"></img-component>
+                                                <img-component url="/svg/followUp.svg" alt="Seguimiento">
+                                                </img-component>
                                             </div>
                                             <div class="col-8 align-self-center">
                                                 <!-- <h5>{{followUp.name}}</h5> -->
@@ -53,7 +55,8 @@
                                     <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
-                                                <img-component url="/svg/followUp.svg" alt="Seguimiento"></img-component>
+                                                <img-component url="/svg/followUp.svg" alt="Seguimiento">
+                                                </img-component>
                                             </div>
                                             <div class="col-8 align-self-center">
                                                 <h5>Receta</h5>
@@ -61,7 +64,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4 mb-25" v-for="test in testList" :key="test.id">
+                                <div class="col-12 col-md-4 mb-25" v-for="test in testList" :key="test.id" @click="selectTest(test)">
                                     <div class="card h-100 shadow-none card-hover mb-25">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
@@ -114,6 +117,9 @@
             </div>
         </div>
     </div>
+
+    <patient-test-file-modal-component :id="'pattcFileTest'" :results="resultSelected" :productCode="productSelected">
+    </patient-test-file-modal-component>
 </template>
 
 <script lang="ts" src="./ConsultRecordComponent.ts"></script>

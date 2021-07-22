@@ -1,4 +1,6 @@
+import PatientTestFileModalComponent from '@component/patient/test/testFileModal/PatientTestFileModalComponent';
 import { FollowUpData } from '@data/Medical/FollowUp.data';
+import { TestFileResultData } from '@data/Medical/Result/TestFileResult.data';
 import { Consult } from '@interface/Medical/Consult.interface';
 import { FollowUp } from '@interface/Medical/FollowUp.interface';
 import { Prescription } from '@interface/Medical/Prescription.interface';
@@ -12,6 +14,7 @@ import { defineAsyncComponent } from 'vue';
 export default defineComponent({
     name: 'RecordComponent',
     components: {
+        PatientTestFileModalComponent,
         CitasSubsecuentesComponent: require('@component/medical/attachments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
         EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
         NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default
@@ -35,7 +38,9 @@ export default defineComponent({
             prescriptionList: [] as Prescription[],
             componentNumber: -1,
             isChildEnabled: false,
-            consultDateSelected: ''
+            consultDateSelected: '',
+            resultSelected: TestFileResultData,
+            productSelected: ''
         }
     },
     watch: {
@@ -52,6 +57,12 @@ export default defineComponent({
         }
     },
     methods: {
+        selectTest(test: Test)
+        {
+            this.resultSelected = test.result!.results;
+            this.productSelected = test.order.product.product_code!;
+            $('#pattcFileTest').modal('show');
+        },
         getConsultData() {
             axios.get<Consult[]> (`/pacientes/${this.patientID}/consultas/categoria/${this.specialtyID}`)
             .then(response => {
@@ -88,6 +99,7 @@ export default defineComponent({
             axios.get<Test[]>(`/consultas/${id}/estudios`)
             .then(response => {
                 this.testList = Object.values(response.data);
+                console.log(this.testList)
             })
             .catch(error => {
                 // console.log(error)
