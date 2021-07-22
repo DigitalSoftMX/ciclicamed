@@ -17,7 +17,9 @@ export const TestData: Test = {
         medicaltest_id: -1,
         created_by: -1,
         results: {
-
+            files: [],
+            form: {},
+            type: 'form'
         },
         notes: '',
         updated_by: -1,

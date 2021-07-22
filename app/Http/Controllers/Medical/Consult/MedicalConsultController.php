@@ -838,7 +838,7 @@ class MedicalConsultController extends Controller
     {
         if(intval($id) > 0)
         {
-            $tests = MedicalTest::where('created_in', $id)->where('medicalteststatus_id', '<>', 5)->get()->load('order.product:id,name,product_code', 'result', 'samples', 'consultScheduled');
+            $tests = MedicalTest::where('created_in', $id)->where('medicalteststatus_id', '<>', 5)->get()->load('order.product:id,name,product_code', 'result', 'samples', 'consultScheduled', 'status');
             foreach($tests as $test)
             {
                 if(isset($test['result']['results']))

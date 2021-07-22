@@ -31,7 +31,7 @@ class MedicalTestResultController extends Controller
         $employee = User::findOrFail(Auth::user()->id);
         $time = Carbon::now()->setTimezone('America/Mexico_City');
         
-        if($employee->hasRole(['Laboratorio', 'Imagenologia', 'Administrador']))
+        if($employee->hasRole(['Laboratorio', 'Imagenologia', 'Administrador', 'Doctor']))
         {
             $test = MedicalTest::findOrFail($id);
             if(intval($test['medicalteststatus_id'] === 4 && $employee->hasRole(['Laboratorio', 'Imagenologia'])))

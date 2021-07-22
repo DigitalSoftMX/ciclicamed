@@ -1,7 +1,9 @@
+import { TestUploadData } from '@data/Medical/Test/TestUpload.data';
 import {
     defineComponent
 } from '@vue/runtime-core';
 import axios from 'axios';
+import { serialize } from 'object-to-formdata';
 import { Prop, PropType } from 'vue';
 
 export default defineComponent({
@@ -20,44 +22,31 @@ export default defineComponent({
         role: {
             type: String as PropType<String>,
             default: ''
+        },
+        upload: {
+            type: Boolean as PropType<Boolean>,
+            default: false
+        },
+        test: {
+            type: Number as PropType<Number>,
+            default: 0
         }
     },
     data() {
         return {
             isFileOver: false,
             fileList: this.modelValue,
-            acceptFiles: ''
+            acceptFiles: '',
+            form: TestUploadData,
         };
     },
     mounted() {
-        switch(this.role)
-        {
-            case 'Administrador':
-                this.acceptFiles = '.pdf,.jpg,.jpeg,.png,.bmp';
-                break;
-            case 'Laboratorio':
-                this.acceptFiles = '.pdf';
-                break;
-            case 'Imagenologia':
-                this.acceptFiles = '.pdf,.jpg,.jpeg,.png,.bmp';
-                break;
-        }
+        this.acceptFiles = '.pdf';
     },
     watch: {
         role()
         {
-            switch(this.role)
-            {
-                case 'Administrador':
-                    this.acceptFiles = '.pdf,image/jpg,image/jpeg,image/png,image/bmp';
-                    break;
-                case 'Laboratorio':
-                    this.acceptFiles = '.pdf';
-                    break;
-                case 'Imagenología':
-                    this.acceptFiles = 'image/jpg,image/jpeg,image/png,image/bmp';
-                    break;
-            }
+            this.acceptFiles = '.pdf';
         },
         modelValue: {
             handler()
@@ -92,18 +81,7 @@ export default defineComponent({
         dropFile(event: DragEvent)
         {
             event.preventDefault();
-            switch(this.role)
-            {
-                case 'Administrador':
-                    this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
-                    break;
-                case 'Laboratorio':
-                    this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf').slice(0,3);
-                    break;
-                case 'Imagenologia':
-                    this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
-                    break;
-            }
+            this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf').slice(0,3);
             
             this.isFileOver = false;
         },
@@ -115,18 +93,7 @@ export default defineComponent({
             const files = (event.target as HTMLInputElement).files || [];
             if(files.length > 0)
             {
-                switch(this.role)
-                {
-                    case 'Administrador':
-                        this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
-                        break;
-                    case 'Laboratorio':
-                        this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
-                        break;
-                    case 'Imagenologia':
-                        this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf' || file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/bmp').slice(0,3);
-                        break;
-                }
+                this.fileList = Object.values<File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
             }
         },
         uploadFile()
@@ -134,10 +101,10 @@ export default defineComponent({
             const config = {
                 headers: { 'content-type': 'multipart/form-data' }
             }
-            let formData = new FormData();
+            var formData = serialize(this.form);
             this.fileList.map(file => formData.append(`file[]`, file))
 
-            axios.post(`/estudios/1/resultados`, formData, config)
+            axios.post(`/estudios/${this.test}/resultados`, formData, config)
             .then(response => {
                 console.log(response)
             })

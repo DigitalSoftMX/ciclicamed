@@ -53,6 +53,9 @@
                         <p>Ningún archivo seleccionado</p>
                     </div>
                 </div>
+                <div class="card-footer" v-if="upload === true">
+                    <button type="button" class="btn btn-primary btn-lg btn-squared btn-block bg-primary" @click="uploadFile">Subir resultados</button>
+                </div>
             </div>
         </div>
     </div>

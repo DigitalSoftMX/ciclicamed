@@ -10,10 +10,12 @@ import axios from 'axios';
 import cloneDeep from 'lodash/cloneDeep';
 import moment from 'moment';
 import { defineAsyncComponent } from 'vue';
+import ConsultUploadTest from '../consultUploadTest/ConsultUploadTest';
 
 export default defineComponent({
     name: 'RecordComponent',
     components: {
+        ConsultUploadTest,
         PatientTestFileModalComponent,
         CitasSubsecuentesComponent: require('@component/medical/attachments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
         EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
@@ -40,7 +42,8 @@ export default defineComponent({
             isChildEnabled: false,
             consultDateSelected: '',
             resultSelected: TestFileResultData,
-            productSelected: ''
+            productSelected: '',
+            testIDSelected: 0
         }
     },
     watch: {
@@ -59,9 +62,17 @@ export default defineComponent({
     methods: {
         selectTest(test: Test)
         {
-            this.resultSelected = test.result!.results;
-            this.productSelected = test.order.product.product_code!;
-            $('#pattcFileTest').modal('show');
+            if(test.result)
+            {
+                this.resultSelected = test.result!.results;
+                this.productSelected = test.order.product.product_code!;
+                $('#pattcFileTest').modal('show');
+            }
+            if(!test.result && !test.scheduled_in)
+            {
+                this.testIDSelected = test.id;
+                $('#conupteUploadTest').modal('show');
+            }           
         },
         getConsultData() {
             axios.get<Consult[]> (`/pacientes/${this.patientID}/consultas/categoria/${this.specialtyID}`)

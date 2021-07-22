@@ -35,7 +35,7 @@
                         <li :data-date="formatConsultDateTime(consult.consult_schedule_start)"
                             v-for="consult in consultList" :key="consult.id" class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-md-4  mb-25" v-if="followUp.medicalconsult_id !== -1"
+                                <div class="col-12 col-md-6  mb-25" v-if="followUp.medicalconsult_id !== -1"
                                     @click="showComponent(1)">
                                     <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4  mb-25" v-if="prescriptionList.length > 0"
+                                <div class="col-12 col-md-6  mb-25" v-if="prescriptionList.length > 0"
                                     @click="showComponent(2)">
                                     <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
@@ -64,7 +64,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4 mb-25" v-for="test in testList" :key="test.id" @click="selectTest(test)">
+                                <div class="col-12 col-md-6 mb-25" v-for="test in testList" :key="test.id" @click="selectTest(test)">
                                     <div class="card h-100 shadow-none card-hover mb-25">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
@@ -72,6 +72,8 @@
                                             </div>
                                             <div class="col-8 align-self-center">
                                                 <h5>{{test.order.product.name}}</h5>
+                                                <label v-if="!test.result && !test.scheduled_in">Paciente debe enviar resultados</label>
+                                                <label v-else>{{test.status?.name}}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -120,6 +122,7 @@
 
     <patient-test-file-modal-component :id="'pattcFileTest'" :results="resultSelected" :productCode="productSelected">
     </patient-test-file-modal-component>
+    <consult-upload-test :testID="testIDSelected"></consult-upload-test>
 </template>
 
 <script lang="ts" src="./ConsultRecordComponent.ts"></script>
