@@ -83,10 +83,22 @@ export default defineComponent({
             {
                 this.startHourUpdated = true;
                 const time = this.businessHours.find(item => item.daysOfWeek.includes(moment(this.dateSelected).day()))!;
-                this.startTime = time.startTime;
-                this.finishTime = time.endTime;
-                this.updateScheduleTimes();
-                return time;
+                if(time)
+                {
+                    this.startTime = time.startTime;
+                    this.finishTime = time.endTime;
+                    this.updateScheduleTimes();
+                    return time;
+                }
+                else
+                {
+                    this.updateScheduleTimes();
+                    return {
+                        daysOfWeek: [],
+                        endTime: '20:00',
+                        startTime: '08:00'
+                    }
+                }
             }
             this.updateScheduleTimes();
             return {

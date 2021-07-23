@@ -9,11 +9,13 @@ use App\Models\Product\Product;
 use App\Models\Product\ProductPayment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Alexmg86\LaravelSubQuery\Traits\LaravelSubQueryTrait;
 
 class Payment extends Model
 {
     use HasFactory;
-
+    use LaravelSubQueryTrait;
+    
     protected $fillable = [
         'created_by',
         'updated_by',

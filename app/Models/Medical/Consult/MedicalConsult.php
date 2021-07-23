@@ -64,6 +64,11 @@ class MedicalConsult extends Model
         return $this->belongsTo(Employee::class, 'doctor_id');
     }
 
+    public function createdBy()
+    {
+        return $this->belongsTo(Employee::class, 'created_by');
+    }
+
     public function type()
     {
         return $this->belongsTo(MedicalConsultCategory::class, 'medicalconsultcategory_id');

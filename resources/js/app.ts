@@ -74,27 +74,6 @@ const app = createApp({
 		AdministradorMedicamentPage,
 		AdministradorProductPage: require('@page/administrador/AdministradorProductPage/AdministradorProductPage.vue').default,
 		AdministradorUserPage: require('@page/administrador/AdministradorUserPage/AdministradorUserPage.vue').default
-
-		// LaboratorioDashboardPage: require('@page/laboratorio/laboratorioDashboardPage/LaboratorioDashboardPage.vue').default,
-		// LaboratorioConsultPage: require('@page/laboratorio/laboratorioConsultPage/LaboratorioConsultPage.vue').default,
-		// LaboratorioProfilePage: require('@page/laboratorio/laboratorioProfilePage/LaboratorioProfilePage.vue').default,
-		// ScheduleComponent: require('./components/schedule/ScheduleComponent.vue').default,
-		// MedicalConsultPage: MedicalConsultPage,
-		// UsersPage: UsersPage,
-		// UploadFileComponent: defineAsyncComponent(() => ('@component/general/uploadFile/UploadFileComponent.vue').default,
-		// ProductPage: defineAsyncComponent(() => ('./pages/product/ProductPage.vue').default,
-		// PatientsDataTable: defineAsyncComponent(() => ('@component/dataTable/patientsTable/PatientsTableComponent.vue').default,
-		// EmployeesDataTable: defineAsyncComponent(() => ('@component/dataTable/employeesTable/EmployeesTableComponent.vue').default,
-		// CuestionarioMastografia: defineAsyncComponent(() => ('@component/medical/test/Imagenologia/CuestionarioMastografia/CuestionarioMastografiaComponent.vue').default,
-		// InterpretacionResultados: defineAsyncComponent(() => ('@component/medical/test/Imagenologia/InterpretacionUltrasonidos/InterpretacionUltrasonidosComponent.vue').default,
-		// ConsultProduct: require('./components/payment/chargePayment/ChargePaymentComponent.vue').default,
-		// PatientDebtTable: require('./components/payment/patientDebtTable/PatientDebtTableComponent.vue').default,
-		// DebtsTable: require('./components/payment/paymentDebtTable/PaymentDebtTableComponent.vue').default,
-		// DebtsData: require('./components/payment/debtsTable/DebtsTableComponent.vue').default,
-		// TestTable: require('./components/medical/test/testTable/TestTableComponent.vue').default,
-		// TestUpload: require('./components/medical/test/testUpload/TestUploadComponent.vue').default,
-		// CheckupSchedule: require('./components/schedule/CheckupScheduleComponent/CheckupScheduleComponent.vue').default,
-		// CheckupTable: require('./components/checkup/checkupTable/CheckupTableComponent.vue').default
 	}
 });
 

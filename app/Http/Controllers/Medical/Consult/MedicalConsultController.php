@@ -611,7 +611,7 @@ class MedicalConsultController extends Controller
                     break;
                 default:
                     $medicalspecialty_id = intval($request->input('data.doctor_id'));
-                    $medicalconsultcategory_id = isset($firstConsult) ? 2 : 1;
+                    $medicalconsultcategory_id = $firstConsult->isEmpty() ? 1 : 2;
                     break;
             }
 
@@ -714,7 +714,7 @@ class MedicalConsultController extends Controller
                     break;
                 default:
                     $medicalspecialty_id = intval($request->input('data.medicalspecialty_id'));
-                    $medicalconsultcategory_id = isset($firstConsult) ? 2 : 1;
+                    $medicalconsultcategory_id = $firstConsult->isEmpty() ? 1 : 2;
                     break;
             }
 

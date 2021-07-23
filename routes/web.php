@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Branch\BranchController;
 use App\Http\Controllers\Checkup\CheckupCategoryController;
 use App\Http\Controllers\Employee\EmployeeController;
+use App\Http\Controllers\Graficos\GraficosController;
 use App\Http\Controllers\Medical\Consult\MedicalConsultController;
 use App\Http\Controllers\Medical\Test\ImagenologiaTestController;
 use App\Http\Controllers\Medical\Test\LaboratorioTestController;
@@ -214,5 +215,18 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::post('/', [CheckupCategoryController::class, 'createCheckups'])->name('checkup.setNuevo');
         Route::patch('/', [CheckupCategoryController::class, 'updateCheckups'])->name('checkup.update');
         Route::delete('/{id}', [CheckupCategoryController::class, 'cancelCheckup'])->name('checkup.cancel');
+    });
+
+    Route::group(['prefix' => 'graficas'], function() {
+        Route::get('/citas', [GraficosController::class, 'getCita'])->name('graficos.citas');
+        Route::get('/consultas/especialidad/{id}', [GraficosController::class, 'getConsultaEspecialidad'])->name('graficos.consultaEspecialidad');
+        Route::get('/consultas/medico/{id}', [GraficosController::class, 'getConsultaMedico'])->name('graficos.consultaMedico');
+        Route::get('/consultas/servicio/{id}', [GraficosController::class, 'getConsultaServicio'])->name('graficos.consultaServicio');
+        Route::get('/estudios/laboratorio', [GraficosController::class, 'getEstudiosLaboratorio'])->name('graficos.estudiosLaboratorio');
+        Route::get('/estudios/imagenologia', [GraficosController::class, 'getEstudiosImagenologia'])->name('graficos.estudiosImagenologia');
+        Route::get('/cobro/producto/{id}', [GraficosController::class, 'getCobroProducto'])->name('graficos.cobroProducto');
+        Route::get('/cobro/servicio/{id}', [GraficosController::class, 'getCobroServicio'])->name('graficos.cobroServicio');
+        Route::get('/tiempo/{id}', [GraficosController::class, 'getTiempo'])->name('graficos.tiempo');
+        Route::get('/tiempo/consulta/{id}', [GraficosController::class, 'getTiempoConsulta'])->name('graficos.tiempoConsulta');
     });
 });
