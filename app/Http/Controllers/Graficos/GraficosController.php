@@ -16,7 +16,7 @@ class GraficosController extends Controller
 {
     public function getTiempoConsulta($id)
     {
-        $consulta = MedicalConsult::findOrFail($id)->get();
+        $consulta = MedicalConsult::findOrFail($id);
         $horasA = 0;
         $minutosA = 0;
         $segundosA = 0;
