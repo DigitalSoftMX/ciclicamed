@@ -46,6 +46,10 @@ export default defineComponent({
         };
     },
     mounted() {
+        if(!this.patientData.preregistration)
+        {
+            this.preregistrationData = {...PreregistrationData};
+        }
     },
     watch: {
         patientData: {
@@ -56,6 +60,11 @@ export default defineComponent({
                 {
                     this.getPreregistration();
                 }
+                if(!this.patientData.preregistration)
+                {
+                    this.preregistrationData = {...PreregistrationData};
+                }
+                console.log(this.preregistrationData)
             },
             deep: true
         }
@@ -69,7 +78,10 @@ export default defineComponent({
         {
             axios.get<Preregistration>(`/pacientes/${this.patientData.id}/preregistro`)
             .then(response => {
-                this.preregistrationData = response.data;
+                if(response.data.data)
+                {
+                    this.preregistrationData = response.data;
+                }
             })
             .catch(error => {
                 console.log(error)
