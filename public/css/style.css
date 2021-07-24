@@ -12879,7 +12879,7 @@ select.select-arrow-none::-ms-expand,
 }
 
 .select2-selection__arrow {
-  top: 50% !important;
+  transform: translateY(-40%) !important;
 }
 
 .select2-selection {
@@ -12887,7 +12887,7 @@ select.select-arrow-none::-ms-expand,
 }
 
 .select2-selection__rendered {
-  transform: translateY(40%) !important;
+  transform: translateY(0%) !important;
 }
 
 .tooltip .arrow {

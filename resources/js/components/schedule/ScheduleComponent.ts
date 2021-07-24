@@ -1,6 +1,4 @@
-import { SelectData } from '@data/General/SelectSelected.data';
 import { ScheduleData } from '@data/Schedule/Schedule.data';
-import { ScheduleFormData } from '@data/Schedule/ScheduleForm.data';
 import { Branch } from '@interface/Branch/Branch.interface';
 import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors.interface';
 import { EmployeeBranch } from '@interface/Employee/EmployeeBranch.interface';
@@ -9,12 +7,11 @@ import { FullCalendarBusinessHour } from '@interface/General/FullCalendarBusines
 import { Select } from '@interface/General/Select.interface';
 import { Patient } from '@interface/Patient/Patient.interface';
 import { Schedule } from '@interface/Schedule/Schedule.interface';
-import { ScheduleType } from '@interface/Schedule/ScheduleType.interface';
-import { Role } from '@interface/User/Role.interface';
-import { defineAsyncComponent, defineComponent } from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import moment from 'moment';
 import { DefineComponent, PropType } from 'vue';
+require('bootstrap');
 
 export default defineComponent({
     name: 'ScheduleComponent',

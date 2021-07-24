@@ -100,7 +100,7 @@
                         v-if="schedule.id > 0 && (role === 'Asistente' || role === 'Administrador')">
                         <div class="card-body py-2 px-3">
                             <h6 class="text-primary mb-1">
-                                {{ patientsList[schedule.patient_id ?? 0].text ?? '' }}
+                                {{ tarjetaPaciente }}
                             </h6>
                             <p class="m-0 text-primary">
                                 {{ `${formatScheduleTime(this.scheduleSelectedCopy.consult_schedule_start)} - ${formatScheduleTime(this.scheduleSelectedCopy.consult_schedule_finish)}` }}

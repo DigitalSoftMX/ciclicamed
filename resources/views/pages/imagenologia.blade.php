@@ -6,3 +6,10 @@
     @endif
 </div>
 @endsection
+
+@yield('scripts')
+@switch($roles[0]->name)
+    @case('Administrador')
+        <script src="{{ asset('js/AdministradorImagenologiaPage.js') }}"></script>
+        @break
+@endswitch

@@ -1,5 +1,18 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/AdministradorBranchPage.js": "/js/AdministradorBranchPage.js",
+    "/js/AdministradorCheckupPage.js": "/js/AdministradorCheckupPage.js",
+    "/js/AdministradorCobrosPage.js": "/js/AdministradorCobrosPage.js",
+    "/js/AdministradorConsultPage.js": "/js/AdministradorConsultPage.js",
+    "/js/AdministradorDashboardPage.js": "/js/AdministradorDashboardPage.js",
+    "/js/AdministradorImagenologiaPage.js": "/js/AdministradorImagenologiaPage.js",
+    "/js/AdministradorLaboratorioPage.js": "/js/AdministradorLaboratorioPage.js",
+    "/js/AdministradorMedicamentPage.js": "/js/AdministradorMedicamentPage.js",
+    "/js/AdministradorPrescriptionPage.js": "/js/AdministradorPrescriptionPage.js",
+    "/js/AdministradorProductPage.js": "/js/AdministradorProductPage.js",
+    "/js/AdministradorProfilePage.js": "/js/AdministradorProfilePage.js",
+    "/js/AdministradorSchedulePage.js": "/js/AdministradorSchedulePage.js",
+    "/js/AdministradorUserPage.js": "/js/AdministradorUserPage.js",
     "/js/manifest.js": "/js/manifest.js",
     "/css/style.css": "/css/style.css",
     "/js/vendor.js": "/js/vendor.js"

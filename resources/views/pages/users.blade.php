@@ -8,3 +8,10 @@
     @endswitch
 </div>
 @endsection
+
+@yield('scripts')
+@switch($roles[0]->name)
+    @case('Administrador')
+        <script src="{{ asset('js/AdministradorUserPage.js') }}"></script>
+        @break
+@endswitch

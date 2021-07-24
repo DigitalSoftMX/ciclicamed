@@ -73,6 +73,10 @@ export default defineComponent({
         };
     },
     computed: {
+        tarjetaPaciente(): string
+        {
+            return this.patientsList.find(item => item.childID === this.schedule.patient_id!)?.text ?? '';
+        },
         scheduleAction(): string
         {
             return this.schedule.id < 1 ? 'crear' : 'actualizar';
