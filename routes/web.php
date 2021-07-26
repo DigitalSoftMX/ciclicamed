@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/horarios', [PageController::class, 'showScheduleHours'])->name('app.horarios');
         Route::get('/sucursales', [PageController::class, 'showBranches'])->name('app.sucursales');
         Route::get('/medicamentos', [PageController::class, 'showMedicaments'])->name('app.medicamentos');
+        Route::get('/graficas', [PageController::class, 'showGraficas'])->name('app.graficas');
     });
 
     // Usuarios
@@ -71,6 +72,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
     Route::group(['prefix' => 'consultas'], function() {
         Route::get('/muestras', [MedicalConsultController::class, 'getAllTest'])->name('consulta.getEstudios');
         Route::get('/recetas', [MedicalConsultController::class, 'getAllPrescriptions'])->name('consulta.getRecetas');
+        Route::get('/', [MedicalConsultController::class, 'getAllConsult'])->name('consulta.getAllConsult');
         Route::post('/', [MedicalConsultController::class, 'store'])->name('consulta.nueva');
         Route::get('/categorias', [MedicalConsultController::class, 'getConsultTypes'])->name('consulta.categorias');
         Route::get('/{id}', [MedicalConsultController::class, 'getConsultInfo'])->name('consulta.informacion');
@@ -226,7 +228,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/estudios/imagenologia', [GraficosController::class, 'getEstudiosImagenologia'])->name('graficos.estudiosImagenologia');
         Route::get('/cobro/producto/{id}', [GraficosController::class, 'getCobroProducto'])->name('graficos.cobroProducto');
         Route::get('/cobro/servicio/{id}', [GraficosController::class, 'getCobroServicio'])->name('graficos.cobroServicio');
-        Route::get('/tiempo/{id}', [GraficosController::class, 'getTiempo'])->name('graficos.tiempo');
+        Route::get('/tiempo', [GraficosController::class, 'getTiempo'])->name('graficos.tiempo');
         Route::get('/tiempo/consulta/{id}', [GraficosController::class, 'getTiempoConsulta'])->name('graficos.tiempoConsulta');
     });
 });

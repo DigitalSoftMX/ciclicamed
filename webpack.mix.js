@@ -15,6 +15,7 @@ const webpack = require('webpack');
 
 mix.js('resources/js/app.ts', 'public/js')
     //Administrador paginas
+    .js('resources/js/load/administrador/AdministradorChartPage.ts', 'public/js')
     .js('resources/js/load/administrador/AdministradorBranchPage.ts', 'public/js')
     .js('resources/js/load/administrador/AdministradorCheckupPage.ts', 'public/js')
     .js('resources/js/load/administrador/AdministradorCobrosPage.ts', 'public/js')
@@ -28,6 +29,8 @@ mix.js('resources/js/app.ts', 'public/js')
     .js('resources/js/load/administrador/AdministradorProfilePage.ts', 'public/js')
     .js('resources/js/load/administrador/AdministradorSchedulePage.ts', 'public/js')
     .js('resources/js/load/administrador/AdministradorUserPage.ts', 'public/js')
+    .js('resources/js/load/login/Login.ts', 'public/js')
+    .js('resources/js/load/signUp/SignUp.ts', 'public/js')
     .sass('resources/sass/style.scss', 'public/css')
     .sourceMaps()
     .vue()

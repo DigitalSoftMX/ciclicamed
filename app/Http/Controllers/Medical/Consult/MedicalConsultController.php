@@ -29,6 +29,19 @@ use Illuminate\Validation\Validator;
 
 class MedicalConsultController extends Controller
 {
+    public function getAllConsult()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $consult = MedicalConsult::all('id', 'consult_schedule_start', 'patient_id')->load('patient:id,first_name,last_name');
+            return response()->json($consult);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para modificar esta información']
+        ]], 401);
+    }
+
     public function startAssitance($id)
     {
         $user = User::findOrFail(Auth::user()->id);

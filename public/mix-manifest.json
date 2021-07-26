@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/AdministradorChartPage.js": "/js/AdministradorChartPage.js",
     "/js/AdministradorBranchPage.js": "/js/AdministradorBranchPage.js",
     "/js/AdministradorCheckupPage.js": "/js/AdministradorCheckupPage.js",
     "/js/AdministradorCobrosPage.js": "/js/AdministradorCobrosPage.js",
@@ -13,6 +14,8 @@
     "/js/AdministradorProfilePage.js": "/js/AdministradorProfilePage.js",
     "/js/AdministradorSchedulePage.js": "/js/AdministradorSchedulePage.js",
     "/js/AdministradorUserPage.js": "/js/AdministradorUserPage.js",
+    "/js/Login.js": "/js/Login.js",
+    "/js/SignUp.js": "/js/SignUp.js",
     "/js/manifest.js": "/js/manifest.js",
     "/css/style.css": "/css/style.css",
     "/js/vendor.js": "/js/vendor.js"

@@ -4,3 +4,6 @@
     <login-component></login-component>
 </div>
 @endsection
+
+@yield('scripts')
+<script src="{{ asset('js/Login.js') }}"></script>

@@ -23,3 +23,5 @@ declare module 'vue-select-3/src';
 declare module 'vue3-pdf';
 
 declare module '@codinglabs/laravel-asset'
+
+declare module 'vue-grid-layout';

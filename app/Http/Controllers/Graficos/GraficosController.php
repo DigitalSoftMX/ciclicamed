@@ -59,7 +59,9 @@ class GraficosController extends Controller
 
     public function getTiempo(Request $request)
     {
-        $consultas = MedicalConsult::whereBetween('created_at', ['2021-07-01', '2021-08-01'])->get();
+        $start = Carbon::parse($request['date'][0])->toDateString();
+        $finish = Carbon::parse($request['date'][1])->toDateString();
+        $consultas = MedicalConsult::whereBetween('created_at', [$start, $finish])->get();
         $horasA = 0;
         $minutosA = 0;
         $segundosA = 0;
@@ -104,7 +106,9 @@ class GraficosController extends Controller
 
     public function getCobroServicio(Request $request, $id)
     {
-        $cobro = Payment::whereBetween('created_at', ['2021-07-01', '2021-08-01'])->whereHas('products', function($item) use($id) {
+        $start = Carbon::parse($request['date'][0])->toDateString();
+        $finish = Carbon::parse($request['date'][1])->toDateString();
+        $cobro = Payment::whereBetween('created_at', [$start, $finish])->whereHas('products', function($item) use($id) {
             $item->where('productcategory_id', $id);
         })
         ->select(['id'])->orderByRelation(['products:price' => function($item) use($id) {
@@ -120,7 +124,9 @@ class GraficosController extends Controller
 
     public function getCobroProducto(Request $request, $id)
     {
-        $cobro = Payment::whereBetween('created_at', ['2021-07-01', '2021-08-01'])->whereHas('products', function($item) use($id) {
+        $start = Carbon::parse($request['date'][0])->toDateString();
+        $finish = Carbon::parse($request['date'][1])->toDateString();
+        $cobro = Payment::whereBetween('created_at', [$start, $finish])->whereHas('products', function($item) use($id) {
             $item->where('product_id', $id);
         })
         ->select(['id'])->orderByRelation(['products:price' => function($item) use($id) {
@@ -134,10 +140,12 @@ class GraficosController extends Controller
         return response()->json($total);
     }
 
-    public function getEstudiosLImagenologia(Request $request)
+    public function getEstudiosImagenologia(Request $request)
     {
-        $especialidad = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultcategory_id', 4)->get()->count();
-        $doctores = MedicalConsult::whereBetween('consult_schedule_start', ['2021-05-01', '2021-08-01'])->where('medicalconsultcategory_id', 4)->select('created_by', DB::raw('count(*) as total'))->groupBy('created_by')->orderBy('total', 'desc')->get()->load('createdBy:id,first_name,last_name')->take(5);
+        $start = Carbon::parse($request['date'][0])->toDateString();
+        $finish = Carbon::parse($request['date'][1])->toDateString();
+        $especialidad = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 3)->get()->count();
+        $doctores = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 3)->select('created_by', DB::raw('count(*) as total'))->groupBy('created_by')->orderBy('total', 'desc')->get()->load('createdBy:id,first_name,last_name')->take(5);
         return response()->json([
             'total' => $especialidad,
             'doctores' => $doctores
@@ -146,8 +154,10 @@ class GraficosController extends Controller
 
     public function getEstudiosLaboratorio(Request $request)
     {
-        $especialidad = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultcategory_id', 4)->get()->count();
-        $doctores = MedicalConsult::whereBetween('consult_schedule_start', ['2021-05-01', '2021-08-01'])->where('medicalconsultcategory_id', 4)->select('created_by', DB::raw('count(*) as total'))->groupBy('created_by')->orderBy('total', 'desc')->get()->load('createdBy:id,first_name,last_name')->take(5);
+        $start = Carbon::parse($request['date'][0])->toDateString();
+        $finish = Carbon::parse($request['date'][1])->toDateString();
+        $especialidad = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 4)->get()->count();
+        $doctores = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 4)->select('created_by', DB::raw('count(*) as total'))->groupBy('created_by')->orderBy('total', 'desc')->get()->load('createdBy:id,first_name,last_name')->take(5);
         return response()->json([
             'total' => $especialidad,
             'doctores' => $doctores
@@ -156,19 +166,21 @@ class GraficosController extends Controller
 
     public function getConsultaServicio(Request $request, $id)
     {
+        $start = Carbon::parse($request['date'][0])->toDateString();
+        $finish = Carbon::parse($request['date'][1])->toDateString();
         switch(intval($id))
         {
             case 1:
                 //Consultas
-                $especialidad = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultcategory_id', 1)->orWhere('medicalconsultcategory_id', 2)->get()->count();
+                $especialidad = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 1)->orWhere('medicalconsultcategory_id', 2)->get()->count();
                 return response()->json($especialidad);
             case 2:
                 //Imagenologia
-                $especialidad = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultcategory_id', 3)->get()->count();
+                $especialidad = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 3)->get()->count();
                 return response()->json($especialidad);
             case 3:
                 //Laboratorio
-                $especialidad = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultcategory_id', 4)->get()->count();
+                $especialidad = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 4)->get()->count();
                 return response()->json($especialidad);
         }
         return response()->json(0);
@@ -176,23 +188,29 @@ class GraficosController extends Controller
 
     public function getConsultaMedico(Request $request, $id)
     {
-        $especialidad = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('doctor_id', $id)->get()->count();
+        $start = Carbon::parse($request['date'][0])->toDateString();
+        $finish = Carbon::parse($request['date'][1])->toDateString();
+        $especialidad = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('doctor_id', $id)->get()->count();
         return response()->json($especialidad);
     }
 
     public function getConsultaEspecialidad(Request $request, $id)
     {
-        $especialidad = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalspecialty_id', $id)->get()->count();
+        $start = Carbon::parse($request['date'][0])->toDateString();
+        $finish = Carbon::parse($request['date'][1])->toDateString();
+        $especialidad = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalspecialty_id', $id)->get()->count();
         return response()->json($especialidad);
     }
 
     public function getCita(Request $request)
     {
-        $canceladas = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultstatus_id', 6)->get()->count();
-        $confirmadas = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultstatus_id', 2)->get()->count();
-        $primeraVez = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultcategory_id', 1)->get()->count();
-        $seguimiento = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultcategory_id', 1)->get()->count();
-        $noAsistieron = MedicalConsult::whereBetween('consult_schedule_start', ['2021-06-01', '2021-07-01'])->where('medicalconsultstatus_id', 3)->get()->count();
+        $start = Carbon::parse($request['date'][0])->toDateString();
+        $finish = Carbon::parse($request['date'][1])->toDateString();
+        $canceladas = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultstatus_id', 6)->get()->count();
+        $confirmadas = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultstatus_id', 2)->get()->count();
+        $primeraVez = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 1)->get()->count();
+        $seguimiento = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 1)->get()->count();
+        $noAsistieron = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultstatus_id', 3)->get()->count();
         return response()->json([
             'cancelados' => $canceladas,
             'confirmadas' => $confirmadas,
