@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-8">
-                <user-profile-component userCategory="pacientes" :userData="patientCopy" @updateUser="updatePatientInfo" @updatePhoto="updatePhoto"></user-profile-component>
+                <user-profile-component userCategory="pacientes" :userData="patientCopy" @updateUser="updatePatientInfo" @updatePhoto="updatePhoto" :roles="['Paciente']"></user-profile-component>
             </div>
         </div>
     </div>

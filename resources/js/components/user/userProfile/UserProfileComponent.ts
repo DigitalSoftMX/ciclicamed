@@ -87,6 +87,10 @@ export default defineComponent({
         });
     },
     computed: {
+        disablePatientCode(): boolean
+        {
+            return this.roles.includes('Paciente') ? true : false;
+        },
         fullName(): string
         {
             return `${this.userData.first_name} ${this.userData.last_name}`;

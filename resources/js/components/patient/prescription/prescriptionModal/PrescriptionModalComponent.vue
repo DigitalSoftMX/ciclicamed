@@ -6,7 +6,7 @@
                     <h6 class="modal-title e-info-title text-white">Medicamentos</h6>
                     <button type="button" class="btn btn-icon btn-circle btn-outline-primary p-0" data-dismiss="modal"
                         aria-label="Close">
-                        <img :src="asset('/svg/close.svg')" alt="Alert logo" style="filter: invert(1);">
+                        <img-component url="/svg/close.svg" alt="Cerrar" styleData="filter: invert(1);"></img-component>
                     </button>
                 </div>
                 <div class="card-body p-0 rounded-bottom">

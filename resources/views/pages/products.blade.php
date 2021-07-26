@@ -17,20 +17,7 @@
     @case('Administrador')
         <script src="{{ asset('js/AdministradorProductPage.js') }}"></script>
         @break
-    @case('Paciente')
-        @break
-    @case('Doctor')
-        @break
-    @case('Checkup')
-        @break
     @case('Asistente')
-        @break
-    @case('Enfermera')
-        @break
-    @case('Imagenologia')
-        @break
-    @case('Laboratorio')
-        @break
-    @case('Caja')
+        <script src="{{ asset('js/AsistenteProductPage.js') }}"></script>
         @break
 @endswitch

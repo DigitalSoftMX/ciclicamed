@@ -39,19 +39,27 @@
         <script src="{{ asset('js/AdministradorDashboardPage.js') }}"></script>
         @break
     @case('Paciente')
+        <script src="{{ asset('js/PatientDashboardPage.js') }}"></script>
         @break
     @case('Doctor')
+        <script  cript src="{{ asset('js/DoctorDashboardPage.js') }}"></script>
         @break
     @case('Checkup')
+        <script    ipt src="{{ asset('js/CheckupDashboardPage.js') }}"></script>
         @break
     @case('Asistente')
+        <script   pt src="{{ asset('js/AsistenteDashboardPage.js') }}"></script>
         @break
     @case('Enfermera')
+        <script ript src="{{ asset('js/NurseDashboardPage.js') }}"></script>
         @break
     @case('Imagenologia')
+        <script ript src="{{ asset('js/ImagenologiaDashboardPage.js') }}"></script>
         @break
     @case('Laboratorio')
+        <script  cript src="{{ asset('js/LaboratorioDashboardPage.js') }}"></script>
         @break
     @case('Caja')
+        <script ript src="{{ asset('js/CajaDashboardPage.js') }}"></script>
         @break
 @endswitch

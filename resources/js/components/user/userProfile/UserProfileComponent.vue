@@ -34,7 +34,7 @@
                         <span class="mr-5">
                             <img-component url="/svg/barcode.svg" alt="Código"></img-component>
                         </span>
-                        <input type="text" class="form-control form-control-lg" :id="id + 'patientCode'" placeholder="Código paciente" :disabled="disabled"
+                        <input type="text" class="form-control form-control-lg" :id="id + 'patientCode'" placeholder="Código paciente" :disabled="disabled || disablePatientCode"
                             maxlength="25" v-model="patientCode">
                     </div>
                 </div>

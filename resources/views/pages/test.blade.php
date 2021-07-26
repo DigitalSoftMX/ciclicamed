@@ -20,23 +20,16 @@
 
 @yield('scripts')
 @switch($roles[0]->name)
-    @case('Administrador')
-        <script src="{{ asset('js/AdministradorTestPage.js') }}"></script>
-        @break
     @case('Paciente')
-        @break
-    @case('Doctor')
-        @break
-    @case('Checkup')
-        @break
-    @case('Asistente')
+        <script src="{{ asset('js/PatientTestPage.js') }}"></script>
         @break
     @case('Enfermera')
+        <script src="{{ asset('js/NurseTestPage.js') }}"></script>
         @break
     @case('Imagenologia')
+        <script src="{{ asset('js/ImagenologiaTestPage.js') }}"></script>
         @break
     @case('Laboratorio')
-        @break
-    @case('Caja')
+        <script src="{{ asset('js/LaboratorioTestPage.js') }}"></script>
         @break
 @endswitch

@@ -34,20 +34,10 @@
     @case('Administrador')
         <script src="{{ asset('js/AdministradorConsultPage.js') }}"></script>
         @break
-    @case('Paciente')
-        @break
     @case('Doctor')
-        @break
-    @case('Checkup')
-        @break
-    @case('Asistente')
+        <script src="{{ asset('js/DoctorConsultPage.js') }}"></script>
         @break
     @case('Enfermera')
-        @break
-    @case('Imagenologia')
-        @break
-    @case('Laboratorio')
-        @break
-    @case('Caja')
+        <script src="{{ asset('js/NurseConsultPage.js') }}"></script>
         @break
 @endswitch

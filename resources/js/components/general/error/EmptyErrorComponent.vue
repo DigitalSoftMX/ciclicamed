@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="banner-feature__shape d-flex justify-content-center p-2 p-md-5">
                 <div class="content-center">
-                    <img :src="asset('/svg/emptyError.svg')" alt="Network error" class="w-50">
+                    <img-component url="/svg/emptyError.svg" alt="Error de red" cssClass="w-50"></img-component>
                 </div>
             </div>
             <div class="text-center">

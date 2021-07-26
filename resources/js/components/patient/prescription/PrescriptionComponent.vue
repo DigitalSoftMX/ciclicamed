@@ -21,7 +21,7 @@
     </div>
     <div class="row mx-0" v-bind:class="{'justify-content-center': prescriptionsData.data.length === 0 }">
         <div class="text-center" v-if="prescriptionsData.data.length === 0">
-            <img :src="asset('/svg/empty.svg')" alt="View prescription" class="ml-4 w-25">
+            <img-component url="/svg/empty.svg" alt="Vacío" cssClass="ml-4 w-25"></img-component>
             <h5 class="fw-500 mt-5 display-4">No se encontraron recetas</h5>
         </div>
 

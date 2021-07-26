@@ -21,19 +21,9 @@
         <script src="{{ asset('js/AdministradorPrescriptionPage.js') }}"></script>
         @break
     @case('Paciente')
-        @break
-    @case('Doctor')
-        @break
-    @case('Checkup')
-        @break
-    @case('Asistente')
+        <script src="{{ asset('js/PatientPrescriptionPage.js') }}"></script>
         @break
     @case('Enfermera')
-        @break
-    @case('Imagenologia')
-        @break
-    @case('Laboratorio')
-        @break
-    @case('Caja')
+        <script src="{{ asset('js/NursePrescriptionPage.js') }}"></script>
         @break
 @endswitch

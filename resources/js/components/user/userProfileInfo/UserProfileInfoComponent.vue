@@ -10,15 +10,15 @@
                 <div class="card-body pt-md-1 pt-0">
                     <div class="user-content-info">
                         <p class="user-content-info__item">
-                            <img :src="asset('svg/email.svg')" alt="Profile" class="mr-2">
+                            <img-component url="/svg/email.svg" alt="Correo" cssClass="mr-2"></img-component>
                             {{userData.user?.email}}
                         </p>
                         <p class="user-content-info__item">
-                            <img :src="asset('svg/phone.svg')" alt="Phone Logo" class="mr-2">
+                            <img-component url="/svg/phone.svg" alt="Teléfono" cssClass="mr-2"></img-component>
                             {{userData.phone}}
                         </p>
                         <p class="user-content-info__item">
-                            <img :src="asset('svg/cellphone.svg')" alt="Cellphone Logo" class="mr-2">
+                            <img-component url="/svg/cellphone.svg" alt="Celular" cssClass="mr-2"></img-component>
                             {{userData.cellphone}}
                         </p>
                     </div>
@@ -34,15 +34,15 @@
                 <div class="card-body pt-md-1 pt-0">
                     <div class="user-content-info">
                         <p class="user-content-info__item">
-                            <img :src="asset('svg/gender.svg')" alt="Phone Logo" class="mr-2">
+                            <img-component url="/svg/gender.svg" alt="Sexo" cssClass="mr-2"></img-component>
                             <span>{{gender}}</span>
                         </p>
                         <p class="user-content-info__item">
-                            <img :src="asset('svg/birthday.svg')" alt="Phone Logo" class="mr-2">
+                            <img-component url="/svg/birthday.svg" alt="Nacimiento" cssClass="mr-2"></img-component>
                             {{birthday}}
                         </p>
                         <p class="user-content-info__item">
-                            <img :src="asset('svg/address.svg')" alt="Cellphone Logo" class="mr-2">
+                            <img-component url="/svg/address.svg" alt="Dirección" cssClass="mr-2"></img-component>
                             {{userData.address}}
                         </p>
                     </div>

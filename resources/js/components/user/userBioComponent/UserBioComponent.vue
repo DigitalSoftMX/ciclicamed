@@ -14,24 +14,24 @@
             <div class="card-footer pt-20 pb-20 px-0">
                 <div class="profile-overview d-flex justify-content-center flex-wrap">
                     <p class="user-content-info__item mx-3">
-                        <img :src="asset('svg/gender.svg')" alt="Phone" class="mr-2">
+                        <img-component url="/svg/gender.svg" alt="Sexo" cssClass="mr-2"></img-component>
                         <span v-if="userData.gender === 0">Hombre</span>
                         <span v-else>Mujer</span>
                     </p>
                     <p class="user-content-info__item mx-3">
-                        <img :src="asset('svg/birthday.svg')" alt="Phone" class="mr-2">
+                        <img-component url="/svg/birthday.svg" alt="Nacimiento" cssClass="mr-2"></img-component>
                         {{birthday}}
                     </p>
                     <p class="user-content-info__item mx-3">
-                        <img :src="asset('svg/phone.svg')" alt="Cellphone" class="mr-2">
+                        <img-component url="/svg/phone.svg" alt="Teléfono" cssClass="mr-2"></img-component>
                         {{userData.phone}}
                     </p>
                     <p class="user-content-info__item mx-3">
-                        <img :src="asset('svg/cellphone.svg')" alt="Cellphone" class="mr-2">
+                        <img-component url="/svg/cellphone.svg" alt="Celular" cssClass="mr-2"></img-component>
                         {{userData.cellphone}}
                     </p>
                     <p class="user-content-info__item mx-3 mt-3 mt-lg-0">
-                        <img :src="asset('svg/address.svg')" alt="Cellphone" class="mr-2">
+                        <img-component url="/svg/address.svg" alt="Dirección" cssClass="mr-2"></img-component>
                         {{userData.address}}
                     </p>
                 </div>

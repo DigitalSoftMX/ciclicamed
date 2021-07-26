@@ -5,13 +5,13 @@
                 <div class="modal-header ">
                     <h6 class="modal-title">{{ title }}</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <img :src="asset('/svg/close.svg')" alt="Alert logo" style="filter: invert(1);">
+                        <img-component url="/svg/close.svg" alt="Cerrar" styleData="filter: invert(1);"></img-component>
                     </button>
                 </div>
                 <div class="modal-body mb-3">
                     <div class="modal-info-body d-flex mt-2" v-for="error in errors" :key="error">
                         <div class="modal-info-icon danger">
-                            <img :src="asset('/svg/alert.svg')" alt="Alert logo" style="filter: invert(1);">
+                            <img-component url="/svg/alert.svg" alt="Alerta" styleData="filter: invert(1);"></img-component>
                         </div>
                         <div class="modal-info-text text-white" v-for="errorInfo in error" :key="errorInfo">
                             {{ errorInfo }}
