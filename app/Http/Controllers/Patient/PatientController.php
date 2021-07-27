@@ -20,6 +20,33 @@ use Illuminate\Support\Facades\Storage;
 
 class PatientController extends Controller
 {
+    public function updateHistory(Request $request, $id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole('Administrador'))
+        {
+            $history = MedicalHistory::where('patient_id', $id)->orderBy('id', 'desc')->get();
+            if($history->isEmpty())
+            {
+                MedicalHistory::create([
+                    'patient_id' => $id,
+                    'medicalconsult_id' => null,
+                    'data' => json_encode($request->input('historial')),
+                    'updated_by' => $user['employee']['id']
+                ]);
+                return response()->json(true, 200);
+            }
+            $history->first()->update([
+                'data' => json_encode($request->input('historial')),
+                'updated_by' => $user['employee']['id']
+            ]);
+            return response()->json(true, 200);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function getHistory($id)
     {
         $user = User::findOrFail(Auth::user()->id);

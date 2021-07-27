@@ -8,10 +8,12 @@ import { PatientData } from '@data/Patient/Patient.data';
 import PatientsTableModalComponent from './patientsTableModal/PatientsTableModalComponent';
 import moment from 'moment';
 import { Patient } from '@interface/Patient/Patient.interface';
+import PatientsHistoryModalComponent from './patientHistoryModal/PatientsHistoryModalComponent';
 
 export default defineComponent({
     components: {
         PatientsTableModalComponent,
+        PatientsHistoryModalComponent,
         PreregistrationComponent: require('@component/patient/preregistration/PreregistrationComponent.vue').default
     },
     emits: [],
@@ -82,10 +84,8 @@ export default defineComponent({
         },
         showPatientModal(patient: Patient)
         {
-            this.isNew = false;
-            this.disabledPatientEdit = true;
             this.patientSelected = patient;
-            $('#patcPatient').modal('show');
+            $('#pahmcoHistory').modal('show');
         },
         showEditModal(patient: Patient)
         {

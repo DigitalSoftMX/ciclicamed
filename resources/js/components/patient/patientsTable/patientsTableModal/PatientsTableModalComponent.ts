@@ -30,15 +30,6 @@ export default defineComponent({
         },
     },
     watch: {
-        patient:
-        {
-            handler()
-            {
-                console.log(this.patient)
-                console.log(this.patient)
-            },
-            deep:true
-        },
     },
     data() {
         return {

@@ -139,6 +139,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::patch('/{id}/preregistro', [PreregistrationController::class, 'updatePreregistration'])->name('pacientes.updatePreregistro');
 
         Route::get('/{id}/historial', [PatientController::class, 'getHistory'])->name('pacientes.historial');
+        Route::post('/{id}/historial', [PatientController::class, 'updateHistory'])->name('pacientes.setHistorial');
     });
 
     //Empleados

@@ -4,6 +4,7 @@ import { HistorialClinico } from '@interface/Medical/Attachtments/HistorialClini
 import {
     defineComponent
 } from '@vue/runtime-core';
+import axios from 'axios';
 import {
     DefineComponent,
     PropType,
@@ -28,11 +29,20 @@ export default defineComponent({
         modelValue: {
             type: Object as PropType<HistorialClinico>,
             default: HistorialClinicoData
+        },
+        edit: {
+            type: Boolean as PropType<Boolean>,
+            default: false
+        },
+        patient: {
+            type: Number as PropType<Number>,
+            default: 0
         }
     },
     data(){
         return {
-            formData: this.modelValue
+            formData: this.modelValue,
+            errors: []
         }
     },
     watch:
@@ -54,5 +64,23 @@ export default defineComponent({
             deep: true
         }
     },
-    methods: {}
+    methods: {
+        updateHistorial()
+        {
+            axios.post(`/pacientes/${this.patient}/historial`, {
+                historial: {
+                    type: 'form',
+                    form: this.formData
+                }
+            })
+            .then(response => {
+                console.log(this.patient, response.data)
+                $('#hisccSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.error;
+                $('#hisccError').modal('show');
+            })
+        }
+    }
 })

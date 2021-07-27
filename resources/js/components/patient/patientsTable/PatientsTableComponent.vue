@@ -89,7 +89,7 @@
                                             <button
                                                 @click="showPatientModal(user)"
                                                 class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
-                                                <img-component url="/svg/show.svg"  alt="Mostrar"></img-component>
+                                                <img-component url="/svg/documentEdit.svg"  alt="Mostrar"></img-component>
                                             </button>
                                         </li>
                                         <li>
@@ -156,6 +156,7 @@
             <div class="spinner-border text-primary"></div>
         </div>
     </div>
+    <patients-history-modal-component :edit="true" :patient="patientSelected"></patients-history-modal-component>
     <success-alert-component id="patcSuccess" :title="successAlert.title" :message="successAlert.message"></success-alert-component>
     <patients-table-modal-component :patient="patientSelected" :disabled="disabledPatientEdit" :isNew="isNew"></patients-table-modal-component>
     <confirmation-alert-component id="patcConfirmation" :title="confirmationAlert.message" @confirmAction="deletePatient"></confirmation-alert-component>
