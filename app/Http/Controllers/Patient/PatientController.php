@@ -234,7 +234,10 @@ class PatientController extends Controller
 
     public function getAllConsults($id, $categoria)
     {
-        $consults = Patient::findOrFail($id)->medicalConsults->where('medicalconsultcategory_id', $categoria);
+        $consults = MedicalConsult::where('patient_id', $id)->where(function($item) use($categoria) {
+            $item->where('medicalspecialty_id', $categoria)
+            ->orWhere('medicalconsultcategory_id', 1);
+        })->where('medicalconsultstatus_id', 5)->get();
         return response()->json($consults);
     }
 

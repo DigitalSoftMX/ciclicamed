@@ -8,7 +8,7 @@ import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import { ElTimeSelect } from 'element-plus';
 import { PropType } from 'vue';
-
+import 'bootstrap';
 export default defineComponent({
     components: {
         ElTimeSelect,

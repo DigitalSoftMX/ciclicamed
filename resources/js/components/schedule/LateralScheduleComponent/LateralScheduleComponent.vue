@@ -66,7 +66,7 @@
                             <span class="mr-5">
                                 <img-component url="/svg/calendar.svg" alt="Calendario"></img-component>
                             </span>
-                            <input type="date" class="form-control form-control-lg bg-white" :id="`scheduleDate${id}`"
+                            <input type="date" class="form-control form-control-lg bg-white" :id="`scheduleDate${id}`" disabled="true"
                                 placeholder="dd/mm/aaaa" v-model="dateSelected">
                         </div>
                     </div>

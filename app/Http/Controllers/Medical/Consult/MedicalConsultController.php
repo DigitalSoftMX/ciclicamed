@@ -430,27 +430,29 @@ class MedicalConsultController extends Controller
                 ]);
             }
 
-            $attachment = MedicalAttachment::where('patient_id', $presentConsult['patient_id'])->where('medicalspecialty_id', $presentConsult['medicalspecialty_id'])->get();
-            if($attachment->isEmpty() || $user->hasRole('Administrador'))
+            //Verifica es cita de seguimiento, si es entonces pasa a la siguiente verificacion
+            if(intval($presentConsult['medicalconsultcategory_id']) === 2)
             {
-                MedicalAttachment::create([
-                    'patient_id' => $presentConsult['patient_id'],
-                    'data' => json_encode($request->input('data.especialidad')),
-                    'medicalspecialty_id' => $presentConsult['medicalspecialty_id'],
-                    'updated_by' => $user['employee']['id']
-                ]);  
+                //Verifica si hay anexo creado anteriormente, si no hay, entonces guarda la informacion del anexo
+                $attachment = MedicalAttachment::where('patient_id', $presentConsult['patient_id'])->where('medicalspecialty_id', $presentConsult['medicalspecialty_id'])->get();
+                if($attachment->isEmpty() || $user->hasRole('Administrador'))
+                {
+                    MedicalAttachment::create([
+                        'patient_id' => $presentConsult['patient_id'],
+                        'data' => json_encode($request->input('data.especialidad')),
+                        'medicalspecialty_id' => $presentConsult['medicalspecialty_id'],
+                        'updated_by' => $user['employee']['id']
+                    ]);  
+                }
             }
 
-            //Si es cita de seguimiento, se guarda la informacion de la cita de seguimiento
-            if(intval($consult['medicalconsultcategory_id'] === 2))
-            {
-                MedicalAttachmentFollowUp::create([
-                    'medicalconsult_id' => $id,
-                    'data' => json_encode($request->input('data.cita.data')),
-                    'medicalspecialty_id' => $presentConsult['medicalspecialty_id'],
-                    'updated_by' => $user['employee']['id'],
-                ]);
-            }
+            //Se guarda la informacion de la cita de seguimiento
+            MedicalAttachmentFollowUp::create([
+                'medicalconsult_id' => $id,
+                'data' => json_encode($request->input('data.cita.data')),
+                'medicalspecialty_id' => $presentConsult['medicalspecialty_id'],
+                'updated_by' => $user['employee']['id'],
+            ]);
             
             //Elimina la informacion de la receta que se haya ingresado previamente, para guardar la nueva receta
             MedicalPrescription::where('medicalconsult_id', $id)->delete();
@@ -607,10 +609,11 @@ class MedicalConsultController extends Controller
                 'data.product_id' => 'required|numeric|min:1',
             ];
 
-            $medicalspecialty_id = intval($request->input('data.doctor_id'));
+            $doctor = intval($request->input('data.doctor_id'));
+            $medicalspecialty_id = 0;
             $medicalconsultcategory_id = 0;
             $firstConsult = MedicalConsult::where('patient_id', $user['patient']['id'])->where('medicalconsultcategory_id', 1)->get();
-            switch($medicalspecialty_id)
+            switch($doctor)
             {
                 case 1:
                     request()->validate($ruleTest, $messageTest);
@@ -623,7 +626,7 @@ class MedicalConsultController extends Controller
                     $medicalconsultcategory_id = 3;
                     break;
                 default:
-                    $medicalspecialty_id = intval($request->input('data.doctor_id'));
+                    $medicalspecialty_id = intval($request->input('data.medicalspecialty_id'));
                     $medicalconsultcategory_id = $firstConsult->isEmpty() ? 1 : 2;
                     break;
             }
@@ -697,12 +700,7 @@ class MedicalConsultController extends Controller
                 'data.branch_id' => 'required|numeric|min:1'
             ];
 
-            
-
             request()->validate($rules, $messages);
-
-            $medicalspecialty_id = intval($request->input('data.doctor_id'));
-            $medicalconsultcategory_id = 0;
 
             $messageTest = [
                 'data.product_id.min' => 'Debe de seleccionar un estudio',
@@ -712,8 +710,11 @@ class MedicalConsultController extends Controller
                 'data.product_id' => 'required|numeric|min:1',
             ];
             
+            $doctor = intval($request->input('data.doctor_id'));
+            $medicalspecialty_id = 0;
+            $medicalconsultcategory_id = 0;
             $firstConsult = MedicalConsult::where('patient_id', $request->input('data.patient_id'))->where('medicalconsultcategory_id', 1)->get();
-            switch($medicalspecialty_id)
+            switch($doctor)
             {
                 case 1:
                     request()->validate($ruleTest, $messageTest);

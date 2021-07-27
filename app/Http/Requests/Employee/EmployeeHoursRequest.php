@@ -27,8 +27,8 @@ class EmployeeHoursRequest extends FormRequest
             'hours' => ['required', 'array'],
             'hours.*.start_day' => ['required', 'numeric', 'min:0', 'max:6'],
             'hours.*.finish_day' => ['required', 'numeric', 'min:0', 'max:6'],
-            'hours.*.start_time' => ['required', 'string', 'date_format:H:i'],
-            'hours.*.finish_time' => ['required', 'string', 'date_format:H:i'],
+            'hours.*.start_time' => ['required', 'string', 'date_multi_format:"H:i","H:i:s"'],
+            'hours.*.finish_time' => ['required', 'string', 'date_multi_format:"H:i","H:i:s"'],
             'hours.*.branch_id' => ['required', 'numeric', 'min:1'],
         ];
     }
@@ -51,11 +51,11 @@ class EmployeeHoursRequest extends FormRequest
 
             'hours.*.finish_time.required' => 'Debe de agregar una hora de cierre',
             'hours.*.finish_time.string' => 'El formato de hora debe ser válido',
-            'hours.*.finish_time.date_format' => 'Debe de seleccionar una hora de inicio',
+            'hours.*.finish_time.date_multi_format' => 'Debe de seleccionar una hora de inicio',
 
             'hours.*.start_time.required' => 'Debe de agregar una hora de cierre',
             'hours.*.start_time.string' => 'El formato de hora debe ser válido',
-            'hours.*.start_time.date_format' => 'Debe de seleccionar una hora de cierre',
+            'hours.*.start_time.date_multi_format' => 'Debe de seleccionar una hora de cierre',
 
             'hours.*.branch_id.required' => 'Debe de seleccionar una sucursal',
             'hours.*.branch_id.numeric' => 'Debe de seleccionar una sucursal',

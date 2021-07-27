@@ -282,14 +282,15 @@ export default defineComponent({
                     const lateral = this.$refs.openLateralSchedule as DefineComponent;
                     lateral.openLateralSchedule();
                 }
-                if(moment().isSameOrBefore(date, 'days'))
-                {
-                    this.scheduleSelected = {...ScheduleData};
-                    this.scheduleSelected.consult_schedule_start = this.scheduleSelected.consult_schedule_finish = moment(date)
-                        .format('YYYY-MM-DD HH:mm:00');
-                    const lateral = this.$refs.openLateralSchedule as DefineComponent;
-                    lateral.openLateralSchedule();
-                }
+                // if(moment().isSameOrBefore(date, 'days'))
+                // {
+                //     console.log(this.hoursEnabled.length)
+                //     this.scheduleSelected = {...ScheduleData};
+                //     this.scheduleSelected.consult_schedule_start = this.scheduleSelected.consult_schedule_finish = moment(date)
+                //         .format('YYYY-MM-DD HH:mm:00');
+                //     const lateral = this.$refs.openLateralSchedule as DefineComponent;
+                //     lateral.openLateralSchedule();
+                // }
             }
         },
         getScheduleSelected(schedule: Schedule)
