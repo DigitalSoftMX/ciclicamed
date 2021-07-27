@@ -11,10 +11,11 @@ import CuestionarioMastografiaComponent from '../Imagenologia/CuestionarioMastog
 import { serialize } from 'object-to-formdata';
 import axios from 'axios';
 import { TestUploadData } from '@data/Medical/Test/TestUpload.data';
-
+import { ElProgress } from 'element-plus';
 
 export default defineComponent({
     components: {
+        ElProgress,
         CuestionarioMastografiaComponent,
         UserBioComponent: require('@component/user/userBioComponent/UserBioComponent.vue').default,
         UploadFileComponent: require('@component/general/uploadFile/UploadFileComponent.vue').default,
@@ -56,7 +57,9 @@ export default defineComponent({
             componentEnabled: '',
             form: TestUploadData,
             files: [] as File[],
-            errors: []
+            errors: [],
+            loading: false,
+            uploadPercentage: 0,
         };
     },
     mounted() {
@@ -141,12 +144,18 @@ export default defineComponent({
         },
         sendToServer()
         {
+            const self = this;
             this.setFormData();
             var formData = serialize(this.form);
             const config = {
-                headers: { 'content-type': 'multipart/form-data' }
+                headers: { 'content-type': 'multipart/form-data' },
+                onUploadProgress: function(progressEvent: any) {
+                    self.uploadPercentage = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+                }
             }
+            
             this.files.map(file => formData.append(`file[]`, file))
+            this.loading = true;
             axios.post(`/estudios/${this.testID}/resultados`, formData, config)
             .then(response => {
                 this.$emit('afterSendData');
@@ -160,10 +169,14 @@ export default defineComponent({
                 this.componentEnabled = '',
                 this.form = TestUploadData,
                 this.files = [] as File[],
+                this.loading = false;
+                this.uploadPercentage = 0;
                 $('#testucSuccess').modal('show');
             })
             .catch(error => {
                 this.errors = error.response.data.errors;
+                this.loading = false;
+                this.uploadPercentage = 0;
                 $('#testucError').modal('show');
                 this.$emit('afterSendData', error.response.data.errors);
             })

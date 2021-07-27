@@ -1,13 +1,14 @@
 import { TestUploadData } from '@data/Medical/Test/TestUpload.data';
-import {
-    defineComponent
-} from '@vue/runtime-core';
+import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import { serialize } from 'object-to-formdata';
-import { Prop, PropType } from 'vue';
+import { PropType } from 'vue';
+import { ElProgress } from 'element-plus';
+require('bootstrap');
 
 export default defineComponent({
     components: {
+        ElProgress
     },
     emits: ['update:modelValue'],
     props: {
@@ -38,6 +39,9 @@ export default defineComponent({
             fileList: this.modelValue,
             acceptFiles: '',
             form: TestUploadData,
+            uploadPercentage: 0,
+            load: false,
+            errors: []
         };
     },
     mounted() {
@@ -98,30 +102,27 @@ export default defineComponent({
         },
         uploadFile()
         {
+            const self = this;
             const config = {
-                headers: { 'content-type': 'multipart/form-data' }
+                headers: { 'content-type': 'multipart/form-data' },
+                onUploadProgress: function(progressEvent: any) {
+                    self.uploadPercentage = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+                }
             }
             var formData = serialize(this.form);
             this.fileList.map(file => formData.append(`file[]`, file))
-
+            this.load = true;
             axios.post(`/estudios/${this.test}/resultados`, formData, config)
             .then(response => {
-                console.log(response)
+                this.load = false;
+                this.uploadPercentage = 0;
+                $(`#upfUploadSuccess`).modal('show');
             })
             .catch(error => {
-                console.log(error)
-            })
-        },
-        downloadFile()
-        {
-            axios.get(`/estudios/resultados/WNnEWizqRdqMsv3pEqdw9jcpY3bTL2Mbo5GryBH1.pdf`, {
-                responseType: 'blob',
-            })
-            .then(response => {
-                console.log(response.data)
-            })
-            .catch(error => {
-                console.log(error)
+                this.load = false;
+                this.uploadPercentage = 0;
+                this.errors = error.response.data.errors;
+                $(`#upfUploadError`).modal('show');
             })
         }
     },

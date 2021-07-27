@@ -1,9 +1,11 @@
 <template>
-    <div class="card">
-        <div class="card-body">
+    <div class="card spin-embadded" v-bind:class="{'spin-active': loading}">
+        <div class="card-body ">
             <div class="account-profile d-flex align-items-center mb-4 justify-content-center">
                 <div class="ap-img pro_img_wrapper">
-                    <input :id="id + 'file-upload'" type="file" name="fileUpload" accept=".jpg, .jpeg, .png, .bmp, .svg')" class="d-none" @change="selectFile($event)" :disabled="disabled">
+                    <input :id="id + 'file-upload'" type="file" name="fileUpload"
+                        accept=".jpg, .jpeg, .png, .bmp, .svg')" class="d-none" @change="selectFile($event)"
+                        :disabled="disabled">
                     <label :for="id + 'file-upload'">
                         <!-- <img :src="`/images/users/${userForm.photo}`" :alt="userForm.first_name" class="ap-img__main rounded-circle wh-120 d-flex bg-opacity-primary" :onerror="`this.src='/svg/person.svg';`"> -->
 
@@ -34,8 +36,9 @@
                         <span class="mr-5">
                             <img-component url="/svg/barcode.svg" alt="Código"></img-component>
                         </span>
-                        <input type="text" class="form-control form-control-lg" :id="id + 'patientCode'" placeholder="Código paciente" :disabled="disabled || disablePatientCode"
-                            maxlength="25" v-model="patientCode">
+                        <input type="text" class="form-control form-control-lg" :id="id + 'patientCode'"
+                            placeholder="Código paciente" :disabled="disabled || disablePatientCode" maxlength="25"
+                            v-model="patientCode">
                     </div>
                 </div>
 
@@ -43,10 +46,10 @@
                     <label for="firstName">Nombre(s)</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img-component url="/svg/person.svg"  alt="Nombres"></img-component>
+                            <img-component url="/svg/person.svg" alt="Nombres"></img-component>
                         </span>
-                        <input type="text" class="form-control form-control-lg" :id="id + 'firstName'" placeholder="Nombre(s)" :disabled="disabled"
-                            maxlength="100" v-model="userForm.first_name"
+                        <input type="text" class="form-control form-control-lg" :id="id + 'firstName'"
+                            placeholder="Nombre(s)" :disabled="disabled" maxlength="100" v-model="userForm.first_name"
                             @keyup="checkProfileData(); updateCharacter('first_name')">
                     </div>
                     <div class="float-right">
@@ -58,10 +61,10 @@
                     <label for="lastName">Apellidos</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img-component url="/svg/person.svg"  alt="Apellidos"></img-component>
+                            <img-component url="/svg/person.svg" alt="Apellidos"></img-component>
                         </span>
-                        <input type="text" class="form-control form-control-lg" :id="id + 'lastName'" placeholder="Apellidos" :disabled="disabled"
-                            maxlength="100" v-model="userForm.last_name"
+                        <input type="text" class="form-control form-control-lg" :id="id + 'lastName'"
+                            placeholder="Apellidos" :disabled="disabled" maxlength="100" v-model="userForm.last_name"
                             @keyup="checkProfileData(); updateCharacter('last_name')">
                     </div>
                     <div class="float-right">
@@ -73,11 +76,11 @@
                     <label for="email">Correo electrónico</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img-component url="/svg/email.svg"  alt="Correo"></img-component>
+                            <img-component url="/svg/email.svg" alt="Correo"></img-component>
                         </span>
                         <input type="email" class="form-control form-control-lg" :id="id + 'name3'"
-                            placeholder="ejemplo@correo.com" maxlength="100" v-model="userForm.user.email" :disabled="disabled"
-                            @keyup="checkProfileData(); updateCharacter('email')">
+                            placeholder="ejemplo@correo.com" maxlength="100" v-model="userForm.user.email"
+                            :disabled="disabled" @keyup="checkProfileData(); updateCharacter('email')">
                     </div>
                     <div class="float-right">
                         {{ `${getCharacters('email')}/100` }}
@@ -88,10 +91,10 @@
                     <label for="phoneNumber5">Teléfono de Casa</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img-component url="/svg/phone.svg"  alt="Telefono"></img-component>
+                            <img-component url="/svg/phone.svg" alt="Telefono"></img-component>
                         </span>
-                        <input type="tel" class="form-control form-control-lg" :id="id + 'phone'" placeholder="1234567890" :disabled="disabled"
-                            maxlength="10" v-model="userForm.phone"
+                        <input type="tel" class="form-control form-control-lg" :id="id + 'phone'"
+                            placeholder="1234567890" :disabled="disabled" maxlength="10" v-model="userForm.phone"
                             @keyup="checkProfileData(); updateCharacter('phone')">
                     </div>
                     <div class="float-right">
@@ -103,10 +106,10 @@
                     <label for="phoneNumber5">Celular</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img-component url="/svg/cellphone.svg"  alt="Celular"></img-component>
+                            <img-component url="/svg/cellphone.svg" alt="Celular"></img-component>
                         </span>
-                        <input type="tel" class="form-control form-control-lg" :id="id + 'cellphone'" placeholder="1234567890" :disabled="disabled"
-                            maxlength="10" v-model="userForm.cellphone"
+                        <input type="tel" class="form-control form-control-lg" :id="id + 'cellphone'"
+                            placeholder="1234567890" :disabled="disabled" maxlength="10" v-model="userForm.cellphone"
                             @keyup="checkProfileData(); updateCharacter('cellphone')">
                     </div>
                     <div class="float-right">
@@ -118,11 +121,11 @@
                     <label for="name2">Dirección</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img-component url="/svg/address.svg"  alt="Direccion"></img-component>
+                            <img-component url="/svg/address.svg" alt="Direccion"></img-component>
                         </span>
-                        <textarea type="text" class="form-control form-control-lg" :id="id + 'address'" placeholder="Dirección" :disabled="disabled"
-                            v-model="userForm.address" @keyup="checkProfileData(); updateCharacter('address')"
-                            maxlength="255"></textarea>
+                        <textarea type="text" class="form-control form-control-lg" :id="id + 'address'"
+                            placeholder="Dirección" :disabled="disabled" v-model="userForm.address"
+                            @keyup="checkProfileData(); updateCharacter('address')" maxlength="255"></textarea>
                     </div>
                     <div class="float-right">
                         {{ `${getCharacters('address')}/255` }}
@@ -133,19 +136,19 @@
                     <label for="name2">Sexo</label>
                     <div class="radio-horizontal-list d-flex">
                         <div class="input-group-prepend r-3 rounded px-2 ">
-                            <img-component url="/svg/gender.svg"  alt="Sexo"></img-component>
+                            <img-component url="/svg/gender.svg" alt="Sexo"></img-component>
                         </div>
                         <div class="d-flex px-4">
                             <div class="radio-theme-default custom-radio ">
-                                <input class="radio" type="radio" name="gender" value="0" :id="id + 'radio-vl1'" :disabled="disabled"
-                                    v-model="userForm.gender" @change="checkProfileData('gender')">
+                                <input class="radio" type="radio" name="gender" value="0" :id="id + 'radio-vl1'"
+                                    :disabled="disabled" v-model="userForm.gender" @change="checkProfileData('gender')">
                                 <label :for="id + 'radio-vl1'">
                                     <span class="radio-text">Hombre</span>
                                 </label>
                             </div>
                             <div class="radio-theme-default custom-radio ">
-                                <input class="radio" type="radio" name="gender" value="1" :id="id + 'radio-vl2'" :disabled="disabled"
-                                    v-model="userForm.gender" @change="checkProfileData('gender')">
+                                <input class="radio" type="radio" name="gender" value="1" :id="id + 'radio-vl2'"
+                                    :disabled="disabled" v-model="userForm.gender" @change="checkProfileData('gender')">
                                 <label :for="id + 'radio-vl2'">
                                     <span class="radio-text">Mujer</span>
                                 </label>
@@ -158,10 +161,11 @@
                     <label>Fecha de nacimiento</label>
                     <div class="with-icon">
                         <span class="mr-5">
-                            <img-component url="/svg/calendar.svg"  alt="Calendario"></img-component>
+                            <img-component url="/svg/calendar.svg" alt="Calendario"></img-component>
                         </span>
-                        <input type="text" class="form-control form-control-lg form-control form-control-lg-lg " :disabled="disabled"
-                            :id="id + 'birthday'" placeholder="dd/mm/aaaa" :value="birthday" maxlength="10" readonly>
+                        <input type="text" class="form-control form-control-lg form-control form-control-lg-lg "
+                            :disabled="disabled" :id="id + 'birthday'" placeholder="dd/mm/aaaa" :value="birthday"
+                            maxlength="10" readonly>
                     </div>
                 </div>
 
@@ -176,14 +180,35 @@
                     </button>
                 </div>
             </div>
+            <div class="loaded-spin text-center spin">
+                <el-progress type="circle" :percentage="uploadPercentage" class="spin-center"></el-progress>
+            </div>
         </div>
+
     </div>
+
     <!--Modal de error-->
-    <error-alert-component :id="id + 'profileError'" :errors="errors" :title="'Error al actualizar los datos del perfil'">
+    <error-alert-component :id="id + 'profileError'" :errors="errors"
+        :title="'Error al actualizar los datos del perfil'">
     </error-alert-component>
     <!--Modal de exito-->
-    <success-alert-component :id="id + 'profileSuccess'" :message="successMessage" :title="'Datos del perfil actualizados'">
+    <success-alert-component :id="id + 'profileSuccess'" :message="successMessage"
+        :title="'Datos del perfil actualizados'">
     </success-alert-component>
 </template>
 
 <script lang="ts" src="./UserProfileComponent.ts"></script>
+
+<style scoped>
+    .spin {
+        width: 100%;
+        height: -webkit-fill-available;
+        height: stretch;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .spin-center {
+        top: 50%;
+    }
+
+</style>

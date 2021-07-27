@@ -1,5 +1,5 @@
 <template>
-    <div class="card card-md mb-4">
+    <div class="card card-md mb-4 spin-embadded" v-bind:class="{'spin-active': load}">
         <div class="card-header  py-20">
             <h6>Subir resultados (3 archivos máximo)</h6>
         </div>
@@ -33,13 +33,14 @@
                                 <div class="card border-0">
                                     <div class="card-body ">
                                         <div class="fileM-img">
-                                            <img-component url="/svg/pdf.svg"  alt="PDF"></img-component>
+                                            <img-component url="/svg/pdf.svg" alt="PDF"></img-component>
                                         </div>
                                         <p class="fileM-excerpt">{{file.name}}</p>
                                         <div class="fileM-action">
                                             <div class="fileM-action__right ">
                                                 <div class="dropdown dropleft position-absolute">
-                                                    <img-component url="/svg/delete.svg" alt="Borrar" @click="deleteFileSelected(index)"></img-component>
+                                                    <img-component url="/svg/delete.svg" alt="Borrar"
+                                                        @click="deleteFileSelected(index)"></img-component>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,21 +50,42 @@
                         </div>
                     </div>
                     <div v-if="fileList.length === 0" class="col-12 text-center">
-                        <img-component url="/svg/empty.svg"  alt="Vacío" cssClass="w-25"></img-component>
+                        <img-component url="/svg/empty.svg" alt="Vacío" cssClass="w-25"></img-component>
                         <p>Ningún archivo seleccionado</p>
                     </div>
                 </div>
                 <div class="card-footer" v-if="upload === true">
-                    <button type="button" class="btn btn-primary btn-lg btn-squared btn-block bg-primary" @click="uploadFile">Subir resultados</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-squared btn-block bg-primary"
+                        @click="uploadFile">Subir resultados</button>
                 </div>
             </div>
         </div>
+        <div class="loaded-spin text-center spin" v-if="load">
+            <el-progress type="circle" :percentage="uploadPercentage" class="spin-center"></el-progress>
+        </div>
     </div>
+
+    <error-alert-component id="upfUploadError" :errors="errors" :title="'Error al actualizar los datos del perfil'">
+    </error-alert-component>
+    <!--Modal de exito-->
+    <success-alert-component id="upfUploadSuccess" message="Archivos subidos" :title="'Archivos subidos correctamente'">
+    </success-alert-component>
 </template>
 
 <script lang="ts" src="./UploadFileComponent.ts"></script>
 
 <style scoped>
     @import './UploadFileComponent.scss';
+
+    .spin {
+        width: 100%;
+        height: -webkit-fill-available;
+        height: stretch;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .spin-center {
+        top: 50%;
+    }
 
 </style>

@@ -7,12 +7,15 @@ import { Patient } from '@interface/Patient/Patient.interface';
 import { Employee } from '@interface/Employee/Employee.interface';
 import { PropType } from 'vue';
 import cloneDeep from 'lodash/cloneDeep';
+import { ElProgress } from 'element-plus';
 require('bootstrap');
+
 // import datepickerFactory from 'jquery-datepicker';
-    // datepickerFactory($);
+// datepickerFactory($);
 
 export default defineComponent({
     components: {
+        ElProgress,
         ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
     },
@@ -55,7 +58,9 @@ export default defineComponent({
             errors: [],
             formCharacters: [] as any,
             path: ((document.head.querySelector('meta[name="api-base-url"]') as any)!.content as string),
-            patientCode: ''
+            patientCode: '',
+            uploadPercentage: 0,
+            loading: false,
         };
     },
     watch:
@@ -106,7 +111,7 @@ export default defineComponent({
             return moment(birthday).format('DD-MM-YYYY');
         },
         createUser() {
-            console.log('POST')
+            const self = this;
             var formData = new FormData();
             this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
             
@@ -127,20 +132,30 @@ export default defineComponent({
                 formData.append('photo', this.photo);
             }
 
-            axios.post(`/${this.userCategory}`, formData, {headers: { "Content-Type": "multipart/form-data"}})
+            const config = {
+                headers: { "Content-Type": "multipart/form-data"},
+                onUploadProgress: function(progressEvent: any) {
+                    self.uploadPercentage = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+                }
+            }
+            this.loading = true;
+            axios.post(`/${this.userCategory}`, formData, config)
             .then(response => {
-                console.log(response.data)
+                this.loading = false;
+                this.uploadPercentage = 0;
                 this.successMessage = 'El usuario se ha creado correctamente';
                 $(`#${this.id}profileSuccess`).modal('show');
                 this.cleanPhotoSelected();
             })
             .catch(error => {
-                console.log(error)
+                this.loading = false;
+                this.uploadPercentage = 0;
                 this.errors = error.response.data.errors;
                 $(`#${this.id}profileError`).modal('show');
             })
         },
         updateProfile() {
+            const self = this;
             var formData = new FormData();
             this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
             
@@ -160,15 +175,25 @@ export default defineComponent({
                 formData.append('photo', this.photo);
             }
 
-            axios.post(`/${this.userCategory}/${this.userForm.id}`, formData, {headers: { "Content-Type": "multipart/form-data"}})
+            const config = {
+                headers: { "Content-Type": "multipart/form-data"},
+                onUploadProgress: function(progressEvent: any) {
+                    self.uploadPercentage = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+                }
+            }
+            this.loading = true;
+            axios.post(`/${this.userCategory}/${this.userForm.id}`, formData, config)
             .then(response => {
+                this.loading = false;
+                this.uploadPercentage = 0;
                 this.successMessage = 'Los datos del perfil se han actualizado correctamente';
                 $(`#${this.id}profileSuccess`).modal('show');
                 this.cleanPhotoSelected();
                 this.$emit('updateUser', this.userForm);
             })
             .catch(error => {
-                console.log(error)
+                this.loading = false;
+                this.uploadPercentage = 0;
                 this.errors = error.response.data.errors;
                 $(`#${this.id}profileError`).modal('show');
             })
