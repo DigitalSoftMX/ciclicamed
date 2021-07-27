@@ -163,9 +163,8 @@
                         <span class="mr-5">
                             <img-component url="/svg/calendar.svg" alt="Calendario"></img-component>
                         </span>
-                        <input type="text" class="form-control form-control-lg form-control form-control-lg-lg "
-                            :disabled="disabled" :id="id + 'birthday'" placeholder="dd/mm/aaaa" :value="birthday"
-                            maxlength="10" readonly>
+                        <input type="date" class="form-control form-control-lg form-control form-control-lg-lg "
+                            :disabled="disabled" placeholder="dd/mm/aaaa" v-model="userForm.birthday">
                     </div>
                 </div>
 

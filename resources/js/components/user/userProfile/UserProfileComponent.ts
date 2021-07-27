@@ -79,17 +79,6 @@ export default defineComponent({
         }
     },
     mounted() {
-        const self = this;
-        $(`#${this.id}birthday`).datepicker({
-            changeMonth: true,
-            changeYear: true,
-            // container: "#container",
-            dateFormat: "dd/mm/yy",
-            yearRange: `1930:${new Date().getFullYear().toString()}`,
-            onSelect() {
-                self.checkProfileData('birthday')
-            }
-        });
     },
     computed: {
         disablePatientCode(): boolean
@@ -113,7 +102,6 @@ export default defineComponent({
         createUser() {
             const self = this;
             var formData = new FormData();
-            this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
             
             formData.append('patient_code', this.patientCode);
             formData.append('email', this.userForm.user.email);
@@ -157,7 +145,6 @@ export default defineComponent({
         updateProfile() {
             const self = this;
             var formData = new FormData();
-            this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
             
             formData.append('patient_code', this.patientCode);
             formData.append('email', this.userForm.user.email);
