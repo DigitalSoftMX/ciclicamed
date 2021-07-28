@@ -77,7 +77,6 @@ export default defineComponent({
         getConsultData() {
             axios.get<Consult[]> (`/pacientes/${this.patientID}/consultas/categoria/${this.specialtyID}`)
             .then(response => {
-                console.log(response.data)
                 this.consultList = [];
                 this.consultList = Object.values(response.data);
             })
@@ -90,14 +89,12 @@ export default defineComponent({
         },
         getInfoConsult(id: number, date: string) {
             this.consultDateSelected = date;
-            console.log(this.consultDateSelected)
             this.componentNumber = -1;
             this.getFollowUps(id);
             this.getTestOrders(id);
             this.getPrescriptions(id);
         },
         getFollowUps(id: number) {
-            console.log(id)
             axios.get<FollowUp>(`/consultas/${id}/seguimiento`)
             .then(response => {
                 this.followUp = response.data;
@@ -110,10 +107,9 @@ export default defineComponent({
             axios.get<Test[]>(`/consultas/${id}/estudios`)
             .then(response => {
                 this.testList = Object.values(response.data);
-                console.log(this.testList)
             })
             .catch(error => {
-                // console.log(error)
+                // 
             })
         },
         getPrescriptions(id: number) {
@@ -122,12 +118,11 @@ export default defineComponent({
                 this.prescriptionList = Object.values(response.data);
             })
             .catch(error => {
-                // console.log(error)
+                // 
             })
         },
         showComponent(component: number)
         {
-            console.log(this.followUp)
             this.componentNumber = component;
         }
     }

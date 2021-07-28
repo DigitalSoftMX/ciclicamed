@@ -167,7 +167,7 @@ export default defineComponent({
                 this.categoryList = response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         updateDate(datetime: string, index: number)
@@ -198,7 +198,7 @@ export default defineComponent({
                 this.clearData();
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         updateCheckupData()
@@ -214,7 +214,7 @@ export default defineComponent({
                 this.clearData();
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         clearData()

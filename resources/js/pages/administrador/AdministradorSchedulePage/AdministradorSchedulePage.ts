@@ -41,7 +41,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log(this.administrador)
         this.getDoctors();
     },
     watch: {
@@ -72,11 +71,9 @@ export default defineComponent({
        {
             axios.get<User[]>(`/usuarios/doctores`)
             .then(response => {
-                console.log(response.data)
                 this.doctors = response.data;
             })
             .catch(error => {
-                console.log(error)
             })
        }
     },

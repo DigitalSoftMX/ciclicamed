@@ -64,7 +64,6 @@ export default defineComponent({
                 {
                     this.preregistrationData = {...PreregistrationData};
                 }
-                console.log(this.preregistrationData)
             },
             deep: true
         }
@@ -84,7 +83,7 @@ export default defineComponent({
                 }
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         updatePreregistration()
@@ -100,7 +99,7 @@ export default defineComponent({
                 $('#preregistrationSuccess').modal('show');
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
     },

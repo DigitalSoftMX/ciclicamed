@@ -87,7 +87,6 @@ export default defineComponent({
                         this.componentEnabled = 'host';
                         break;
                 }
-                console.log(this.results)
             },
             deep: true
         }

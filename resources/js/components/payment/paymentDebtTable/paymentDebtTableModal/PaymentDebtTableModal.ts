@@ -31,15 +31,10 @@ export default defineComponent({
     computed: {
         showCredit(): boolean
         {
-            console.log(this.paymentMethod.check)
             return Number(this.paymentMethod.check) !== 1 ? true : false;
         }
     },
     watch: {
-        paymentID()
-        {
-            console.log(this.paymentID)
-        }
     },
     methods: {
         createDebtPayment()

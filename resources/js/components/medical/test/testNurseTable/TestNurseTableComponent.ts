@@ -60,13 +60,12 @@ export default defineComponent({
                 this.paginationActive = page;
                 axios.get<ConsultPagination>(`/consultas/muestras?page=${this.paginationActive}`)
                 .then(response => {
-                    console.log(response.data)
                     this.consultData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error)
+                    
                     this.loading = false;
                 })
             }
@@ -89,7 +88,7 @@ export default defineComponent({
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error)
+                    
                     this.loading = false;
                 })
             }

@@ -48,7 +48,7 @@ export default defineComponent({
                 this.userData = response.data;
             })
             .catch(error => {
-                console.log(error);
+                ;
             })
         },
     },

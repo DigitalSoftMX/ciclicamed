@@ -33,7 +33,6 @@ export default defineComponent({
         {
             handler()
             {
-                console.log(this.modelValue)
                 this.formData = this.modelValue;
             },
             deep: true
@@ -43,7 +42,6 @@ export default defineComponent({
             handler()
             {
                 this.formData.antecedentesPersonales.imagen = (this.$refs.editor as any).saveImage();
-                console.log(this.formData)
                 this.$emit('update:modelValue', this.formData)
             },
             deep: true

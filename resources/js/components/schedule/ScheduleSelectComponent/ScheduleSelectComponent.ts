@@ -45,7 +45,6 @@ export default defineComponent({
         }
     },
     mounted() {
-        console.log(this.employeeBranches)
     },
     watch: {
         employeeBranchSelected()

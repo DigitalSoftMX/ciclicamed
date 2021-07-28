@@ -74,7 +74,6 @@ export default defineComponent({
                 }
             })
             .then(response => {
-                console.log(this.patient, response.data)
                 $('#hisccSuccess').modal('show');
             })
             .catch(error => {

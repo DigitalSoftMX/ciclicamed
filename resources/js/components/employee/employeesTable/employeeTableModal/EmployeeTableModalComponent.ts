@@ -40,7 +40,6 @@ export default defineComponent({
             handler()
             {
                 this.getEmployeeRoles();
-                console.log(this.employee)
             },
             deep:true
         },
@@ -71,7 +70,7 @@ export default defineComponent({
                 this.roles = response.data.map(item => item.name);
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getEmployeeRoles()
@@ -82,7 +81,7 @@ export default defineComponent({
                 this.roleSelected = response.data[0];
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         setEmployeeRoles()

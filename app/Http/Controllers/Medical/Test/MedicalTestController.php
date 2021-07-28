@@ -15,26 +15,27 @@ class MedicalTestController extends Controller
         return ProductCategory::first()->id;
     }
 
-    private function testData($name)
+    private function testData($name, $name2)
     {
-        return MedicalTest::whereHas('status', function($query) use($name) {
-            $query->where('name', $name);
+        return MedicalTest::whereHas('status', function($query) use($name, $name2) {
+            $query->where('name', $name)
+            ->orWhere('name', $name2);
         });
     }
 
     public function getCreatedTests(Request $request)
     {
-        return $this->pagination($this->testData('Estudio creado'), $request);
+        return $this->pagination($this->testData('Estudio creado', null), $request);
     }
 
     public function getSampleTests(Request $request)
     {
-        return $this->pagination($this->testData('Muestras recogidas'), $request);
+        return $this->pagination($this->testData('Muestras recogidas', 'Estudio creado'), $request);
     }
 
     public function getCompletedTest(Request $request)
     {
-        return $this->pagination($this->testData('Resultados creados'), $request);
+        return $this->pagination($this->testData('Resultados creados', null), $request);
     }
 
     private function pagination($testData, $request)

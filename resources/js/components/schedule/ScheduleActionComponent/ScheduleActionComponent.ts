@@ -159,7 +159,7 @@ export default defineComponent({
                 $('#actionConsultSuccess').modal('show');
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         startSchedule()

@@ -37,7 +37,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log(this.caja)
     },
     watch: {
         isSidebarOpen()

@@ -64,7 +64,6 @@ export default defineComponent({
         },
         showMedicaments(consult: Consult) {
             this.prescriptions = consult.prescriptions!
-            console.log(this.prescriptions)
             $('#medicamentsModal').modal('show');
         },
         getPrescriptionsData(page: number)
@@ -75,13 +74,12 @@ export default defineComponent({
                 this.paginationActive = page;
                 axios.get<ConsultPagination>(`/pacientes/${this.patientID}/recetas?page=${this.paginationActive}`)
                 .then(response => {
-                    console.log(response.data)
                     this.prescriptionsData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error)
+                    
                     this.loading = false;
                 })
             }
@@ -104,7 +102,7 @@ export default defineComponent({
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error)
+                    
                     this.loading = false;
                 })
                 this.activateSearch = this.query === '' ? false : true;

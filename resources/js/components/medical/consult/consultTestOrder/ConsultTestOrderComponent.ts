@@ -62,7 +62,6 @@ export default defineComponent({
     },
     mounted() {
         this.getTestList();
-        console.log(this.doctorData)
     },
     watch: {
         modelValue: 
@@ -107,7 +106,7 @@ export default defineComponent({
                 }, ...response.data];
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         async createPDF()

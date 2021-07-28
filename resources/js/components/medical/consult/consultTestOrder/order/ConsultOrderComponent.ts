@@ -83,7 +83,6 @@ export default defineComponent({
         },
         startHour()
         {
-            console.log(this.startHour)
             this.order.consult_scheduled!.consult_schedule_start = moment(
                 `${this.dateSelected} ${this.startHour}:00`, 'YYYY-MM-DD HH:mm:00'
             ).format('YYYY-MM-DD HH:mm:00');

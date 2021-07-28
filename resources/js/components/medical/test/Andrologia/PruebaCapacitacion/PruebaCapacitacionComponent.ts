@@ -54,7 +54,6 @@ export default defineComponent({
             
             handler(newValue)
             {
-                console.log(this.formData)
                 this.$emit('update:modelValue', newValue);
             },
             deep: true

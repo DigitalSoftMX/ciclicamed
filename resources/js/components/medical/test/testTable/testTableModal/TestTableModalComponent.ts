@@ -24,7 +24,6 @@ export default defineComponent({
         test: {
             handler()
             {
-                console.log(this.test.order.product.order_annotations!)
                 this.annotations = this.test.order.product.order_annotations!
             },
             deep: true

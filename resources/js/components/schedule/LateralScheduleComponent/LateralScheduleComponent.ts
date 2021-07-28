@@ -175,7 +175,6 @@ export default defineComponent({
         'scheduleSelectedCopy.doctor_id': {
             handler()
             {
-                console.log(this.scheduleSelectedCopy.doctor_id)
                 if(!this.role.match(/Checkup|Laboratorio|Imagenologia/))
                 {
                     switch(this.scheduleSelectedCopy.doctor_id)
@@ -215,7 +214,6 @@ export default defineComponent({
         {
             axios.get <Patient[]> (`/pacientes`)
             .then(response => {
-                console.log(response.data)
                 this.patientsList = response.data.map((patient, index) => {
                     return {
                         id: index,
@@ -225,7 +223,7 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         formatScheduleTime(datetime: string): string {
@@ -323,7 +321,7 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getTestList(testCategory: string)
@@ -344,12 +342,11 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         }
     },
     mounted() {
-        console.log(this.branchesList)
         const self = this;
         const overlay = document.querySelector('.overlay-dark') ?? document.createElement('div') as HTMLDivElement;
         overlay.addEventListener('click', () => self.closeLateralSchedule());

@@ -66,13 +66,12 @@ export default defineComponent({
                 this.paginationActive = page;
                 axios.get<PaymentPagination>(`/pagos/faltantes?page=${this.paginationActive}`)
                 .then(response => {
-                    console.log(response.data)
                     this.paymentData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error);
+                    ;
                     this.loading = false;
                 })
             }
@@ -95,7 +94,7 @@ export default defineComponent({
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error);
+                    ;
                     this.loading = false;
                 })
             }

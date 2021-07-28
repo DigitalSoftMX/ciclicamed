@@ -52,10 +52,6 @@ export default defineComponent({
             this.query = '';
             this.getProductData(1);
         },
-        productCheckList()
-        {
-            console.log(this.productCheckList)
-        }
     },
     methods: {
         checkProductSelected(productList: Product[])

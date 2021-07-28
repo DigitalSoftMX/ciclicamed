@@ -52,7 +52,6 @@ export default defineComponent({
         }
     },
     mounted() {
-        console.log(this.schedules)
     },
     watch: {
         businessHours()

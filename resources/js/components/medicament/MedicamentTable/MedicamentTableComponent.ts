@@ -66,7 +66,7 @@ export default defineComponent({
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error);
+                    ;
                     this.loading = false;
                 })
             }
@@ -89,7 +89,7 @@ export default defineComponent({
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error);
+                    ;
                     this.loading = false;
                 })
             }

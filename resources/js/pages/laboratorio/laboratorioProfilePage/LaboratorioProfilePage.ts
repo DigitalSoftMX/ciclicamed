@@ -36,7 +36,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log(this.laboratorio)
     },
     watch: {
         isSidebarOpen()

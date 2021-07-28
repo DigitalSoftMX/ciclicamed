@@ -83,7 +83,7 @@ export default defineComponent({
                 $('#etmcSuccess').modal('show');
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         enableEmployee()
@@ -95,7 +95,7 @@ export default defineComponent({
                 $('#etmcSuccess').modal('show');
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         showEmployeeModal(employee: Employee)
@@ -120,14 +120,12 @@ export default defineComponent({
                 this.paginationActive = page;
                 axios.get<EmployeePagination>(`/empleados?page=${this.paginationActive}`)
                 .then(response => {
-                    console.log(response.data)
                     this.userData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
-                    console.log(response.data)
                 })
                 .catch(error => {
-                    console.log(error)
+                    
                     this.loading = false;
                 })
             }
@@ -150,7 +148,7 @@ export default defineComponent({
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error)
+                    
                     this.loading = false;
                 })
             }

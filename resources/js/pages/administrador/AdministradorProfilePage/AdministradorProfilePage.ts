@@ -35,7 +35,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log(this.administrador)
     },
     watch: {
         isSidebarOpen()

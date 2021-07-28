@@ -53,7 +53,6 @@ export default defineComponent({
         {
             handler()
             {
-                console.log(this.productDataCopy.order_annotations)
                 this.productDataCopy = Object.assign({}, this.productData);
                 this.orderAnnotationsCopy = this.productDataCopy.order_annotations!.map(item => item.annotation) ?? [];
             },
@@ -71,7 +70,6 @@ export default defineComponent({
         },
         deleteTestOrder(index: number)
         {
-            console.log(index)
             this.orderAnnotationsCopy.splice(index, 1);
         },
         modifyProduct()

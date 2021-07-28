@@ -193,7 +193,6 @@ export default defineComponent({
         },
         doctorSelected()
         {
-            console.log(this.doctorSelected)
             this.getDoctorChart();
         },
         doctorDate:
@@ -259,10 +258,9 @@ export default defineComponent({
                     { name: `Consulta ${response.data.consulta}`, pl: this.timeToDecimal(response.data.consulta)},
                     { name: `Total ${response.data.total}`, pl: this.timeToDecimal(response.data.total)},
                 ]
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getConsultList(): void
@@ -272,7 +270,7 @@ export default defineComponent({
                 this.consultList = response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         timeToDecimal(t: string) {
@@ -296,10 +294,9 @@ export default defineComponent({
                     { name: `Consulta ${response.data.consulta}`, pl: this.timeToDecimal(response.data.consulta)},
                     { name: `Total ${response.data.total}`, pl: this.timeToDecimal(response.data.total)},
                 ]
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getMedicamentChart()
@@ -314,10 +311,9 @@ export default defineComponent({
                 this.medicamentoChart = [
                     { name: medicament, pl: Number(response.data)},
                 ];
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getMedicamentList(): void
@@ -328,11 +324,10 @@ export default defineComponent({
                 }
             })
             .then(response => {
-                console.log(response.data)
                 this.medicamentoList = response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getTestList(): void
@@ -342,7 +337,7 @@ export default defineComponent({
                 this.productoList = response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getProductoChart()
@@ -357,10 +352,9 @@ export default defineComponent({
                 this.productoChart = [
                     { name: test, pl: Number(response.data)},
                 ];
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getImagenologiaChart()
@@ -380,10 +374,9 @@ export default defineComponent({
                         }
                     })
                 ]
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getLaboratorioChart()
@@ -403,10 +396,9 @@ export default defineComponent({
                         }
                     })
                 ]
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getservicioChart()
@@ -417,13 +409,12 @@ export default defineComponent({
                 }
             })
             .then(response => {
-                console.log(response.data)
                 this.servicioChart = [
                     { name: this.servicios[this.servicioID - 1], pl: Number(response.data)},
                 ]
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getDoctors()
@@ -433,7 +424,7 @@ export default defineComponent({
                 this.doctors = response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         changeSidebarStatus()
@@ -454,7 +445,7 @@ export default defineComponent({
                 ]
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getCitaChart()
@@ -474,7 +465,6 @@ export default defineComponent({
                 ]
             })
             .catch(error => {
-                console.log(error)
             })
         },
         getCitaEspecialidad()
@@ -490,7 +480,6 @@ export default defineComponent({
                 ]
             })
             .catch(error => {
-                console.log(error)
             })
         }
     },

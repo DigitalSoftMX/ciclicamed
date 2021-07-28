@@ -82,13 +82,12 @@ export default defineComponent({
                 this.paginationActive = page;
                 axios.get<CheckupPagination>(`/checkup/pendientes?page=${this.paginationActive}`)
                 .then(response => {
-                    console.log(response.data)
                     this.checkupData = response.data;
                     this.paginationPages = response.data.pagination.last_page;
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error)
+                    
                     this.loading = false;
                 })
             }
@@ -111,7 +110,7 @@ export default defineComponent({
                     this.loading = false;
                 })
                 .catch(error => {
-                    console.log(error)
+                    
                     this.loading = false;
                 })
                 this.activateSearch = this.query === '' ? false : true;
@@ -121,13 +120,12 @@ export default defineComponent({
         {
             axios.get<Checkup>(`/checkup/${id}`)
             .then(response => {
-                console.log(response.data)
                 this.checkupInfoSelected = response.data;
                 this.checkupSelected = setCheckupData(response.data, this.checkupSelected, id);
                 category === 'show' ? $('#ckpscCheckupInfo').modal('show') : $('#ckpscCheckups').modal('show');
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         showCancelConfirm(id: number)
@@ -145,7 +143,7 @@ export default defineComponent({
                 $('#cktcSuccess').modal('show');
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getBranchesList(): void
@@ -161,7 +159,7 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
     },
@@ -169,7 +167,6 @@ export default defineComponent({
 
 export function setCheckupData(checkup: Checkup, checkupSelected: CheckupList, checkupID: number): CheckupList
 {
-    console.log(checkup)
     checkupSelected.patient_id = checkup.patient_id;
     checkupSelected.name = checkup.category!.name;
     checkupSelected.checkupcategory_id = checkup.category!.id;

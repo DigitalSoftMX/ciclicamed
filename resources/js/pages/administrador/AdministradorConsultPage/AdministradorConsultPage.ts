@@ -41,12 +41,10 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log(this.specialty)
     },
     watch: {
         consultSpecialty()
         {
-            console.log(this.specialty)
         },
         isSidebarOpen()
         {

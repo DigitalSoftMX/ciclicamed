@@ -118,7 +118,6 @@ export default defineComponent({
         },
         showCredit(): boolean
         {
-            console.log(this.paymentMethod.check)
             return Number(this.paymentMethod.check) !== 1 ? true : false;
         }
     },
@@ -151,14 +150,13 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getPatientsList(): void
         {
             axios.get <Patient[]> (`/pacientes`)
             .then(response => {
-                console.log(response.data)
                 this.patientsList = response.data.map((patient, index) => {
                     return {
                         id: index,
@@ -168,7 +166,7 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         confirmConsultFinish()
@@ -297,7 +295,6 @@ export default defineComponent({
                 pdf.getForm().getTextField(`costo${index + 1}`).setText(`$${(Number(item.price) - Number(item.discount)).toFixed(2)}`);
             });
             
-            console.log(this.patient)
             if(this.isNew)
             {
                 const patientSel = this.patientsList.filter(item => item.childID === this.patientID)[0].text;

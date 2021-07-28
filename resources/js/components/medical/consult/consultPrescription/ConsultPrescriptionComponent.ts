@@ -92,7 +92,7 @@ export default defineComponent({
                 }, ...response.data];
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         async createPDF()

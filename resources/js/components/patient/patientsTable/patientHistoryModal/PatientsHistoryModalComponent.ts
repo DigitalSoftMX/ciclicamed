@@ -53,7 +53,7 @@ export default defineComponent({
                 this.historialClinico = response.data.data.form;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
     }

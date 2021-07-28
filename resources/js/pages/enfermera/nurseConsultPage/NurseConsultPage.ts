@@ -115,7 +115,6 @@ export default defineComponent({
         {
             axios.get<Consult>(`/consultas/${this.consult}`)
             .then(response => {
-                console.log(response.data)
                 this.consultData = response.data;
                 this.getPatientData();
                 this.updateClock();
@@ -128,11 +127,9 @@ export default defineComponent({
         {
             axios.get<History>(`/pacientes/${this.consultData.patient_id}/historial`)
             .then(response => {
-                console.log(response.data)
                 this.historyData = Array.isArray(response.data) ? HistoryData : response.data;
             })
             .catch(error => {
-                console.log(error)
             })
         },
         updateClock()

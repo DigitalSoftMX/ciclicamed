@@ -113,7 +113,6 @@ export default defineComponent({
         {
             axios.get<Consult>(`/consultas/${this.consult}`)
             .then(response => {
-                console.log(response.data)
                 this.consultData = response.data;
                 this.getPatientData();
                 this.updateClock();

@@ -116,7 +116,6 @@ export default defineComponent({
                 case 'Administrador':
                     return false;
                 case 'Doctor':
-                    console.log(this.consultData.medicalconsultcategory_id);
                     return this.consultData.medicalconsultcategory_id > 1 ? true : false;
                 default:
                     return true;
@@ -137,7 +136,6 @@ export default defineComponent({
         },
         disableConsult(): boolean
         {
-            console.log(this.role)
             switch(this.role)
             {
                 case 'Administrador':
@@ -191,18 +189,17 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getPayment()
         {
             axios.get<Payment>(`/consultas/${this.consultID}/pago`)
             .then(response => {
-                console.log(response.data, 'as')
                 this.paymentProducts = response.data;
             })
             .catch(error => {
-            // console.log(error)
+            // 
             })
         },
         sendToServerData()
@@ -223,7 +220,7 @@ export default defineComponent({
                 this.showPaymentComponent = true;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         selectSpecialty()
@@ -266,14 +263,13 @@ export default defineComponent({
                 this.patientData = response.data;
             })
             .catch(error => {
-            // console.log(error)
+            // 
             })
         },
         getConsultInfo()
         {
             axios.get<Consult>(`/consultas/${this.consultID}`)
             .then(response => {
-                console.log(response.data)
                 this.consultData = response.data;
                 this.getPatientData();
                 this.updateClock();
@@ -282,7 +278,7 @@ export default defineComponent({
                 
             })
             .catch(error => {
-                // console.log(error)
+                // 
             })
         },
         getHistory()
@@ -292,7 +288,7 @@ export default defineComponent({
                 this.historyData = Array.isArray(response.data) ? HistoryData : response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getAttachment()
@@ -310,22 +306,20 @@ export default defineComponent({
         {
             axios.get<FollowUp>(`/consultas/${this.consultID}/seguimiento`)
             .then(response => {
-                console.log(response.data)
                 this.followUp = response.data;
             })
             .catch(error => {
-                // console.log(error)
+                // 
             })
         },
         getPrescription()
         {
             axios.get<Prescription[]>(`/consultas/${this.consultID}/receta`)
             .then(response => {
-                console.log(response.data)
                 this.prescriptionData = response.data;
             })
             .catch(error => {
-                // console.log(error)
+                // 
             })
         },
         getTest()
@@ -344,7 +338,7 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                // console.log(error)
+                // 
             })
         },
         updateClock()

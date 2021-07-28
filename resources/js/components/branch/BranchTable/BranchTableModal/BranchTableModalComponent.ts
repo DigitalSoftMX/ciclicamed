@@ -24,7 +24,6 @@ export default defineComponent({
         {
             handler()
             {
-                console.log(this.branchData)
                 this.form = this.branchData;
             },
             deep:true

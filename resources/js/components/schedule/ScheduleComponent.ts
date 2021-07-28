@@ -66,7 +66,6 @@ export default defineComponent({
         {
             axios.get <Patient[]> (`/pacientes`)
             .then(response => {
-                console.log(response.data)
                 this.patientsList = response.data.map((patient, index) => {
                     return {
                         id: index,
@@ -76,7 +75,7 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getDoctorBranch(branchID: number)
@@ -92,21 +91,19 @@ export default defineComponent({
         getAllScheduleBranchList(id: number): void {
             axios.get<Schedule[]>(`/sucursales/${id}/agenda`)
             .then(response => {
-                console.log(response.data)
                 this.schedules = response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getAllScheduleList(): void {
             axios.get<Schedule[]>(`/empleados/agenda`)
             .then(response => {
-                console.log(response.data)
                 this.schedules = response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getScheduleList(doctorSelected: Select): void {
@@ -118,7 +115,7 @@ export default defineComponent({
                 this.getBusinessHours();
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getCheckupScheduleList()
@@ -128,12 +125,11 @@ export default defineComponent({
                 this.schedules = response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getDoctorScheduleList()
         {
-            console.log(this.employeeID)
             axios.get<Schedule[]>(`/empleados/${this.employeeID}/agenda`)
             .then(response => {
                 this.schedules = response.data;
@@ -141,7 +137,7 @@ export default defineComponent({
                 this.getBusinessHours();
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getPatientScheduleList()
@@ -152,7 +148,7 @@ export default defineComponent({
                 this.businessHours = []
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         // Branches
@@ -163,7 +159,7 @@ export default defineComponent({
                 this.getBusinessHours();
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getDoctorBranches()
@@ -173,7 +169,7 @@ export default defineComponent({
                 this.employeeBranches = response.data;
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getBranchesList(): void
@@ -189,7 +185,7 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         selectUserSchedule()
@@ -215,7 +211,6 @@ export default defineComponent({
             }
         },
         getBusinessHours(): void {
-            console.log(this.scheduleSelected.branch_id)
             axios.get<EmployeeBusinessHour[]>(`/sucursales/${this.scheduleSelected.branch_id}/empleados/${this.scheduleSelected.doctor_id}/horarios`)
             .then(response => {
                 this.businessHours = response.data.map(hour => {
@@ -232,7 +227,7 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getDoctorList(branchSelected: Select): void
@@ -260,7 +255,7 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         copyScheduleData(date: string)

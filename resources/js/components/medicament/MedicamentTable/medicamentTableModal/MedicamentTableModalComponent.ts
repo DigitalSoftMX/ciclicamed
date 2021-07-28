@@ -25,7 +25,6 @@ export default defineComponent({
         {
             handler()
             {
-                console.log(this.medicamentData)
                 this.form = this.medicamentData;
             },
             deep:true

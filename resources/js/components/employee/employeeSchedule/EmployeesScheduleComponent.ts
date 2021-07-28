@@ -121,10 +121,9 @@ export default defineComponent({
             axios.get<MedicalSpecialty[]>(`/empleados/especialidades`)
             .then(response => {
                 this.specialies = response.data;
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getEmployeeTitles()
@@ -132,10 +131,9 @@ export default defineComponent({
             axios.get<EmployeeDegree[]>(`/empleados/${this.id}/titulos`)
             .then(response => {
                 this.degrees = response.data;
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getEmployeeHours()
@@ -143,10 +141,9 @@ export default defineComponent({
             axios.get<EmployeeHours[]>(`/empleados/${this.id}/horarios`)
             .then(response => {
                 this.hours = response.data;
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
         getBranches()
@@ -154,10 +151,9 @@ export default defineComponent({
             axios.get<Branch[]>(`/sucursales`)
             .then(response => {
                 this.branches = response.data;
-                console.log(response.data)
             })
             .catch(error => {
-                console.log(error)
+                
             })
         },
     }

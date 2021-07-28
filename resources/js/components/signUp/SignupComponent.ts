@@ -90,7 +90,6 @@ export default defineComponent({
         {
             this.patient.photo = {} as File;
             (document.getElementById('sucPhoto') as HTMLInputElement).value = '';
-            console.log(this.patient.photo)
         }
     },
 })

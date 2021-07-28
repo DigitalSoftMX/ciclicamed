@@ -33,7 +33,6 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log(this.doctor)
     },
     watch: {
         isSidebarOpen()
