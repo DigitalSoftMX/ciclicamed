@@ -1,4 +1,5 @@
 import { BiologiaReproduccion } from "@interface/Medical/Attachtments/BiologiaReproduccion.interface";
+import { EstimulacionData } from "./Estimulacion.data";
 
 export const BiologiaReproduccionData: BiologiaReproduccion = {
     biologiaReproduccion: {
@@ -31,5 +32,35 @@ export const BiologiaReproduccionData: BiologiaReproduccion = {
         anterioresLesiones: '',
         anterioresCirugias: ''
     },
-    notas: ''
+    notas: '',
+    estimulacion: {
+        inseminacionesPrevias: '',
+        gnrh: '',
+        diaInicio: '',
+        dosis: '',
+        hasta: '',
+        sosten: '',
+        dosis2: '',
+        fechaInicio2: '',
+        bhcg: '',
+        resultados: '',
+        observaciones: '',
+        estimulacion: {
+            estimulacion1: EstimulacionData,
+            estimulacion2: EstimulacionData,
+            estimulacion3: EstimulacionData,
+            estimulacion4: EstimulacionData,
+            estimulacion5: EstimulacionData,
+            estimulacion6: EstimulacionData,
+            estimulacion7: EstimulacionData,
+            estimulacion8: EstimulacionData,
+            estimulacion9: EstimulacionData,
+            estimulacion10: EstimulacionData,
+            estimulacion11: EstimulacionData,
+            estimulacion12: EstimulacionData,
+            estimulacion13: EstimulacionData,
+            estimulacion14: EstimulacionData,
+            estimulacion15: EstimulacionData,
+        }
+    }
 }

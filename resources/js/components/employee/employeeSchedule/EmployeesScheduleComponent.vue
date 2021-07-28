@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="mb-10">
                                         <label>Cédula profesional</label>
-                                        <input type="text" class="form-control form-control-lg"
+                                        <input type="text" class="form-control form-control-lg" maxlength="8"
                                             v-model="degrees[index].license_number">
                                     </div>
                                     <div class="mb-10">

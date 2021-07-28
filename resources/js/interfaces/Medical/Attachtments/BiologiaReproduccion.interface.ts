@@ -1,3 +1,5 @@
+import { Estimulacion } from "./Estimulacion.inteface";
+
 export interface BiologiaReproduccion
 {
     biologiaReproduccion: {
@@ -30,5 +32,35 @@ export interface BiologiaReproduccion
         anterioresLesiones: string,
         anterioresCirugias: string
     },
-    notas: string
+    notas: string,
+    estimulacion: {
+        inseminacionesPrevias: string;
+        gnrh: string;
+        diaInicio: string;
+        dosis: string;
+        hasta: string;
+        sosten: string,
+        dosis2: string,
+        fechaInicio2: string,
+        bhcg: string,
+        resultados: string,
+        observaciones: string,
+        estimulacion: {
+            estimulacion1: Estimulacion,
+            estimulacion2: Estimulacion,
+            estimulacion3: Estimulacion,
+            estimulacion4: Estimulacion,
+            estimulacion5: Estimulacion,
+            estimulacion6: Estimulacion,
+            estimulacion7: Estimulacion,
+            estimulacion8: Estimulacion,
+            estimulacion9: Estimulacion,
+            estimulacion10: Estimulacion,
+            estimulacion11: Estimulacion,
+            estimulacion12: Estimulacion,
+            estimulacion13: Estimulacion,
+            estimulacion14: Estimulacion,
+            estimulacion15: Estimulacion,
+        }
+    }
 }
