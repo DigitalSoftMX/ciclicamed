@@ -1,6 +1,7 @@
 import { ActividadFisica } from "./options/ActividadFisica.interface";
 import { AntecedentesFamiliares } from "./options/AntecedentesFamiliares.interface";
 import { AntecedentesSalud } from "./options/AntecedentesSalud.interface";
+import { AntropometricosGeneral } from "./options/AntropometricosGeneral.interface";
 import { AspectosGinecologicos } from "./options/AspectosGinecologicos.interface";
 import { ConsumoFrecuencia } from "./options/ConsumoFrecuencia.interface";
 import { EmbarazoActual } from "./options/EmbarazoActual.interface";
@@ -21,4 +22,20 @@ export interface NutricionGeneral
     indicadoresBioquimicos: IndicadoresBioquimicos,
     indicadoresDieteticos: IndicadoresDieteticos,
     recordatorioNutricion: RecordatorioNutricion
+    antropometricos: {
+        pesoMinino: number;
+        pesoMaximo: number;
+        pesoIdeal: number;
+        indicador: string;
+        sem1: AntropometricosGeneral,
+        sem2: AntropometricosGeneral,
+        sem3: AntropometricosGeneral,
+        sem4: AntropometricosGeneral,
+        total1: AntropometricosGeneral,
+        sem5: AntropometricosGeneral,
+        sem6: AntropometricosGeneral,
+        sem7: AntropometricosGeneral,
+        sem8: AntropometricosGeneral,
+        total2: AntropometricosGeneral
+    }
 }

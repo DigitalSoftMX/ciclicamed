@@ -22,7 +22,6 @@ export default defineComponent({
     },
     mounted() {
     },
-    methods: {},
     watch: {
         modelValue: 
         {
@@ -40,5 +39,11 @@ export default defineComponent({
             },
             deep: true
         }
-    }
+    },
+    methods: {
+        sumTotal(num1: number, num2: number, num3: number, num4: number)
+        {
+            return num1 + num2 + num3 + num4;
+        }
+    },
 })
