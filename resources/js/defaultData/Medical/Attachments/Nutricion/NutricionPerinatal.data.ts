@@ -2,6 +2,7 @@ import { NutricionPerinatal } from "@interface/Medical/Attachtments/Nutricion/Nu
 import { ActividadFisicaData } from "./options/ActividadFisica.data"
 import { AntecedentesFamiliaresData } from "./options/AntecedentesFamiliares.data"
 import { AntecedentesSaludData } from "./options/AntecedentesSalud.data"
+import { AntropometriaData } from "./options/Antropometria.data"
 import { ConsumoFrecuenciaData } from "./options/ConsumoFrecuencia.data"
 import { EmbarazoActualData } from "./options/EmbarazoActual.data"
 import { EmbarazosAnterioresData } from "./options/EmbarazosAnteriores.data"
@@ -18,5 +19,13 @@ export const NutricionPerinatalData: NutricionPerinatal = {
     consumoFrecuencia: ConsumoFrecuenciaData,
     indicadoresBioquimicos: IndicadoresBioquimicosData,
     indicadoresDieteticos: IndicadoresDieteticosData,
-    recordatorioNutricion: RecordatorioNutricionData
+    recordatorioNutricion: RecordatorioNutricionData,
+    antropometria: {
+        fum: '',
+        consulta1: AntropometriaData,
+        consulta2: AntropometriaData,
+        consulta3: AntropometriaData,
+        consulta4: AntropometriaData,
+        consulta5: AntropometriaData
+    }
 }

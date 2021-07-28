@@ -15,7 +15,7 @@
                     v-model="formData.consumoLitros">
             </div>
             <div class="card-single col-12 mb-25">
-                <div class="card card-default card-md bg-white">
+                <div class="card shadow-none">
                     <div class="card-header">
                         <h6>Incontinencia urinaria de urgencia</h6>
                         <div class="custom-control custom-switch switch-primary switch-md ">
@@ -25,7 +25,7 @@
                             <label class="custom-control-label" for="ucIncontinenciaUrinariaUrgencia"></label>
                         </div>
                     </div>
-                    <div class="card-body bg-normal row mx-0" v-show="formData.incontinenciaUrinariaUrgencia.check">
+                    <div class="card-body row mx-0" v-show="formData.incontinenciaUrinariaUrgencia.check">
                         <div class="col-md-4">
                             <label for="ucUrgenciaTiempoEvolucion">Tiempo de evolución</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ucUrgenciaTiempoEvolucion"
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="card-single col-12 mb-25">
-                <div class="card card-default card-md bg-white">
+                <div class="card shadow-none">
                     <div class="card-header">
                         <h6>Incontinencia urinaria de esfuerzo</h6>
                         <div class="custom-control custom-switch switch-primary switch-md ">
@@ -55,7 +55,7 @@
                             <label class="custom-control-label" for="ucIncontinenciaUrinariaEsfuerzo"></label>
                         </div>
                     </div>
-                    <div class="card-body bg-normal row mx-0" v-show="formData.incontinenciaUrinariaEsfuerzo.check">
+                    <div class="card-body row mx-0" v-show="formData.incontinenciaUrinariaEsfuerzo.check">
                         <div class="col-md-4">
                             <label for="ucEsfuerzoTiempoEvolucion">Tiempo de evolución</label>
                             <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ucEsfuerzoTiempoEvolucion"
@@ -91,7 +91,7 @@
                 </select>
             </div>
             <div class="col-12 row p-3 mx-0 atbd-collapse atbd-collapse-custom">
-                <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+                <div class="col-12 mb-25 card shadow-none p-0 border rounded">
                     <div class="atbd-collapse-item__header">
                         <a class="item-link" data-toggle="collapse" data-target="#ucInterrogatorio" aria-expanded="true"
                             aria-controls="ucInterrogatorio">
@@ -211,7 +211,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+                <div class="col-12 mb-25 card shadow-none p-0 border rounded">
                     <div class="atbd-collapse-item__header">
                         <a class="item-link" data-toggle="collapse" data-target="#ucExploracionFisica"
                             aria-expanded="true" aria-controls="ucExploracionFisica">

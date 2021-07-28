@@ -55,7 +55,7 @@
                                     <div class="card h-100 shadow-none card-hover">
                                         <div class="card-body row mx-0 py-3 px-2">
                                             <div class="col-4 align-self-center">
-                                                <img-component url="/svg/followUp.svg" alt="Seguimiento">
+                                                <img-component url="/svg/farmacia.svg" alt="Farmacia">
                                                 </img-component>
                                             </div>
                                             <div class="col-8 align-self-center">

@@ -14,7 +14,7 @@
             <div class="col-12 mb-25">
                 <label for="">Gabinete y
                     laboratoria</label>
-                <textarea class="form-control form-control-lg" rows="3" :disabled="disabled" id="tcPadecimientoActual" v-model="formData.padecimientoActual"
+                <textarea class="form-control form-control-lg" rows="3" :disabled="disabled" id="tcPadecimientoActual" v-model="formData.gabineteLaboratoria"
                     ></textarea>
             </div>
             <div class="col-12 mb-25">

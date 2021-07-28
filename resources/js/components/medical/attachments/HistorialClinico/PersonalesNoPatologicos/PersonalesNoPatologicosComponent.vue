@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="card-body" v-show="formData.estrenimiento.check">
-                <textarea type="text" class="form-control" :disabled="disabled" id="pnpcEstreniminentoDescription" placeholder="Drogas" rows="5"
+                <textarea type="text" class="form-control" :disabled="disabled" id="pnpcEstreniminentoDescription" placeholder="Estreñimiento" rows="5"
                     v-model="formData.estrenimiento.description"></textarea>
             </div>
         </div>

@@ -26,7 +26,7 @@
                     v-model="formData.toallas">
             </div>
             <div class="card-single col-12 mb-4">
-                <div class="card card-default card-md bg-white">
+                <div class="card shadow-none">
                     <div class="card-header">
                         <h6>Dilgenorrea</h6>
                         <div class="custom-control custom-switch switch-primary switch-md ">
@@ -35,7 +35,7 @@
                             <label class="custom-control-label" for="csocDilgenorreaCheck"></label>
                         </div>
                     </div>
-                    <div class="card-body bg-normal" v-show="formData.dilgenorrea.check">
+                    <div class="card-body" v-show="formData.dilgenorrea.check">
                         <div class="w-auto">
                             <select class="form-control form-control-lg" :disabled="disabled" id="csocDilgenorreaDescription"
                                 v-model="formData.dilgenorrea.description">
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="card-single col-12 mb-4">
-                <div class="card card-default card-md bg-white">
+                <div class="card shadow-none">
                     <div class="card-header">
                         <h6>Bochornos</h6>
                         <div class="custom-control custom-switch switch-primary switch-md ">
@@ -57,7 +57,7 @@
                             <label class="custom-control-label" for="csocBochornosCheck"></label>
                         </div>
                     </div>
-                    <div class="card-body bg-normal" v-show="formData.bochornos.check">
+                    <div class="card-body" v-show="formData.bochornos.check">
                         <div class="w-auto">
                             <select class="form-control form-control-lg" :disabled="disabled" id="csocBochornosDescription"
                                 v-model="formData.bochornos.description">
@@ -142,7 +142,7 @@
                 </div>
             </div>
             <div class="card-single col-12 mb-4">
-                <div class="card card-default card-md bg-white">
+                <div class="card shadow-none">
                     <div class="card-header">
                         <h6>Sudoración</h6>
                         <div class="custom-control custom-switch switch-primary switch-md ">
@@ -151,7 +151,7 @@
                             <label class="custom-control-label" for="csocSudoracionCheck"></label>
                         </div>
                     </div>
-                    <div class="card-body bg-normal" v-show="formData.sudoracion.check">
+                    <div class="card-body" v-show="formData.sudoracion.check">
                         <div class="w-auto">
                             <select class="form-control form-control-lg" :disabled="disabled" id="csocSudoracionDescription"
                                 v-model="formData.sudoracion.description">
@@ -164,7 +164,7 @@
                 </div>
             </div>
             <div class="card-single col-12 mb-4">
-                <div class="card card-default card-md bg-white">
+                <div class="card shadow-none">
                     <div class="card-header">
                         <h6>Incontinencia urinaria</h6>
                         <div class="custom-control custom-switch switch-primary switch-md ">
@@ -174,7 +174,7 @@
                             <label class="custom-control-label" for="csocIncontinenciaUrinariaCheck"></label>
                         </div>
                     </div>
-                    <div class="card-body bg-normal" v-show="formData.incontinenciaUrinaria.check">
+                    <div class="card-body" v-show="formData.incontinenciaUrinaria.check">
                         <div class="w-auto">
                             <select class="form-control form-control-lg" :disabled="disabled" id="csocIncontinenciaUrinariaDescription"
                                 v-model="formData.incontinenciaUrinaria.description">

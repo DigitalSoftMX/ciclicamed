@@ -83,9 +83,9 @@
                                 aria-labelledby="mccEspecialidades-tab">
                                 <uroginecologia-component v-if="consultData.medicalspecialty_id === 1" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.uroginecología"></uroginecologia-component>
-                                <nutricion-general-component v-else-if="consultData.medicalspecialty_id === 2" :disabled="enableAttachmentData"
-                                    v-model="attachmentForm.nutricionGeneral"></nutricion-general-component>
-                                <!-- <climaterio-salud-osea-component v-else-if="consultData.medicalspecialty_id === 2" v-model="attachmentForm.climaterioSaludOsea"></climaterio-salud-osea-component> -->
+
+                                <climaterio-salud-osea-component v-else-if="consultData.medicalspecialty_id === 2" v-model="attachmentForm.climaterioSaludOsea" :disabled="enableAttachmentData"></climaterio-salud-osea-component>
+                                
                                 <materno-fetal-component v-else-if="consultData.medicalspecialty_id === 3" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.maternoFetal"></materno-fetal-component>
 

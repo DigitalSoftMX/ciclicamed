@@ -158,7 +158,7 @@
                                 <div class="card-body"
                                     v-show="formData.antecedentesSalud.problemasActuales.otros.check">
                                     <textarea class="form-control form-control-lg" rows="4" type="text"
-                                        id="ucEsfuerzoTiempoEvolucion"
+                                        id="ngcOtrosDescription"
                                         v-model="formData.antecedentesSalud.problemasActuales.otros.description"></textarea>
                                 </div>
                             </div>

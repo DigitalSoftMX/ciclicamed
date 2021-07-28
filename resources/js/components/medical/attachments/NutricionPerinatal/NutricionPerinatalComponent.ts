@@ -1,6 +1,7 @@
 import { NutricionPerinatalData } from '@data/Medical/Attachments/Nutricion/NutricionPerinatal.data';
 import { NutricionPerinatal } from '@interface/Medical/Attachtments/Nutricion/NutricionPerinatal.interface';
 import { defineComponent } from '@vue/runtime-core';
+import moment from 'moment';
 import { PropType } from 'vue';
 
 export default defineComponent({
@@ -20,7 +21,6 @@ export default defineComponent({
             formData: this.modelValue,
         }
     },
-    methods: {},
     watch: {
         modelValue: 
         {
@@ -38,5 +38,15 @@ export default defineComponent({
             },
             deep: true
         }
-    }
+    },
+    methods: {
+        calculateSDG(fum: string, date: string)
+        {
+            return moment(fum).diff(moment(date), 'days');
+        },
+        calculateTrimestre(fum: string, date: string)
+        {
+            return moment(fum).diff(moment(date), 'months');
+        }
+    },
 })
