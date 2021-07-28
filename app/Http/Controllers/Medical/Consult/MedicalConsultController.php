@@ -255,7 +255,7 @@ class MedicalConsultController extends Controller
                 return response()->json(true, 200);
             }
             else {
-                if(isset($product))
+                if($product->isNotEmpty())
                 {
                     $paymentID = $product->first()->payment_id;
                     Payment::findOrFail($paymentID)->delete();
@@ -279,10 +279,10 @@ class MedicalConsultController extends Controller
         if($user->hasRole(['Caja', 'Administrador', 'Doctor']))
         {
             $product = ProductPayment::where('consult_created', $id)->get();
-            if(isset($product))
+            if($product->isNotEmpty())
             {
-                $payment = Payment::findOrFail($product->first()->consult_created)->where('paymentstatus_id', '<>', 4)->orderBy('created_at', 'desc');
-                if(isset($payment))
+                $payment = Payment::findOrFail($product->first()->payment_id)->where('paymentstatus_id', '<>', 4)->orderBy('created_at', 'desc');
+                if($payment->get()->isNotEmpty())
                 {
                     return response()->json($payment->first()->load('products')); 
                 }
