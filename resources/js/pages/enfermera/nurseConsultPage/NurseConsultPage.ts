@@ -94,7 +94,10 @@ export default defineComponent({
             axios.post(`/consultas/${this.consult}/resultados`, {
                 data: {
                     fum: this.fum,
-                    cita: this.formData
+                    cita: {
+                        type: 'form',
+                        form: this.formData
+                    }
                 }
             })
             .then(response => {

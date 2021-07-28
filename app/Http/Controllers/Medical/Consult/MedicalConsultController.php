@@ -353,10 +353,10 @@ class MedicalConsultController extends Controller
             if(intval($consult['medicalspecialty_id']) === 11 || intval($consult['medicalspecialty_id']) === 12)
             {
                 $test = MedicalTest::where('scheduled_in', $id)->first();
-                $data = MedicalTestSample::where('medicaltest_id', $test['id'])->orderBy('created_at', 'desc');
-                if(isset($data) && isset($consult['nurse_start_at']))
+                $data = MedicalTestSample::where('medicaltest_id', $test['id'])->orderBy('created_at', 'desc')->get();
+                if($data->isNotEmpty() && isset($consult['nurse_start_at']))
                 {
-                    $data->update([
+                    $data->first()->update([
                         'fum' => $request->input('data.fum'),
                         'collected_by' => $user['employee']['id'],
                         'finish_at' => $time,
@@ -388,7 +388,7 @@ class MedicalConsultController extends Controller
 
             //Si es consulta normal verifica si ya no se ha ingresado informacion previa
             $data = MedicalAttachmentFollowUp::where('medicalconsult_id', $id)->orderBy('created_at', 'desc');
-            if(isset($data) && isset($consult['nurse_start_at']))
+            if($data->get()->isNotEmpty() && isset($consult['nurse_start_at']))
             {
                 //Si detecta que se ha ingresado informacion previa pero por alguna razon no concluyo la enfermera, actualiza
                 $data->update([
