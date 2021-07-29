@@ -1,6 +1,6 @@
 .register-splash
 {
-    background-image: url('../../img/register/register-splash.jpg');
+    background-image: url('/images/login.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <div class="card mb-25" v-if="role !== ('Enfermera' && 'Imagenologia' && 'Laboratorio')">
+    <div class="card mb-25" v-if="role !== 'Enfermera' && role !== 'Imagenologia' && role !== 'Laboratorio'">
         <div class="card-header">
             <h4>Otras agendas</h4>
         </div>
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <div class="card mb-25" v-if="role !== ('Enfermera' && 'Imagenologia' && 'Laboratorio')">
+    <div class="card mb-25" v-if="role !== 'Enfermera' && role !== 'Imagenologia' && role !== 'Laboratorio'">
         <div class="card-header">
             <h4>Agendar checkup</h4>
         </div>

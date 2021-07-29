@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="signUp-condition signIn-condition">
-                                <a href="">¿Olvidó su
+                                <a @click="redirectToResetPassword" class="reset">¿Olvidó su
                                     contraseña?</a>
                             </div>
 

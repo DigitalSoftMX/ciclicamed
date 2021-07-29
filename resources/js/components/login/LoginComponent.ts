@@ -44,6 +44,10 @@ export default defineComponent({
         redirectToSignup()
         {
             window.location.replace(`${this.url}/register`);
+        },
+        redirectToResetPassword()
+        {
+            window.location.replace(`${this.url}/restaurar-contrasena`);
         }
     },
 })

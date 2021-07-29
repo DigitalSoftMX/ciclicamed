@@ -11,6 +11,7 @@ use App\Http\Controllers\Medical\Test\ImagenologiaTestController;
 use App\Http\Controllers\Medical\Test\LaboratorioTestController;
 use App\Http\Controllers\Medical\Test\MedicalTestResultController;
 use App\Http\Controllers\Page\PageController;
+use App\Http\Controllers\Password\PasswordController;
 use App\Http\Controllers\Patient\PatientController;
 use App\Http\Controllers\Patient\PreregistrationController;
 use App\Http\Controllers\Payment\PaymentController;
@@ -21,8 +22,10 @@ use App\Models\Employee\Employee;
 use App\Models\Patient\Patient;
 use App\Models\Patient\Preregistration;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +40,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 Auth::routes();
 Route::get('/', [LoginController::class, 'loginForm'])->name('login.login');
 Route::post('/register', [UserController::class, 'createPatient'])->name('registrar');
+Route::get('/restaurar-contrasena', [PasswordController::class, 'showResetPage'])->middleware('guest')->name('restaurar.get');
+Route::post('/restaurar-contrasena', [PasswordController::class, 'sendPasswordReset'])->middleware('guest')->name('restaurar.set');
 
 Route::group(['middleware' => 'auth', 'verified'], function() {
 

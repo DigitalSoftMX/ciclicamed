@@ -1,6 +1,6 @@
 .login-splash
 {
-    background-image: url('/ciclicamed/public/svg/login.svg');
+    background-image: url('/images/login.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -29,6 +29,11 @@
 .login-logo
 {
     width: 20%;
+}
+
+.reset:hover
+{
+    cursor: pointer;
 }
 
 @media (min-width: 768px)
