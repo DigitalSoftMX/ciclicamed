@@ -94,14 +94,14 @@
                     <div class="d-flex justify-content-between" v-if="role === 'Caja' || role == 'Administrador'">
                         <div class="action-btn mr-3">
                             <button class="btn btn-primary btn-default" @click="printPDF">
-                                <img-component url="/svg/print.svg" cssClass="mr-2 svg-white" alt="Imprimir">
+                                <img-component url="/svg/print.svg" cssClass="mr-2 svg-white" alt="Imprimir" styleData="filter: invert(1);">
                                 </img-component>
                                 Imprimir
                             </button>
                         </div>
                         <div class="action-btn">
                             <button class="btn btn-primary btn-default" @click="downloadPDF">
-                                <img-component url="/svg/download.svg" cssClass="mr-2 svg-white" alt="Descargar">
+                                <img-component url="/svg/download.svg" cssClass="mr-2 svg-white" alt="Descargar" styleData="filter: invert(1);">
                                 </img-component>
                                 Descargar
                             </button>

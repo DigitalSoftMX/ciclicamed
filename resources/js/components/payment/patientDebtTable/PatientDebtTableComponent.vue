@@ -4,7 +4,7 @@
         <div class="form-group p-0">
             <div class="with-icon">
                 <span class="mr-5">
-                    <img src="/svg/show.svg" alt="Buscar">
+                    <img-component url="/svg/search.svg" alt="Buscar"></img-component>
                 </span>
                 <input type="text" class="form-control form-control-lg bg-white" v-model="query"
                     @keyup="getUserDataQuery()" placeholder="Buscar">

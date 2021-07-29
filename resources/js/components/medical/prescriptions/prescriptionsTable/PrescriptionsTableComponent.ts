@@ -1,16 +1,11 @@
 import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
-import { EmployeePagination } from '@interface/Employee/EmployeePagination.interface';
-import { TestPaginationData } from '@data/Medical/TestPagination.data';
-import { TestPagination } from '@interface/Medical/TestPagination.interface';
 import moment from 'moment';
-import { Patient } from '@interface/Patient/Patient.interface';
-import { Test } from '@interface/Medical/Test.interface';
 import { PrescriptionPaginationData } from '@data/Medical/Prescription/PrescriptionPagination.data';
 import { PrescriptionPagination } from '@interface/Medical/Prescription/PrescriptionPagination.interface';
 import { Prescription } from '@interface/Medical/Prescription.interface';
 import { Consult } from '@interface/Medical/Consult.interface';
-
+import 'bootstrap';
 export default defineComponent({
     components: {
         PrescriptionModalComponent: require('@component/patient/prescription/prescriptionModal/PrescriptionModalComponent.vue').default

@@ -99,14 +99,6 @@
                                                 <img-component url="/svg/edit.svg"  alt="Editar"></img-component>
                                             </button>
                                         </li>
-                                        <li>
-                                            <button
-                                                @click="showConfirmationAlert(user)"
-                                                class="btn btn-icon btn-circle btn-outline-danger border-0 button-img">
-                                                <img-component url="/svg/userDisable.svg" alt="Borrar" v-if="user.employeestatus_id === 1"></img-component>
-                                                <img-component url="/svg/userEnable.svg" alt="Borrar" v-else></img-component>
-                                            </button>
-                                        </li>
                                     </ul>
                                 </td>
                             </tr>

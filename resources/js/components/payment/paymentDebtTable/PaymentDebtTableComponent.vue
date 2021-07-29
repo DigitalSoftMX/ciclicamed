@@ -10,7 +10,7 @@
                 <div class="card-body text-center pt-sm-30 pb-sm-0  px-25 pb-0">
                     <div class="account-profile">
                         <div class="ap-img w-100 d-flex justify-content-center">
-                            <img :src="patient.photo" :alt="fullName" class="ap-img__main rounded-circle mb-3  wh-120 d-flex bg-opacity-primary" :onerror="`this.src='/svg/person.svg';`">
+                            <img :src="patient.photo" :alt="fullName" class="ap-img__main rounded-circle mb-3  wh-120 d-flex bg-opacity-primary" errorImg="/svg/person.svg">
                         </div>
                         <div class="ap-nameAddress pb-3 pt-1">
                             <h5 class="ap-nameAddress__title">{{fullName}}</h5>
