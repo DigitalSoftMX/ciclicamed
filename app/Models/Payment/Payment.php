@@ -63,7 +63,7 @@ class Payment extends Model
 
     public function medicalConsult()
     {
-        return $this->hasOne(ProductPayment::class, 'consult_created')->orderBy('consult_created', 'desc');
+        return $this->hasOne(ProductPayment::class, 'payment_id')->orderBy('payment_id', 'desc');
     }
 
     public function products()

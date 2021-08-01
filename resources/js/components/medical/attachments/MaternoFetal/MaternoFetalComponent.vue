@@ -19,10 +19,10 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="mfcTab1Panel" role="tabpanel" aria-labelledby="mfcTab1">
-                        <cuestionario-calculo-riesgo-component v-model="formData.cuestionario"></cuestionario-calculo-riesgo-component>
+                        <cuestionario-calculo-riesgo-component v-model="formData.cuestionario" :disabled="disabled"></cuestionario-calculo-riesgo-component>
                     </div>
                     <div class="tab-pane fade" id="mfcTab2Panel" role="tabpanel" aria-labelledby="mfcTab2">
-                        <resultado-calculo-riesgo-component v-model="formData.resultados"></resultado-calculo-riesgo-component>
+                        <resultado-calculo-riesgo-component v-model="formData.resultados" :disabled="disabled"></resultado-calculo-riesgo-component>
                     </div>
                 </div>
             </div>

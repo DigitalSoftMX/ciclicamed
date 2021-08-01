@@ -11,7 +11,8 @@ export const CheckupMom: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'LAB-0061',
@@ -20,7 +21,8 @@ export const CheckupMom: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'LAB-0077',
@@ -29,7 +31,8 @@ export const CheckupMom: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'LAB-0008',
@@ -38,7 +41,8 @@ export const CheckupMom: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'LAB-0025',
@@ -47,7 +51,8 @@ export const CheckupMom: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'LAB-0015',
@@ -56,7 +61,8 @@ export const CheckupMom: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'LAB-0010',
@@ -65,7 +71,8 @@ export const CheckupMom: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'LAB-0060',
@@ -74,6 +81,7 @@ export const CheckupMom: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
 ]

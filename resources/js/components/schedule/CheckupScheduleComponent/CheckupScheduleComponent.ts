@@ -14,6 +14,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { PropType } from 'vue';
 import { ElTimeSelect } from 'element-plus';
+import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors.interface';
 
 export default defineComponent({
     name: 'CheckupScheduleComponent',
@@ -59,7 +60,9 @@ export default defineComponent({
             },
             isCheckupNew: true,
             startTime: [] as String[],
-            finishTime: [] as String[]
+            finishTime: [] as String[],
+            doctorListCopy: [] as Select[][],
+            doctorSelected: [] as Select[],
         }
     },
     computed: {
@@ -139,6 +142,14 @@ export default defineComponent({
             },
             deep: true
         },
+        doctorSelected:
+        {
+            handler()
+            {
+                this.doctorSelected.map((item, index) => this.checkupDataCopy.checkupList[index].doctor_id = item.childID);
+            },
+            deep: true
+        },
         checkupData:
         {
             handler()
@@ -146,6 +157,8 @@ export default defineComponent({
                 this.checkupDataCopy = this.checkupData;
                 this.branchesSelected = this.checkupData.checkupList!.map(item => item.branch_id);
                 this.isCheckupNew = this.checkupData.checkup_id > 0 ? false : true;
+                this.startTime = this.checkupData.checkupList.map(item => moment(item.consult_schedule_start).format('HH:mm'));
+                this.finishTime = this.checkupData.checkupList.map(item => moment(item.consult_schedule_finish).format('HH:mm'));
             },
             deep: true
         },
@@ -224,6 +237,32 @@ export default defineComponent({
             this.checkupDataCopy.checkupList = [];
             this.branchesSelected = [],
             this.isButtonDisabled = true
-        }
+        },
+        getDoctorList(branchID: number, indexID: number): void
+        {
+            axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${branchID}/especialidades/doctores`)
+            .then( response => {
+                var index = 0;
+                const doctorFilter = response.data.filter((list: BranchSpecialtyDoctors) => list.doctors.length > 0);
+                this.doctorListCopy[indexID] = doctorFilter.map(specialty => {
+                    return {
+                        id: index++,
+                        childID: specialty.id,
+                        text: specialty.name,
+                        children: specialty.doctors.map(doctor => {
+                            return {
+                                id: index++,
+                                text: `${doctor.first_name} ${doctor.last_name}`,
+                                childID: doctor.id,
+                                parentID: specialty.id
+                            }
+                        })
+                    }
+                });
+            })
+            .catch(error => {
+                
+            })
+        },
     },
 })

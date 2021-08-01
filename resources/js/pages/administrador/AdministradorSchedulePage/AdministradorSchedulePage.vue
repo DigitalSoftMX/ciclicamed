@@ -14,8 +14,8 @@
                             <div class="mb-25">
                                 <label>Doctor</label>
                                 <v-select :options="doctors"
-                                    :getOptionLabel="item => `${item.employee?.first_name} ${ item.employee?.last_name}`"
-                                    :reduce="item => item.employee?.id" v-model="doctorSelected" />
+                                    :getOptionLabel="item => `${item.first_name} ${ item.last_name}`"
+                                    :reduce="item => item.id" v-model="doctorSelected" />
                             </div>
                         </div>
                     </div>

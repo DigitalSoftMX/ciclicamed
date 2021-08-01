@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserRequest;
 use App\Http\Requests\User\UserUpdatePasswordRequest;
 use App\Http\Requests\User\UserUpdateRequest;
+use App\Models\Employee\Employee;
 use App\Models\Patient\Patient;
 use App\Models\Patient\Preregistration;
 use App\Models\User\User;
@@ -26,9 +27,19 @@ class UserController extends Controller
             $doctors = User::whereHas("roles", function($q) {
                 $q->where("name", "Doctor");
             })->whereHas('employee', function($item) {
-                $item->where('employeestatus_id', 1);
+                $item->where('employeestatus_id', 1)
+                ->orWhere('id', 1)->orWhere('id', 2);
             })->get()->load('employee');
-            return response()->json($doctors);
+
+            $final = [];
+            foreach($doctors as $doctor)
+            {
+                array_push($final, $doctor->employee);
+            }
+            $laboratorio = Employee::findOrFail(1);
+            $imagenologia = Employee::findOrFail(2);
+            array_push($final, $laboratorio, $imagenologia);
+            return response()->json($final);
         }
 
         return response()->json(['errors' => [

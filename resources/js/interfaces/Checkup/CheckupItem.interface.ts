@@ -7,4 +7,5 @@ export interface CheckupItem
     medicalspecialty_id: number;
     consult_schedule_start: string;
     consult_schedule_finish: string;
+    doctor_id: number;
 }

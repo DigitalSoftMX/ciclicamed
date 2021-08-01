@@ -85,7 +85,7 @@ export default defineComponent({
             })
         },
         formatConsultDateTime(dateTime: string) {
-            return moment(dateTime).format('DD/MM/YYYY')
+            return moment(dateTime).format('DD/MM/YYYY HH:mm')
         },
         getInfoConsult(id: number, date: string) {
             this.consultDateSelected = date;

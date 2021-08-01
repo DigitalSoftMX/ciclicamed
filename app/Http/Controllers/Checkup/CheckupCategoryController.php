@@ -120,7 +120,21 @@ class CheckupCategoryController extends Controller
         {
             if($item['medicalconsult_id'] > 0)
             {
+                $doctor_id = 0;
+                if(str_contains($item['code'], 'IMA'))
+                {
+                    $doctor_id = 2;
+                }
+                if(str_contains($item['code'], 'LAB'))
+                {
+                    $doctor_id = 1;
+                }
+                if(str_contains($item['code'], 'CON'))
+                {
+                    $doctor_id = $item['doctor_id'];
+                }
                 $consult = MedicalConsult::findOrFail($item['medicalconsult_id'])->update([
+                    'doctor_id' => $doctor_id,
                     'consult_schedule_start' => Carbon::createFromTimeString($item['consult_schedule_start']),
                     'consult_schedule_finish' => Carbon::createFromTimeString($item['consult_schedule_start']),
                     'branch_id' => $item['branch_id'],
@@ -157,7 +171,19 @@ class CheckupCategoryController extends Controller
 
     private function createCheckupData($request, $item, $checkup, $medicalconsultcategory_id, $medicalspecialty_id)
     {
-        $doctor_id = str_contains($item['code'], 'IMA') ? 2 : 1;
+        $doctor_id = 0;
+        if(str_contains($item['code'], 'IMA'))
+        {
+            $doctor_id = 2;
+        }
+        if(str_contains($item['code'], 'LAB'))
+        {
+            $doctor_id = 1;
+        }
+        if(str_contains($item['code'], 'CON'))
+        {
+            $doctor_id = $item['doctor_id'];
+        }
         $consult_reason = str_contains($item['code'], 'CON') ? $item['name'].' de checkup '.$request['data.name'] : 'Estudio '.$item['name'].' de checkup '.$request['data.name'];
         
         $user = User::findOrFail(Auth::user()->id);
@@ -195,8 +221,18 @@ class CheckupCategoryController extends Controller
         
         if($medicalconsultcategory_id !== 2)
         {
-            $id = intval(MedicalTest::orderBy('id', 'desc')->take(1)->first()->id);
-            $id++;
+            $test = MedicalTest::orderBy('id', 'desc');
+            $id = 0;
+            if($test->get()->isNotEmpty())
+            {
+                $id = intval($test->take(1)->first()->id);
+                $id++;
+            }
+            else
+            {
+                $id = 1;
+            }
+
             $code = "MUE-" . str_pad((int) $id, 3, "0", STR_PAD_LEFT);
             $test = MedicalTest::create([
                 'test_code' => $code,

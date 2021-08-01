@@ -37,7 +37,7 @@ export default defineComponent({
             isSidebarOpen: false,
             doctorSelected: -1,
             doctorSelectedData: UserData,
-            doctors: [] as User[]
+            doctors: [] as Employee[]
         };
     },
     mounted() {
@@ -69,7 +69,7 @@ export default defineComponent({
        },
        getDoctors()
        {
-            axios.get<User[]>(`/usuarios/doctores`)
+            axios.get<Employee[]>(`/usuarios/doctores`)
             .then(response => {
                 this.doctors = response.data;
             })

@@ -11,7 +11,8 @@ export const CheckupConvenioInstitucional: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'IMA-0001',
@@ -20,7 +21,8 @@ export const CheckupConvenioInstitucional: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'LAB-0040',
@@ -29,7 +31,8 @@ export const CheckupConvenioInstitucional: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'CON',
@@ -38,6 +41,7 @@ export const CheckupConvenioInstitucional: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: 10,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
 ]

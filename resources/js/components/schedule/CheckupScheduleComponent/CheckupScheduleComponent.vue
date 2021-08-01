@@ -42,7 +42,12 @@
                                 <div class="card-body">
                                     <div class="mb-25">
                                         <label>Sucursal</label>
-                                        <v-select :options="branches" label="text" :reduce="item => item.childID" v-model="branchesSelected[index]"/>
+                                        <v-select :options="branches" label="text" :reduce="item => item.childID" v-model="branchesSelected[index]" @option:selected="getDoctorList(branchesSelected[index], index)"/>
+                                    </div>
+                                    <div class="form-group mb-25" v-if="checkup.code === 'CON'">
+                                        <label for="chscDoctor">Doctor</label>
+                                        <select-component id="chscDoctor" :data="doctorListCopy[index]" v-model="doctorSelected[index]" firstText='Seleccione un doctor'>
+                                        </select-component>
                                     </div>
                                     <div class="mb-25">
                                         <label>Fecha</label>

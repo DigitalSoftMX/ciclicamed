@@ -260,10 +260,18 @@ class MedicalConsultController extends Controller
                     $paymentID = $product->first()->payment_id;
                     Payment::findOrFail($paymentID)->delete();
 
+                    $consult->update([
+                        'consult_finish_at' => Carbon::now()->setTimezone('America/Mexico_City'),
+                        'medicalconsultstatus_id' => 5
+                    ]);
                     Cookie::queue(Cookie::forget('consult'));
                     return response()->json(true, 200);
                 }
             }
+            $consult->update([
+                'consult_finish_at' => Carbon::now()->setTimezone('America/Mexico_City'),
+                'medicalconsultstatus_id' => 5
+            ]);
             Cookie::queue(Cookie::forget('consult'));
             return response()->json(true, 200);
         }
@@ -547,7 +555,18 @@ class MedicalConsultController extends Controller
                                 'medicalspecialty_id' => $medicalspecialty_id
                             ])->id;
                         }
-                        $lastTest = MedicalTest::orderBy('id', 'desc')->first()->id;
+
+                        $testExists = MedicalTest::orderBy('id', 'desc');
+                        $lastTest = 0;
+                        if($testExists->get()->isNotEmpty())
+                        {
+                            $lastTest = intval($testExists->take(1)->first()->id);
+                            $lastTest++;
+                        }
+                        else
+                        {
+                            $lastTest = 1;
+                        }
                         $testCode ="MUE-" . str_pad((int) $lastTest++, 3, "0", STR_PAD_LEFT);
                         //Si la cita fue creada entonces crea un estudio clinico con la fecha de la cita para tal estudio
                         if($scheduleID >= 1)
@@ -660,7 +679,17 @@ class MedicalConsultController extends Controller
 
             if($medicalconsultcategory_id === 3 || $medicalconsultcategory_id === 4)
             {
-                $lastTest = MedicalTest::orderBy('id', 'desc')->first()->id;
+                $test = MedicalTest::orderBy('id', 'desc');
+                $lastTest = 0;
+                if($test->get()->isNotEmpty())
+                {
+                    $lastTest = intval($test->take(1)->first()->id);
+                    $lastTest++;
+                }
+                else
+                {
+                    $lastTest = 1;
+                }
                 $testCode ="MUE-" . str_pad((int) $lastTest++, 3, "0", STR_PAD_LEFT);
                 $newTest = MedicalTest::create([
                     'test_code' => $testCode,
@@ -747,7 +776,17 @@ class MedicalConsultController extends Controller
 
             if($medicalconsultcategory_id === 3 || $medicalconsultcategory_id === 4)
             {
-                $lastTest = MedicalTest::orderBy('id', 'desc')->first()->id;
+                $test = MedicalTest::orderBy('id', 'desc');
+                $lastTest = 0;
+                if($test->get()->isNotEmpty())
+                {
+                    $lastTest = intval($test->take(1)->first()->id);
+                    $lastTest++;
+                }
+                else
+                {
+                    $lastTest = 1;
+                }
                 $testCode ="MUE-" . str_pad((int) $lastTest++, 3, "0", STR_PAD_LEFT);
                 $newTest = MedicalTest::create([
                     'test_code' => $testCode,

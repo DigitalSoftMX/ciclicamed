@@ -92,7 +92,7 @@ export default defineComponent({
         missingPayment(payment: Payment)
         {
             const debt = payment.debts!.reduce((a, b) => ({...a, total: Number(a.total) + Number(b.total)}), DebtData).total;
-            return (payment.total - debt).toFixed();
+            return (payment.total - debt).toFixed(2);
         },
         showModal(payment: Payment)
         {

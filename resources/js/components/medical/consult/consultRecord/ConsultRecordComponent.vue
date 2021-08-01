@@ -15,7 +15,7 @@
                     <div class="events-wrapper">
                         <div class="events">
                             <ol>
-                                <li v-for="consult in consultList.slice().reverse()" :key="consult.id"><a
+                                <li v-for="consult in consultList.slice().reverse()" :key="`event${consult.id}`"><a
                                         @click="getInfoConsult(consult.id, formatConsultDateTime(consult.consult_schedule_start))"
                                         :data-date="formatConsultDateTime(consult.consult_schedule_start)">{{formatConsultDateTime(consult.consult_schedule_start)}}</a>
                                 </li>
@@ -33,7 +33,7 @@
                 <div class="events-content h-auto m-0">
                     <ol>
                         <li :data-date="formatConsultDateTime(consult.consult_schedule_start)"
-                            v-for="consult in consultList" :key="consult.id" class="container-fluid">
+                            v-for="consult in consultList" :key="`content${consult.id}`" class="container-fluid">
                             <div class="row">
                                 <div class="col-12 col-md-6  mb-25" v-if="followUp.medicalconsult_id !== -1"
                                     @click="showComponent(1)">

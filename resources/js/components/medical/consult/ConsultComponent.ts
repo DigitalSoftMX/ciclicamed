@@ -297,6 +297,7 @@ export default defineComponent({
             .then(response => {
                 this.attachment = response.data;
                 this.setAttachmentData();
+                this.enableAttachmentData = true;
             })
             .catch(error => {
                 this.enableAttachmentData = false;
@@ -391,7 +392,7 @@ export default defineComponent({
                     this.enableAttachmentData = false;
                     break;
                 case 'Doctor':
-                    this.enableAttachmentData = true;
+                    this.enableAttachmentData = false;
                     break;
                 default:
                     this.enableAttachmentData = true;

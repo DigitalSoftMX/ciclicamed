@@ -11,7 +11,8 @@ export const CheckupDiagnosticoPrenatal: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'IMA-0009',
@@ -20,7 +21,8 @@ export const CheckupDiagnosticoPrenatal: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'IMA-0009',
@@ -29,7 +31,8 @@ export const CheckupDiagnosticoPrenatal: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'IMA-0009',
@@ -38,7 +41,8 @@ export const CheckupDiagnosticoPrenatal: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'IMA-0003',
@@ -47,7 +51,8 @@ export const CheckupDiagnosticoPrenatal: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: -1,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
     {
         code: 'CON',
@@ -56,6 +61,7 @@ export const CheckupDiagnosticoPrenatal: CheckupItem[] = [
         medicalconsult_id: -1,
         medicalspecialty_id: 5,
         consult_schedule_start: time,
-        consult_schedule_finish: time
+        consult_schedule_finish: time,
+        doctor_id: 0
     },
 ]

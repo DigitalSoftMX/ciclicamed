@@ -210,7 +210,7 @@ class PaymentController extends Controller
                     PaymentDebt::create([
                         'payment_id' => $id,
                         'description' => 'Primer pago de deuda',
-                        'total' => $request['data']['paymentMethod']['description'],
+                        'total' => $request['data']['debt']['description'],
                         'paymentmethod_id' => $request['data']['paymentMethod']['check'],
                         'credit_card' => $creditCard,
                         'charged_by' => $user['employee']['id'],
@@ -343,7 +343,7 @@ class PaymentController extends Controller
 
     public function getPayment($id)
     {
-        $payment = Payment::findOrFail($id)->load('medicalConsult.consultCreated.doctor', 'paymentMethod', 'patient');
+        $payment = Payment::findOrFail($id)->load('medicalConsult', 'medicalConsult.consultCreated.doctor', 'paymentMethod', 'patient');
         return response()->json($payment);
     }
 

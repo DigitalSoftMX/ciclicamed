@@ -71,9 +71,10 @@ class MedicalTestResultController extends Controller
 
                 //Verifica si el estudio pertenece a un checkup y si es verdadero verifica que todos los estudios esten realizados para cambiar el estado del checkup
                 // a estudios terminados
-                $checkupId = $test->consultScheduled->checkup_id;
-                if($checkupId)
+                
+                if(isset($test->consultScheduled->checkup_id))
                 {
+                    $checkupId = $test->consultScheduled->checkup_id;
                     $checkup = Checkup::findOrFail($checkupId)->test;
                     $missingTest = 0;
                     foreach($checkup as $test)

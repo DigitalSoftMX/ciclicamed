@@ -5,6 +5,7 @@ import { BranchPagination } from '@interface/Branch/BranchPagination.interface';
 import { Branch } from '@interface/Branch/Branch.interface';
 import BranchTableModalComponent from './BranchTableModal/BranchTableModalComponent';
 import { BranchData } from '@data/Branch/Branch.data';
+import 'bootstrap';
 
 export default defineComponent({
     components: {

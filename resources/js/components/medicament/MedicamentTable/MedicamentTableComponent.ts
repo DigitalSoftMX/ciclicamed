@@ -5,6 +5,7 @@ import { MedicamentPaginationData } from '@data/Medical/MedicamentPagination.dat
 import { MedicamentData } from '@data/Medical/Medicament.data';
 import { Medicament } from '@interface/Medical/Medicament.interface';
 import { MedicamentPagination } from '@interface/Medical/MedicamentPagination.interface';
+import 'bootstrap';
 
 export default defineComponent({
     components: {

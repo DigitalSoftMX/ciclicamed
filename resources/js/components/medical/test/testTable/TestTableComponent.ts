@@ -67,7 +67,7 @@ export default defineComponent({
         },
         formatPatientName(test: Test)
         {
-            return `${test.patient!.first_name} ${test.patient!.last_name}`;
+            return test.patient ? `${test.patient!.first_name} ${test.patient!.last_name}` : '';
         },
         getUserData(page: number)
         {

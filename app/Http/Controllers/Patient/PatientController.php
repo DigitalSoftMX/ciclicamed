@@ -158,7 +158,7 @@ class PatientController extends Controller
                 'cellphone' => $request->input('cellphone'),
                 'photo' => $photo,
             ]);
-            User::findOrFail($id)->update([
+            User::findOrFail($patient['user']['id'])->update([
                 'email' => $request->input('email')
             ]);
             return response()->json($patient->load('user'));
