@@ -123,12 +123,30 @@ export default defineComponent({
             var title = 'Consulta';
             var borderColor = '#60269E';
             var backgroundColor = '#60269E';
-            if(this.role.includes('Paciente' || 'Doctor' || 'Laboratorio' || 'Imagenología'))
+            switch(this.role)
             {
-                title = this.getScheduleTitle(schedule.type?.name ?? '', name);
-                borderColor = schedule.status?.color!;
-                backgroundColor = schedule.status?.color!;
+                case 'Paciente':
+                    title = 'Consulta';
+                    borderColor = '#60269E';
+                    backgroundColor = '#60269E';
+                    break;
+                case 'Doctor':
+                    title = this.getScheduleTitle(schedule.type?.name ?? '', name);
+                    borderColor = !schedule.status?.color ? '#60269E' : schedule.status!.color;
+                    backgroundColor = !schedule.status?.color ? '#60269E' : schedule.status!.color!;
+                    break;
+                default:
+                    title = this.getScheduleTitle(schedule.type?.name ?? '', name);
+                    borderColor = schedule.status!.color!;
+                    backgroundColor = schedule.status!.color!;
+                
             }
+            // if(this.role !== 'Paciente' || )
+            // {
+            //     title = this.getScheduleTitle(schedule.type?.name ?? '', name);
+            //     borderColor = schedule.status?.color!;
+            //     backgroundColor = schedule.status?.color!;
+            // }
             calendar.getApi().addEvent({
                 id: schedule.id!.toString(),
                 title: title,

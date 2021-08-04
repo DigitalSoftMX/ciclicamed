@@ -17,6 +17,7 @@
     "/js/AsistenteDashboardPage.js": "/js/AsistenteDashboardPage.js",
     "/js/AsistenteProductPage.js": "/js/AsistenteProductPage.js",
     "/js/AsistenteProfilePage.js": "/js/AsistenteProfilePage.js",
+    "/js/AsistenteTestPage.js": "/js/AsistenteTestPage.js",
     "/js/CajaDashboardPage.js": "/js/CajaDashboardPage.js",
     "/js/CajaProfilePage.js": "/js/CajaProfilePage.js",
     "/js/CheckupCheckupPage.js": "/js/CheckupCheckupPage.js",

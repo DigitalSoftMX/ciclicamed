@@ -22,7 +22,7 @@
     <div class="row mx-0" v-bind:class="{'justify-content-center': prescriptionsData.data.length === 0 }">
         <div class="text-center" v-if="prescriptionsData.data.length === 0">
             <img-component url="/svg/empty.svg" alt="Vacío" cssClass="ml-4 w-25"></img-component>
-            <h5 class="fw-500 mt-5 display-4">No se encontraron recetas</h5>
+            <h5 class="fw-500 mt-5 display-4">No se encontraron estudios</h5>
         </div>
 
         <div class="col-12 col-md-6 col-lg-4" v-for="prescription in prescriptionsData.data" :key="prescription" v-else>

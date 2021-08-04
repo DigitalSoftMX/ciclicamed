@@ -68,8 +68,8 @@
                         <div class="mb-25">
                             <label>Seleccionar doctor</label>
                             <v-select :options="doctors"
-                                :getOptionLabel="item => `${item.employee?.first_name} ${ item.employee?.last_name}`"
-                                :reduce="item => item.employee?.id" v-model="doctorSelected" />
+                                :getOptionLabel="item => `${item.first_name} ${ item.last_name}`"
+                                :reduce="item => item.id" v-model="doctorSelected" />
                         </div>
                         <div class="mb-25">
                             <label>Seleccionar rango de fecha</label>
@@ -78,7 +78,7 @@
                             </el-date-picker>
                         </div>
                         <chart-component
-                            :title="`${this.doctors.find(item => item.id === this.doctorSelected)?.employee?.first_name} ${this.doctors.find(item => item.id === this.doctorSelected)?.employee?.last_name}`"
+                            :title="`${this.doctors.find(item => item.id === this.doctorSelected)?.first_name} ${this.doctors.find(item => item.id === this.doctorSelected)?.last_name}`"
                             :data="doctorChart" :noShadow="true" :id="2"></chart-component>
                     </div>
                 </div>

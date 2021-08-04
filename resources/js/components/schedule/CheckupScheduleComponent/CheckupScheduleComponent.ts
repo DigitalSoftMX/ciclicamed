@@ -159,6 +159,12 @@ export default defineComponent({
                 this.isCheckupNew = this.checkupData.checkup_id > 0 ? false : true;
                 this.startTime = this.checkupData.checkupList.map(item => moment(item.consult_schedule_start).format('HH:mm'));
                 this.finishTime = this.checkupData.checkupList.map(item => moment(item.consult_schedule_finish).format('HH:mm'));
+                this.checkupDataCopy.checkupList.map((item, index) => {
+                    if(item.branch_id > 0 && item.code.includes('CON'))
+                    {
+                        this.getDoctorList(item.branch_id, index)
+                    }
+                })
             },
             deep: true
         },

@@ -26,4 +26,6 @@ export interface Schedule
     type?: ScheduleType;
     branch?: Branch;
     product_id: number;
+    assistant_start_at?: string;
+    assistant_finish_at?: string;
 }

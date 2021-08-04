@@ -8,6 +8,9 @@
     @case('Enfermera')
         <nurse-test-page :nurse="{{ json_encode($user) }}" role="Enfermera"></nurse-test-page>
         @break
+    @case('Asistente')
+        <asistente-test-page :nurse="{{ json_encode($user) }}" role="Enfermera"></asistente-test-page>
+        @break
     @case('Imagenologia')
         <imagenologia-test-page :imagenologia="{{ json_encode($user) }}" role="Imagenologia"></imagenologia-test-page>
         @break
@@ -25,6 +28,9 @@
         @break
     @case('Enfermera')
         <script src="{{ asset('js/NurseTestPage.js') }}"></script>
+        @break
+    @case('Asistente')
+        <script src="{{ asset('js/AsistenteTestPage.js') }}"></script>
         @break
     @case('Imagenologia')
         <script src="{{ asset('js/ImagenologiaTestPage.js') }}"></script>

@@ -41,11 +41,13 @@
                     <label>Ginecológico</label>
                     <div class="row mx-0">
                         <div class="col-12 col-md-7 mb-25 mb-md-0">
+                            <label for="hfcCancerGinecologico">Edad de aparición</label>
                             <textarea type="text" class="form-control" :disabled="disabled" id="hfcCancerGinecologico"
                                 v-model="formData.cancer.ginecologico.description"
                                 placeholder="Ginecológico"></textarea>
                         </div>
                         <div class="col-12 col-md-5">
+                            <label for="hfcCancerGinecologicoEdad">Edad de aparición</label>
                             <input type="number" class="form-control" :disabled="disabled" id="hfcCancerGinecologicoEdad"
                                 v-model="formData.cancer.ginecologico.age"
                                 placeholder="Edad de aparición">

@@ -34,7 +34,7 @@ mix.js('resources/js/app.ts', 'public/js')
     .js('resources/js/load/asistente/AsistenteDashboardPage.ts', 'public/js')
     .js('resources/js/load/asistente/AsistenteProductPage.ts', 'public/js')
     .js('resources/js/load/asistente/AsistenteProfilePage.ts', 'public/js')
-
+    .js('resources/js/load/asistente/AsistenteTestPage.ts', 'public/js')
     //Caja
     .js('resources/js/load/caja/CajaDashboardPage.ts', 'public/js')
     .js('resources/js/load/caja/CajaProfilePage.ts', 'public/js')

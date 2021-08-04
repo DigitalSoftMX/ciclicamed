@@ -40,12 +40,20 @@ export default defineComponent({
         };
     },
     computed: {
+        scheduleStatus(): string
+        {
+            if(this.schedule.status!.name === 'Confirmado')
+            {
+                return this.schedule.assistant_start_at! ? 'Paciente en sucursal' : this.schedule.status!.name;
+            }
+            return this.schedule.status!.name;
+        },
         isAssistantOptionEnabled(): boolean
         {
             switch(this.role)
             {
                 case 'Asistente':
-                    return moment().isSame(moment(this.schedule.consult_schedule_start), 'day') && !this.schedule.nurse_start_at;
+                    return moment().isSame(moment(this.schedule.consult_schedule_start), 'day') && this.schedule.status!.name === 'Confirmado' && !this.schedule.assistant_start_at;
                 case 'Administrador':
                     return true;
                 default:
@@ -87,9 +95,9 @@ export default defineComponent({
                 case 'Doctor':
                     return this.isStartScheduleEnabled;
                 case 'Asistente' :
-                    return this.isConfirmScheduleEnabled;
+                    return this.isConfirmScheduleEnabled || this.isAssistantOptionEnabled;
                 case 'Enfermera':
-                    return this.isStartScheduleEnabled && !this.schedule.nurse_finish_at;
+                    return this.isStartScheduleEnabled;
                 case 'Imagenologia':
                     return this.isStartScheduleEnabled;
                 case 'Laboratorio':
@@ -105,9 +113,14 @@ export default defineComponent({
             switch(this.role)
             {
                 case 'Doctor':
-                    return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
+                    if(this.employeeID === this.schedule.doctor_id)
+                    {
+                        var minutes = moment(this.schedule.consult_schedule_start).subtract(30, 'minutes');
+                        return moment().isSameOrAfter(minutes) && this.schedule.status!.name !== 'Finalizado';
+                    }
+                    return false;
                 case 'Enfermera':
-                    return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
+                    return this.schedule.assistant_start_at && !this.schedule.nurse_finish_at ? true : false;
                 // case 'Imagenologia':
                 //     return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
                 // case 'Laboratorio':
@@ -123,7 +136,7 @@ export default defineComponent({
             switch(this.role)
             {
                 case 'Asistente':
-                    return this.schedule.status!.name === 'Agendado' ? true : false;
+                    return this.schedule.status!.name == 'Agendado' ? true : false;
                 case 'Administrador':
                     return true;
                 default:

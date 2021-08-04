@@ -18,7 +18,7 @@ export default defineComponent({
         PatientTestFileModalComponent: require('@component/patient/test/testFileModal/PatientTestFileModalComponent.vue').default
     },
     props: {
-        patientID: {
+        patient: {
             type: Number,
             default: -1
         }
@@ -84,7 +84,7 @@ export default defineComponent({
             if(page >= 1 && page <= this.prescriptionsData.pagination.last_page && page !== this.paginationActive)
             {
                 this.paginationActive = page;
-                axios.get<ConsultPagination>(`/pacientes/${this.patientID}/estudios?page=${this.paginationActive}`)
+                axios.get<ConsultPagination>(`/pacientes/${this.patient}/estudios?page=${this.paginationActive}`)
                 .then(response => {
                     this.prescriptionsData = response.data;
                     this.prescriptionsData.data = response.data.data.filter(item => item.test_scheduled?.order);
@@ -103,7 +103,7 @@ export default defineComponent({
             {
                 this.loading = true;
                 const queryPagination = this.query === '' ? this.paginationActive : 0;
-                axios.get<ConsultPagination>(`/pacientes/${this.patientID}/estudios`, {
+                axios.get<ConsultPagination>(`/pacientes/${this.patient}/estudios`, {
                     params: {
                         page: queryPagination,
                         query: this.query

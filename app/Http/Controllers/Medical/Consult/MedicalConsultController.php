@@ -811,6 +811,56 @@ class MedicalConsultController extends Controller
 
     public function updateSchedule(Request $request, $id)
     {
+        $messages = [
+            'data.patient_id.min' => 'Debe de seleccionar un paciente',
+            'data.doctor_id.min' => 'Debe de seleccionar un doctor',
+            'data.consult_reason.required' => 'Debe de ingresar el motivo de la cita',
+            'data.consult_schedule_start' => 'Debe de selecionar la hora de inicio de la cita',
+            'data.consult_schedule_finish' => 'Debe de selecionar la hora de inicio de la cita',
+            'data.branch_id.min' => 'Debe de seleccionar una sucursal',
+        ];
+
+        $rules =[
+            'data.patient_id' => 'required|numeric|min:1',
+            'data.doctor_id' => 'required|numeric|min:1',
+            'data.consult_reason' => 'required|max:255',
+            'data.consult_schedule_start' => 'required',
+            'data.consult_schedule_finish' => 'required',
+            'data.branch_id' => 'required|numeric|min:1'
+        ];
+
+        request()->validate($rules, $messages);
+
+        $messageTest = [
+            'data.product_id.min' => 'Debe de seleccionar un estudio',
+        ];
+
+        $ruleTest =[
+            'data.product_id' => 'required|numeric|min:1',
+        ];
+
+        $medicalspecialty_id = 0;
+        $medicalconsultcategory_id = 0;
+        $doctor = intval($request->input('data.doctor_id'));
+        $firstConsult = MedicalConsult::where('patient_id', $request->input('data.patient_id'))->where('medicalconsultcategory_id', 1)->get();
+        switch($doctor)
+        {
+            case 1:
+                request()->validate($ruleTest, $messageTest);
+                $medicalspecialty_id = 11;
+                $medicalconsultcategory_id = 4;
+                break;
+            case 2:
+                request()->validate($ruleTest, $messageTest);
+                $medicalspecialty_id = 12;
+                $medicalconsultcategory_id = 3;
+                break;
+            default:
+                $medicalspecialty_id = intval($request->input('data.medicalspecialty_id'));
+                $medicalconsultcategory_id = $firstConsult->isEmpty() ? 1 : 2;
+                break;
+        }
+
         $user = User::findOrFail(Auth::user()->id)->hasRole(['Paciente', 'Laboratorio', 'Imagenología']);
         if(!$user)
         {
@@ -818,11 +868,11 @@ class MedicalConsultController extends Controller
             $consult->update([
                 'patient_id' => $request->input('data.patient_id'),
                 'doctor_id' => $request->input('data.doctor_id'),
-                'medicalconsultcategory_id' => $request->input('data.medicalconsultcategory_id'),
                 'consult_reason' => $request->input('data.consult_reason'),
                 'consult_schedule_start' => Carbon::parse($request->input('data.consult_schedule_start')),
                 'consult_schedule_finish' => Carbon::parse($request->input('data.consult_schedule_finish')),
-                'medicalspecialty_id' => $request->input('data.medicalspecialty_id'),
+                'medicalspecialty_id' => $medicalspecialty_id,
+                'medicalconsultcategory_id' => $medicalconsultcategory_id,
                 'branch_id' => $request->input('data.branch_id'),
                 'medicalconsultstatus_id' => 1,
             ]);

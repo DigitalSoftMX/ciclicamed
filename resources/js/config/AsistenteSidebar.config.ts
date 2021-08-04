@@ -12,6 +12,11 @@ export const AsistenteSidebarConfig: Sidebar[] = [
         url: '/app/productos'
     },
     {
+        icon: '/svg/medicalTest.svg',
+        name: 'Estudios clínicos',
+        url: '/app/estudios'
+    },
+    {
         icon: '/svg/profile.svg',
         name: 'Perfil',
         url: '/app/perfil'

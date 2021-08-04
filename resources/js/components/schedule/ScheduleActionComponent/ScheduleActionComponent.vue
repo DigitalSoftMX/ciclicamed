@@ -21,7 +21,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" v-bind:class="{'rounded-0': showScheduleOption}">
                     <ul class="e-info-list">
                         <li>
                             <img-component url="/svg/calendar.svg" alt="Calendario"></img-component>
@@ -53,7 +53,7 @@
                                 <span class="list-meta"> {{ schedule.doctor?.first_name }} {{schedule.doctor?.last_name}}</span>
                             </span>
                         </li>
-                        <li v-if="role !== 'Paciente'">
+                        <li v-if="role !== 'Paciente' && schedule.patient">
                             <img-component url="/svg/person.svg" alt="Sucursal"></img-component>
                             <span class="list-line">
                                 <span class="list-label">Paciente: </span>
@@ -64,7 +64,7 @@
                             <img-component url="/svg/alert.svg" alt="Sucursal"></img-component>
                             <span class="list-line">
                                 <span class="list-label">Estado: </span>
-                                <span class="list-meta"> {{ schedule.status?.name }}</span>
+                                <span class="list-meta"> {{ scheduleStatus }}</span>
                             </span>
                         </li>
                         <li v-if="schedule.consult_reason">
@@ -75,7 +75,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="modal-footer bg-white" v-if="showScheduleOption">
+                <div class="modal-footer bg-white schedule-radius" v-if="showScheduleOption">
                     <div v-if="isAssistantOptionEnabled">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startAssistance">Marca asistencia</button>
                     </div>

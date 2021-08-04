@@ -37,7 +37,7 @@ export default defineComponent({
             sidebarItems: AdministradorSidebarConfig,
             isSidebarOpen: false,
             citaChart: [] as ChartAdmin[],
-            doctors: [] as User[],
+            doctors: [] as Employee[],
 
             shortcuts: TimeSelectConfig,
             citaDate: [
@@ -374,6 +374,7 @@ export default defineComponent({
                         }
                     })
                 ]
+                console.log('ada')
             })
             .catch(error => {
                 
@@ -419,7 +420,7 @@ export default defineComponent({
         },
         getDoctors()
         {
-            axios.get<User[]>(`/usuarios/doctores`)
+            axios.get<Employee[]>(`/usuarios/doctores`)
             .then(response => {
                 this.doctors = response.data;
             })
@@ -439,7 +440,7 @@ export default defineComponent({
                 }
             })
             .then(response => {
-                const doctor = `${this.doctors.find(item => item.id === this.doctorSelected)?.employee!.first_name} ${this.doctors.find(item => item.id === this.doctorSelected)?.employee!.last_name}`;
+                const doctor = `${this.doctors.find(item => item.id === this.doctorSelected)!.first_name} ${this.doctors.find(item => item.id === this.doctorSelected)!.last_name}`;
                 this.doctorChart = [
                     { name: doctor, pl: Number(response.data)},
                 ]

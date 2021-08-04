@@ -22,10 +22,6 @@
                         <div id="example1" class="pdf"></div>
                     </div>
                     <div class="mt-25">
-                        <div class="mb-25" v-if="componentEnabled === 'cuestionarioMastografia'">
-                            <cuestionario-mastografia-component :disabled="true" v-model="cuestionarioMastografia">
-                            </cuestionario-mastografia-component>
-                        </div>
                         <div class="mb-25"
                             v-if="componentEnabled === 'interpretacionUltrasonidos' || componentEnabled === 'cuestionarioMastografia'">
                             <interpretacion-ultrasonidos-component :disabled="true" v-model="interpretacionUltrasonidos">

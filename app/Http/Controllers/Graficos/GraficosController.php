@@ -145,7 +145,7 @@ class GraficosController extends Controller
         $start = Carbon::parse($request['date'][0])->toDateString();
         $finish = Carbon::parse($request['date'][1])->toDateString();
         $especialidad = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 3)->get()->count();
-        $doctores = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 3)->select('created_by', DB::raw('count(*) as total'))->groupBy('created_by')->orderBy('total', 'desc')->get()->load('createdBy:id,first_name,last_name')->take(5);
+        $doctores = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 3)->where('created_by', '<>', null)->select('created_by', DB::raw('count(*) as total'))->groupBy('created_by')->orderBy('total', 'desc')->get()->load('createdBy:id,first_name,last_name')->take(5);
         return response()->json([
             'total' => $especialidad,
             'doctores' => $doctores
@@ -157,7 +157,7 @@ class GraficosController extends Controller
         $start = Carbon::parse($request['date'][0])->toDateString();
         $finish = Carbon::parse($request['date'][1])->toDateString();
         $especialidad = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 4)->get()->count();
-        $doctores = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 4)->select('created_by', DB::raw('count(*) as total'))->groupBy('created_by')->orderBy('total', 'desc')->get()->load('createdBy:id,first_name,last_name')->take(5);
+        $doctores = MedicalConsult::whereBetween('consult_schedule_start', [$start, $finish])->where('medicalconsultcategory_id', 4)->where('created_by', '<>', null)->select('created_by', DB::raw('count(*) as total'))->groupBy('created_by')->orderBy('total', 'desc')->get()->load('createdBy:id,first_name,last_name')->take(5);
         return response()->json([
             'total' => $especialidad,
             'doctores' => $doctores
