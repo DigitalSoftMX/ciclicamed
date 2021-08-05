@@ -78,7 +78,7 @@ export default defineComponent({
             branchID : 0,
             errors: [],
             paymentData: PaymentData,
-            newPaymentID: 0
+            newPaymentID: 0,
         };
     },
     mounted()

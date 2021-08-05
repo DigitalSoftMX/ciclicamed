@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="modal-body rounded-0">
-                    <div class="card">
+                    <div class="card shadow-none">
                         <div class="card-header">
                             <h4>Producto</h4>
                         </div>
@@ -60,10 +60,10 @@
                         </div>
                     </div>
 
-                    <div class="card mt-25" v-if="productCategory === 'Imagenología' || productCategory === 'Laboratorio'">
+                    <div class="card mt-25 shadow-none" v-if="productCategory === 'Imagenología' || productCategory === 'Laboratorio'">
                         <div class="card-header">
                             <h4>Anotaciones</h4>
-                            <button class="btn btn-icon btn-primary btn-circle button-size" @click="addTestOrder">
+                            <button class="btn btn-icon btn-primary btn-circle button-size button-rounded" @click="addTestOrder">
                                 <img-component url="/svg/new.svg" alt="Borrar" cssClass="svg-white"></img-component>
                             </button>
                         </div>
@@ -72,7 +72,7 @@
                                 class="card mb-25 shadow-none border-0">
                                 <div class="card-header p-0 border-0">
                                     <textarea v-model="orderAnnotationsCopy[index]" class="w-100"></textarea>
-                                    <button class="btn btn-icon btn-primary btn-circle button-size"
+                                    <button class="btn btn-icon btn-primary btn-circle button-size button-rounded"
                                         @click="deleteTestOrder(index)">
                                         <img-component url="/svg/delete.svg" alt="Borrar" cssClass="svg-white">
                                         </img-component>
@@ -100,3 +100,12 @@
 </template>
 
 <script lang="ts" src="./ProductComponent.ts"></script>
+
+<style scoped>
+    .button-rounded
+    {
+        height: 42px;
+        width: 42px;
+        margin-left: 8px;
+    }
+</style>
