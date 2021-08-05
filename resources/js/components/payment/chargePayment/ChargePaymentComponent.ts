@@ -122,6 +122,25 @@ export default defineComponent({
         }
     },
     watch: {
+        consult:
+        {
+            handler()
+            {
+                if(this.products.length === 0)
+                {
+                    switch(this.consult.medicalconsultcategory_id)
+                    {
+                        case 1:
+                            this.getPrimeraCitaProduct();
+                            break;
+                        case 2:
+                            this.getCitaSubsecuenteProduct();
+                            break;
+                    }
+                }
+            },
+            deep: true
+        },
         products:
         {
             handler()
@@ -137,6 +156,24 @@ export default defineComponent({
         }
     },
     methods: {
+        getPrimeraCitaProduct(): void
+        {
+            axios.get <Product> (`/productos/primera-consulta`)
+            .then(response => {
+                this.productSelectedList.push(response.data);
+            })
+            .catch(error => {
+            })
+        },
+        getCitaSubsecuenteProduct(): void
+        {
+            axios.get <Product> (`/productos/cita-subsecuente`)
+            .then(response => {
+                this.productSelectedList.push(response.data);
+            })
+            .catch(error => {
+            })
+        },
         getBranchesList(): void
         {
             axios.get<Branch[]>(`/sucursales`)

@@ -16,6 +16,32 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+    public function getCitaSubsecuente()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole(['Administrador', 'Doctor']))
+        {
+            $product = Product::where('product_code', 'CON-0014')->where('productstatus_id', 1)->orderBy('created_at', 'desc')->first();
+            return response()->json($product);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
+    public function getPrimerConsulta()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole(['Administrador', 'Doctor']))
+        {
+            $product = Product::where('product_code', 'CON-0011')->where('productstatus_id', 1)->orderBy('created_at', 'desc')->first();
+            return response()->json($product);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function updateMedicament(MedicamentRequest $request, $id)
     {
         $user = User::findOrFail(Auth::user()->id);

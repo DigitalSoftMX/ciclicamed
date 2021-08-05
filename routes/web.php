@@ -185,6 +185,8 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/medicamentos/admin', [ProductController::class, 'getAllMedicaments'])->name('productos.allMedicamentos');
         Route::post('/medicamentos/{id}', [ProductController::class, 'updateMedicament'])->name('productos.updateMedicament');
         Route::post('/medicamentos', [ProductController::class, 'createMedicament'])->name('productos.createMedicament');
+        Route::get('/primera-consulta', [ProductController::class, 'getPrimerConsulta'])->name('productos.primerConsulta');
+        Route::get('/cita-subsecuente', [ProductController::class, 'getCitaSubsecuente'])->name('productos.citaSubsecuente');
     });
 
     //Estudios
