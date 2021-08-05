@@ -152,7 +152,7 @@ class DatabaseSeeder extends Seeder
         //     $user->assignRole('Administrador');
         // });;
         // EmployeeStatus::factory(2)->create();
-        // Employee::factory(3)->create();
+        // Employee::factory(1)->create();
         // MedicalSpecialty::factory(13)->create();
         // CheckupStatus::factory(5)->create();
         // CheckupCategory::factory(6)->create();
