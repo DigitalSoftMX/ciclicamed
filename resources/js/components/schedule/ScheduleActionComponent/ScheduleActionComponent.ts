@@ -116,7 +116,7 @@ export default defineComponent({
                     if(this.employeeID === this.schedule.doctor_id)
                     {
                         var minutes = moment(this.schedule.consult_schedule_start).subtract(30, 'minutes');
-                        return moment().isSameOrAfter(minutes) && this.schedule.status!.name !== 'Finalizado';
+                        return moment().isSameOrAfter(minutes) && this.schedule.status!.name === 'En consulta';
                     }
                     return false;
                 case 'Enfermera':

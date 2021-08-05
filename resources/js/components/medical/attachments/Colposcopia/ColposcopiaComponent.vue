@@ -184,7 +184,7 @@
                 <div id="ccVaginoscopia" class="atbd-collapse-item__body collapse px-0 py-4">
                     <div class="col-12 row mx-0 align-items-center">
                         <div class="card-single col-12 mb-4">
-                            <div class="card card-default card-md bg-white">
+                            <div class="card shadow-none">
                                 <div class="card-header">
                                     <h6>Leucorrea</h6>
                                     <div class="custom-control custom-switch switch-primary switch-md ">
@@ -194,7 +194,7 @@
                                         <label class="custom-control-label" for="ccLeucorrea"></label>
                                     </div>
                                 </div>
-                                <div class="card-body bg-normal" v-show="formData.vaginoscopia.leucorrea.check">
+                                <div class="card-body" v-show="formData.vaginoscopia.leucorrea.check">
                                     <label for="ccLeucorreaDescription">Características</label>
                                     <textarea class="form-control form-control-lg" id="ccLeucorreaDescription" v-model="formData.vaginoscopia.leucorrea.description" :disabled="disabled"></textarea>
                                 </div>

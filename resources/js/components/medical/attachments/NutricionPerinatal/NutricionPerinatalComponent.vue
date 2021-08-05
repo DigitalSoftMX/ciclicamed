@@ -1268,15 +1268,15 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">Fecha</th>
-                                    <td><input class="form-control form-control-lg" type="date"
+                                    <td><input class="form-control form-control-lg" type="date" id="nutpecConsulta1"
                                             v-model="formData.antropometria.consulta1.fecha"></td>
-                                    <td><input class="form-control form-control-lg" type="date"
+                                    <td><input class="form-control form-control-lg" type="date" id="nutpecConsulta2"
                                             v-model="formData.antropometria.consulta2.fecha"></td>
-                                    <td><input class="form-control form-control-lg" type="date"
+                                    <td><input class="form-control form-control-lg" type="date" id="nutpecConsulta3"
                                             v-model="formData.antropometria.consulta3.fecha"></td>
-                                    <td><input class="form-control form-control-lg" type="date"
+                                    <td><input class="form-control form-control-lg" type="date" id="nutpecConsulta4"
                                             v-model="formData.antropometria.consulta4.fecha"></td>
-                                    <td><input class="form-control form-control-lg" type="date"
+                                    <td><input class="form-control form-control-lg" type="date" id="nutpecConsulta5"
                                             v-model="formData.antropometria.consulta5.fecha"></td>
                                 </tr>
                                 <tr>

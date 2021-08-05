@@ -1,5 +1,6 @@
 import { BiologiaReproduccion } from "@interface/Medical/Attachtments/BiologiaReproduccion.interface";
 import { EstimulacionData } from "./Estimulacion.data";
+import cloneDeep from "lodash/cloneDeep"
 
 export const BiologiaReproduccionData: BiologiaReproduccion = {
     biologiaReproduccion: {
@@ -46,21 +47,21 @@ export const BiologiaReproduccionData: BiologiaReproduccion = {
         resultados: '',
         observaciones: '',
         estimulacion: {
-            estimulacion1: EstimulacionData,
-            estimulacion2: EstimulacionData,
-            estimulacion3: EstimulacionData,
-            estimulacion4: EstimulacionData,
-            estimulacion5: EstimulacionData,
-            estimulacion6: EstimulacionData,
-            estimulacion7: EstimulacionData,
-            estimulacion8: EstimulacionData,
-            estimulacion9: EstimulacionData,
-            estimulacion10: EstimulacionData,
-            estimulacion11: EstimulacionData,
-            estimulacion12: EstimulacionData,
-            estimulacion13: EstimulacionData,
-            estimulacion14: EstimulacionData,
-            estimulacion15: EstimulacionData,
+            estimulacion1: cloneDeep(EstimulacionData),
+            estimulacion2: cloneDeep(EstimulacionData),
+            estimulacion3: cloneDeep(EstimulacionData),
+            estimulacion4: cloneDeep(EstimulacionData),
+            estimulacion5: cloneDeep(EstimulacionData),
+            estimulacion6: cloneDeep(EstimulacionData),
+            estimulacion7: cloneDeep(EstimulacionData),
+            estimulacion8: cloneDeep(EstimulacionData),
+            estimulacion9: cloneDeep(EstimulacionData),
+            estimulacion10: cloneDeep(EstimulacionData),
+            estimulacion11: cloneDeep(EstimulacionData),
+            estimulacion12: cloneDeep(EstimulacionData),
+            estimulacion13: cloneDeep(EstimulacionData),
+            estimulacion14: cloneDeep(EstimulacionData),
+            estimulacion15: cloneDeep(EstimulacionData),
         }
     }
 }

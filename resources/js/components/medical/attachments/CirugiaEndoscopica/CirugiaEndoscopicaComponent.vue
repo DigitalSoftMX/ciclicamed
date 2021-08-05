@@ -4,7 +4,7 @@
             <h6>Cirugía endoscópica</h6>
         </div>
         <div class="card-body row mx-0 atbd-collapse atbd-collapse-custom">
-            <div class="col-12 mb-25 card card-default card-md p-0 rounded border">
+            <div class="col-12 mb-25 card shadow-none p-0 rounded border">
                 <div class="atbd-collapse-item__header active">
                     <a class="item-link" data-toggle="collapse" data-target="#cecCervix" aria-expanded="true"
                         aria-controls="cecCervix">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 mb-25 card card-default card-md p-0 rounded border">
+            <div class="col-12 mb-25 card shadow-none p-0 rounded border">
                 <div class="atbd-collapse-item__header active">
                     <a class="item-link" data-toggle="collapse" data-target="#cecUtero" aria-expanded="true"
                         aria-controls="cecUtero">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 mb-25 card card-default card-md p-0 rounded border">
+            <div class="col-12 mb-25 card shadow-none p-0 rounded border">
                 <div class="atbd-collapse-item__header active">
                     <a class="item-link" data-toggle="collapse" data-target="#cecCavidadUterina" aria-expanded="true"
                         aria-controls="cecCavidadUterina">
@@ -122,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 mb-25 card card-default card-md p-0 rounded border">
+            <div class="col-12 mb-25 card shadow-none p-0 rounded border">
                 <div class="atbd-collapse-item__header active">
                     <a class="item-link" data-toggle="collapse" data-target="#cecEndometrio" aria-expanded="true"
                         aria-controls="cecEndometrio">
@@ -161,7 +161,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 mb-25 card card-default card-md p-0 rounded border">
+            <div class="col-12 mb-25 card shadow-none p-0 rounded border">
                 <div class="atbd-collapse-item__header active">
                     <a class="item-link" data-toggle="collapse" data-target="#cecOstium" aria-expanded="true"
                         aria-controls="cecOstium">
@@ -171,7 +171,7 @@
                 </div>
                 <div :disabled="disabled" id="cecOstium" class="atbd-collapse-item__body collapse card-body row mx-0">
                     <div class="col-12 mb-25">
-                        <div class="card card-default card-md bg-white">
+                        <div class="card shadow-none">
                             <div class="card-header">
                                 <h6>Derecho</h6>
                                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -181,14 +181,14 @@
                                     <label class="custom-control-label" for="cecDerechoChecked"></label>
                                 </div>
                             </div>
-                            <div class="card-body bg-normal" v-show="formData.ostium.derecho.checked">
+                            <div class="card-body" v-show="formData.ostium.derecho.checked">
                                 <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecDerechoDescription"
                                     v-model="formData.ostium.derecho.description"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 mb-25">
-                        <div class="card card-default card-md bg-white">
+                        <div class="card shadow-none">
                             <div class="card-header">
                                 <h6>Izquierdo</h6>
                                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -198,7 +198,7 @@
                                     <label class="custom-control-label" for="cecIzquierdoChecked"></label>
                                 </div>
                             </div>
-                            <div class="card-body bg-normal" v-show="formData.ostium.izquierdo.checked">
+                            <div class="card-body" v-show="formData.ostium.izquierdo.checked">
                                 <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecIzquierdoDescription"
                                     v-model="formData.ostium.izquierdo.description"></textarea>
                             </div>
@@ -234,7 +234,7 @@
                 </div>
             </div>
 
-            <div class="col-12 mb-25 card card-default card-md p-0 rounded border">
+            <div class="col-12 mb-25 card shadow-none p-0 rounded border">
                 <div class="atbd-collapse-item__header active">
                     <a class="item-link" data-toggle="collapse" data-target="#cecNotas" aria-expanded="true"
                         aria-controls="cecNotas">

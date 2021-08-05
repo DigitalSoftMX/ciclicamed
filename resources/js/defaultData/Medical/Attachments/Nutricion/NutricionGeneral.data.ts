@@ -10,6 +10,7 @@ import { IndicadoresBioquimicosData } from "./options/IndicadoresBioquimicos.dat
 import { IndicadoresDieteticosData } from "./options/IndicadoresDieteticos.data"
 import { PesoData } from "./options/Peso.data"
 import { RecordatorioNutricionData } from "./options/RecordatorioNutricion.data"
+import cloneDeep from "lodash/cloneDeep"
 
 export const NutricionGeneralData: NutricionGeneral = {
     peso: PesoData,
@@ -26,15 +27,15 @@ export const NutricionGeneralData: NutricionGeneral = {
         pesoMaximo: 0,
         pesoIdeal: 0,
         indicador: '',
-        sem1: AntropometricosGeneralData,
-        sem2: AntropometricosGeneralData,
-        sem3: AntropometricosGeneralData,
-        sem4: AntropometricosGeneralData,
-        total1: AntropometricosGeneralData,
-        sem5: AntropometricosGeneralData,
-        sem6: AntropometricosGeneralData,
-        sem7: AntropometricosGeneralData,
-        sem8: AntropometricosGeneralData,
-        total2: AntropometricosGeneralData
+        sem1: cloneDeep(AntropometricosGeneralData),
+        sem2: cloneDeep(AntropometricosGeneralData),
+        sem3: cloneDeep(AntropometricosGeneralData),
+        sem4: cloneDeep(AntropometricosGeneralData),
+        total1: cloneDeep(AntropometricosGeneralData),
+        sem5: cloneDeep(AntropometricosGeneralData),
+        sem6: cloneDeep(AntropometricosGeneralData),
+        sem7: cloneDeep(AntropometricosGeneralData),
+        sem8: cloneDeep(AntropometricosGeneralData),
+        total2: cloneDeep(AntropometricosGeneralData),
     }
 }

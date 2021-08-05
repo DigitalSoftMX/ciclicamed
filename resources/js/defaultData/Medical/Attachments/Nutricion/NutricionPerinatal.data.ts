@@ -1,4 +1,5 @@
 import { NutricionPerinatal } from "@interface/Medical/Attachtments/Nutricion/NutricionPerinatal.interface"
+import cloneDeep from "lodash/cloneDeep"
 import { ActividadFisicaData } from "./options/ActividadFisica.data"
 import { AntecedentesFamiliaresData } from "./options/AntecedentesFamiliares.data"
 import { AntecedentesSaludData } from "./options/AntecedentesSalud.data"
@@ -22,10 +23,10 @@ export const NutricionPerinatalData: NutricionPerinatal = {
     recordatorioNutricion: RecordatorioNutricionData,
     antropometria: {
         fum: '',
-        consulta1: AntropometriaData,
-        consulta2: AntropometriaData,
-        consulta3: AntropometriaData,
-        consulta4: AntropometriaData,
-        consulta5: AntropometriaData
+        consulta1: cloneDeep(AntropometriaData),
+        consulta2: cloneDeep(AntropometriaData),
+        consulta3: cloneDeep(AntropometriaData),
+        consulta4: cloneDeep(AntropometriaData),
+        consulta5: cloneDeep(AntropometriaData),
     }
 }

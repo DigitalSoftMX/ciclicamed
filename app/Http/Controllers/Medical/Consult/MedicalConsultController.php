@@ -443,7 +443,7 @@ class MedicalConsultController extends Controller
             {
                 //Verifica si hay anexo creado anteriormente, si no hay, entonces guarda la informacion del anexo
                 $attachment = MedicalAttachment::where('patient_id', $presentConsult['patient_id'])->where('medicalspecialty_id', $presentConsult['medicalspecialty_id'])->get();
-                if($attachment->isEmpty() || $user->hasRole('Administrador'))
+                if($attachment->isEmpty() || $user->hasRole('Administrador') || intval($presentConsult['medicalspecialty_id']) === 4 || intval($presentConsult['medicalspecialty_id']) === 5 || intval($presentConsult['medicalspecialty_id']) === 7) 
                 {
                     MedicalAttachment::create([
                         'patient_id' => $presentConsult['patient_id'],
@@ -1006,8 +1006,11 @@ class MedicalConsultController extends Controller
     public function getSpecialty($id)
     {
         $consult = MedicalConsult::findOrFail($id);
-        $attachment = MedicalAttachment::where('medicalspecialty_id', $consult['medicalspecialty_id'])->orderBy('created_at', 'desc')->first();
-        $attachment['data'] = json_decode($attachment['data']);
+        $attachment = MedicalAttachment::where('medicalspecialty_id', $consult['medicalspecialty_id'])->where('patient_id', $consult['patient_id'])->orderBy('created_at', 'desc')->get();
+        if($attachment->isNotEmpty())
+        {
+            $attachment['data'] = json_decode($attachment->first()->data);
+        }
         return response()->json($attachment);
     }
 
