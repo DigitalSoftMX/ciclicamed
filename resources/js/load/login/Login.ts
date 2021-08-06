@@ -16,13 +16,6 @@ const app = createApp({
 	}
 });
 
-app.config.globalProperties.window = window;
-app.config.performance = true;
-app.mixin({
-    methods: {
-        asset: asset
-    }
-})
 app.component('ImgComponent', require('@component/general/img/ImgComponent.vue').default);
 app.component('SuccessAlertComponent', require('@component/general/alert/SuccessAlertComponent.vue').default);
 app.component('ErrorAlertComponent', require('@component/general/alert/ErrorAlertComponent.vue').default);

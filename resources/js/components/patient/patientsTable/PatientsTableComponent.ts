@@ -5,10 +5,10 @@ import { Employee } from '@interface/Employee/Employee.interface';
 import { UserPagination } from '@interface/User/UserPagination.interface';
 import { UserPaginationData } from '@data/User/UserPagination.data';
 import { PatientData } from '@data/Patient/Patient.data';
-import PatientsTableModalComponent from './patientsTableModal/PatientsTableModalComponent';
+import PatientsTableModalComponent from '@component/patient/patientsTable/patientsTableModal/PatientsTableModalComponent';
 import moment from 'moment';
 import { Patient } from '@interface/Patient/Patient.interface';
-import PatientsHistoryModalComponent from './patientHistoryModal/PatientsHistoryModalComponent';
+import PatientsHistoryModalComponent from '@component/patient/patientsTable/patientHistoryModal/PatientsHistoryModalComponent';
 
 export default defineComponent({
     components: {

@@ -1,11 +1,10 @@
-import PatientsTableComponent from '@component/patient/PatientsTable/PatientsTableComponent';
 import EmployeesTableComponent from '@component/employee/employeesTable/EmployeesTableComponent';
-import { AsistenteSidebarConfig } from '@config/AsistenteSidebar.config';
 import { EmployeeData } from '@data/Employee/Employee.data';
 import { Employee } from '@interface/Employee/Employee.interface';
 import { defineComponent } from '@vue/runtime-core';
 import { PropType } from 'vue';
 import { AdministradorSidebarConfig } from '@config/AdministradorSidebar.config';
+import PatientsTableComponent from '@component/patient/patientsTable/PatientsTableComponent';
 
 export default defineComponent({
     components: {
