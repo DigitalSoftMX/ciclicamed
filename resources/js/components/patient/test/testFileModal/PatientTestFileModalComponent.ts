@@ -96,7 +96,7 @@ export default defineComponent({
     methods: {
         selectPDF(file: any)
         {
-            embed(`${this.url}/estudio/archivo/${file}`, '#example1')
+            embed(`${this.url}/estudio/archivo/${file}`, `#pdf${this.id}`)
         }
     }
 })

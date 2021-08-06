@@ -59,7 +59,8 @@ export default defineComponent({
         NutricionPerinatalComponent: require('@component/medical/attachments/NutricionPerinatal/NutricionPerinatalComponent.vue').default,
         NutricionGeneralComponent: require('@component/medical/attachments/NutricionGeneral/NutricionGeneralComponent.vue').default,
         ScheduleComponent: require('@component/schedule/ScheduleComponent.vue').default,
-        ChargePaymentComponent: require('@component/payment/chargePayment/ChargePaymentComponent.vue').default
+        ChargePaymentComponent: require('@component/payment/chargePayment/ChargePaymentComponent.vue').default,
+        ConsultCheckupTest: require('@component/medical/consult/consultCheckupTest/ConsultCheckupTest.vue').default
     },
     emits: [],
     props: {

@@ -45,6 +45,12 @@
                                                     aria-controls="mccEspecialidades"
                                                     aria-selected="false">Especialidades</a>
                                             </li>
+                                            <li class="nav-item px-0" v-if="consultData.checkup_id > 0">
+                                                <a class="nav-link px-3 py-2 rounded" id="mccCheckupTest-tab"
+                                                    data-toggle="pill" href="#mccCheckupTest" role="tab"
+                                                    aria-controls="mccCheckupTest"
+                                                    aria-selected="false">Estudios Checkup</a>
+                                            </li>
                                             <li class="nav-item px-0">
                                                 <a class="nav-link px-3 py-2 rounded" id="mccCitasSubsecuentes-tab"
                                                     data-toggle="pill" href="#mccCitasSubsecuentes" role="tab"
@@ -102,6 +108,10 @@
                                     v-model="attachmentForm.oncologia"></oncologia-component>
                                 <colposcopia-component v-else-if="consultData.medicalspecialty_id === 10" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.colposcopia"></colposcopia-component>
+                            </div>
+                            <div class="tab-pane fade" id="mccCheckupTest" role="tabpanel" v-if="consultData.checkup_id > 0"
+                                aria-labelledby="mccCheckupTest-tab">
+                                <consult-checkup-test :checkup="consultData.checkup_id"></consult-checkup-test>
                             </div>
                             <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
                                 aria-labelledby="mccCitasSubsecuentes-tab">

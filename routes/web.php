@@ -225,6 +225,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::post('/', [CheckupCategoryController::class, 'createCheckups'])->name('checkup.setNuevo');
         Route::patch('/', [CheckupCategoryController::class, 'updateCheckups'])->name('checkup.update');
         Route::delete('/{id}', [CheckupCategoryController::class, 'cancelCheckup'])->name('checkup.cancel');
+        Route::get('/{id}/resultados', [CheckupCategoryController::class, 'getCheckupTest'])->name('checkup.getCheckupTest');
     });
 
     Route::group(['prefix' => 'graficas'], function() {

@@ -12,19 +12,27 @@
                 </div>
                 <div class="modal-body p-0">
                     <div>
-                        <div class="px-3">
-                            <div class="btn-group atbd-button-group btn-group-normal my-2 bg-white">
-                                <button type="button" class="btn btn-default btn-squared btn-outline-primary "
-                                    v-for="(file, index) in results.files" :key="`ptfmc${index}`"
-                                    @click="selectPDF(file)">{{file}}</button>
+                        <div class="card mb-25 shadow-none rounded-0">
+                            <div class="card-header">
+                                <h4>Archivos</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row my-2 bg-white">
+                                    <div class="col mb-10">
+                                        <button type="button" class="btn btn-default btn-squared btn-outline-primary "
+                                            v-for="(file, index) in results.files" :key="`ptfmc${index}`"
+                                            @click="selectPDF(file)">{{file}}</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div id="example1" class="pdf"></div>
+                        <div :id="`pdf${id}`" class="pdf"></div>
                     </div>
                     <div class="mt-25">
                         <div class="mb-25"
                             v-if="componentEnabled === 'interpretacionUltrasonidos' || componentEnabled === 'cuestionarioMastografia'">
-                            <interpretacion-ultrasonidos-component :disabled="true" v-model="interpretacionUltrasonidos">
+                            <interpretacion-ultrasonidos-component :disabled="true"
+                                v-model="interpretacionUltrasonidos">
                             </interpretacion-ultrasonidos-component>
                         </div>
                         <div class="mb-25" v-if="componentEnabled === 'espermatobioscopiaDirecta'">

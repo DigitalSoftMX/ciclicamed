@@ -18,6 +18,27 @@ use Illuminate\Support\Facades\DB;
 
 class CheckupCategoryController extends Controller
 {
+    public function getCheckupTest($id)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        if($user->hasRole(['Doctor', 'Administrador']))
+        {
+            $tests = Checkup::findOrFail($id)->test;
+            foreach($tests as $test)
+            {
+                $test->load('result', 'order', 'order.product');
+                if(isset($test['result']['results']))
+                {
+                    $test['result']['results'] = json_decode($test['result']['results']);
+                }
+            }
+            return response()->json($tests);
+        }
+        return response()->json(['errors' => [
+            'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
+        ]], 401);
+    }
+
     public function getSchedules()
     {
         $user = User::findOrFail(Auth::user()->id);
