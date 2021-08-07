@@ -7,7 +7,8 @@
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "doc": "node_modules/.bin/jsdoc -c jsdoc.json"
     },
     "devDependencies": {
         "@types/babel-core": "^6.25.6",
@@ -17,12 +18,15 @@
         "@types/pdfobject": "^2.2.0",
         "@vue/compiler-sfc": "^3.0.11",
         "axios": "^0.21.1",
+        "better-docs": "^2.3.2",
         "browser-sync": "^2.26.14",
         "browser-sync-webpack-plugin": "^2.3.0",
         "cross-env": "^7.0.3",
         "expose-loader": "^3.0.0",
         "file-loader": "^6.2.0",
         "fork-ts-checker-webpack-plugin": "^6.2.10",
+        "jsdoc": "^3.6.7",
+        "jsdoc-plugin-typescript": "^2.0.6",
         "laravel-echo": "^1.10.0",
         "laravel-mix": "^6.0.24",
         "lodash": "^4.17.21",
