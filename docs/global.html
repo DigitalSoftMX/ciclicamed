@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Variable">Variable</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createBranch">createBranch</a></li><li><a href="global.html#observeHeight">observeHeight</a></li></ul></div>
                 
             </nav>
         </div>
@@ -154,35 +154,41 @@
     
 
     
+
+    
         <div class='vertical-section'>
-            <h1>Members</h1>
+            <h1>Methods</h1>
             <div class="members">
             
                 <div class="member">
 
-    <span class="method-parameter is-pulled-right">
-        <label>Type:</label>
+
+    
+    <h4 class="name" id="createBranch">
+        <a class="href-link" href="#createBranch">#</a>
         
-<span class="param-type">BranchPagination</span>
-
-
-    </span>
-
-<h4 class="name" id="Variable">
-    <a class="href-link" href="#Variable">#</a>
+        <span class="code-name">
+            
+                createBranch<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
-    <span class="code-name">
-        Variable
-    </span>
+
     
-</h4>
+    
+    <div class="description">
+        Crea una nueva sucursal.Envía los datos de la nueva sucursal a la URI /sucursales guardada en la variable form. Si la petición es correcta se asigna al objecto successAlert un título y un mensaje de éxito y se muestrael componente SuccessAlertComponent. En caso de error, se asigna a la variable errors los errores del backend y se muestra el componente ErrorAlertComponent
+    </div>
+    
 
 
 
 
-<div class="description">
-    que guarda la información de las sucursales guardadas paginadas
-</div>
+
+
+
+
 
 
 
@@ -221,9 +227,9 @@
 
     
         <p class="tag-source">
-            <a href="BranchTableComponent.ts.html" class="button">View Source</a>
+            <a href="branch_BranchTable_BranchTableModal_BranchTableModalComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="BranchTableComponent.ts.html">BranchTableComponent.ts</a>, <a href="BranchTableComponent.ts.html#line23">line 23</a>
+                <a href="branch_BranchTable_BranchTableModal_BranchTableModalComponent.ts.html">branch/BranchTable/BranchTableModal/BranchTableModalComponent.ts</a>, <a href="branch_BranchTable_BranchTableModal_BranchTableModalComponent.ts.html#line59">line 59</a>
             </span>
         </p>
     
@@ -233,12 +239,220 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="createBranch">
+        <a class="href-link" href="#createBranch">#</a>
+        
+        <span class="code-name">
+            
+                createBranch<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Actualiza una sucursal existente.Envía los datos de la sucursal a la URI /sucursales/{id} guardada en la variable form. Si la petición es correcta se asigna al objecto successAlert un título y un mensaje de éxito y se muestrael componente SuccessAlertComponent. En caso de error, se asigna a la variable errors los errores del backend y se muestra el componente ErrorAlertComponent
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="branch_BranchTable_BranchTableModal_BranchTableModalComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="branch_BranchTable_BranchTableModal_BranchTableModalComponent.ts.html">branch/BranchTable/BranchTableModal/BranchTableModalComponent.ts</a>, <a href="branch_BranchTable_BranchTableModal_BranchTableModalComponent.ts.html#line79">line 79</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="observeHeight">
+        <a class="href-link" href="#observeHeight">#</a>
+        
+        <span class="code-name">
+            
+                observeHeight<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Cambia el ancho del gráfico de acuerdo al tamaño de pantalla.Para calcular el tamaño del gráfico se crea una llamada a la API de ResizeObserver para detectar el cambio de tamaño de la pantalla, a lo cual se procedea obtener el ancho del div que contiene el gráfico junto con el tamaño del padding izquierdo del anterior div multiplicado por 2 para obtener el padding lateral.Una vez obtenido el tamaño del div y su padding, se procede a restar el div menos el padding y se guarda el ancho total en la variable width
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="chart_ChartComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="chart_ChartComponent.ts.html">chart/ChartComponent.ts</a>, <a href="chart_ChartComponent.ts.html#line72">line 72</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
             
             </div>
         </div>
-    
-
     
 
     

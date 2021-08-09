@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> BranchTableComponent.ts</title>
+  <title> branch/BranchTable/BranchTableComponent.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li></ul></div>
                 
             </nav>
         </div>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>BranchTableComponent.ts</h1>
+                    <h1>branch/BranchTable/BranchTableComponent.ts</h1>
                 </header>
                 
 
@@ -99,22 +99,22 @@ import { BranchData } from '@data/Branch/Branch.data';
 import 'bootstrap';
 
 /** 
- * @description Componente que muestra la lista de sucursales registradas en el sistema mediante una tabla
+ * @description Componente que muestra la lista de sucursales registradas en el sistema mediante el uso de una tabla paginada
  * @class BranchTableComponent
  * @example &lt;branch-table-component>&lt;/branch-table-component>
 */
 export default defineComponent({
     /** 
      * {@link BranchTableModalComponent}
-     * @member {Object} BranchTableComponent.components
+     * @member BranchTableComponent.components
     */
     components: {
         BranchTableModalComponent
     },
     /**
     * Variables del componente
-    * @member {Object} BranchTableComponent.data
-    * @property {BranchPagination} branchData Guarda la información de las sucursales que retornar el backend en paginación
+    * @member BranchTableComponent.data
+    * @property {BranchPagination} branchData Guarda la información de las sucursales que retorna el backend en paginación
     * @property {number} paginationPages Guarda el número de páginas de branchData para mostrar el número de páginas en la paginación de la tabla
     * @property {number} paginationActive Guarda el número de página activa de la tabla
     * @property {string} query Guarda la búsqueda realizada en el input de búsqueda de la tabla
@@ -144,8 +144,8 @@ export default defineComponent({
         };
     },
     /** 
-     * Al iniciar el componente, se obtienen los datos de la sucursal mediante la función {@link getBranchData}
-     * @member {Object} BranchTableComponent.mounted
+     * Al iniciar el componente, se obtienen los datos de la sucursal mediante la función {@link BranchTableComponent.getBranchData}
+     * @member BranchTableComponent.mounted
     */
     mounted() {
         this.getBranchData(1);
@@ -250,7 +250,7 @@ export default defineComponent({
          * se asigna a la variable queryPagination el valor de la variable paginationActive si la variable query está vacío, en caso contrario se le asigna el 0.
          * Si la variable activateSeach es true o la longitud de la variable query es mayor a 0, se realizar una llamada a la URI /sucursales/admin con el parámetro de la página y el contenido de la búsqueda.
          * Si la petición es correcta se asigna la variable branchData con la respuesta del servidor, se asigna a la variabler paginationPages con los datos de la paginación provista por el servidor
-         * y se deshabilita la animación de carga mediante la asignación false de la variable loading, en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable {@link BranchTableComponent#loading}
+         * y se deshabilita la animación de carga mediante la asignación false de la variable loading, en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable loading
          * @function BranchTableComponent.getBranchDataQuery
         */
         getBranchDataQuery()

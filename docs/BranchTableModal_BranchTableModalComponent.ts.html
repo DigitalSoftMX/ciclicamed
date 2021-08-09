@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> BranchTableModal/BranchTableModalComponent.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -70,40 +72,113 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li></ul></div>
                 
             </nav>
         </div>
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>BranchTableModal/BranchTableModalComponent.ts</h1>
                 </header>
                 
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { BranchData } from '@data/Branch/Branch.data';
+import { Branch } from '@interface/Branch/Branch.interface';
+import { defineComponent } from '@vue/runtime-core';
+import axios from 'axios';
+import { PropType } from 'vue';
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/** 
+ * @description Componente en forma de modal que muestra y envía los datos de una sucursal al backend
+ * @class BranchTableModalComponent
+ * @example &lt;branch-table-modal-component :branchData="" :isNew="">&lt;/branch-table-modal-component>
+*/
+export default defineComponent({
+    /** 
+     * Propiedades que recibe el componente 
+     * @member {Object} BranchTableModalComponent.props
+     * @property {Branch} branchData Recibe los datos de una sucursal sea nueva o existente
+     * @property {boolean} isNew Indica si los datos de la sucursal son para crear o editar
+    */
+    props: {
+        branchData: {
+            type: Object as PropType&lt;Branch>,
+            default: BranchData
+        },
+        isNew: {
+            type: Boolean as PropType&lt;Boolean>,
+            default: false
+        },
+    },
+    /** 
+     * Variables a observar por el componente
+     * @member {Object} BranchTableModalComponent.watch
+     * @property {Branch} branchData Al actualizar se asigna a la variable this.form los nuevos datos de branchData
+    */
+    watch: {
+        branchData:
+        {
+            handler()
+            {
+                this.form = this.branchData;
+            },
+            deep:true
+        },
+    },
+    data() {
+        return {
+            errors: [],
+            successAlert: {
+                title: '',
+                message: ''
+            },
+            form: this.branchData
+        };
+    },
+    mounted() {
+    },
+    methods: {
+        createBranch()
+        {
+            axios.post(`/sucursales`, {
+                branch: this.form
+            })
+            .then(response => {
+                this.successAlert.title = 'Sucursal creado';
+                this.successAlert.message = 'Sucursal creado correctamente';
+                $('#emtmcSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                $('#emtmcError').modal('show');
+            })
+        },
+        updateBranch()
+        {
+            axios.post(`/sucursales/${this.form.id}`, {
+                branch: this.form
+            })
+            .then(response => {
+                this.successAlert.title = 'Sucursal actualizado';
+                this.successAlert.message = 'Sucursal actualizado correctamente';
+                $('#emtmcSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                $('#emtmcError').modal('show');
+            })
+        }
+    }
+})</code></pre>
+        </article>
+    </section>
 
 
 
