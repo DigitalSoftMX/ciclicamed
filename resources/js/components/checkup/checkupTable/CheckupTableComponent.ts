@@ -188,7 +188,7 @@ export default defineComponent({
          * la información provista por el backend. La variable checkupSelected guarda la información de las citas y estudios que contiene el checkup junto con el horario y sucursal
          * con el que fueron agendadas para mostrarse correctamente en el componente {@link CheckupSheduleComponent} utilizando la función {@link BranchTableComponent.setCheckupData}.
          * Si el parametro category es igual a show, muestra el componente {@link CheckupInfoComponent} en caso contrario muestra el componente {@link CheckupSheduleComponent}
-         * @function BranchTableComponent.getBranchDataQuery
+         * @function CheckupTableComponent.getBranchDataQuery
          * @param {number} id ID del checkup
          * @param {string} category Categoría (componente) a mostrar
         */
@@ -206,7 +206,7 @@ export default defineComponent({
         },
         /** 
          * Muestra el componente {@link ConfirmationAlertComponent} antes de cancelar un checkup, asignando el id del checkup a la variable checkupIDSelected
-         * @function BranchTableComponent.showCancelConfirm
+         * @function CheckupTableComponent.showCancelConfirm
          * @param {number} id ID del checkup
         */
         showCancelConfirm(id: number)
@@ -217,7 +217,7 @@ export default defineComponent({
         /** 
          * Cancela el checkup seleccionado, enviando una petición a la URI /checkup/{id}, si la petición es correcta muestra un mensaje de confirmación utilizando el componente
          * {@link SuccessAlertComponent}, a lo cual procede a eliminar de la tabla el checkup eliminado
-         * @function BranchTableComponent.cancelCheckup
+         * @function CheckupTableComponent.cancelCheckup
          * @param {number} id ID del checkup
         */
         cancelCheckup()
@@ -236,7 +236,7 @@ export default defineComponent({
         /** 
          * Obtiene la lista de sucursales habilitados registrados en el servidor, en caso de que la petición sea correcta transforma la lista de sucursales
          * en un array del tipo Select para utilizarlo en el componente {@link CheckupSheduleComponent}
-         * @function BranchTableComponent.getBranchesList
+         * @function CheckupTableComponent.getBranchesList
         */
         getBranchesList(): void
         {
@@ -257,6 +257,16 @@ export default defineComponent({
     },
 })
 
+/** 
+ * Verifica cada uno de los estudios y citas registrados en cada uno de los checkups predefinidos en el sistema (carpeta defaultData/Checkup/options)
+ * comparandolo con el checkup seleccionado, con la finalidad de asignar los datos (sucursal, fecha de cita, hora de cita) a la variable checkupSelected y mostrarlos
+ * correctamente en el componente {@link CheckupSheduleComponent}
+ * @function CheckupTableComponent.setCheckupData
+ * @param {Checkup} checkup Checkup seleccionado
+ * @param {CheckupList} checkupSelected Checkup al cual se le asignan los nuevos datos
+ * @param {number} checkupID ID del checkup seleccionado
+ * @returns {CheckupList} Retorna los datos del backend en un formato compatible con el componente {@link CheckupSheduleComponent}
+*/
 export function setCheckupData(checkup: Checkup, checkupSelected: CheckupList, checkupID: number): CheckupList
 {
     checkupSelected.patient_id = checkup.patient_id;
@@ -281,6 +291,12 @@ export function setCheckupData(checkup: Checkup, checkupSelected: CheckupList, c
     return checkupSelected;
 }
 
+/** 
+ * Retorna la lista de estudios y consultas de los checkups predefinidos en el sistema (carpeta defaultData/Checkup/options) de acuerdo a la categoría a la que pertenezcan
+ * @function CheckupTableComponent.setCheckupList
+ * @param {string} category Categoría del checkup
+ * @returns {CheckupItem[]} Retorna la lista de estudios y consultas del checkup seleccionado
+*/
 export function setCheckupList(category: string): CheckupItem[]
 {
     switch(category)

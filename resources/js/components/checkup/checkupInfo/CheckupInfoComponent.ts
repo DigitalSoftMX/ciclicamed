@@ -16,7 +16,7 @@ export default defineComponent({
     /**
     * Propiedades que recibe el componente
     * @member CheckupInfoComponent.props
-    * @property {Checkup} id (Obligatorio) Información del checkup seleccionado
+    * @property {Checkup} checkupData (Obligatorio) Información del checkup seleccionado
     */
     props: {
         checkupData: {
