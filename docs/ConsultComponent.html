@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> ConsultComponent</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>ConsultComponent</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>ConsultComponent<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="ConsultComponent">
+        <a class="href-link" href="#ConsultComponent">#</a>
+        
+        <span class="code-name">
+            
+                new ConsultComponent<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Componente que se encarga de mostrar todos los componentes relacionados con una consulta médica, sea primera cita osubsecuente (rol Doctor y Administrador). Además que se encarga de crear los datos de pago durante la consulta
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line21">line 21</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>&lt;consult-component :consultID="" :role="" :doctorData="">&lt;/consult-component></code></pre>
+    
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id=".components">
+    <a class="href-link" href="#.components">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        components
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    PatientProfileComponent, AttachmentComponent, HistorialClinicoComponent, CitasSubsecuentesComponent, PrescriptionComponent,TestOrderComponent, RecordComponent, ProductComponent, UroginecologiaComponent, ClimaterioSaludOseaComponent,MaternoFetalComponent, BiologiaReproduccionComponent, CirugiaEndoscopicaComponent, OncologiaComponent,ColposcopiaComponent, NutricionPerinatalComponent, NutricionGeneralComponent, ScheduleComponent,ChargePaymentComponent, <a href="ConsultCheckupTest.html">ConsultCheckupTest</a>,
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line28">line 28</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".computed">
+    <a class="href-link" href="#.computed">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        computed
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades computadas del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>disableHistory</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita o deshabilita la edición del historial médico del paciente de acuerdo al rol, en caso del rol doctor, verifica si es primera cita o subsecuente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>disableData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita o deshabilita la edición de acuerdo al rol (No utilizar)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>disableConsult</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita o deshabilita la opción de las citas subsecuentes, receta médica y orden médica de acuerdo al rol, en caso del rol doctor verifica si una cita ya ha sido finalizada o no</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line129">line 129</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".data">
+    <a class="href-link" href="#.data">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>showPaymentComponent</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Muestra o no el componente ChargePaymentComponent</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Patient</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos del paciente que corresponde con la consulta en proceso</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>consultData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Consult</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos de la consulta en proceso</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>historyData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">History</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos del historial médico del paciente que corresponde con la consulta en proceso</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>followUp</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">FollowUp</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos de la cita de seguimiento que se generan en la consulta en proceso</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>prescriptionData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Prescription></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos de los medicamentos recetados en la consulta en proceso</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>testData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Test></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos de las ordenes de estudios creados en la consulta en proceso</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>attachment</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Attachtment</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos de la especialidad a la que pertenece la consulta en proceso</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>paymentProducts</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Payment</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos del pago creados en la consulta en proceso</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>attachmentForm</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos del anexo correspondiente a la consulta en proceso, seleccionandolos cuando sea necesario</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>nutricionGeneral</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">NutricionGeneral</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos del anexo nutrición general</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>clock</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Object</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el tiempo que lleva la consulta en proceso</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>enableAttachmentData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita o deshabilita el componente de los anexos (válido solo para primera cita)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>branchesList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de sucursales habilitadas en el servidor</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line79">line 79</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".mounted">
+    <a class="href-link" href="#.mounted">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        mounted
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Al iniciar el componente, verifica el rol del usuario loagueado actualmente y se obtienen los siguientes datos <a href="ConsultComponent.html#.getConsultInfo">información de la consulta</a>,<a href="ConsultComponent.html#.getPrescription">receta de la consulta</a>, <a href="ConsultComponent.html#.getTest">estudios médicos de la consulta</a>, <a href="ConsultComponent.html#.getFollowUp">cita subsecuente de la consulta</a><a href="ConsultComponent.html#.getPayment">pago generado de la consulta</a>, <a href="ConsultComponent.html#.getBranchesList">lista de sucursales</a>,
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line178">line 178</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".props">
+    <a class="href-link" href="#.props">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        props
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades que recibe el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>consultID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) ID de la consulta</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>role</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Rol del usuario loagueado actualmente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Employee</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Datos del doctor logueado actualmente</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line58">line 58</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".watch">
+    <a class="href-link" href="#.watch">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        watch
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables a observar por el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>sendToServer</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar dicha variable, se envía al servidor la información de la consula (No utilizar)</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line168">line 168</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getBranchesList">
+        <a class="href-link" href="#.getBranchesList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getBranchesList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la lista de sucursales habilitados en el servidor. Si la petición se procesa correctamente, se asigna a la variable branchesList la lista de sucursales
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line205">line 205</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getConsultInfo">
+        <a class="href-link" href="#.getConsultInfo">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getConsultInfo<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la información de la consulta en proceso. Si la petición se procesa correctamente, se asigna a la variable consultDatala información de la consulta que retorne el servidor, a lo cual se procede a obtener información del <a href="ConsultComponent.html#.getPatientData">paciente</a>,<a href="ConsultComponent.html#.updateClock">tiempo de la consulta</a>, <a href="ConsultComponent.html#.getHistory">historial del paciente</a> y anexo del paciente,
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line310">line 310</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getFollowUp">
+        <a class="href-link" href="#.getFollowUp">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getFollowUp<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la información de la cita subsecuente de la consulta en proceso si existe. Si la petición se procesa correctamente, se asigna a la variable followUpla información de la cita subsecuente que retorne el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line359">line 359</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getHistory">
+        <a class="href-link" href="#.getHistory">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getHistory<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la información historial médico del paciente. Si la petición se procesa correctamente, se asigna a la variable historyDatala información del historial médico del paciente que retorne el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line329">line 329</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getPatientData">
+        <a class="href-link" href="#.getPatientData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getPatientData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la información del paciente de la consulta en proceso. Si la petición se procesa correctamente, se asigna a la variable patientDatala información del paciente que retorne el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line296">line 296</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getPatientData">
+        <a class="href-link" href="#.getPatientData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getPatientData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la información anexo de la especialidad la consulta en proceso. Si la petición se procesa correctamente, se asigna a la variable attachmentla información de la especialidad la consulta en proceso que retorne el servidor, se habilita o deshabilita la edición del anexo .En caso contrario se habilita la edición del anexo
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line342">line 342</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getPayment">
+        <a class="href-link" href="#.getPayment">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getPayment<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene el pago generado de la consulta en proceso si existe. Si la petición se procesa correctamente, se asigna a la variable paymentProducts el pago generado
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line223">line 223</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getPrescription">
+        <a class="href-link" href="#.getPrescription">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getPrescription<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la lista de medicamentos creados en la consulta en proceso si existe. Si la petición se procesa correctamente, se asigna a la variable prescriptionDatala lista de medicamentos que retorne el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line373">line 373</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getTest">
+        <a class="href-link" href="#.getTest">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getTest<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la lista de ordenes de estudios creados en la consulta en proceso si existe. Si la petición se procesa correctamente, se asigna a la variable testDatala lista de ordenes médicas que retorne el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line387">line 387</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".saveAttachmentData">
+        <a class="href-link" href="#.saveAttachmentData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                saveAttachmentData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Guarda la información del anexo de acuerdo a la especialidad a la que pertenece la consulta en proceso, tomando como referencia el ID de laespecialida guardada
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line423">line 423</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".selectSpecialty">
+        <a class="href-link" href="#.selectSpecialty">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                selectSpecialty<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Selecciona el anexo de acuerdo a la especialidad de la consulta médica en proceso de acuerdo al ID de la variable consultData.medicalspecialty_id
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line261">line 261</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".sendToServerData">
+        <a class="href-link" href="#.sendToServerData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                sendToServerData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Envía al servidor los datos relacionados con la consulta (historial, anexos, medicamentos, cita subsecuente, ordenes médicas).Si la petición se procesa correctamente, se asigna a la variable showPaymentComponent el valor true, lo cual muestra el componente ChargePaymentComponent paracrear el pago de la consulta
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line236">line 236</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".setAttachmentData">
+        <a class="href-link" href="#.setAttachmentData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                setAttachmentData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Habilita o deshabilita la edición del anexo de acuerdo al rol, además que asigna a la variable attachmentForm la información del anexo de acuerdo a la especialidad a la que pertenece la cita en proceso
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line459">line 459</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".updateClock">
+        <a class="href-link" href="#.updateClock">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                updateClock<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Actualiza cada segundo el tiempo total de la consulta en proceso, si las horas, minutos o segundos son inferiores a 10, se agrefa un 0 para que el relojse muestre en un formato 00:00:00
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="medical_consult_ConsultComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="medical_consult_ConsultComponent.ts.html">medical/consult/ConsultComponent.ts</a>, <a href="medical_consult_ConsultComponent.ts.html#line410">line 410</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> medical/consult/consultPrescription/medicament/ConsultMedicamentComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>medical/consult/consultPrescription/medicament/ConsultMedicamentComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { PrescriptionData } from '@data/Medical/Prescription.data';
+import { Prescription } from '@interface/Medical/Prescription.interface';
+import { defineComponent } from '@vue/runtime-core';
+import cloneDeep from 'lodash/cloneDeep';
+import { PropType } from 'vue';
+
+/** 
+ * @description Componente que muestra los datos de un medicamento para una receta, mediante el uso de una tarjeta
+ * @class ConsultMedicamentComponent
+ * @example &lt;consult-medicament-component v-model="" medicamentList="" id="" disabled="">&lt;/consult-medicament-component>
+*/
+export default defineComponent({
+    /** 
+     * Eventos del componente
+     * @member ConsultMedicamentComponent.emits
+    * @property {Prescription} update:modelValue Evento que actualiza la variable que se ingreso en el v-model
+    * @property {number} onDelete Evento que indica que un medicamento ha sido eliminado de la lista de la receta, indicando el id a la que pertenece
+    */
+    emits: ['update:modelValue', 'onDelete'],
+    /** 
+     * Propiedades que recibe el componente 
+     * @member ConsultMedicamentComponent.props
+     * @property {Prescription} modelValue (Opcional) Valor que recibe y actualiza al componente padre. Ver {@link https://v3.vuejs.org/guide/migration/v-model.html|v-model} de vue para mas referencia
+     * @property {any[]} medicamentList (Obligatorio) Lista de medicamentos
+     * @property {number} id (Obligatorio) ID del componente
+     * @property {boolean} disabled (Obligatorio) Habilita o deshabilita input del componente
+    */
+    props: {
+        modelValue: {
+            type: Object as PropType&lt;Prescription>,
+            default: PrescriptionData
+        },
+        medicamentList: {
+            type: Array as PropType&lt;any[]>,
+            default: []
+        },
+        id: {
+            type: Number as PropType&lt;Number>,
+            default: 0
+        },
+        disabled: {
+            type: Boolean as PropType&lt;Boolean>,
+            default: true
+        },
+    },
+    /**
+    * Variables del componente
+    * @member ConsultMedicamentComponent.data
+    * @property {any[]} medicament Guarda los datos de la variable modelValue para modificar dichos datos (v-model)
+    */
+    data() {
+        return {
+            medicament: this.modelValue
+        };
+    },
+    /** 
+     * Variables a observar por el componente
+     * @member ConsultMedicamentComponent.watch
+     * @property {Prescription} modelValue Al actualizar los datos de esta variable, se asigna los datos de éste a la variable medicament para permitir su modificación 
+     * @property {Prescription} medicament Al actualizar los datos de la variable lanza un emit para actualizar el v-model
+    */
+    watch: {
+        modelValue: {
+            handler()
+            {
+                this.medicament = this.modelValue;
+            },
+            deep: true
+        },
+        medicament: {
+            handler()
+            {
+                this.$emit('update:modelValue', this.medicament);
+            },
+            deep: true
+        }
+    },
+    methods: {
+        /** 
+         * Cuando se elimina un medicamento, lanza un emit con el id (index) para que el componente padre {@link ConsultPrescriptionComponent} pueda
+         * eliminarlo de la variable prescriptionData
+         * @function ConsultMedicamentComponent.deleteThisComponent
+        */
+        deleteThisComponent()
+        {
+            this.$emit('onDelete', this.id);
+        }
+    },
+})
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

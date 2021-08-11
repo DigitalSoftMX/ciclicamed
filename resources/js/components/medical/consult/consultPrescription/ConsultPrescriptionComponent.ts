@@ -16,9 +16,10 @@ import { Consult } from '@interface/Medical/Consult.interface';
 import { ConsultData } from '@data/Medical/Consult.data';
 
 /** 
- * @description Componente que muestra los medicamentos para receta dentro de la consulta, en forma de tarjeta
+ * @description Componente que muestra los medicamentos para receta dentro de la consulta, utilizando el componente {@link MedicamentComponent}
+ * por cada medicamento generado
  * @class ConsultPrescriptionComponent
- * @example <consult-prescription-component v-model="" :disabled="" patientData="" :doctorData="" :consultData="'"></consult-prescription-component>
+ * @example <consult-prescription-component v-model="" :disabled="" patientData="" :doctorData="" :consultData=""></consult-prescription-component>
 */
 export default defineComponent({
     /** 
@@ -69,7 +70,7 @@ export default defineComponent({
     * Variables del componente
     * @member ConsultPrescriptionComponent.data
     * @property {Medicament[]} medicamentList Lista de medicamentos seleccionados por el doctor en la consulta
-    * @property {Prescription} prescriptionData Guarda los datos de la variable modelValue para modificar dichos datos (v-model)
+    * @property {Prescription} prescriptionData Guarda los datos de los medicamentos asignados por la variable modelValue para modificar dichos datos (v-model)
     */
     data() {
         return {
@@ -125,7 +126,7 @@ export default defineComponent({
            this.prescriptionData.unshift({...data});
        },
        /** 
-         * Agrega un medicamento a la variable prescriptionData
+         * Elimina un medicamento a la variable prescriptionData
          * @function ConsultPrescriptionComponent.deletePrescription
          * @param {number} index Número de fila donde radica el medicamento que se desea eliminar dentro de la variable prescriptionData
         */

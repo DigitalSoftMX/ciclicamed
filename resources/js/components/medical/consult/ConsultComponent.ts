@@ -39,7 +39,21 @@ import { EmployeeData } from '@data/Employee/Employee.data';
 import { Branch } from '@interface/Branch/Branch.interface';
 import { Select } from '@interface/General/Select.interface';
 
+/** 
+ * @description Componente que se encarga de mostrar todos los componentes relacionados con una consulta médica, sea primera cita o 
+ * subsecuente (rol Doctor y Administrador). Además que se encarga de crear los datos de pago durante la consulta
+ * @class ConsultComponent
+ * @example <consult-component :consultID="" :role="" :doctorData=""></consult-component>
+*/
 export default defineComponent({
+    /** 
+     * {@link PatientProfileComponent}, {@link AttachmentComponent}, {@link HistorialClinicoComponent}, {@link CitasSubsecuentesComponent}, {@link PrescriptionComponent},
+     * {@link TestOrderComponent}, {@link RecordComponent}, {@link ProductComponent}, {@link UroginecologiaComponent}, {@link ClimaterioSaludOseaComponent},
+     * {@link MaternoFetalComponent}, {@link BiologiaReproduccionComponent}, {@link CirugiaEndoscopicaComponent}, {@link OncologiaComponent},
+     * {@link ColposcopiaComponent}, {@link NutricionPerinatalComponent}, {@link NutricionGeneralComponent}, {@link ScheduleComponent},
+     * {@link ChargePaymentComponent}, {@link ConsultCheckupTest}, 
+     * @member ConsultComponent.components
+    */
     components: {
         PatientProfileComponent: require('@component/medical/consult/consultPatientProfile/ConsultPatientProfileComponent.vue').default,
         AttachmentComponent: require('@component/medical/consult/consultAttachment/ConsultAttachmentComponent.vue').default,
@@ -62,7 +76,13 @@ export default defineComponent({
         ChargePaymentComponent: require('@component/payment/chargePayment/ChargePaymentComponent.vue').default,
         ConsultCheckupTest: require('@component/medical/consult/consultCheckupTest/ConsultCheckupTest.vue').default
     },
-    emits: [],
+    /** 
+     * Propiedades que recibe el componente 
+     * @member ConsultComponent.props
+     * @property {number} consultID (Obligatorio) ID de la consulta
+     * @property {string} role (Obligatorio) Rol del usuario loagueado actualmente
+     * @property {Employee} doctorData Datos del doctor logueado actualmente
+    */
     props: {
         consultID: {
             type: Number,
@@ -77,6 +97,24 @@ export default defineComponent({
             default: EmployeeData
         }
     },
+    /**
+    * Variables del componente
+    * @member ConsultComponent.data
+    * @property {string[]} showPaymentComponent Muestra o no el componente {@link ChargePaymentComponent}
+    * @property {Patient} patientData Guarda los datos del paciente que corresponde con la consulta en proceso
+    * @property {Consult} consultData Guarda los datos de la consulta en proceso
+    * @property {History} historyData Guarda los datos del historial médico del paciente que corresponde con la consulta en proceso
+    * @property {FollowUp} followUp Guarda los datos de la cita de seguimiento que se generan en la consulta en proceso
+    * @property {Prescription[]} prescriptionData Guarda los datos de los medicamentos recetados en la consulta en proceso
+    * @property {Test[]} testData Guarda los datos de las ordenes de estudios creados en la consulta en proceso
+    * @property {Attachtment} attachment Guarda los datos de la especialidad a la que pertenece la consulta en proceso
+    * @property {Payment} paymentProducts Guarda los datos del pago creados en la consulta en proceso
+    * @property {Object} attachmentForm Guarda los datos del anexo correspondiente a la consulta en proceso, seleccionandolos cuando sea necesario
+    * @property {NutricionGeneral} nutricionGeneral Guarda los datos del anexo nutrición general
+    * @property {Object} clock Guarda el tiempo que lleva la consulta en proceso
+    * @property {boolean} enableAttachmentData Habilita o deshabilita el componente de los anexos (válido solo para primera cita)
+    * @property {Select[]} branchesList Guarda la lista de sucursales habilitadas en el servidor
+    */
     data() {
         return {
             showPaymentComponent: false,
@@ -109,6 +147,13 @@ export default defineComponent({
             branchesList: [] as Select[],
         };
     },
+    /**
+    * Propiedades computadas del componente 
+    * @member ConsultComponent.computed
+    * @property {boolean} disableHistory Habilita o deshabilita la edición del historial médico del paciente de acuerdo al rol, en caso del rol doctor, verifica si es primera cita o subsecuente
+    * @property {boolean} disableData Habilita o deshabilita la edición de acuerdo al rol (No utilizar)
+    * @property {boolean} disableConsult Habilita o deshabilita la opción de las citas subsecuentes, receta médica y orden médica de acuerdo al rol, en caso del rol doctor verifica si una cita ya ha sido finalizada o no
+    */
     computed: {
         disableHistory(): boolean
         {
@@ -148,6 +193,11 @@ export default defineComponent({
             }
         }
     },
+    /** 
+     * Variables a observar por el componente
+     * @member ConsultComponent.watch
+     * @property {string[]} sendToServer Al actualizar dicha variable, se envía al servidor la información de la consula (No utilizar)
+    */
     watch: 
     {
         sendToServer()
@@ -155,6 +205,12 @@ export default defineComponent({
             this.sendToServerData();
         }
     },
+    /** 
+     * Al iniciar el componente, verifica el rol del usuario loagueado actualmente y se obtienen los siguientes datos {@link ConsultComponent.getConsultInfo|información de la consulta},
+     * {@link ConsultComponent.getPrescription|receta de la consulta}, {@link ConsultComponent.getTest|estudios médicos de la consulta}, {@link ConsultComponent.getFollowUp|cita subsecuente de la consulta}
+     * {@link ConsultComponent.getPayment|pago generado de la consulta}, {@link ConsultComponent.getBranchesList|lista de sucursales},
+     * @member ConsultComponent.mounted
+    */
     mounted() {
         switch(this.role)
         {
@@ -177,6 +233,10 @@ export default defineComponent({
         }
     },
     methods: {
+        /** 
+         * Obtiene la lista de sucursales habilitados en el servidor. Si la petición se procesa correctamente, se asigna a la variable branchesList la lista de sucursales
+         * @function ConsultComponent.getBranchesList
+        */
         getBranchesList(): void
         {
             axios.get<Branch[]>(`/sucursales`)
@@ -193,6 +253,10 @@ export default defineComponent({
                 
             })
         },
+        /** 
+         * Obtiene el pago generado de la consulta en proceso si existe. Si la petición se procesa correctamente, se asigna a la variable paymentProducts el pago generado
+         * @function ConsultComponent.getPayment
+        */
         getPayment()
         {
             axios.get<Payment>(`/consultas/${this.consultID}/pago`)
@@ -203,6 +267,12 @@ export default defineComponent({
             // 
             })
         },
+        /** 
+         * Envía al servidor los datos relacionados con la consulta (historial, anexos, medicamentos, cita subsecuente, ordenes médicas).
+         * Si la petición se procesa correctamente, se asigna a la variable showPaymentComponent el valor true, lo cual muestra el componente {@link ChargePaymentComponent} para
+         * crear el pago de la consulta
+         * @function ConsultComponent.sendToServerData
+        */
         sendToServerData()
         {
             axios.post(`/consultas/${this.consultID}/resultados`, {
@@ -224,6 +294,10 @@ export default defineComponent({
                 
             })
         },
+        /** 
+         * Selecciona el anexo de acuerdo a la especialidad de la consulta médica en proceso de acuerdo al ID de la variable consultData.medicalspecialty_id
+         * @function ConsultComponent.selectSpecialty
+        */
         selectSpecialty()
         {
             switch(this.consultData.medicalspecialty_id)
@@ -257,6 +331,11 @@ export default defineComponent({
                     break;
             }
         },
+        /** 
+         * Obtiene la información del paciente de la consulta en proceso. Si la petición se procesa correctamente, se asigna a la variable patientData
+         * la información del paciente que retorne el servidor
+         * @function ConsultComponent.getPatientData
+        */
         getPatientData()
         {
             axios.get<Patient>(`/pacientes/${this.consultData.patient_id}`)
@@ -267,6 +346,12 @@ export default defineComponent({
             // 
             })
         },
+        /** 
+         * Obtiene la información de la consulta en proceso. Si la petición se procesa correctamente, se asigna a la variable consultData
+         * la información de la consulta que retorne el servidor, a lo cual se procede a obtener información del {@link ConsultComponent.getPatientData|paciente},
+         * {@link ConsultComponent.updateClock|tiempo de la consulta}, {@link ConsultComponent.getHistory|historial del paciente} y {@link ConsultComponent.getAttachment|anexo del paciente},
+         * @function ConsultComponent.getConsultInfo
+        */
         getConsultInfo()
         {
             axios.get<Consult>(`/consultas/${this.consultID}`)
@@ -282,6 +367,11 @@ export default defineComponent({
                 // 
             })
         },
+        /** 
+         * Obtiene la información historial médico del paciente. Si la petición se procesa correctamente, se asigna a la variable historyData
+         * la información del historial médico del paciente que retorne el servidor
+         * @function ConsultComponent.getHistory
+        */
         getHistory()
         {
             axios.get<History>(`/pacientes/${this.consultData.patient_id}/historial`)
@@ -292,6 +382,12 @@ export default defineComponent({
                 
             })
         },
+        /** 
+         * Obtiene la información anexo de la especialidad la consulta en proceso. Si la petición se procesa correctamente, se asigna a la variable attachment
+         * la información de la especialidad la consulta en proceso que retorne el servidor, {@link ConsultComponent.getAttachment|se habilita o deshabilita la edición del anexo }.
+         * En caso contrario se habilita la edición del anexo
+         * @function ConsultComponent.getPatientData
+        */
         getAttachment()
         {
             axios.get<Attachtment>(`/consultas/${this.consultID}/anexo`)
@@ -304,6 +400,11 @@ export default defineComponent({
                 this.enableAttachmentData = false;
             })
         },
+        /** 
+         * Obtiene la información de la cita subsecuente de la consulta en proceso si existe. Si la petición se procesa correctamente, se asigna a la variable followUp
+         * la información de la cita subsecuente que retorne el servidor
+         * @function ConsultComponent.getFollowUp
+        */
         getFollowUp()
         {
             axios.get<FollowUp>(`/consultas/${this.consultID}/seguimiento`)
@@ -314,6 +415,11 @@ export default defineComponent({
                 // 
             })
         },
+        /** 
+         * Obtiene la lista de medicamentos creados en la consulta en proceso si existe. Si la petición se procesa correctamente, se asigna a la variable prescriptionData
+         * la lista de medicamentos que retorne el servidor
+         * @function ConsultComponent.getPrescription
+        */
         getPrescription()
         {
             axios.get<Prescription[]>(`/consultas/${this.consultID}/receta`)
@@ -324,6 +430,11 @@ export default defineComponent({
                 // 
             })
         },
+        /** 
+         * Obtiene la lista de ordenes de estudios creados en la consulta en proceso si existe. Si la petición se procesa correctamente, se asigna a la variable testData
+         * la lista de ordenes médicas que retorne el servidor
+         * @function ConsultComponent.getTest
+        */
         getTest()
         {
             axios.get<Test[]>(`/consultas/${this.consultID}/estudios`)
@@ -343,6 +454,11 @@ export default defineComponent({
                 // 
             })
         },
+        /** 
+         * Actualiza cada segundo el tiempo total de la consulta en proceso, si las horas, minutos o segundos son inferiores a 10, se agrefa un 0 para que el reloj
+         * se muestre en un formato 00:00:00
+         * @function ConsultComponent.updateClock
+        */
         updateClock()
         {
             setInterval(() => {
@@ -352,6 +468,11 @@ export default defineComponent({
                 this.clock.seconds = time._data.seconds < 10 ? `0${time._data.seconds}` : time._data.seconds;
             }, 1000);
         },
+        /** 
+         * Guarda la información del anexo de acuerdo a la especialidad a la que pertenece la consulta en proceso, tomando como referencia el ID de la
+         * especialida guardada
+         * @function ConsultComponent.saveAttachmentData
+        */
         saveAttachmentData()
         {
             switch(this.consultData.medicalspecialty_id)
@@ -385,6 +506,11 @@ export default defineComponent({
                     break;
             }
         },
+        /** 
+         * Habilita o deshabilita la edición del anexo de acuerdo al rol, además que asigna a la variable attachmentForm la información del anexo de acuerdo
+         *  a la especialidad a la que pertenece la cita en proceso
+         * @function ConsultComponent.setAttachmentData
+        */
         setAttachmentData()
         {
             switch(this.role)

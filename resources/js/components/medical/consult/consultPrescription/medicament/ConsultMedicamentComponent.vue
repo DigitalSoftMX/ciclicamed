@@ -32,11 +32,6 @@
                 <label for="">Duración</label>
                 <input class="form-control form-control-lg" type="text" placeholder="Duración" v-model="medicament.duration">
             </div>
-
-            <div class="col-12" v-if="isUpdate">
-                <label for="">Nota de actualización</label>
-                <textarea class="form-control form-control-lg" rows="4" placeholder="Nota de actualización" v-model="medicament.update_note"></textarea>
-            </div>
         </div>
     </div>
 </template>
