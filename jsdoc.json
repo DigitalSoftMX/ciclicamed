@@ -4,7 +4,7 @@
     },
     "source": {
         "include": ["./resources/js/components"],
-        "includePattern": "\\.(ts)$"
+        "includePattern": "\\.(ts|vue)$"
     },
     "opts": {
         "template": "node_modules/better-docs",
@@ -14,11 +14,7 @@
         "verbose": true
     },
     "plugins": [
+        "node_modules/jsdoc-vuejs",
         "node_modules/better-docs/typescript"
-    ],
-    "templates": {
-        "better-docs": {
-            "name": "Ciclicamed"
-        }
-    }
+    ]
 }

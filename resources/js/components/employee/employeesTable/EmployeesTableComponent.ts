@@ -10,10 +10,10 @@ import { User } from '@interface/User/User.interface';
 /** 
  * @description Componente que muestra la lista de empleados registrados en el sistema mediante una tabla
  * @class EmployeeTableComponent
- * @example <employee-table-component></employee-schedu-component>
+ * @example <employee-table-component></employee-table-component>
 */
 export default defineComponent({
-     /** 
+    /** 
      * {@link EmployeeTableModalComponent}
      * @member EmployeeTableComponent.components
     */
@@ -39,8 +39,7 @@ export default defineComponent({
     * @property {boolean} isNew Permite al componente {@link EmployeeTableModalComponent} saber si la variable employeeSelected es nueva
     * @property {string[]} rolesSelected Guarda los roles seleccionados del empleado
     * @property {Array<Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
-
-     */
+    */
     data() {
         return {
             userData: EmployeePaginationData,

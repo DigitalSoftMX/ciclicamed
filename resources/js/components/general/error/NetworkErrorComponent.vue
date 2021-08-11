@@ -16,6 +16,11 @@
 <script lang="ts">
 import { defineComponent } from '@vue/runtime-core';
 
+/** 
+ * @description Componente que muestra un mensaje predefinido de error de red, mediante un div
+ * @class NetworkErrorComponent
+ * @example <network-error-component></network-error-component>
+*/
 export default defineComponent({
     components: {
     },

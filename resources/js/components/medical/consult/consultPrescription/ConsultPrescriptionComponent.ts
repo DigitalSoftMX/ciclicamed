@@ -15,11 +15,34 @@ import { EmployeeData } from '@data/Employee/Employee.data';
 import { Consult } from '@interface/Medical/Consult.interface';
 import { ConsultData } from '@data/Medical/Consult.data';
 
+/** 
+ * @description Componente que muestra los medicamentos para receta dentro de la consulta, en forma de tarjeta
+ * @class ConsultPrescriptionComponent
+ * @example <consult-prescription-component v-model="" :disabled="" patientData="" :doctorData="" :consultData="'"></consult-prescription-component>
+*/
 export default defineComponent({
+    /** 
+     * {@link MedicamentComponent}
+     * @member ConsultPrescriptionComponent.components
+    */
     components: {
         MedicamentComponent: require('@component/medical/consult/consultPrescription/medicament/ConsultMedicamentComponent.vue').default
     },
+    /** 
+     * Eventos del componente
+     * @member ConsultPrescriptionComponent.emits
+    * @property {Prescription} update:modelValue Evento que actualiza la variable que se ingreso en el v-model
+    */
     emits: ['update:modelValue'],
+    /** 
+    * Propiedades que recibe el componente 
+    * @member ConsultPrescriptionComponent.props
+    * @property {Prescription} modelValue (Opcional) Valor que recibe y actualiza al componente padre. Ver {@link https://v3.vuejs.org/guide/migration/v-model.html|v-model} de vue para mas referencia
+    * @property {boolean} disabled (Obligatorio) Habilita o deshabilita input del componente
+    * @property {Patient} patientData (Obligatorio) Guarda los datos del paciente en consulta
+    * @property {Employee} doctorData (Obligatorio) Guarda los datos del doctor en consulta
+    * @property {Consult} consultData (Obligatorio) Guarda los datos de la consulta en proceso
+    */
     props: {
         modelValue: {
             type: Array as PropType<Prescription[]>,
@@ -42,15 +65,33 @@ export default defineComponent({
             default: ConsultData
         }
     },
+    /**
+    * Variables del componente
+    * @member ConsultPrescriptionComponent.data
+    * @property {Medicament[]} medicamentList Lista de medicamentos seleccionados por el doctor en la consulta
+    * @property {Prescription} prescriptionData Guarda los datos de la variable modelValue para modificar dichos datos (v-model)
+    */
     data() {
         return {
             medicamentList: [] as Medicament[],
             prescriptionData: this.modelValue,
         };
     },
+    /** 
+     * Al iniciar el componente, se obtienen los datos de los {@link ConsultPrescriptionComponent.getMedicamentList|medicamentos registraods}
+     * @member ConsultPrescriptionComponent.mounted
+    */
     mounted() {
         this.getMedicamentList();
     },
+    /** 
+     * Variables a observar por el componente
+     * @member ConsultPrescriptionComponent.watch
+     * @property {Prescription} modelValue Al actualizar los datos de esta variable, se verifica si la lista de medicamentos de la variable modelValue es la misma que la lista de medicamentos
+     * guardada en la variable prescriptionData: si es diferente entonces agrega los medicamentos al componente {@link MedicamentComponent}. Por otro lado, asigna los datos de la variable
+     * modelValue a la variable prescriptionData
+     * @property {Prescription} prescriptionData AL actualizar los datos de la variable lanza un emit para actualizar el v-model
+    */
     watch: {
         modelValue: 
         {
@@ -74,14 +115,28 @@ export default defineComponent({
         }
     },
     methods: {
+        /** 
+         * Agrega un nuevo medicamento a la variable prescriptionData
+         * @function ConsultPrescriptionComponent.addPrescription
+         * @param {Prescription} data Datos del medicamento
+        */
        addPrescription(data: Prescription = PrescriptionData)
        {
            this.prescriptionData.unshift({...data});
        },
+       /** 
+         * Agrega un medicamento a la variable prescriptionData
+         * @function ConsultPrescriptionComponent.deletePrescription
+         * @param {number} index Número de fila donde radica el medicamento que se desea eliminar dentro de la variable prescriptionData
+        */
        deletePrescription(index: number)
        {
            this.prescriptionData.splice(index, 1);
        },
+       /** 
+         * Obtiene la lista de medicamentos registrados dentro del sistema, Si la petición es correcta se asigna los datos recibidos a la variable medicamentList
+         * @function ConsultPrescriptionComponent.getMedicamentList
+        */
        getMedicamentList(): void
         {
             axios.get(`/productos/medicamentos`)
@@ -95,6 +150,14 @@ export default defineComponent({
                 
             })
         },
+        /** 
+         * Crea un pdf con los datos de los medicamentos de la receta creada en la consulta tomando como base el archivo prescription.pdf.
+         * Para crear dicha receta primero convierte el pdf en un archivo legible de tipo ArrayBuffer para la librería {@link https://pdf-lib.js.org/|PDF-LIB},
+         * despues procede a filtrar los medicamentos que sean creados por el doctor y se asignan a la variable filterPrescriptionList. Una vez realizado
+         * este paso, se procede a asignar los datos del doctor, paciente y receta al pdf {@link https://pdf-lib.js.org/|Ver el proceso} y se retorna el pdf creado
+         * @function ConsultPrescriptionComponent.createPDF
+         * @async
+        */
         async createPDF()
         {
             const doctorLicence = this.doctorData.specialties!.filter(specialty => specialty.pivot.medicalspecialty_id === this.consultData.medicalspecialty_id)[0];
@@ -123,11 +186,23 @@ export default defineComponent({
             pdf.getForm().flatten();
             return await pdf.save()
         },
+        /** 
+         * Para descargar el pdf, primero se crea el pdf con la funcion {@link ConsultPrescriptionComponent.createPDF}, a lo cual se utiliza la librería
+         * {@link https://github.com/rndme/download|Download} para descargarlo al dispositov del doctor
+         * @function ConsultPrescriptionComponent.downloadPDF
+         * @async
+        */
         async downloadPDF()
         {
             const pdf = await this.createPDF();
             download(pdf, `Receta_${this.patientData.first_name}_${this.patientData.last_name}_${moment().format('DD-MM-YYYY')}.pdf`, 'application/pdf');
         },
+        /** 
+         * Para descargar el pdf, primero se crea el pdf con la funcion {@link ConsultPrescriptionComponent.createPDF}, a lo cual se procede a convertir el archivo
+         * a formato BLOB y finalmente se procede a mandar a impresión con el uso de la librería {@link https://printjs.crabbly.com/|PrintJS}
+         * @function ConsultPrescriptionComponent.printPDF
+         * @async
+        */
         async printPDF()
         {
             const pdfBlob = new Blob([await this.createPDF()], { type: "application/pdf" });

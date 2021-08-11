@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> employee/employeesTable/employeeTableModal/EmployeeTableModalComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>employee/employeesTable/employeeTableModal/EmployeeTableModalComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import UserProfileComponent from '@component/user/userProfile/UserProfileComponent';
+import { EmployeeData } from '@data/Employee/Employee.data';
+import { Employee } from '@interface/Employee/Employee.interface';
+import { Role } from '@interface/User/Role.interface';
+import { defineComponent } from '@vue/runtime-core';
+import axios from 'axios';
+import { PropType } from 'vue';
+
+/** 
+ * @description Componente que muestra los datos de un empleado, mediante el uso de un formulario dentro de un modal
+ * @class EmployeeTableModalComponent
+ * @example &lt;employee-table-modal-component>&lt;/employee-table-modal-component>
+*/
+export default defineComponent({
+    /** 
+     * {@link UserProfileComponent}
+     * @member EmployeeTableModalComponent.components
+    */
+    components: {
+        UserProfileComponent
+    },
+    /** 
+     * Eventos del componente
+     * @member EmployeeTableModalComponent.emits
+     * @property {Role[]} onRoleSelected Evento que se lanza cuando se selecciona un rol
+    */
+    emits: ['onRoleSelected'],
+    /** 
+     * Propiedades que recibe el componente 
+     * @member EmployeeTableModalComponent.props
+     * @property {string} id (Obligatorio) ID del componente
+     * @property {Employee} employee (Obligatorio) Datos del empleado sea nuevo o existente
+     * @property {boolean} disabled (Obligatorio) Indica si el formulario del componente se habilita o deshabilita
+     * @property {boolean} isNew (Obligatorio) Indica si los datos del empleado son para crear o editar
+    */
+    props: {
+        id: {
+            type: String,
+            default: ''
+        },
+        employee: {
+            type: Object as PropType&lt;Employee>,
+            default: EmployeeData
+        },
+        disabled: {
+            type: Boolean as PropType&lt;Boolean>,
+            default: true
+        },
+        isNew: {
+            type: Boolean as PropType&lt;Boolean>,
+            default: false
+        },
+    },
+    /** 
+     * Variables a observar por el componente
+     * @member EmployeeTableModalComponent.watch
+     * @property {string[]} roleSelected Al actualizar un rol dentro del formulario, se agrega a la variable rolesSelected un array con el rol seleccionado
+     * @property {Employee} employee AL actualizar los datos del empleado se obtienen los {@link EmployeeTableModalComponent.getEmployeeRoles|roles} asignados para dicho empleado
+     * @property {string[]} rolesSelected Al actualizar el rol del empleado se dispara el evento onRoleSelected junto con el rol seleccionado previamente
+    */
+    watch: {
+        roleSelected()
+        {
+            this.rolesSelected = [this.roleSelected];
+        },
+        employee:
+        {
+            handler()
+            {
+                this.getEmployeeRoles();
+            },
+            deep:true
+        },
+        rolesSelected: {
+            handler()
+            {
+                this.$emit('onRoleSelected', this.rolesSelected)
+            },
+            deep:true
+        }
+    },
+    /**
+    * Variables del componente
+    * @member EmployeeTableModalComponent.data
+    * @property {string[]} roles Guarda la lista de roles existentes que provee el backend
+    * @property {string[]} rolesSelected Guarda los roles seleccionados para el empleado seleccionado
+    * @property {Array&lt;Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
+    * @property {string} roleSelected Guardar el rol seleccionado por defecto al iniciar el componente
+    */
+    data() {
+        return {
+            roles: [] as String[],
+            rolesSelected: [] as String[],
+            errors: [],
+            roleSelected: ''
+        };
+    },
+    /** 
+     * Al iniciar el componente, se obtienen los datos de los {@link EmployeeTableModalComponent.getRoles|roles registrados}
+     * @member EmployeeTableModalComponent.mounted
+    */
+    mounted() {
+        this.getRoles();
+    },
+    methods: {
+        /** 
+         * Obtiene los roles registrados en la base de datos. Si la petición se procesa correctamente, se asigna a la variable roles el nombre de los roles provistos
+         * por el backend
+         * @function EmployeeTableModalComponent.getRoles
+        */
+        getRoles()
+        {
+            axios.get&lt;Role[]>(`/empleados/roles`)
+            .then(response => {
+                this.roles = response.data.map(item => item.name);
+            })
+            .catch(error => {
+                
+            })
+        },
+        /** 
+         * Obtiene los roles del empleado seleccionado registrados en la base de datos.
+         * Si la petición se procesa correctamente, se asigna a la variable rolesSelected la lista de los roles del empleado,
+         * mientras que a la variable roleSelected se le asigna el primer rol del empleado
+         * @function EmployeeTableModalComponent.getEmployeeRoles
+        */
+        getEmployeeRoles()
+        {
+            axios.get&lt;string[]>(`/empleados/${this.employee.id}/roles`)
+            .then(response => {
+                this.rolesSelected = response.data;
+                this.roleSelected = response.data[0];
+            })
+            .catch(error => {
+                
+            })
+        },
+        /** 
+         * Se envía al servidor la lista de roles que han sido seleccionados para el empleado seleccionado previamente. Si la petición se
+         * procesó correctamente, se muestral el modal {@link SuccessAlertComponent}, en caso contrario se asigna a la variable errors el mensaje de error
+         * provisto por el servidor y se muestra el componente {@link ErrorAlertComponent}
+         * @function EmployeeTableModalComponent.setEmployeeRoles
+        */
+        setEmployeeRoles()
+        {
+            axios.post(`/empleados/${this.employee.id}/roles`, {
+                roles: this.rolesSelected
+            })
+            .then(response => {
+                $('#emtmcSuccess').modal('show');
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                $('#emtmcError').modal('show');
+            })
+        }
+    }
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

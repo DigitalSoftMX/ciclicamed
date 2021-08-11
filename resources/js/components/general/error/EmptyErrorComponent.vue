@@ -17,8 +17,12 @@
 import {
     defineComponent
 } from '@vue/runtime-core';
-import { DefineComponent, PropType } from 'vue';
 
+/** 
+ * @description Componente que muestra un mensaje predefinido de datos vacíos, mediante un div
+ * @class EmptyErrorComponent
+ * @example <empty-error-component></empty-error-component>
+*/
 export default defineComponent({
     components: {
     },

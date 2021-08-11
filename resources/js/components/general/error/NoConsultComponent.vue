@@ -14,6 +14,12 @@
 </template>
 
 <script lang="ts">
+
+/** 
+ * @description Componente que muestra un mensaje predefinido de que no existen consultas en curso (Administrador, Doctor y Enfermer), mediante un div
+ * @class NoConsultComponent
+ * @example <no-consult-component></no-consult-component>
+*/
     import {
         defineComponent
     } from '@vue/runtime-core';
@@ -22,6 +28,11 @@
         components: {},
         emits: [],
         props: {},
+        /**
+        * Variables del componente
+        * @member NoConsultComponent.data
+        * @property {string} path Guarda la URL actual de la carpeta donde se encuentra alojado (local o en servidor)
+        */
         data() {
             return {
                 path: ((document.head.querySelector('meta[name="api-base-url"]') as any) !.content as string)
@@ -30,6 +41,10 @@
         mounted() {},
         watch: {},
         methods: {
+            /** 
+             * Redirecciona a la dirección de inicio
+             * @function NoConsultComponent.goToPrevious
+            */
             goToPrevious() {
                 window.location.href = `${this.path}/app/inicio`;
             }

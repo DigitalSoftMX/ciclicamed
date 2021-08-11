@@ -61,6 +61,7 @@
         "jquery": "^3.6.0",
         "jquery-datepicker": "^1.12.3",
         "jquery-ui-bundle": "^1.12.1-migrate",
+        "jsdoc-vuejs": "^4.0.0",
         "luxon": "^1.27.0",
         "moment": "^2.29.1",
         "object-to-formdata": "^4.1.0",

@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> general/select/SelectComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>general/select/SelectComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { SelectData } from '@data/General/SelectSelected.data';
+import { Select } from '@interface/General/Select.interface';
+import { defineComponent } from '@vue/runtime-core';
+import $ from 'jquery';
+import 'select2';
+import { PropType } from 'vue';
+
+/** 
+ * @description Componente que simula la etiqueta select de HTML, con opciones avanzadas de jerarquía.
+ * Nota: Se recomienda utilizar solo cuando se muestra una lista de doctores.
+ * Para mas referencia del funcionamiento ver {@link https://select2.org/|Select2}
+ * @class SelectComponent
+ * @example &lt;select-component :id="" disabled="" data="" firstText="" isGroup="" v-model="">&lt;/-component>
+*/
+export default defineComponent({
+    /** 
+     * Eventos del componente
+     * @member SelectComponent.emits
+     * @property {Select} update:modelValue Evento que se lanza para actualizar la variable utilizada en la propiedad v-model
+     * @property {null} onChange Evento que se lanza para indicar que se ha seleccionado un valor
+    */
+    emits: ['update:modelValue', 'onChange'],
+    /** 
+     * Propiedades que recibe el componente 
+     * @member SelectComponent.props
+     * @property {string} id (Obligatorio) ID del componente
+     * @property {boolean} disabled (Obligatorio) Indica si el componente permite seleccionar o no un valor
+     * @property {Select[]} data (Obligatorio) Lista de valores que mostrará el componente
+     * @property {string} firstText (Obligatorio) Primer valor que se muestra en el componente, o en caso de que no se seleccione un valor
+     * @property {Select} modelValue (Opcional) Valor que recibe y actualiza al componente padre. Ver {@link https://v3.vuejs.org/guide/migration/v-model.html|v-model} de vue para mas referencia
+    */
+    props: {
+        id: {
+            type: String,
+            default: ''
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        data: {
+            type: Array as PropType&lt;Select[]>,
+            default: []
+        },
+        firstText:
+        {
+            type: String,
+            default: ''
+        },
+        modelValue: {
+            type: Object as PropType&lt;Select>,
+            default: SelectData
+        },
+        isGroup: {
+            type: Boolean,
+            default: false
+        }
+    },
+    /** 
+     * Variables a observar por el componente
+     * @member SelectComponent.watch
+     * @property {Select[]} data Al actualizar la lista de información que se muestra en el componente, vacía el input, a lo cual procede a inicializar de nuevo el input de Select2 con información de la variable data y finalmente actualiza el valor seleccionado a uno vacío
+     * @property {Select} localValue Al actualizar la información seleccionada lanza el evento para actualizar la variable de v-model en el componente padre. Ver custom v-model vue 3 en google para más información
+     * @property {Select} modelValue Al actualizar la variable, se asigna a la variable localValue para poder modificar la información y retonarla si hay una variable asignada a la propiedad v-model
+    */
+    watch: {
+        data() {
+            $(`#${this.id}`).empty();
+            $(`#${this.id}`).select2({
+                data: [
+                    {
+                        id: -1,
+                        text: this.firstText,
+                        disabled: true
+                    },
+                    ...this.data
+                ]
+            });
+            $(`#${this.id}`).val('-1').trigger('change');
+        },
+        localValue() {
+            this.$emit('update:modelValue', this.localValue);
+        },
+        modelValue: {
+            handler()
+            {
+                this.localValue = this.modelValue;
+                $(`#${this.id}`).val(this.localValue.id).trigger('change');
+            },
+            deep: true,
+        }
+    },
+    /**
+    * Variables del componente
+    * @member SelectComponent.data
+    * @property {Select} localValue Guarda la información de la variable modelValue en caso de utilizar un v-model
+    */
+    data() {
+        return {
+            localValue: this.modelValue,
+        };
+    },
+    /** 
+     * Al iniciar el componente, se inicializar el input de {@link https://select2.org/|Select2} con la información de la variable data y en caso de existir
+     * una variable en v-model, se selecciona dentro del inpur de Select2 la opción que coincida con la variable de v-model
+     * @member SelectComponent.mounted
+    */
+    mounted() {
+        const self = this;
+        $(`#${this.id}`).select2({
+            data: [
+                {
+                    id: -1,
+                    text: this.firstText,
+                    disabled: true
+                },
+                ...this.data
+            ]
+        });
+        $(`#${this.id}`).val('-1').trigger('change');
+        $(`#${this.id}`).on('select2:select', function (event: any) {
+            self.localValue = {
+                id: Number(event.params.data.id),
+                text: event.params.data.text,
+                childID: Number(event.params.data.childID),
+                parentID: Number(event.params.data.parentID)
+            }
+            self.$emit('onChange');
+        });
+    },
+    methods: {
+    },
+})
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

@@ -25,9 +25,20 @@
 </template>
 
 <script>
-
-    export default {
-        props: ['id', 'title', 'message'],
-    }
+/** 
+ * @description Componente que muestra un mensaje de éxito, mediante el uso de un modal
+ * @class SuccessAlertComponent
+ * @example <success-alert-component :id="" :title="" :errors=""></success-alert-component>
+*/
+export default {
+    /** 
+     * Propiedades que recibe el componente 
+     * @member SuccessAlertComponent.props
+     * @property {string} id (Obligatorio) ID del componente
+     * @property {string} title (Obligatorio) Título del mensaje de error
+     * @property {string[]} message (Obligatorio) Mensaje para mostrar en el cuerpo del componente
+    */
+    props: ['id', 'title', 'message'],
+}
 
 </script>

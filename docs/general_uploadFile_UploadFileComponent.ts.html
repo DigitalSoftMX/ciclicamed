@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> general/uploadFile/UploadFileComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>general/uploadFile/UploadFileComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { TestUploadData } from '@data/Medical/Test/TestUpload.data';
+import { defineComponent } from '@vue/runtime-core';
+import axios from 'axios';
+import { serialize } from 'object-to-formdata';
+import { PropType } from 'vue';
+import { ElProgress } from 'element-plus';
+require('bootstrap');
+
+/** 
+ * @description Componente que permite subir archivos pdf al servidor
+ * @class UploadFileComponent
+ * @example &lt;upload-file-component>&lt;/upload-file-component>
+*/
+export default defineComponent({
+    /** 
+     * {@link https://element-plus.org/#/es/component/loading}
+     * @member UploadFileComponent.components
+    */
+    components: {
+        ElProgress
+    },
+    /** 
+     * Eventos del componente
+     * @member UploadFileComponent.emits
+     * @property {Select} update:modelValue Evento que se lanza para actualizar la variable utilizada en la propiedad v-model
+    */
+    emits: ['update:modelValue'],
+    /** 
+     * Propiedades que recibe el componente 
+     * @member UploadFileComponent.props
+     * @property {boolean} disabled (Obligatorio) Indica si el componente está habilitado o no
+     * @property {Select} modelValue (Opcional) Valor que recibe y actualiza al componente padre. Ver {@link https://v3.vuejs.org/guide/migration/v-model.html|v-model} de vue para mas referencia
+     * @property {string} role (Obligatorio) Rol del usuario logueado actualmente
+     * @property {boolean} upload (Obligatorio) Habilita o no la opción de subir desde el componente archivos (solo válido para la consulta médica)
+     * @property {number} test (Obligatorio) ID del examen médico
+    */
+    props: {
+        disabled: {
+            type: Boolean,
+            default: true
+        },
+        modelValue: {
+            type: Array as PropType&lt;File[]>,
+            default: []
+        },
+        role: {
+            type: String as PropType&lt;String>,
+            default: ''
+        },
+        upload: {
+            type: Boolean as PropType&lt;Boolean>,
+            default: false
+        },
+        test: {
+            type: Number as PropType&lt;Number>,
+            default: 0
+        }
+    },
+    /**
+    * Variables del componente
+    * @member UploadFileComponent.data
+    * @property {boolean]} isFileOver Identifica si un archivo ha sido arrastrado o no del área de selección de archivos
+    * @property {File[]]} fileList Guarda los archivos que han sido seleccionados por el usuario
+    * @property {File[]]} acceptFiles Guarda las extensiones de archivos que son aceptadas para subir al servidor
+    * @property {TestUpload} form Guarda los archivos en el formato de guardado del backend
+    * @property {number} uploadPercentage Guarda el porcentaje numérico de la subida de los archivos al servidor
+    * @property {boolean} load Habilita o deshabilita la animación de carga
+    * @property {Array&lt;Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
+    */
+    data() {
+        return {
+            isFileOver: false,
+            fileList: this.modelValue,
+            acceptFiles: '',
+            form: TestUploadData,
+            uploadPercentage: 0,
+            load: false,
+            errors: []
+        };
+    },
+    /** 
+     * Al iniciar el componente, se asigna a la variable acceptFiles solo los archivos pdf
+     * @member UploadFileComponent.mounted
+    */
+    mounted() {
+        this.acceptFiles = '.pdf';
+    },
+    /** 
+     * Variables a observar por el componente
+     * @member UploadFileComponent.watch
+     * @property {string} role Al actualizar un rol se asigna a la variable acceptFiles solo los archivos pdf
+     * @property {Select} modelValue Al actualizar la variable, se asigna a la variable fileList para poder modificar la información y retonarla si hay una variable asignada a la propiedad v-model
+     * @property {Select} localValue Al actualizar los archivos seleccionados lanza el evento para actualizar la variable de v-model en el componente padre. Ver custom v-model vue 3 en google para más información
+    */
+    watch: {
+        role()
+        {
+            this.acceptFiles = '.pdf';
+        },
+        modelValue: {
+            handler()
+            {
+                this.fileList = this.modelValue;
+            },
+            deep: true
+        },
+        fileList: {
+            
+            handler()
+            {
+                this.$emit('update:modelValue', this.fileList);
+            },
+            deep: true
+        }
+    },
+    methods: {
+        /** 
+         * Permite abrir el explorador de archivos para seleccionar los archivos deseados con el click del raton
+         * por el backend
+         * @function UploadFileComponent.click
+        */
+        click()
+        {
+            document.getElementById("ufcUpload")?.click();
+        },
+        /** 
+         * Permite arrastar y soltar los archivos en el área específica del componente
+         * @function UploadFileComponent.dragOver
+        */
+        dragOver(event: DragEvent)
+        {
+            event.preventDefault();
+            this.isFileOver = true;
+        },
+        /** 
+         * Detecta cuando el usuario suelta el click del raton en el área de arrastre de archivos
+         * @function UploadFileComponent.dragLeave
+        */
+        dragLeave()
+        {
+            this.isFileOver = false;
+        },
+        /** 
+         * Cuando detecta que hay archivos seleccionados al momento de soltar el click del raton en el área de arrastre, asigna a la variable fileList
+         * los archivos y filtra los archivos que no sean pdf y selecciona los primeros 3 archivos seleccionados
+         * @function UploadFileComponent.dropFile
+         * @param {DragEvent} event Evento del HTML
+        */
+        dropFile(event: DragEvent)
+        {
+            event.preventDefault();
+            this.fileList = Object.values(event.dataTransfer!.files).filter(file => file.type === 'application/pdf').slice(0,3);
+            
+            this.isFileOver = false;
+        },
+        /** 
+         * Elimina el archivo seleccionado de la variable fileList
+         * @function UploadFileComponent.deleteFileSelected
+         * @param {number} index Número de fila dentro de la variable fileList a eliminar
+        */
+        deleteFileSelected(index: number)
+        {
+            this.fileList.splice(index, 1);
+        },
+        onChange(event: Event) {
+            const files = (event.target as HTMLInputElement).files || [];
+            if(files.length > 0)
+            {
+                this.fileList = Object.values&lt;File>(files).filter(file => file.type === 'application/pdf').slice(0,3);
+            }
+        },
+        /** 
+         * Envía al servidor los archivos seleccionados por el usuario. Mientras la petición es procesada se actualiza la variable uploadPercentage, para
+         * indicar el porcentaje de subida de los archivos. Si la petición se procesó correctamente, se muestral el modal {@link SuccessAlertComponent},
+         * en caso contrario se asigna a la variable errors el mensaje de error provisto por el servidor y se muestra el componente {@link ErrorAlertComponent}.
+         * En ambos casos, la variable uploadPercentage se reinicia a 0 una vez finalizado la subida.
+         * Nota: solo aplica si la variable upload es true y solo se utiliza en la consulta médica
+         * @function UploadFileComponent.uploadFile
+        */
+        uploadFile()
+        {
+            const self = this;
+            const config = {
+                headers: { 'content-type': 'multipart/form-data' },
+                onUploadProgress: function(progressEvent: any) {
+                    self.uploadPercentage = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+                }
+            }
+            var formData = serialize(this.form);
+            this.fileList.map(file => formData.append(`file[]`, file))
+            this.load = true;
+            axios.post(`/estudios/${this.test}/resultados`, formData, config)
+            .then(response => {
+                this.load = false;
+                this.uploadPercentage = 0;
+                $(`#upfUploadSuccess`).modal('show');
+            })
+            .catch(error => {
+                this.load = false;
+                this.uploadPercentage = 0;
+                this.errors = error.response.data.errors;
+                $(`#upfUploadError`).modal('show');
+            })
+        }
+    },
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

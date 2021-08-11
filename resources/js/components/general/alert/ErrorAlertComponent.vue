@@ -24,15 +24,25 @@
 </template>
 
 <script>
-import { watch } from '@vue/runtime-core'
-    export default {
-        props: ['id', 'title', 'errors'],
-        mounted:  function() {
-        },
-        watch:{
-            errors() {
-            }
+/** 
+ * @description Componente que muestra un mensaje de error, mediante el uso de un modal
+ * @class ErrorAlertComponent
+ * @example <error-alert-component :id="" :title="" :errors=""></error-alert-component>
+*/
+export default {
+    /** 
+     * Propiedades que recibe el componente 
+     * @member ErrorAlertComponent.props
+     * @property {string} id (Obligatorio) ID del componente
+     * @property {string} title (Obligatorio) Título del mensaje de error
+     * @property {string[]} errors (Obligatorio) Lista de errores para mostrar en el cuerpo del componente
+    */
+    props: ['id', 'title', 'errors'],
+    mounted:  function() {
+    },
+    watch:{
+        errors() {
         }
     }
-
+}
 </script>
