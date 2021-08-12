@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> patient/prescription/PrescriptionComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>patient/prescription/PrescriptionComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { defineComponent } from '@vue/runtime-core';
+import { defineAsyncComponent } from 'vue';
+import $ from 'jquery';
+import moment from 'moment';
+import { Consult } from '@interface/Medical/Consult.interface';
+import { ConsultPagination } from '@interface/Medical/ConsultPagination.interface';
+import axios from 'axios';
+import { ConsultPaginationData } from '@data/Medical/ConsultPagination.data';
+import { Prescription } from '@interface/Medical/Prescription.interface';
+require('daterangepicker'); 
+require('bootstrap');
+
+/** 
+ * @description Componente que muestra las recetas médicas de un paciente (solo rol paciente)
+ * @class PrescriptionComponent
+ * @example &lt;prescription-component :patientID="">&lt;/prescription-component>
+*/
+export default defineComponent({
+    /** 
+     * {@link PrescriptionModalComponent}
+     * @member PrescriptionComponent.components
+    */
+    components: {
+        PrescriptionModalComponent: require('@component/patient/prescription/prescriptionModal/PrescriptionModalComponent.vue').default
+    },
+    /** 
+     * Propiedades que recibe el componente 
+     * @member PrescriptionComponent.props
+     * @property {number} patientID ID del paciente seleccionado
+     * 
+    */
+    props: {
+        patientID: {
+            type: Number,
+            default: -1
+        }
+    },
+    /**
+    * Variables del componente
+    * @member PrescriptionComponent.data
+    * @property {ConsultPagination} prescriptionsData Guarda la información de las recetas médicas pertenecientes al usuario seleccionado
+    * @property {boolean} enableEmptyData Habilita o deshabilita el componente {@link EmptyErrorComponent} si existe o no recetas médicas
+    * @property {boolean} prescriptions Guarda los medicamentos de la recete médica seleccionada
+    * @property {number} paginationPages Guarda el número de páginas de userData para mostrar el número de páginas en la paginación de la tabla
+    * @property {number} paginationActive Guarda el número de página activa de la tabla
+    * @property {string} query Guarda la búsqueda realizada en el input de búsqueda de la tabla
+    * @property {boolean} activateSearch Activa o no la búsqueda desde el input de búsqueda de la tabla
+    * @property {boolean} loading Activa o no la animación de carga dentro de la tabla
+    */
+    data() {
+        return {
+            prescriptionsData: ConsultPaginationData,
+            enableEmptyData: false,
+            prescriptions: [] as Prescription[],
+            paginationPages: 0,
+            paginationActive: 0,
+            query: '',
+            activateSearch: true,
+            loading: true,
+        };
+    },
+    /** 
+     * Al iniciar el componente, se crea una instancia de daterangepicker (jquery) con datos predefinidos y obtiene las
+     * {@link PrescriptionComponent.getPrescriptionsData|recetas médicas} del paciente
+     * @member PrescriptionComponent.mounted
+    */
+    mounted() {
+        const that = this;
+        $("#search").daterangepicker({
+            showDropdowns: true,
+            minYear: 1930,
+            maxYear: moment().endOf("year").year(),
+            ranges: {
+                'Hoy': [moment(), moment()],
+                'Últimos 7 dias': [moment().subtract(6, 'days'), moment()],
+                'Últimos 30 dias': [moment().subtract(29, 'days'), moment()],
+                'Este mes': [moment().startOf('month'), moment().endOf('month')],
+                'Último mes': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
+                    .endOf('month')
+                ],
+                'Este año': [moment().startOf('year'), moment().endOf('year')],
+                'Todos': [moment().year(1930).startOf('year'), moment().endOf('year')],
+            },
+            locale: {
+                cancelLabel: 'Cancelar',
+                applyLabel: 'Seleccionar',
+                "customRangeLabel": "Seleccionar otra fecha",
+            }
+        });
+        this.getPrescriptionsData(1);
+    },
+    methods: {
+        /** 
+         * Retorna la fecha de creación de la receta, en un formato local
+         * @function PrescriptionComponent.getDateFormatted
+         * @param {string} date Fecha de la receta
+         * @returns {string}
+        */
+        getDateFormatted(date: string) {
+            moment.locale('es');
+            return moment(date).format('D MMMM YYYY');
+        },
+        /** 
+         * Asigna a la variable prescriptions las recetas médicas seleccionada por el usuario, a continuación muestra el componente {@link PrescriptionModalComponent}
+         * @function PrescriptionComponent.showMedicaments
+         * @param {Consult} consult Consulta donde se creó la receta médica
+        */
+        showMedicaments(consult: Consult) {
+            this.prescriptions = consult.prescriptions!
+            $('#medicamentsModal').modal('show');
+        },
+        /** 
+         * Obtiene las recetas médicas registradas en el sistema utilizando la paginación provista por el backend.
+         * Antes de realizar la petición al servidor con las recetas, se habilita la animación de carga con la asignación true de la variable loading, se verifica que la página guardada en la variable page sea mayor o igual a 1,
+         * que la página sea menor o igual a la última página de la paginación guardada en la variable
+         * prescriptionsData y que la página no sea la misma que la de la variable paginationActive.
+         * Si la comprobación es exitosa se realiza una petición HTTP a la URI /pacientes/{id}/recetas con el parámetro de la página. Si la petición es correcta se asigna la variable prescriptionsData con la respuesta
+         * del servidor, se asigna a la variable paginationPages con los datos de la paginación provista por el servidor y se deshabilita la animación de carga mediante la asignación false de la variable loading,
+         * en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable loading
+         * @param {number} page Número de la página
+         * @function PrescriptionComponent.getPrescriptionsData
+        */
+        getPrescriptionsData(page: number)
+        {
+            this.loading = true;
+            if(page >= 1 &amp;&amp; page &lt;= this.prescriptionsData.pagination.last_page &amp;&amp; page !== this.paginationActive)
+            {
+                this.paginationActive = page;
+                axios.get&lt;ConsultPagination>(`/pacientes/${this.patientID}/recetas?page=${this.paginationActive}`)
+                .then(response => {
+                    this.prescriptionsData = response.data;
+                    this.paginationPages = response.data.pagination.last_page;
+                    this.loading = false;
+                })
+                .catch(error => {
+                    
+                    this.loading = false;
+                })
+            }
+        },
+        /** 
+         * Obtiene las recetas médicas registradas en el sistema que coincidan con la búsqueda por fecha realizada por el usuario.
+         * Antes de realizar la petición al servidor con las recetas, se habilita la animación de carga con la asignación true de la variable loading,
+         * se asigna a la variable queryPagination el valor de la variable paginationActive si la variable query está vacío, en caso contrario se le asigna el 0.
+         * Si la variable activateSeach es true o la longitud de la variable query es mayor a 0, se realizar una llamada a la URI /pacientes/{id}/recetas con el parámetro de la página y el contenido de la búsqueda.
+         * Si la petición es correcta se asigna la variable prescriptionsData con la respuesta del servidor, se asigna a la variable paginationPages con los datos de la paginación provista por el servidor
+         * y se deshabilita la animación de carga mediante la asignación false de la variable loading, en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable loading
+         * @function PrescriptionComponent.getPrescriptionsDataQuery
+        */
+        getPrescriptionsDataQuery()
+        {
+            if(this.activateSearch || this.query.length > 0)
+            {
+                this.loading = true;
+                const queryPagination = this.query === '' ? this.paginationActive : 0;
+                axios.get&lt;ConsultPagination>(`/pacientes/${this.patientID}/recetas`, {
+                    params: {
+                        page: queryPagination,
+                        query: this.query
+                    }
+                })
+                .then(response => {
+                    this.prescriptionsData = response.data;
+                    this.paginationPages = response.data.pagination.last_page;
+                    this.loading = false;
+                })
+                .catch(error => {
+                    
+                    this.loading = false;
+                })
+                this.activateSearch = this.query === '' ? false : true;
+            }
+        },
+    }
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

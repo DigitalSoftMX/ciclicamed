@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> patient/patientsTable/PatientsTableComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>patient/patientsTable/PatientsTableComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { defineComponent } from '@vue/runtime-core';
+import axios from 'axios';
+import { UserPagination } from '@interface/User/UserPagination.interface';
+import { UserPaginationData } from '@data/User/UserPagination.data';
+import { PatientData } from '@data/Patient/Patient.data';
+import PatientsTableModalComponent from '@component/patient/patientsTable/patientsTableModal/PatientsTableModalComponent';
+import moment from 'moment';
+import { Patient } from '@interface/Patient/Patient.interface';
+import PatientsHistoryModalComponent from '@component/patient/patientsTable/patientHistoryModal/PatientsHistoryModalComponent';
+
+/** 
+ * @description Componente que muestra la lista de pacientes, mediante el uso de una tabla
+ * @class PatientsTableComponent
+ * @example &lt;patients-table-component>&lt;/patients-table-component>
+*/
+export default defineComponent({
+    /** 
+     * {@link PatientsTableModalComponent}, {@link PatientsHistoryModalComponent}, {@link PreregistrationComponent}
+     * @member PatientsTableComponent.components
+    */
+    components: {
+        PatientsTableModalComponent,
+        PatientsHistoryModalComponent,
+        PreregistrationComponent: require('@component/patient/preregistration/PreregistrationComponent.vue').default
+    },
+    /**
+    * Variables del componente
+    * @member PatientsTableComponent.data
+    * @property {MedicamentPagination} userData Guarda la información de los pacientes que retorna el backend en paginación
+    * @property {number} paginationPages Guarda el número de páginas de userData para mostrar el número de páginas en la paginación de la tabla
+    * @property {number} paginationActive Guarda el número de página activa de la tabla
+    * @property {string} query Guarda la búsqueda realizada en el input de búsqueda de la tabla
+    * @property {boolean} activateSearch Activa o no la búsqueda desde el input de búsqueda de la tabla
+    * @property {boolean} loading Activa o no la animación de carga dentro de la tabla
+    * @property {Patient} patientSelected Guarda los datos del paciente seleccionado
+    * @property {boolean} disabledPatientEdit Activa o desactiva la opción de editar al paciente en el componente {@link PatientsTableModalComponent}
+    * @property {string} successAlert.title Guarda el título para el modal del componente {@link SuccessAlertComponent}
+    * @property {string} successAlert.message Guarda el mensaje para el modal del componente {@link SuccessAlertComponent}
+    * @property {Branch} confirmationAlert.title Guarda título del mensaje de confirmación del modal {@link ConfirmationAlertComponent}
+    * @property {Branch} confirmationAlert.message Guarda el mensaje de confirmación del modal {@link ConfirmationAlertComponent}
+    * @property {Medicament} isNew Indica si el medicamento seleccionado es nuevo o existente
+    */
+    data() {
+        return {
+            userData: UserPaginationData,
+            paginationPages: 0,
+            paginationActive: 0,
+            query: '',
+            activateSearch: true,
+            loading: true,
+            patientSelected: PatientData,
+            disabledPatientEdit: true,
+            successAlert: {
+                title: '',
+                message: ''
+            },
+            confirmationAlert: {
+                title: '',
+                message: ''
+            },
+            isNew: false,
+        };
+    },
+    /** 
+     * Al iniciar el componente, se obtienen los datos de los {@link PatientsTableComponent.getUserData|pacientes registrados}
+     * @member PatientsTableComponent.mounted
+    */
+    mounted() {
+        this.getUserData(1);
+    },
+    methods: {
+        /** 
+         * Elimina el paciente seleccionado del servidor. Si la petición es correcta, se asigna al objeto successAlert un mensaje de éxito y se muestra el
+         * componente {@link SuccessAlertComponent}
+         * @function PatientsTableComponent.deletePatient
+        */
+        deletePatient()
+        {
+            axios.delete(`/pacientes/${this.patientSelected.id}`)
+            .then(response => {
+                this.successAlert.title = 'Paciente eliminado';
+                this.successAlert.message = 'Paciente eliminado correctamente';
+                $('#patcSuccess').modal('show');
+            })
+            .catch(error => {
+                
+            })
+        },
+        /** 
+         * Concatena y retorna el nombre completo del paciente
+         * @function PatientsTableComponent.fullName
+         * @param {Patient} user Datos del paciente seleccionado
+         * @returns string
+        */
+        fullName(user: Patient)
+        {
+            return `${user.first_name} ${user.last_name}`;
+        },
+        /** 
+         * Formatea la fecha de nacimiento provista por el servidor a un formato local
+         * @function PatientsTableComponent.formatBirthday
+         * @param {string} birthday Fecha de nacimiento del paciente
+         * @returns string
+        */
+        formatBirthday(birthday: string)
+        {
+            return moment(birthday).format('DD-MM-YYYY');
+        },
+        /** 
+         * Crea un nuevo paciente asignando a la variable patientSelected datos vacíos e indicando que es un nuevo paciente asignando a la variable
+         * isNew el valor true, además que se habilita la edición del paciente en el formulario {@link PatientsTableModalComponent} mediante la asignación false a la
+         * variable disabledPatientEdit. Finalmente se muestra el componente {@link PatientsTableModalComponent} con los datos del paciente
+         * @function PatientsTableComponent.createPatient
+        */
+        createPatient()
+        {
+            this.isNew = true;
+            this.patientSelected = PatientData;
+            this.disabledPatientEdit = false;
+            $('#patcPatient').modal('show');
+        },
+        /** 
+         * Antes de eliminar a un usuario, se muestra el componente {@link ConfirmationAlertComponent} para mostrar el mensaje de confirmación asignado a la 
+         * variable this.confirmationAlert.message, además que se asigna a la variable patientSelected los datos del paciente seleccionado
+         * @function PatientsTableComponent.showConfirmationAlert
+         * @param {Patient} patient Datos del paciente seleccionado
+        */
+        showConfirmationAlert(patient: Patient)
+        {
+            this.patientSelected = patient;
+            this.confirmationAlert.message = '¿Desea eliminar a este usuario? Esta acción no puede deshacerse'
+            $('#patcConfirmation').modal('show');
+        },
+        /** 
+         * Muestra el componente {@link ConfirmationAlertComponent} con los datos del paciente seleccionado que se asignan a la variable patientSelected
+         * @function PatientsTableComponent.showPatientModal
+         * @param {Patient} patient Datos del paciente seleccionado
+        */
+        showPatientModal(patient: Patient)
+        {
+            this.patientSelected = patient;
+            $('#pahmcoHistory').modal('show');
+        },
+        /** 
+         * Muestra el componente {@link ConfirmationAlertComponent} con los datos del paciente seleccionado que se asignan a la variable patientSelected.
+         * Para permitir la edición del paciente, se asigna a la variable isNew el valor true junto con la asignación false a la variable disabledPatientEdit
+         * @function PatientsTableComponent.showPatientModal
+         * @param {Patient} patient Datos del paciente seleccionado
+        */
+        showEditModal(patient: Patient)
+        {
+            this.isNew = false;
+            this.disabledPatientEdit = false;
+            this.patientSelected = patient;
+            $('#patcPatient').modal('show');
+        },
+        /** 
+         * Obtiene los pacientes registradas en el sistema utilizando la paginación provista por el backend.
+         * Antes de realizar la petición al servidor con los pacientes, se habilita la animación de carga con la asignación true de la variable loading, se verifica que la página guardada en la variable page sea mayor o igual a 1,
+         * que la página sea menor o igual a la última página de la paginación guardada en la variable
+         * userData y que la página no sea la misma que la de la variable paginationActive.
+         * Si la comprobación es exitosa se realiza una petición HTTP a la URI /usuarios/pacientes con el parámetro de la página. Si la petición es correcta se asigna la variable userData con la respuesta
+         * del servidor, se asigna a la variabler paginationPages con los datos de la paginación provista por el servidor y se deshabilita la animación de carga mediante la asignación false de la variable loading,
+         * en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable loading
+         * @param {number} page Número de la página
+         * @function PatientsTableComponent.getUserData
+        */
+        getUserData(page: number)
+        {
+            this.loading = true;
+            if(page >= 1 &amp;&amp; page &lt;= this.userData.pagination.last_page &amp;&amp; page !== this.paginationActive)
+            {
+                this.paginationActive = page;
+                axios.get&lt;UserPagination>(`/usuarios/pacientes?page=${this.paginationActive}`)
+                .then(response => {
+                    this.userData = response.data;
+                    this.paginationPages = response.data.pagination.last_page;
+                    this.loading = false;
+                })
+                .catch(error => {
+                    ;
+                    this.loading = false;
+                })
+            }
+        },
+        /** 
+         * Obtiene los pacientes registradas en el sistema que coincidan con la búsqueda realizada por el usuario.
+         * Antes de realizar la petición al servidor con los pacientes, se habilita la animación de carga con la asignación true de la variable loading,
+         * se asigna a la variable queryPagination el valor de la variable paginationActive si la variable query está vacío, en caso contrario se le asigna el 0.
+         * Si la variable activateSeach es true o la longitud de la variable query es mayor a 0, se realizar una llamada a la URI /usuarios/pacientes con el parámetro de la página y el contenido de la búsqueda.
+         * Si la petición es correcta se asigna la variable userData con la respuesta del servidor, se asigna a la variabler paginationPages con los datos de la paginación provista por el servidor
+         * y se deshabilita la animación de carga mediante la asignación false de la variable loading, en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable loading
+         * @function PatientsTableComponent.getUserDataQuery
+        */
+        getUserDataQuery()
+        {
+            this.loading = true;
+            const queryPagination = this.query === '' ? this.paginationActive : 0;
+            if(this.activateSearch || this.query.length > 0)
+            {
+                axios.get&lt;UserPagination>(`/usuarios/pacientes`, {
+                    params: {
+                        page: queryPagination,
+                        query: this.query
+                    }
+                })
+                .then(response => {
+                    this.userData = response.data;
+                    this.paginationPages = response.data.pagination.last_page;
+                    this.loading = false;
+                })
+                .catch(error => {
+                    ;
+                    this.loading = false;
+                })
+            }
+            this.activateSearch = this.query === '' ? false : true;
+        },
+    },
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

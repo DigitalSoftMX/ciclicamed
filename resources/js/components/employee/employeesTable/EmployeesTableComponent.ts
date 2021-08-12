@@ -85,7 +85,7 @@ export default defineComponent({
         /** 
          * Concatena y retorna el nombre completo del paciente
          * @function EmployeeTableComponent.fullName
-         * @param {Employee} employee Datos del estudio clínico
+         * @param {Employee} employee Datos del empleado seleccionado
          * @returns string
         */
         fullName(employee: Employee)
@@ -204,7 +204,7 @@ export default defineComponent({
          * Antes de realizar la petición al servidor con los empleados, se habilita la animación de carga con la asignación true de la variable loading, se verifica que la página guardada en la variable page sea mayor o igual a 1,
          * que la página sea menor o igual a la última página de la paginación guardada en la variable
          * userData y que la página no sea la misma que la de la variable paginationActive.
-         * Si la comprobación es exitosa se realiza una petición HTTP a la URI /empleados con el parámetro de la página. Si la petición es correcta se asigna la variable branchData con la respuesta
+         * Si la comprobación es exitosa se realiza una petición HTTP a la URI /empleados con el parámetro de la página. Si la petición es correcta se asigna la variable userData con la respuesta
          * del servidor, se asigna a la variabler paginationPages con los datos de la paginación provista por el servidor y se deshabilita la animación de carga mediante la asignación false de la variable loading,
          * en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable loading
          * @param {number} page Número de la página

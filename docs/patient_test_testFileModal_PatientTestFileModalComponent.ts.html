@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> patient/test/testFileModal/PatientTestFileModalComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>patient/test/testFileModal/PatientTestFileModalComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import CuestionarioMastografiaComponent from '@component/medical/test/Imagenologia/CuestionarioMastografia/CuestionarioMastografiaComponent';
+import { TestFileResultData } from '@data/Medical/Result/TestFileResult.data';
+import { EspermatobioscopiaDirectaData } from '@data/Medical/Test/Andrologia/EspermatobioscopiaDirecta.data';
+import { InseminacionArtificialData } from '@data/Medical/Test/Andrologia/InseminacionArtificial.data';
+import { OrinaPostEyaculadoData } from '@data/Medical/Test/Andrologia/OrinaPostEyaculado.data';
+import { PruebaCapacitacionEspermaticaData } from '@data/Medical/Test/Andrologia/PruebaCapacitacionEspermatica.data';
+import { PruebaHOSTData } from '@data/Medical/Test/Andrologia/PruebaHOST.data';
+import { InterpretacionUltrasonidosData } from '@data/Medical/Test/Imagenologia/InterpretacionUltrasonidos.data';
+import { TestFileResult } from '@interface/Medical/Result/TestFileResult.interface';
+import { defineComponent } from '@vue/runtime-core';
+import { embed } from 'pdfobject';
+import { PropType } from 'vue';
+import pdf from 'vue3-pdf';
+
+/** 
+ * @description Componente que muestra los resultados de un estudio médica seleccionado (solo rol paciente)
+ * @class PatientTestFileModalComponent
+ * @example &lt;patient-test-file-component :id="" results="" :productCode="">&lt;/patient-test-file-component>
+*/
+export default defineComponent({
+    /** 
+     * {@link CuestionarioMastografiaComponent}, {@link InterpretacionUltrasonidosComponent}, {@link EspermatobioscopiaDirectaComponent}
+     * {@link InseminacionArtificialComponent}, {@link OrinaPostEyaculadoComponent}, {@link PruebaCapacitacionComponent}, 
+     * {@link PruebaHostComponent}
+     * @member PatientTestFileModalComponent.components
+    */
+    components: {
+        pdf,
+        CuestionarioMastografiaComponent,
+        InterpretacionUltrasonidosComponent: require('@component/medical/test/Imagenologia/InterpretacionUltrasonidos/InterpretacionUltrasonidosComponent.vue').default,
+        EspermatobioscopiaDirectaComponent: require('@component/medical/test/Andrologia/EspermatobioscopiaDirecta/EspermatobioscopiaDirectaComponent.vue').default,
+        InseminacionArtificialComponent: require('@component/medical/test/Andrologia/InseminacionArtificial/InseminacionArtificialComponent.vue').default,
+        OrinaPostEyaculadoComponent: require('@component/medical/test/Andrologia/OrinaPostEyaculado/OrinaPostEyaculadoComponent.vue').default,
+        PruebaCapacitacionComponent: require('@component/medical/test/Andrologia/PruebaCapacitacion/PruebaCapacitacionComponent.vue').default,
+        PruebaHostComponent: require('@component/medical/test/Andrologia/PruebaHost/PruebaHostComponent.vue').default,
+    },
+    /** 
+     * Propiedades que recibe el componente 
+     * @member PatientTestFileModalComponent.props
+     * @property {string} id ID del componente (necesario para mostrar los pdf)
+     * @property {TestFileResult} results Resultados del examen médico seleccionado
+     * @property {string} productCode Código del estudio médico seleccionado
+     * 
+    */
+    props: {
+        id: {
+            type: String,
+            default: ''
+        },
+        results: {
+            type: Object as PropType&lt;TestFileResult>,
+            default: TestFileResultData
+        },
+        productCode: {
+            type: String as PropType&lt;String>,
+            default: ''
+        }
+    },
+    /**
+    * Variables del componente
+    * @member PatientTestFileModalComponent.data
+    * @property {string} pdfSelected URL del pdf del estudio médico seleccionado
+    * @property {string} form Guarda los archivos seleccionado por el usuario, junto con el formulario (si aplica) del resultado del estudio seleccionado
+    * @property {string} componentEnabled Guarda el componente (formulario de resultado) que debe mostrarse
+    * @property {CuestionarioMastografia} CuestionarioMastografiaComponent Guarda la información del cuestionario de mastografía
+    * @property {InterpretacionUltrasonidos} interpretacionUltrasonidos Guarda la información del interpretacion de ultrasonidos
+    * @property {EspermatobioscopiaDirecta} espermatobioscopiaDirecta Guarda la información del estudio de espermatobioscopía
+    * @property {InseminacionArtificialHumana} inseminacionArtificialHumana Guarda la información del estudio de inseminación artificial
+    * @property {OrinaPostEyaculado} orinaPostEyaculadoData Guarda la información del estudio de orina post eyaculadp
+    * @property {PruebaCapacitacionEspermatica} pruebaCapacitacionEspermatica Guarda la información del estudio de capacitación espermática
+    * @property {PruebaHOST} host Guarda la información del estudio de HOST
+    * @property {string} url Guarda la URL base de donde se encuentre el proyecto (local o servidor)
+    */
+    data() {
+        return {
+            pdfSelected: '',
+            form: {} as any,
+            componentEnabled: '',
+            cuestionarioMastografia: CuestionarioMastografiaComponent,
+            interpretacionUltrasonidos: InterpretacionUltrasonidosData,
+            espermatobioscopiaDirecta: EspermatobioscopiaDirectaData,
+            inseminacionArtificialHumana: InseminacionArtificialData,
+            orinaPostEyaculado: OrinaPostEyaculadoData,
+            capacitacionEspermatica: PruebaCapacitacionEspermaticaData,
+            host: PruebaHOSTData,
+            url: (document.head.querySelector('meta[name="api-base-url"]') as any)!.content,
+        };
+    },
+    /** 
+     * Variables a observar por el componente
+     * @member PatientTestFileModalComponent.watch
+     * @property {TestFileResult} results Al actualizar los resultados seleccionados, muestro u oculta los formularios o pdf relacionados al estudio médico
+     * de acuerdo al código de producto del estudio seleccionado, además que asigna a la variables necesarias los datos de dichos resultados
+    */
+    watch:
+    {
+        results:
+        {
+            handler()
+            {
+                switch(this.productCode)
+                {
+                    case 'IMA-0005':
+                        this.cuestionarioMastografia = this.results.form.cuestionario;
+                        this.interpretacionUltrasonidos = this.results.form.resultados;
+                        this.componentEnabled = 'cuestionarioMastografia';
+                        break;
+                    case 'LAB-0011':
+                        this.form = this.results.form;
+                        this.componentEnabled = 'inseminacionArtificialHumana';
+                        break;
+                    case 'LAB-0021':
+                        this.form = this.results.form;
+                        this.componentEnabled = 'espermatobioscopiaDirecta';
+                        break;
+                    case 'LAB-0038':
+                        this.form = this.results.form;
+                        this.componentEnabled = 'orinaPostEyaculado';
+                    case 'LAB-0068':
+                        this.form = this.results.form;
+                        this.componentEnabled = 'capacitacionEspermatica';
+                        break;
+                    case 'LAB-0069':
+                        this.form = this.results.form;
+                        this.componentEnabled = 'host';
+                        break;
+                }
+            },
+            deep: true
+        }
+    },
+    methods: {
+        /** 
+         * Descarga el pdf de resultado médico del servidor y lo muestra en el componente
+         * @param {any} file Archivos pdf del estudio médico
+         * @function PatientTestFileModalComponent.selectPDF
+        */
+        selectPDF(file: any)
+        {
+            embed(`${this.url}/estudio/archivo/${file}`, `#pdf${this.id}`)
+        }
+    }
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

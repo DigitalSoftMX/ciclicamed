@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> patient/preregistration/PreregistrationComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>patient/preregistration/PreregistrationComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { defineComponent } from '@vue/runtime-core';
+import axios from 'axios';
+import { PropType } from 'vue';
+import moment from 'moment';
+import $ from 'jquery';
+import { Patient } from '@interface/Patient/Patient.interface';
+import { PatientData } from '@data/Patient/Patient.data';
+import { PreregistrationData } from '@data/Patient/Preregistration.data';
+import { Preregistration } from '@interface/Patient/Preregistration.interface';
+// require('../../../../../public/vendor_assets/js/jquery.mCustomScrollbar.min');
+
+/** 
+ * @description Componente que muestra los datos de preregistro de un paciente, mediante el uso de un formulario dentro de un modal
+ * @class PreregistrationComponent
+ * @example &lt;preregistration-component isNew="" :disabled="" :patientData="" :role="">&lt;/-component>
+*/
+export default defineComponent({
+    /** 
+     * {@link SuccessAlertComponent}, {@link ErrorAlertComponent}
+     * @member PreregistrationComponent.components
+    */
+    components: {
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
+        ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default
+    },
+    /** 
+     * Propiedades que recibe el componente 
+     * @member PreregistrationComponent.props
+     * @property {boolean} isNew Indica si el paciente es nuevo o existente
+     * @property {boolean} disabled Habilita o deshabilita el formulario del preregistro
+     * @property {Patient} patientData (Obligatorio) Datos del paciente seleccionado
+     * @property {string} role (Obligatorio) Rol del usuario logueado actualmente
+     * 
+    */
+    props: {
+        isNew: {
+            type: Boolean,
+            default: true
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        patientData: {
+            type: Object as PropType&lt;Patient>,
+            default: PatientData
+        },
+        role: {
+            type: String,
+            default: ''
+        }
+    },
+    /**
+    * Variables del componente
+    * @member PreregistrationComponent.data
+    * @property {Preregistration} preregistrationData Guarda los datos del preregistro del paciente seleccionado
+    * @property {Patient} patientDataCopy Guarda una copia de la variable patientData para su modificación
+    * @property {string} successAlert.title Guarda el título para el modal del componente {@link SuccessAlertComponent}
+    * @property {string} successAlert.message Guarda el mensaje para el modal del componente {@link SuccessAlertComponent}
+    * @property {Array&lt;Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
+    * @property {Array&lt;Object>} buttonTitle Guarda el título del boton de crear o actualizar usuario
+    */
+    data() {
+        return {
+            preregistrationData: PreregistrationData,
+            patientDataCopy: Object.assign({}, this.patientData),
+            success: {
+                title: '',
+                message: ''
+            },
+            errors: [],
+            buttonTitle: this.isNew ? 'Crear' : 'Actualizar',
+        };
+    },
+    /** 
+     * Al iniciar el componente, si el paciente seleccionado no tiene datos de preregistro, asigna a la variable preregistrationData nuevos datos de preregistro 
+     * @member PreregistrationComponent.mounted
+    */
+    mounted() {
+        if(!this.patientData.preregistration)
+        {
+            this.preregistrationData = {...PreregistrationData};
+        }
+    },
+    /** 
+     * Variables a observar por el componente
+     * @member PreregistrationComponent.watch
+     * @property {Patient} patientData Al actualizar la variable, asigna los datos de patientData a la variable patientDataCopy para su modificación. Si el rol
+     * del usuario logueado actualmente es diferente a enfermera se obtiene {@link PreregistrationComponent.getPreregistration|los datos de preregistro}. Por último
+     * verifica si el paciente tiene datos de preregistro, si no es así, se asignan nuevos datos de preregistro a la variable preregistrationData 
+    */
+    watch: {
+        patientData: {
+            handler()
+            {
+                this.patientDataCopy = Object.assign({}, this.patientData);
+                if(this.role !== 'Enfermera')
+                {
+                    this.getPreregistration();
+                }
+                if(!this.patientData.preregistration)
+                {
+                    this.preregistrationData = {...PreregistrationData};
+                }
+            },
+            deep: true
+        }
+    },
+    methods: {
+        /** 
+         * Calcula la edad del paciente a partir de la fecha de nacimiento
+         * @function PreregistrationComponent.getAge
+        */
+        getAge()
+        {
+            return moment().diff(moment(this.patientDataCopy.birthday), 'years');
+        },
+        /** 
+         * Obtiene los datos del preregistro del paciente seleccionado que están guardados en el servidor. En caso de que la
+         * petición se procese correctamente, se verifica que dichos datos sean compatibles con la variable preregistrationData, en caso
+         * de que sean compatibles, se asigna a dicha variable los datos retornados por el servidor
+         * @function PreregistrationComponent.getPreregistration
+        */
+        getPreregistration()
+        {
+            axios.get&lt;Preregistration>(`/pacientes/${this.patientData.id}/preregistro`)
+            .then(response => {
+                if(response.data.data)
+                {
+                    this.preregistrationData = response.data;
+                }
+            })
+            .catch(error => {
+                
+            })
+        },
+        /** 
+         * Actualiza los datos del preregistro del paciente seleccionado que están guardados en el servidor. En caso de que la
+         * petición se procese correctamente, se asigna un mensaje de éxito al objeto success y se muestra el componente {@link SuccessAlertComponent}
+         * @function PreregistrationComponent.updatePreregistration
+        */
+        updatePreregistration()
+        {
+            axios.patch(`/pacientes/${this.patientDataCopy.id}/preregistro`, {
+                data: {
+                    ...this.preregistrationData
+                }
+            })
+            .then(response => {
+                this.success.title = 'Información actualizada';
+                this.success.message = 'Se ha actualizado la información correctamente';
+                $('#preregistrationSuccess').modal('show');
+            })
+            .catch(error => {
+                
+            })
+        },
+    },
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

@@ -115,7 +115,6 @@ export default defineComponent({
      * @member TestUploadComponent.watch
      * @property {string} roleSelected Al actualizar el código del producto, se asigna a la variable form la varaible TestUploadData y se se {@link TestUploadComponent.enableForm|habilita el formulario de resultados, si aplica}
      * @property {string} uploadFile Al actualizar la variable uploadFile, verifica si es true para permitir enviar al servidor los resultados {@link TestUploadComponent.sendToServer|del estudio médico seleccionado}
-     * @member TestUploadComponent.mounted
     */
     watch: {
         productCode()
