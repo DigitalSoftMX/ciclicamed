@@ -10,11 +10,9 @@
                     </button>
                 </div>
                 <div class="modal-body p-1">
-                    <user-profile-component userCategory="empleados" :userData="employee" :disabled="disabled" :isNew="isNew" :roles="rolesSelected"></user-profile-component>
-
-                    <div class="card mt-25">
+                    <div class="card mb-25">
                         <div class="card-body">
-                            <h4>Seleccionar roles</h4>
+                            <h4>Seleccionar rol</h4>
                         </div>
                         <div class="card-body">
                             <v-select :options="roles" label="name" v-model="roleSelected" :disabled="disabled"/>
@@ -23,6 +21,8 @@
                             <button class="btn btn-primary btn-default btn-squared float-right" @click="setEmployeeRoles" :disabled="disabled">Actualizar</button>
                         </div>
                     </div>
+
+                    <user-profile-component userCategory="empleados" :userData="employee" :disabled="disabled" :isNew="isNew" :roles="rolesSelected"></user-profile-component>
                 </div>
             </div>
         </div>

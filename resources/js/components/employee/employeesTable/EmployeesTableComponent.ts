@@ -208,7 +208,7 @@ export default defineComponent({
          * del servidor, se asigna a la variabler paginationPages con los datos de la paginación provista por el servidor y se deshabilita la animación de carga mediante la asignación false de la variable loading,
          * en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable loading
          * @param {number} page Número de la página
-         * @function BranchTableComponent.getBranchData
+         * @function EmployeeTableComponent.getUserData
         */
         getUserData(page: number)
         {
@@ -234,7 +234,7 @@ export default defineComponent({
          * Si la variable activateSeach es true o la longitud de la variable query es mayor a 0, se realizar una llamada a la URI /empleados con el parámetro de la página y el contenido de la búsqueda.
          * Si la petición es correcta se asigna la variable userData con la respuesta del servidor, se asigna a la variabler paginationPages con los datos de la paginación provista por el servidor
          * y se deshabilita la animación de carga mediante la asignación false de la variable loading, en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable loading
-         * @function BranchTableComponent.getBranchDataQuery
+         * @function EmployeeTableComponent.getUserDataQuery
         */
         getUserDataQuery()
         {

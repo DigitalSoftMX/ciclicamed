@@ -1,0 +1,3393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> ChargePaymentComponent</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>ChargePaymentComponent</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>ChargePaymentComponent<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="ChargePaymentComponent">
+        <a class="href-link" href="#ChargePaymentComponent">#</a>
+        
+        <span class="code-name">
+            
+                new ChargePaymentComponent<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Componente que carga a un paciente un pago de los servicios y productos disponibles en Cíclica
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line16">line 16</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>&lt;charge-payment-component :products="" :role="" :consult="" :patient="" :paymentID="" isNew="">&lt;/charge-payment-component></code></pre>
+    
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id=".components">
+    <a class="href-link" href="#.components">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        components
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <a href="https://vue-select.org/">https://vue-select.org/</a>, <a href="EmptyErrorComponent.html">EmptyErrorComponent</a>, ConsultProductListComponent, PaymentInfoComponent<a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a>, <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line22">line 22</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".computed">
+    <a class="href-link" href="#.computed">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        computed
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades computadas del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>totalPrice</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Precio total de los productos o servicios seleccionados</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>totalDebt</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Deuda total restante del precio total - la deuda inicial</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>activePayment</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Activa o desactiva la sección de método de pago y deuda si el usuario logueado actualmente es administrador o caja</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>price</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Suma total del precio de los productos o servicios seleccionados</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>discount</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Suma total del descuento de los productos o servicios seleccionados</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>showCredit</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Muestra u oculta el input de los últimos 4 dígitos de la tarjeta si el método de pago es diferente al de pago en efectivo</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line127">line 127</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".data">
+    <a class="href-link" href="#.data">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>productSelectedList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Product></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de productos y servicios que se van a cobrar</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>categorySelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el nombre de la categoría seleccionado actualmente para mostrar los productos relacionados con dicha categoría</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>titleSelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el nombre del título del componente <a href="ProductModalListComponent.html">ProductModalListComponent</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>url</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la URL básica donde se aloja el proyecto (local o servidor)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>debtData.check</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Activa y guarda la sección de deuda del pago del pago actual</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>debtData.description</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la cantidad inicial de la deuda del pago actual</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>paymentMethod.check</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el método de pago que se utiliza para pagar el pago actual (1 Efectivo, 2 Tarjeta de crédito, 3 Tarjeta de débito)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>paymentMethod.description</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los últimos 4 digitos de la tarjeta de débito o crédito</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>branchesList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de sucursales habilitadas por el servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientsList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de pacientes guardados en el servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el ID del paciente seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>branchID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el ID de la sucursal seleccionada</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>errors</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>paymentData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">PaymentData</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos del pago (si se ha creado anteriormente) que guarda el servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>newPaymentID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el ID de un nuevo pago, después de que se procese correctamente por el servidor</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line71">line 71</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".mounted">
+    <a class="href-link" href="#.mounted">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        mounted
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Al iniciar el componente, verifica si el pago es nuevo: en caso de ser nuevo se obtiene la lista de pacientes y<a href="ChargePaymentComponent.html#.getBranchesList">lista de sucursales</a>. En caso contrario, obtiene los <a href="ChargePaymentComponent.html#.getPaymentData">datos del pago seleccionado</a>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line113">line 113</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".props">
+    <a class="href-link" href="#.props">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        props
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades que recibe el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>products</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Product></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio solo si se carga un pago creado anteriormente) Productos pertenecientes al pago seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>role</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Rol del usuario logueado actualmente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>consult</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Consult</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio si el pago se creó en una consulta) Datos de la consulta relacionado con el pago</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patient</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Patient</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio si el pago se creó en una consulta) Datos del paciente relacionado con el pago</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>paymentID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio solo si se carga un pago creado anteriormente)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isNew</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Indica si el pago es nuevo o creado anteriormente</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line35">line 35</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".watch">
+    <a class="href-link" href="#.watch">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        watch
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables a observar por el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>consult</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Consult</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar los datos de una consulta, verifica si no se han agregado productos anteriormente: en caso de no existirproductos, verifica que tipo de cita en proceso, si el la primera cita obtiene el <a href="ChargePaymentComponent.html#.getPrimeraCitaProduct">precio de la primera cita</a>,si es subsecuente obtiene el <a href="ChargePaymentComponent.html#.getPrimeraCitaProduct">precio de la cita subsecuente</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>products</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Product></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar la lista de prodctos, asigna a la variable productSelectedList los nuevos productos</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isNew</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">bolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar la variable, obtiene la lista de pacientes y la<a href="ChargePaymentComponent.html#.getBranchesList">lista de pacientes</a></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line159">line 159</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".confirmConsultFinish">
+        <a class="href-link" href="#.confirmConsultFinish">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                confirmConsultFinish<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Muestra el componente <a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a> para confirmar que se desea completar el pago (en consulta o con el rol caja)
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line261">line 261</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createConsultPayment">
+        <a class="href-link" href="#.createConsultPayment">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createConsultPayment<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Envía al servidor los datos de un nuevo pago (solo en consulta médica). Si la petición se procesa correctamente, se muestra el componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a> con unmensaje de éxito y se redirige a la página de inicio. En caso contrario se asigna a la variable errors, los errores que retorne el servidor y se muestra el componente<a href="ErrorAlertComponent.html">ErrorAlertComponent</a> con el mensaje de error
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line339">line 339</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createNewPayment">
+        <a class="href-link" href="#.createNewPayment">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createNewPayment<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Envía al servidor los datos de un nuevo pago (solo rol caja). Si la petición se procesa correctamente, se asigna a la variable newPaymentID el ID delpago, lo cual permite imprimir y descargar el comprobante de pago
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line294">line 294</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createPDF">
+        <a class="href-link" href="#.createPDF">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createPDF<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Crea un pdf de pago con la lista de productos seleccionados, utilizando la plantilla pdf del archivo Pago.file.tsPara crear dicho pago primero convierte el pdf en un archivo legible de tipo ArrayBuffer para la librería <a href="https://pdf-lib.js.org/">PDF-LIB</a>,despues procede a ingresar los productos en el pdf mediante el recorrido de la variable productSelectedList. Si detecta que el pago es nuevo, ingresa elnombre del paciente en el pdf, crea un nuevo folio de pago y lo inserta en el pdf. En caso contrario, además de crear el folio e ingresar los datos delpaciente en el pdf, agrega en el pdf el nombre del doctor que genero el pago (solo aplicable cuando se crea en consulta). Una vez realizadoeste paso, se procede a asignar los datos de la fecha y el total al pdf <a href="https://pdf-lib.js.org/">Ver el proceso</a> y se retorna el pdf creado
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line415">line 415</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".deleteProduct">
+        <a class="href-link" href="#.deleteProduct">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                deleteProduct<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Elimina un producto de la variable productSelectedList
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line408">line 408</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".downloadPDF">
+        <a class="href-link" href="#.downloadPDF">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                downloadPDF<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Para descargar el pdf, primero se crea el pdf con la funcion <a href="ChargePaymentComponent.html#.createPDF">ChargePaymentComponent.createPDF</a>, a lo cual se utiliza la librería<a href="https://github.com/rndme/download">Download</a> para descargarlo al dispositov del doctor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line452">line 452</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".editProducSelectedList">
+        <a class="href-link" href="#.editProducSelectedList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                editProducSelectedList<span class="signature">(product, checked)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Verifica si un producto fue seleccionado. En caso de ser seleccionado, se agregar el producto a la varaible productSelectedList, en caso contrario se eliminael producto de la variable productSelectedList
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>product</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Product</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Producto seleccionado</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>checked</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">boolean</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Indica si se activo o desactivo la selección del producto</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line389">line 389</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getBranchesList">
+        <a class="href-link" href="#.getBranchesList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getBranchesList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la lista de sucursales habilitados en el servidor. En caso de ser procesada correctamente la petición, se agrega a la variable branchesListlas sucursales retornadas por el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line223">line 223</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getBranchesList">
+        <a class="href-link" href="#.getBranchesList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getBranchesList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la lista de pacientes guardados en el servidor. En caso de ser procesada correctamente la petición, se agrega a la variable patientsListlos pacientes retornadas por el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line242">line 242</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getCitaSubsecuenteProduct">
+        <a class="href-link" href="#.getCitaSubsecuenteProduct">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getCitaSubsecuenteProduct<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene el precio de una cita subsecuente. En caso de ser procesada correctamente la petición, se agrega a la variable productSelectedListel precio de la cita subsecuente
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line210">line 210</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getPaymentData">
+        <a class="href-link" href="#.getPaymentData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getPaymentData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene los datos del pago seleccionado. Si la petición es correcta, se asigna a la variable paymentData los datos del pago que retorne el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line365">line 365</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getPrimeraCitaProduct">
+        <a class="href-link" href="#.getPrimeraCitaProduct">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getPrimeraCitaProduct<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene el precio de una primera cita. En caso de ser procesada correctamente la petición, se agrega a la variable productSelectedListel precio de la primera cita obtenida
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line197">line 197</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getTotalPrice">
+        <a class="href-link" href="#.getTotalPrice">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getTotalPrice<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Calcula el precio total de la lista de productos seleccionados, restando la suma total del descuento de cada producto seleccionado
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line399">line 399</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".openProductListModal">
+        <a class="href-link" href="#.openProductListModal">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                openProductListModal<span class="signature">(category, title)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Abre el componente ConsultProductListComponent para mostrar los productos que pertenezcan a la categoría que fue seleccionado por el usuario, paralo cual asigna a la variable categorySelected la categoría del producto y a la variable titleSelected el título del componente ConsultProductListComponent
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>category</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Categoría de la lista de productos a mostrar (ciclica, histeroscopíaa, etc)</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>title</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Título que va a mostrar el componente ConsultProductListComponent</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line377">line 377</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".printPDF">
+        <a class="href-link" href="#.printPDF">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                printPDF<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Para descargar el pdf, primero se crea el pdf con la funcion <a href="ChargePaymentComponent.html#.createPDF">ChargePaymentComponent.createPDF</a>, a lo cual se procede a convertir el archivoa formato BLOB y finalmente se procede a mandar a impresión con el uso de la librería <a href="https://printjs.crabbly.com/">PrintJS</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line462">line 462</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".selectPaymentURL">
+        <a class="href-link" href="#.selectPaymentURL">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                selectPaymentURL<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Selecciona la URL a la que se debe enviar el pago de acuerdo al rol y si es un nuevo pago o no después del mensaje de confirmación de completar el pago.Si el pago es nuevo se utiliza <a href="ChargePaymentComponent.html#.createNewPayment">ChargePaymentComponent.createNewPayment</a>, en caso contrario se utiliza <a href="ChargePaymentComponent.html#.setPayment">ChargePaymentComponent.setPayment</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line268">line 268</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".setPayment">
+        <a class="href-link" href="#.setPayment">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                setPayment<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Envía al servidor los datos actualizados de un nuevo pago. Si la petición se procesa correctamente, se muestra el componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a> con unmensaje de éxito
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="payment_chargePayment_ChargePaymentComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="payment_chargePayment_ChargePaymentComponent.ts.html">payment/chargePayment/ChargePaymentComponent.ts</a>, <a href="payment_chargePayment_ChargePaymentComponent.ts.html#line318">line 318</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

@@ -66,8 +66,8 @@ export default defineComponent({
             errors: [],
             doctorSelect: SelectData,
             dateSelected: moment().format('YYYY-MM-DD'),
-            startTime: '08:00',
-            finishTime: '20:00',
+            startTime: '07:00',
+            finishTime: '21:00',
             patientsList: [] as Select[],
             startHourUpdated: false
         };
@@ -99,16 +99,16 @@ export default defineComponent({
                     this.updateScheduleTimes();
                     return {
                         daysOfWeek: [],
-                        endTime: '20:00',
-                        startTime: '08:00'
+                        endTime: '21:00',
+                        startTime: '07:00'
                     }
                 }
             }
             this.updateScheduleTimes();
             return {
                 daysOfWeek: [],
-                endTime: '20:00',
-                startTime: '08:00'
+                endTime: '21:00',
+                startTime: '07:00'
             }
         },
         consultReasonLength(): number

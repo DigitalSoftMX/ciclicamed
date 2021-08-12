@@ -29,7 +29,7 @@ export default defineComponent({
     /** 
      * Propiedades que recibe el componente 
      * @member PatientTestComponent.props
-     * @property {number} patient ID del paciente seleccionado
+     * @property {number} patient (Obligatorio) ID del paciente seleccionado
      * 
     */
     props: {
@@ -66,7 +66,7 @@ export default defineComponent({
             testSelected: TestData
         };
     },
-     /** 
+    /** 
      * Al iniciar el componente, se crea una instancia de daterangepicker (jquery) con datos predefinidos y obtiene las
      * {@link PatientTestComponent.getPrescriptionsData|estudios médicos} del paciente
      * @member PatientTestComponent.mounted

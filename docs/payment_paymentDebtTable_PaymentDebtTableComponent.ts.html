@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> payment/paymentDebtTable/PaymentDebtTableComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>payment/paymentDebtTable/PaymentDebtTableComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { defineComponent } from '@vue/runtime-core';
+import axios from 'axios';
+import moment from 'moment';
+import { Patient } from '@interface/Patient/Patient.interface';
+import { PaymentPaginationData } from '@data/Payment/PaymentPagination.data';
+import { PaymentPagination } from '@interface/Payment/PaymentPagination.interface';
+import { Payment } from '@interface/Payment/Payment.interface';
+import { PatientData } from '@data/Patient/Patient.data';
+import { Product } from '@interface/Product/Product.interface';
+import { PropType } from 'vue';
+import { DebtData } from '@data/Payment/Debt.data';
+import PaymentDebtTableModal from './paymentDebtTableModal/PaymentDebtTableModal';
+
+/** 
+ * @description Componente que muestra la lista de deudas activas que tiene un paciente, mediante una tabla
+ * @class PaymentDebtTableComponent
+ * @example &lt;payment-debt-table-component :patient="">&lt;/payment-debt-table-component>
+*/
+export default defineComponent({
+    /** 
+     * {@link PaymentDebtTableModal}
+     * @member PaymentDebtTableComponent.components
+    */
+    components: {
+        PaymentDebtTableModal,
+    },
+    /** 
+     * Eventos del componente
+     * @member PaymentDebtTableComponent.emits
+     * @property {Payment} onDebtSelected Evento que retorna al componente padre, el pago seleccionado que tiene una deuda activa
+     * @property {string} onReturn Evento que indica a que componente debe regresarse
+    */
+    emits: ['onDebtSelected', 'onReturn'],
+    /** 
+     * Propiedades que recibe el componente 
+     * @member PaymentDebtTableComponent.props
+     * @property {Patient} patient (Obligatorio) Datos del paciente seleccionado
+    */
+    props: {
+        patient: {
+            type: Object as PropType&lt;Patient>,
+            default: PatientData
+        }
+    },
+    /**
+    * Variables del componente
+    * @member PaymentDebtTableComponent.data
+    * @property {EmployeePagination} paymentData Guarda la información de los pagos que tienen una deuda pendiente, los cuales retorna el backend en paginación
+    * @property {number} paginationPages Guarda el número de páginas de userData para mostrar el número de páginas en la paginación de la tabla
+    * @property {number} paginationActive Guarda el número de página activa de la tabla
+    * @property {boolean} loading Activa o no la animación de carga dentro de la tabla
+    * @property {number} paymentID Guarda el ID del pago seleccionado
+    */
+    data() {
+        return {
+            paymentData: PaymentPaginationData,
+            paginationPages: 0,
+            paginationActive: 0,
+            loading: true,
+            paymentID: 0
+        };
+    },
+    /** 
+     * Al iniciar el componente, se obtienen los datos de los {@link EmployeeTableComponent.getPaymentData|pagos con deuda activa}
+     * @member PaymentDebtTableComponent.mounted
+    */
+    mounted() {
+        this.getPaymentData(1);
+    },
+    /** 
+     * Variables a observar por el componente
+     * @member PaymentDebtTableComponent.watch
+     * @property {Patient} patient Al actualizar el paciente seleccionado, obtiene los {@link PaymentDebtTableComponent.getPaymentData|pagos con deuda activa}
+    */
+    watch: {
+        patient:
+        {
+            handler()
+            {
+                this.getPaymentData(1);
+            },
+            deep: true
+        }
+    },
+    /**
+    * Propiedades computadas del componente 
+    * @member PaymentDebtTableComponent.computed
+    * @property {string} fullName Concatena el nombre completo del paciente
+    * @property {string} birthday Retorna la fecha de nacimiento provista por el servidor en un formato local
+    */
+    computed: {
+        fullName(): string
+        {
+            return `${this.patient.first_name} ${this.patient.last_name}`;
+        },
+        birthday(): string
+        {
+            return moment(this.patient.birthday).format('DD-MM-YYYY');
+        }
+    },
+    methods: {
+        /** 
+         * Retorna la fecha de nacimiento provista por el servidor a un formato local
+         * @param {string} birthday Fecha de nacimiento del paciente
+         * @function PaymentDebtTableComponent.formatDate
+         * @returns {string} Retorna la fecha en formato local
+        */
+        formatDate(birthday: string)
+        {
+            return moment(birthday).format('DD-MM-YYYY');
+        },
+        /** 
+         * Obtiene la lista de pagos con deudas activas registrados en el sistema utilizando la paginación provista por el backend.
+         * Antes de realizar la petición al servidor con la lista de pagos con deudas activas, se habilita la animación de carga con la asignación true de la variable loading, se verifica que la página guardada en la variable page sea mayor o igual a 1,
+         * que la página sea menor o igual a la última página de la paginación guardada en la variable
+         * paymentData y que la página no sea la misma que la de la variable paginationActive.
+         * Si la comprobación es exitosa se realiza una petición HTTP a la URI /pacientes/{id}/deudas con el parámetro de la página. Si la petición es correcta se asigna la variable paymentData con la respuesta
+         * del servidor, se asigna a la variabler paginationPages con los datos de la paginación provista por el servidor y se deshabilita la animación de carga mediante la asignación false de la variable loading,
+         * en caso contrario solo se deshabilita la animación de la carga mediante la asignación false de la variable loading
+         * @param {number} page Número de la página
+         * @function PaymentDebtTableComponent.getPaymentData
+        */
+        getPaymentData(page: number)
+        {
+            this.loading = true;
+            if(page >= 1 &amp;&amp; page &lt;= this.paymentData.pagination.last_page &amp;&amp; page !== this.paginationActive)
+            {
+                this.paginationActive = page;
+                axios.get&lt;PaymentPagination>(`/pacientes/${this.patient.id}/deudas?page=${this.paginationActive}`)
+                .then(response => {
+                    this.paymentData = response.data;
+                    this.paginationPages = response.data.pagination.last_page;
+                    this.loading = false;
+                })
+                .catch(error => {
+                    ;
+                    this.loading = false;
+                })
+            }
+        },
+        /** 
+         * Envía un evento onDebtSelected al componente padre, con la información del pago seleccionado
+         * @function PaymentDebtTableComponent.redirectToDebtInfo
+         * @param {Payment} payment Datos del pago seleccionado
+        */
+        redirectToDebtInfo(payment: Payment)
+        {
+            this.$emit('onDebtSelected', payment);
+        },
+        /** 
+         * Retorna los productos pertenecientes a un pago, evitando un error en el template de vue
+         * @function PaymentDebtTableComponent.safeNullProduct
+         * @param {Payment} payment Datos del pago seleccionado
+         * @return {Product[]}
+        */
+        safeNullProduct(payment: Payment): Product[]
+        {
+            return payment.products!;
+        },
+        /** 
+         * Envía un evento onReturn para retornar al componente {@link PatientDebtTableComponent}
+         * @function PaymentDebtTableComponent.returnBack
+        */
+        returnBack()
+        {
+            this.$emit('onReturn', 'patientsDebts');
+        },
+        /** 
+         * Retorna la cantidad faltante por pagar de la deuda actual seleccionada
+         * @function PaymentDebtTableComponent.missingPayment
+         * @param {Payment} payment Datos del pago seleccionado
+         * @return {string}
+        */
+        missingPayment(payment: Payment)
+        {
+            const debt = payment.debts!.reduce((a, b) => ({...a, total: Number(a.total) + Number(b.total)}), DebtData).total;
+            return (payment.total - debt).toFixed(2);
+        },
+        /** 
+         * Muestra el componente {@link PaymentDebtTableModal} con la información del pago con deuda, al cual se desea realizar un pago para completar la deuda
+         * @function PaymentDebtTableComponent.showModal
+         * @param {Payment} payment Datos del pago seleccionado
+        */
+        showModal(payment: Payment)
+        {
+            this.paymentID = payment.id;
+            $('#pdtmPaymentModal').modal('show');
+        }
+    },
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

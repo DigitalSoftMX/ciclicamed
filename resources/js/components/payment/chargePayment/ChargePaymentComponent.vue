@@ -222,7 +222,7 @@
         @productSelected="editProducSelectedList" :productSelectedList="productSelectedList">
     </consult-product-list-component>
     <confirmation-alert-component id="chpcConsult"
-        title="¿Está seguro de finalizar la consulta? Esta acción no puede deshacerse"
+        title="¿Está seguro de finalizar el proceso? Esta acción no puede deshacerse"
         @confirmAction="selectPaymentURL"></confirmation-alert-component>
     <success-alert-component id="chpcSuccess" title="Guardado exitoso"
         message="La información se ha guardado correctamente"></success-alert-component>
