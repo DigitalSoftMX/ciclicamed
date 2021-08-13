@@ -607,10 +607,26 @@ class MedicalConsultController extends Controller
     }
 
     public function store(Request $request)
-    {        
+    {   
+        $consultExistsInHourSelected = MedicalConsult::where('doctor_id', $request->input('data.doctor_id'))
+        ->where('consult_schedule_start', '<=', $request->input('data.consult_schedule_start'))
+        ->where('consult_schedule_finish', '>=', $request->input('data.consult_schedule_start'));
+
+        if($consultExistsInHourSelected->get()->isNotEmpty())
+        {
+            $lastConsult = $consultExistsInHourSelected->orderBy('created_at', 'desc')->first()->consult_schedule_finish;
+            if(!Carbon::parse($lastConsult)->eq(Carbon::parse($request->input('data.consult_schedule_start'))))
+            {
+                return response()->json(['errors' => [
+                    'tiempo' => ['Ya existe una consulta en este horario, por favor seleccione otro horario. Puede probar con el horario de '. $consultExistsInHourSelected->orderBy('created_at', 'desc')->first()->consult_schedule_finish]
+                ]], 401);
+            }
+        }
+
         $firstConsult = null;
         $user = User::findOrFail(Auth::user()->id);
 
+        //Verifica si el usuario que creo la consulta es paciente
         if($user->hasRole('Paciente'))
         {
             $request->validate([
@@ -631,7 +647,8 @@ class MedicalConsultController extends Controller
             $doctor = intval($request->input('data.doctor_id'));
             $medicalspecialty_id = 0;
             $medicalconsultcategory_id = 0;
-            $firstConsult = MedicalConsult::where('patient_id', $user['patient']['id'])->where('medicalconsultcategory_id', 1)->get();
+            //Verifica si ya se creo una consulta de primera vez con el paciente, si el paciente agenda una cita médico, no aplica este principio
+            $firstConsult = MedicalConsult::where('patient_id', $user['patient']['id'])->where('consult_schedule_start', 1)->get();
             switch($doctor)
             {
                 case 1:
@@ -650,6 +667,7 @@ class MedicalConsultController extends Controller
                     break;
             }
 
+            //En caso del paciente, no puede agendar la hora final de la cita, por lo que se agrega automaticamente de acuerdo si es un estudio o una cita normal
             $finishTime = Carbon::parse($request->input('data.consult_schedule_start'));
             switch($medicalconsultcategory_id)
             {
@@ -676,7 +694,7 @@ class MedicalConsultController extends Controller
                 'medicalconsultstatus_id' => 1,
             ]);
             
-
+            //Si la cita es de estudio de laboratorio o imagenologia, crea un nuevo examen junto con su orden de estudios
             if($medicalconsultcategory_id === 3 || $medicalconsultcategory_id === 4)
             {
                 $test = MedicalTest::orderBy('id', 'desc');
@@ -707,10 +725,9 @@ class MedicalConsultController extends Controller
             return  response()->json($consult);
         }
 
-        
+        //Detecta si la cita la agendo un 'Doctor', 'Asistente', 'Enfermera', 'Administrador'
         if($user->hasRole(['Doctor', 'Asistente', 'Enfermera', 'Administrador']))
-        {
-            
+        { 
             $messages = [
                 'data.patient_id.min' => 'Debe de seleccionar un paciente',
                 'data.doctor_id.min' => 'Debe de seleccionar un doctor',
@@ -742,6 +759,7 @@ class MedicalConsultController extends Controller
             $doctor = intval($request->input('data.doctor_id'));
             $medicalspecialty_id = 0;
             $medicalconsultcategory_id = 0;
+            //Verifica si ya se creo una consulta de primera vez con el paciente, si el paciente agenda una cita médico, no aplica este principio
             $firstConsult = MedicalConsult::where('patient_id', $request->input('data.patient_id'))->where('medicalconsultcategory_id', 1)->get();
             switch($doctor)
             {
@@ -774,6 +792,7 @@ class MedicalConsultController extends Controller
                 'created_by' => $user['employee']['id']
             ]);
 
+            //Si la cita es de estudio de laboratorio o imagenologia, crea un nuevo examen junto con su orden de estudios
             if($medicalconsultcategory_id === 3 || $medicalconsultcategory_id === 4)
             {
                 $test = MedicalTest::orderBy('id', 'desc');
@@ -838,6 +857,21 @@ class MedicalConsultController extends Controller
         $ruleTest =[
             'data.product_id' => 'required|numeric|min:1',
         ];
+
+        $consultExistsInHourSelected = MedicalConsult::where('doctor_id', $request->input('data.doctor_id'))
+        ->where('consult_schedule_start', '<=', $request->input('data.consult_schedule_start'))
+        ->where('consult_schedule_finish', '>=', $request->input('data.consult_schedule_start'));
+
+        if($consultExistsInHourSelected->get()->isNotEmpty())
+        {
+            $lastConsult = $consultExistsInHourSelected->orderBy('created_at', 'desc')->first()->consult_schedule_finish;
+            if(!Carbon::parse($lastConsult)->eq(Carbon::parse($request->input('data.consult_schedule_start'))))
+            {
+                return response()->json(['errors' => [
+                    'tiempo' => ['Ya existe una consulta en este horario, por favor seleccione otro horario. Puede probar con el horario de '. $consultExistsInHourSelected->orderBy('created_at', 'desc')->first()->consult_schedule_finish]
+                ]], 401);
+            }
+        }
 
         $medicalspecialty_id = 0;
         $medicalconsultcategory_id = 0;

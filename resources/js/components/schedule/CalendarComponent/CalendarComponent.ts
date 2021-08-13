@@ -124,7 +124,7 @@ export default defineComponent({
          * @returns {string}
         */
         getNameSchedule(schedule: Schedule): string {
-            return schedule.doctor ? `${schedule.doctor?.first_name ?? ''} ${schedule.doctor?.last_name ?? ''}` :
+            return schedule.doctor ? `doctor ${schedule.doctor!.first_name ?? ''} ${schedule.doctor!.last_name ?? ''} con paciente ${schedule.patient!.first_name ?? ''} ${schedule.patient!.last_name ?? ''}` :
                                      `${schedule.patient?.first_name ?? ''} ${schedule.patient?.last_name ?? ''}`;
         },
         /** 
@@ -144,6 +144,8 @@ export default defineComponent({
                     return `Toma de muestras con ${name}`;
                 case 'Estudio de laboratorio':
                     return `Estudio de laboratorio con ${name}`;
+                case 'Estudio de imagenología':
+                    return `Estudio de imagenología con ${name}`;
                 case 'Checkup':
                     return `CheckUp con ${name}`;
                 default:
@@ -177,11 +179,32 @@ export default defineComponent({
                     title = this.getScheduleTitle(schedule.type?.name ?? '', name);
                     borderColor = !schedule.status?.color ? '#60269E' : schedule.status!.color;
                     backgroundColor = !schedule.status?.color ? '#60269E' : schedule.status!.color!;
+                    if(schedule.status?.name === 'Confirmado')
+                    {
+                        borderColor = schedule.assistant_start_at ? '#FBC02D' : !schedule.status?.color ? '#60269E' : schedule.status!.color;
+                        backgroundColor = schedule.assistant_start_at ? '#FBC02D' : !schedule.status?.color ? '#60269E' : schedule.status!.color!;
+                    }
+                    break;
+                case 'Enfermera':
+                    title = this.getScheduleTitle(schedule.type?.name ?? '', name);
+                    borderColor = !schedule.status?.color ? '#60269E' : schedule.status!.color;
+                    backgroundColor = !schedule.status?.color ? '#60269E' : schedule.status!.color!;
+                    if(schedule.status?.name === 'Confirmado')
+                    {
+                        borderColor = schedule.assistant_start_at ? '#FBC02D' : !schedule.status?.color ? '#60269E' : schedule.status!.color;
+                        backgroundColor = schedule.assistant_start_at ? '#FBC02D' : !schedule.status?.color ? '#60269E' : schedule.status!.color!;
+                    }
                     break;
                 default:
                     title = this.getScheduleTitle(schedule.type?.name ?? '', name);
                     borderColor = schedule.status!.color!;
                     backgroundColor = schedule.status!.color!;
+                    if(schedule.status?.name === 'Confirmado')
+                    {
+                        borderColor = schedule.assistant_start_at ? '#FBC02D' : !schedule.status?.color ? '#60269E' : schedule.status!.color;
+                        backgroundColor = schedule.assistant_start_at ? '#FBC02D' : !schedule.status?.color ? '#60269E' : schedule.status!.color!;
+                    }
+                    break;
                 
             }
             calendar.getApi().addEvent({
