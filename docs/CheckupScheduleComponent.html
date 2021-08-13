@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> CheckupScheduleComponent</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="CalendarComponent.html">CalendarComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LateralScheduleComponent.html">LateralScheduleComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="ScheduleActionComponent.html">ScheduleActionComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>CheckupScheduleComponent</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>CheckupScheduleComponent<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="CheckupScheduleComponent">
+        <a class="href-link" href="#CheckupScheduleComponent">#</a>
+        
+        <span class="code-name">
+            
+                new CheckupScheduleComponent<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Componente que muestra la lista de checkups a crear o actualizar, mediante el uso de un formulario con tarjetas dentro de un modal
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line13">line 13</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>&lt;checkup-schedule-component>&lt;/checkup-schedule-component></code></pre>
+    
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id=".components">
+    <a class="href-link" href="#.components">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        components
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <a href="https://element-plus.org/#/es/component/time-select">https://element-plus.org/#/es/component/time-select</a>, <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>,
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line20">line 20</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".computed">
+    <a class="href-link" href="#.computed">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        computed
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades computadas del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>title</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Título del modal del checkup de acuerdo a si se habilita o no las Habilita las tarjetas de consultas</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line93">line 93</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".data">
+    <a class="href-link" href="#.data">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>categoryList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;CheckupCategory></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de la categoría de los checkups (teen, convenio institucional, etc)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>categorySelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la categoría del checkup seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>checkupDataCopy</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">CheckupList</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda una copia de la variable checkupData para modificación</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>branchesSelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de sucursales seleccionadas para cada uno de los estudios y consultas del checkup seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isButtonDisabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita o deshabilita el boton de guardado del checkup seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>successAlert.title</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el título para el modal del componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>successAlert.message</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el mensaje para el modal del componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isCheckupNew</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Indica si el checkup es nuevo o existente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>startTime</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de inicio de consulta para cada uno de los estudios y consultas del checkup seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>finishTime</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de finalización de consulta para cada uno de los estudios y consultas del checkup seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorListCopy</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Array.&lt;Select>></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de los doctores registrados en el servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorSelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de los doctores seleccionados para cada uno de las consultas del checkup seleccionado</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line59">line 59</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".mounted">
+    <a class="href-link" href="#.mounted">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        mounted
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Al iniciar el componente, se obtienen los datos de las <a href="CheckupScheduleComponent.html#.getCategories">categorías de checkup</a> y se asigna a la variablecheckupDataCopy.patient_id el ID del paciente logueado actualmente
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line103">line 103</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".props">
+    <a class="href-link" href="#.props">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        props
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades que recibe el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>branches</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Lista de sucursakes habilitados dentro del servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patients</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio solo en rol que no sea paciente)Lista de pacientes guardados dentro del servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>checkupData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">CheckupList</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio)Datos del checkup seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>enableOptions</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Habilita las tarjetas de consultas (solo en la pagina de checkups)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio solo en rol paciente) ID del paciente loagueado actualmente (solo rol paciente)</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line28">line 28</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".watch">
+    <a class="href-link" href="#.watch">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        watch
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables a observar por el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>startTime</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar la hora de inicio de algun estudio medico o consulta del checkup, actualiza la fecha completa de inicio de la consultade todos los elementos y los asigna a la variable checkupDataCopy.checkupList.consult_schedule_start correspondiente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>finishTime</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar la hora de finalización de algun estudio medico o consulta del checkup, actualiza la fecha completa de finalización de la consultade todos los elementos y los asigna a la variable checkupDataCopy.checkupList.consult_schedule_finish correspondiente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar el ID del paciente logueado actualmente, se asigna a la variable checkupDataCopy.patient_id  el nuevo ID del paciente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>categorySelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar la categoría del checkup sleccionado, asigna a la lista de checkups (checkupDataCopy.checkupList) la lista de estudiosque pertenezcan a la categoría seleccionada. Después reinicia las sucursales seleccionadas para cada estudio , asigna la nueva categoría a la variable checkupDataCopy.checkupcategory_idy finalmente asigna a la variable checkupDataCopy.name el nombre del checkup seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>branchesSelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar una sucursal en alguno de los estudios o consultas del checkup, asigna a la variablecheckupDataCopy.checkupList.branch_id los nuevas ID de las sucursales seleccionadas</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorSelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar un nuevo doctor en alguno de los estudios o consultas del checkup, asigna a la variablecheckupDataCopy.checkupList.doctor_id los nuevas ID de las doctores seleccionadas</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>checkupData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">CheckupList</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar el checkup seleccionado, asigna a las variables de <a href="CheckupScheduleComponent.html#.data">CheckupScheduleComponent.data</a> los datos que coincidancon los datos del checkup seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>checkupDataCopy</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">CheckupList</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar alguno de los estudios o consultas de un checkup seleccionado, verifica si no hay algún estudio obligatorioque no haya sido agendado, finalmente habilita el boton de guardado mediante la variable isButtonDisabled, solo en caso de que exista un checkup seleccionado, un pacienteseleccionado, y que se haya agendado todos los estudios obligatorios</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line112">line 112</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".clearData">
+        <a class="href-link" href="#.clearData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                clearData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Limpia todos los datos del checkup
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line300">line 300</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".formatDate">
+        <a class="href-link" href="#.formatDate">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                formatDate<span class="signature">(index)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Elimina la hora de la consulta de un estudio o consulta del médico seleccionado para mostrarlo en el input de fechade acuerdo al estudio o consulta agendado
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Número de la fila que se desea actualizar de la variable checkupDataCopy.checkupList</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line245">line 245</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getCategories">
+        <a class="href-link" href="#.getCategories">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getCategories<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene todas las categorías del checkup que esten guardados en el servidor (teen, convenio institucional, etc). En caso de procesar correctamentela petición, se asigna a la variable categoryList las categorías retornadas por el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line219">line 219</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getDoctorList">
+        <a class="href-link" href="#.getDoctorList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getDoctorList<span class="signature">(branchID, indexID)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene los doctores de una sucursal en cada uno de las consultas donde se seleccione una sucursal para agendar dicha consulta. Sila petición es correcta, entonces se filtra las especialidades donde no hay un doctor registrado y finalmente se asigna a la variabledoctorListCopy en la fila donde se aloja la consulta a mostrar la lista de doctores, la lista de doctores, convirtiendo primero la lista en un tipo Select[][](array bidimensional donde la fila corresponde la consulta donde se muestra la lista de doctores y la columna corresponde a dicha lista de doctores)
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>branchID</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">ID de la sucursal seleccionada</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>indexID</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Número de la fila de la consulta seleccionada</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line311">line 311</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".saveCheckupData">
+        <a class="href-link" href="#.saveCheckupData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                saveCheckupData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Crea un nuevo checkup en el servidor. En caso de que la petición sea correcta, asigna un mensaje de éxito al objeto successAlert y muestrael componente SuccessAlertComponente con el mensaje de éxito, además que oculta este componente, finalmente <a href="CheckupScheduleComponent.html#.clearData">limpia todos los datos del checkup</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line262">line 262</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".updateCheckupData">
+        <a class="href-link" href="#.updateCheckupData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                updateCheckupData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Actualiza el checkup en el servidor. En caso de que la petición sea correcta, asigna un mensaje de éxito al objeto successAlert y muestrael componente SuccessAlertComponente con el mensaje de éxito, además que oculta este componente, finalmente <a href="CheckupScheduleComponent.html#.clearData">limpia todos los datos del checkup</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line281">line 281</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".updateDate">
+        <a class="href-link" href="#.updateDate">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                updateDate<span class="signature">(datetime, index)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Actualiza la fecha de inicio y finalización de una consulta, concatenando la fecha junto con la hora de la cita, asignandola a la fila correspondientede la variable checkupDataCopy.checkupList (variable donde guarda la lista de estudios y consultas del checkup seleccionado)
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>datetime</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Fecha de una consulta o estudio</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>index</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Número de la fila que se desea actualizar de la variable checkupDataCopy.checkupList</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line232">line 232</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".uploadCheckupData">
+        <a class="href-link" href="#.uploadCheckupData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                uploadCheckupData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Verifica si el checkup seleccionado es nuevo o existente, de acuerdo al estado del checkup <a href="CheckupScheduleComponent.html#.saveCheckupData">crea</a>o <a href="CheckupScheduleComponent.html#.updateCheckupData">actualiza</a> el checkup
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html">schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</a>, <a href="schedule_CheckupScheduleComponent_CheckupScheduleComponent.ts.html#line254">line 254</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

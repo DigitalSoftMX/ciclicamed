@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ConsultPrescriptionComponent</title>
+  <title> ScheduleActionComponent</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -74,7 +74,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Class</p>
-                    <h1>ConsultPrescriptionComponent</h1>
+                    <h1>ScheduleActionComponent</h1>
                 </header>
                 
 
@@ -85,7 +85,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>ConsultPrescriptionComponent<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>ScheduleActionComponent<span class="signature">()</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -104,12 +104,12 @@
 
 
     
-    <h4 class="name" id="ConsultPrescriptionComponent">
-        <a class="href-link" href="#ConsultPrescriptionComponent">#</a>
+    <h4 class="name" id="ScheduleActionComponent">
+        <a class="href-link" href="#ScheduleActionComponent">#</a>
         
         <span class="code-name">
             
-                new ConsultPrescriptionComponent<span class="signature">()</span><span class="type-signature"></span>
+                new ScheduleActionComponent<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -118,7 +118,7 @@
     
     
     <div class="description">
-        Componente que muestra los medicamentos para receta dentro de la consulta, utilizando el componente MedicamentComponentpor cada medicamento generado
+        Componente que datos básicos de la cita seleccionada, mediante el uso de un modal
     </div>
     
 
@@ -167,9 +167,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line12">line 12</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line8">line 8</a>
             </span>
         </p>
     
@@ -198,7 +198,7 @@
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>&lt;consult-prescription-component v-model="" :disabled="" patientData="" :doctorData="" :consultData="">&lt;/consult-prescription-component></code></pre>
+        <pre class="prettyprint"><code>&lt;schedule-action-component :schedule="" role="" :employeeID="">&lt;/schedule-action-component></code></pre>
     
 
 
@@ -246,7 +246,7 @@
 
 
 <div class="description">
-    MedicamentComponent
+    <a href="LateralScheduleComponent.html">LateralScheduleComponent</a>, <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>, <a href="ErrorAlertComponent.html">ErrorAlertComponent</a>
 </div>
 
 
@@ -286,9 +286,272 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line19">line 19</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line14">line 14</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".computed">
+    <a class="href-link" href="#.computed">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        computed
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades computadas del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>scheduleStatus</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Retorna el estado de la consulta seleccionada. Si el estado de la consulta esta confirmada, verifica si el pacienteya esta en sucursal, en caso de que se cumpla esta condición, retorna 'Paciente en sucursal', en caso contrario retorna el estado de la consultadevuelto por el servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isAssistantOptionEnabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita el boton de marcar asistencia. En caso del rol asistente, verifica si la fecha de la cita es del presente día,si la cita esta confirmada y que no se haya marcado con anteriorad la asistencia del paciente para esta cita</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isCancelOptionEnabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita el boton de cancelar cita. En caso del rol asistente, verifica que el estado de la cita sea  'Agendado' || 'Confirmado' || 'Ausente'</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isEditOptionEnabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita el boton de editar cita. En caso del rol asistente, verifica que el estado de la cita sea 'Agendado' || 'Ausente'</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>showScheduleOption</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita la sección de los botones de marcar asistencia, confirmar cita y e inicia cita. De acuerdo al rol del usuario logueadoactualmente, verifica que la condición de ese rol se cumpla</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isStartScheduleEnabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita el boton de inciar cita. En caso del doctor verifica que la cita que seleccinó sea una cita que le pertenezca, en casode que sea correcto, verifica que la hora actual sea al menos 30 minutos antes de la cita, además de que la enfermera ya haya tomado los signos vitales. En caso de laenfermera, verifica que el paciente ya este en la clinica y que no se haya finalizado la toma de signos vitales</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isConfirmScheduleEnabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita el boton de confirmar cita. En caso del rol asistente, verifica que el estado de la cita sea Agendado</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line67">line 67</a>
             </span>
         </p>
     
@@ -352,13 +615,13 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>medicamentList</code></td>
+        <td class="name"><code>errors</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Array.&lt;Medicament></span>
+<span class="param-type">Array.&lt;Object></span>
 
 
     
@@ -368,20 +631,20 @@
 
     
 
-    <td class="description last">Lista de medicamentos seleccionados por el doctor en la consulta</td>
+    <td class="description last">Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>prescriptionData</code></td>
+        <td class="name"><code>successAlert.title</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Prescription</span>
+<span class="param-type">string</span>
 
 
     
@@ -391,7 +654,30 @@
 
     
 
-    <td class="description last">Guarda los datos de los medicamentos asignados por la variable modelValue para modificar dichos datos (v-model)</td>
+    <td class="description last">Guarda el título para el modal del componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>successAlert.message</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el mensaje para el modal del componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a></td>
 </tr>
 
         
@@ -434,9 +720,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line63">line 63</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line51">line 51</a>
             </span>
         </p>
     
@@ -500,13 +786,13 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>update:modelValue</code></td>
+        <td class="name"><code>scheduleCanceled</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Prescription</span>
+<span class="param-type">Schedule</span>
 
 
     
@@ -516,7 +802,30 @@
 
     
 
-    <td class="description last">Evento que actualiza la variable que se ingreso en el v-model</td>
+    <td class="description last">Evento que se emite se cancela una consulta junto con los datos de la consulta</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>scheduleUpdated</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">null</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Evento que se emite cuando se actualiza una consulta</td>
 </tr>
 
         
@@ -559,82 +868,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line26">line 26</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-<h4 class="name" id=".mounted">
-    <a class="href-link" href="#.mounted">#</a>
-    
-        
-            <span class='tag'>static</span>
-        
-    
-    <span class="code-name">
-        mounted
-    </span>
-    
-</h4>
-
-
-
-
-<div class="description">
-    Al iniciar el componente, se obtienen los datos de los <a href="ConsultPrescriptionComponent.html#.getMedicamentList">medicamentos registraods</a>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
-            <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line75">line 75</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line23">line 23</a>
             </span>
         </p>
     
@@ -698,13 +934,13 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>modelValue</code></td>
+        <td class="name"><code>schedule</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Prescription</span>
+<span class="param-type">Schedule</span>
 
 
     
@@ -714,20 +950,20 @@
 
     
 
-    <td class="description last">(Opcional) Valor que recibe y actualiza al componente padre. Ver <a href="https://v3.vuejs.org/guide/migration/v-model.html">v-model</a> de vue para mas referencia</td>
+    <td class="description last">(Obligatorio) Cita médica seleccionada</td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>disabled</code></td>
+        <td class="name"><code>role</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">boolean</span>
+<span class="param-type">string</span>
 
 
     
@@ -737,20 +973,20 @@
 
     
 
-    <td class="description last">(Obligatorio) Habilita o deshabilita input del componente</td>
+    <td class="description last">Rol del usuario logueado actualmente</td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>patientData</code></td>
+        <td class="name"><code>employeeID</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Patient</span>
+<span class="param-type">string</span>
 
 
     
@@ -760,53 +996,7 @@
 
     
 
-    <td class="description last">(Obligatorio) Guarda los datos del paciente en consulta</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>doctorData</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">Employee</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">(Obligatorio) Guarda los datos del doctor en consulta</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>consultData</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">Consult</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">(Obligatorio) Guarda los datos de la consulta en proceso</td>
+    <td class="description last">ID del empleado logueado actualmente</td>
 </tr>
 
         
@@ -849,157 +1039,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line32">line 32</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-<h4 class="name" id=".watch">
-    <a class="href-link" href="#.watch">#</a>
-    
-        
-            <span class='tag'>static</span>
-        
-    
-    <span class="code-name">
-        watch
-    </span>
-    
-</h4>
-
-
-
-
-<div class="description">
-    Variables a observar por el componente
-</div>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-<div class="table-container">
-    <table class="props table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>modelValue</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">Prescription</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">Al actualizar los datos de esta variable, se verifica si la lista de medicamentos de la variable modelValue es la misma que la lista de medicamentosguardada en la variable prescriptionData: si es diferente entonces agrega los medicamentos al componente MedicamentComponent. Por otro lado, asigna los datos de la variablemodelValue a la variable prescriptionData</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>prescriptionData</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">Prescription</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">AL actualizar los datos de la variable lanza un emit para actualizar el v-model</td>
-</tr>
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
-            <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line82">line 82</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line30">line 30</a>
             </span>
         </p>
     
@@ -1024,8 +1066,8 @@
 
 
     
-    <h4 class="name" id=".addPrescription">
-        <a class="href-link" href="#.addPrescription">#</a>
+    <h4 class="name" id=".confirmSchedule">
+        <a class="href-link" href="#.confirmSchedule">#</a>
         
             
                 <span class='tag'>static</span>
@@ -1033,7 +1075,7 @@
         
         <span class="code-name">
             
-                addPrescription<span class="signature">(data)</span><span class="type-signature"></span>
+                confirmSchedule<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -1042,7 +1084,209 @@
     
     
     <div class="description">
-        Agrega un nuevo medicamento a la variable prescriptionData
+        Indica al servidor que se confirma la cita seleccionada. En caso de que la petición sea correcta, se asigna al objecto successAlertel mensaje de éxito, a lo cual se procede a ocultar este componente y finalmente se muestra el componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line194">line 194</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".deleteSchedule">
+        <a class="href-link" href="#.deleteSchedule">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                deleteSchedule<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Cancela la cita seleccionada. En caso de que la petición sea correcta, se asigna al objecto successAlertel mensaje de éxito, a lo cual se procede enviar un envento scheduleCanceled con los datos de la consulta cancelada, parafinalmente mostrar el componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>. En caso contrario, seasigna a la variable errors, los errores devueltos por el servidor, a lo cual se muestra el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line253">line 253</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".formatScheduleTime">
+        <a class="href-link" href="#.formatScheduleTime">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                formatScheduleTime<span class="signature">(datetime)</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Retorna la hora de la cita seleccionada
     </div>
     
 
@@ -1080,13 +1324,13 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>data</code></td>
+      <td class="name"><code>datetime</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type">Prescription</span>
+<span class="param-type">string</span>
 
 
   
@@ -1096,7 +1340,7 @@
 
   
 
-  <td class="description last">Datos del medicamento</td>
+  <td class="description last">Fecha de la cita</td>
 </tr>
 
 
@@ -1142,9 +1386,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line108">line 108</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line227">line 227</a>
             </span>
         </p>
     
@@ -1167,108 +1411,28 @@
 
 
 
-
-
-
-</div>
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
             
-                <div class="member">
+                    
 
-
+<div class="columns">
     
-    <h4 class="name" id=".createPDF">
-        <a class="href-link" href="#.createPDF">#</a>
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
         
-            
-                <span class='tag'>async</span>
-            
-                <span class='tag'>static</span>
-            
-        
-        <span class="code-name">
-            
-                createPDF<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
+<span class="param-type">string</span>
 
-    
-    
-    <div class="description">
-        Crea un pdf con los datos de los medicamentos de la receta creada en la consulta tomando como base el archivo prescription.pdf.Para crear dicha receta primero convierte el pdf en un archivo legible de tipo ArrayBuffer para la librería <a href="https://pdf-lib.js.org/">PDF-LIB</a>,despues procede a filtrar los medicamentos que sean creados por el doctor y se asignan a la variable filterPrescriptionList. Una vez realizadoeste paso, se procede a asignar los datos del doctor, paciente y receta al pdf <a href="https://pdf-lib.js.org/">Ver el proceso</a> y se retorna el pdf creado
+
     </div>
     
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
-            <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line139">line 139</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                
+        </div>
+    </div>
 
 
 
@@ -1279,8 +1443,8 @@
 
 
     
-    <h4 class="name" id=".deletePrescription">
-        <a class="href-link" href="#.deletePrescription">#</a>
+    <h4 class="name" id=".formatScheduleTime">
+        <a class="href-link" href="#.formatScheduleTime">#</a>
         
             
                 <span class='tag'>static</span>
@@ -1288,7 +1452,7 @@
         
         <span class="code-name">
             
-                deletePrescription<span class="signature">(index)</span><span class="type-signature"></span>
+                formatScheduleTime<span class="signature">(datetime)</span><span class="type-signature"> &rarr; {string}</span>
             
         </span>
     </h4>
@@ -1297,7 +1461,7 @@
     
     
     <div class="description">
-        Elimina un medicamento a la variable prescriptionData
+        Retorna la fecha de la cita seleccionada en un formato local
     </div>
     
 
@@ -1335,13 +1499,13 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>index</code></td>
+      <td class="name"><code>datetime</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type">number</span>
+<span class="param-type">string</span>
 
 
   
@@ -1351,7 +1515,7 @@
 
   
 
-  <td class="description last">Número de fila donde radica el medicamento que se desea eliminar dentro de la variable prescriptionData</td>
+  <td class="description last">Fecha de la cita</td>
 </tr>
 
 
@@ -1397,9 +1561,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line116">line 116</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line236">line 236</a>
             </span>
         </p>
     
@@ -1422,6 +1586,29 @@
 
 
 
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">string</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
 
 
 
@@ -1431,18 +1618,16 @@
 
 
     
-    <h4 class="name" id=".downloadPDF">
-        <a class="href-link" href="#.downloadPDF">#</a>
+    <h4 class="name" id=".openLateralSchedule">
+        <a class="href-link" href="#.openLateralSchedule">#</a>
         
-            
-                <span class='tag'>async</span>
             
                 <span class='tag'>static</span>
             
         
         <span class="code-name">
             
-                downloadPDF<span class="signature">()</span><span class="type-signature"></span>
+                openLateralSchedule<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -1451,7 +1636,7 @@
     
     
     <div class="description">
-        Para descargar el pdf, primero se crea el pdf con la funcion <a href="ConsultPrescriptionComponent.html#.createPDF">ConsultPrescriptionComponent.createPDF</a>, a lo cual se utiliza la librería<a href="https://github.com/rndme/download">Download</a> para descargarlo al dispositov del doctor
+        Abre el componente <a href="LateralScheduleComponent.html">LateralScheduleComponent</a>
     </div>
     
 
@@ -1500,9 +1685,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line169">line 169</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line245">line 245</a>
             </span>
         </p>
     
@@ -1534,8 +1719,8 @@
 
 
     
-    <h4 class="name" id=".getMedicamentList">
-        <a class="href-link" href="#.getMedicamentList">#</a>
+    <h4 class="name" id=".startAssistance">
+        <a class="href-link" href="#.startAssistance">#</a>
         
             
                 <span class='tag'>static</span>
@@ -1543,7 +1728,7 @@
         
         <span class="code-name">
             
-                getMedicamentList<span class="signature">()</span><span class="type-signature"></span>
+                startAssistance<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -1552,7 +1737,7 @@
     
     
     <div class="description">
-        Obtiene la lista de medicamentos registrados dentro del sistema, Si la petición es correcta se asigna los datos recibidos a la variable medicamentList
+        Indica al servidor que se debe de marcar la asistencia del paciente a sus cita. En caso de que la petición sea correcta, se asigna al objecto successAlertel mensaje de éxito, a lo cual se procede a ocultar este componente y finalmente se muestra el componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>. En caso contrario, seasigna a la variable errors, los errores devueltos por el servidor, a lo cual se muestra el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a>
     </div>
     
 
@@ -1601,9 +1786,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line124">line 124</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line175">line 175</a>
             </span>
         </p>
     
@@ -1635,18 +1820,16 @@
 
 
     
-    <h4 class="name" id=".printPDF">
-        <a class="href-link" href="#.printPDF">#</a>
+    <h4 class="name" id=".startSchedule">
+        <a class="href-link" href="#.startSchedule">#</a>
         
-            
-                <span class='tag'>async</span>
             
                 <span class='tag'>static</span>
             
         
         <span class="code-name">
             
-                printPDF<span class="signature">()</span><span class="type-signature"></span>
+                startSchedule<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -1655,7 +1838,7 @@
     
     
     <div class="description">
-        Para descargar el pdf, primero se crea el pdf con la funcion <a href="ConsultPrescriptionComponent.html#.createPDF">ConsultPrescriptionComponent.createPDF</a>, a lo cual se procede a convertir el archivoa formato BLOB y finalmente se procede a mandar a impresión con el uso de la librería <a href="https://printjs.crabbly.com/">PrintJS</a>
+        Inicia la cita médica seleccionada (rol doctor, enfermera y administrador). En caso de que la petición sea correcta, se redirige a la página de la consulta.En caso contrario, se asigna a la variable errors, los errores devueltos por el servidor, a lo cual se muestra el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a>
     </div>
     
 
@@ -1704,9 +1887,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line179">line 179</a>
+                <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html">schedule/ScheduleActionComponent/ScheduleActionComponent.ts</a>, <a href="schedule_ScheduleActionComponent_ScheduleActionComponent.ts.html#line211">line 211</a>
             </span>
         </p>
     

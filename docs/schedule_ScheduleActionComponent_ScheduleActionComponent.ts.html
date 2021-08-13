@@ -1,4 +1,91 @@
-import { defineComponent } from '@vue/runtime-core';
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> schedule/ScheduleActionComponent/ScheduleActionComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="CalendarComponent.html">CalendarComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LateralScheduleComponent.html">LateralScheduleComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="ScheduleActionComponent.html">ScheduleActionComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>schedule/ScheduleActionComponent/ScheduleActionComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { defineComponent } from '@vue/runtime-core';
 import moment from 'moment';
 import { DefineComponent, PropType } from 'vue';
 moment.locale('es');
@@ -11,7 +98,7 @@ import $ from 'jquery';
 /** 
  * @description Componente que datos básicos de la cita seleccionada, mediante el uso de un modal
  * @class ScheduleActionComponent
- * @example <schedule-action-component :schedule="" role="" :employeeID=""></schedule-action-component>
+ * @example &lt;schedule-action-component :schedule="" role="" :employeeID="">&lt;/schedule-action-component>
 */
 export default defineComponent({
     /** 
@@ -39,22 +126,22 @@ export default defineComponent({
     */
     props: {
         schedule: {
-            type: Object as PropType<Schedule>,
+            type: Object as PropType&lt;Schedule>,
             default: ScheduleData
         },
         role: {
-            type: String as PropType<String>,
+            type: String as PropType&lt;String>,
             default: ''
         },
         employeeID: {
-            type: Number as PropType<Number>,
+            type: Number as PropType&lt;Number>,
             default: -1
         }
     },
     /**
     * Variables del componente
     * @member ScheduleActionComponent.data
-    * @property {Array<Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
+    * @property {Array&lt;Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
     * @property {string} successAlert.title Guarda el título para el modal del componente {@link SuccessAlertComponent}
     * @property {string} successAlert.message Guarda el mensaje para el modal del componente {@link SuccessAlertComponent}
     */
@@ -98,7 +185,7 @@ export default defineComponent({
             switch(this.role)
             {
                 case 'Asistente':
-                    return moment().isSame(moment(this.schedule.consult_schedule_start), 'day') && this.schedule.status!.name === 'Confirmado' && !this.schedule.assistant_start_at;
+                    return moment().isSame(moment(this.schedule.consult_schedule_start), 'day') &amp;&amp; this.schedule.status!.name === 'Confirmado' &amp;&amp; !this.schedule.assistant_start_at;
                 case 'Administrador':
                     return true;
                 default:
@@ -116,7 +203,7 @@ export default defineComponent({
                 case 'Administrador':
                     return true;
                 default:
-                    return this.schedule.status!.name.includes('Agendado' || 'Confirmado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
+                    return this.schedule.status!.name.includes('Agendado' || 'Confirmado' || 'Ausente') &amp;&amp; this.role.includes('Asistente' || 'Administrador');
             }
         },
         isEditOptionEnabled(): boolean
@@ -130,7 +217,7 @@ export default defineComponent({
                 case 'Administrador':
                     return true;
                 default:
-                    return this.schedule.status!.name?.includes('Agendado' || 'Ausente') && this.role.includes('Asistente' || 'Administrador');
+                    return this.schedule.status!.name?.includes('Agendado' || 'Ausente') &amp;&amp; this.role.includes('Asistente' || 'Administrador');
             }
         },
         showScheduleOption(): boolean
@@ -161,15 +248,15 @@ export default defineComponent({
                     if(this.employeeID === this.schedule.doctor_id)
                     {
                         var minutes = moment(this.schedule.consult_schedule_start).subtract(30, 'minutes');
-                        return moment().isSameOrAfter(minutes) && this.schedule.status!.name === 'En consulta';
+                        return moment().isSameOrAfter(minutes) &amp;&amp; this.schedule.status!.name === 'En consulta';
                     }
                     return false;
                 case 'Enfermera':
-                    return this.schedule.assistant_start_at && !this.schedule.nurse_finish_at ? true : false;
+                    return this.schedule.assistant_start_at &amp;&amp; !this.schedule.nurse_finish_at ? true : false;
                 // case 'Imagenologia':
-                //     return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
+                //     return moment().isAfter(moment(this.schedule.consult_schedule_start)) &amp;&amp; this.schedule.status!.name !== 'Finalizado';
                 // case 'Laboratorio':
-                //     return moment().isAfter(moment(this.schedule.consult_schedule_start)) && this.schedule.status!.name !== 'Finalizado';
+                //     return moment().isAfter(moment(this.schedule.consult_schedule_start)) &amp;&amp; this.schedule.status!.name !== 'Finalizado';
                 case 'Administrador':
                     return true;
                 default:
@@ -282,7 +369,7 @@ export default defineComponent({
         */
         deleteSchedule()
         {
-            axios.delete<Schedule>(`/consultas/${this.schedule.id}`,)
+            axios.delete&lt;Schedule>(`/consultas/${this.schedule.id}`,)
             .then(response => {
                 this.successAlert.message = 'Se ha cancelado la cita correctamente';
                 this.successAlert.title = 'Datos de la consulta actualizados';
@@ -296,3 +383,32 @@ export default defineComponent({
         },
     },
 })
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

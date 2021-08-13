@@ -1,4 +1,91 @@
-import { CheckupListData } from '@data/Checkup/CheckupList.data';
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="CalendarComponent.html">CalendarComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LateralScheduleComponent.html">LateralScheduleComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="ScheduleActionComponent.html">ScheduleActionComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>schedule/CheckupScheduleComponent/CheckupScheduleComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { CheckupListData } from '@data/Checkup/CheckupList.data';
 import { CheckupConvenioInstitucional } from '@data/Checkup/options/CheckupConvenioInstitucional.data';
 import { CheckupDiagnosticoPrenatal } from '@data/Checkup/options/CheckupDiagnosticoPrenatal.data';
 import { CheckupMatureData } from '@data/Checkup/options/CheckupMature.data';
@@ -18,7 +105,7 @@ import { BranchSpecialtyDoctors } from '@interface/Branch/BranchSpecialtyDoctors
 /** 
  * @description Componente que muestra la lista de checkups a crear o actualizar, mediante el uso de un formulario con tarjetas dentro de un modal
  * @class CheckupScheduleComponent
- * @example <checkup-schedule-component></checkup-schedule-component>
+ * @example &lt;checkup-schedule-component>&lt;/checkup-schedule-component>
 */
 export default defineComponent({
     name: 'CheckupScheduleComponent',
@@ -41,15 +128,15 @@ export default defineComponent({
     */
     props: {
         branches: {
-            type: Array as PropType<Select[]>,
+            type: Array as PropType&lt;Select[]>,
             default: []
         },
         patients: {
-            type: Array as PropType<Select[]>,
+            type: Array as PropType&lt;Select[]>,
             default: []
         },
         checkupData: {
-            type: Object as PropType<CheckupList>,
+            type: Object as PropType&lt;CheckupList>,
             default: CheckupListData
         },
         enableOptions:
@@ -222,7 +309,7 @@ export default defineComponent({
                 this.startTime = this.checkupData.checkupList.map(item => moment(item.consult_schedule_start).format('HH:mm'));
                 this.finishTime = this.checkupData.checkupList.map(item => moment(item.consult_schedule_finish).format('HH:mm'));
                 this.checkupDataCopy.checkupList.map((item, index) => {
-                    if(item.branch_id > 0 && item.code.includes('CON'))
+                    if(item.branch_id > 0 &amp;&amp; item.code.includes('CON'))
                     {
                         this.getDoctorList(item.branch_id, index)
                     }
@@ -234,8 +321,8 @@ export default defineComponent({
         {
             handler()
             {
-                const incorrectScheduled = this.checkupDataCopy.checkupList.filter(item => item.branch_id <= 0 && !item.name.includes('opcional') && !item.name.includes('50 años')).length;
-                this.isButtonDisabled = this.checkupDataCopy.checkupList.length > 0 && this.checkupDataCopy.patient_id > 0 && incorrectScheduled === 0 ? false : true;
+                const incorrectScheduled = this.checkupDataCopy.checkupList.filter(item => item.branch_id &lt;= 0 &amp;&amp; !item.name.includes('opcional') &amp;&amp; !item.name.includes('50 años')).length;
+                this.isButtonDisabled = this.checkupDataCopy.checkupList.length > 0 &amp;&amp; this.checkupDataCopy.patient_id > 0 &amp;&amp; incorrectScheduled === 0 ? false : true;
             },
             deep: true
         }
@@ -248,7 +335,7 @@ export default defineComponent({
         */
         getCategories()
         {
-            axios.get<CheckupCategory[]>(`/checkup/categorias`)
+            axios.get&lt;CheckupCategory[]>(`/checkup/categorias`)
             .then(response => {
                 this.categoryList = response.data;
             })
@@ -354,7 +441,7 @@ export default defineComponent({
         */
         getDoctorList(branchID: number, indexID: number): void
         {
-            axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${branchID}/especialidades/doctores`)
+            axios.get&lt;BranchSpecialtyDoctors[]>(`/sucursales/${branchID}/especialidades/doctores`)
             .then( response => {
                 var index = 0;
                 const doctorFilter = response.data.filter((list: BranchSpecialtyDoctors) => list.doctors.length > 0);
@@ -379,4 +466,32 @@ export default defineComponent({
             })
         },
     },
-})
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

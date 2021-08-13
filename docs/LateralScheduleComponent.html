@@ -1,0 +1,3085 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> LateralScheduleComponent</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="CalendarComponent.html">CalendarComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LateralScheduleComponent.html">LateralScheduleComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="ScheduleActionComponent.html">ScheduleActionComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>LateralScheduleComponent</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>LateralScheduleComponent<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="LateralScheduleComponent">
+        <a class="href-link" href="#LateralScheduleComponent">#</a>
+        
+        <span class="code-name">
+            
+                new LateralScheduleComponent<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Componente que permite crear o editar una consulta, mediante un menu lateral derecho
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line12">line 12</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>&lt;lateral-schedule-component :schedule="" :branchesList="" doctorsList="" :businessHours="" :patientID="" role="">&lt;/lateral-schedule-component></code></pre>
+    
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id=".components">
+    <a class="href-link" href="#.components">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        components
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <a href="https://vcalendar.io/datepicker.html">https://vcalendar.io/datepicker.html</a>,<a href="https://element-plus.org/#/es/component/time-select">https://element-plus.org/#/es/component/time-select</a>,<a href="SelectComponent.html">SelectComponent</a>, <a href="ErrorAlertComponent.html">ErrorAlertComponent</a>, <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".computed">
+    <a class="href-link" href="#.computed">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        computed
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades computadas del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>tarjetaPaciente</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Retorna los datos del paciente y la fecha y hora de inicio y final de la consulta (solo en consulta editada)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>scheduleAction</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Cambia el título del botón del componente de acuerdo a si es una nueva cita o existente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>startHour</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">FullCalendarBusinessHour</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Busca y actualiza la hora de inicio y final de trabajo disponible para el doctor seleccionado,por ejemplo, si la fecha de la consulta es un martes y ese día el doctor trabaja de 07:00 a 15:00, busca dentro de los horarios de trabajo en la variablebusinessHours y al encontrar el primer horario que coincide con el día, entonces asigna a las variables startTime y finishTime la hora de inicio y final del horario(07:00 a 15:00) de trabajo del doctor, en caso de no encontrar coincidencia, asigna a las variables anteriores un valor predefinido</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>consultReasonLength</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Retorna el total de caracteres para el input correspondiente al motivo de la cita (schedule.consult_reason)</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line102">line 102</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".data">
+    <a class="href-link" href="#.data">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">ID del componente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>scheduleSelectedCopy</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Schedule</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda una copia de la cita médica seleccionada para su edición</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorListCopy</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda una copia de los doctores pertenecientes a una sucursal para su actualización</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>errors</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorSelect</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Select</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el doctor seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>dateSelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Select</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la fecha de la cita seleccionada</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>startTime</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la hora inicial de la cita</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>finishTime</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la hora final de la cita</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientsList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de pacientes registrados en el sistema</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>startHourUpdated</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Indica si se ha actualizado o no la hora de trabajo del doctor seleccionado</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line73">line 73</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".emits">
+    <a class="href-link" href="#.emits">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        emits
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Eventos del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>newSchedule</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Schedule</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Evento que se emite se crea una nueva cita dentro del servidor, junto con los datos de la cita retornados por el servidor</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line31">line 31</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".mounted">
+    <a class="href-link" href="#.mounted">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        mounted
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Al iniciar el componente, se obtienen los datos de los <a href="LateralScheduleComponent.html#.loadPatientList">pacientes registrados</a>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line426">line 426</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".props">
+    <a class="href-link" href="#.props">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        props
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades que recibe el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>schedule</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Schedule</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Cita médica seleccionada</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>branchesList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Lista de sucursales habilitados en el servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorsList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Lista de doctores que pertenecen a la sucursal seleccionada</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>businessHours</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;FullCalendarBusinessHour></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Horarios de trabajo del doctor seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio si el rol es paciente) ID del paciente logueado actualmente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>role</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Rol del usuario logueado actualmente</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line37">line 37</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".watch">
+    <a class="href-link" href="#.watch">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        watch
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables a observar por el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>startTime</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualiar la hora de inicio se actualiza la <a href="LateralScheduleComponent.html#.updateScheduleTimes">fecha y hora de inicio de la cita</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>finishTime</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualiar la hora de finalización se actualiza la <a href="LateralScheduleComponent.html#.updateScheduleTimes">fecha y hora de finalización de la cita</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar el ID del paciente logueado actualemente, se asigna a la variable scheduleSelectedCopy.patient_id el nuevo ID del paciente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>dateSelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualiar la fecha de la consulta se actualiza la <a href="LateralScheduleComponent.html#.updateScheduleTimes">fecha y hora de la cita</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>schedule</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Schedule</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar la cita seleccionada, se obtiene <a href="LateralScheduleComponent.html#.getDoctorList">el doctor seleccionado</a>, se asigna un copiade la consulta a la variable scheduleSelectedCopy, se asigna a la variable dateSelected la fecha de la consulta. Si el usuario logueado actualmente es un pacientese asigna a la variable scheduleSelectedCopy.patient_id  el ID del paciente. Si la lista de doctores (doctorsList) tiene datos, se asigna una copia a lavariable doctorListCopy, en caso contrario se obtiene la <a href="LateralScheduleComponent.html#.getDoctorList">lista de doctores</a>. Finalmente selecciona y muestra en el inputdel doctor, el <a href="LateralScheduleComponent.html#.getDoctorPosition">doctor seleccionado</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorListCopy</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Si se actuliza la copia de los doctores de la sucursal seleccionada, se muestra en el inputdel doctor, el <a href="LateralScheduleComponent.html#.getDoctorPosition">doctor seleccionado</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>scheduleSelectedCopy.branch_id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Si se actualiza el ID de la sucursal de la cita seleccionada, verifica si la lista de los doctores (doctorsList) es iguala su copia (doctorsList), además verifica si el ID de la sucursal de la consulta (schedule.branch_id) es igual que la copia de la consulta (scheduleSelectedCopy.branch_id): encaso de se diferente alguno de las dos verificaciones obtiene la <a href="LateralScheduleComponent.html#.getDoctorList">lista de doctores</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>scheduleSelectedCopy.doctor_id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Si se actualiza el ID del doctor, verifica el tipo de doctor seleccionado, en caso de ser laboratorio o imagenologia,se obtiene la lista de <a href="LateralScheduleComponent.html#.getTestList">estudios médicos</a>, además que se asigna a la variable scheduleSelectedCopy.medicalconsultcategory_idel tipo de consulta médica a la que pertenece la consulta</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorSelect</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar el doctor seleccionado, se asigna a la copia de la consulta el ID del doctor (scheduleSelectedCopy.doctor_id) yla especialidad médica a la que pertenece (scheduleSelectedCopy.medicalspecialty_id)</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line150">line 150</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".clearData">
+        <a class="href-link" href="#.clearData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                clearData<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Limpia los datos de la consulta
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line290">line 290</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".closeLateralSchedule">
+        <a class="href-link" href="#.closeLateralSchedule">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                closeLateralSchedule<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Cierra el componente (este menu lateral)
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line310">line 310</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createNewSchedule">
+        <a class="href-link" href="#.createNewSchedule">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createNewSchedule<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Crea una nueva cita en el servidor. En caso de que se procese correctamente la petición, se envía un evento newSchedule junto con los datos de la consultacreada, se muestra el componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a> y finalmente se cierra el componente. En caso contrario, se asigna a la variable errors, los erroresdevueltos por el servidor y se muestra el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line328">line 328</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".formatScheduleTime">
+        <a class="href-link" href="#.formatScheduleTime">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                formatScheduleTime<span class="signature">(datetime)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Retorna la fecha de la cita provista por el servidor, en un formato local
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>datetime</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Fecha de la consulta</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line274">line 274</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getDoctorList">
+        <a class="href-link" href="#.getDoctorList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getDoctorList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene los doctores de una sucursal seleccionada. Si la petición es correcta, entonces se filtralas especialidades donde no hay un doctor registrado y finalmente se asigna a la variabledoctorListCopy la lista de doctores , convirtiendolos en un tipo Select[]
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line371">line 371</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getDoctorPosition">
+        <a class="href-link" href="#.getDoctorPosition">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getDoctorPosition<span class="signature">(doctorsList, doctorID, specialtyID)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la posición del doctor dentro de la variable doctorsList de acuerdo a la especialidad médica a la que pertenece. Esta acción permitemostrar en el input del doctor, el doctor correcto en la especialidad médica seleccionada. Para eso verifica que el childID sea igual al ID del doctor, además queverifica que el parentID (especialidad médica) sea igual a ID de la especialidad médica
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>doctorsList</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Array.&lt;Select></span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Lista de doctores</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>doctorID</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">ID del doctor seleccionado</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>specialtyID</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">ID de la especialidad de la consulta seleccionada</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line437">line 437</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getLateralScheduleTitle">
+        <a class="href-link" href="#.getLateralScheduleTitle">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getLateralScheduleTitle<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Cambia el título del menú lateral (este componente) de acuerdo a si es una nueva cita o es existente
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line321">line 321</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getPatientsList">
+        <a class="href-link" href="#.getPatientsList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getPatientsList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la lista de pacientes registrados en el servidor. En caso de que la petición sea correcta, se transforma los pacientes retornados por el servidor enun tipo de dato Select
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line255">line 255</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getTestList">
+        <a class="href-link" href="#.getTestList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getTestList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la lista de estudios médicos registrados en el servidor. Si la petición es correcta, entonces los datosretornados se convierten en un tipo Select[]
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line401">line 401</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".loadPatientList">
+        <a class="href-link" href="#.loadPatientList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                loadPatientList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        En caso de que el rol del usuario logueado actualmente coincida con el filtro, se obtiene la <a href="LateralScheduleComponent.html#.loadPatientList">lista de pacientes del servidor</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line246">line 246</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".openLateralSchedule">
+        <a class="href-link" href="#.openLateralSchedule">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                openLateralSchedule<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Abre el componente (este menu lateral) desde un componente padre
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line297">line 297</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".updateSchedule">
+        <a class="href-link" href="#.updateSchedule">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                updateSchedule<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Crea actualiza la cita en el servidor. En caso de que se procese correctamente la petición, se muestra el componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>y finalmente se cierra el componente. En caso contrario, se asigna a la variable errors, los erroresdevueltos por el servidor y se muestra el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line350">line 350</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".updateScheduleTimes">
+        <a class="href-link" href="#.updateScheduleTimes">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                updateScheduleTimes<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Actualiza la fecha y hora de la cita y la asigna a las variables scheduleSelectedCopy.consult_schedule_start  y scheduleSelectedCopy.consult_schedule_finish
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html">schedule/LateralScheduleComponent/LateralScheduleComponent.ts</a>, <a href="schedule_LateralScheduleComponent_LateralScheduleComponent.ts.html#line282">line 282</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

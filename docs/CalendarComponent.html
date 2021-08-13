@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ConsultPrescriptionComponent</title>
+  <title> CalendarComponent</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -74,7 +74,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Class</p>
-                    <h1>ConsultPrescriptionComponent</h1>
+                    <h1>CalendarComponent</h1>
                 </header>
                 
 
@@ -85,7 +85,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>ConsultPrescriptionComponent<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>CalendarComponent<span class="signature">()</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -104,12 +104,12 @@
 
 
     
-    <h4 class="name" id="ConsultPrescriptionComponent">
-        <a class="href-link" href="#ConsultPrescriptionComponent">#</a>
+    <h4 class="name" id="CalendarComponent">
+        <a class="href-link" href="#CalendarComponent">#</a>
         
         <span class="code-name">
             
-                new ConsultPrescriptionComponent<span class="signature">()</span><span class="type-signature"></span>
+                new CalendarComponent<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -118,7 +118,7 @@
     
     
     <div class="description">
-        Componente que muestra los medicamentos para receta dentro de la consulta, utilizando el componente MedicamentComponentpor cada medicamento generado
+        Componente que muestra las agenda de citas médicas creadas, mediante un calendario
     </div>
     
 
@@ -167,9 +167,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line12">line 12</a>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line10">line 10</a>
             </span>
         </p>
     
@@ -198,7 +198,7 @@
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>&lt;consult-prescription-component v-model="" :disabled="" patientData="" :doctorData="" :consultData="">&lt;/consult-prescription-component></code></pre>
+        <pre class="prettyprint"><code>&lt;calendar-component :schedules="" :businessHours="" role="">&lt;/calendar-component></code></pre>
     
 
 
@@ -246,7 +246,7 @@
 
 
 <div class="description">
-    MedicamentComponent
+    <a href="https://fullcalendar.io/">FullCalendar para Vue3</a>
 </div>
 
 
@@ -286,9 +286,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line19">line 19</a>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line17">line 17</a>
             </span>
         </p>
     
@@ -352,13 +352,13 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>medicamentList</code></td>
+        <td class="name"><code>calendarOptions</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Array.&lt;Medicament></span>
+<span class="param-type">Object</span>
 
 
     
@@ -368,20 +368,20 @@
 
     
 
-    <td class="description last">Lista de medicamentos seleccionados por el doctor en la consulta</td>
+    <td class="description last">Guarda la información de configuración de <a href="https://fullcalendar.io/docs/vue">FullCalendar</a></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>prescriptionData</code></td>
+        <td class="name"><code>schedulesCopy</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Prescription</span>
+<span class="param-type">Array.&lt;Schedule></span>
 
 
     
@@ -391,7 +391,30 @@
 
     
 
-    <td class="description last">Guarda los datos de los medicamentos asignados por la variable modelValue para modificar dichos datos (v-model)</td>
+    <td class="description last">Guarda una copia de las citas médicas creadas para su modificación</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>hoursEnabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;FullCalendarBusinessHour></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda una copia del horario de trabajo del empleado seleccionado</td>
 </tr>
 
         
@@ -434,9 +457,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line63">line 63</a>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line52">line 52</a>
             </span>
         </p>
     
@@ -500,13 +523,13 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>update:modelValue</code></td>
+        <td class="name"><code>onNewSchedule</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Prescription</span>
+<span class="param-type">FullCalendarData</span>
 
 
     
@@ -516,7 +539,30 @@
 
     
 
-    <td class="description last">Evento que actualiza la variable que se ingreso en el v-model</td>
+    <td class="description last">Evento que se emite cuando se crea una nueva cita médica con la información que provee FullCalendar al hacer click en una <a href="https://fullcalendar.io/docs/dateClick">fecha</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>onSelectedSchedule</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">FullCalendarData</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Evento que se emite cuando se selecciona una cita médica con la información que provee FullCalendar al hacer click en una <a href="https://fullcalendar.io/docs/eventClick">cita</a></td>
 </tr>
 
         
@@ -559,82 +605,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line26">line 26</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-<h4 class="name" id=".mounted">
-    <a class="href-link" href="#.mounted">#</a>
-    
-        
-            <span class='tag'>static</span>
-        
-    
-    <span class="code-name">
-        mounted
-    </span>
-    
-</h4>
-
-
-
-
-<div class="description">
-    Al iniciar el componente, se obtienen los datos de los <a href="ConsultPrescriptionComponent.html#.getMedicamentList">medicamentos registraods</a>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
-            <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line75">line 75</a>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line24">line 24</a>
             </span>
         </p>
     
@@ -698,13 +671,13 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>modelValue</code></td>
+        <td class="name"><code>schedules</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Prescription</span>
+<span class="param-type">Array.&lt;Schedule></span>
 
 
     
@@ -714,20 +687,20 @@
 
     
 
-    <td class="description last">(Opcional) Valor que recibe y actualiza al componente padre. Ver <a href="https://v3.vuejs.org/guide/migration/v-model.html">v-model</a> de vue para mas referencia</td>
+    <td class="description last">(Obligatorio) Lista de citas médicas agendadas</td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>disabled</code></td>
+        <td class="name"><code>businessHours</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">boolean</span>
+<span class="param-type">Array.&lt;FullCalendarBusinessHour></span>
 
 
     
@@ -737,20 +710,20 @@
 
     
 
-    <td class="description last">(Obligatorio) Habilita o deshabilita input del componente</td>
+    <td class="description last">(Opcional) Horario de trabajo del empleado seleccionado</td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>patientData</code></td>
+        <td class="name"><code>role</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Patient</span>
+<span class="param-type">string</span>
 
 
     
@@ -760,53 +733,7 @@
 
     
 
-    <td class="description last">(Obligatorio) Guarda los datos del paciente en consulta</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>doctorData</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">Employee</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">(Obligatorio) Guarda los datos del doctor en consulta</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>consultData</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">Consult</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">(Obligatorio) Guarda los datos de la consulta en proceso</td>
+    <td class="description last">(Obligatorio) Rol del usuario logueado actualmente</td>
 </tr>
 
         
@@ -849,9 +776,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line32">line 32</a>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line31">line 31</a>
             </span>
         </p>
     
@@ -915,13 +842,13 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>modelValue</code></td>
+        <td class="name"><code>businessHours</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Prescription</span>
+<span class="param-type">Array.&lt;FullCalendarBusinessHour></span>
 
 
     
@@ -931,20 +858,20 @@
 
     
 
-    <td class="description last">Al actualizar los datos de esta variable, se verifica si la lista de medicamentos de la variable modelValue es la misma que la lista de medicamentosguardada en la variable prescriptionData: si es diferente entonces agrega los medicamentos al componente MedicamentComponent. Por otro lado, asigna los datos de la variablemodelValue a la variable prescriptionData</td>
+    <td class="description last">Al actualizar el horario del trabajador seleccionado, se asigna a la opción de  FullCalendar (businessHour) los horariosactualizados para que bloquee los dias y horas en las que no trabaje el empleado</td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>prescriptionData</code></td>
+        <td class="name"><code>schedules</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Prescription</span>
+<span class="param-type">Array.&lt;Schedule></span>
 
 
     
@@ -954,7 +881,7 @@
 
     
 
-    <td class="description last">AL actualizar los datos de la variable lanza un emit para actualizar el v-model</td>
+    <td class="description last">Al actualizar las citas médicas agendadas, se asigna una copia a la variable schedulesCopy, a lo cual se procede aeliminar las <a href="CalendarComponent.html#.deleteAllEvents">citas antiguas</a> y agregando las <a href="CalendarComponent.html#.renderSchedules">nuevas citas</a></td>
 </tr>
 
         
@@ -997,9 +924,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line82">line 82</a>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line73">line 73</a>
             </span>
         </p>
     
@@ -1024,8 +951,8 @@
 
 
     
-    <h4 class="name" id=".addPrescription">
-        <a class="href-link" href="#.addPrescription">#</a>
+    <h4 class="name" id=".addSchedule">
+        <a class="href-link" href="#.addSchedule">#</a>
         
             
                 <span class='tag'>static</span>
@@ -1033,7 +960,7 @@
         
         <span class="code-name">
             
-                addPrescription<span class="signature">(data)</span><span class="type-signature"></span>
+                addSchedule<span class="signature">(schedule)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -1042,7 +969,260 @@
     
     
     <div class="description">
-        Agrega un nuevo medicamento a la variable prescriptionData
+        Agrega al calendario la cita médica seleccionada (evento en FullCalendar). Para realizarlo, primer obtiene <a href="CalendarComponent.html#.getNameSchedule">el nombre del paciente o doctor a mostrar en la cita</a>,agrega el título (title), color de borde (borderColor) y color de fondo (backgroundColor) predefinidos al evento. Después consulta el rol actual del usuariologueado actualmente: en caso del paciente agrega datos predefinidos, en caso del doctor y predefinido, obtiene <a href="CalendarComponent.html#.getScheduleTitle">el nombre del tipo de cita</a>,el color de fondo y de borde (si no existe un color provisto por el servidor [de acuerdo al estado de la cita seleccionada] provee uno por defecto).Al obtener los datos anteriores entonces agrega los datos del evento al calendario <a href="CalendarComponent.html#.addSchedule">más información</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>schedule</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Schedule</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Cita médica seleccionada</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line146">line 146</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".deleteAllEvents">
+        <a class="href-link" href="#.deleteAllEvents">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                deleteAllEvents<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Elimina todas las citas médicas (eventos en FullCalendar) que se muestran en el calendario <a href="https://fullcalendar.io/docs/Event-remove">más información</a>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line92">line 92</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".fullcalendarDateClick">
+        <a class="href-link" href="#.fullcalendarDateClick">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                fullcalendarDateClick<span class="signature">(data)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Retorna el evento onNewSchedule con la información que provee FullCalendar al hacer click en una <a href="https://fullcalendar.io/docs/dateClick">fecha</a> (solo roles: asistente, doctor y administrador)
     </div>
     
 
@@ -1086,7 +1266,7 @@
   <td class="type">
   
       
-<span class="param-type">Prescription</span>
+<span class="param-type">any</span>
 
 
   
@@ -1096,7 +1276,7 @@
 
   
 
-  <td class="description last">Datos del medicamento</td>
+  <td class="description last">Datos que provee FullCalendar al hacer click en una <a href="https://fullcalendar.io/docs/dateClick">fecha</a></td>
 </tr>
 
 
@@ -1142,9 +1322,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line108">line 108</a>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line188">line 188</a>
             </span>
         </p>
     
@@ -1176,18 +1356,16 @@
 
 
     
-    <h4 class="name" id=".createPDF">
-        <a class="href-link" href="#.createPDF">#</a>
+    <h4 class="name" id=".fullcalendarEventClick">
+        <a class="href-link" href="#.fullcalendarEventClick">#</a>
         
-            
-                <span class='tag'>async</span>
             
                 <span class='tag'>static</span>
             
         
         <span class="code-name">
             
-                createPDF<span class="signature">()</span><span class="type-signature"></span>
+                fullcalendarEventClick<span class="signature">(data)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -1196,108 +1374,7 @@
     
     
     <div class="description">
-        Crea un pdf con los datos de los medicamentos de la receta creada en la consulta tomando como base el archivo prescription.pdf.Para crear dicha receta primero convierte el pdf en un archivo legible de tipo ArrayBuffer para la librería <a href="https://pdf-lib.js.org/">PDF-LIB</a>,despues procede a filtrar los medicamentos que sean creados por el doctor y se asignan a la variable filterPrescriptionList. Una vez realizadoeste paso, se procede a asignar los datos del doctor, paciente y receta al pdf <a href="https://pdf-lib.js.org/">Ver el proceso</a> y se retorna el pdf creado
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
-            <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line139">line 139</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id=".deletePrescription">
-        <a class="href-link" href="#.deletePrescription">#</a>
-        
-            
-                <span class='tag'>static</span>
-            
-        
-        <span class="code-name">
-            
-                deletePrescription<span class="signature">(index)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Elimina un medicamento a la variable prescriptionData
+        Retorna el evento onSelectedSchedule con la información de la cita médica seleccionada (todos los roles). Después muestrael componente <a href="ScheduleActionComponent.html">ScheduleActionComponent</a>
     </div>
     
 
@@ -1335,13 +1412,13 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>index</code></td>
+      <td class="name"><code>data</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type">number</span>
+<span class="param-type">any</span>
 
 
   
@@ -1351,7 +1428,7 @@
 
   
 
-  <td class="description last">Número de fila donde radica el medicamento que se desea eliminar dentro de la variable prescriptionData</td>
+  <td class="description last">Datos que provee FullCalendar al hacer click en una <a href="https://fullcalendar.io/docs/eventClick">cita</a></td>
 </tr>
 
 
@@ -1397,9 +1474,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line116">line 116</a>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line210">line 210</a>
             </span>
         </p>
     
@@ -1431,18 +1508,16 @@
 
 
     
-    <h4 class="name" id=".downloadPDF">
-        <a class="href-link" href="#.downloadPDF">#</a>
+    <h4 class="name" id=".getNameSchedule">
+        <a class="href-link" href="#.getNameSchedule">#</a>
         
-            
-                <span class='tag'>async</span>
             
                 <span class='tag'>static</span>
             
         
         <span class="code-name">
             
-                downloadPDF<span class="signature">()</span><span class="type-signature"></span>
+                getNameSchedule<span class="signature">(schedule)</span><span class="type-signature"> &rarr; {string}</span>
             
         </span>
     </h4>
@@ -1451,7 +1526,382 @@
     
     
     <div class="description">
-        Para descargar el pdf, primero se crea el pdf con la funcion <a href="ConsultPrescriptionComponent.html#.createPDF">ConsultPrescriptionComponent.createPDF</a>, a lo cual se utiliza la librería<a href="https://github.com/rndme/download">Download</a> para descargarlo al dispositov del doctor
+        Si detecta que la cita médica seleccionada tiene el nombre del doctor, procede a retonar el nombre completo del doctor, en caso contrario,retorna el nombre completo del paciente
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>schedule</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Schedule</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Cita médica seleccionada</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line112">line 112</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">string</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getScheduleTitle">
+        <a class="href-link" href="#.getScheduleTitle">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getScheduleTitle<span class="signature">(category, name)</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Retorna el nombre que se va a mostrar en cada uno de las citas médicas (eventos en FullCalendar) de acuerdo a la categoría de la cita médica a la que pertenezca
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>category</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Tipo de cita</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>name</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Nombre del <a href="CalendarComponent.html#.getNameSchedule">usuario o paciente</a></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line123">line 123</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">string</span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".renderSchedules">
+        <a class="href-link" href="#.renderSchedules">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                renderSchedules<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Recorre todas las citas médicas (eventos en FullCalendar) que están en la variable schedulesCopy y procede a <a href="CalendarComponent.html#.addSchedule">agregarlos al calendario</a>
     </div>
     
 
@@ -1500,213 +1950,9 @@
 
     
         <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
+            <a href="schedule_CalendarComponent_CalendarComponent.ts.html" class="button">View Source</a>
             <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line169">line 169</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id=".getMedicamentList">
-        <a class="href-link" href="#.getMedicamentList">#</a>
-        
-            
-                <span class='tag'>static</span>
-            
-        
-        <span class="code-name">
-            
-                getMedicamentList<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Obtiene la lista de medicamentos registrados dentro del sistema, Si la petición es correcta se asigna los datos recibidos a la variable medicamentList
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
-            <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line124">line 124</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id=".printPDF">
-        <a class="href-link" href="#.printPDF">#</a>
-        
-            
-                <span class='tag'>async</span>
-            
-                <span class='tag'>static</span>
-            
-        
-        <span class="code-name">
-            
-                printPDF<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Para descargar el pdf, primero se crea el pdf con la funcion <a href="ConsultPrescriptionComponent.html#.createPDF">ConsultPrescriptionComponent.createPDF</a>, a lo cual se procede a convertir el archivoa formato BLOB y finalmente se procede a mandar a impresión con el uso de la librería <a href="https://printjs.crabbly.com/">PrintJS</a>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html" class="button">View Source</a>
-            <span>
-                <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html">medical/consult/consultPrescription/ConsultPrescriptionComponent.ts</a>, <a href="medical_consult_consultPrescription_ConsultPrescriptionComponent.ts.html#line179">line 179</a>
+                <a href="schedule_CalendarComponent_CalendarComponent.ts.html">schedule/CalendarComponent/CalendarComponent.ts</a>, <a href="schedule_CalendarComponent_CalendarComponent.ts.html#line103">line 103</a>
             </span>
         </p>
     
