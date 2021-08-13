@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> UserProfileComponent</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="CalendarComponent.html">CalendarComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LateralScheduleComponent.html">LateralScheduleComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="ScheduleActionComponent.html">ScheduleActionComponent</a></li><li><a href="ScheduleComponent.html">ScheduleComponent</a></li><li><a href="ScheduleSelectComponent.html">ScheduleSelectComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SignupComponent.html">SignupComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li><li><a href="UserBioComponent.html">UserBioComponent</a></li><li><a href="UserPasswordComponent.html">UserPasswordComponent</a></li><li><a href="UserProfileComponent.html">UserProfileComponent</a></li><li><a href="UserProfileInfoComponent.html">UserProfileInfoComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>UserProfileComponent</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>UserProfileComponent<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="UserProfileComponent">
+        <a class="href-link" href="#UserProfileComponent">#</a>
+        
+        <span class="code-name">
+            
+                new UserProfileComponent<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Componente que permite crear o editar un usuario, mediante un formulario en un modal
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line10">line 10</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>&lt;user-profile-component :userID="" :userCategory="">&lt;/signup-component></code></pre>
+    
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id=".components">
+    <a class="href-link" href="#.components">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        components
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <a href="https://element-plus.org/#/es/component/progress">https://element-plus.org/#/es/component/progress</a>, <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>, <a href="ErrorAlertComponent.html">ErrorAlertComponent</a>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line16">line 16</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".computed">
+    <a class="href-link" href="#.computed">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        computed
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades computadas del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>disablePatientCode</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita o deshabilita el código del paciente si el usuario es paciente o no</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>fullName</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Concatena el nombre completo del</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line118">line 118</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".data">
+    <a class="href-link" href="#.data">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userForm</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Patient</span>
+|
+
+<span class="param-type">Employee</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la copia de datos del usuario seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>photo</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">File</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la foto seleccionada</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>successMessage</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda mensaje de éxito</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>errors</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>formCharacters</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la longitud de caracteres de cada uno de los inputs del formulario</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>path</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la URL base de donde se aloja el proyecto (local o servidor)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientCode</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el código de paciente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>uploadPercentage</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda el porcentaje de subida</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>loading</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Habilita o deshabilita la animación de carga al crear o modificar el usuario</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line73">line 73</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".emits">
+    <a class="href-link" href="#.emits">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        emits
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Eventos del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>updateUser</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Patient</span>
+|
+
+<span class="param-type">Employee</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Evento que se lanza cuando se actualiza el usuario</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>updatePhoto</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Patient</span>
+|
+
+<span class="param-type">Employee</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Evento que se lanza cuando se actualiza la foto del usuario</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line25">line 25</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".props">
+    <a class="href-link" href="#.props">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        props
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades que recibe el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>id</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio ) ID del componente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio ) ID del usuario seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userCategory</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Categoría del usuario seleccionado (empleados, pacientes)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Patient</span>
+|
+
+<span class="param-type">Employee</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Datos del usuario seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>disabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Habilita o deshabilita el formulario</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>role</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Rol del usuario logueado actualmente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isNew</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">boolean</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Indica si los datos del usuario seleccionado son nuevos o existentes</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line32">line 32</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".watch">
+    <a class="href-link" href="#.watch">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        watch
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables a observar por el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientCode</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar el código del paciente, éste se asigna a la variable userForm.patient_code</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar la variable, crea una copia en la variable userForm (para modificar los datos del usuario) y asigna a la variablepatientCode el código de paciente (si aplica)</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line99">line 99</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".checkProfileData">
+        <a class="href-link" href="#.checkProfileData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                checkProfileData<span class="signature">(data)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Asigna los datos necesarios de acuerdo a la información que se desea mostrar, si es birthday se muestra la fecha de nacimiento, en caso de genderretorna el número 0 o 1 (masculino, femenino)
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>data</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Tipo de dato a mostrar</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line223">line 223</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".cleanPhotoSelected">
+        <a class="href-link" href="#.cleanPhotoSelected">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                cleanPhotoSelected<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Limpia la foto de perfil del usuario
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line275">line 275</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createUser">
+        <a class="href-link" href="#.createUser">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createUser<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Crea un nuevo usuario en el servidor, dependiendo a la categoría a la que pertenezcan (empleados, pacientes).En caso de que la petición sea procesada correctamente,se muestra el componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a> junto con el mensaje de éxito de lavariable successMessage. En caso contrario se asigna a la variable errors los errores que retorna en el servidor y se muestra en el componente<a href="ErrorAlertComponent.html">ErrorAlertComponent</a>. Mientras se sube el usuario al sistema, se actualiza el porcentaje al asignar a la variable uploadPercentage el porcentaje en proceso
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line130">line 130</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getCharacters">
+        <a class="href-link" href="#.getCharacters">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getCharacters<span class="signature">(key)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la longitud de un input que este en la variable formCharacters
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>key</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Key del objeto formCharacters</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line250">line 250</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".selectFile">
+        <a class="href-link" href="#.selectFile">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                selectFile<span class="signature">(event)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Selecciona la foto de perfil del usuario
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>event</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Event</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Evento del input html de la foto</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line261">line 261</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".updateCharacter">
+        <a class="href-link" href="#.updateCharacter">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                updateCharacter<span class="signature">(key)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Actualiza y asigna a la variable formCharacters la longitud actual del input a actualizar
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>key</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Key del objeto formCharacters</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line239">line 239</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".updateProfile">
+        <a class="href-link" href="#.updateProfile">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                updateProfile<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Actualiza el usuario en el servidor, dependiendo a la categoría a la que pertenezcan (empleados, pacientes).En caso de que la petición sea procesada correctamente,se muestra el componente <a href="SuccessAlertComponent.html">SuccessAlertComponent</a> junto con el mensaje de éxito de lavariable successMessage, además de emitir un evento updateUser con los datos del usuario actualizado.En caso contrario se asigna a la variable errors los errores que retorna en el servidor y se muestra en el componente<a href="ErrorAlertComponent.html">ErrorAlertComponent</a>. Mientras se sube el usuario al sistema, se actualiza el porcentaje al asignar a la variable uploadPercentage el porcentaje en proceso
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfile_UserProfileComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfile_UserProfileComponent.ts.html">user/userProfile/UserProfileComponent.ts</a>, <a href="user_userProfile_UserProfileComponent.ts.html#line176">line 176</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

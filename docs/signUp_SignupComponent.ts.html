@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> signUp/SignupComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="CalendarComponent.html">CalendarComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LateralScheduleComponent.html">LateralScheduleComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="ScheduleActionComponent.html">ScheduleActionComponent</a></li><li><a href="ScheduleComponent.html">ScheduleComponent</a></li><li><a href="ScheduleSelectComponent.html">ScheduleSelectComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SignupComponent.html">SignupComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li><li><a href="UserBioComponent.html">UserBioComponent</a></li><li><a href="UserPasswordComponent.html">UserPasswordComponent</a></li><li><a href="UserProfileComponent.html">UserProfileComponent</a></li><li><a href="UserProfileInfoComponent.html">UserProfileInfoComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>signUp/SignupComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { defineComponent } from '@vue/runtime-core';
+import axios from 'axios';
+import 'bootstrap';
+
+/** 
+ * @description Componente de la página de registro de nuevo paciente
+ * @class SignupComponent
+ * @example &lt;signup-component>&lt;/signup-component>
+*/
+export default defineComponent({
+    /** 
+     * {@link SuccessAlertComponent}, {@link ErrorAlertComponent} 
+     * @member SignupComponent.components
+    */
+    components: {
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
+        ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default
+    },
+    /**
+    * Variables del componente
+    * @member SignupComponent.data
+    * @property {Object} user Guarda la información del nuevo usuario
+    * @property {Object} patient Guarda la información del nuevo paciente
+    * @property {Array&lt;Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
+    */
+    data() {
+        return {
+            user: {
+                email: '',
+                confirmEmail: '',
+                password: '',
+                confirmPassword: ''
+            },
+            patient: {
+                first_name: '',
+                last_name: '',
+                gender: 0,
+                birthday: '',
+                address: '',
+                phone: '',
+                cellphone: '',
+                photo: {} as File
+            },
+            errors: []
+        };
+    },
+    methods: {
+        /** 
+         * Registra en el servidor el nuevo paciente creado. En caso de que la petición sea procesada correctamente,
+         * se muestra el componente {@link SuccessAlertComponent} y se vacía los datos del usuario y paciente. En caso contrario, se asigna a la variable
+         * errors, los errores devueltos por el servidor y se muestra el componente {@link ErrorAlertComponent}
+         * @function SignupComponent.register
+        */
+        register()
+        {
+            var formData = new FormData();
+            formData.append('email', this.user.email);
+            formData.append('confirmEmail', this.user.confirmEmail);
+            formData.append('password', this.user.password);
+            formData.append('confirmPassword', this.user.confirmPassword);
+
+            formData.append('first_name', this.patient.first_name);
+            formData.append('last_name', this.patient.last_name);
+            formData.append('gender', this.patient.gender.toString());
+            formData.append('birthday', this.patient.birthday);
+            formData.append('address', this.patient.address);
+            formData.append('phone', this.patient.phone);
+            formData.append('cellphone', this.patient.cellphone);
+            formData.append('photo', this.patient.photo);
+
+            axios.post('/register', formData, {headers: { "Content-Type": "multipart/form-data" }},)
+            .then(response => {
+                $('#sucSuccessAlert').modal('show');
+                this.user = {
+                    email: '',
+                    confirmEmail: '',
+                    password: '',
+                    confirmPassword: ''
+                };
+                this.patient = {
+                    first_name: '',
+                    last_name: '',
+                    gender: 0,
+                    birthday: '',
+                    address: '',
+                    phone: '',
+                    cellphone: '',
+                    photo: {} as File
+                }
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+                $('#sucErrorAlert').modal('show');
+            })
+        },
+        /** 
+         * Redirecciona a la página de inicio
+         * @function SignupComponent.redirectToLogin
+        */
+        redirectToLogin()
+        {
+            window.location.replace(`/`);
+        },
+        /** 
+         * Abre el input que permite selecciona la foto del paciente
+         * @function SignupComponent.openSelectFile
+        */
+        openSelectFile()
+        {
+            document.getElementById('sucPhoto')?.click();
+        },
+        /** 
+         * Asigna a la variable patient.photo la foto seleccionada por el usuario
+         * @function SignupComponent.selectFile
+         * @param {Event} event Evento del input del html
+        */
+        selectFile(event: Event) {
+            const file = (event.target as HTMLInputElement).files![0] || [];
+            this.patient.photo = file;
+        },
+        /** 
+         * Elimina la foto de la variable patient.photo
+         * @function SignupComponent.cleanPhotoSelected
+        */
+        cleanPhotoSelected()
+        {
+            this.patient.photo = {} as File;
+            (document.getElementById('sucPhoto') as HTMLInputElement).value = '';
+        }
+    },
+})
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

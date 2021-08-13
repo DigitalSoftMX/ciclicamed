@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> user/userProfile/UserProfileComponent.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="CalendarComponent.html">CalendarComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LateralScheduleComponent.html">LateralScheduleComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="ScheduleActionComponent.html">ScheduleActionComponent</a></li><li><a href="ScheduleComponent.html">ScheduleComponent</a></li><li><a href="ScheduleSelectComponent.html">ScheduleSelectComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SignupComponent.html">SignupComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li><li><a href="UserBioComponent.html">UserBioComponent</a></li><li><a href="UserPasswordComponent.html">UserPasswordComponent</a></li><li><a href="UserProfileComponent.html">UserProfileComponent</a></li><li><a href="UserProfileInfoComponent.html">UserProfileInfoComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>user/userProfile/UserProfileComponent.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { defineComponent } from '@vue/runtime-core';
+import axios from 'axios';
+import moment from 'moment';
+require('jquery-ui-bundle');
+import $ from 'jquery';
+import { Patient } from '@interface/Patient/Patient.interface';
+import { Employee } from '@interface/Employee/Employee.interface';
+import { PropType } from 'vue';
+import cloneDeep from 'lodash/cloneDeep';
+import { ElProgress } from 'element-plus';
+require('bootstrap');
+
+/** 
+ * @description Componente que permite crear o editar un usuario, mediante un formulario en un modal
+ * @class UserProfileComponent
+ * @example &lt;user-profile-component :userID="" :userCategory="">&lt;/signup-component>
+*/
+export default defineComponent({
+    /** 
+     * {@link https://element-plus.org/#/es/component/progress}, {@link SuccessAlertComponent}, {@link ErrorAlertComponent} 
+     * @member UserProfileComponent.components
+    */
+    components: {
+        ElProgress,
+        ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
+        SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
+    },
+    /** 
+     * Eventos del componente
+     * @member UserProfileComponent.emits
+     * @property {Patient|Employee} updateUser Evento que se lanza cuando se actualiza el usuario
+     * @property {Patient|Employee} updatePhoto Evento que se lanza cuando se actualiza la foto del usuario
+    */
+    emits: ['updateUser', 'updatePhoto'],
+    /** 
+     * Propiedades que recibe el componente 
+     * @member UserProfileComponent.props
+     * @property {number} id (Obligatorio ) ID del componente
+     * @property {number} userID (Obligatorio ) ID del usuario seleccionado
+     * @property {string} userCategory (Obligatorio) Categoría del usuario seleccionado (empleados, pacientes)
+     * @property {Patient|Employee} userData (Obligatorio) Datos del usuario seleccionado
+     * @property {boolean} disabled (Obligatorio) Habilita o deshabilita el formulario
+     * @property {string} role (Obligatorio) Rol del usuario logueado actualmente
+     * @property {boolean} isNew (Obligatorio) Indica si los datos del usuario seleccionado son nuevos o existentes
+    */
+    props: {
+        id: {
+            type: String as PropType&lt;String>,
+            default: 'uspc'
+        },
+        userID: {
+            type: Number,
+            default: 0
+        },
+        userCategory: {
+            type: String,
+            default: ''
+        },
+        userData: {
+            type: Object as PropType&lt;Patient | Employee>,
+            default: {}
+        },
+        disabled: {
+            type: Boolean as PropType&lt;Boolean>,
+            default: false
+        },
+        roles: {
+            type: Array as PropType&lt;String[]>,
+            default: []
+        },
+        isNew: {
+            type: Boolean as PropType&lt;Boolean>,
+            default: false
+        },
+    },
+    /**
+    * Variables del componente
+    * @member UserProfileComponent.data
+    * @property {Patient|Employee} userForm Guarda la copia de datos del usuario seleccionado
+    * @property {File} photo Guarda la foto seleccionada
+    * @property {string} successMessage Guarda mensaje de éxito
+    * @property {Array&lt;Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
+    * @property {number[]} formCharacters Guarda la longitud de caracteres de cada uno de los inputs del formulario
+    * @property {string} path Guarda la URL base de donde se aloja el proyecto (local o servidor)
+    * @property {string} patientCode Guarda el código de paciente
+    * @property {number} uploadPercentage Guarda el porcentaje de subida
+    * @property {boolean} loading Habilita o deshabilita la animación de carga al crear o modificar el usuario
+    */
+    data() {
+        return {
+            userForm: cloneDeep(this.userData),
+            photo: {} as File,
+            successMessage: '',
+            errors: [],
+            formCharacters: [] as any,
+            path: ((document.head.querySelector('meta[name="api-base-url"]') as any)!.content as string),
+            patientCode: '',
+            uploadPercentage: 0,
+            loading: false,
+        };
+    },
+    /** 
+     * Variables a observar por el componente
+     * @member UserProfileComponent.watch
+     * @property {string} patientCode Al actualizar el código del paciente, éste se asigna a la variable userForm.patient_code
+     * @property {string} userData Al actualizar la variable, crea una copia en la variable userForm (para modificar los datos del usuario) y asigna a la variable
+     * patientCode el código de paciente (si aplica)
+    */
+    watch:
+    {
+        patientCode()
+        {
+            (this.userForm as Patient).patient_code = this.patientCode;
+        },
+        userData: {
+            handler()
+            {
+                this.userForm = cloneDeep(this.userData);
+                this.patientCode = (this.userForm as Patient).patient_code;
+            },
+            deep: true
+        }
+    },
+    /**
+    * Propiedades computadas del componente 
+    * @member UserProfileComponent.computed
+    * @property {boolean} disablePatientCode Habilita o deshabilita el código del paciente si el usuario es paciente o no
+    * @property {string} fullName Concatena el nombre completo del 
+    */
+    computed: {
+        disablePatientCode(): boolean
+        {
+            return this.roles.includes('Paciente') ? true : false;
+        }
+    },
+    methods: {
+        /** 
+         * Crea un nuevo usuario en el servidor, dependiendo a la categoría a la que pertenezcan (empleados, pacientes).
+         * En caso de que la petición sea procesada correctamente,se muestra el componente {@link SuccessAlertComponent} junto con el mensaje de éxito de la
+         * variable successMessage. En caso contrario se asigna a la variable errors los errores que retorna en el servidor y se muestra en el componente
+         * {@link ErrorAlertComponent}. Mientras se sube el usuario al sistema, se actualiza el porcentaje al asignar a la variable uploadPercentage el porcentaje en proceso
+         * @function UserProfileComponent.createUser
+        */
+        createUser() {
+            const self = this;
+            var formData = new FormData();
+            
+            formData.append('patient_code', this.patientCode);
+            formData.append('email', this.userForm.user.email);
+            formData.append('first_name', this.userForm.first_name);
+            formData.append('last_name', this.userForm.last_name);
+            formData.append('gender', this.userForm.gender!.toString());
+            formData.append('birthday', this.userForm.birthday!);
+            formData.append('address', this.userForm.address!);
+            formData.append('phone', this.userForm.phone!);
+            formData.append('cellphone', this.userForm.cellphone!);
+            formData.append('roles', JSON.stringify(this.roles));
+            formData.append('_method', 'POST')
+
+            if(this.photo.size > 0)
+            {
+                formData.append('photo', this.photo);
+            }
+
+            const config = {
+                headers: { "Content-Type": "multipart/form-data"},
+                onUploadProgress: function(progressEvent: any) {
+                    self.uploadPercentage = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+                }
+            }
+            this.loading = true;
+            axios.post(`/${this.userCategory}`, formData, config)
+            .then(response => {
+                this.loading = false;
+                this.uploadPercentage = 0;
+                this.successMessage = 'El usuario se ha creado correctamente';
+                $(`#${this.id}profileSuccess`).modal('show');
+                this.cleanPhotoSelected();
+            })
+            .catch(error => {
+                this.loading = false;
+                this.uploadPercentage = 0;
+                this.errors = error.response.data.errors;
+                $(`#${this.id}profileError`).modal('show');
+            })
+        },
+        /** 
+         * Actualiza el usuario en el servidor, dependiendo a la categoría a la que pertenezcan (empleados, pacientes).
+         * En caso de que la petición sea procesada correctamente,se muestra el componente {@link SuccessAlertComponent} junto con el mensaje de éxito de la
+         * variable successMessage, además de emitir un evento updateUser con los datos del usuario actualizado.
+         * En caso contrario se asigna a la variable errors los errores que retorna en el servidor y se muestra en el componente
+         * {@link ErrorAlertComponent}. Mientras se sube el usuario al sistema, se actualiza el porcentaje al asignar a la variable uploadPercentage el porcentaje en proceso
+         * @function UserProfileComponent.updateProfile
+        */
+        updateProfile() {
+            const self = this;
+            var formData = new FormData();
+            
+            formData.append('patient_code', this.patientCode);
+            formData.append('email', this.userForm.user.email);
+            formData.append('first_name', this.userForm.first_name);
+            formData.append('last_name', this.userForm.last_name);
+            formData.append('gender', this.userForm.gender!.toString());
+            formData.append('birthday', this.userForm.birthday!);
+            formData.append('address', this.userForm.address!);
+            formData.append('phone', this.userForm.phone!);
+            formData.append('cellphone', this.userForm.cellphone!);
+            formData.append('_method', 'PATCH')
+
+            if(this.photo.size > 0)
+            {
+                formData.append('photo', this.photo);
+            }
+
+            const config = {
+                headers: { "Content-Type": "multipart/form-data"},
+                onUploadProgress: function(progressEvent: any) {
+                    self.uploadPercentage = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+                }
+            }
+            this.loading = true;
+            axios.post(`/${this.userCategory}/${this.userForm.id}`, formData, config)
+            .then(response => {
+                this.loading = false;
+                this.uploadPercentage = 0;
+                this.successMessage = 'Los datos del perfil se han actualizado correctamente';
+                $(`#${this.id}profileSuccess`).modal('show');
+                this.cleanPhotoSelected();
+                this.$emit('updateUser', this.userForm);
+            })
+            .catch(error => {
+                this.loading = false;
+                this.uploadPercentage = 0;
+                this.errors = error.response.data.errors;
+                $(`#${this.id}profileError`).modal('show');
+            })
+        },
+        /** 
+         * Asigna los datos necesarios de acuerdo a la información que se desea mostrar, si es birthday se muestra la fecha de nacimiento, en caso de gender
+         * retorna el número 0 o 1 (masculino, femenino)
+         * @function UserProfileComponent.checkProfileData
+         * @param {string} data Tipo de dato a mostrar
+        */
+        checkProfileData(data: string = '') {
+            switch (data) {
+                case 'birthday':
+                    this.userForm.birthday = moment($("#birthday").datepicker('getDate')).format('YYYY-MM-DD');
+                    break;
+                case 'gender':
+                    this.userForm.gender = Number(this.userForm.gender);
+                    break;
+            }
+        },
+        /** 
+         * Actualiza y asigna a la variable formCharacters la longitud actual del input a actualizar
+         * @function UserProfileComponent.updateCharacter
+         * @param {string} key Key del objeto formCharacters
+        */
+        updateCharacter(key: string) {
+            if(key === 'email')
+            {
+                return this.formCharacters['email'] = this.userForm.user.email.length;
+            }
+            this.formCharacters[key] = Object.keys(this.userForm).find(item => item === key)?.length;
+        },
+        /** 
+         * Obtiene la longitud de un input que este en la variable formCharacters
+         * @function UserProfileComponent.getCharacters
+         * @param {string} key Key del objeto formCharacters
+        */
+        getCharacters(key: string) {
+            if(key === 'email')
+            {
+                return this.formCharacters['email'] = this.userForm.user.email.length;
+            }
+            return this.formCharacters[key] === undefined ? Object.keys(this.userForm).find(item => item === key)?.length : this.formCharacters[key];
+        },
+        /** 
+         * Selecciona la foto de perfil del usuario
+         * @function UserProfileComponent.selectFile
+         * @param {Event} event Evento del input html de la foto
+        */
+        selectFile(event: Event) {
+            if(!this.disabled)
+            {
+                const file = (event.target as HTMLInputElement).files![0] || [];
+                this.photo= file;
+                const input = (document.getElementById(`${this.id}upcImage`) as HTMLImageElement);
+                input.src = URL.createObjectURL(file);
+                this.$emit('updatePhoto', URL.createObjectURL(file));
+            }
+        },
+        /** 
+         * Limpia la foto de perfil del usuario
+         * @function UserProfileComponent.cleanPhotoSelected
+        */
+        cleanPhotoSelected()
+        {
+            this.photo = {} as File;
+            (document.getElementById('file-upload') as HTMLInputElement).value = '';
+        }
+    },
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

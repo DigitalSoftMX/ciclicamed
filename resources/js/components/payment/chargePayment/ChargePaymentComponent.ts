@@ -27,7 +27,7 @@ import { Payment } from '@interface/Payment/Payment.interface';
 */
 export default defineComponent({
     /** 
-     * {@link https://vue-select.org/}, {@link EmptyErrorComponent}, {@link ConsultProductListComponent}, {@link PaymentInfoComponent}
+     * {@link https://vue-select.org/}, {@link EmptyErrorComponent}, {@link ConsultProductListComponent}
      * {@link ConfirmationAlertComponent}, {@link SuccessAlertComponent}
      * @member ChargePaymentComponent.components
     */
@@ -35,7 +35,6 @@ export default defineComponent({
         vSelect,
         EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
         ConsultProductListComponent: require('@component/payment/chargePayment/productModalList/ProductModalListComponent.vue').default,
-        PaymentInfoComponent: require('@component/payment/paymentInfo/PaymentInfoComponent.vue').default,
         ConfirmationAlertComponent: require('@component/general/alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue').default,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
     },

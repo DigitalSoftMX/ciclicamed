@@ -1,0 +1,2998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> ScheduleComponent</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="CalendarComponent.html">CalendarComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LateralScheduleComponent.html">LateralScheduleComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="ScheduleActionComponent.html">ScheduleActionComponent</a></li><li><a href="ScheduleComponent.html">ScheduleComponent</a></li><li><a href="ScheduleSelectComponent.html">ScheduleSelectComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SignupComponent.html">SignupComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li><li><a href="UserBioComponent.html">UserBioComponent</a></li><li><a href="UserPasswordComponent.html">UserPasswordComponent</a></li><li><a href="UserProfileComponent.html">UserProfileComponent</a></li><li><a href="UserProfileInfoComponent.html">UserProfileInfoComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>ScheduleComponent</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>ScheduleComponent<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="ScheduleComponent">
+        <a class="href-link" href="#ScheduleComponent">#</a>
+        
+        <span class="code-name">
+            
+                new ScheduleComponent<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Componente encargado de la agenda de todos los roles, incluyendo las opciones para seleccionar la agenda de un doctor y crear checkups
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line7">line 7</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>&lt;schedule-component:branchesList="" :userID="" role="" :employeeID="">&lt;/schedule-component:branchesList=></code></pre>
+    
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id=".components">
+    <a class="href-link" href="#.components">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        components
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <a href="CalendarComponent.html">CalendarComponent</a> , <a href="ScheduleSelectComponent.html">ScheduleSelectComponent</a>, <a href="ScheduleActionComponent.html">ScheduleActionComponent</a>, <a href="LateralScheduleComponent.html">LateralScheduleComponent</a>, <a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line14">line 14</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".data">
+    <a class="href-link" href="#.data">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>schedules</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Schedule></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda las citas de acuerdo al doctor seleccionado (o al paciente logueado) <a href="ScheduleSelectComponent.html">ScheduleSelectComponent</a></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>branchesList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de sucursales seleccionadas registradas en el servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>doctorList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de doctores de acuerdo a la sucursal seleccionada</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>patientsList</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Select></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la lista de pacientes guardados en el servidor</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>businessHours</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;FullCalendarBusinessHour></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los horarios laborales de un doctor seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>scheduleSelected</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Schedule</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los datos de una cita seleccionada</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>hoursEnabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">FullCalendarBusinessHour</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda la hora de inicio y final del día de un doctor seleccionado, de acuerdo al día del calendario seleccionado</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>employeeBranches</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;EmployeeBranch></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda las sucursales en las que el doctor logueado actualmente trabaja</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>errors</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente <a href="ErrorAlertComponent.html">ErrorAlertComponent</a></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line46">line 46</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".mounted">
+    <a class="href-link" href="#.mounted">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        mounted
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Al iniciar el componente, se obtienen los datos de los <a href="ScheduleComponent.html#.getPatientsList">pacientes registrados</a>,<a href="ScheduleComponent.html#.selectUserSchedule">citas del paciente o empleado</a>, sucursales registradas,
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line72">line 72</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".props">
+    <a class="href-link" href="#.props">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        props
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades que recibe el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio solo si el usuario logueado es un paciente) ID del paciente logueado actualmente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>role</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Rol del usuario logueado actualmente</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>employeeID</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio solo si el usuario logueado es un empleado) ID del empleado logueado actualmente</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line25">line 25</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".watch">
+    <a class="href-link" href="#.watch">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        watch
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Variables a observar por el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>role</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Al actualizar el rol del usuario logueado actualemente, obtiene <a href="ScheduleComponent.html#.selectUserSchedule">citas del paciente o empleado</a></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line82">line 82</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".copyScheduleData">
+        <a class="href-link" href="#.copyScheduleData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                copyScheduleData<span class="signature">(date)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Antes de mostrar el componente <a href="LateralScheduleComponent.html">LateralScheduleComponent</a>, verifica que el rol del usuario logueado actualmente no seaimagenologia o laboratorio. Una vez verificado el rol, obtiene el número del día seleccionado y busca si en la variable hoursEnabled existeun horario para el día seleccionado. Si el día seleccionado es igual o mayor al día actual y si existe un horario para el día seleccionado, entoncesasigna a la variable scheduleSelected datos vacíos, asigna a la variable startHour y startMinute la hora y minuto (respectivamente) la hora y minuto de iniciode acuerdo al horario de trabajo encontrando anteriormente, a lo cual asigna a las variables scheduleSelected.consult_schedule_finish yscheduleSelected.consult_schedule_start el horario asignado en las variables startHour y startMinute. Finalmente abre el componente (@link LateralScheduleComponent)
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>date</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Fecha de la cita seleccionada</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line342">line 342</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getAllScheduleBranchList">
+        <a class="href-link" href="#.getAllScheduleBranchList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getAllScheduleBranchList<span class="signature">(id)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene las citas registrados en el servidor, de acuerdo a la sucursal seleccionada. En caso de que la petición sea procesada correctamente,se asigna a la variable schedules las citas que retorna el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>id</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">ID de la sucursal seleccionada</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line124">line 124</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getAllScheduleList">
+        <a class="href-link" href="#.getAllScheduleList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getAllScheduleList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene todas las  citas registrados en el servidor. En caso de que la petición sea procesada correctamente,se asigna a la variable schedules las citas que retorna el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line138">line 138</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getAllScheduleList">
+        <a class="href-link" href="#.getAllScheduleList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getAllScheduleList<span class="signature">(doctorSelected)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene todas las  citas registrados en el servidor, de acuerdo al doctor y sucursal seleccionados. En caso de que la petición sea procesada correctamente,se asigna a la variable schedules las citas que retorna el servidor, finalmente obtiene los horarios de trabajodel doctor seleccionado
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>doctorSelected</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Select</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Doctor seleccionado</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line151">line 151</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getCheckupScheduleList">
+        <a class="href-link" href="#.getCheckupScheduleList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getCheckupScheduleList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene todas las  citas registrados en el servidor, correspondientes a checkups. En caso de que la petición sea procesada correctamente,se asigna a la variable schedules las citas que retorna el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line169">line 169</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getDoctorBranch">
+        <a class="href-link" href="#.getDoctorBranch">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getDoctorBranch<span class="signature">(branchID)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene el horario de trabajo del doctor logueado, de acuerdo a la sucursal seleccionada.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>branchID</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">ID de la sucursal seleccionada</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line112">line 112</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getDoctorScheduleList">
+        <a class="href-link" href="#.getDoctorScheduleList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getDoctorScheduleList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene todas las  citas registrados en el servidor, de acuerdo al doctor seleccionado. En caso de que la petición sea procesada correctamente,se asigna a la variable schedules las citas que retorna el servidor, finalmente obtiene las sucursales del doctor logueadoy los horarios de trabajodel doctor seleccionado
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line182">line 182</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getPatientScheduleList">
+        <a class="href-link" href="#.getPatientScheduleList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getPatientScheduleList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene las citas registrados en el servidor del paciente logueado actualmente. En caso de que la petición sea procesada correctamente,se asigna a la variable schedules las citas que retorna el servidor y se vacía el horario de trabajo de la variable businessHours
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line199">line 199</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getPatientsList">
+        <a class="href-link" href="#.getPatientsList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getPatientsList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la lista de pacientes registrados en el servidor. En caso de que la petición sea procesada correctamente, se convierte la lista de pacientesa un tipo Select[] y se asigna a la variable patientsList
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line93">line 93</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getScheduleBranchList">
+        <a class="href-link" href="#.getScheduleBranchList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getScheduleBranchList<span class="signature">(branchID)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene todas las  citas registrados en el servidor, de acuerdo al doctor logueado actualmente, y la sucursal seleccionada.En caso de que la petición sea procesada correctamente,se asigna a la variable schedules las citas que retorna el servidor, finalmente obtiene los horarios de trabajodel doctor seleccionado
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>branchID</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line213">line 213</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getScheduleBranchList">
+        <a class="href-link" href="#.getScheduleBranchList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getScheduleBranchList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene todas las sucursales en las que trabaja el doctor logueado actualmente. En caso de que la petición sea procesada correctamente,se asigna a la variable employeeBranches las sucursales retornadas por el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line230">line 230</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getScheduleBranchList">
+        <a class="href-link" href="#.getScheduleBranchList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getScheduleBranchList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene todas las sucursales habilitados en el servidor. En caso de que la petición sea procesada correctamente,se asigna a la variable branchesList las sucursales retornadas por el servidor en un tipo Select[]
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line243">line 243</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getScheduleBranchList">
+        <a class="href-link" href="#.getScheduleBranchList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getScheduleBranchList<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene los horarios de trabaho de acuerdo al doctor y sucursal seleccionado. En caso de que la petición sea procesada correctamente,se asigna a la variable businessHours los horarios retornadas por el servidor
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line286">line 286</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getScheduleBranchList">
+        <a class="href-link" href="#.getScheduleBranchList">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getScheduleBranchList<span class="signature">(branchSelected)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene la lista de sucursales en las que trabaja el doctor seleccionado. En caso de que la petición sea procesada correctamente,se filtra las especialidades que no tienen doctores en dicha especialidad y finalmentese asigna a la variable doctorList las sucursales retornadas por el servidor en un tipoo Select[]
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>branchSelected</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Select</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Sucursal seleccionada</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line309">line 309</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getScheduleSelected">
+        <a class="href-link" href="#.getScheduleSelected">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getScheduleSelected<span class="signature">(schedule)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Asigna a la variable scheduleSelected la cita seleccionada por el usuario
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>schedule</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Schedule</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Cita seleccionada</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line371">line 371</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".selectUserSchedule">
+        <a class="href-link" href="#.selectUserSchedule">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                selectUserSchedule<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Obtiene las citas de acuerdo al rol del usuario logueado actualmente
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="schedule_ScheduleComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="schedule_ScheduleComponent.ts.html">schedule/ScheduleComponent.ts</a>, <a href="schedule_ScheduleComponent.ts.html#line262">line 262</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

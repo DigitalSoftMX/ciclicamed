@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> UserProfileInfoComponent</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="BranchTableComponent.html">BranchTableComponent</a></li><li><a href="BranchTableModalComponent.html">BranchTableModalComponent</a></li><li><a href="CalendarComponent.html">CalendarComponent</a></li><li><a href="ChargePaymentComponent.html">ChargePaymentComponent</a></li><li><a href="ChartComponent.html">ChartComponent</a></li><li><a href="CheckupInfoComponent.html">CheckupInfoComponent</a></li><li><a href="CheckupScheduleComponent.html">CheckupScheduleComponent</a></li><li><a href="CheckupTableComponent.html">CheckupTableComponent</a></li><li><a href="ConfirmationAlertComponent.html">ConfirmationAlertComponent</a></li><li><a href="ConsultCheckupTest.html">ConsultCheckupTest</a></li><li><a href="ConsultComponent.html">ConsultComponent</a></li><li><a href="ConsultMedicamentComponent.html">ConsultMedicamentComponent</a></li><li><a href="ConsultOrderComponent.html">ConsultOrderComponent</a></li><li><a href="ConsultPatientProfileComponent.html">ConsultPatientProfileComponent</a></li><li><a href="ConsultPrescriptionComponent.html">ConsultPrescriptionComponent</a></li><li><a href="ConsultRecordComponent.html">ConsultRecordComponent</a></li><li><a href="ConsultTestOrderComponent.html">ConsultTestOrderComponent</a></li><li><a href="ConsultUploadTest.html">ConsultUploadTest</a></li><li><a href="DebtsTableComponent.html">DebtsTableComponent</a></li><li><a href="EmployeeScheduleComponent.html">EmployeeScheduleComponent</a></li><li><a href="EmployeeTableComponent.html">EmployeeTableComponent</a></li><li><a href="EmployeeTableModalComponent.html">EmployeeTableModalComponent</a></li><li><a href="EmptyErrorComponent.html">EmptyErrorComponent</a></li><li><a href="ErrorAlertComponent.html">ErrorAlertComponent</a></li><li><a href="ImgComponent.html">ImgComponent</a></li><li><a href="LateralScheduleComponent.html">LateralScheduleComponent</a></li><li><a href="LoginComponent.html">LoginComponent</a></li><li><a href="MedicamentTableComponent.html">MedicamentTableComponent</a></li><li><a href="MedicamentTableModalComponent.html">MedicamentTableModalComponent</a></li><li><a href="NavbarComponent.html">NavbarComponent</a></li><li><a href="NetworkErrorComponent.html">NetworkErrorComponent</a></li><li><a href="PatientDebtTableComponent.html">PatientDebtTableComponent</a></li><li><a href="PatientsHistoryModalComponent.html">PatientsHistoryModalComponent</a></li><li><a href="PatientsTableComponent.html">PatientsTableComponent</a></li><li><a href="PatientsTableModalComponent.html">PatientsTableModalComponent</a></li><li><a href="PatientTestComponent.html">PatientTestComponent</a></li><li><a href="PatientTestFileModalComponent.html">PatientTestFileModalComponent</a></li><li><a href="PaymentDebtTableComponent.html">PaymentDebtTableComponent</a></li><li><a href="PaymentDebtTableModal.html">PaymentDebtTableModal</a></li><li><a href="PaymentsTableComponent.html">PaymentsTableComponent</a></li><li><a href="PreregistrationComponent.html">PreregistrationComponent</a></li><li><a href="PrescriptionComponent.html">PrescriptionComponent</a></li><li><a href="PrescriptionModalComponent.html">PrescriptionModalComponent</a></li><li><a href="PrescriptionsTableComponent.html">PrescriptionsTableComponent</a></li><li><a href="ProductComponent.html">ProductComponent</a></li><li><a href="ProductModalListComponent.html">ProductModalListComponent</a></li><li><a href="ProductTableComponent.html">ProductTableComponent</a></li><li><a href="ScheduleActionComponent.html">ScheduleActionComponent</a></li><li><a href="ScheduleComponent.html">ScheduleComponent</a></li><li><a href="ScheduleSelectComponent.html">ScheduleSelectComponent</a></li><li><a href="SelectComponent.html">SelectComponent</a></li><li><a href="SidebarComponent.html">SidebarComponent</a></li><li><a href="SignupComponent.html">SignupComponent</a></li><li><a href="SuccessAlertComponent.html">SuccessAlertComponent</a></li><li><a href="TestNurseTableComponent.html">TestNurseTableComponent</a></li><li><a href="TestTableComponent.html">TestTableComponent</a></li><li><a href="TestTableModalComponent.html">TestTableModalComponent</a></li><li><a href="TestUploadComponent.html">TestUploadComponent</a></li><li><a href="UploadFileComponent.html">UploadFileComponent</a></li><li><a href="UserBioComponent.html">UserBioComponent</a></li><li><a href="UserPasswordComponent.html">UserPasswordComponent</a></li><li><a href="UserProfileComponent.html">UserProfileComponent</a></li><li><a href="UserProfileInfoComponent.html">UserProfileInfoComponent</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>UserProfileInfoComponent</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>UserProfileInfoComponent<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="UserProfileInfoComponent">
+        <a class="href-link" href="#UserProfileInfoComponent">#</a>
+        
+        <span class="code-name">
+            
+                new UserProfileInfoComponent<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Componente que muestra los datos básicos del usuario
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html">user/userProfileInfo/UserProfileInfoComponent.ts</a>, <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html#line5">line 5</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>&lt;user-profile-component :userCategory="" :userData="">&lt;/signup-component></code></pre>
+    
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id=".components">
+    <a class="href-link" href="#.components">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        components
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <a href="ErrorAlertComponent.html">ErrorAlertComponent</a>, <a href="SuccessAlertComponent.html">SuccessAlertComponent</a>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html">user/userProfileInfo/UserProfileInfoComponent.ts</a>, <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html#line11">line 11</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".computed">
+    <a class="href-link" href="#.computed">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        computed
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades computadas del componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>fullName</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Retorna el nombre completo del usuario</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>birthday</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Retorna la fecha de nacimiento del usuario en formato local</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>gender</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">Retorna si es hombre o mujer</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html">user/userProfileInfo/UserProfileInfoComponent.ts</a>, <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html#line35">line 35</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".props">
+    <a class="href-link" href="#.props">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        props
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    Propiedades que recibe el componente
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userCategory</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Categoría del usuario logueado actualemente (empleados, pacientes)</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>userData</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">string</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">(Obligatorio) Datos del usuario seleccionado</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html" class="button">View Source</a>
+            <span>
+                <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html">user/userProfileInfo/UserProfileInfoComponent.ts</a>, <a href="user_userProfileInfo_UserProfileInfoComponent.ts.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

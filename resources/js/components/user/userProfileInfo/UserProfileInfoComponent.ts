@@ -5,12 +5,26 @@ import { Employee } from '@interface/Employee/Employee.interface';
 import { PropType } from 'vue';
 moment.locale('es');
 
+/** 
+ * @description Componente que muestra los datos básicos del usuario
+ * @class UserProfileInfoComponent
+ * @example <user-profile-component :userCategory="" :userData=""></signup-component>
+*/
 export default defineComponent({
+    /** 
+     * {@link ErrorAlertComponent}, {@link SuccessAlertComponent}
+     * @member UserProfileInfoComponent.components
+    */
     components: {
         ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
     },
-    emits: ['updateUser'],
+    /** 
+     * Propiedades que recibe el componente 
+     * @member UserProfileInfoComponent.props
+     * @property {string} userCategory (Obligatorio) Categoría del usuario logueado actualemente (empleados, pacientes)
+     * @property {string} userData (Obligatorio) Datos del usuario seleccionado
+    */
     props: {
         userCategory: {
             type: String,
@@ -21,12 +35,13 @@ export default defineComponent({
             default: {}
         }
     },
-    data() {
-        return {
-        };
-    },
-    mounted() {
-    },
+    /**
+    * Propiedades computadas del componente 
+    * @member UserProfileInfoComponent.computed
+    * @property {string} fullName Retorna el nombre completo del usuario
+    * @property {string} birthday Retorna la fecha de nacimiento del usuario en formato local
+    * @property {string} gender Retorna si es hombre o mujer
+    */
     computed: {
         fullName(): string
         {
