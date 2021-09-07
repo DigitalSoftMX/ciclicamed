@@ -19,14 +19,15 @@
          </select>
       </div>
       <div class="col-12 col-md-3 mb-25">
-         <label for="gocToallas">Toallas por día</label>
-         <input class="form-control form-control-lg" type="number" placeholder="Cantidad" :disabled="disabled" id="gocToallas"
-               v-model="formData.toallas">
+         <label for="gocToallas">Toallas por día: {{ formData.toallas }}</label>
+         <input type="range" class="form-control form-control-lg form-range" min="0" max="15" id="gocToallas" v-model="formData.toallas">
+         <!-- <input class="form-control form-control-lg" type="number" placeholder="Cantidad" :disabled="disabled" id="gocToallas"
+               v-model="formData.toallas"> -->
       </div>
       <div class="col-12 col-md-3 mb-25">
          <label for="gocDolor">Dolor</label>
          <select class="form-control form-control-lg" :disabled="disabled" id="gocDolor" v-model="formData.dolor">
-               <option>Seleccione una opción</option>
+               <option disabled>Seleccione una opción</option>
                <option>Leve</option>
                <option>Moderado</option>
                <option>Severo</option>
@@ -157,7 +158,10 @@
                            </select>
                      </div>
                      <div class="col-12 col-md-4 mb-25">
-                           <label for="gocG1Peso">Peso</label>
+                           <div class="custom-control custom-switch switch-primary switch-md m-auto">
+                              <input type="checkbox" class="custom-control-input" id="gocG1Peso">
+                              <label class="custom-control-label" for="gocG1Peso">Peso</label>
+                           </div>
                            <input class="form-control form-control-lg" type="number" placeholder="Eje: 300 gr"
                               :disabled="disabled" id="gocG1Peso" v-model="formData.g1.peso">
                      </div>
@@ -228,7 +232,10 @@
                            </select>
                      </div>
                      <div class="col-12 col-md-4 mb-25">
-                           <label for="gocG2Peso">Peso</label>
+                           <div class="custom-control custom-switch switch-primary switch-md m-auto">
+                              <input type="checkbox" class="custom-control-input" id="gocG2Peso">
+                              <label class="custom-control-label" for="gocG2Peso">Peso</label>
+                           </div>
                            <input class="form-control form-control-lg" type="number" placeholder="Eje: 300 gr"
                               :disabled="disabled" id="gocG2Peso" v-model="formData.g2.peso">
                      </div>
@@ -299,7 +306,10 @@
                            </select>
                      </div>
                      <div class="col-12 col-md-4 mb-25">
-                           <label for="gocG3Peso">Peso</label>
+                           <div class="custom-control custom-switch switch-primary switch-md m-auto">
+                              <input type="checkbox" class="custom-control-input" id="gocG3Peso">
+                              <label class="custom-control-label" for="gocG3Peso">Peso</label>
+                           </div>
                            <input class="form-control form-control-lg" type="number" placeholder="Eje: 300 gr"
                               :disabled="disabled" id="gocG3Peso" v-model="formData.g3.peso">
                      </div>
@@ -370,7 +380,10 @@
                            </select>
                      </div>
                      <div class="col-12 col-md-4 mb-25">
-                           <label for="gocG4Peso">Peso</label>
+                           <div class="custom-control custom-switch switch-primary switch-md m-auto">
+                              <input type="checkbox" class="custom-control-input" id="gocG4Peso">
+                              <label class="custom-control-label" for="gocG4Peso">Peso</label>
+                           </div>
                            <input class="form-control form-control-lg" type="number" placeholder="Eje: 300 gr"
                               :disabled="disabled" id="gocG4Peso" v-model="formData.g4.peso">
                      </div>

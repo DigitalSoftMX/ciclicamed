@@ -3,7 +3,7 @@ import { HeredoFamiliares } from "@interface/Medical/Attachtments/HistorialClini
 export const HeredoFamiliaresData: HeredoFamiliares = {
     hipertension: {
         check: false,
-        description: ''
+        description: 'Familiar'
     },
     cancer: {
         check: false,
@@ -18,11 +18,11 @@ export const HeredoFamiliaresData: HeredoFamiliares = {
     },
     diabetesMellitus: {
         check: false,
-        description: ''
+        description: 'Familiar'
     },
     patologiaTiroidea: {
         check: false,
-        description: ''
+        description: 'Familiar'
     },
     otros: {
         check: false,

@@ -3,8 +3,8 @@ import { GinecoObstetros } from "@interface/Medical/Attachtments/HistorialClinic
 export const GinecoObstetrosData: GinecoObstetros = {
     menarca: '',
     ritmo: '',
-    cantidad: '',
-    toallas: '',
+    cantidad: 'Escaso',
+    toallas: '0',
     dolor: '',
     tratamiento: '',
     fum: '',
