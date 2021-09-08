@@ -4,6 +4,8 @@ export const CitasSubsecuentesData: CitasSubsecuentes = {
     fum: '',
     imc: '',
     peso: '',
+    t:'',
+    a:'',
     ta: '',
     fc: '',
     fr: '',
@@ -12,5 +14,6 @@ export const CitasSubsecuentesData: CitasSubsecuentes = {
     subjetivo: '',
     objetivo: '',
     analisis: '',
-    plan: ''
+    plan: '',
+    observaciones:''
 }
