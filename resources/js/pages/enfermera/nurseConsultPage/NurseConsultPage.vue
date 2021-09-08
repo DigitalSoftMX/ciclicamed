@@ -57,8 +57,7 @@
                                                             id="mccCitasSubsecuentes-tab" data-toggle="pill"
                                                             href="#mccCitasSubsecuentes" role="tab"
                                                             aria-controls="mccCitasSubsecuentes"
-                                                            aria-selected="false">Cita
-                                                            actual</a>
+                                                            aria-selected="false">Cita actual</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -87,34 +86,48 @@
                                                             id="cscFUM" v-model="formData.fum">
                                                     </div>
                                                     <div class="col-12 col-md-3 mb-25 ">
-                                                        <label for="cscIMC">IMC</label>
+                                                        <label for="cscIMC">IMC (Kg/m&#178;)</label>
                                                         <input class="form-control form-control-lg" type="text"
                                                             id="cscIMC" v-model="formData.imc">
                                                     </div>
                                                     <div class="col-12 col-md-3 mb-25 ">
-                                                        <label for="cscPeso">Peso</label>
+                                                        <label for="cscPeso">Peso (Kg)</label>
                                                         <input class="form-control form-control-lg" type="text"
                                                             id="cscPeso" v-model="formData.peso">
                                                     </div>
                                                     <div class="col-12 col-md-3 mb-25 ">
-                                                        <label for="cscTA">TA</label>
-                                                        <input class="form-control form-control-lg" type="text"
-                                                            id="cscTA" v-model="formData.ta">
+                                                        <label for="cscTA">T/A (mmHg)</label>
+                                                        <div class="row">
+                                                            <input class="col form-control form-control-lg mx-1" type="text"
+                                                                id="cscT" v-model="formData.t">
+                                                                <label class="d-flex align-items-center">/</label>
+                                                            <input class="col form-control form-control-lg mx-1" type="text"
+                                                                id="cscA" v-model="formData.a">
+                                                        </div>
                                                     </div>
                                                     <div class="col-12 col-md-3 mb-25 ">
-                                                        <label for="cscFC">FC</label>
+                                                        <label for="cscFC">FC (lat./min)</label>
                                                         <input class="form-control form-control-lg" type="text"
                                                             id="cscFC" v-model="formData.fc">
                                                     </div>
                                                     <div class="col-12 col-md-3 mb-25 ">
-                                                        <label for="cscFR">FR</label>
+                                                        <label for="cscFR">FR (resp./min)</label>
                                                         <input class="form-control form-control-lg" type="text"
                                                             id="cscFR" v-model="formData.fr">
                                                     </div>
                                                     <div class="col-12 col-md-3 mb-25 ">
-                                                        <label for="cscTemperatura">Temperatura</label>
+                                                        <label for="cscTemperatura">Temperatura (°C)</label>
                                                         <input class="form-control form-control-lg" type="text"
                                                             id="cscTemperatura" v-model="formData.temperatura">
+                                                    </div>
+                                                </div>
+                                                <div class="row mx-0">
+                                                    <div class="col-12">
+                                                        <label for="cscObservacion">Observaciones</label>
+                                                        <textarea 
+                                                            class="form-control form-control-lg" 
+                                                            id="cscObservacion" cols="30" rows="5"
+                                                            v-model="formData.observaciones"></textarea>
                                                     </div>
                                                 </div>
                                             </div>

@@ -17,8 +17,14 @@
                 <input class="form-control form-control-lg" type="text" id="cscPeso" v-model="formData.peso" :disabled="disabled">
             </div>
             <div class="col-12 col-md-3 mb-25 ">
-                <label for="cscTA">TA</label>
-                <input class="form-control form-control-lg" type="text" id="cscTA" v-model="formData.ta" :disabled="disabled">
+                <label for="cscTA">T/A</label>
+                <div class="row">
+                    <input class="col form-control form-control-lg mx-1" type="text"
+                        id="cscT" v-model="formData.t">
+                    <label class="d-flex align-items-center">/</label>
+                    <input class="col form-control form-control-lg mx-1" type="text"
+                        id="cscA" v-model="formData.a">
+                </div>
             </div>
             <div class="col-12 col-md-3 mb-25 ">
                 <label for="cscFC">FC</label>
@@ -51,6 +57,10 @@
             <div class="col-12 mb-25">
                 <label for="cscPlan">Plan</label>
                 <textarea class="form-control form-control-lg" rows="5" id="cscPlan" v-model="formData.plan" :disabled="disabled"></textarea>
+            </div>
+            <div class="col-12 mb-25">
+                <label for="cscPlan">Observaciones</label>
+                <textarea class="form-control form-control-lg" rows="5" id="cscObservaciones" v-model="formData.observaciones" :disabled="disabled"></textarea>
             </div>
         </div>
     </div>

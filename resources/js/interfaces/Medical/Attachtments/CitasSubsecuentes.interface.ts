@@ -1,8 +1,9 @@
-export interface CitasSubsecuentes
-{
+export interface CitasSubsecuentes {
     fum: string;
     imc: string;
     peso: string;
+    t: string,
+    a: string,
     ta: string;
     fc: string;
     fr: string;
@@ -12,4 +13,5 @@ export interface CitasSubsecuentes
     objetivo: string;
     analisis: string;
     plan: string;
+    observaciones: string
 }
