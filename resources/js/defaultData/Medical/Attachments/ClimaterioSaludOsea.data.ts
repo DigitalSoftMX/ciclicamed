@@ -8,6 +8,7 @@ export const ClimaterioSaludOseaData: ClimaterioSaludOsea = {
         check: false,
         description: ''
     },
+    tiempoEvolucionB: '',
     bochornos: {
         check: false,
         description: ''
@@ -22,6 +23,7 @@ export const ClimaterioSaludOseaData: ClimaterioSaludOsea = {
     insomnio: false,
     alteracionLibido: false,
     resequedadVaginal: false,
+    tiempoEvolucionS: '',
     sudoracion: {
         check: false,
         description: ''
