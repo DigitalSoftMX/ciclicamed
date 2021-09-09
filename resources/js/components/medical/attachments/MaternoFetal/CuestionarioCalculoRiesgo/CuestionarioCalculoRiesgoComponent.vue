@@ -1,6 +1,6 @@
 <template>
     <div class="col-12 row card-body mx-0 atbd-collapse atbd-collapse-custom">
-        <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+        <!-- <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
             <div class="atbd-collapse-item__header active">
                 <a class="item-link" data-toggle="collapse" data-target="#ccrcOrigen" aria-expanded="true"
                     aria-controls="ccrcOrigen">
@@ -57,9 +57,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="col-12 mb-25 card shadow-none p-0">
+        <!-- <div class="col-12 mb-25 card shadow-none p-0">
             <div class="card-header">
                 <h6>¿Existe antecedente de algun hijo/feto previo con alguna cromosomopatia?</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -86,9 +86,9 @@
                         v-model="formData.existeAntecedenteComosomopatia.trisomia13">
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="col-12 mb-25 card shadow-none p-0">
+        <!-- <div class="col-12 mb-25 card shadow-none p-0">
             <div class="card-header">
                 <h6>¿Existe antecedente de algun hijo/feto previo con algun efecto o malformacion?</h6>
                 <div class="custom-control custom-switch switch-primary switch-md ">
@@ -103,9 +103,9 @@
                 <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcCual"
                     v-model="formData.existeAntecedenteMalformacion.description"></textarea>
             </div>
-        </div>
+        </div> -->
 
-        <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+        <!-- <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
             <div class="atbd-collapse-item__header active">
                 <a class="item-link" data-toggle="collapse" data-target="#ccecTotal" aria-expanded="true"
                     aria-controls="ccecTotal">
@@ -145,9 +145,9 @@
                         v-model="formData.total.molas">
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+        <!-- <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
             <div class="atbd-collapse-item__header active">
                 <a class="item-link" data-toggle="collapse" data-target="#ccecMuerteUtero" aria-expanded="true"
                     aria-controls="ccecMuerteUtero">
@@ -183,9 +183,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
+        <!-- <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
             <div class="atbd-collapse-item__header active">
                 <a class="item-link" data-toggle="collapse" data-target="#ccrcEnfermera" aria-expanded="true"
                     aria-controls="ccrcEnfermera">
@@ -237,7 +237,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-12 mb-25 card card-default card-md p-0 border rounded">
             <div class="atbd-collapse-item__header active">
@@ -280,7 +280,7 @@
                 <a class="item-link" data-toggle="collapse" data-target="#ccrcAntecedentesPatologicos"
                     aria-expanded="true" aria-controls="ccrcAntecedentesPatologicos">
                     <i class="la la-angle-right"></i>
-                    Antecedentes Patológicos
+                    Antecedentes Patológicos de la embarazada
                 </a>
             </div>
             <div id="ccrcAntecedentesPatologicos" class="card-body atbd-collapse-item__body collapse row mx-0">
@@ -383,7 +383,7 @@
             </div>
             <div id="ccrcInvitro" class="card-body atbd-collapse-item__body collapse row mx-0">
                 <div class="col-12 col-md-6 mb-15">
-                    <label for="">Fecha de extracción de ovocitor</label>
+                    <label for="">Fecha de extracción de ovocitos</label>
                     <input class="form-control form-control-lg" type="date" :disabled="disabled"
                         id="ccrcFechaExtraccion" v-model="formData.fertilizacionInvitro.fechaExtraccion">
                 </div>

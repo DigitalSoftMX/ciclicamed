@@ -1,20 +1,20 @@
 export interface MaternoFetalCuestionario
 {
-    origenEtnico: {
+    /* origenEtnico: {
         etnia: string,
         otra: string
     },
     fum: {
         fum: string,
         consideraMenstruacion: string
-    },
-    existeAntecedenteComosomopatia: {
+    }, */
+    /* existeAntecedenteComosomopatia: {
         check: boolean,
         trisomia21: string,
         trisomia18: string,
         trisomia13: string
-    },
-    existeAntecedenteMalformacion: {
+    }, */
+    /* existeAntecedenteMalformacion: {
         check: boolean,
         description: string
     },
@@ -44,7 +44,7 @@ export interface MaternoFetalCuestionario
             sistole: string,
             diastole: string
         }
-    },
+    }, */
     tabaquismo: {
         fuma: boolean,
         cantidad: number,
