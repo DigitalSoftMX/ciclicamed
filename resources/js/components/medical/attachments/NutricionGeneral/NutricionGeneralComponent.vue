@@ -749,6 +749,20 @@
                                         v-model="formData.indicadoresBioquimicos.glucosaCapilar.glucosa3.glucosa">
                                 </div>
                             </div>
+                            <div class="col-12 col-md-6 row mx-0 p-0">
+                                <div class="col-6">
+                                    <label for="ngcGlucosaCapilar4Dia">Día</label>
+                                    <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                        id="ngcGlucosaCapilar4Dia"
+                                        v-model="formData.indicadoresBioquimicos.glucosaCapilar.glucosa4.dia">
+                                </div>
+                                <div class="col-6">
+                                    <label for="ngcGlucosaCapilar4Glucosa">Glucosa</label>
+                                    <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                        id="ngcGlucosaCapilar4Glucosa"
+                                        v-model="formData.indicadoresBioquimicos.glucosaCapilar.glucosa4.glucosa">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

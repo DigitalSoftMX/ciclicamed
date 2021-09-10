@@ -23,7 +23,7 @@
             <div class="col-12 col-md-4 mb-25">
                 <label for="csocToallas">Toallas por día</label>
                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="csocToallas"
-                    v-model="formData.toallas">
+                    v-model="formData.toallas" placeholder="#">
             </div>
             <div class="card-single col-12 col-md-6 mb-4">
                 <div class="card shadow-none">

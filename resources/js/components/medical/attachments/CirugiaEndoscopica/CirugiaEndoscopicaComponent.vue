@@ -14,7 +14,7 @@
                 </div>
                 <div :disabled="disabled" id="cecCervix" class="atbd-collapse-item__body collapse card-body row mx-0">
                     <div class="col-12 col-md-6 mb-25">
-                        <label for="cecPenetracion">Penetración</label>
+                        <label for="cecPenetracion">Posición</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecPenetracion"
                             v-model="formData.cervix.penetracion" :value="formData.cervix.penetracion">
                             <option value="Posterior">Posterior</option>
@@ -77,7 +77,7 @@
                         <label for="cecPosicion">Posición</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecPosicion"
                             v-model="formData.utero.posicion" :value="formData.utero.posicion">
-                            <option value="AVE">AVE</option>
+                            <option value="AVF">AVF</option>
                             <option value="Central">Central</option>
                             <option value="RVF">RVF</option>
                         </select>
@@ -97,9 +97,8 @@
                         <label for="cecDistension">Distensión</label>
                         <select class="form-control form-control-lg" :disabled="disabled" id="cecDistension"
                             v-model="formData.cavidadUterina.distension">
-                            <option value="AVE">AVE</option>
-                            <option value="Central">Central</option>
-                            <option value="RVF">RVF</option>
+                            <option value="Adecuada">Adecuada</option>
+                            <option value="Inadecuada">Inadecuada</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-6 mb-25">
@@ -170,66 +169,100 @@
                     </a>
                 </div>
                 <div :disabled="disabled" id="cecOstium" class="atbd-collapse-item__body collapse card-body row mx-0">
-                    <div class="col-12 mb-25">
+                    <div class="col-md-6 col-sm-12 mb-25">
+                        <label for="">Derecho</label>
                         <div class="card shadow-none">
                             <div class="card-header">
-                                <h6>Derecho</h6>
-                                <div class="custom-control custom-switch switch-primary switch-md ">
-                                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="cecDerechoChecked"
-                                        v-model="formData.ostium.derecho.checked"
-                                        :checked="formData.ostium.derecho.checked">
-                                    <label class="custom-control-label" for="cecDerechoChecked"></label>
-                                </div>
+                                <h6>Visible</h6>
+                                <label for="" class="mt-2">
+                                    Si<div class="d-inline ml-3 custom-control custom-switch switch-primary switch-md">
+                                        <input type="checkbox" class="custom-control-input" :disabled="disabled" id="cecDerechoVisibleChecked"
+                                            v-model="formData.ostium.derechoVisible.checked"
+                                            :checked="formData.ostium.derechoVisible.checked">
+                                        <label class="custom-control-label" for="cecDerechoVisibleChecked">No</label>
+                                    </div>
+                                </label>
                             </div>
-                            <div class="card-body" v-show="formData.ostium.derecho.checked">
-                                <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecDerechoDescription"
-                                    v-model="formData.ostium.derecho.description"></textarea>
+                            <div class="card-body" v-show="formData.ostium.derechoVisible.checked">
+                                <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecDerechoVisibleDescription"
+                                    v-model="formData.ostium.derechoVisible.description"></textarea>
+                            </div>
+                        </div>
+                        <div class="card shadow-none mt-3">
+                            <div class="card-header">
+                                <h6>Permeable</h6>
+                                <label for="" class="mt-2">
+                                    Si<div class="d-inline ml-3 custom-control custom-switch switch-primary switch-md ">
+                                        <input type="checkbox" class="custom-control-input" :disabled="disabled" id="cecDerechoPermeableChecked"
+                                            v-model="formData.ostium.derechoPermeable.checked"
+                                            :checked="formData.ostium.derechoPermeable.checked">
+                                        <label class="custom-control-label" for="cecDerechoPermeableChecked">No</label>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="card-body" v-show="formData.ostium.derechoPermeable.checked">
+                                <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecDerechoPermeableDescription"
+                                    v-model="formData.ostium.derechoPermeable.description"></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mb-25">
+                    <div class="col-md-6 col-sm-12 mb-25">
+                        <label for="">Izquierdo</label>
                         <div class="card shadow-none">
                             <div class="card-header">
-                                <h6>Izquierdo</h6>
-                                <div class="custom-control custom-switch switch-primary switch-md ">
-                                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="cecIzquierdoChecked"
-                                        v-model="formData.ostium.izquierdo.checked"
-                                        :checked="formData.ostium.izquierdo.checked">
-                                    <label class="custom-control-label" for="cecIzquierdoChecked"></label>
-                                </div>
+                                <h6>Visible</h6>
+                                <label for="" class="mt-2">
+                                    Si<div class="d-inline ml-3 custom-control custom-switch switch-primary switch-md ">
+                                        <input type="checkbox" class="custom-control-input" :disabled="disabled" id="cecIzquierdoVisibleChecked"
+                                            v-model="formData.ostium.izquierdoVisible.checked"
+                                            :checked="formData.ostium.izquierdoVisible.checked">
+                                        <label class="custom-control-label" for="cecIzquierdoVisibleChecked">No</label>
+                                    </div>
+                                </label>
                             </div>
-                            <div class="card-body" v-show="formData.ostium.izquierdo.checked">
-                                <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecIzquierdoDescription"
-                                    v-model="formData.ostium.izquierdo.description"></textarea>
+                            <div class="card-body" v-show="formData.ostium.izquierdoVisible.checked">
+                                <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecIzquierdoVisibleDescription"
+                                    v-model="formData.ostium.izquierdoVisible.description"></textarea>
                             </div>
                         </div>
+                        <div class="card shadow-none mt-3">
+                            <div class="card-header">
+                                <h6>Permeable</h6>
+                                <label for="" class="mt-2">
+                                    Si<div class="d-inline ml-3 custom-control custom-switch switch-primary switch-md">
+                                        <input type="checkbox" class="custom-control-input" :disabled="disabled" id="cecIzquierdoPermeableChecked"
+                                            v-model="formData.ostium.izquierdoPermeable.checked"
+                                            :checked="formData.ostium.izquierdoPermeable.checked">
+                                        <label class="custom-control-label" for="cecIzquierdoPermeableChecked">No</label>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="card-body" v-show="formData.ostium.izquierdoPermeable.checked">
+                                <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecIzquierdoPermeableDescription"
+                                    v-model="formData.ostium.izquierdoPermeable.description"></textarea>
+                            </div>
+                        </div>
+                    </div>        
+
+                    <div class="col-12 col-md-6 mb-25">
+                        <label for="cecTomaBiopsia">Toma biopsia</label>
+                        <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecTomaBiopsia"
+                            v-model="formData.ostium.tomaBiopsia"></textarea>
                     </div>
-                    <div class="col-12 row mx-0 mb-25">
-                        <div class="col-12 col-md-6">
-                            <label for="cecVisible">Visible</label>
-                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecVisible"
-                                v-model="formData.ostium.visible"></textarea>
-                        </div>
-                        <div class="col-12 col-md-6 mb-25">
-                            <label for="cecTomaBiopsia">Toma biopsia</label>
-                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecTomaBiopsia"
-                                v-model="formData.ostium.tomaBiopsia"></textarea>
-                        </div>
-                        <div class="col-12 col-md-6 mb-25">
-                            <label for="cecColocacionDIU">Colocación DIU</label>
-                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecColocacionDIU"
-                                v-model="formData.ostium.colocacionDiu"></textarea>
-                        </div>
-                        <div class="col-12 col-md-6 mb-25">
-                            <label for="cecResultadoBiopsia">Resultado biopsia</label>
-                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecResultadoBiopsia"
-                                v-model="formData.ostium.resultadoBiopsia"></textarea>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="cecPlanQuirurgico">Plan quirúrgico</label>
-                            <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecPlanQuirurgico"
-                                v-model="formData.ostium.planQuirurgico"></textarea>
-                        </div>
+                    <div class="col-12 col-md-6 mb-25">
+                        <label for="cecColocacionDIU">Colocación DIU</label>
+                        <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecColocacionDIU"
+                            v-model="formData.ostium.colocacionDiu"></textarea>
+                    </div>
+                    <div class="col-12 col-md-6 mb-25">
+                        <label for="cecResultadoBiopsia">Resultado biopsia</label>
+                        <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecResultadoBiopsia"
+                            v-model="formData.ostium.resultadoBiopsia"></textarea>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="cecPlanQuirurgico">Plan quirúrgico</label>
+                        <textarea class="form-control form-control-lg" type="text" :disabled="disabled" id="cecPlanQuirurgico"
+                            v-model="formData.ostium.planQuirurgico"></textarea>
                     </div>
                 </div>
             </div>

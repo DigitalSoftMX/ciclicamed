@@ -24,15 +24,22 @@ export const CirugiaEndoscopicaData: CirugiaEndoscopica = {
         anormal: ''
     },
     ostium: {
-        derecho: {
+        derechoVisible: {
             checked: false,
             description: ''
         },
-        izquierdo: {
+        derechoPermeable: {
             checked: false,
             description: ''
         },
-        visible: '',
+        izquierdoVisible: {
+            checked: false,
+            description: ''
+        },
+        izquierdoPermeable: {
+            checked: false,
+            description: ''
+        },
         tomaBiopsia: '',
         colocacionDiu: '',
         resultadoBiopsia: '',

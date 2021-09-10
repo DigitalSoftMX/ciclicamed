@@ -18,6 +18,10 @@ export const IndicadoresBioquimicosData: IndicadoresBioquimicos = {
         glucosa3: {
             dia: '',
             glucosa: ''
+        },
+        glucosa4: {
+            dia: '',
+            glucosa: ''
         }
     }
 }

@@ -1,5 +1,4 @@
-export interface CirugiaEndoscopica
-{
+export interface CirugiaEndoscopica {
     cervix: {
         penetracion: string,
         oce: string,
@@ -23,15 +22,22 @@ export interface CirugiaEndoscopica
         anormal: string
     },
     ostium: {
-        derecho: {
+        derechoVisible: {
             checked: boolean,
             description: string
         },
-        izquierdo: {
+        derechoPermeable: {
             checked: boolean,
             description: string
         },
-        visible: string,
+        izquierdoVisible: {
+            checked: boolean,
+            description: string
+        },
+        izquierdoPermeable: {
+            checked: boolean,
+            description: string
+        },
         tomaBiopsia: string,
         colocacionDiu: string,
         resultadoBiopsia: string,
