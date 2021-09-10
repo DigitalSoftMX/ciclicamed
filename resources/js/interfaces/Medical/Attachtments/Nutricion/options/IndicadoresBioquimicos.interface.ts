@@ -18,6 +18,10 @@ export interface IndicadoresBioquimicos
         glucosa3: {
             dia: string,
             glucosa: string
+        },
+        glucosa4: {
+            dia: string,
+            glucosa: string
         }
     }
 }

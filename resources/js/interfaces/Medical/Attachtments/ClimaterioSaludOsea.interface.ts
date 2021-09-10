@@ -1,5 +1,4 @@
-export interface ClimaterioSaludOsea
-{
+export interface ClimaterioSaludOsea {
     ciclosMenstruales: string,
     cantidadSangrado: string,
     toallas: string,
@@ -7,6 +6,7 @@ export interface ClimaterioSaludOsea
         check: boolean,
         description: string
     },
+    tiempoEvolucionB: string,
     bochornos: {
         check: boolean,
         description: string
@@ -21,6 +21,7 @@ export interface ClimaterioSaludOsea
     insomnio: boolean,
     alteracionLibido: boolean,
     resequedadVaginal: boolean,
+    tiempoEvolucionS: string,
     sudoracion: {
         check: boolean,
         description: string

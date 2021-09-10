@@ -1,21 +1,21 @@
 import { MaternoFetalCuestionario } from "@interface/Medical/Attachtments/MaternoFetal/options/MaternoFetalCuestionario.interface";
 
 export const MaternoFetalCuestionarioData: MaternoFetalCuestionario = {
-    origenEtnico: {
+    /* origenEtnico: {
         etnia: '',
         otra: ''
     },
     fum: {
         fum: '',
         consideraMenstruacion: ''
-    },
-    existeAntecedenteComosomopatia: {
+    }, */
+    /* existeAntecedenteComosomopatia: {
         check: false,
         trisomia21: '',
         trisomia18: '',
         trisomia13: ''
-    },
-    existeAntecedenteMalformacion: {
+    }, */
+    /* existeAntecedenteMalformacion: {
         check: false,
         description: ''
     },
@@ -45,7 +45,7 @@ export const MaternoFetalCuestionarioData: MaternoFetalCuestionario = {
             sistole: '',
             diastole: ''
         }
-    },
+    }, */
     tabaquismo: {
         fuma: false,
         cantidad: 0,

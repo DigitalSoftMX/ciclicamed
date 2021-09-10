@@ -10,7 +10,7 @@
                 <input class="form-control form-control-lg" type="text" :disabled="disabled" id="csocCiclosMenstruales"
                     v-model="formData.ciclosMenstruales">
             </div>
-            <div class="col-12 col-md-6 mb-25">
+            <div class="col-12 col-md-4 mb-25">
                 <label for="csocCantidadSangrado">Cantidad de sangrado
                     mestrual</label>
                 <select class="form-control form-control-lg" :disabled="disabled" id="csocCantidadSangrado"
@@ -20,15 +20,15 @@
                     <option value="Abundante">Abundante</option>
                 </select>
             </div>
-            <div class="col-md-4 mb-25">
+            <div class="col-12 col-md-4 mb-25">
                 <label for="csocToallas">Toallas por día</label>
                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="csocToallas"
-                    v-model="formData.toallas">
+                    v-model="formData.toallas" placeholder="#">
             </div>
-            <div class="card-single col-12 mb-4">
+            <div class="card-single col-12 col-md-6 mb-4">
                 <div class="card shadow-none">
                     <div class="card-header">
-                        <h6>Dilgenorrea</h6>
+                        <h6>Dismenorrea</h6>
                         <div class="custom-control custom-switch switch-primary switch-md ">
                             <input type="checkbox" class="custom-control-input" :disabled="disabled" id="csocDilgenorreaCheck"
                                 v-model="formData.dilgenorrea.check" :checked="formData.dilgenorrea.check">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-single col-12 mb-4">
+            <div class="card-single col-12 col-md-6 mb-4">
                 <div class="card shadow-none">
                     <div class="card-header">
                         <h6>Bochornos</h6>
@@ -66,6 +66,9 @@
                                 <option value="Severo">Severo</option>
                             </select>
                         </div>
+                        <label for="csocTiempoEvolucionB">Tiempo de evolución</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled" id="csocTiempoEvolucionB"
+                            v-model="formData.tiempoEvolucionB">
                     </div>
                 </div>
             </div>
@@ -141,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-single col-12 mb-4">
+            <div class="card-single col-12 col-md-6 mb-4">
                 <div class="card shadow-none">
                     <div class="card-header">
                         <h6>Sudoración</h6>
@@ -160,10 +163,13 @@
                                 <option value="Severo">Severo</option>1
                             </select>
                         </div>
+                        <label for="csocTiempoEvolucion">Tiempo de evolución</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled" id="csocTiempoEvolucion"
+                            v-model="formData.tiempoEvolucionS">
                     </div>
                 </div>
             </div>
-            <div class="card-single col-12 mb-4">
+            <div class="card-single col-12 col-md-6 mb-4">
                 <div class="card shadow-none">
                     <div class="card-header">
                         <h6>Incontinencia urinaria</h6>
