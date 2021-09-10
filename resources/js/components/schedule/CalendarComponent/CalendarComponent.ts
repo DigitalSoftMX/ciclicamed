@@ -124,8 +124,12 @@ export default defineComponent({
          * @returns {string}
         */
         getNameSchedule(schedule: Schedule): string {
-            return schedule.doctor ? `doctor ${schedule.doctor!.first_name ?? ''} ${schedule.doctor!.last_name ?? ''} con paciente ${schedule.patient!.first_name ?? ''} ${schedule.patient!.last_name ?? ''}` :
-                                     `${schedule.patient?.first_name ?? ''} ${schedule.patient?.last_name ?? ''}`;
+            return schedule.doctor ?
+                    `${schedule.patient!.first_name ?? ''}
+                    ${schedule.patient!.last_name ?? ''}
+                    con doctor: ${schedule.doctor!.first_name ?? ''}
+                    ${schedule.doctor!.last_name ?? ''}` :
+                    `${schedule.patient?.first_name ?? ''} ${schedule.patient?.last_name ?? ''}`;
         },
         /** 
          * Retorna el nombre que se va a mostrar en cada uno de las citas médicas (eventos en FullCalendar) de acuerdo a la categoría de la cita médica a la que pertenezca
@@ -137,17 +141,17 @@ export default defineComponent({
         getScheduleTitle(category: string, name: string): string {
             switch (category) {
                 case 'Primera cita':
-                    return `Primera cita con ${name}`;
+                    return `${name} pimera cita`;
                 case 'Cita médica':
-                    return `Cita médica con ${name}`;
+                    return `${name} cita médica`;
                 case 'Toma de muestras':
-                    return `Toma de muestras con ${name}`;
+                    return ` ${name} toma de muestras`;
                 case 'Estudio de laboratorio':
-                    return `Estudio de laboratorio con ${name}`;
+                    return ` ${name} estudio de laboratorio`;
                 case 'Estudio de imagenología':
-                    return `Estudio de imagenología con ${name}`;
+                    return ` ${name} estudio de imagenología`;
                 case 'Checkup':
-                    return `CheckUp con ${name}`;
+                    return ` ${name} checkUp`;
                 default:
                     return 'Cita'
             }
