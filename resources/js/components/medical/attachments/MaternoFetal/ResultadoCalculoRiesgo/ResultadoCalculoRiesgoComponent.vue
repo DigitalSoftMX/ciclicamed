@@ -42,24 +42,12 @@
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto1Semanas"
                                     v-model="formData.feto1.semanas">
                             </div>
-                            <div class="col-12 col-md-5 mb-15">
-                                <label for="">FCF</label>
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-12">
-                                        <input class="form-control form-control-lg" type="number"
-                                            placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto1FCF" v-model="formData.feto1.fcf1">
-                                    </div>
-                                    <div class="col-md-4 col-sm-12">
-                                        <input class="form-control form-control-lg" type="number"
-                                            placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto1FCF" v-model="formData.feto1.fcf2">
-                                    </div>
-                                    <div class="col-md-4 col-sm-12">
-                                        <input class="form-control form-control-lg" type="number"
-                                            placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto1FCF" v-model="formData.feto1.fcf3">
-                                    </div>
-                                </div>
+                            <div class="col-12 col-md-4 mb-15">
+                                <label for="">FCF: latidos por minuto</label>
+                                <input class="form-control form-control-lg" type="number"
+                                    placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto1FCF" v-model="formData.feto1.fcf">
                             </div>
-                            <div class="col-md-7 mb-15">
+                            <div class="col-md-8 mb-15">
                                 <label for="">Translucencia nucal</label>
                                 <div class="row">
                                     <div class="col-md-4 col-sm-12">
@@ -266,24 +254,12 @@
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto2Semanas"
                                     v-model="formData.feto2.semanas">
                             </div>
-                            <div class="col-12 col-md-5 mb-15">
-                                <label for="">FCF</label>
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-12">
-                                        <input class="form-control form-control-lg" type="number"
-                                            placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto2FCF" v-model="formData.feto2.fcf1">
-                                    </div>
-                                    <div class="col-md-4 col-sm-12">
-                                        <input class="form-control form-control-lg" type="number"
-                                            placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto2FCF" v-model="formData.feto2.fcf2">
-                                    </div>
-                                    <div class="col-md-4 col-sm-12">
-                                        <input class="form-control form-control-lg" type="number"
-                                            placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto2FCF" v-model="formData.feto2.fcf3">
-                                    </div>
-                                </div>
+                            <div class="col-12 col-md-4 mb-15">
+                                <label for="">FCF: latidos por minuto</label>
+                                <input class="form-control form-control-lg" type="number"
+                                    placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto2FCF" v-model="formData.feto2.fcf">
                             </div>
-                            <div class="col-md-7 mb-15">
+                            <div class="col-md-8 mb-15">
                                 <label for="">Translucencia nucal</label>
                                 <div class="row">
                                     <div class="col-md-4 col-sm-12">
@@ -490,24 +466,12 @@
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto3Semanas"
                                     v-model="formData.feto3.semanas">
                             </div>
-                            <div class="col-12 col-md-5 mb-15">
-                                <label for="">FCF</label>
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-12">
-                                        <input class="form-control form-control-lg" type="number"
-                                            placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto3FCF" v-model="formData.feto3.fcf1">
-                                    </div>
-                                    <div class="col-md-4 col-sm-12">
-                                        <input class="form-control form-control-lg" type="number"
-                                            placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto3FCF" v-model="formData.feto3.fcf2">
-                                    </div>
-                                    <div class="col-md-4 col-sm-12">
-                                        <input class="form-control form-control-lg" type="number"
-                                            placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto3FCF" v-model="formData.feto3.fcf3">
-                                    </div>
-                                </div>
+                            <div class="col-12 col-md-4 mb-15">
+                                <label for="">FCF: latidos por minuto</label>
+                                <input class="form-control form-control-lg" type="number"
+                                    placeholder="latidos por minuto" :disabled="disabled" id="rcrcFeto3FCF" v-model="formData.feto3.fcf">
                             </div>
-                            <div class="col-md-7 mb-15">
+                            <div class="col-md-8 mb-15">
                                 <label for="">Translucencia nucal</label>
                                 <div class="row">
                                     <div class="col-md-4 col-sm-12">
