@@ -761,7 +761,7 @@
                                     <input class="form-control form-control-lg" type="text" :disabled="disabled"
                                         id="ngcGlucosaCapilar4Glucosa"
                                         v-model="formData.indicadoresBioquimicos.glucosaCapilar.glucosa4.glucosa">
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
