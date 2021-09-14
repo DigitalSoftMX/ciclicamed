@@ -10,12 +10,16 @@ import { EmbarazosAnterioresData } from "./options/EmbarazosAnteriores.data"
 import { IndicadoresBioquimicosData } from "./options/IndicadoresBioquimicos.data"
 import { IndicadoresDieteticosData } from "./options/IndicadoresDieteticos.data"
 import { RecordatorioNutricionData } from "./options/RecordatorioNutricion.data"
+import { PesoData } from "./options/Peso.data"
+import { AspectosGinecologicosData } from "./options/AspectosGinecologicos.data"
 
 export const NutricionPerinatalData: NutricionPerinatal = {
+    peso: PesoData,
     embarazosAnteriores: EmbarazosAnterioresData,
     embarazoActual: EmbarazoActualData,
     antecedentesSalud: AntecedentesSaludData,
     antecedentesFamiliares: AntecedentesFamiliaresData,
+    aspectosGinecologicos: AspectosGinecologicosData,
     actividadFisica: ActividadFisicaData,
     consumoFrecuencia: ConsumoFrecuenciaData,
     indicadoresBioquimicos: IndicadoresBioquimicosData,

@@ -8,9 +8,14 @@ import { EmbarazosAnteriores } from "./options/EmbarazosAnteriores.interface";
 import { IndicadoresBioquimicos } from "./options/IndicadoresBioquimicos.interface";
 import { IndicadoresDieteticos } from "./options/IndicadoresDieteticos.interface";
 import { RecordatorioNutricion } from "./options/RecordatorioNutricion.interface";
+import { Peso } from "./options/Peso.interface";
+import { AspectosGinecologicos } from "./options/AspectosGinecologicos.interface";
+
 
 export interface NutricionPerinatal
 {
+    aspectosGinecologicos: AspectosGinecologicos,
+    peso: Peso,
     embarazosAnteriores: EmbarazosAnteriores,
     embarazoActual: EmbarazoActual,
     antecedentesSalud: AntecedentesSalud,

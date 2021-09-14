@@ -5,7 +5,7 @@
             <h6>Nutrición perinatal</h6>
         </div>
         <div class="card-body">
-            <div class="atbd-collapse atbd-collapse-custom mb-25 border rounded">
+            <!-- <div class="atbd-collapse atbd-collapse-custom mb-25 border rounded">
                 <div class="atbd-collapse-item__header active">
                     <a class="item-link" data-toggle="collapse" data-target="#npcEmbarazosAnteriores"
                         aria-expanded="true" aria-controls="npcEmbarazosAnteriores">
@@ -77,9 +77,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="atbd-collapse atbd-collapse-custom mb-25 border rounded">
+            <!-- <div class="atbd-collapse atbd-collapse-custom mb-25 border rounded">
                 <div class="atbd-collapse-item__header active">
                     <a class="item-link" data-toggle="collapse" data-target="#npcEmbarazoActual" aria-expanded="true"
                         aria-controls="npcEmbarazoActual">
@@ -112,6 +112,67 @@
                         <label for="npcIMCPregestacional">IMC pre-gestacional</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled"
                             id="npcIMCPregestacional" v-model="formData.embarazoActual.imc">
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="atbd-collapse atbd-collapse-custom mb-25 border rounded">
+                <div class="atbd-collapse-item__header active">
+                    <a class="item-link" data-toggle="collapse" data-target="#ngcPeso" aria-expanded="true"
+                        aria-controls="ngcPeso">
+                        <i class="la la-angle-right"></i>
+                        Peso
+                    </a>
+                </div>
+                <div id="ngcPeso" class="atbd-collapse-item__body collapse row mx-0 card-body">
+                    <div class="col-12 card p-0 shadow-none mb-25">
+                        <div class="card-header">
+                            <h4>Peso mínimo</h4>
+                        </div>
+                        <div class="row card-body mx-0">
+                            <div class="col-12 col-md-4 mb-25 mb-md-0">
+                                <label for="ngcPesoMinimo">Peso mínimo</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcPesoMinimo" v-model="formData.peso.pesoMinimo.pesoMinimo">
+                            </div>
+                            <div class="col-12 col-md-4 mb-25 mb-md-0">
+                                <label for="ngcPesoMinimoCuanto">¿Hace cuanto?</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcPesoMinimoCuanto" v-model="formData.peso.pesoMinimo.haceCuanto">
+                            </div>
+                            <div class="col-12 col-md-4 mb-25 mb-md-0">
+                                <label for="ngcPesoMinimoDurante">¿Durante cuanto tiempo?</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcPesoMinimoDurante" v-model="formData.peso.pesoMinimo.desdeCuanto">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 card p-0 shadow-none mb-25">
+                        <div class="card-header">
+                            <h4>Peso máximo</h4>
+                        </div>
+                        <div class="row card-body mx-0">
+                            <div class="col-12 col-md-4 mb-25 mb-md-0">
+                                <label for="ngcPesoMaximo">Peso máximo</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcPesoMaximo" v-model="formData.peso.pesoMaximo.pesoMinimo">
+                            </div>
+                            <div class="col-12 col-md-4 mb-25 mb-md-0">
+                                <label for="ngcPesoMaximoCuanto">¿Hace cuanto?</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcPesoMaximoCuanto" v-model="formData.peso.pesoMaximo.haceCuanto">
+                            </div>
+                            <div class="col-12 col-md-4 mb-25 mb-md-0">
+                                <label for="ngcPesoMaximoDurante">¿Durante cuanto tiempo?</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcPesoMaximoDurante" v-model="formData.peso.pesoMaximo.desdeCuanto">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-0">
+                        <label for="ngcPesoHabitual">Peso habitual</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                            id="ngcPesoHabitual" v-model="formData.peso.pesoHabitual">
                     </div>
                 </div>
             </div>
@@ -194,6 +255,14 @@
                                         id="npcColitis" v-model="formData.antecedentesSalud.problemasActuales.colitis"
                                         :checked="formData.antecedentesSalud.problemasActuales.colitis">
                                     <label class="custom-control-label" for="npcColitis">Colitis</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 mb-25">
+                                <div class="custom-control custom-switch switch-primary switch-md">
+                                    <input type="checkbox" class="custom-control-input" :disabled="disabled"
+                                        id="npcDentadura" v-model="formData.antecedentesSalud.problemasActuales.dentadura"
+                                        :checked="formData.antecedentesSalud.problemasActuales.dentadura">
+                                    <label class="custom-control-label" for="npcDentadura">Dentadura</label>
                                 </div>
                             </div>
                             <div class="col-12 card shadow-none card-md p-0">
@@ -466,6 +535,130 @@
 
             <div class="atbd-collapse atbd-collapse-custom mb-25 border rounded">
                 <div class="atbd-collapse-item__header active">
+                    <a class="item-link" data-toggle="collapse" data-target="#ngcAspectosGinecologicos"
+                        aria-expanded="true" aria-controls="ngcAspectosGinecologicos">
+                        <i class="la la-angle-right"></i>
+                        Aspectos ginecológicos
+                    </a>
+                </div>
+                <div id="ngcAspectosGinecologicos" class="atbd-collapse-item__body collapse row mx-0 card-body">
+
+                    <div class="col-12 card shadow-none p-0 card-md mb-25">
+                        <div class="card-header">
+                            <h6>Embarazo actual</h6>
+                            <div class="custom-control custom-switch switch-primary switch-md ">
+                                <input type="checkbox" class="custom-control-input" :disabled="disabled"
+                                    id="ngcEmbarazoActualDescription"
+                                    v-model="formData.aspectosGinecologicos.embarazoActual.check"
+                                    :checked="formData.aspectosGinecologicos.embarazoActual.check">
+                                <label class="custom-control-label" for="ngcEmbarazoActualDescription"></label>
+                            </div>
+                        </div>
+                        <div class="row mx-0 card-body" v-show="formData.aspectosGinecologicos.embarazoActual.check">
+                            <div class="col-12 col-md-6 mb-25">
+                                <label for="ngcEmbarazoActualSemanas">Semanas de gestación</label>
+                                <input class="form-control form-control-lg" type="number" :disabled="disabled"
+                                    id="ngcEmbarazoActualSemanas"
+                                    v-model="formData.aspectosGinecologicos.embarazoActual.semanasGestacion">
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label for="">Peso pregestacional</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcEmbarazoPesoPregestacional"
+                                    v-model="formData.aspectosGinecologicos.embarazoActual.pesoPregestacional">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 card shadow-none p-0 card-md mb-25">
+                        <div class="card-header">
+                            <h6>Anticonceptivos orales</h6>
+                            <div class="custom-control custom-switch switch-primary switch-md ">
+                                <input type="checkbox" class="custom-control-input" :disabled="disabled"
+                                    id="ngcAnticonceptivosorales"
+                                    v-model="formData.aspectosGinecologicos.anticonceptivosOrales.check"
+                                    :checked="formData.aspectosGinecologicos.anticonceptivosOrales.check">
+                                <label class="custom-control-label" for="ngcAnticonceptivosorales"></label>
+                            </div>
+                        </div>
+                        <div class="row mx-0 card-body"
+                            v-show="formData.aspectosGinecologicos.anticonceptivosOrales.check">
+                            <div class="col-12 col-md-6 mb-25">
+                                <label for="ngcAnticonceptivosOralesCual">¿Cuál?</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcAnticonceptivosOralesCual"
+                                    v-model="formData.aspectosGinecologicos.anticonceptivosOrales.cual">
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label for="ngcAnticonceptivosOralesDosis">Dosis</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcAnticonceptivosOralesDosis"
+                                    v-model="formData.aspectosGinecologicos.anticonceptivosOrales.dosis">
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label for="ngcAnticonceptivosOralesSX">SX</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcAnticonceptivosOralesSX"
+                                    v-model="formData.aspectosGinecologicos.anticonceptivosOrales.sx">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 card shadow-none p-0 card-md mb-25">
+                        <div class="card-header">
+                            <h6>Climaterio</h6>
+                            <div class="custom-control custom-switch switch-primary switch-md">
+                                <input type="checkbox" class="custom-control-input" :disabled="disabled"
+                                    id="ngcClimaterio" v-model="formData.aspectosGinecologicos.climaterio.check"
+                                    :checked="formData.aspectosGinecologicos.climaterio.check">
+                                <label class="custom-control-label" for="ngcClimaterio"></label>
+                            </div>
+                        </div>
+                        <div class="card-body" v-show="formData.aspectosGinecologicos.climaterio.check">
+                            <label for="">Fecha</label>
+                            <input class="form-control form-control-lg" type="date" :disabled="disabled"
+                                id="ngcClimaterioFecha" v-model="formData.aspectosGinecologicos.climaterio.description">
+                        </div>
+                    </div>
+
+                    <div class="col-12 card shadow-none p-0 card-md">
+                        <div class="card-header">
+                            <h6>Terapia de reemplazo hormonal</h6>
+                            <div class="custom-control custom-switch switch-primary switch-md">
+                                <input type="checkbox" class="custom-control-input" :disabled="disabled"
+                                    id="ngcTerapiaReemplazo"
+                                    v-model="formData.aspectosGinecologicos.terapiaReemplazoHormonal.check"
+                                    :checked="formData.aspectosGinecologicos.terapiaReemplazoHormonal.check">
+                                <label class="custom-control-label" for="ngcTerapiaReemplazo"></label>
+                            </div>
+                        </div>
+                        <div class="row mx-0 card-body"
+                            v-show="formData.aspectosGinecologicos.terapiaReemplazoHormonal.check">
+                            <div class="col-12 col-md-6 mb-25">
+                                <label for="ngcTerapiaReemplazoCual">¿Cuál?</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcTerapiaReemplazoCual"
+                                    v-model="formData.aspectosGinecologicos.terapiaReemplazoHormonal.cual">
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label for="ngcTerapiaReemplazoDosis">Dosis</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcTerapiaReemplazoDosis"
+                                    v-model="formData.aspectosGinecologicos.terapiaReemplazoHormonal.dosis">
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label for="ngcTerapiaReemplazoSX">SX</label>
+                                <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                    id="ngcTerapiaReemplazoSX"
+                                    v-model="formData.aspectosGinecologicos.terapiaReemplazoHormonal.sx">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="atbd-collapse atbd-collapse-custom mb-25 border rounded">
+                <div class="atbd-collapse-item__header active">
                     <a class="item-link" data-toggle="collapse" data-target="#npcActividadFisica" aria-expanded="true"
                         aria-controls="npcActividadFisica">
                         <i class="la la-angle-right"></i>
@@ -672,6 +865,20 @@
                                     <input class="form-control form-control-lg" type="text" :disabled="disabled"
                                         id="npcGlucosaCapilar3Glucosa"
                                         v-model="formData.indicadoresBioquimicos.glucosaCapilar.glucosa3.glucosa">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 row mx-0 p-0">
+                                <div class="col-6">
+                                    <label for="npcGlucosaCapilar4Dia">Día</label>
+                                    <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                        id="npcGlucosaCapilar4Dia"
+                                        v-model="formData.indicadoresBioquimicos.glucosaCapilar.glucosa4.dia">
+                                </div>
+                                <div class="col-6">
+                                    <label for="npcGlucosaCapilar4Glucosa">Glucosa</label>
+                                    <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                                        id="npcGlucosaCapilar4Glucosa"
+                                        v-model="formData.indicadoresBioquimicos.glucosaCapilar.glucosa4.glucosa">
                                 </div>
                             </div>
                         </div>
