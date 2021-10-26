@@ -395,6 +395,9 @@ export default defineComponent({
                 this.attachment = response.data;
                 this.setAttachmentData();
                 this.enableAttachmentData = true;
+                if(this.role==='Administrador'){
+                    this.enableAttachmentData = false;
+                }
             })
             .catch(error => {
                 this.enableAttachmentData = false;
