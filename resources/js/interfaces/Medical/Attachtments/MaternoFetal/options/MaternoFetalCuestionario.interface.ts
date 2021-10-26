@@ -33,18 +33,27 @@ export interface MaternoFetalCuestionario
             description: number
         }
     },
+     */
     enfermera: {
         peso: string,
         talla: string,
         brazoDerecho: {
+            t: string,
+            a: string
+        },
+        brazoIzquierdo: {
+            t: string,
+            a: string
+        }
+        /* brazoDerecho: {
             sistole: string,
             diastole: string
         },
         brazoIzquierdo: {
             sistole: string,
             diastole: string
-        }
-    }, */
+        } */
+    },
     tabaquismo: {
         fuma: boolean,
         cantidad: number,

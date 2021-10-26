@@ -272,6 +272,89 @@
                         <label class="custom-control-label" for="ccrcFumaEmbarazo">¿Fuma durante el embarazo?</label>
                     </div>
                 </div>
+                <div class="col-12 row mb-25 mx-0 p-0 mt-4">
+                    <div class="col-12 col-md-6">
+                        <label for="ccrcPeso">Peso</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcPeso"
+                            v-model="formData.enfermera.peso">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="ccrcTalla">Talla</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTalla"
+                            v-model="formData.enfermera.talla">
+                    </div>
+                </div>
+                <div class="col-12 row">
+                    <div class="col-12 col-md-6">
+                        <label for="ccrcPeso">T/A</label>
+                    </div>
+                </div>
+                <div class="col-12 row mb-25 mx-0 p-0">
+                    <div class="col-12 col-md-6">
+                        <label for="ccrcPeso">T/A Brazo Izquierdo</label>
+                        <!-- <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcPeso"
+                            v-model="formData.enfermera.peso"> -->
+                        <div class="col-12 row mb-25 mx-0 p-0">
+                            <input class="col form-control form-control-lg mx-1" type="text" :disabled="disabled"
+                                id="ccrcSistoleIzquierdo" v-model="formData.enfermera.brazoIzquierdo.t">
+                            <label class="d-flex align-items-center">/</label>
+                            <input class="col form-control form-control-lg mx-1" type="text" :disabled="disabled"
+                                id="ccrcDiastoleIzquierdo" v-model="formData.enfermera.brazoIzquierdo.a">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="ccrcTalla">T/A Brazo Derecho</label>
+                        <div class="col-12 row mb-25 mx-0 p-0">
+                            <input class="col form-control form-control-lg mx-1" type="text" :disabled="disabled"
+                                id="ccrcSistoleDerecho" v-model="formData.enfermera.brazoDerecho.t">
+                            <label class="d-flex align-items-center">/</label>
+                            <input class="col form-control form-control-lg mx-1" type="text" :disabled="disabled"
+                                id="ccrcDiastoleDerecho" v-model="formData.enfermera.brazoDerecho.a">
+                        </div>
+                    </div>
+                </div>
+            <!-- <div class="col-12 row mb-25 mx-0 p-0">
+                    <div class="col-12 col-md-6">
+                        <label for="ccrcPeso">Peso</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcPeso"
+                            v-model="formData.enfermera.peso">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="ccrcTalla">Talla</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled" id="ccrcTalla"
+                            v-model="formData.enfermera.talla">
+                    </div>
+                </div>
+                <div class="col-12 row mb-25 mx-0 p-0">
+                    <div class="col-12 mb-15 text-center">
+                        <label>Brazo derecho</label>
+                    </div>
+                    <div class="col-12 col-md-6 mb-25">
+                        <label for="ccrcSistoleDerecho">Sistole</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                            id="ccrcSistoleDerecho" v-model="formData.enfermera.brazoDerecho.sistole">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="ccrcDiastoleDerecho">Diastole</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                            id="ccrcDiastoleDerecho" v-model="formData.enfermera.brazoDerecho.diastole">
+                    </div>
+                </div>
+                <div class="col-12 row mb-25 mx-0 p-0">
+                    <div class="col-12 mb-15 text-center">
+                        <label>Brazo izquierdo</label>
+                    </div>
+                    <div class="col-12 col-md-6 mb-25">
+                        <label for="ccrcSistoleIzquierdo">Sistole</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                            id="ccrcSistoleIzquierdo" v-model="formData.enfermera.brazoIzquierdo.sistole">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="ccrcDiastoleIzquierdo">Diastole</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled"
+                            id="ccrcDiastoleIzquierdo" v-model="formData.enfermera.brazoIzquierdo.diastole">
+                    </div>
+                </div> -->
             </div>
         </div>
 

@@ -155,14 +155,14 @@
                         </div>
                     </div>
                     <div class="card-body" v-show="formData.sudoracion.check">
-                        <div class="w-auto">
+                        <!-- <div class="w-auto">
                             <select class="form-control form-control-lg" :disabled="disabled" id="csocSudoracionDescription"
                                 v-model="formData.sudoracion.description">
                                 <option value="Leve">Leve</option>
                                 <option value="Moderado">Moderado</option>
                                 <option value="Severo">Severo</option>1
                             </select>
-                        </div>
+                        </div> -->
                         <label for="csocTiempoEvolucion">Tiempo de evolución</label>
                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="csocTiempoEvolucion"
                             v-model="formData.tiempoEvolucionS">

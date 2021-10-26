@@ -33,6 +33,7 @@
                                                     aria-controls="mccHistorialClinico" aria-selected="true">Historial
                                                 </a>
                                             </li>
+                                            <!-- {{consultData.medicalconsultcategory_id}} -->
                                             <li class="nav-item px-0" v-if="consultData.medicalconsultcategory_id !== 1">
                                                 <a class="nav-link px-3 py-2 rounded" id="mccExpedienteClinico-tab"
                                                     data-toggle="pill" href="#mccExpedienteClinico" role="tab"
@@ -89,8 +90,9 @@
                                 aria-labelledby="mccEspecialidades-tab">
                                 <uroginecologia-component v-if="consultData.medicalspecialty_id === 1" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.uroginecología"></uroginecologia-component>
-
-                                <climaterio-salud-osea-component v-else-if="consultData.medicalspecialty_id === 2" v-model="attachmentForm.climaterioSaludOsea" :disabled="enableAttachmentData"></climaterio-salud-osea-component>
+                                
+                                <climaterio-salud-osea-component v-else-if="consultData.medicalspecialty_id === 2" :disabled="enableAttachmentData"
+                                    v-model="attachmentForm.climaterioSaludOsea"></climaterio-salud-osea-component>
                                 
                                 <materno-fetal-component v-else-if="consultData.medicalspecialty_id === 3" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.maternoFetal"></materno-fetal-component>

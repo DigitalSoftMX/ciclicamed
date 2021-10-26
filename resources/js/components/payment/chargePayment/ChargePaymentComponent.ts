@@ -340,8 +340,7 @@ export default defineComponent({
                 }
             })
             .then(response => {
-                this.newPaymentID = response.data;
-                $('#chpcSuccess').modal('show');
+                this.newPaymentID = response.data;               
             })
             .catch(error => {
                 this.errors = error.response.data.errors
@@ -364,6 +363,9 @@ export default defineComponent({
             })
             .then(response => {
                 $('#chpcSuccess').modal('show');
+                setInterval(()=>{
+                    window.location.replace(`${this.url}/app/inicio`);
+                },2000);
             })
             .catch(error => {
                 this.errors = error.response.data.errors

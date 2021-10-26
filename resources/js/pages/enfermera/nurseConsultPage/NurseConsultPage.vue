@@ -83,7 +83,7 @@
                                                     <div class="col-12 col-md-6 mb-25 ">
                                                         <label for="cscFUM">FUM</label>
                                                         <input class="form-control form-control-lg" type="date"
-                                                            id="cscFUM" v-model="formData.fum">
+                                                            id="cscFUM" v-model="formData.fum">                                                           
                                                     </div>
                                                     <div class="col-12 col-md-3 mb-25 ">
                                                         <label for="cscIMC">IMC (Kg/m&#178;)</label>

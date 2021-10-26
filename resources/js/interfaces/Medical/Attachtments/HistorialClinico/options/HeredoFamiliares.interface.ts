@@ -1,5 +1,4 @@
-export interface HeredoFamiliares
-{
+export interface HeredoFamiliares {
     hipertension: {
         check: boolean,
         description: string
@@ -7,11 +6,15 @@ export interface HeredoFamiliares
     cancer: {
         check: boolean,
         ginecologico: {
+            check: boolean,
             description: string,
+            otro: string,
             age: number
         },
         otros: {
+            check: boolean,
             description: string,
+            otro: string,
             age: number
         }
     },

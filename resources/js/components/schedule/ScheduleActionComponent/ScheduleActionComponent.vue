@@ -75,6 +75,7 @@
                         </li>
                     </ul>
                 </div>
+                <!-- {{showScheduleOption}} -->
                 <div class="modal-footer bg-white schedule-radius" v-if="showScheduleOption">
                     <div v-if="isAssistantOptionEnabled">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startAssistance">Marca asistencia</button>

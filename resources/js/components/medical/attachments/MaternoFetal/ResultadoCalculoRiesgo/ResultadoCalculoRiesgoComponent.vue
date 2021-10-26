@@ -35,7 +35,7 @@
                             <div class="input-group-lg col-12 col-md-4 mb-15">
                                 <label for="">LCC</label>
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto1LCC"
-                                    v-model="formData.feto1.lcc">
+                                    v-model="formData.feto1.lcc" placeholder="mm">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Semanas</label>
@@ -52,26 +52,22 @@
                                 <div class="row">
                                     <div class="col-md-4 col-sm-12">
                                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto1TranslucenciaNucal"
-                                            v-model="formData.feto1.translucenciaNucal1">
+                                            v-model="formData.feto1.translucenciaNucal1" placeholder="mm">
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto1TranslucenciaNucal"
-                                            v-model="formData.feto1.translucenciaNucal2">
+                                            v-model="formData.feto1.translucenciaNucal2" placeholder="mm">
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto1TranslucenciaNucal"
-                                            v-model="formData.feto1.translucenciaNucal3">
+                                            v-model="formData.feto1.translucenciaNucal3" placeholder="mm">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-4 mb-15 align-self-center">
-                                <div class="custom-control custom-switch switch-primary">
-                                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto1IPDuctoVenoso"
-                                        v-model="formData.feto1.ipDuctoVenoso"
-                                        :checked="formData.feto1.ipDuctoVenoso">
-                                    <label class="custom-control-label" for="rcrcFeto1IPDuctoVenoso">IP ducto
-                                        venoso</label>
-                                </div>
+                            <div class="col-12 col-md-4 mb-15">                               
+                                <label for="rcrcFeto1IPDuctoVenoso">IP ducto venoso</label>
+                                <input type="text" class="form-control form-control-lg" :disabled="disabled" id="rcrcFeto1IPDuctoVenoso"
+                                    v-model="formData.feto1.ipDuctoVenoso">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Onda "A"</label>
@@ -247,7 +243,7 @@
                             <div class="input-group-lg col-12 col-md-4 mb-15">
                                 <label for="">LCC</label>
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto2LCC"
-                                    v-model="formData.feto2.lcc">
+                                    v-model="formData.feto2.lcc" placeholder="mm">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Semanas</label>
@@ -264,26 +260,22 @@
                                 <div class="row">
                                     <div class="col-md-4 col-sm-12">
                                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto2TranslucenciaNucal"
-                                            v-model="formData.feto2.translucenciaNucal1">
+                                            v-model="formData.feto2.translucenciaNucal1" placeholder="mm">
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto2TranslucenciaNucal"
-                                            v-model="formData.feto2.translucenciaNucal2">
+                                            v-model="formData.feto2.translucenciaNucal2" placeholder="mm">
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto2TranslucenciaNucal"
-                                            v-model="formData.feto2.translucenciaNucal3">
+                                            v-model="formData.feto2.translucenciaNucal3" placeholder="mm">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
-                                <div class="custom-control custom-switch switch-primary">
-                                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto2IPDuctoVenoso"
-                                        v-model="formData.feto2.ipDuctoVenoso"
-                                        :checked="formData.feto2.ipDuctoVenoso">
-                                    <label class="custom-control-label" for="rcrcFeto2IPDuctoVenoso">IP ducto
-                                        venoso</label>
-                                </div>
+                                <label for="rcrcFeto2IPDuctoVenoso">IP ducto venoso</label>
+                                <input type="text" class="form-control form-control-lg" :disabled="disabled" id="rcrcFeto2IPDuctoVenoso"
+                                    v-model="formData.feto2.ipDuctoVenoso">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Onda "A"</label>
@@ -459,7 +451,7 @@
                             <div class="input-group-lg col-12 col-md-4 mb-15">
                                 <label for="">LCC</label>
                                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcFeto3LCC"
-                                    v-model="formData.feto3.lcc">
+                                    v-model="formData.feto3.lcc" placeholder="mm">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Semanas</label>
@@ -476,26 +468,22 @@
                                 <div class="row">
                                     <div class="col-md-4 col-sm-12">
                                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto3TranslucenciaNucal"
-                                            v-model="formData.feto3.translucenciaNucal1">
+                                            v-model="formData.feto3.translucenciaNucal1" placeholder="mm">
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto3TranslucenciaNucal"
-                                            v-model="formData.feto3.translucenciaNucal2">
+                                            v-model="formData.feto3.translucenciaNucal2" placeholder="mm">
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcFeto3TranslucenciaNucal"
-                                            v-model="formData.feto3.translucenciaNucal3">
+                                            v-model="formData.feto3.translucenciaNucal3" placeholder="mm">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mb-15 align-self-center">
-                                <div class="custom-control custom-switch switch-primary">
-                                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcFeto3IPDuctoVenoso"
-                                        v-model="formData.feto3.ipDuctoVenoso"
-                                        :checked="formData.feto3.ipDuctoVenoso">
-                                    <label class="custom-control-label" for="rcrcFeto3IPDuctoVenoso">IP ducto
-                                        venoso</label>
-                                </div>
+                                <label for="rcrcFeto3IPDuctoVenoso">IP ducto venoso</label>
+                                <input type="text" class="form-control form-control-lg" :disabled="disabled" id="rcrcFeto3IPDuctoVenoso"
+                                    v-model="formData.feto3.ipDuctoVenoso">
                             </div>
                             <div class="col-12 col-md-4 mb-15">
                                 <label for="">Onda "A"</label>
@@ -674,7 +662,7 @@
                             <div class="col-12 col-md-4 tbd-switch-wrap">
                                 <div class="custom-control custom-switch switch-primary switch-lg ">
                                     <input type="checkbox" class="custom-control-input" :disabled="disabled" id="rcrcIPArteriaDerechaNotch"
-                                        v-model="formData.dopplerArteriasUterinas.ipArteriaDerecha.notch">
+                                        v-model="formData.dopplerArteriasUterinas.ipArteriaIzquierda.notch">
                                     <label class="custom-control-label" for="rcrcIPArteriaDerechaNotch">Notch</label>
                                 </div>
                             </div>
@@ -709,7 +697,7 @@
             </div>
         </div>
 
-        <div class="col-12 mb-25 p-0">
+        <div class="col-4 mb-25 p-0">
             <label for="rcrcLongitudCervical">Longitud cervical</label>
             <div class="input-group col-12 p-0">
                 <input class="form-control form-control-lg" type="number" :disabled="disabled" id="rcrcLongitudCervical"
@@ -792,22 +780,20 @@
             </div>
             <div id="rcrcCalculoRiesgo" class="atbd-collapse-item__body collapse px-0 py-4">
                 <div class="row mx-0">
-                    <div class="col-12 mb-10 row mx-0">
-                        <div class="col-12 col-md-6 mb-15">
-                            <label for="rcrcPreclamsiaAntes">Para preclamsia antes de 34 semanas</label>
-                            <input class="form-control form-control-lg mt-4" type="text" :disabled="disabled" id="rcrcPreclamsiaAntes"
-                                v-model="formData.calculoRiesgo.preclamsia">
-                        </div>
-                        <div class="col-12 col-md-6 mb-15">
-                            <label for="rcrcRestriccionCrecimiento">Para restricción de crecimiento antes de 37 semanas</label>
-                            <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcRestriccionCrecimiento"
-                                v-model="formData.calculoRiesgo.restriccionCrecimiento">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="rcrcPartoPretermino">Para parto pretérmino antes de 34 semanas</label>
-                            <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcPartoPretermino"
-                                v-model="formData.calculoRiesgo.partoPretermino">
-                        </div>
+                    <div class="col-4 col-md-4 mb-15">
+                        <label for="rcrcPreclamsiaAntes">Para preclamsia antes de 34 semanas</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcPreclamsiaAntes"
+                            v-model="formData.calculoRiesgo.preclamsia">
+                    </div>
+                    <div class="col-4 col-md-4 mb-15">
+                        <label for="rcrcRestriccionCrecimiento">Para restricción de crecimiento antes de 37 semanas</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcRestriccionCrecimiento"
+                            v-model="formData.calculoRiesgo.restriccionCrecimiento">
+                    </div>
+                    <div class="col-4 col-md-4">
+                        <label for="rcrcPartoPretermino">Para parto pretérmino antes de 34 semanas</label>
+                        <input class="form-control form-control-lg" type="text" :disabled="disabled" id="rcrcPartoPretermino"
+                            v-model="formData.calculoRiesgo.partoPretermino">
                     </div>
                 </div>
             </div>

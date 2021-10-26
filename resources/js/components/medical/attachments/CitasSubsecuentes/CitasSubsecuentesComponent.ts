@@ -13,7 +13,7 @@ export default defineComponent({
         },
         disabled: {
             type: Boolean as PropType<Boolean>,
-            default: false
+            default: true
         },
         title: {
             type: String,

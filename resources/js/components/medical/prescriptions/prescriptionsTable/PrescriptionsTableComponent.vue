@@ -42,7 +42,7 @@
                                     style="display: table-cell;">
                                     <span class="userDatatable-title float-right">Acciones</span>
                                     <span class="fooicon fooicon-sort"></span></th>
-                            </tr>
+                            </tr> 
                         </thead>
 
                         <tbody>

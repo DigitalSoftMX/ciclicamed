@@ -38,13 +38,36 @@
             </div>
             <div class="card-body" v-show="formData.cancer.check">
                 <div class="col-12 p-0 mb-25">
-                    <label>Ginecológico</label>
-                    <div class="row mx-0">
-                        <div class="col-12 col-md-7 mb-25 mb-md-0">
-                            <label for="hfcCancerGinecologico">Edad de aparición</label>
-                            <textarea type="text" class="form-control" :disabled="disabled" id="hfcCancerGinecologico"
-                                v-model="formData.cancer.ginecologico.description"
-                                placeholder="Ginecológico"></textarea>
+                    <div class="row">
+                        <div class="col-12 col-md-7 mt-1">
+                            <div class="card card-md bg-white shadow-none">
+                                <div class="card-header">
+                                    <label>Ginecológico</label>
+                                    <div class="custom-control custom-switch switch-primary switch-md ">
+                                        <input type="checkbox" class="custom-control-input" :disabled="disabled" id="hfcGinecologico"
+                                            :checked="formData.cancer.ginecologico.check"
+                                            v-model="formData.cancer.ginecologico.check">
+                                        <label class="custom-control-label" for="hfcGinecologico"></label>
+                                    </div>
+                                </div>
+                                <div class="card-body" v-show="formData.cancer.ginecologico.check">
+                                    <div class="col-12 p-0 mb-25">
+                                        <div class="col-12 mb-25 mb-md-0">
+                                            <label for="hfcCancerGinecologico">Antecedente Familiar</label>
+                                            <select class="form-control form-control-lg" :disabled="disabled" id="hfcCancerGinecologico" v-model="formData.cancer.ginecologico.description">
+                                                <option>Madre</option>
+                                                <option>Padre</option>
+                                                <option>Hermano</option>
+                                                <option>Otro</option>
+                                            </select>
+                                            <!-- <textarea v-if="formData.cancer.ginecologico.description=='Otro'" type="text" class="form-control mt-3" :disabled="disabled" id="hfcCancerGinecologicoOtro"
+                                                v-model="formData.cancer.ginecologico.otro"
+                                                placeholder="Otros"></textarea> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="col-12 col-md-5">
                             <label for="hfcCancerGinecologicoEdad">Edad de aparición</label>
@@ -54,19 +77,45 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 p-0">
-                    <label>Otros</label>
-                    <div class="row mx-0">
-                        <div class="col-12 col-md-7 mb-25 mb-md-0">
-                            <textarea type="text" class="form-control" :disabled="disabled" id="hfcCancerOtros"
-                                v-model="formData.cancer.otros.description"
-                                placeholder="Otros"></textarea>
+
+                <div class="row">
+                    <div class="col-12 col-md-7 mb-25 mt-1">
+                        <div class="card card-md bg-white shadow-none">
+                            <div class="card-header">
+                                <label>Otros</label>
+                                <input type="text" class="form-control mx-3" :disabled="disabled" id="hfcCancerOtrosOtro"
+                                    v-model="formData.cancer.otros.otro"
+                                    placeholder="Otros">
+                                    {{formData.cancer.otros.otro}}
+                                <div class="custom-control custom-switch switch-primary switch-md ">
+                                    <input type="checkbox" class="custom-control-input" :disabled="disabled" id="hfcGinecologicoOtros"
+                                        :checked="formData.cancer.otros.check"
+                                        v-model="formData.cancer.otros.check">
+                                    <label class="custom-control-label" for="hfcGinecologicoOtros"></label>
+                                </div>
+                            </div>
+                            <div class="card-body" v-show="formData.cancer.otros.check">
+                                <div class="col-12 p-0 mb-25">
+                                    <div class="col-12 mb-25 mb-md-0">
+                                        <select class="form-control form-control-lg" :disabled="disabled" id="hfcCancerOtros" v-model="formData.cancer.otros.description">
+                                            <option>Madre</option>
+                                            <option>Padre</option>
+                                            <option>Hermano</option>
+                                            <option>Otro</option>
+                                        </select>
+                                        <!-- <textarea v-if="formData.cancer.otros.description=='Otro'" type="text" class="form-control mt-3" :disabled="disabled" id="hfcCancerOtrosOtro"
+                                            v-model="formData.cancer.otros.otro"
+                                            placeholder="Otros"></textarea> -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-12 col-md-5">
-                            <input type="number" class="form-control" :disabled="disabled" id="hfcCancerOtrosEdad"
-                                v-model="formData.cancer.otros.age" placeholder="Edad de aparición">
-                        </div>
-                    </div>
+                    </div>    
+                    <div class="col-12 col-md-5">
+                        <label for="hfcCancerOtrosEdad">Edad de aparición</label>
+                        <input type="number" class="form-control" :disabled="disabled" id="hfcCancerOtrosEdad"
+                            v-model="formData.cancer.otros.age" placeholder="Edad de aparición">
+                    </div>            
                 </div>
             </div>
         </div>

@@ -34,18 +34,27 @@ export const MaternoFetalCuestionarioData: MaternoFetalCuestionario = {
             description: 0
         }
     },
+     */
     enfermera: {
         peso: '',
         talla: '',
-        brazoDerecho: {
+        /* brazoDerecho: {
             sistole: '',
             diastole: ''
         },
         brazoIzquierdo: {
             sistole: '',
             diastole: ''
+        } */
+        brazoDerecho: {
+            t: '',
+            a: ''
+        },
+        brazoIzquierdo: {
+            t: '',
+            a: ''
         }
-    }, */
+    },
     tabaquismo: {
         fuma: false,
         cantidad: 0,

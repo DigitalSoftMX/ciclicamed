@@ -235,7 +235,7 @@
                     <div id="npcAntropometria" class="atbd-collapse-item__body collapse row mx-0 card-body">
                         <div class="mb-25 row mx-0">
                             <div class="col-12 p-0 mb-25">
-                                <label>Inseminaciones previas</label>
+                                <label>Inseminaciones previas (Medicamento, dósis, resolución)</label>
                                 <textarea class="form-control form-control-lg" rows="4"
                                     v-model="formData.estimulacion.inseminacionesPrevias"></textarea>
                             </div>
@@ -258,37 +258,6 @@
                                 <label>Hasta</label>
                                 <input class="form-control form-control-lg" type="date"
                                     v-model="formData.estimulacion.hasta">
-                            </div>
-
-                            <div class="col-12 col-md-6 mb-25">
-                                <label>Sostén de fase lutea</label>
-                                <input class="form-control form-control-lg" type="text"
-                                    v-model="formData.estimulacion.sosten">
-                            </div>
-                            <div class="col-12 col-md-6 mb-25">
-                                <label>Dosis</label>
-                                <input class="form-control form-control-lg" type="text"
-                                    v-model="formData.estimulacion.dosis2">
-                            </div>
-                            <div class="col-12 col-md-6 mb-25">
-                                <label>Fecha de inicio</label>
-                                <input class="form-control form-control-lg" type="date"
-                                    v-model="formData.estimulacion.fechaInicio2">
-                            </div>
-                            <div class="col-12 col-md-6 mb-25">
-                                <label>BhcG</label>
-                                <input class="form-control form-control-lg" type="date"
-                                    v-model="formData.estimulacion.bhcg">
-                            </div>
-                            <div class="col-12 col-md-6 mb-25">
-                                <label>Resultados</label>
-                                <textarea class="form-control form-control-lg" rows="5"
-                                    v-model="formData.estimulacion.resultados"></textarea>
-                            </div>
-                            <div class="col-12 col-md-6 mb-25">
-                                <label>Observaciones</label>
-                                <textarea class="form-control form-control-lg" rows="5"
-                                    v-model="formData.estimulacion.observaciones"></textarea>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -370,6 +339,38 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="mb-25 row mx-0 mt-3">
+                            <div class="col-12 col-md-6 mb-25">
+                                <label>Sostén de fase lutea</label>
+                                <input class="form-control form-control-lg" type="text"
+                                    v-model="formData.estimulacion.sosten">
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label>Dosis</label>
+                                <input class="form-control form-control-lg" type="text"
+                                    v-model="formData.estimulacion.dosis2">
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label>Fecha de inicio</label>
+                                <input class="form-control form-control-lg" type="date"
+                                    v-model="formData.estimulacion.fechaInicio2">
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label>BhcG</label>
+                                <input class="form-control form-control-lg" type="date"
+                                    v-model="formData.estimulacion.bhcg">
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label>Resultados</label>
+                                <textarea class="form-control form-control-lg" rows="5"
+                                    v-model="formData.estimulacion.resultados"></textarea>
+                            </div>
+                            <div class="col-12 col-md-6 mb-25">
+                                <label>Observaciones</label>
+                                <textarea class="form-control form-control-lg" rows="5"
+                                    v-model="formData.estimulacion.observaciones"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>

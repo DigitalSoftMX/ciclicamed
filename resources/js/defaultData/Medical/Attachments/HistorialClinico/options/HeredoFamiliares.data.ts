@@ -8,12 +8,17 @@ export const HeredoFamiliaresData: HeredoFamiliares = {
     cancer: {
         check: false,
         ginecologico: {
+            check: false,
             age: 0,
-            description: ''
+            description: '',
+            otro: ''
         },
+
         otros: {
+            check: false,
             age: 0,
-            description: ''
+            description: '',
+            otro: ''
         },
     },
     diabetesMellitus: {

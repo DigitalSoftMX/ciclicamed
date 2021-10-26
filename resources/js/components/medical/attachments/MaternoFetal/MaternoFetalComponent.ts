@@ -7,6 +7,7 @@ export default defineComponent({
     components: {
         CuestionarioCalculoRiesgoComponent: require('@component/medical/attachments/MaternoFetal/CuestionarioCalculoRiesgo/CuestionarioCalculoRiesgoComponent.vue').default,
         ResultadoCalculoRiesgoComponent: require('@component/medical/attachments/MaternoFetal/ResultadoCalculoRiesgo/ResultadoCalculoRiesgoComponent.vue').default,
+        Anexo39Component: require('@component/medical/attachments/MaternoFetal/Anexo39/Anexo39Component.vue').default
     },
     props: {
         modelValue: {
@@ -18,25 +19,23 @@ export default defineComponent({
             default: true
         },
     },
-    data(){
+    data() {
         return {
             formData: this.modelValue,
         }
     },
     methods: {},
     watch: {
-        modelValue: 
+        modelValue:
         {
-            handler()
-            {
+            handler() {
                 this.formData = this.modelValue;
             },
             deep: true
         },
         formData:
         {
-            handler()
-            {
+            handler() {
                 this.$emit('update:modelValue', this.formData);
             },
             deep: true

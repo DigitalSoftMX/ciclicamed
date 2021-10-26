@@ -14,6 +14,7 @@ import { Employee } from '@interface/Employee/Employee.interface';
 import { EmployeeData } from '@data/Employee/Employee.data';
 import { Consult } from '@interface/Medical/Consult.interface';
 import { ConsultData } from '@data/Medical/Consult.data';
+import cloneDeep from 'lodash/cloneDeep';
 
 /** 
  * @description Componente que muestra los medicamentos para receta dentro de la consulta, utilizando el componente {@link MedicamentComponent}
@@ -168,7 +169,6 @@ export default defineComponent({
             }).then(res => res.arrayBuffer());
             const pdf: PDFDocument = await PDFDocument.load(buffer);
             const filterPrescriptionList = this.prescriptionData.filter((medicament: Prescription) => medicament.medicament_id >= 1);
-
             pdf.getForm().getTextField('patient').setText(`${this.patientData.first_name} ${this.patientData.last_name}`);
             pdf.getForm().getTextField('birthday').setText(moment(this.patientData.birthday).format('DD/MM/YYYY'));
             pdf.getForm().getTextField('age').setText( moment().diff(this.patientData.birthday, 'years').toString() );
