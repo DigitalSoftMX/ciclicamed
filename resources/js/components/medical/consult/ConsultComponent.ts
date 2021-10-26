@@ -362,6 +362,7 @@ export default defineComponent({
                 this.getHistory();
                 this.getAttachment();
                 
+                // console.log('respuesta', this.consultData);
             })
             .catch(error => {
                 // 
