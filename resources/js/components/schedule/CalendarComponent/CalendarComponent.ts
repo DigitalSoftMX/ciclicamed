@@ -52,6 +52,10 @@ export default defineComponent({
             type: String as PropType<String>,
             default: ''
         },
+        userID: {
+            type: Number,
+            default: -1
+        },
     },
     /**
     * Variables del componente
@@ -111,10 +115,16 @@ export default defineComponent({
          * Recorre todas las citas médicas (eventos en FullCalendar) que están en la variable schedulesCopy y procede a {@link CalendarComponent.addSchedule|agregarlos al calendario}
          * @function CalendarComponent.renderSchedules
         */
-        renderSchedules(): void {
+        renderSchedules(): void {            
             this.schedulesCopy.map(schedule => {
-                this.addSchedule(schedule);
-            });
+                if(this.role=='Paciente'){
+                    if(schedule.patient_id===this.userID){
+                        this.addSchedule(schedule);
+                    }
+                }else{
+                    this.addSchedule(schedule);
+                }
+            });            
         },
         /** 
          * Si detecta que la cita médica seleccionada tiene el nombre del doctor, procede a retonar el nombre completo del doctor, en caso contrario,
@@ -166,8 +176,7 @@ export default defineComponent({
          * @function CalendarComponent.addSchedule
         */
         addSchedule(schedule: Schedule)
-        {
-            const name = this.getNameSchedule(schedule);
+        {           
             const calendar = this.$refs.fullCalendar as DefineComponent;
             var title = 'Consulta';
             var borderColor = '#60269E';
@@ -180,6 +189,7 @@ export default defineComponent({
                     backgroundColor = '#60269E';
                     break;
                 case 'Doctor':
+                    var name = this.getNameSchedule(schedule);
                     title = this.getScheduleTitle(schedule.type?.name ?? '', name);
                     borderColor = !schedule.status?.color ? '#60269E' : schedule.status!.color;
                     backgroundColor = !schedule.status?.color ? '#60269E' : schedule.status!.color!;
@@ -190,6 +200,7 @@ export default defineComponent({
                     }
                     break;
                 case 'Enfermera':
+                    var name = this.getNameSchedule(schedule);
                     title = this.getScheduleTitle(schedule.type?.name ?? '', name);
                     borderColor = !schedule.status?.color ? '#60269E' : schedule.status!.color;
                     backgroundColor = !schedule.status?.color ? '#60269E' : schedule.status!.color!;
@@ -200,6 +211,7 @@ export default defineComponent({
                     }
                     break;
                 default:
+                    var name = this.getNameSchedule(schedule);
                     title = this.getScheduleTitle(schedule.type?.name ?? '', name);
                     borderColor = schedule.status!.color!;
                     backgroundColor = schedule.status!.color!;

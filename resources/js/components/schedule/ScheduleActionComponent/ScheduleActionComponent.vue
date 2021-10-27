@@ -75,7 +75,6 @@
                         </li>
                     </ul>
                 </div>
-                <!-- {{showScheduleOption}} --> 
                 <div class="modal-footer bg-white schedule-radius" v-if="showScheduleOption">
                     <div v-if="isAssistantOptionEnabled">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startAssistance">Marca asistencia</button>
@@ -86,6 +85,9 @@
                     <div v-if="isStartScheduleEnabled">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Iniciar cita</button>
                     </div>
+                    <!-- <div v-if="isFullFormat">
+                        <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Llenar formulario</button>
+                    </div> -->
                 </div>
             </div>
         </div>

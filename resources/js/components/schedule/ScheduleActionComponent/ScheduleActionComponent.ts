@@ -149,6 +149,8 @@ export default defineComponent({
                     return this.isStartScheduleEnabled;
                 case 'Administrador':
                     return true;
+                case 'Paciente':
+                    return true;
                 default:
                     return false;
             }
@@ -187,6 +189,12 @@ export default defineComponent({
                 default:
                     return false;
             }
+        },
+        isFullFormat():boolean{
+            if(this.role=='Paciente' && this.schedule.medicalspecialty_id==3){
+                return true;
+            }
+            return false;
         }
     },
     methods: {

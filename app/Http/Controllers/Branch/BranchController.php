@@ -161,7 +161,7 @@ class BranchController extends Controller
         if($user->hasRole('Paciente') || ($user->hasRole('Doctor') && intval($employeeID) !== intval($user['employee']['id'])))
         {
             $schedules = MedicalConsult::where('doctor_id', $employeeID)->where('branch_id', $id)
-                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'assistant_start_at', 'assistant_finish_at', 'nurse_start_at', 'nurse_finish_at', 'branch_id', 'doctor_id'])
+                                ->get(['id', 'consult_schedule_start', 'consult_schedule_finish', 'assistant_start_at', 'assistant_finish_at', 'nurse_start_at', 'nurse_finish_at', 'branch_id', 'doctor_id','patient_id','medicalspecialty_id'])
                                 ->load('doctor:id,first_name,last_name', 'branch:id,name');
             return response()->json($schedules);
         }

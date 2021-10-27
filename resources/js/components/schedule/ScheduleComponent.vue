@@ -8,7 +8,7 @@
         </div>
         <div class="col-12 col-md-8 col-xl-9">
             <calendar-componet :branchesList="branchesList" :schedules="schedules" :businessHours="businessHours"
-                @onNewSchedule="copyScheduleData" @onSelectedSchedule="getScheduleSelected" :role="role">
+                @onNewSchedule="copyScheduleData" @onSelectedSchedule="getScheduleSelected" :userID="userID" :role="role">
             </calendar-componet>
         </div>
     </div>
