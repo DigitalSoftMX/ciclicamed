@@ -76,14 +76,18 @@
                     </ul>
                 </div>
                 <div class="modal-footer bg-white schedule-radius" v-if="showScheduleOption">
+                    <p>role: {{role}}</p>
                     <div v-if="isAssistantOptionEnabled">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startAssistance">Marca asistencia</button>
                     </div>
                     <div v-if="isConfirmScheduleEnabled">
                         <button class="btn btn-primary btn-lg btn-squared" @click="confirmSchedule">Confirmar cita</button>
                     </div>
-                    <div v-if="isStartScheduleEnabled">
+                    <div v-if="isStartScheduleEnabled && role ==='Doctor'">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Iniciar cita</button>
+                    </div>
+                    <div v-if="isStartScheduleEnabled && role ==='Enfermera'">
+                        <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Signos vitales</button>
                     </div>
                     <!-- <div v-if="isFullFormat">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Llenar formulario</button>

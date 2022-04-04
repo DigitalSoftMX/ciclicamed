@@ -80,7 +80,7 @@ class MedicalConsultController extends Controller
                     $item->where('product_code', 'like', '%'.$query.'%')
                          ->orWhere('supplier_code', 'like', '%'.$query.'%');
                 });
-                
+
             })->orderBy('consult_schedule_start', 'desc')->select('id', 'consult_schedule_start', 'consult_schedule_finish', 'patient_id')->paginate();
         } else {
             $prescriptions = MedicalConsult::has('testScheduled')
@@ -88,7 +88,7 @@ class MedicalConsultController extends Controller
             ->select('id', 'consult_schedule_start', 'consult_schedule_finish', 'patient_id')
             ->paginate();
         }
-        
+
         $response = [
             'pagination' => [
                 'total' => $prescriptions->total(),
@@ -118,7 +118,7 @@ class MedicalConsultController extends Controller
         } else {
             $prescriptions = MedicalConsult::has('prescriptions')->orderBy('consult_schedule_start', 'desc')->select('id', 'consult_schedule_start', 'consult_schedule_finish', 'patient_id')->paginate();
         }
-        
+
         $response = [
             'pagination' => [
                 'total' => $prescriptions->total(),
@@ -142,7 +142,7 @@ class MedicalConsultController extends Controller
             $consult->update([
                 'medicalconsultstatus_id' => 2
             ]);
-            
+
             return response()->json([], 200)->withCookie('consult', $id);
         }
 
@@ -171,7 +171,7 @@ class MedicalConsultController extends Controller
                     'medicalconsultstatus_id' => 4
                 ]);
             }
-            
+
             return response()->json([], 200)->withCookie('consult', $id);
         }
 
@@ -185,9 +185,9 @@ class MedicalConsultController extends Controller
                     'medicalconsultstatus_id' => 4
                 ]);
             }
-            
+
             return response()->json([], 200)->withCookie('consult', $id);
-        }    
+        }
 
         return response()->json(['errors' => [
             'permisos' => ['Esta consulta ya no se puede modificar']
@@ -292,18 +292,22 @@ class MedicalConsultController extends Controller
                 $payment = Payment::findOrFail($product->first()->payment_id)->where('paymentstatus_id', '<>', 4)->orderBy('created_at', 'desc');
                 if($payment->get()->isNotEmpty())
                 {
-                    return response()->json($payment->first()->load('products')); 
+                    return response()->json($payment->first()->load('products'));
                 }
                 return response()->json([], 204);
             }
             return response()->json([], 204);
         }
-        
+
         return response()->json(['errors' => [
             'permisos' => ['No cuenta con los permisos necesarios para ver esta información']
         ]], 401);
     }
 
+    /**
+     * Finalizacion de la consulta tanto de enfermara como doctor
+     * Hay que separarla y checar para el status (Signos Vitales)
+      */
     public function createConsultData(Request $request, $id)
     {
         $user = User::findOrFail(Auth::user()->id);
@@ -443,14 +447,14 @@ class MedicalConsultController extends Controller
             {
                 //Verifica si hay anexo creado anteriormente, si no hay, entonces guarda la informacion del anexo
                 $attachment = MedicalAttachment::where('patient_id', $presentConsult['patient_id'])->where('medicalspecialty_id', $presentConsult['medicalspecialty_id'])->get();
-                if($attachment->isEmpty() || $user->hasRole('Administrador') || intval($presentConsult['medicalspecialty_id']) === 4 || intval($presentConsult['medicalspecialty_id']) === 5 || intval($presentConsult['medicalspecialty_id']) === 7) 
+                if($attachment->isEmpty() || $user->hasRole('Administrador') || intval($presentConsult['medicalspecialty_id']) === 4 || intval($presentConsult['medicalspecialty_id']) === 5 || intval($presentConsult['medicalspecialty_id']) === 7)
                 {
                     MedicalAttachment::create([
                         'patient_id' => $presentConsult['patient_id'],
                         'data' => json_encode($request->input('data.especialidad')),
                         'medicalspecialty_id' => $presentConsult['medicalspecialty_id'],
                         'updated_by' => $user['employee']['id']
-                    ]);  
+                    ]);
                 }
             }
 
@@ -461,7 +465,7 @@ class MedicalConsultController extends Controller
                 'medicalspecialty_id' => $presentConsult['medicalspecialty_id'],
                 'updated_by' => $user['employee']['id'],
             ]);
-            
+
             //Elimina la informacion de la receta que se haya ingresado previamente, para guardar la nueva receta
             MedicalPrescription::where('medicalconsult_id', $id)->delete();
             if(count($request->input('data.receta')) > 0)
@@ -517,7 +521,7 @@ class MedicalConsultController extends Controller
                                     'medicalspecialty_id' => $medicalspecialty_id
                                 ]);
                             }
-                            
+
                         }
                         $testEdited = MedicalTest::findOrFail($test['id'])->update([
                             'medicalteststatus_id' => $test['medicalteststatus_id']
@@ -605,12 +609,15 @@ class MedicalConsultController extends Controller
             'permisos' => ['No tiene los permisos necesarios para realizar esta acción']
         ]], 401);
     }
-
+    /**Creacion de consulta */
     public function store(Request $request)
-    {   
+    {
+        error_log(json_encode($request->all()));
         $consultExistsInHourSelected = MedicalConsult::where('doctor_id', $request->input('data.doctor_id'))
         ->where('consult_schedule_start', '<=', $request->input('data.consult_schedule_start'))
         ->where('consult_schedule_finish', '>=', $request->input('data.consult_schedule_start'));
+
+        // dd($consultExistsInHourSelected);
 
         if($consultExistsInHourSelected->get()->isNotEmpty())
         {
@@ -693,7 +700,7 @@ class MedicalConsultController extends Controller
                 'branch_id' => $request->input('data.branch_id'),
                 'medicalconsultstatus_id' => 1,
             ]);
-            
+
             //Si la cita es de estudio de laboratorio o imagenologia, crea un nuevo examen junto con su orden de estudios
             if($medicalconsultcategory_id === 3 || $medicalconsultcategory_id === 4)
             {
@@ -727,7 +734,7 @@ class MedicalConsultController extends Controller
 
         //Detecta si la cita la agendo un 'Doctor', 'Asistente', 'Enfermera', 'Administrador'
         if($user->hasRole(['Doctor', 'Asistente', 'Enfermera', 'Administrador']))
-        { 
+        {
             $messages = [
                 'data.patient_id.min' => 'Debe de seleccionar un paciente',
                 'data.doctor_id.min' => 'Debe de seleccionar un doctor',
@@ -755,7 +762,7 @@ class MedicalConsultController extends Controller
             $ruleTest =[
                 'data.product_id' => 'required|numeric|min:1',
             ];
-            
+
             $doctor = intval($request->input('data.doctor_id'));
             $medicalspecialty_id = 0;
             $medicalconsultcategory_id = 0;
@@ -982,7 +989,7 @@ class MedicalConsultController extends Controller
                 {
                     $test['result']['results'] = json_decode($test['result']['results']);
                 }
-                
+
             }
             return response()->json($tests);
         }
@@ -1082,7 +1089,7 @@ class MedicalConsultController extends Controller
             $data = $consult->load('testScheduled.order.product.orderAnnotations');
             return response()->json($data);
         }
-        
+
         return response()->json($consult);
     }
 
@@ -1092,6 +1099,6 @@ class MedicalConsultController extends Controller
         return response()->json($consult);
     }
 
-    
-    
+
+
 }

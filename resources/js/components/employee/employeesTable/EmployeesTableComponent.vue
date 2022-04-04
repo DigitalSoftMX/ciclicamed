@@ -89,21 +89,24 @@
                                         <li>
                                             <button
                                                 @click="showEmployeeModal(user)"
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
+                                                title="Mostrar">
                                                 <img-component url="/svg/show.svg"  alt="Mostrar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 @click="showEditModal(user)"
-                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img">
+                                                class="btn btn-icon btn-circle btn-outline-primary border-0 button-img"
+                                                title="Editar">
                                                 <img-component url="/svg/edit.svg"  alt="Editar"></img-component>
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 @click="showConfirmationAlert(user)"
-                                                class="btn btn-icon btn-circle btn-outline-danger border-0 button-img">
+                                                class="btn btn-icon btn-circle btn-outline-danger border-0 button-img"
+                                                title="Borrar">
                                                 <img-component url="/svg/userDisable.svg" alt="Borrar" v-if="user.employeestatus_id === 1"></img-component>
                                                 <img-component url="/svg/userEnable.svg" alt="Borrar" v-else></img-component>
                                             </button>

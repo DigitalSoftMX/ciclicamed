@@ -131,7 +131,7 @@ class UserController extends Controller
     {
         $request->validated();
         $user = User::findOrFail($id);
-        
+
         if($user->id === Auth::user()->id)
         {
             $user->update([
@@ -155,7 +155,7 @@ class UserController extends Controller
         } else {
             $patient = Patient::paginate();
         }
-        
+
         $response = [
             'pagination' => [
                 'total' => $patient->total(),

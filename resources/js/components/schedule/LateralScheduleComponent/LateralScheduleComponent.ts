@@ -16,14 +16,14 @@ import { ElTimeSelect } from 'element-plus';
 import _ from 'lodash';
 import { Patient } from '@interface/Patient/Patient.interface';
 
-/** 
+/**
  * @description Componente que permite crear o editar una consulta, mediante un menu lateral derecho
  * @class LateralScheduleComponent
  * @example <lateral-schedule-component :schedule="" :branchesList="" doctorsList="" :businessHours="" :patientID="" role=""></lateral-schedule-component>
 */
 export default defineComponent({
     name: 'LateralScheduleComponent',
-    /** 
+    /**
      * {@link https://vcalendar.io/datepicker.html},{@link https://element-plus.org/#/es/component/time-select},
      * {@link SelectComponent}, {@link ErrorAlertComponent}, {@link SuccessAlertComponent}
      * @member LateralScheduleComponent.components
@@ -35,14 +35,14 @@ export default defineComponent({
         ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default
     },
-    /** 
+    /**
      * Eventos del componente
      * @member LateralScheduleComponent.emits
      * @property {Schedule} newSchedule Evento que se emite se crea una nueva cita dentro del servidor, junto con los datos de la cita retornados por el servidor
     */
     emits: ['newSchedule'],
-    /** 
-     * Propiedades que recibe el componente 
+    /**
+     * Propiedades que recibe el componente
      * @member LateralScheduleComponent.props
      * @property {Schedule} schedule (Obligatorio) Cita médica seleccionada
      * @property {Select[]} branchesList (Obligatorio) Lista de sucursales habilitados en el servidor
@@ -109,12 +109,12 @@ export default defineComponent({
         };
     },
     /**
-    * Propiedades computadas del componente 
+    * Propiedades computadas del componente
     * @member LateralScheduleComponent.computed
     * @property {string} tarjetaPaciente Retorna los datos del paciente y la fecha y hora de inicio y final de la consulta (solo en consulta editada)
     * @property {string} scheduleAction Cambia el título del botón del componente de acuerdo a si es una nueva cita o existente
     * @property {FullCalendarBusinessHour} startHour Busca y actualiza la hora de inicio y final de trabajo disponible para el doctor seleccionado,
-    * por ejemplo, si la fecha de la consulta es un martes y ese día el doctor trabaja de 07:00 a 15:00, busca dentro de los horarios de trabajo en la variable 
+    * por ejemplo, si la fecha de la consulta es un martes y ese día el doctor trabaja de 07:00 a 15:00, busca dentro de los horarios de trabajo en la variable
     * businessHours y al encontrar el primer horario que coincide con el día, entonces asigna a las variables startTime y finishTime la hora de inicio y final del horario
     * (07:00 a 15:00) de trabajo del doctor, en caso de no encontrar coincidencia, asigna a las variables anteriores un valor predefinido
     * @property {number} consultReasonLength Retorna el total de caracteres para el input correspondiente al motivo de la cita (schedule.consult_reason)
@@ -163,7 +163,7 @@ export default defineComponent({
             return this.scheduleSelectedCopy.consult_reason?.length ?? 0;
         }
     },
-    /** 
+    /**
      * Variables a observar por el componente
      * @member LateralScheduleComponent.watch
      * @property {string} startTime Al actualiar la hora de inicio se actualiza la {@link LateralScheduleComponent.updateScheduleTimes|fecha y hora de inicio de la cita}
@@ -172,7 +172,7 @@ export default defineComponent({
      * @property {string} dateSelected Al actualiar la fecha de la consulta se actualiza la {@link LateralScheduleComponent.updateScheduleTimes|fecha y hora de la cita}
      * @property {Schedule} schedule Al actualizar la cita seleccionada, se obtiene {@link LateralScheduleComponent.getDoctorList|el doctor seleccionado}, se asigna un copia
      * de la consulta a la variable scheduleSelectedCopy, se asigna a la variable dateSelected la fecha de la consulta. Si el usuario logueado actualmente es un paciente
-     * se asigna a la variable scheduleSelectedCopy.patient_id  el ID del paciente. Si la lista de doctores (doctorsList) tiene datos, se asigna una copia a la 
+     * se asigna a la variable scheduleSelectedCopy.patient_id  el ID del paciente. Si la lista de doctores (doctorsList) tiene datos, se asigna una copia a la
      * variable doctorListCopy, en caso contrario se obtiene la {@link LateralScheduleComponent.getDoctorList|lista de doctores}. Finalmente selecciona y muestra en el input
      * del doctor, el {@link LateralScheduleComponent.getDoctorPosition|doctor seleccionado}
      * @property {Select[]} doctorListCopy Si se actuliza la copia de los doctores de la sucursal seleccionada, se muestra en el input
@@ -273,7 +273,7 @@ export default defineComponent({
         }
     },
     methods: {
-        /** 
+        /**
          * En caso de que el rol del usuario logueado actualmente coincida con el filtro, se obtiene la {@link LateralScheduleComponent.loadPatientList|lista de pacientes del servidor}
          * @function LateralScheduleComponent.loadPatientList
         */
@@ -284,7 +284,7 @@ export default defineComponent({
                 this.getPatientsList();
             }
         },
-        /** 
+        /**
          * Obtiene la lista de pacientes registrados en el servidor. En caso de que la petición sea correcta, se transforma los pacientes retornados por el servidor en
          * un tipo de dato Select
          * @function LateralScheduleComponent.getPatientsList
@@ -302,10 +302,10 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                
+
             })
         },
-        /** 
+        /**
          * Retorna la fecha de la cita provista por el servidor, en un formato local
          * @function LateralScheduleComponent.formatScheduleTime
          * @param {string} datetime Fecha de la consulta
@@ -313,8 +313,8 @@ export default defineComponent({
         formatScheduleTime(datetime: string): string {
             return moment(datetime).format('hh:mm');
         },
-        /** 
-         * Actualiza la fecha y hora de la cita y la asigna a las variables scheduleSelectedCopy.consult_schedule_start  y scheduleSelectedCopy.consult_schedule_finish 
+        /**
+         * Actualiza la fecha y hora de la cita y la asigna a las variables scheduleSelectedCopy.consult_schedule_start  y scheduleSelectedCopy.consult_schedule_finish
          * @function LateralScheduleComponent.updateScheduleTimes
         */
         updateScheduleTimes()
@@ -326,7 +326,7 @@ export default defineComponent({
                 `${this.dateSelected} ${this.finishTime}:00`, 'YYYY-MM-DD HH:mm:00'
             ).format('YYYY-MM-DD HH:mm:00');
         },
-        /** 
+        /**
          * Limpia los datos de la consulta
          * @function LateralScheduleComponent.clearData
         */
@@ -334,7 +334,7 @@ export default defineComponent({
         {
             this.scheduleSelectedCopy = cloneDeep(this.schedule);
         },
-        /** 
+        /**
          * Abre el componente (este menu lateral) desde un componente padre
          * @function LateralScheduleComponent.openLateralSchedule
         */
@@ -348,7 +348,7 @@ export default defineComponent({
             drawerBasic.classList.add('show');
             overlay.classList.add('show');
         },
-        /** 
+        /**
          * Cierra el componente (este menu lateral)
          * @function LateralScheduleComponent.closeLateralSchedule
         */
@@ -360,15 +360,15 @@ export default defineComponent({
             drawerBasic.classList.remove('show');
             overlay.classList.remove('show');
         },
-        /** 
+        /**
          * Cambia el título del menú lateral (este componente) de acuerdo a si es una nueva cita o es existente
          * @function LateralScheduleComponent.getLateralScheduleTitle
         */
         getLateralScheduleTitle(): string
         {
-            return this.schedule.doctor_id < 1 ? 'Crear cita médica' : 'Modificar cita médica'
+            return this.schedule.id >= 1 ? 'Crear cita médica' : 'Modificar cita médica'
         },
-        /** 
+        /**
          * Crea una nueva cita en el servidor. En caso de que se procese correctamente la petición, se envía un evento newSchedule junto con los datos de la consulta
          * creada, se muestra el componente {@link SuccessAlertComponent} y finalmente se cierra el componente. En caso contrario, se asigna a la variable errors, los errores
          * devueltos por el servidor y se muestra el componente {@link ErrorAlertComponent}
@@ -391,7 +391,7 @@ export default defineComponent({
                 $('#latscError').modal('show');
             })
         },
-        /** 
+        /**
          * Crea actualiza la cita en el servidor. En caso de que se procese correctamente la petición, se muestra el componente {@link SuccessAlertComponent}
          * y finalmente se cierra el componente. En caso contrario, se asigna a la variable errors, los errores
          * devueltos por el servidor y se muestra el componente {@link ErrorAlertComponent}
@@ -413,7 +413,7 @@ export default defineComponent({
                 $('#latscError').modal('show');
             })
         },
-        /** 
+        /**
          * Obtiene los doctores de una sucursal seleccionada. Si la petición es correcta, entonces se filtra
          * las especialidades donde no hay un doctor registrado y finalmente se asigna a la variable
          * doctorListCopy la lista de doctores , convirtiendolos en un tipo Select[]
@@ -423,7 +423,7 @@ export default defineComponent({
         {
             axios.get<BranchSpecialtyDoctors[]>(`/sucursales/${this.scheduleSelectedCopy.branch_id}/especialidades/doctores`)
             .then( response => {
-                
+
                 var index = 0;
                 const doctorFilter = response.data.filter((list: BranchSpecialtyDoctors) => list.doctors.length > 0);
                 this.doctorListCopy = doctorFilter.map(specialty => {
@@ -443,10 +443,10 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                
+
             })
         },
-        /** 
+        /**
          * Obtiene la lista de estudios médicos registrados en el servidor. Si la petición es correcta, entonces los datos
          * retornados se convierten en un tipo Select[]
          * @function LateralScheduleComponent.getTestList
@@ -469,11 +469,11 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                
+
             })
         }
     },
-    /** 
+    /**
      * Al iniciar el componente, se obtienen los datos de los {@link LateralScheduleComponent.loadPatientList|pacientes registrados}
      * @member LateralScheduleComponent.mounted
     */
@@ -485,7 +485,7 @@ export default defineComponent({
     },
 })
 
-/** 
+/**
  * Obtiene la posición del doctor dentro de la variable doctorsList de acuerdo a la especialidad médica a la que pertenece. Esta acción permite
  * mostrar en el input del doctor, el doctor correcto en la especialidad médica seleccionada. Para eso verifica que el childID sea igual al ID del doctor, además que
  * verifica que el parentID (especialidad médica) sea igual a ID de la especialidad médica

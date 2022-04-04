@@ -84,17 +84,17 @@ class PatientController extends Controller
                 'userstatus_id' => 1,
                 'usercategory_id' => 1
             ]);
-    
-            $user->assignRole('Paciente');
-    
+
+            $user->assignRole('Paciente');//campo name de la table role
+
             $preregistration = Preregistration::create([
                 'data' => null,
                 'user_id' => $user->id
             ]);
-    
+
             $file = $request->file('photo');
             $photo = basename($file->store('user'));
-    
+
             $patient = Patient::create([
                 'patient_code' => $request->input('patient_code'),
                 'first_name' => $request->input('first_name'),
@@ -109,7 +109,7 @@ class PatientController extends Controller
             ]);
 
             return response()->json($patient);
-            
+
         }
         return response()->json(['errors' => [
             'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
@@ -122,6 +122,7 @@ class PatientController extends Controller
         if(!$patient)
         {
             $patients = Patient::get(['id', 'first_name', 'last_name', 'patient_code']);
+            // dd($patient);
             return response()->json($patients);
         }
         return response()->json(['errors' => [
@@ -163,7 +164,7 @@ class PatientController extends Controller
             ]);
             return response()->json($patient->load('user'));
         }
-        
+
         return response()->json(['errors' => [
             'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
         ]], 401);
@@ -185,7 +186,7 @@ class PatientController extends Controller
             } else {
                 $prescriptions = $consult;
             }
-            
+
             $response = [
                 'pagination' => [
                     'total' => $prescriptions->total(),
@@ -222,7 +223,7 @@ class PatientController extends Controller
             } else {
                 $prescriptions = $consult;
             }
-            
+
             $response = [
                 'pagination' => [
                     'total' => $prescriptions->total(),
@@ -304,7 +305,7 @@ class PatientController extends Controller
         } else {
             $prescriptions = $payment->paginate();
         }
-        
+
         $response = [
             'pagination' => [
                 'total' => $prescriptions->total(),
@@ -323,7 +324,7 @@ class PatientController extends Controller
     public function getPatientDebts($idPatient)
     {
         $status = PaymentStatus::where('name', 'Deuda')->first()->id;
-        $debts = Payment::where('patient_id', $idPatient)->where('paymentstatus_id', $status)->paginate();        
+        $debts = Payment::where('patient_id', $idPatient)->where('paymentstatus_id', $status)->paginate();
         $response = [
             'pagination' => [
                 'total' => $debts->total(),
