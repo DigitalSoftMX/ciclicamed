@@ -22,6 +22,7 @@
                     </div>
                 </div>
                 <div class="modal-body" v-bind:class="{'rounded-0': showScheduleOption}">
+                    <!-- <p>DATA:{{schedule}}</p> --><!-- Quitar esta linea -->
                     <ul class="e-info-list">
                         <li>
                             <img-component url="/svg/calendar.svg" alt="Calendario"></img-component>
@@ -47,19 +48,35 @@
                             </span>
                         </li>
                         <li>
-                            <img-component url="/svg/branch.svg" alt="Sucursal"></img-component>
+                            <img-component url="/svg/branch.svg" alt="Doctor"></img-component>
                             <span class="list-line">
                                 <span class="list-label">Doctor: </span>
                                 <span class="list-meta"> {{ schedule.doctor?.first_name }} {{schedule.doctor?.last_name}}</span>
                             </span>
                         </li>
-                        <li v-if="role !== 'Paciente' && schedule.patient">
-                            <img-component url="/svg/person.svg" alt="Sucursal"></img-component>
-                            <span class="list-line">
-                                <span class="list-label">Paciente: </span>
-                                <span class="list-meta"> {{ schedule.patient?.first_name }} {{ schedule.patient?.last_name }}</span>
-                            </span>
-                        </li>
+                        <div v-if="role !== 'Paciente' && schedule.patient">
+                            <li>
+                                <img-component url="/svg/person.svg" alt="Paciente"></img-component>
+                                <span class="list-line">
+                                    <span class="list-label">Paciente: </span>
+                                    <span class="list-meta"> {{ schedule.patient?.first_name }} {{ schedule.patient?.last_name }}</span>
+                                </span>
+                            </li>
+                            <li>
+                                <img-component url="/svg/calendar.svg" alt="Facha"></img-component>
+                                <span class="list-line">
+                                    <span class="list-label">Fecha de nacimiento: </span>
+                                    <span class="list-meta">{{ `${formatScheduleDate(schedule.birtday)}` }}</span>
+                                </span>
+                            </li>
+                            <li style="margin-bottom:12px">
+                                <img-component url="/svg/cellphone.svg" alt="Telefono"></img-component>
+                                <span class="list-line">
+                                    <span class="list-label">Telefonos: </span>
+                                    <span class="list-meta">{{ schedule.patient.phone }} || {{ schedule.patient.cellphone }}</span>
+                                </span>
+                            </li>
+                        </div>
                         <li v-if="schedule.status">
                             <img-component url="/svg/alert.svg" alt="Sucursal"></img-component>
                             <span class="list-line">
@@ -76,7 +93,7 @@
                     </ul>
                 </div>
                 <div class="modal-footer bg-white schedule-radius" v-if="showScheduleOption">
-                    <p>role: {{role}}</p>
+                    <!-- <p>role: {{role}}</p> --><!-- Quitar esta linea -->
                     <div v-if="isAssistantOptionEnabled">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startAssistance">Marca asistencia</button>
                     </div>
