@@ -136,8 +136,10 @@ class MedicalConsultController extends Controller
     public function confirmSchedule($id)
     {
         $user = User::findOrFail(Auth::user()->id);
+        dd($user);
         $consult = MedicalConsult::findOrFail($id);
-        if($user->hasRole('Asistente') && intval($consult['medicalconsultstatus_id'] <= 4) && intval(Auth::user()->id) === intval($user['id']) || $user->hasRole('Administrador'))
+        if($user->hasRole('Asistente') && intval($consult['medicalconsultstatus_id'] <= 4) &&
+            intval(Auth::user()->id) === intval($user['id']) || $user->hasRole('Administrador'))
         {
             $consult->update([
                 'medicalconsultstatus_id' => 2

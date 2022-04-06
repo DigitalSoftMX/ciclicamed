@@ -66,7 +66,7 @@
                                 <img-component url="/svg/calendar.svg" alt="Facha"></img-component>
                                 <span class="list-line">
                                     <span class="list-label">Fecha de nacimiento: </span>
-                                    <span class="list-meta">{{ `${formatScheduleDate(schedule.birtday)}` }}</span>
+                                    <span class="list-meta">{{ `${formatScheduleDate(schedule.patient?.birthday)}` }}</span>
                                 </span>
                             </li>
                             <li style="margin-bottom:12px">

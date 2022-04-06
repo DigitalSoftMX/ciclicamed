@@ -8,13 +8,13 @@ import { ScheduleData } from '@data/Schedule/Schedule.data';
 import { AlertError } from '@interface/General/Alert/Error/AlertError.interface';
 import $ from 'jquery';
 
-/** 
+/**
  * @description Componente que datos básicos de la cita seleccionada, mediante el uso de un modal
  * @class ScheduleActionComponent
  * @example <schedule-action-component :schedule="" role="" :employeeID=""></schedule-action-component>
 */
 export default defineComponent({
-    /** 
+    /**
      * {@link LateralScheduleComponent}, {@link SuccessAlertComponent}, {@link ErrorAlertComponent}
      * @member ScheduleActionComponent.components
     */
@@ -23,15 +23,15 @@ export default defineComponent({
         'SuccessAlertComponent': require('@component/general/alert/SuccessAlertComponent.vue').default,
         'ErrorAlertComponent': require('@component/general/alert/ErrorAlertComponent.vue').default
     },
-    /** 
+    /**
      * Eventos del componente
      * @member ScheduleActionComponent.emits
      * @property {Schedule} scheduleCanceled Evento que se emite se cancela una consulta junto con los datos de la consulta
      * @property {null} scheduleUpdated Evento que se emite cuando se actualiza una consulta
     */
     emits: ['scheduleCanceled', 'scheduleUpdated'],
-    /** 
-     * Propiedades que recibe el componente 
+    /**
+     * Propiedades que recibe el componente
      * @member ScheduleActionComponent.props
      * @property {Schedule} schedule (Obligatorio) Cita médica seleccionada
      * @property {string} role Rol del usuario logueado actualmente
@@ -68,7 +68,7 @@ export default defineComponent({
         };
     },
     /**
-    * Propiedades computadas del componente 
+    * Propiedades computadas del componente
     * @member ScheduleActionComponent.computed
     * @property {string} scheduleStatus Retorna el estado de la consulta seleccionada. Si el estado de la consulta esta confirmada, verifica si el paciente
     * ya esta en sucursal, en caso de que se cumpla esta condición, retorna 'Paciente en sucursal', en caso contrario retorna el estado de la consulta
@@ -198,7 +198,7 @@ export default defineComponent({
         }
     },
     methods: {
-        /** 
+        /**
          * Indica al servidor que se debe de marcar la asistencia del paciente a sus cita. En caso de que la petición sea correcta, se asigna al objecto successAlert
          * el mensaje de éxito, a lo cual se procede a ocultar este componente y finalmente se muestra el componente {@link SuccessAlertComponent}. En caso contrario, se
          * asigna a la variable errors, los errores devueltos por el servidor, a lo cual se muestra el componente {@link ErrorAlertComponent}
@@ -218,7 +218,7 @@ export default defineComponent({
                 $('#actionConsultError').modal('show');
             })
         },
-        /** 
+        /**
          * Indica al servidor que se confirma la cita seleccionada. En caso de que la petición sea correcta, se asigna al objecto successAlert
          * el mensaje de éxito, a lo cual se procede a ocultar este componente y finalmente se muestra el componente {@link SuccessAlertComponent}
          * @function ScheduleActionComponent.confirmSchedule
@@ -234,10 +234,10 @@ export default defineComponent({
                 $('#actionConsultSuccess').modal('show');
             })
             .catch(error => {
-                
+
             })
         },
-        /** 
+        /**
          * Inicia la cita médica seleccionada (rol doctor, enfermera y administrador). En caso de que la petición sea correcta, se redirige a la página de la consulta.
          * En caso contrario, se asigna a la variable errors, los errores devueltos por el servidor, a lo cual se muestra el componente {@link ErrorAlertComponent}
          * @function ScheduleActionComponent.startSchedule
@@ -254,16 +254,25 @@ export default defineComponent({
                 $('#actionConsultError').modal('show');
             })
         },
-        /** 
+        /**
          * Retorna la hora de la cita seleccionada
          * @function ScheduleActionComponent.formatScheduleTime
          * @param {string} datetime Fecha de la cita
          * @returns {string}
         */
         formatScheduleTime(datetime: string): string {
-            return moment(datetime).format('hh:mm');
+            return moment(datetime).format('hh:mm a');//12 horas ejemplo 07:30 am
         },
-        /** 
+        /**
+         * Retorna la hora de la cita en formato 24 horas
+         * @function ScheduleActionComponent.formatScheduleTime24
+         * @param {string} datetime Fecha de la cita
+         * @returns {string}
+         */
+        formatScheduleTime24(datetime: string): string {
+            return moment(datetime).format('HH:mm');
+        },
+        /**
          * Retorna la fecha de la cita seleccionada en un formato local
          * @function ScheduleActionComponent.formatScheduleTime
          * @param {string} datetime Fecha de la cita
@@ -272,7 +281,7 @@ export default defineComponent({
         formatScheduleDate(datetime: string): string {
             return moment(datetime).format('D [de] MMMM [del] YYYY');
         },
-        /** 
+        /**
          * Abre el componente {@link LateralScheduleComponent}
          * @function ScheduleActionComponent.openLateralSchedule
         */
@@ -281,7 +290,7 @@ export default defineComponent({
             const child = this.$parent?.$refs.openLateralSchedule as DefineComponent;
             child.openLateralSchedule()
         },
-        /** 
+        /**
          * Cancela la cita seleccionada. En caso de que la petición sea correcta, se asigna al objecto successAlert
          * el mensaje de éxito, a lo cual se procede enviar un envento scheduleCanceled con los datos de la consulta cancelada, para
          * finalmente mostrar el componente {@link SuccessAlertComponent}. En caso contrario, se
