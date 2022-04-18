@@ -79,18 +79,18 @@ export default defineComponent({
         }
     },
     /**
-    * Variables del componente
-    * @member LateralScheduleComponent.data
-    * @property {number} id ID del componente
-    * @property {Schedule} scheduleSelectedCopy Guarda una copia de la cita médica seleccionada para su edición
-    * @property {Select[]} doctorListCopy Guarda una copia de los doctores pertenecientes a una sucursal para su actualización
-    * @property {Array<Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
-    * @property {Select} doctorSelect Guarda el doctor seleccionado
-    * @property {Select} dateSelected Guarda la fecha de la cita seleccionada
-    * @property {string} startTime Guarda la hora inicial de la cita
-    * @property {string} finishTime Guarda la hora final de la cita
-    * @property {Select[]} patientsList Guarda la lista de pacientes registrados en el sistema
-    * @property {boolean} startHourUpdated Indica si se ha actualizado o no la hora de trabajo del doctor seleccionado
+     * Variables del componente
+     * @member LateralScheduleComponent.data
+     * @property {number} id ID del componente
+     * @property {Schedule} scheduleSelectedCopy Guarda una copia de la cita médica seleccionada para su edición
+     * @property {Select[]} doctorListCopy Guarda una copia de los doctores pertenecientes a una sucursal para su actualización
+     * @property {Array<Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
+     * @property {Select} doctorSelect Guarda el doctor seleccionado
+     * @property {Select} dateSelected Guarda la fecha de la cita seleccionada
+     * @property {string} startTime Guarda la hora inicial de la cita
+     * @property {string} finishTime Guarda la hora final de la cita
+     * @property {Select[]} patientsList Guarda la lista de pacientes registrados en el sistema
+     * @property {boolean} startHourUpdated Indica si se ha actualizado o no la hora de trabajo del doctor seleccionado
     */
     data()
     {
@@ -109,15 +109,15 @@ export default defineComponent({
         };
     },
     /**
-    * Propiedades computadas del componente
-    * @member LateralScheduleComponent.computed
-    * @property {string} tarjetaPaciente Retorna los datos del paciente y la fecha y hora de inicio y final de la consulta (solo en consulta editada)
-    * @property {string} scheduleAction Cambia el título del botón del componente de acuerdo a si es una nueva cita o existente
-    * @property {FullCalendarBusinessHour} startHour Busca y actualiza la hora de inicio y final de trabajo disponible para el doctor seleccionado,
-    * por ejemplo, si la fecha de la consulta es un martes y ese día el doctor trabaja de 07:00 a 15:00, busca dentro de los horarios de trabajo en la variable
-    * businessHours y al encontrar el primer horario que coincide con el día, entonces asigna a las variables startTime y finishTime la hora de inicio y final del horario
-    * (07:00 a 15:00) de trabajo del doctor, en caso de no encontrar coincidencia, asigna a las variables anteriores un valor predefinido
-    * @property {number} consultReasonLength Retorna el total de caracteres para el input correspondiente al motivo de la cita (schedule.consult_reason)
+     * Propiedades computadas del componente
+     * @member LateralScheduleComponent.computed
+     * @property {string} tarjetaPaciente Retorna los datos del paciente y la fecha y hora de inicio y final de la consulta (solo en consulta editada)
+     * @property {string} scheduleAction Cambia el título del botón del componente de acuerdo a si es una nueva cita o existente
+     * @property {FullCalendarBusinessHour} startHour Busca y actualiza la hora de inicio y final de trabajo disponible para el doctor seleccionado,
+     * por ejemplo, si la fecha de la consulta es un martes y ese día el doctor trabaja de 07:00 a 15:00, busca dentro de los horarios de trabajo en la variable
+     * businessHours y al encontrar el primer horario que coincide con el día, entonces asigna a las variables startTime y finishTime la hora de inicio y final del horario
+     * (07:00 a 15:00) de trabajo del doctor, en caso de no encontrar coincidencia, asigna a las variables anteriores un valor predefinido
+     * @property {number} consultReasonLength Retorna el total de caracteres para el input correspondiente al motivo de la cita (schedule.consult_reason)
     */
     computed: {
         tarjetaPaciente(): string
@@ -311,7 +311,7 @@ export default defineComponent({
          * @param {string} datetime Fecha de la consulta
         */
         formatScheduleTime(datetime: string): string {
-            return moment(datetime).format('hh:mm');
+            return moment(datetime).format('hh:mm a');
         },
         /**
          * Actualiza la fecha y hora de la cita y la asigna a las variables scheduleSelectedCopy.consult_schedule_start  y scheduleSelectedCopy.consult_schedule_finish
@@ -366,7 +366,7 @@ export default defineComponent({
         */
         getLateralScheduleTitle(): string
         {
-            return this.schedule.id >= 1 ? 'Crear cita médica' : 'Modificar cita médica'
+            return this.schedule.id <= 0 ? 'Crear cita médica' : 'Modificar cita médica'
         },
         /**
          * Crea una nueva cita en el servidor. En caso de que se procese correctamente la petición, se envía un evento newSchedule junto con los datos de la consulta

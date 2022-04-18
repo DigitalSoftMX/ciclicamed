@@ -7,9 +7,9 @@
                 @onEmployeeScheduleSelect="getScheduleBranchList" @onEmployeeAllSchedule="selectEmployeeAllSchedule" :role="role"></schedule-select-component>
         </div>
         <div class="col-12 col-md-8 col-xl-9">
-            <calendar-componet :branchesList="branchesList" :schedules="schedules" :businessHours="businessHours"
+            <calendar-component :branchesList="branchesList" :schedules="schedules" :businessHours="businessHours"
                 @onNewSchedule="copyScheduleData" @onSelectedSchedule="getScheduleSelected" :userID="userID" :role="role">
-            </calendar-componet>
+            </calendar-component>
         </div>
     </div>
 
@@ -17,7 +17,8 @@
     <checkup-schedule-component :branches="branchesList" :patients="patientsList" :patientID="userID">
     </checkup-schedule-component>
     <lateral-schedule-component ref="openLateralSchedule" :schedule="scheduleSelected" :branchesList="branchesList"
-        :doctorsList="doctorList" :businessHours="businessHours" :patientID="userID" :role="role" v-if="role !== 'Enfermera'"></lateral-schedule-component>
+        :doctorsList="doctorList" :businessHours="businessHours" :patientID="userID" :role="role"
+        @newSchedule="selectUserSchedule" v-if="role !== 'Enfermera'"></lateral-schedule-component>
     <div class="overlay-dark"></div>
     <error-alert-component :id="'schecError'" :errors="errors" :title="'Error al procesar la información'">
     </error-alert-component>

@@ -272,6 +272,7 @@ class PageController extends Controller
         {
             if(isset($cookie))
             {
+                // return response()->json(['datas'=>$user]);
                 $consult = MedicalConsult::findOrFail($cookie);
                 if($consult)
                 {
@@ -287,7 +288,8 @@ class PageController extends Controller
                         'consultSpecialty' => $consult['medicalspecialty_id']
                         ], 200);
                     }
-                    if($user->hasRole(['Doctor', 'Enfermera']) && $consult['medicalconsultstatus_id'] <= 4 && Carbon::now()->gte(Carbon::parse($start)))
+                    if($user->hasRole(['Doctor', 'Enfermera']) && ($consult['medicalconsultstatus_id'] == 7 || $consult['medicalconsultstatus_id'] == 4 )
+                        && Carbon::now()->gte(Carbon::parse($start)))
                     {
                         $specialties = $user->employee->specialties;
                         $user->employee['specialties'] = $specialties;

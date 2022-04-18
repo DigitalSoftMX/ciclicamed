@@ -40,27 +40,27 @@
             </div>
             <div class="col-12 mb-25">
                 <label for="cscDiagnosticos">Diagnósticos</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscDiagnosticos" v-model="formData.diagnosticos" disabled></textarea>
+                <textarea class="form-control form-control-lg" rows="5" id="cscDiagnosticos" v-model="formData.diagnosticos" ></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="cscSubjetivo">Subjetivo</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscSubjetivo" v-model="formData.subjetivo" disabled></textarea>
+                <textarea class="form-control form-control-lg" rows="5" id="cscSubjetivo" v-model="formData.subjetivo" ></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="cscObjetivo">Objetivo</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscObjetivo" v-model="formData.objetivo" disabled></textarea>
+                <textarea class="form-control form-control-lg" rows="5" id="cscObjetivo" v-model="formData.objetivo" ></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="cscAnalisis">Análisis</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscAnalisis" v-model="formData.analisis" disabled></textarea>
+                <textarea class="form-control form-control-lg" rows="5" id="cscAnalisis" v-model="formData.analisis" ></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="cscPlan">Plan</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" v-model="formData.plan" disabled></textarea>
+                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" v-model="formData.plan" ></textarea>
             </div>
             <div class="col-12 mb-25">
                 <label for="cscPlan">Observaciones</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscObservaciones" v-model="formData.observaciones" disabled></textarea>
+                <textarea class="form-control form-control-lg" rows="5" id="cscObservaciones" v-model="formData.observaciones" ></textarea>
             </div>
         </div>
     </div>

@@ -20,13 +20,13 @@ import { PagoPDF } from '@data/Files/Pago.file';
 import { PaymentData } from '@data/Payment/Payment.data';
 import { Payment } from '@interface/Payment/Payment.interface';
 
-/** 
+/**
  * @description Componente que carga a un paciente un pago de los servicios y productos disponibles en Cíclica
  * @class ChargePaymentComponent
  * @example <charge-payment-component :products="" :role="" :consult="" :patient="" :paymentID="" isNew=""></charge-payment-component>
 */
 export default defineComponent({
-    /** 
+    /**
      * {@link https://vue-select.org/}, {@link EmptyErrorComponent}, {@link ConsultProductListComponent}
      * {@link ConfirmationAlertComponent}, {@link SuccessAlertComponent}
      * @member ChargePaymentComponent.components
@@ -38,8 +38,8 @@ export default defineComponent({
         ConfirmationAlertComponent: require('@component/general/alert/ConfirmationAlertComponent/ConfirmationAlertComponent.vue').default,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
     },
-    /** 
-     * Propiedades que recibe el componente 
+    /**
+     * Propiedades que recibe el componente
      * @member ChargePaymentComponent.props
      * @property {Product[]} products (Obligatorio solo si se carga un pago creado anteriormente) Productos pertenecientes al pago seleccionado
      * @property {string} role (Obligatorio) Rol del usuario logueado actualmente
@@ -116,7 +116,7 @@ export default defineComponent({
             newPaymentID: 0,
         };
     },
-    /** 
+    /**
      * Al iniciar el componente, verifica si el pago es nuevo: en caso de ser nuevo se obtiene la {@link ChargePaymentComponent.getPatientsList|lista de pacientes} y
      * {@link ChargePaymentComponent.getBranchesList|lista de sucursales}. En caso contrario, obtiene los {@link ChargePaymentComponent.getPaymentData|datos del pago seleccionado}
      * @member ChargePaymentComponent.mounted
@@ -134,7 +134,7 @@ export default defineComponent({
         }
     },
     /**
-    * Propiedades computadas del componente 
+    * Propiedades computadas del componente
     * @member ChargePaymentComponent.computed
     * @property {string} totalPrice Precio total de los productos o servicios seleccionados
     * @property {string} totalDebt Deuda total restante del precio total - la deuda inicial
@@ -171,7 +171,7 @@ export default defineComponent({
             return Number(this.paymentMethod.check) !== 1 ? true : false;
         }
     },
-    /** 
+    /**
      * Variables a observar por el componente
      * @member ChargePaymentComponent.watch
      * @property {Consult} consult Al actualizar los datos de una consulta, verifica si no se han agregado productos anteriormente: en caso de no existir
@@ -216,7 +216,7 @@ export default defineComponent({
         }
     },
     methods: {
-        /** 
+        /**
          * Obtiene el precio de una primera cita. En caso de ser procesada correctamente la petición, se agrega a la variable productSelectedList
          * el precio de la primera cita obtenida
          * @function ChargePaymentComponent.getPrimeraCitaProduct
@@ -230,7 +230,7 @@ export default defineComponent({
             .catch(error => {
             })
         },
-        /** 
+        /**
          * Obtiene el precio de una cita subsecuente. En caso de ser procesada correctamente la petición, se agrega a la variable productSelectedList
          * el precio de la cita subsecuente
          * @function ChargePaymentComponent.getCitaSubsecuenteProduct
@@ -244,7 +244,7 @@ export default defineComponent({
             .catch(error => {
             })
         },
-        /** 
+        /**
          * Obtiene la lista de sucursales habilitados en el servidor. En caso de ser procesada correctamente la petición, se agrega a la variable branchesList
          * las sucursales retornadas por el servidor
          * @function ChargePaymentComponent.getBranchesList
@@ -256,16 +256,16 @@ export default defineComponent({
                 this.branchesList = response.data.map((branch, index) => {
                     return {
                         id: index,
-                        childID: branch.id, 
+                        childID: branch.id,
                         text: branch.name,
                     }
                 });
             })
             .catch(error => {
-                
+
             })
         },
-        /** 
+        /**
          * Obtiene la lista de pacientes guardados en el servidor. En caso de ser procesada correctamente la petición, se agrega a la variable patientsList
          * los pacientes retornadas por el servidor
          * @function ChargePaymentComponent.getBranchesList
@@ -283,10 +283,10 @@ export default defineComponent({
                 });
             })
             .catch(error => {
-                
+
             })
         },
-        /** 
+        /**
          * Muestra el componente {@link ConfirmationAlertComponent} para confirmar que se desea completar el pago (en consulta o con el rol caja)
          * @function ChargePaymentComponent.confirmConsultFinish
         */
@@ -294,7 +294,7 @@ export default defineComponent({
         {
             $('#chpcConsult').modal('show');
         },
-        /** 
+        /**
          * Selecciona la URL a la que se debe enviar el pago de acuerdo al rol y si es un nuevo pago o no después del mensaje de confirmación de completar el pago.
          * Si el pago es nuevo se utiliza {@link ChargePaymentComponent.createNewPayment}, en caso contrario se utiliza {@link ChargePaymentComponent.setPayment}
          * @function ChargePaymentComponent.selectPaymentURL
@@ -323,7 +323,7 @@ export default defineComponent({
                     break;
             }
         },
-        /** 
+        /**
          * Envía al servidor los datos de un nuevo pago (solo rol caja). Si la petición se procesa correctamente, se asigna a la variable newPaymentID el ID del
          * pago, lo cual permite imprimir y descargar el comprobante de pago
          * @function ChargePaymentComponent.createNewPayment
@@ -340,14 +340,14 @@ export default defineComponent({
                 }
             })
             .then(response => {
-                this.newPaymentID = response.data;               
+                this.newPaymentID = response.data;
             })
             .catch(error => {
                 this.errors = error.response.data.errors
                 $('#chpcError').modal('show');
             })
         },
-        /** 
+        /**
          * Envía al servidor los datos actualizados de un nuevo pago. Si la petición se procesa correctamente, se muestra el componente {@link SuccessAlertComponent} con un
          * mensaje de éxito
          * @function ChargePaymentComponent.setPayment
@@ -372,7 +372,7 @@ export default defineComponent({
                 $('#chpcError').modal('show');
             })
         },
-        /** 
+        /**
          * Envía al servidor los datos de un nuevo pago (solo en consulta médica). Si la petición se procesa correctamente, se muestra el componente {@link SuccessAlertComponent} con un
          * mensaje de éxito y se redirige a la página de inicio. En caso contrario se asigna a la variable errors, los errores que retorne el servidor y se muestra el componente
          * {@link ErrorAlertComponent} con el mensaje de error
@@ -389,6 +389,7 @@ export default defineComponent({
                 }
             })
             .then(response => {
+                console.log('createConsultPayment: '+response.data.datas);
                 $('#chpcSuccess').modal('show');
                 setInterval(() => {
                     window.location.replace(`${this.url}/app/inicio`);
@@ -399,7 +400,7 @@ export default defineComponent({
                 $('#chpcError').modal('show');
             })
         },
-        /** 
+        /**
          * Obtiene los datos del pago seleccionado. Si la petición es correcta, se asigna a la variable paymentData los datos del pago que retorne el servidor
          * @function ChargePaymentComponent.getPaymentData
         */
@@ -412,7 +413,7 @@ export default defineComponent({
             .catch(error => {
             })
         },
-        /** 
+        /**
          * Abre el componente {@link ConsultProductListComponent} para mostrar los productos que pertenezcan a la categoría que fue seleccionado por el usuario, para
          * lo cual asigna a la variable categorySelected la categoría del producto y a la variable titleSelected el título del componente {@link ConsultProductListComponent}
          * @function ChargePaymentComponent.openProductListModal
@@ -425,7 +426,7 @@ export default defineComponent({
             this.titleSelected = title;
             $('#cpcProductList').modal('show');
         },
-        /** 
+        /**
          * Verifica si un producto fue seleccionado. En caso de ser seleccionado, se agregar el producto a la varaible productSelectedList, en caso contrario se elimina
          * el producto de la variable productSelectedList
          * @function ChargePaymentComponent.editProducSelectedList
@@ -436,7 +437,7 @@ export default defineComponent({
         {
             checked ? this.productSelectedList.push(product) : this.productSelectedList = this.productSelectedList.filter(item => item.id !== product.id);
         },
-        /** 
+        /**
          * Calcula el precio total de la lista de productos seleccionados, restando la suma total del descuento de cada producto seleccionado
          * @function ChargePaymentComponent.getTotalPrice
         */
@@ -446,7 +447,7 @@ export default defineComponent({
             const discount: number = this.productSelectedList.reduce((a, b) => ({...a, discount: Number(a.discount) + Number(b.discount)}), ProductData).discount;
             return (price - discount).toFixed(2);
         },
-        /** 
+        /**
          * Elimina un producto de la variable productSelectedList
          * @function ChargePaymentComponent.deleteProduct
         */
@@ -454,7 +455,7 @@ export default defineComponent({
         {
            this.productSelectedList = this.productSelectedList.filter(item => item.id !== product.id);
         },
-        /** 
+        /**
          * Crea un pdf de pago con la lista de productos seleccionados, utilizando la plantilla pdf del archivo Pago.file.ts
          * Para crear dicho pago primero convierte el pdf en un archivo legible de tipo ArrayBuffer para la librería {@link https://pdf-lib.js.org/|PDF-LIB},
          * despues procede a ingresar los productos en el pdf mediante el recorrido de la variable productSelectedList. Si detecta que el pago es nuevo, ingresa el
@@ -467,14 +468,14 @@ export default defineComponent({
         async createPDF()
         {
             const pdf: PDFDocument = await PDFDocument.load(PagoPDF);
-            
+
             this.productSelectedList.map((item, index) => {
                 pdf.getForm().getTextField(`clave${index + 1}`).setText(item.product_code);
                 pdf.getForm().getTextField(`descripcion${index + 1}`).setText(item.name);
                 pdf.getForm().getTextField(`cantidad${index + 1}`).setText('1');
                 pdf.getForm().getTextField(`costo${index + 1}`).setText(`$${(Number(item.price) - Number(item.discount)).toFixed(2)}`);
             });
-            
+
             if(this.isNew)
             {
                 const patientSel = this.patientsList.filter(item => item.childID === this.patientID)[0].text;
@@ -491,14 +492,14 @@ export default defineComponent({
                 pdf.getForm().getTextField(`patient`).setText(`${this.paymentData.patient!.first_name} ${this.paymentData.patient!.last_name}`);
                 pdf.getForm().getTextField(`doctor`).setText(`${this.paymentData.medical_consult!.consult_created.doctor!.first_name} ${this.paymentData.medical_consult!.consult_created.doctor!.last_name}`);
             }
-            
+
             pdf.getForm().getTextField(`fecha`).setText(moment().format('DD-MM-YYYY'));
             pdf.getForm().getTextField(`total`).setText(`$${this.totalPrice}`);
             pdf.getForm().flatten();
-            
+
             return await pdf.save()
         },
-        /** 
+        /**
          * Para descargar el pdf, primero se crea el pdf con la funcion {@link ChargePaymentComponent.createPDF}, a lo cual se utiliza la librería
          * {@link https://github.com/rndme/download|Download} para descargarlo al dispositov del doctor
          * @function ChargePaymentComponent.downloadPDF
@@ -509,7 +510,7 @@ export default defineComponent({
             const pdf = await this.createPDF();
             download(pdf, `Pago${this.patient.first_name}_${this.patient.last_name}_${moment().format('DD-MM-YYYY')}.pdf`, 'application/pdf');
         },
-        /** 
+        /**
          * Para descargar el pdf, primero se crea el pdf con la funcion {@link ChargePaymentComponent.createPDF}, a lo cual se procede a convertir el archivo
          * a formato BLOB y finalmente se procede a mandar a impresión con el uso de la librería {@link https://printjs.crabbly.com/|PrintJS}
          * @function ChargePaymentComponent.printPDF
