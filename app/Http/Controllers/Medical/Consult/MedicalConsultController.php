@@ -152,7 +152,7 @@ class MedicalConsultController extends Controller
             'permisos' => ['No cuenta con los permisos necesarios para modificar esta información']
         ]], 401);
     }
-
+    /**Inicia la consulta doctor */
     public function startSchedule($id)
     {
         $user = User::findOrFail(Auth::user()->id);
@@ -217,6 +217,7 @@ class MedicalConsultController extends Controller
         ]], 401);
 
     }
+
     public function createPayment(Request $request, $id)
     {
         $consult = MedicalConsult::findOrFail($id);
@@ -338,7 +339,6 @@ class MedicalConsultController extends Controller
         $consult = MedicalConsult::findOrFail($id);
         $time = Carbon::now()->setTimezone('America/Mexico_City');
 
-        return response()->json(['datas' => $consult], 200);
         if(intval($consult['medicalconsultstatus_id'] == 5 || $consult['medicalconsultstatus_id'] == 6)
             && $user->hasRole(['Doctor', 'Enfermera']))
         {
@@ -454,10 +454,13 @@ class MedicalConsultController extends Controller
         }
         /************************** END SECCION ENFERMERA ************************/
 
+        /************************** SECCION DOCTOR ************************/
         //Verifica si es una consulta normal solo admin y doctor
         if($user->hasRole(['Administrador', 'Doctor']))
         {
             $presentConsult = MedicalConsult::findOrFail($id);
+
+            return response()->json(['datas' => $presentConsult], 200);
             //Si es la primer consulta o si es un administrador, guarda historial medico
             if(intval($consult['medicalconsultcategory_id'] === 1) || $user->hasRole('Administrador'))
             {

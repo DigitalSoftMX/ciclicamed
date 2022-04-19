@@ -342,8 +342,10 @@ class PatientController extends Controller
 
     public function getPreregistration($id)
     {
+        error_log('getPreregistration');
         $patient = Patient::findOrFail($id);
         $patient->preregistration->data = json_decode($patient->preregistration->data);
-        return response()->json($patient->preregistration);
+        error_log(json_encode($patient->preregistration->data));
+        return response()->json($patient->preregistration, 200);
     }
 }
