@@ -23,20 +23,24 @@ class PatientController extends Controller
     public function updateHistory(Request $request, $id)
     {
         $user = User::findOrFail(Auth::user()->id);
-        if($user->hasRole('Administrador'))
+        $consult = MedicalConsult::where('patient_id',$id)->get()->last();//Ultimo registro del paciente
+        // error_log(json_encode($consult));
+        // return response()->json(['datas'=>$user->employee->load('user')]);
+        if($user->hasRole(['Doctor','Administrador']))
         {
-            $history = MedicalHistory::where('patient_id', $id)->orderBy('id', 'desc')->get();
-            if($history->isEmpty())
+            // $history = MedicalHistory::where('patient_id', $id)->orderBy('id', 'desc')->get();
+            $history = MedicalHistory::where('patient_id', $id)->get()->last();
+            if(Empty($history))
             {
                 MedicalHistory::create([
                     'patient_id' => $id,
-                    'medicalconsult_id' => null,
+                    'medicalconsult_id' => $consult->id,
                     'data' => json_encode($request->input('historial')),
                     'updated_by' => $user['employee']['id']
                 ]);
                 return response()->json(true, 200);
             }
-            $history->first()->update([
+            $history->update([
                 'data' => json_encode($request->input('historial')),
                 'updated_by' => $user['employee']['id']
             ]);

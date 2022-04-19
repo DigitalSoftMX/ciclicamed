@@ -87,9 +87,13 @@ export default defineComponent({
     computed: {
         scheduleStatus(): string
         {
-            if(this.schedule.status!.name === 'Confirmado')
+            if(this.schedule.status!.name === 'Marca Asistencia')
             {
                 return this.schedule.assistant_start_at! ? 'Paciente en sucursal' : this.schedule.status!.name;
+            }
+            if(this.schedule.status!.name === 'Signos Vitales')
+            {
+                return this.schedule.nurse_finish_at! ? 'Finalizo Toma Signos Vitales' : this.schedule.status!.name;
             }
             return this.schedule.status!.name;
         },
@@ -260,8 +264,8 @@ export default defineComponent({
             axios.post(`/consultas/${this.schedule.id}/iniciar`)
             .then(response => {
                 console.log('Exito ', response.data.datas);
-                const url = (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
-                window.location.href = `${url}/app/consulta`;
+                /* const url = (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
+                window.location.href = `${url}/app/consulta`; */
             })
             .catch(error => {
                 this.errors = error.response.data.errors;

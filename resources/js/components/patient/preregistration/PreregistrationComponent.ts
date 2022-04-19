@@ -123,7 +123,7 @@ export default defineComponent({
         */
         getPreregistration()
         {
-            console.log('ID: ', this.patientData.id);
+            // console.log('ID: ', this.patientData.id);
             axios.get<Preregistration>(`/pacientes/${this.patientData.id}/preregistro`)
             .then(response => {
                 console.log('Exito: ',response.data);

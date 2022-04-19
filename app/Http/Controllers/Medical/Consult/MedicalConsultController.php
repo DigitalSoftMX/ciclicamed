@@ -460,14 +460,14 @@ class MedicalConsultController extends Controller
         {
             $presentConsult = MedicalConsult::findOrFail($id);
 
-            return response()->json(['datas' => $presentConsult], 200);
+            // return response()->json(['datas' => $presentConsult], 200);
             //Si es la primer consulta o si es un administrador, guarda historial medico
             if(intval($consult['medicalconsultcategory_id'] === 1) || $user->hasRole('Administrador'))
             {
                 MedicalHistory::create([
                     'patient_id' => $presentConsult['patient_id'],
                     'medicalconsult_id' => $id,
-                    'data' => json_encode($request->input('data.historial.data')),
+                    'data' => json_encode($request->input('data.historial.data')),//aqui si es data.historial.data
                     'updated_by' => $user['employee']['id']
                 ]);
             }
@@ -476,8 +476,10 @@ class MedicalConsultController extends Controller
             if(intval($presentConsult['medicalconsultcategory_id']) === 2)
             {
                 //Verifica si hay anexo creado anteriormente, si no hay, entonces guarda la informacion del anexo
-                $attachment = MedicalAttachment::where('patient_id', $presentConsult['patient_id'])->where('medicalspecialty_id', $presentConsult['medicalspecialty_id'])->get();
-                if($attachment->isEmpty() || $user->hasRole('Administrador') || intval($presentConsult['medicalspecialty_id']) === 4 || intval($presentConsult['medicalspecialty_id']) === 5 || intval($presentConsult['medicalspecialty_id']) === 7)
+                $attachment = MedicalAttachment::where('patient_id', $presentConsult['patient_id'])
+                    ->where('medicalspecialty_id', $presentConsult['medicalspecialty_id'])->get();
+                if($attachment->isEmpty() || $user->hasRole('Administrador') || intval($presentConsult['medicalspecialty_id']) === 4
+                    || intval($presentConsult['medicalspecialty_id']) === 5 || intval($presentConsult['medicalspecialty_id']) === 7)
                 {
                     MedicalAttachment::create([
                         'patient_id' => $presentConsult['patient_id'],

@@ -272,7 +272,6 @@ class PageController extends Controller
         {
             if(isset($cookie))
             {
-                // return response()->json(['datas'=>$user]);
                 $consult = MedicalConsult::findOrFail($cookie);
                 if($consult)
                 {
@@ -288,8 +287,11 @@ class PageController extends Controller
                         'consultSpecialty' => $consult['medicalspecialty_id']
                         ], 200);
                     }
-                    if($user->hasRole(['Doctor', 'Enfermera']) && ($consult['medicalconsultstatus_id'] == 7 || $consult['medicalconsultstatus_id'] == 4 )
-                        && Carbon::now()->gte(Carbon::parse($start)))
+                    $now = Carbon::now();
+                    $time = $now->gte(Carbon::parse($start));//derternina si la hora de inicio es menor que la actual
+                    // return response()->json(['datas'=>$user->employee->load('user')]);
+                    if($user->hasRole(['Doctor', 'Enfermera']) && ($consult['medicalconsultstatus_id'] == 7
+                    || $consult['medicalconsultstatus_id'] == 4 ) && $time)
                     {
                         $specialties = $user->employee->specialties;
                         $user->employee['specialties'] = $specialties;
@@ -301,6 +303,7 @@ class PageController extends Controller
                     }
                     return response()->view('pages.consult', [
                         'roles' => $user->roles,
+                        'user' => $user->employee->load('user'),
                     ], 200);
                 }
 

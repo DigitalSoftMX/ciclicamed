@@ -6,8 +6,8 @@
                     <ul class="nav nav-pills nav-fill rounded" role="tablist">
                         <li class="nav-item border-bottom">
                             <a class="nav-link rounded px-2 py-3 active" id="tab-v-1-tab" data-toggle="tab"
-                                href="#tab-v-1" role="tab" aria-controls="tab-v-1" aria-selected="true">Heredo
-                                familiares</a>
+                                href="#tab-v-1" role="tab" aria-controls="tab-v-1" aria-selected="true">
+                                Heredo familiares</a>
                         </li>
                         <li class="nav-item border-bottom">
                             <a class="nav-link rounded px-2 py-3" id="tab-v-2-tab" data-toggle="tab" href="#tab-v-2"
@@ -23,7 +23,8 @@
                         </li>
                         <li class="nav-item border-bottom">
                             <a class="nav-link rounded px-2 py-3" id="tab-v-5-tab" data-toggle="tab" href="#tab-v-5"
-                                role="tab" aria-controls="tab-v-5" aria-selected="false">Tratamiento</a>
+                                role="tab" aria-controls="tab-v-5" aria-selected="false">
+                                Tratamiento</a>
                         </li>
                     </ul>
                 </div>
