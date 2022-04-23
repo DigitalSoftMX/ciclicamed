@@ -94,16 +94,16 @@
                 </div>
                 <div class="modal-footer bg-white schedule-radius" v-if="showScheduleOption">
                     <!-- <p>role: {{role}}</p> --><!-- Quitar esta linea -->
-                    <div v-if="isConfirmScheduleEnabled">
+                    <div v-if="isConfirmScheduleEnabled && schedule.medicalconsultstatus_id === 1">
                         <button class="btn btn-primary btn-lg btn-squared" @click="confirmSchedule">Confirmar cita</button>
                     </div>
-                    <div v-if="isAssistantOptionEnabled">
+                    <div v-if="isAssistantOptionEnabled && schedule.medicalconsultstatus_id <= 2">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startAssistance">Marca asistencia</button>
                     </div>
-                    <div v-if="isStartScheduleEnabled && role ==='Enfermera' && schedule.medicalconsultstatus_id === 8">
+                    <div v-if="isStartScheduleEnabled && schedule.medicalconsultstatus_id === 8">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startScheduleNurse">Signos vitales</button>
                     </div>
-                    <div v-if="isStartScheduleEnabled && role ==='Doctor' && schedule.medicalconsultstatus_id === 7">
+                    <div v-if="isStartScheduleEnabled && schedule.medicalconsultstatus_id === 7">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Iniciar cita</button>
                     </div>
                     <!-- <div v-if="isFullFormat">

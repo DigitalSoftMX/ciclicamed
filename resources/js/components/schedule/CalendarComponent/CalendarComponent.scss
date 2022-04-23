@@ -2,12 +2,18 @@
 {
     min-width: auto !important;
 }
+/* Clases finales height de eventos caledario */
+.fc-event-main{
+    height: 35px !important;
+    padding: 0 !important;
+}
 
 .fc-media-screen .fc-timegrid-event
 {
     left: 0 !important;
     transform: translateX(0) !important;
     border-radius: 4px !important;
+    padding: 0px 10px !important;
 }
 
 .fc-daygrid-event:hover

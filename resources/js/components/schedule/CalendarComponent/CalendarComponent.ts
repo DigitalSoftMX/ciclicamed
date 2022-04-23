@@ -11,31 +11,31 @@ import { FullCalendarConfig } from '@config/FullCalendar.config';
 import { FullCalendarBusinessHour } from '@interface/General/FullCalendarBusinessHour.interface';
 import { Select } from '@interface/General/Select.interface';
 
-/** 
+/**
  * @description Componente que muestra las agenda de citas médicas creadas, mediante un calendario
  * @class CalendarComponent
  * @example <calendar-component :schedules="" :businessHours="" role=""></calendar-component>
 */
 export default defineComponent({
     name: 'CalendarComponent',
-    /** 
-     * {@link https://fullcalendar.io/|FullCalendar para Vue3} 
+    /**
+     * {@link https://fullcalendar.io/|FullCalendar para Vue3}
      * @member CalendarComponent.components
     */
     components: {
         FullCalendar,
     },
-    /** 
+    /**
      * Eventos del componente
      * @member CalendarComponent.emits
-     * @property {FullCalendarData} onNewSchedule Evento que se emite cuando se crea una nueva cita médica con la información que provee FullCalendar al hacer click en una {@link https://fullcalendar.io/docs/dateClick|fecha} 
-     * @property {FullCalendarData} onSelectedSchedule Evento que se emite cuando se selecciona una cita médica con la información que provee FullCalendar al hacer click en una {@link https://fullcalendar.io/docs/eventClick|cita} 
+     * @property {FullCalendarData} onNewSchedule Evento que se emite cuando se crea una nueva cita médica con la información que provee FullCalendar al hacer click en una {@link https://fullcalendar.io/docs/dateClick|fecha}
+     * @property {FullCalendarData} onSelectedSchedule Evento que se emite cuando se selecciona una cita médica con la información que provee FullCalendar al hacer click en una {@link https://fullcalendar.io/docs/eventClick|cita}
     */
     emits: ['onNewSchedule', 'onSelectedSchedule'],
-    /** 
-     * Propiedades que recibe el componente 
+    /**
+     * Propiedades que recibe el componente
      * @member CalendarComponent.props
-     * @property {Schedule[]} schedules (Obligatorio) Lista de citas médicas agendadas
+     * @property {Schedules[]} schedules (Obligatorio) Lista de citas médicas agendadas
      * @property {FullCalendarBusinessHour[]} businessHours (Opcional) Horario de trabajo del empleado seleccionado
      * @property {string} role (Obligatorio) Rol del usuario logueado actualmente
     */
@@ -78,7 +78,7 @@ export default defineComponent({
             hoursEnabled: [] as FullCalendarBusinessHour[],
         }
     },
-    /** 
+    /**
      * Variables a observar por el componente
      * @member CalendarComponent.watch
      * @property {FullCalendarBusinessHour[]} businessHours Al actualizar el horario del trabajador seleccionado, se asigna a la opción de  FullCalendar (businessHour) los horarios
@@ -99,7 +99,7 @@ export default defineComponent({
         }
     },
     methods: {
-        /** 
+        /**
          * Elimina todas las citas médicas (eventos en FullCalendar) que se muestran en el calendario {@link https://fullcalendar.io/docs/Event-remove|más información}
          * @function CalendarComponent.deleteAllEvents
         */
@@ -111,11 +111,11 @@ export default defineComponent({
                 event.remove();
             });
         },
-        /** 
+        /**
          * Recorre todas las citas médicas (eventos en FullCalendar) que están en la variable schedulesCopy y procede a {@link CalendarComponent.addSchedule|agregarlos al calendario}
          * @function CalendarComponent.renderSchedules
         */
-        renderSchedules(): void {            
+        renderSchedules(): void {
             this.schedulesCopy.map(schedule => {
                 if(this.role=='Paciente'){
                     if(schedule.patient_id===this.userID){
@@ -124,9 +124,9 @@ export default defineComponent({
                 }else{
                     this.addSchedule(schedule);
                 }
-            });            
+            });
         },
-        /** 
+        /**
          * Si detecta que la cita médica seleccionada tiene el nombre del doctor, procede a retonar el nombre completo del doctor, en caso contrario,
          * retorna el nombre completo del paciente
          * @param {Schedule} schedule Cita médica seleccionada
@@ -141,7 +141,7 @@ export default defineComponent({
                     ${schedule.doctor!.last_name ?? ''}` :
                     `${schedule.patient?.first_name ?? ''} ${schedule.patient?.last_name ?? ''}`;
         },
-        /** 
+        /**
          * Retorna el nombre que se va a mostrar en cada uno de las citas médicas (eventos en FullCalendar) de acuerdo a la categoría de la cita médica a la que pertenezca
          * @param {string} category Tipo de cita
          * @param {string} name Nombre del {@link CalendarComponent.getNameSchedule|usuario o paciente}
@@ -166,7 +166,7 @@ export default defineComponent({
                     return 'Cita'
             }
         },
-        /** 
+        /**
          * Agrega al calendario la cita médica seleccionada (evento en FullCalendar). Para realizarlo, primer obtiene {@link CalendarComponent.getNameSchedule|el nombre del paciente o doctor a mostrar en la cita},
          * agrega el título (title), color de borde (borderColor) y color de fondo (backgroundColor) predefinidos al evento. Después consulta el rol actual del usuario
          * logueado actualmente: en caso del paciente agrega datos predefinidos, en caso del doctor y predefinido, obtiene {@link CalendarComponent.getScheduleTitle|el nombre del tipo de cita},
@@ -176,7 +176,7 @@ export default defineComponent({
          * @function CalendarComponent.addSchedule
         */
         addSchedule(schedule: Schedule)
-        {           
+        {
             const calendar = this.$refs.fullCalendar as DefineComponent;
             var title = 'Consulta';
             var borderColor = '#60269E';
@@ -221,7 +221,7 @@ export default defineComponent({
                         backgroundColor = schedule.assistant_start_at ? '#FBC02D' : !schedule.status?.color ? '#60269E' : schedule.status!.color!;
                     }
                     break;
-                
+
             }
             calendar.getApi().addEvent({
                 id: schedule.id!.toString(),
@@ -234,7 +234,7 @@ export default defineComponent({
                 display: 'block',
             })
         },
-        /** 
+        /**
          * Retorna el evento onNewSchedule con la información que provee FullCalendar al hacer click en una {@link https://fullcalendar.io/docs/dateClick|fecha} (solo roles: asistente, doctor y administrador)
          * @param {any} data Datos que provee FullCalendar al hacer click en una {@link https://fullcalendar.io/docs/dateClick|fecha}
          * @function CalendarComponent.fullcalendarDateClick
@@ -258,10 +258,10 @@ export default defineComponent({
                     break
             }
         },
-        /** 
+        /**
          * Retorna el evento onSelectedSchedule con la información de la cita médica seleccionada (todos los roles). Después muestra
          * el componente {@link ScheduleActionComponent}
-         * @param {any} data Datos que provee FullCalendar al hacer click en una {@link https://fullcalendar.io/docs/eventClick|cita} 
+         * @param {any} data Datos que provee FullCalendar al hacer click en una {@link https://fullcalendar.io/docs/eventClick|cita}
          * @function CalendarComponent.fullcalendarEventClick
         */
         fullcalendarEventClick(data: any)
