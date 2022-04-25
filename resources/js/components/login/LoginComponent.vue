@@ -20,7 +20,8 @@
                                 <label for="password-field">Contraseña</label>
                                 <div class="position-relative">
                                     <input id="password-field" type="password" class="form-control form-control-lg"
-                                        v-model="password" name="password" placeholder="Contraseña">
+                                        v-model="password" name="password" placeholder="Contraseña"
+                                        v-on:keyup.enter="login">
                                     <div class="fa fa-fw fa-eye-slash text-light fs-16 field-icon toggle-password2">
                                     </div>
                                 </div>

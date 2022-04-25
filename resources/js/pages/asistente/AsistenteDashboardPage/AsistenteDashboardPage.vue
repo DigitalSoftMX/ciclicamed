@@ -3,6 +3,7 @@
     <sidebar-component title="Menú lateral" :items="sidebarItems"></sidebar-component>
     <div id="pdpContent" class="contents expanded">
         <schedule-component :role="role"></schedule-component>
+
     </div>
 </template>
 

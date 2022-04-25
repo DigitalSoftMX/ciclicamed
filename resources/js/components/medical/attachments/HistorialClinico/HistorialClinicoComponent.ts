@@ -22,6 +22,11 @@ export default defineComponent({
     },
     emits: ['update:modelValue'],
     props:{
+        consultID:
+        {
+            type: Number,
+            default: -1
+        },
         disabled: {
             type: Boolean as PropType<Boolean>,
             default: true
@@ -30,19 +35,19 @@ export default defineComponent({
             type: Object as PropType<HistorialClinico>,
             default: HistorialClinicoData
         },
-        edit: {
-            type: Boolean as PropType<Boolean>,
-            default: false
-        },
-        patient: {
+        patientID: {
             type: Number as PropType<Number>,
             default: 0
+        },
+        role: {
+            type: String,
+            default: ''
         }
     },
     data(){
         return {
             formData: this.modelValue,
-            errors: []
+            errors: [],
         }
     },
     watch:
@@ -64,16 +69,34 @@ export default defineComponent({
             deep: true
         }
     },
+    computed: {
+        edit(): boolean
+        {
+            console.log('computed edit role: ',this.role);
+            switch(this.role)
+            {
+                case 'Administrador':
+                    return true;
+                case 'Doctor':
+                    return true;
+                case 'Enfermera':
+                    return false;
+                default:
+                    return false
+            }
+        },
+    },
     methods: {
         updateHistorial()
         {
-            axios.post(`/pacientes/${this.patient}/historial`, {
+            axios.post(`/pacientes/${this.patientID}/historial`, {
                 historial: {
                     type: 'form',
                     form: this.formData
                 }
             })
             .then(response => {
+                console.log('Exito: ', response.data);
                 $('#hisccSuccess').modal('show');
             })
             .catch(error => {

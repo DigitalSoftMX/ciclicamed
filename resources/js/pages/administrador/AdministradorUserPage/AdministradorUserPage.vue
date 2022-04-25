@@ -29,6 +29,7 @@
                 </div>
             </div>
             <!-- Tab Menu End -->
+            <!-- {{administrador}} -->
             <div class="projects-tab-content projects-tab-content--progress">
                 <div class="tab-content mt-25" id="mdc">
                     <div class="tab-pane fade active show" id="mccHistorialClinico" role="tabpanel">
@@ -41,7 +42,7 @@
             </div>
         </div>
 
-        
+
     </div>
 </template>
 

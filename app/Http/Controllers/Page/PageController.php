@@ -116,6 +116,8 @@ class PageController extends Controller
 
         if($user->hasRole('Administrador'))
         {
+            // error_log("=====================================================");
+            // dd(json_encode($user));
             return response()->view('pages.users', [
                 'user' => $user->employee->load('user'),
                 'roles' => $user->roles
@@ -137,11 +139,11 @@ class PageController extends Controller
         }
         return response()->view('errors.404', [], 404);
     }
-
+    /* ANCHOR  Seguir aqui hoy*/
     public function showDashboard()
     {
         $user = User::findOrFail(Auth::user()->id);
-
+        //Usuario es igual paciente
         if($user['usercategory_id'] === 1 && $user->hasRole('Paciente'))
         {
             return response()->view('pages.dashboard', [
@@ -151,6 +153,7 @@ class PageController extends Controller
         }
         else
         {
+            //Usiario diferente de paciente
             return response()->view('pages.dashboard', [
                 'user' => $user->employee->load('user'),
                 'roles' => $user->roles
@@ -211,6 +214,10 @@ class PageController extends Controller
 
         if($user['usercategory_id'] === 1 && $user->hasRole('Paciente'))
         {
+            // echo '<pre>';
+            // var_dump($user);
+            // var_dump($user->roles);
+            // die();
             return response()->view('pages.profile', [
                 'user' => $user->patient->load('user'),
                 'roles' => $user->roles
@@ -253,7 +260,10 @@ class PageController extends Controller
         }
         return response()->view('errors.404', [], 404);
     }
-
+    /**
+     * Cunado se inicia una consulta
+     * Enfermera, Doctor o Administrador
+    **/
     public function showConsulta()
     {
         $cookie = request()->cookie('consult');
@@ -277,7 +287,11 @@ class PageController extends Controller
                         'consultSpecialty' => $consult['medicalspecialty_id']
                         ], 200);
                     }
-                    if($user->hasRole(['Doctor', 'Enfermera']) && $consult['medicalconsultstatus_id'] <= 4 && Carbon::now()->gte(Carbon::parse($start)))
+                    $now = Carbon::now();
+                    $time = $now->gte(Carbon::parse($start));//derternina si la hora de inicio es menor que la actual
+                    // return response()->json(['datas'=>$user->employee->load('user')]);
+                    if($user->hasRole(['Doctor', 'Enfermera']) && ($consult['medicalconsultstatus_id'] == 7
+                    || $consult['medicalconsultstatus_id'] == 4 ) && $time)
                     {
                         $specialties = $user->employee->specialties;
                         $user->employee['specialties'] = $specialties;
@@ -289,9 +303,10 @@ class PageController extends Controller
                     }
                     return response()->view('pages.consult', [
                         'roles' => $user->roles,
+                        'user' => $user->employee->load('user'),
                     ], 200);
                 }
-                
+
                 return response()->view('pages.consult', [
                     'roles' => $user->roles,
                 ], 200);
@@ -300,7 +315,7 @@ class PageController extends Controller
                 'roles' => $user->roles,
             ], 200);
         }
-        
+
         return response()->view('errors.404', [], 404);
     }
 }

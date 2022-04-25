@@ -85,7 +85,7 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::patch('/{id}', [MedicalConsultController::class, 'updateSchedule'])->name('consulta.actualizar');
         Route::get('/{id}/seguimiento', [MedicalConsultController::class, 'getFollowUps'])->name('consulta.seguimiento');
         Route::get('/{id}/receta', [MedicalConsultController::class, 'getPrescriptions'])->name('consulta.receta');
-        
+
         Route::get('/{id}/doctor', [MedicalConsultController::class, 'getDoctor'])->name('consulta.doctor');
         Route::get('/{id}/anexo', [MedicalConsultController::class, 'getSpecialty'])->name('consulta.getAnexo');
         Route::get('/{id}/estudios', [MedicalConsultController::class, 'getTests'])->name('consulta.getEstudiosID');
@@ -97,6 +97,8 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         // Route::post('/{id}/iniciar', [MedicalConsultController::class, 'startSchedule'])->name('consulta.createEstudio');
         Route::post('/{id}/confirmar', [MedicalConsultController::class, 'confirmSchedule'])->name('consulta.confirmConsulta');
         Route::post('/{id}/asistencia', [MedicalConsultController::class, 'startAssitance'])->name('consulta.startAssitance');
+
+        Route::post('/{id}/signosvitales', [MedicalConsultController::class, 'startScheduleNurse'])->name('consulta.startScheduleNurse');
     });
 
     //Imagenes
@@ -200,20 +202,20 @@ Route::group(['middleware' => 'auth', 'verified'], function() {
         Route::get('/resultados/{id}', [MedicalTestResultController::class, 'getResultFile'])->name('estudios.getResultado');
         // Route::get('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.getResultados');
         Route::post('/{id}/resultados', [MedicalTestResultController::class, 'testResult'])->name('estudios.setResultados');
-        
+
     });
 
     //Pagos
     Route::group(['prefix' => 'pagos'], function() {
-        Route::post('/', [PaymentController::class, 'createPayment'])->name('pagos.createPayment'); 
+        Route::post('/', [PaymentController::class, 'createPayment'])->name('pagos.createPayment');
         Route::get('/faltantes', [PaymentController::class, 'getAllMissingPayments'])->name('pagos.getFaltantes');
         Route::get('/{id}', [PaymentController::class, 'getPayment'])->name('pagos.getPago');
         Route::get('/{id}/productos', [PaymentController::class, 'getPaymentProductsByID'])->name('pagos.getProductos');
         Route::get('/{id}/deudas', [PaymentController::class, 'getAllDebtsByPaymentID'])->name('pagos.getDeudas');
         Route::post('/{id}/deudas', [PaymentController::class, 'setDebtPayment'])->name('pagos.setDeuda');
         Route::post('/{id}/pago', [PaymentController::class, 'createPaymentByID'])->name('pagos.createPaymentByID');
-        Route::delete('/{id}', [PaymentController::class, 'deletePaymentByID'])->name('pagos.deletePayment'); 
-        Route::get('/ultimo', [PaymentController::class, 'getLastID'])->name('pagos.getLastID'); 
+        Route::delete('/{id}', [PaymentController::class, 'deletePaymentByID'])->name('pagos.deletePayment');
+        Route::get('/ultimo', [PaymentController::class, 'getLastID'])->name('pagos.getLastID');
     });
 
     //Checkup

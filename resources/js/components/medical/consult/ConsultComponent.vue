@@ -79,7 +79,8 @@
                     <div class="projects-tab-content projects-tab-content--progress">
                         <div class="tab-content mt-25" id="mdc">
                             <div class="tab-pane fade active show" id="mccHistorialClinico" role="tabpanel">
-                                <historial-clinico-component v-model="historyData.data.form" :disabled="disableHistory">
+                                <historial-clinico-component v-model="historyData.data.form" :disabled="disableHistory"
+                                    :role="role" :patientID="this.consultData.patient_id" :consultID="consultData.id">
                                 </historial-clinico-component>
                             </div>
                             <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel" v-if="consultData.medicalconsultcategory_id !== 1">
@@ -90,10 +91,10 @@
                                 aria-labelledby="mccEspecialidades-tab">
                                 <uroginecologia-component v-if="consultData.medicalspecialty_id === 1" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.uroginecología"></uroginecologia-component>
-                                
+
                                 <climaterio-salud-osea-component v-else-if="consultData.medicalspecialty_id === 2" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.climaterioSaludOsea"></climaterio-salud-osea-component>
-                                
+
                                 <materno-fetal-component v-else-if="consultData.medicalspecialty_id === 3" :disabled="enableAttachmentData"
                                     v-model="attachmentForm.maternoFetal"></materno-fetal-component>
 

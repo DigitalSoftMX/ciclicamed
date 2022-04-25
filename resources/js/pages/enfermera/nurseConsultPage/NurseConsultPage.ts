@@ -89,6 +89,10 @@ export default defineComponent({
         {
             this.isSidebarOpen = !this.isSidebarOpen;
         },
+        /**Envia los datos al servidor
+         * @function ConsultPatientProfileComponent.sendToServerData
+         * @param {object} data:
+         */
         sendToServerData()
         {
             axios.post(`/consultas/${this.consult}/resultados`, {
@@ -101,6 +105,7 @@ export default defineComponent({
                 }
             })
             .then(response => {
+                console.log('Response: ',response.data.datas);
                 $('#nurcpSuccess').modal('show');
                 setInterval(() => {
                     window.location.replace(`${this.url}/app/inicio`);

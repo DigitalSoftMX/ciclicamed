@@ -10,14 +10,14 @@ import cloneDeep from 'lodash/cloneDeep';
 import { ElProgress } from 'element-plus';
 require('bootstrap');
 
-/** 
+/**
  * @description Componente que permite crear o editar un usuario, mediante un formulario en un modal
  * @class UserProfileComponent
  * @example <user-profile-component :userID="" :userCategory=""></signup-component>
 */
 export default defineComponent({
-    /** 
-     * {@link https://element-plus.org/#/es/component/progress}, {@link SuccessAlertComponent}, {@link ErrorAlertComponent} 
+    /**
+     * {@link https://element-plus.org/#/es/component/progress}, {@link SuccessAlertComponent}, {@link ErrorAlertComponent}
      * @member UserProfileComponent.components
     */
     components: {
@@ -25,15 +25,15 @@ export default defineComponent({
         ErrorAlertComponent: require('@component/general/alert/ErrorAlertComponent.vue').default,
         SuccessAlertComponent: require('@component/general/alert/SuccessAlertComponent.vue').default,
     },
-    /** 
+    /**
      * Eventos del componente
      * @member UserProfileComponent.emits
      * @property {Patient|Employee} updateUser Evento que se lanza cuando se actualiza el usuario
      * @property {Patient|Employee} updatePhoto Evento que se lanza cuando se actualiza la foto del usuario
     */
     emits: ['updateUser', 'updatePhoto'],
-    /** 
-     * Propiedades que recibe el componente 
+    /**
+     * Propiedades que recibe el componente
      * @member UserProfileComponent.props
      * @property {number} id (Obligatorio ) ID del componente
      * @property {number} userID (Obligatorio ) ID del usuario seleccionado
@@ -99,7 +99,7 @@ export default defineComponent({
             loading: false,
         };
     },
-    /** 
+    /**
      * Variables a observar por el componente
      * @member UserProfileComponent.watch
      * @property {string} patientCode Al actualizar el código del paciente, éste se asigna a la variable userForm.patient_code
@@ -122,10 +122,10 @@ export default defineComponent({
         }
     },
     /**
-    * Propiedades computadas del componente 
+    * Propiedades computadas del componente
     * @member UserProfileComponent.computed
     * @property {boolean} disablePatientCode Habilita o deshabilita el código del paciente si el usuario es paciente o no
-    * @property {string} fullName Concatena el nombre completo del 
+    * @property {string} fullName Concatena el nombre completo del
     */
     computed: {
         disablePatientCode(): boolean
@@ -134,7 +134,7 @@ export default defineComponent({
         }
     },
     methods: {
-        /** 
+        /**
          * Crea un nuevo usuario en el servidor, dependiendo a la categoría a la que pertenezcan (empleados, pacientes).
          * En caso de que la petición sea procesada correctamente,se muestra el componente {@link SuccessAlertComponent} junto con el mensaje de éxito de la
          * variable successMessage. En caso contrario se asigna a la variable errors los errores que retorna en el servidor y se muestra en el componente
@@ -144,7 +144,7 @@ export default defineComponent({
         createUser() {
             const self = this;
             var formData = new FormData();
-            
+
             formData.append('patient_code', this.patientCode);
             formData.append('email', this.userForm.user.email);
             formData.append('first_name', this.userForm.first_name);
@@ -184,7 +184,7 @@ export default defineComponent({
                 $(`#${this.id}profileError`).modal('show');
             })
         },
-        /** 
+        /**
          * Actualiza el usuario en el servidor, dependiendo a la categoría a la que pertenezcan (empleados, pacientes).
          * En caso de que la petición sea procesada correctamente,se muestra el componente {@link SuccessAlertComponent} junto con el mensaje de éxito de la
          * variable successMessage, además de emitir un evento updateUser con los datos del usuario actualizado.
@@ -195,7 +195,7 @@ export default defineComponent({
         updateProfile() {
             const self = this;
             var formData = new FormData();
-            
+
             formData.append('patient_code', this.patientCode);
             formData.append('email', this.userForm.user.email);
             formData.append('first_name', this.userForm.first_name);
@@ -235,7 +235,7 @@ export default defineComponent({
                 $(`#${this.id}profileError`).modal('show');
             })
         },
-        /** 
+        /**
          * Asigna los datos necesarios de acuerdo a la información que se desea mostrar, si es birthday se muestra la fecha de nacimiento, en caso de gender
          * retorna el número 0 o 1 (masculino, femenino)
          * @function UserProfileComponent.checkProfileData
@@ -251,7 +251,7 @@ export default defineComponent({
                     break;
             }
         },
-        /** 
+        /**
          * Actualiza y asigna a la variable formCharacters la longitud actual del input a actualizar
          * @function UserProfileComponent.updateCharacter
          * @param {string} key Key del objeto formCharacters
@@ -263,7 +263,7 @@ export default defineComponent({
             }
             this.formCharacters[key] = Object.keys(this.userForm).find(item => item === key)?.length;
         },
-        /** 
+        /**
          * Obtiene la longitud de un input que este en la variable formCharacters
          * @function UserProfileComponent.getCharacters
          * @param {string} key Key del objeto formCharacters
@@ -275,7 +275,7 @@ export default defineComponent({
             }
             return this.formCharacters[key] === undefined ? Object.keys(this.userForm).find(item => item === key)?.length : this.formCharacters[key];
         },
-        /** 
+        /**
          * Selecciona la foto de perfil del usuario
          * @function UserProfileComponent.selectFile
          * @param {Event} event Evento del input html de la foto
@@ -290,7 +290,7 @@ export default defineComponent({
                 this.$emit('updatePhoto', URL.createObjectURL(file));
             }
         },
-        /** 
+        /**
          * Limpia la foto de perfil del usuario
          * @function UserProfileComponent.cleanPhotoSelected
         */

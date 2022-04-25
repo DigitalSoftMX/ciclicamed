@@ -39,6 +39,9 @@
                         <input type="text" class="form-control form-control-lg" :id="id + 'patientCode'"
                             placeholder="Código paciente" :disabled="disabled || disablePatientCode" maxlength="25"
                             v-model="patientCode">
+                        <!-- <input type="text" class="form-control form-control-lg" :id="id + 'patientCode'"
+                            placeholder="Código paciente" :disabled="disabled || disablePatientCode" maxlength="25"
+                            v-model="userForm.patient_code"> -->
                     </div>
                 </div>
 
@@ -169,6 +172,7 @@
                 </div>
 
                 <div class="button-group d-flex pt-25 justify-content-end" v-if="!disabled">
+                    <!-- <button class="btn btn-secondary btn-default" data-dismiss="modal">Cerrar</button> -->
                     <button class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2"
                         @click="createUser()" v-if="isNew">
                         Crear datos

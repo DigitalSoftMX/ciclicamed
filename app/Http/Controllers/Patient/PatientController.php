@@ -23,20 +23,24 @@ class PatientController extends Controller
     public function updateHistory(Request $request, $id)
     {
         $user = User::findOrFail(Auth::user()->id);
-        if($user->hasRole('Administrador'))
+        $consult = MedicalConsult::where('patient_id',$id)->get()->last();//Ultimo registro del paciente
+        // error_log(json_encode($consult));
+        // return response()->json(['datas'=>$user->employee->load('user')]);
+        if($user->hasRole(['Doctor','Administrador']))
         {
-            $history = MedicalHistory::where('patient_id', $id)->orderBy('id', 'desc')->get();
-            if($history->isEmpty())
+            // $history = MedicalHistory::where('patient_id', $id)->orderBy('id', 'desc')->get();
+            $history = MedicalHistory::where('patient_id', $id)->get()->last();
+            if(Empty($history))
             {
                 MedicalHistory::create([
                     'patient_id' => $id,
-                    'medicalconsult_id' => null,
+                    'medicalconsult_id' => $consult->id,
                     'data' => json_encode($request->input('historial')),
                     'updated_by' => $user['employee']['id']
                 ]);
                 return response()->json(true, 200);
             }
-            $history->first()->update([
+            $history->update([
                 'data' => json_encode($request->input('historial')),
                 'updated_by' => $user['employee']['id']
             ]);
@@ -84,17 +88,17 @@ class PatientController extends Controller
                 'userstatus_id' => 1,
                 'usercategory_id' => 1
             ]);
-    
-            $user->assignRole('Paciente');
-    
+
+            $user->assignRole('Paciente');//campo name de la table role
+
             $preregistration = Preregistration::create([
                 'data' => null,
                 'user_id' => $user->id
             ]);
-    
+
             $file = $request->file('photo');
             $photo = basename($file->store('user'));
-    
+
             $patient = Patient::create([
                 'patient_code' => $request->input('patient_code'),
                 'first_name' => $request->input('first_name'),
@@ -109,7 +113,7 @@ class PatientController extends Controller
             ]);
 
             return response()->json($patient);
-            
+
         }
         return response()->json(['errors' => [
             'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
@@ -122,6 +126,7 @@ class PatientController extends Controller
         if(!$patient)
         {
             $patients = Patient::get(['id', 'first_name', 'last_name', 'patient_code']);
+            // dd($patient);
             return response()->json($patients);
         }
         return response()->json(['errors' => [
@@ -163,7 +168,7 @@ class PatientController extends Controller
             ]);
             return response()->json($patient->load('user'));
         }
-        
+
         return response()->json(['errors' => [
             'permisos' => ['No cuenta con los permisos necesarios para realizar esta acción']
         ]], 401);
@@ -185,7 +190,7 @@ class PatientController extends Controller
             } else {
                 $prescriptions = $consult;
             }
-            
+
             $response = [
                 'pagination' => [
                     'total' => $prescriptions->total(),
@@ -222,7 +227,7 @@ class PatientController extends Controller
             } else {
                 $prescriptions = $consult;
             }
-            
+
             $response = [
                 'pagination' => [
                     'total' => $prescriptions->total(),
@@ -304,7 +309,7 @@ class PatientController extends Controller
         } else {
             $prescriptions = $payment->paginate();
         }
-        
+
         $response = [
             'pagination' => [
                 'total' => $prescriptions->total(),
@@ -323,7 +328,7 @@ class PatientController extends Controller
     public function getPatientDebts($idPatient)
     {
         $status = PaymentStatus::where('name', 'Deuda')->first()->id;
-        $debts = Payment::where('patient_id', $idPatient)->where('paymentstatus_id', $status)->paginate();        
+        $debts = Payment::where('patient_id', $idPatient)->where('paymentstatus_id', $status)->paginate();
         $response = [
             'pagination' => [
                 'total' => $debts->total(),
@@ -341,8 +346,10 @@ class PatientController extends Controller
 
     public function getPreregistration($id)
     {
+        error_log('getPreregistration');
         $patient = Patient::findOrFail($id);
         $patient->preregistration->data = json_decode($patient->preregistration->data);
-        return response()->json($patient->preregistration);
+        error_log(json_encode($patient->preregistration->data));
+        return response()->json($patient->preregistration, 200);
     }
 }

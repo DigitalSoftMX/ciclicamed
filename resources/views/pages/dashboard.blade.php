@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div id="app">
+    <!-- <br><br><br>
+        Usuario: {{$user}} <br>
+        Role: {{$roles}} -->
     @switch($roles[0]->name)
         @case('Administrador')
             <administrador-dashboard-page :administrador="{{ json_encode($user) }}" role="Administrador"></administrador-dashboard-page>
