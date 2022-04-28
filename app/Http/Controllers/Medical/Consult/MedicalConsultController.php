@@ -159,10 +159,11 @@ class MedicalConsultController extends Controller
         $consult = MedicalConsult::findOrFail($id);
         $time = Carbon::now()->setTimezone('America/Mexico_City');
         //Obtine consulta finalizada o cancelada
-        if(intval($consult['medicalconsultstatus_id'] == 5 || $consult['medicalconsultstatus_id'] == 6)
-                || $user->hasRole('Administrador'))
+        if(intval($consult['medicalconsultstatus_id'] == 4) || intval($consult['medicalconsultstatus_id'] == 5)
+            || intval($consult['medicalconsultstatus_id'] == 6) || $user->hasRole('Administrador'))
         {
-            return response()->json([], 200)->withCookie('consult', $id);
+            error_log('Hola');
+            return response()->json(['datas' => 'Ir a la consulta'], 200)->withCookie('consult', $id);
         }
 
         if($user->hasRole('Doctor') && intval($consult['medicalconsultstatus_id'] == 7) || $user->hasRole('Administrador'))

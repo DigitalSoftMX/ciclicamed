@@ -106,6 +106,9 @@
                     <div v-if="isStartScheduleEnabled && schedule.medicalconsultstatus_id === 7">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Iniciar cita</button>
                     </div>
+                    <div v-if="isStartScheduleEnabled && schedule.medicalconsultstatus_id === 4">
+                        <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Ir Consulta</button>
+                    </div>
                     <!-- <div v-if="isFullFormat">
                         <button class="btn btn-primary btn-lg btn-squared" @click="startSchedule">Llenar formulario</button>
                     </div> -->

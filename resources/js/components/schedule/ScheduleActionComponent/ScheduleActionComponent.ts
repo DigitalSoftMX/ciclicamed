@@ -166,13 +166,9 @@ export default defineComponent({
                 case 'Doctor':
                     if(this.employeeID === this.schedule.doctor_id)
                     {
-                        // console.log('Entro Doctor'+ this.employeeID + '-' + this.schedule.doctor_id);
-                        if (this.schedule.nurse_finish_at && this.schedule.status!.name === 'Finaliza Signos') {
-                            this.schedule.status!.name = 'Finaliza Signos Vitales'
-                        }
                         var minutes = moment(this.schedule.consult_schedule_start).subtract(60, 'minutes');
-                        moment().isSameOrAfter(minutes) && this.schedule.status!.name === 'Finaliza Signos Vitales';
-                        return true
+                        console.log('isStartScheduleEnabled Minutos', minutes);
+                        return moment().isSameOrAfter(minutes) && this.schedule.status!.name === 'Signos Vitales';
                     }
                     return false;
                 case 'Enfermera':
@@ -264,8 +260,8 @@ export default defineComponent({
             axios.post(`/consultas/${this.schedule.id}/iniciar`)
             .then(response => {
                 console.log('Exito ', response.data.datas);
-                /* const url = (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
-                window.location.href = `${url}/app/consulta`; */
+                const url = (document.head.querySelector('meta[name="api-base-url"]') as any)!.content
+                window.location.href = `${url}/app/consulta`;
             })
             .catch(error => {
                 this.errors = error.response.data.errors;

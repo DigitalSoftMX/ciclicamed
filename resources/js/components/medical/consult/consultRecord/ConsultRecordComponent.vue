@@ -45,7 +45,18 @@
                                             </div>
                                             <div class="col-8 align-self-center">
                                                 <!-- <h5>{{followUp.name}}</h5> -->
-                                                <h6 class="h6 font-weight-light">Cita subsecuente</h6>
+                                                <div v-if="consult.medicalconsultcategory_id == 1">
+                                                    <h6 class="h6 font-weight-light">Primera cita</h6>
+                                                </div>
+                                                <div v-if="consult.medicalconsultcategory_id == 2">
+                                                    <h6 class="h6 font-weight-light">Cita subsecuente</h6>
+                                                </div>
+                                                <div v-if="consult.medicalconsultcategory_id == 3">
+                                                    <h6 class="h6 font-weight-light">Estudio de imagenología</h6>
+                                                </div>
+                                                <div v-if="consult.medicalconsultcategory_id == 4">
+                                                    <h6 class="h6 font-weight-light">Estudio de laboratorio</h6>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -6,7 +6,7 @@
         <div class="card-body row mx-0">
             <div class="col-12 col-md-6 mb-25 ">
                 <label for="cscFUM">FUM</label>
-                <input class="form-control form-control-lg" type="date" id="cscFUM" v-model="formData.fum">
+                <input class="form-control form-control-lg" type="date" id="cscFUM" v-model="formData.fum" disabled>
             </div>
             <div class="col-12 col-md-3 mb-25 ">
                 <label for="cscIMC">IMC</label>
@@ -38,30 +38,35 @@
                 <label for="cscTemperatura">Temperatura</label>
                 <input class="form-control form-control-lg" type="text" id="cscTemperatura" v-model="formData.temperatura" disabled>
             </div>
-            <div class="col-12 mb-25">
-                <label for="cscDiagnosticos">Diagnósticos</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscDiagnosticos" v-model="formData.diagnosticos" ></textarea>
+            <!-- Rol doctor o Enfermera -->
+            <div class="col-12">
+                <span>Role: {{role}}</span>
+                <div class="col-12 mb-25">
+                        <label for="cscDiagnosticos">Diagnósticos</label>
+                        <textarea class="form-control form-control-lg" rows="5" id="cscDiagnosticos" v-model="formData.diagnosticos" ></textarea>
+                    </div>
+                    <div class="col-12 mb-25">
+                        <label for="cscSubjetivo">Subjetivo</label>
+                        <textarea class="form-control form-control-lg" rows="5" id="cscSubjetivo" v-model="formData.subjetivo" ></textarea>
+                    </div>
+                    <div class="col-12 mb-25">
+                        <label for="cscObjetivo">Objetivo</label>
+                        <textarea class="form-control form-control-lg" rows="5" id="cscObjetivo" v-model="formData.objetivo" ></textarea>
+                    </div>
+                    <div class="col-12 mb-25">
+                        <label for="cscAnalisis">Análisis</label>
+                        <textarea class="form-control form-control-lg" rows="5" id="cscAnalisis" v-model="formData.analisis" ></textarea>
+                    </div>
+                    <div class="col-12 mb-25">
+                        <label for="cscPlan">Plan</label>
+                        <textarea class="form-control form-control-lg" rows="5" id="cscPlan" v-model="formData.plan" ></textarea>
+                    </div>
+                    <div class="col-12 mb-25">
+                        <label for="cscPlan">Observaciones</label>
+                        <textarea class="form-control form-control-lg" rows="5" id="cscObservaciones" v-model="formData.observaciones" ></textarea>
+                    </div>
             </div>
-            <div class="col-12 mb-25">
-                <label for="cscSubjetivo">Subjetivo</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscSubjetivo" v-model="formData.subjetivo" ></textarea>
-            </div>
-            <div class="col-12 mb-25">
-                <label for="cscObjetivo">Objetivo</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscObjetivo" v-model="formData.objetivo" ></textarea>
-            </div>
-            <div class="col-12 mb-25">
-                <label for="cscAnalisis">Análisis</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscAnalisis" v-model="formData.analisis" ></textarea>
-            </div>
-            <div class="col-12 mb-25">
-                <label for="cscPlan">Plan</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscPlan" v-model="formData.plan" ></textarea>
-            </div>
-            <div class="col-12 mb-25">
-                <label for="cscPlan">Observaciones</label>
-                <textarea class="form-control form-control-lg" rows="5" id="cscObservaciones" v-model="formData.observaciones" ></textarea>
-            </div>
+
         </div>
     </div>
 </template>

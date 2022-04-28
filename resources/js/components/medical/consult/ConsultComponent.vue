@@ -85,7 +85,7 @@
                             </div>
                             <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel" v-if="consultData.medicalconsultcategory_id !== 1">
                                 <record-component :patientID="this.consultData.patient_id"
-                                    :specialtyID="this.consultData.medicalspecialty_id"></record-component>
+                                    :specialtyID="this.consultData.medicalspecialty_id" :role="role"></record-component>
                             </div>
                             <div class="tab-pane fade" id="mccEspecialidades" role="tabpanel" v-if="consultData.medicalconsultcategory_id !== 1"
                                 aria-labelledby="mccEspecialidades-tab">
@@ -118,7 +118,7 @@
                             </div>
                             <div class="tab-pane fade" id="mccCitasSubsecuentes" role="tabpanel"
                                 aria-labelledby="mccCitasSubsecuentes-tab">
-                                <citas-subsecuentes-component v-model="followUp.data.form" :disabled="disableConsult">
+                                <citas-subsecuentes-component v-model="followUp.data.form" :disabled="disableConsult" :role="role">
                                 </citas-subsecuentes-component>
                             </div>
                             <div class="tab-pane fade" id="mccReceta" role="tabpanel" aria-labelledby="mccReceta-tab">

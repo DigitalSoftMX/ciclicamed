@@ -10,14 +10,14 @@ import axios from 'axios';
 import moment from 'moment';
 import ConsultUploadTest from '../consultUploadTest/ConsultUploadTest';
 
-/** 
+/**
  * @description Componente que muestra el historial médico de un paciente en una consulta, mediante una línea de tiempo
  * @class ConsultRecordComponent
  * @example <consult-record-component :patientID="" specialtyID=""></consult-record-component>
 */
 export default defineComponent({
     name: 'RecordComponent',
-    /** 
+    /**
      * {@link ConsultUploadTest}, {@link PatientTestFileModalComponent}, {@link CitasSubsecuentesComponent}, {@link EmptyErrorComponent}, {@link NetworkErrorComponent},
      * @member ConsultRecordComponent.components
     */
@@ -28,8 +28,8 @@ export default defineComponent({
         EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
         NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default
     },
-    /** 
-     * Propiedades que recibe el componente 
+    /**
+     * Propiedades que recibe el componente
      * @member ConsultRecordComponent.props
      * @property {number} patientID (Obligatorio) ID del paciente en consulta en proceso
      * @property {number} specialtyID (Obligatorio) ID de la especialidad médica de la consulta en proceso
@@ -42,6 +42,10 @@ export default defineComponent({
         specialtyID: {
             type: Number,
             default: -1
+        },
+        role:{
+            type: String,
+            default: ''
         }
     },
     /**
@@ -69,10 +73,10 @@ export default defineComponent({
             consultDateSelected: '',
             resultSelected: TestFileResultData,
             productSelected: '',
-            testIDSelected: 0
+            testIDSelected: 0,
         }
     },
-    /** 
+    /**
      * Variables a observar por el componente
      * @member ConsultRecordComponent.watch
      * @property {number} patientID Al actualizar el ID del paciente, se obtienen el {@link ConsultRecordComponent.getConsultData|historial médico} perteneciente al nuevo paciente
@@ -92,11 +96,11 @@ export default defineComponent({
         }
     },
     methods: {
-        /** 
-         * Una vez seleccionado un estudio médico, si dicho estudio contiene resultados médicos, se asigna a la variable resultSelected los resultados obtenidos y 
+        /**
+         * Una vez seleccionado un estudio médico, si dicho estudio contiene resultados médicos, se asigna a la variable resultSelected los resultados obtenidos y
          * a la variable productSelected se le asigna el nombre del estudio médico seleccionado, a lo que se procede a mostrar dichos resultados mediante el componente
          * {@link PatientTestFileModalComponent}. En caso contrario se asigna a la variable testIDSelected el ID del estudio y se abre el componente {@link ConsultUploadTest}
-         * para la subida del estudio médico al sistema (Esta última parte solo se puede acceder si durante la consulta donde se agendo dicho estudio, no se indico una cita 
+         * para la subida del estudio médico al sistema (Esta última parte solo se puede acceder si durante la consulta donde se agendo dicho estudio, no se indico una cita
          * para tomar dichos estudios dentro de las instalaciones de Cíclica)
          * @function ConsultRecordComponent.selectTest
          * @param {Test} test Exámen médico seleccionado
@@ -113,9 +117,9 @@ export default defineComponent({
             {
                 this.testIDSelected = test.id;
                 $('#conupteUploadTest').modal('show');
-            }           
+            }
         },
-        /** 
+        /**
          * Obtiene el historial médico del paciente de acuerdo a la especialidad médica de la consulta actual. Si la petición es procesada correctamente, se vacía la variable
          * consultList y se procede a asignarle los resultados retornados por el servidor, en caso contrario se asigna a la variable hasError el valor de true, lo cual procederá
          * a mostrar el componente {@link NetworkErrorComponent}
@@ -131,7 +135,7 @@ export default defineComponent({
                 this.hasError = true;
             })
         },
-        /** 
+        /**
          * Formatea la fecha de la consulta médica provista por el servidor a un formato local
          * @function ConsultRecordComponent.formatConsultDateTime
          * @param {string} dateTime Fecha de la consulta (consult_schedule_start)
@@ -139,7 +143,7 @@ export default defineComponent({
         formatConsultDateTime(dateTime: string) {
             return moment(dateTime).format('DD/MM/YYYY HH:mm')
         },
-        /** 
+        /**
          * Cuando el usuario selecciona una consulta dentro del historial médico, se procede a asignar a la variable consultDateSelected la fecha de dicha consulta,
          * mientras que se resetea la variable componentNumber con un valor de -1 para ocultar todas las tarjetas y componentes hijos del componente.
          * Una vez reseteado el valor anterior, se procede a obtener las {@link ConsultRecordComponent.getFollowUps|citas de seguimiento},
@@ -156,7 +160,7 @@ export default defineComponent({
             this.getTestOrders(id);
             this.getPrescriptions(id);
         },
-        /** 
+        /**
          * Obtiene los datos de la cita de seguimiento pertenecientes a la consulta seleccionada. Si la petición fue procesada correctamente se asigna a la variable
          * followUp los datos que retorna el servidor, en caso contrario asigna datos vacíos
          * @function ConsultRecordComponent.getFollowUps
@@ -171,7 +175,7 @@ export default defineComponent({
                 this.followUp = FollowUpData;
             })
         },
-        /** 
+        /**
          * Obtiene la lista de exámenes médicos pertenecientes a la consulta seleccionada. Si la petición fue procesada correctamente se asigna a la variable
          * testList la lista de exámenes médicos creados en la consulta seleccionada
          * @function ConsultRecordComponent.getTestOrders
@@ -183,10 +187,10 @@ export default defineComponent({
                 this.testList = Object.values(response.data);
             })
             .catch(error => {
-                // 
+                //
             })
         },
-        /** 
+        /**
          * Obtiene la lista de medicamentos pertenecientes a la consulta seleccionada. Si la petición fue procesada correctamente se asigna a la variable
          * prescriptionList la lista de medicamentos creados en la consulta seleccionada
          * @function ConsultRecordComponent.getPrescriptions
@@ -198,10 +202,10 @@ export default defineComponent({
                 this.prescriptionList = Object.values(response.data);
             })
             .catch(error => {
-                // 
+                //
             })
         },
-        /** 
+        /**
          * Muestra uno de los componentes hijos de este componente de acuerdo a la selección que haga el usuario, asignando a la variable componentNumber el
          * número de componente seleccionado (1 Citas subsecuentes, 2 Medicamentos)
          * @function ConsultRecordComponent.showComponent
