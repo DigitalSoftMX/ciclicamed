@@ -1,5 +1,5 @@
 <template>
-    <div class="modal-info-confirmed modal fade show w-100" id="etmcEmployee" tabindex="-1" role="dialog" aria-modal="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-info-confirmed modal fade show w-100" id="etmcEmployee" tabindex="-1" role="dialog" aria-modal="true" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered rounded-bottom" role="document">
             <div class="modal-content rounded-bottom">
                 <div class="modal-header e-info-header bg-primary text-center py-2">

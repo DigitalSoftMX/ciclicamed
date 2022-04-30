@@ -8,13 +8,13 @@ import moment from 'moment';
 import { Patient } from '@interface/Patient/Patient.interface';
 import PatientsHistoryModalComponent from '@component/patient/patientsTable/patientHistoryModal/PatientsHistoryModalComponent';
 
-/** 
+/**
  * @description Componente que muestra la lista de pacientes, mediante el uso de una tabla
  * @class PatientsTableComponent
  * @example <patients-table-component></patients-table-component>
 */
 export default defineComponent({
-    /** 
+    /**
      * {@link PatientsTableModalComponent}, {@link PatientsHistoryModalComponent}, {@link PreregistrationComponent}
      * @member PatientsTableComponent.components
     */
@@ -24,21 +24,21 @@ export default defineComponent({
         PreregistrationComponent: require('@component/patient/preregistration/PreregistrationComponent.vue').default
     },
     /**
-    * Variables del componente
-    * @member PatientsTableComponent.data
-    * @property {MedicamentPagination} userData Guarda la información de los pacientes que retorna el backend en paginación
-    * @property {number} paginationPages Guarda el número de páginas de userData para mostrar el número de páginas en la paginación de la tabla
-    * @property {number} paginationActive Guarda el número de página activa de la tabla
-    * @property {string} query Guarda la búsqueda realizada en el input de búsqueda de la tabla
-    * @property {boolean} activateSearch Activa o no la búsqueda desde el input de búsqueda de la tabla
-    * @property {boolean} loading Activa o no la animación de carga dentro de la tabla
-    * @property {Patient} patientSelected Guarda los datos del paciente seleccionado
-    * @property {boolean} disabledPatientEdit Activa o desactiva la opción de editar al paciente en el componente {@link PatientsTableModalComponent}
-    * @property {string} successAlert.title Guarda el título para el modal del componente {@link SuccessAlertComponent}
-    * @property {string} successAlert.message Guarda el mensaje para el modal del componente {@link SuccessAlertComponent}
-    * @property {Branch} confirmationAlert.title Guarda título del mensaje de confirmación del modal {@link ConfirmationAlertComponent}
-    * @property {Branch} confirmationAlert.message Guarda el mensaje de confirmación del modal {@link ConfirmationAlertComponent}
-    * @property {Medicament} isNew Indica si el medicamento seleccionado es nuevo o existente
+     * Variables del componente
+     * @member PatientsTableComponent.data
+     * @property {MedicamentPagination} userData Guarda la información de los pacientes que retorna el backend en paginación
+     * @property {number} paginationPages Guarda el número de páginas de userData para mostrar el número de páginas en la paginación de la tabla
+     * @property {number} paginationActive Guarda el número de página activa de la tabla
+     * @property {string} query Guarda la búsqueda realizada en el input de búsqueda de la tabla
+     * @property {boolean} activateSearch Activa o no la búsqueda desde el input de búsqueda de la tabla
+     * @property {boolean} loading Activa o no la animación de carga dentro de la tabla
+     * @property {Patient} patientSelected Guarda los datos del paciente seleccionado
+     * @property {boolean} disabledPatientEdit Activa o desactiva la opción de editar al paciente en el componente {@link PatientsTableModalComponent}
+     * @property {string} successAlert.title Guarda el título para el modal del componente {@link SuccessAlertComponent}
+     * @property {string} successAlert.message Guarda el mensaje para el modal del componente {@link SuccessAlertComponent}
+     * @property {Branch} confirmationAlert.title Guarda título del mensaje de confirmación del modal {@link ConfirmationAlertComponent}
+     * @property {Branch} confirmationAlert.message Guarda el mensaje de confirmación del modal {@link ConfirmationAlertComponent}
+     * @property {Medicament} isNew Indica si el medicamento seleccionado es nuevo o existente
     */
     data() {
         return {
@@ -61,7 +61,7 @@ export default defineComponent({
             isNew: false,
         };
     },
-    /** 
+    /**
      * Al iniciar el componente, se obtienen los datos de los {@link PatientsTableComponent.getUserData|pacientes registrados}
      * @member PatientsTableComponent.mounted
     */
@@ -69,7 +69,7 @@ export default defineComponent({
         this.getUserData(1);
     },
     methods: {
-        /** 
+        /**
          * Elimina el paciente seleccionado del servidor. Si la petición es correcta, se asigna al objeto successAlert un mensaje de éxito y se muestra el
          * componente {@link SuccessAlertComponent}
          * @function PatientsTableComponent.deletePatient
@@ -83,10 +83,10 @@ export default defineComponent({
                 $('#patcSuccess').modal('show');
             })
             .catch(error => {
-                
+
             })
         },
-        /** 
+        /**
          * Concatena y retorna el nombre completo del paciente
          * @function PatientsTableComponent.fullName
          * @param {Patient} user Datos del paciente seleccionado
@@ -96,7 +96,7 @@ export default defineComponent({
         {
             return `${user.first_name} ${user.last_name}`;
         },
-        /** 
+        /**
          * Formatea la fecha de nacimiento provista por el servidor a un formato local
          * @function PatientsTableComponent.formatBirthday
          * @param {string} birthday Fecha de nacimiento del paciente
@@ -106,7 +106,7 @@ export default defineComponent({
         {
             return moment(birthday).format('DD-MM-YYYY');
         },
-        /** 
+        /**
          * Crea un nuevo paciente asignando a la variable patientSelected datos vacíos e indicando que es un nuevo paciente asignando a la variable
          * isNew el valor true, además que se habilita la edición del paciente en el formulario {@link PatientsTableModalComponent} mediante la asignación false a la
          * variable disabledPatientEdit. Finalmente se muestra el componente {@link PatientsTableModalComponent} con los datos del paciente
@@ -119,8 +119,8 @@ export default defineComponent({
             this.disabledPatientEdit = false;
             $('#patcPatient').modal('show');
         },
-        /** 
-         * Antes de eliminar a un usuario, se muestra el componente {@link ConfirmationAlertComponent} para mostrar el mensaje de confirmación asignado a la 
+        /**
+         * Antes de eliminar a un usuario, se muestra el componente {@link ConfirmationAlertComponent} para mostrar el mensaje de confirmación asignado a la
          * variable this.confirmationAlert.message, además que se asigna a la variable patientSelected los datos del paciente seleccionado
          * @function PatientsTableComponent.showConfirmationAlert
          * @param {Patient} patient Datos del paciente seleccionado
@@ -131,7 +131,7 @@ export default defineComponent({
             this.confirmationAlert.message = '¿Desea eliminar a este usuario? Esta acción no puede deshacerse'
             $('#patcConfirmation').modal('show');
         },
-        /** 
+        /**
          * Muestra el componente {@link ConfirmationAlertComponent} con los datos del paciente seleccionado que se asignan a la variable patientSelected
          * @function PatientsTableComponent.showPatientModal
          * @param {Patient} patient Datos del paciente seleccionado
@@ -141,7 +141,7 @@ export default defineComponent({
             this.patientSelected = patient;
             $('#pahmcoHistory').modal('show');
         },
-        /** 
+        /**
          * Muestra el componente {@link ConfirmationAlertComponent} con los datos del paciente seleccionado que se asignan a la variable patientSelected.
          * Para permitir la edición del paciente, se asigna a la variable isNew el valor true junto con la asignación false a la variable disabledPatientEdit
          * @function PatientsTableComponent.showPatientModal
@@ -154,7 +154,7 @@ export default defineComponent({
             this.patientSelected = patient;
             $('#patcPatient').modal('show');
         },
-        /** 
+        /**
          * Obtiene los pacientes registradas en el sistema utilizando la paginación provista por el backend.
          * Antes de realizar la petición al servidor con los pacientes, se habilita la animación de carga con la asignación true de la variable loading, se verifica que la página guardada en la variable page sea mayor o igual a 1,
          * que la página sea menor o igual a la última página de la paginación guardada en la variable
@@ -183,7 +183,7 @@ export default defineComponent({
                 })
             }
         },
-        /** 
+        /**
          * Obtiene los pacientes registradas en el sistema que coincidan con la búsqueda realizada por el usuario.
          * Antes de realizar la petición al servidor con los pacientes, se habilita la animación de carga con la asignación true de la variable loading,
          * se asigna a la variable queryPagination el valor de la variable paginationActive si la variable query está vacío, en caso contrario se le asigna el 0.

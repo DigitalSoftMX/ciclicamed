@@ -7,13 +7,13 @@ import { Employee } from '@interface/Employee/Employee.interface';
 import EmployeeTableModalComponent from './employeeTableModal/EmployeeTableModalComponent';
 import { User } from '@interface/User/User.interface';
 
-/** 
+/**
  * @description Componente que muestra la lista de empleados registrados en el sistema mediante una tabla
  * @class EmployeeTableComponent
  * @example <employee-table-component></employee-table-component>
 */
 export default defineComponent({
-    /** 
+    /**
      * {@link EmployeeTableModalComponent}
      * @member EmployeeTableComponent.components
     */
@@ -21,24 +21,24 @@ export default defineComponent({
         EmployeeTableModalComponent
     },
     /**
-    * Variables del componente
-    * @member EmployeeTableComponent.data
-    * @property {EmployeePagination} userData Guarda la información de los empleados que retorna el backend en paginación
-    * @property {number} paginationPages Guarda el número de páginas de userData para mostrar el número de páginas en la paginación de la tabla
-    * @property {number} paginationActive Guarda el número de página activa de la tabla
-    * @property {string} query Guarda la búsqueda realizada en el input de búsqueda de la tabla
-    * @property {boolean} activateSearch Activa o no la búsqueda desde el input de búsqueda de la tabla
-    * @property {Employee} employeeData Guarda los datos de un empleado nuevo
-    * @property {boolean} loading Activa o no la animación de carga dentro de la tabla
-    * @property {Employee} employeeSelected Guarda los datos de un empleado seleccionado
-    * @property {boolean} disableEditEmployee Habilita o deshabilita la opción de editar al empleado en el componente {@link EmployeeTableModalComponent}
-    * @property {string} successAlert.title Guarda el título para el modal del componente {@link SuccessAlertComponent}
-    * @property {string} successAlert.message Guarda el mensaje para el modal del componente {@link SuccessAlertComponent}
-    * @property {Branch} confirmationAlert.title Guarda título del mensaje de confirmación del modal {@link ConfirmationAlertComponent}
-    * @property {Branch} confirmationAlert.message Guarda el mensaje de confirmación del modal {@link ConfirmationAlertComponent}
-    * @property {boolean} isNew Permite al componente {@link EmployeeTableModalComponent} saber si la variable employeeSelected es nueva
-    * @property {string[]} rolesSelected Guarda los roles seleccionados del empleado
-    * @property {Array<Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
+     * Variables del componente
+     * @member EmployeeTableComponent.data
+     * @property {EmployeePagination} userData Guarda la información de los empleados que retorna el backend en paginación
+     * @property {number} paginationPages Guarda el número de páginas de userData para mostrar el número de páginas en la paginación de la tabla
+     * @property {number} paginationActive Guarda el número de página activa de la tabla
+     * @property {string} query Guarda la búsqueda realizada en el input de búsqueda de la tabla
+     * @property {boolean} activateSearch Activa o no la búsqueda desde el input de búsqueda de la tabla
+     * @property {Employee} employeeData Guarda los datos de un empleado nuevo
+     * @property {boolean} loading Activa o no la animación de carga dentro de la tabla
+     * @property {Employee} employeeSelected Guarda los datos de un empleado seleccionado
+     * @property {boolean} disableEditEmployee Habilita o deshabilita la opción de editar al empleado en el componente {@link EmployeeTableModalComponent}
+     * @property {string} successAlert.title Guarda el título para el modal del componente {@link SuccessAlertComponent}
+     * @property {string} successAlert.message Guarda el mensaje para el modal del componente {@link SuccessAlertComponent}
+     * @property {Branch} confirmationAlert.title Guarda título del mensaje de confirmación del modal {@link ConfirmationAlertComponent}
+     * @property {Branch} confirmationAlert.message Guarda el mensaje de confirmación del modal {@link ConfirmationAlertComponent}
+     * @property {boolean} isNew Permite al componente {@link EmployeeTableModalComponent} saber si la variable employeeSelected es nueva
+     * @property {string[]} rolesSelected Guarda los roles seleccionados del empleado
+     * @property {Array<Object>} errors Guarda los mensajes de error provenientes del backend si existe un error en la petición HTTP mediante axios, los cuales se muestran en el componente {@link ErrorAlertComponent}
     */
     data() {
         return {
@@ -64,7 +64,7 @@ export default defineComponent({
             errors: []
         };
     },
-    /** 
+    /**
      * Al iniciar el componente, se obtienen los datos de los {@link EmployeeTableComponent.getUserData|empleados registrados}
      * @member BranchTableComponent.mounted
     */
@@ -72,7 +72,7 @@ export default defineComponent({
         this.getUserData(1);
     },
     methods: {
-        /** 
+        /**
          * Busca el rol actual del empleado y lo retorna, en caso de que no exista un rol, retorna un string vacío
          * @param {User} user Usuario logueado actualmente
          * @function EmployeeTableComponent.role
@@ -82,7 +82,7 @@ export default defineComponent({
         {
             return user.roles!.length > 0 ? user.roles![0].name : '';
         },
-        /** 
+        /**
          * Concatena y retorna el nombre completo del paciente
          * @function EmployeeTableComponent.fullName
          * @param {Employee} employee Datos del empleado seleccionado
@@ -92,7 +92,7 @@ export default defineComponent({
         {
             return `${employee.first_name} ${employee.last_name}`;
         },
-        /** 
+        /**
          * Actualiza el rol seleccionado y lo asigna a la variable rolesSelected
          * @function EmployeeTableComponent.updateRole
          * @param {String[]} roles Roles del empleado
@@ -101,7 +101,7 @@ export default defineComponent({
         {
             this.rolesSelected = roles;
         },
-        /** 
+        /**
          * Crea un nuevo empleado asignando datos predefinidos a la variable employeeSelected, deshabilitando los campos bloqueados del componente {@link EmployeeTableModalComponent}
          * mediante la asignación false de la variable disableEditEmployee y asignando a la variable isNew el valor true para indicar que es un nuevo empleado, a lo cual
          * se procede a mostrar el componente {@link EmployeeTableModalComponent}
@@ -114,7 +114,7 @@ export default defineComponent({
             this.disableEditEmployee = false;
             $('#etmcEmployee').modal('show');
         },
-        /** 
+        /**
          * Muestra el componente de confirmación {@link ConfirmationAlertComponent} antes de deshabilitar un empleado, en caso de que el empleado
          * ya este deshabilitado previamente, muestra un mensaje para confirmar que se desea habilitar al empleado
          * @function EmployeeTableComponent.createEmployee
@@ -126,7 +126,7 @@ export default defineComponent({
             this.confirmationAlert.message  = this.employeeSelected.employeestatus_id === 1 ? '¿Desea cesar a este empleado?' : '¿Desea habilitar este empleado?'
             $('#etmcConfirmation').modal('show');
         },
-        /** 
+        /**
          * Esta función se utiliza cuando el usuario confirma la acción del componente {@link ConfirmationAlertComponent}
          * Activa o desactiva al empleado de acuerdo al estado en el que se encuentre, si el usuario esta habilitado, lo deshabilita y viceversa
          * @function EmployeeTableComponent.chooseEmployeeStatus
@@ -135,7 +135,7 @@ export default defineComponent({
         {
             this.employeeSelected.employeestatus_id === 1 ? this.disableEmployee() : this.enableEmployee();
         },
-        /** 
+        /**
          * Envía una petición al servidor para deshabilitar el usuario seleccionado. Si la petición es procesada correctamente
          * se asigna al objecto successAlert un título y un mensaje de éxito y se muestra el componente
          * En caso de error, se asigna a la variable errors los errores del backend y se muestra el componente {@link ErrorAlertComponent}
@@ -154,7 +154,7 @@ export default defineComponent({
                 $('#emtmcError').modal('show');
             })
         },
-        /** 
+        /**
          * Envía una petición al servidor para habilitar el usuario seleccionado. Si la petición es procesada correctamente
          * se asigna al objecto successAlert un título y un mensaje de éxito y se muestra el componente
          * En caso de error, se asigna a la variable errors los errores del backend y se muestra el componente {@link ErrorAlertComponent}
@@ -173,7 +173,7 @@ export default defineComponent({
                 $('#emtmcError').modal('show');
             })
         },
-        /** 
+        /**
          * Muestra el componente {@link EmployeeTableModalComponent} mostrando solo los datos del empleado sin posibilidad de editarlos. Para esto la variable isNew se le asigna
          * un valor false y el valor disableEditEmployee se le asigna un valor true, para pasar los datos al componente {@link EmployeeTableModalComponent} del empleado,
          * se asigna el parametro de la función a la variable employeeSelected
@@ -186,7 +186,7 @@ export default defineComponent({
             this.employeeSelected = employee;
             $('#etmcEmployee').modal('show');
         },
-        /** 
+        /**
          * Muestra el componente {@link EmployeeTableModalComponent} permitiendo la posibilidad de editar los datos del empleado. Para esto la variable isNew se le asigna
          * un valor false y el valor disableEditEmployee se le asigna un valor false, para pasar los datos al componente {@link EmployeeTableModalComponent} del empleado,
          * se asigna el parametro de la función a la variable employeeSelected
@@ -199,7 +199,7 @@ export default defineComponent({
             this.employeeSelected = employee;
             $('#etmcEmployee').modal('show');
         },
-        /** 
+        /**
          * Obtiene los empleados registradas en el sistema utilizando la paginación provista por el backend.
          * Antes de realizar la petición al servidor con los empleados, se habilita la animación de carga con la asignación true de la variable loading, se verifica que la página guardada en la variable page sea mayor o igual a 1,
          * que la página sea menor o igual a la última página de la paginación guardada en la variable
@@ -227,7 +227,7 @@ export default defineComponent({
                 })
             }
         },
-        /** 
+        /**
          * Obtiene los empleados registradas en el sistema que coincidan con la búsqueda realizada por el usuario.
          * Antes de realizar la petición al servidor con los empleados, se habilita la animación de carga con la asignación true de la variable loading,
          * se asigna a la variable queryPagination el valor de la variable paginationActive si la variable query está vacío, en caso contrario se le asigna el 0.
@@ -254,7 +254,7 @@ export default defineComponent({
                     this.loading = false;
                 })
                 .catch(error => {
-                    
+
                     this.loading = false;
                 })
             }
