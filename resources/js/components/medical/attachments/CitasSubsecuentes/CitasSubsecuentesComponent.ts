@@ -18,6 +18,10 @@ export default defineComponent({
         title: {
             type: String,
             default: 'Cita actual'
+        },
+        role:{
+            type: String,
+            default: ''
         }
     },
     data(){
@@ -27,7 +31,7 @@ export default defineComponent({
     },
     methods: {},
     watch: {
-        modelValue: 
+        modelValue:
         {
             handler()
             {

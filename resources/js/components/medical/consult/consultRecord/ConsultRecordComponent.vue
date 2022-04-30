@@ -15,9 +15,10 @@
                     <div class="events-wrapper">
                         <div class="events">
                             <ol>
-                                <li v-for="consult in consultList.slice().reverse()" :key="`event${consult.id}`"><a
-                                        @click="getInfoConsult(consult.id, formatConsultDateTime(consult.consult_schedule_start))"
-                                        :data-date="formatConsultDateTime(consult.consult_schedule_start)">{{formatConsultDateTime(consult.consult_schedule_start)}}</a>
+                                <li v-for="consult in consultList.slice().reverse()" :key="`event${consult.id}`">
+                                    <a @click="getInfoConsult(consult.id, formatConsultDateTime(consult.consult_schedule_start))"
+                                        :data-date="formatConsultDateTime(consult.consult_schedule_start)">
+                                        {{formatConsultDateTime(consult.consult_schedule_start)}}</a>
                                 </li>
                             </ol>
                             <span class="filling-line" aria-hidden="true"></span>
@@ -97,8 +98,8 @@
         </div>
     </div>
 
-    <citas-subsecuentes-component v-if="componentNumber === 1" v-model="followUp.data.form"
-        :title="`Información de cita del ${consultDateSelected}`"></citas-subsecuentes-component>
+    <citas-subsecuentes-show-component v-if="componentNumber === 1" v-model="followUp.data.form"
+        :title="`Información de cita del ${consultDateSelected}`"></citas-subsecuentes-show-component>
     <div class="card" v-if="componentNumber === 2">
         <div class="card-header">
             <h4>Receta</h4>

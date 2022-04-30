@@ -25,6 +25,7 @@ export default defineComponent({
         ConsultUploadTest,
         PatientTestFileModalComponent,
         CitasSubsecuentesComponent: require('@component/medical/attachments/CitasSubsecuentes/CitasSubsecuentesComponent.vue').default,
+        CitasSubsecuentesShowComponent: require('@component/medical/attachments/CitasSubsecuentes/Show/CitasSubsecuentesShowComponent.vue').default,
         EmptyErrorComponent: require('@component/general/error/EmptyErrorComponent.vue').default,
         NetworkErrorComponent: require('@component/general/error/NetworkErrorComponent.vue').default
     },
@@ -141,7 +142,7 @@ export default defineComponent({
          * @param {string} dateTime Fecha de la consulta (consult_schedule_start)
         */
         formatConsultDateTime(dateTime: string) {
-            return moment(dateTime).format('DD/MM/YYYY HH:mm')
+            return moment(dateTime).format('DD/MM/YYYY hh:mm a')
         },
         /**
          * Cuando el usuario selecciona una consulta dentro del historial médico, se procede a asignar a la variable consultDateSelected la fecha de dicha consulta,
