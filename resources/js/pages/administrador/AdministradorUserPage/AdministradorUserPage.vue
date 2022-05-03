@@ -36,7 +36,7 @@
                         <employees-table-component></employees-table-component>
                     </div>
                     <div class="tab-pane fade" id="mccExpedienteClinico" role="tabpanel">
-                        <patients-table-component></patients-table-component>
+                        <patients-table-component :role="role"></patients-table-component>
                     </div>
                 </div>
             </div>

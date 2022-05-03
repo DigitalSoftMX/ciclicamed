@@ -148,7 +148,7 @@
             <div class="spinner-border text-primary"></div>
         </div>
     </div>
-    <patients-history-modal-component :edit="true" :patient="patientSelected"></patients-history-modal-component>
+    <patients-history-modal-component :edit="true" :patient="patientSelected" :role="role"></patients-history-modal-component>
     <success-alert-component id="patcSuccess" :title="successAlert.title" :message="successAlert.message"></success-alert-component>
     <patients-table-modal-component :patient="patientSelected" :disabled="disabledPatientEdit" :isNew="isNew"></patients-table-modal-component>
     <confirmation-alert-component id="patcConfirmation" :title="confirmationAlert.message" @confirmAction="deletePatient"></confirmation-alert-component>

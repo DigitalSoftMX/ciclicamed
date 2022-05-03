@@ -23,22 +23,32 @@ export default defineComponent({
         PatientsHistoryModalComponent,
         PreregistrationComponent: require('@component/patient/preregistration/PreregistrationComponent.vue').default
     },
+    props: {
+        consultID:{
+            type: Number,
+            default: -1
+        },
+        role: {
+            type: String,
+            default: ''
+        }
+    },
     /**
-     * Variables del componente
-     * @member PatientsTableComponent.data
-     * @property {MedicamentPagination} userData Guarda la información de los pacientes que retorna el backend en paginación
-     * @property {number} paginationPages Guarda el número de páginas de userData para mostrar el número de páginas en la paginación de la tabla
-     * @property {number} paginationActive Guarda el número de página activa de la tabla
-     * @property {string} query Guarda la búsqueda realizada en el input de búsqueda de la tabla
-     * @property {boolean} activateSearch Activa o no la búsqueda desde el input de búsqueda de la tabla
-     * @property {boolean} loading Activa o no la animación de carga dentro de la tabla
-     * @property {Patient} patientSelected Guarda los datos del paciente seleccionado
-     * @property {boolean} disabledPatientEdit Activa o desactiva la opción de editar al paciente en el componente {@link PatientsTableModalComponent}
-     * @property {string} successAlert.title Guarda el título para el modal del componente {@link SuccessAlertComponent}
-     * @property {string} successAlert.message Guarda el mensaje para el modal del componente {@link SuccessAlertComponent}
-     * @property {Branch} confirmationAlert.title Guarda título del mensaje de confirmación del modal {@link ConfirmationAlertComponent}
-     * @property {Branch} confirmationAlert.message Guarda el mensaje de confirmación del modal {@link ConfirmationAlertComponent}
-     * @property {Medicament} isNew Indica si el medicamento seleccionado es nuevo o existente
+      * Variables del componente
+      * @member PatientsTableComponent.data
+      * @property {MedicamentPagination} userData Guarda la información de los pacientes que retorna el backend en paginación
+      * @property {number} paginationPages Guarda el número de páginas de userData para mostrar el número de páginas en la paginación de la tabla
+      * @property {number} paginationActive Guarda el número de página activa de la tabla
+      * @property {string} query Guarda la búsqueda realizada en el input de búsqueda de la tabla
+      * @property {boolean} activateSearch Activa o no la búsqueda desde el input de búsqueda de la tabla
+      * @property {boolean} loading Activa o no la animación de carga dentro de la tabla
+      * @property {Patient} patientSelected Guarda los datos del paciente seleccionado
+      * @property {boolean} disabledPatientEdit Activa o desactiva la opción de editar al paciente en el componente {@link PatientsTableModalComponent}
+      * @property {string} successAlert.title Guarda el título para el modal del componente {@link SuccessAlertComponent}
+      * @property {string} successAlert.message Guarda el mensaje para el modal del componente {@link SuccessAlertComponent}
+      * @property {Branch} confirmationAlert.title Guarda título del mensaje de confirmación del modal {@link ConfirmationAlertComponent}
+      * @property {Branch} confirmationAlert.message Guarda el mensaje de confirmación del modal {@link ConfirmationAlertComponent}
+      * @property {Medicament} isNew Indica si el medicamento seleccionado es nuevo o existente
     */
     data() {
         return {

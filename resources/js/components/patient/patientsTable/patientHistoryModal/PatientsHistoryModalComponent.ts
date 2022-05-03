@@ -6,21 +6,21 @@ import { defineComponent } from '@vue/runtime-core';
 import axios from 'axios';
 import { PropType } from 'vue';
 
-/** 
+/**
  * @description Componente que muestra el historial médico del paciente seleccionado, mediante un formulario dentro de un modal
  * @class PatientsHistoryModalComponent
  * @example <patient-history-modal-component :patient="" :disabled="" edit=""></patient-history-modal-component>
 */
 export default defineComponent({
-    /** 
+    /**
      * {@link HistorialClinicoComponent}
      * @member PatientsHistoryModalComponent.components
     */
     components: {
         HistorialClinicoComponent
     },
-    /** 
-     * Propiedades que recibe el componente 
+    /**
+     * Propiedades que recibe el componente
      * @member PatientsHistoryModalComponent.props
      * @property {Patient} patient (Obligatorio) Datos del paciente seleccionado
      * @property {boolean} disabled Habilita o deshabilita el formulario del historial médico
@@ -39,14 +39,18 @@ export default defineComponent({
             type: Boolean as PropType<Boolean>,
             default: false
         },
+        role: {
+            type: String,
+            default: ''
+        }
     },
-    /** 
+    /**
      * Variables a observar por el componente
      * @member PatientsHistoryModalComponent.watch
      * @property {Patient} patient Al actualizar la variable, se obtiene el {@link PatientsHistoryModalComponent.getHistory|historial del paciente}
     */
     watch: {
-        patient: 
+        patient:
         {
             handler()
             {
@@ -64,11 +68,12 @@ export default defineComponent({
     data() {
         return {
             errors: [],
-            historialClinico: HistorialClinicoData
+            historialClinico: HistorialClinicoData,
+            consultID: 0
         };
     },
     methods: {
-        /** 
+        /**
          * Obtiene el historial médico del servidor. Si la petición es correcta, se asigna a la variable historialClinico la respuesta del servidor
          * @function PatientsHistoryModalComponent.getHistory
         */
@@ -77,9 +82,12 @@ export default defineComponent({
             axios.get(`/pacientes/${this.patient.id}/historial`)
             .then(response => {
                 this.historialClinico = response.data.data.form;
+                this.consultID = response.data.medicalconsult_id;
+                // console.log('ConsultID: ', this.consultID);
+
             })
             .catch(error => {
-                
+
             })
         },
     }

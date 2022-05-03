@@ -1,7 +1,7 @@
 <template>
     <div class="modal-info-confirmed modal fade show w-100" id="pahmcoHistory" tabindex="-1" role="dialog"
         aria-modal="true">
-        <div class="modal-dialog modal-dialog-centered rounded-bottom" role="document">
+        <div class="modal-dialog modal-dialog-centered rounded-bottom modal-lg" role="document">
             <div class="modal-content rounded-bottom">
                 <div class="modal-header e-info-header bg-primary text-center py-2">
                     <h6 class="modal-title e-info-title text-white">Historial clínico</h6>
@@ -10,8 +10,8 @@
                         <img-component url="/svg/close.svg" alt="Cerrar" styleData="filter: invert(1);"></img-component>
                     </button>
                 </div>
-                <div class="modal-body p-1">
-                    <historial-clinico-component :edit="true" :disabled="false" v-model="historialClinico" :patient="patient.id"></historial-clinico-component>
+                <div class="modal-body">
+                    <historial-clinico-component :role="role" :disabled="false" v-model="historialClinico" :patientID="patient.id" :consultID="consultID"></historial-clinico-component>
                 </div>
             </div>
         </div>
